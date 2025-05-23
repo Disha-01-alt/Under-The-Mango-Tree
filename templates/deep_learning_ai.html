@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
-{% block title %}Deep Learning Course - {{ courseData.instructor }}{% endblock %}
+{# The instructor_name variable will be passed from your Flask route #}
+{% block title %}Deep Learning Course - By {{ instructor_name }}{% endblock %}
 
 {% block extra_css %}
 <style>
@@ -56,6 +57,7 @@
     <section class="hero-dl">
         <div class="container text-center">
             <h1>Deep Learning Course</h1>
+            {# These spans will be populated by JavaScript using courseData from dl.js #}
             <p class="lead">Instructor: <span id="instructor-name"></span></p>
             <p>Before starting Deep Learning, make sure to first learn basics of <span id="prerequisite-subject"></span>.</p>
         </div>
@@ -72,17 +74,19 @@
             <div id="textbooks-section" class="mt-5">
                 <!-- Textbooks will be dynamically inserted here -->
             </div>
-            
+
             <div id="nlp-references-section" class="mt-5">
                 <!-- NLP References will be dynamically inserted here -->
             </div>
-
         </div>
     </section>
 {% endblock %}
 
 {% block extra_js %}
-    <script src="{{ url_for('static', filename='js/dl.js') }}"></script>
+    {# Ensure this filename matches your actual JS file containing the courseData object #}
+    <script src="{{ url_for('static', filename='js/dl_data.js') }}"></script>
+    {# Changed from dl.js to dl_data.js as that's where courseData is likely defined #}
+
     <script>
         // Helper function to extract YouTube Video ID
         function getYoutubeVideoId(url) {
@@ -93,8 +97,7 @@
                 /(?:https?:\/\/)?youtu\.be\/([^?#]+)/,
                 /(?:https?:\/\/)?(?:www\.)?youtube\.com\/embed\/([^?#]+)/,
                 /(?:https?:\/\/)?(?:www\.)?youtube\.com\/v\/([^?#]+)/,
-                // For URLs that might have list but v= is the primary target
-                 /(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?.*v=([^&]+)/
+                /(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?.*v=([^&]+)/
             ];
             for (const regex of youtubeRegex) {
                 const match = url.match(regex);
@@ -103,23 +106,34 @@
                     break;
                 }
             }
-            // Handle special characters that might be part of ID if URL encoded
             if (videoId) {
-                 // Basic check to avoid JS injection, although IDs are usually alphanumeric with -_
-                if (/^[a-zA-Z0-9\-_İусх]+$/.test(videoId)) { // Added İусх based on observed IDs
+                if (/^[a-zA-Z0-9\-_İусх]+$/.test(videoId)) {
                     return videoId;
                 }
             }
             console.warn("Could not extract video ID from URL:", url);
-            return null; // Return null or the original URL if no ID found, to avoid breaking embed
+            return null;
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            // Populate header info
+            // Check if courseData is loaded from dl_data.js
+            if (typeof courseData === 'undefined') {
+                console.error("CRITICAL: courseData object is not defined. Ensure dl_data.js is loaded correctly and defines 'courseData'.");
+                // Optionally, display a message to the user on the page
+                document.getElementById('instructor-name').textContent = "Error: Data not loaded";
+                document.getElementById('prerequisite-subject').textContent = "Error: Data not loaded";
+                return; // Stop further execution if data is missing
+            }
+
+            // Populate header info in the body using JavaScript
             document.getElementById('instructor-name').textContent = courseData.instructor;
             document.getElementById('prerequisite-subject').textContent = courseData.prerequisite;
 
             const courseAccordion = document.getElementById('courseAccordion');
+            if (!courseAccordion) {
+                console.error("CRITICAL: Element with ID 'courseAccordion' not found.");
+                return;
+            }
 
             courseData.weeks.forEach((week, index) => {
                 const weekId = `week-${week.weekNumber}`;
@@ -141,15 +155,15 @@
                                         <div class="col-md-6 col-lg-4 mb-3">
                                             <div class="card h-100">
                                                 <div class="video-container">
-                                                    <iframe src="https://www.youtube.com/embed/${videoId}" 
-                                                            title="${video.description || section.title || 'YouTube video player'}" 
-                                                            frameborder="0" 
-                                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                                    <iframe src="https://www.youtube.com/embed/${videoId}"
+                                                            title="${video.description || section.title || 'YouTube video player'}"
+                                                            frameborder="0"
+                                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                                             allowfullscreen>
                                                     </iframe>
                                                 </div>
-                                                <div class="card-body">
-                                                    <p class="card-text small">${video.description || 'Related Video'}</p>
+                                                <div class="card-body py-2">
+                                                    <p class="card-text small mb-0">${video.description || 'Related Video'}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -158,8 +172,8 @@
                                     primaryMaterialHtml += `
                                     <div class="col-md-6 col-lg-4 mb-3">
                                         <div class="card h-100">
-                                            <div class="card-body">
-                                                <p class="card-text small">
+                                            <div class="card-body py-2">
+                                                <p class="card-text small mb-0">
                                                     <i class="fas fa-exclamation-triangle text-warning me-1"></i>
                                                     Could not embed: <a href="${video.url}" target="_blank" rel="noopener noreferrer">${video.description || video.url}</a>
                                                 </p>
@@ -188,7 +202,9 @@
                     });
                     otherReferencesHtml += `</ul>`;
                 } else {
-                    otherReferencesHtml = '<p><em>No other references for this week.</em></p>';
+                    // No need to add "No other references" if primary material is also empty.
+                    // It can make the UI cleaner. Or add it if you prefer:
+                    // otherReferencesHtml = '<p><em>No other references for this week.</em></p>';
                 }
 
                 const accordionItem = `
@@ -211,7 +227,7 @@
 
             // Populate Textbooks
             const textbooksSection = document.getElementById('textbooks-section');
-            if (courseData.textbooks && courseData.textbooks.length > 0) {
+            if (textbooksSection && courseData.textbooks && courseData.textbooks.length > 0) {
                 let textbooksHtml = `
                     <div class="card">
                         <div class="card-header">
@@ -220,42 +236,43 @@
                         <ul class="list-group list-group-flush">`;
                 courseData.textbooks.forEach(book => {
                     textbooksHtml += `<li class="list-group-item">
-                                        ${book.title} 
+                                        ${book.title}
                                         ${book.url ? `(<a href="${book.url}" target="_blank" rel="noopener noreferrer">Link</a>)` : ''}
                                       </li>`;
                 });
                 textbooksHtml += `</ul></div>`;
                 textbooksSection.innerHTML = textbooksHtml;
             }
-            
-            // Populate NLP References (if any)
+
+            // Populate NLP References
             const nlpReferencesSection = document.getElementById('nlp-references-section');
-            if (courseData.referencesForNLP && courseData.referencesForNLP.length > 0) {
-                let nlpRefHtml = `
-                    <div class="card">
-                        <div class="card-header">
-                            <h4><i class="fas fa-file-alt me-2"></i>References for NLP</h4>
-                        </div>
-                        <ul class="list-group list-group-flush">`;
-                courseData.referencesForNLP.forEach(ref => {
-                    nlpRefHtml += `<li class="list-group-item">
-                                        ${ref.url ? `<a href="${ref.url}" target="_blank" rel="noopener noreferrer">${ref.title}</a>` : ref.title}
-                                   </li>`;
-                });
-                nlpRefHtml += `</ul></div>`;
-                nlpReferencesSection.innerHTML = nlpRefHtml;
-            } else {
-                 // If no specific NLP refs, but PDF mentions it, add a note or clear the placeholder
-                 let nlpRefHtml = `
-                    <div class="card">
-                        <div class="card-header">
-                            <h4><i class="fas fa-file-alt me-2"></i>References for NLP</h4>
-                        </div>
-                        <div class="card-body">
-                            <p class="text-muted">Refer to NLP specific sections within weekly materials or standard NLP literature.</p>
-                        </div>
-                    </div>`;
-                 nlpReferencesSection.innerHTML = nlpRefHtml;
+            if (nlpReferencesSection) {
+                if (courseData.referencesForNLP && courseData.referencesForNLP.length > 0) {
+                    let nlpRefHtml = `
+                        <div class="card">
+                            <div class="card-header">
+                                <h4><i class="fas fa-file-alt me-2"></i>References for NLP</h4>
+                            </div>
+                            <ul class="list-group list-group-flush">`;
+                    courseData.referencesForNLP.forEach(ref => {
+                        nlpRefHtml += `<li class="list-group-item">
+                                            ${ref.url ? `<a href="${ref.url}" target="_blank" rel="noopener noreferrer">${ref.title}</a>` : ref.title}
+                                       </li>`;
+                    });
+                    nlpRefHtml += `</ul></div>`;
+                    nlpReferencesSection.innerHTML = nlpRefHtml;
+                } else {
+                     let nlpRefHtml = `
+                        <div class="card">
+                            <div class="card-header">
+                                <h4><i class="fas fa-file-alt me-2"></i>References for NLP</h4>
+                            </div>
+                            <div class="card-body">
+                                <p class="text-muted">Refer to NLP specific sections within weekly materials or standard NLP literature.</p>
+                            </div>
+                        </div>`;
+                     nlpReferencesSection.innerHTML = nlpRefHtml;
+                }
             }
 
         });
