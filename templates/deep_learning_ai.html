@@ -1,93 +1,263 @@
 {% extends 'base.html' %}
 
-{% block title %}Deep Learning - Under The Mango Tree{% endblock %}
+{% block title %}Deep Learning Course - {{ courseData.instructor }}{% endblock %}
+
+{% block extra_css %}
+<style>
+    .hero-dl {
+        background: linear-gradient(rgba(29, 38, 113, 0.7), rgba(19, 73, 100, 0.7)), url('https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZGF0YSUyMHNjaWVuY2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60') no-repeat center center;
+        background-size: cover;
+        color: white;
+        padding: 60px 20px;
+        margin-bottom: 30px;
+    }
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+        overflow: hidden;
+        max-width: 100%;
+        background: #000;
+        margin-bottom: 15px;
+    }
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .accordion-button:not(.collapsed) {
+        color: #0c63e4;
+        background-color: #e7f1ff;
+    }
+    .list-group-item a {
+        text-decoration: none;
+    }
+    .list-group-item a:hover {
+        text-decoration: underline;
+    }
+    .section-divider {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #dee2e6;
+    }
+    .primary-material-section h5 {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        color: #333;
+        border-left: 3px solid #007bff;
+        padding-left: 10px;
+    }
+</style>
+{% endblock %}
 
 {% block content %}
-    <!-- Hero Section -->
-    <section class="hero" style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://pixabay.com/get/gf1d0e7e2c973d49816e3df86df9d9b0b72a04022484f982d20878c23d0c0d354b3a15c1b92aef4236cdbec9b487f15b5_1280.jpg');">
+    <section class="hero-dl">
         <div class="container text-center">
-            <h1>Deep Learning</h1>
-            <p>Explore deep learning concepts from fundamentals to advanced topics through our curated video tutorials.</p>
+            <h1>Deep Learning Course</h1>
+            <p class="lead">Instructor: <span id="instructor-name"></span></p>
+            <p>Before starting Deep Learning, make sure to first learn basics of <span id="prerequisite-subject"></span>.</p>
         </div>
     </section>
 
-    <!-- Deep Learning Content -->
     <section class="py-5">
         <div class="container">
-            <h2 class="section-title">Deep Learning Tutorial Videos</h2>
-            <p class="section-subtitle">Follow our structured learning path to master deep learning step-by-step.</p>
-            
-            <div class="card mb-4">
-                <div class="card-body">
-                    <div class="row align-items-center">
-                        <div class="col-lg-2 text-center mb-3 mb-lg-0">
-                            <i class="fas fa-brain fa-3x text-primary"></i>
-                        </div>
-                        <div class="col-lg-10">
-                            <h4>How to use this resource</h4>
-                            <p>Watch the videos in order to build your deep learning skills progressively. Each video contains detailed explanations and practical examples.</p>
-                            <p class="mb-0">Practice alongside to reinforce your understanding and revisit topics as needed.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="table-responsive">
-                <table class="table table-bordered video-table">
-                    <thead>
-                        <tr>
-                            <th width="40%">Video</th>
-                            <th width="25%">Title</th>
-                            <th width="35%">Description</th>
-                        </tr>
-                    </thead>
-                    <tbody id="video-table-body">
-                        <!-- JavaScript will populate this -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
+            <h2 class="mb-4 text-center">Course Content</h2>
 
-    <!-- Additional Resources -->
-    <section class="py-5 bg-light">
-        <div class="container">
-            <h2 class="section-title">Additional Deep Learning Resources</h2>
-            <p class="section-subtitle">Complement your learning with these valuable resources.</p>
-            
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h4><i class="fas fa-book text-primary me-2"></i>Courses</h4>
-                            <p>Take online courses to deepen your knowledge and gain hands-on experience.</p>
-                            <a href="https://www.coursera.org/specializations/deep-learning" class="btn btn-sm btn-outline-primary" target="_blank">Deep Learning Specialization</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h4><i class="fas fa-laptop-code text-primary me-2"></i>Practice</h4>
-                            <p>Experiment with deep learning projects and challenges to sharpen your skills.</p>
-                            <a href="https://www.kaggle.com/learn/deep-learning" class="btn btn-sm btn-outline-primary" target="_blank">Kaggle Deep Learning</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h4><i class="fas fa-users text-primary me-2"></i>Community</h4>
-                            <p>Join forums and communities to get support and stay updated.</p>
-                            <a href="https://www.reddit.com/r/deeplearning/" class="btn btn-sm btn-outline-primary" target="_blank">Deep Learning Reddit</a>
-                        </div>
-                    </div>
-                </div>
+            <div class="accordion" id="courseAccordion">
+                <!-- Weeks will be dynamically inserted here by JavaScript -->
             </div>
+
+            <div id="textbooks-section" class="mt-5">
+                <!-- Textbooks will be dynamically inserted here -->
+            </div>
+            
+            <div id="nlp-references-section" class="mt-5">
+                <!-- NLP References will be dynamically inserted here -->
+            </div>
+
         </div>
     </section>
 {% endblock %}
 
 {% block extra_js %}
     <script src="{{ url_for('static', filename='js/dl.js') }}"></script>
+    <script>
+        // Helper function to extract YouTube Video ID
+        function getYoutubeVideoId(url) {
+            if (!url) return null;
+            let videoId = null;
+            const youtubeRegex = [
+                /(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([^&#]+)/,
+                /(?:https?:\/\/)?youtu\.be\/([^?#]+)/,
+                /(?:https?:\/\/)?(?:www\.)?youtube\.com\/embed\/([^?#]+)/,
+                /(?:https?:\/\/)?(?:www\.)?youtube\.com\/v\/([^?#]+)/,
+                // For URLs that might have list but v= is the primary target
+                 /(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?.*v=([^&]+)/
+            ];
+            for (const regex of youtubeRegex) {
+                const match = url.match(regex);
+                if (match && match[1]) {
+                    videoId = match[1];
+                    break;
+                }
+            }
+            // Handle special characters that might be part of ID if URL encoded
+            if (videoId) {
+                 // Basic check to avoid JS injection, although IDs are usually alphanumeric with -_
+                if (/^[a-zA-Z0-9\-_İусх]+$/.test(videoId)) { // Added İусх based on observed IDs
+                    return videoId;
+                }
+            }
+            console.warn("Could not extract video ID from URL:", url);
+            return null; // Return null or the original URL if no ID found, to avoid breaking embed
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Populate header info
+            document.getElementById('instructor-name').textContent = courseData.instructor;
+            document.getElementById('prerequisite-subject').textContent = courseData.prerequisite;
+
+            const courseAccordion = document.getElementById('courseAccordion');
+
+            courseData.weeks.forEach((week, index) => {
+                const weekId = `week-${week.weekNumber}`;
+                const collapseId = `collapse-${week.weekNumber}`;
+
+                let primaryMaterialHtml = '';
+                if (week.primaryMaterial && week.primaryMaterial.length > 0) {
+                    primaryMaterialHtml += `<h6><i class="fas fa-video me-2 text-danger"></i>Primary YouTube Links</h6>`;
+                    week.primaryMaterial.forEach(section => {
+                        if (section.title) {
+                             primaryMaterialHtml += `<div class="primary-material-section"><h5>${section.title}</h5></div>`;
+                        }
+                        if (section.videos && section.videos.length > 0) {
+                            primaryMaterialHtml += '<div class="row">';
+                            section.videos.forEach(video => {
+                                const videoId = getYoutubeVideoId(video.url);
+                                if (videoId) {
+                                    primaryMaterialHtml += `
+                                        <div class="col-md-6 col-lg-4 mb-3">
+                                            <div class="card h-100">
+                                                <div class="video-container">
+                                                    <iframe src="https://www.youtube.com/embed/${videoId}" 
+                                                            title="${video.description || section.title || 'YouTube video player'}" 
+                                                            frameborder="0" 
+                                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                                            allowfullscreen>
+                                                    </iframe>
+                                                </div>
+                                                <div class="card-body">
+                                                    <p class="card-text small">${video.description || 'Related Video'}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    `;
+                                } else {
+                                    primaryMaterialHtml += `
+                                    <div class="col-md-6 col-lg-4 mb-3">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <p class="card-text small">
+                                                    <i class="fas fa-exclamation-triangle text-warning me-1"></i>
+                                                    Could not embed: <a href="${video.url}" target="_blank" rel="noopener noreferrer">${video.description || video.url}</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    `;
+                                }
+                            });
+                            primaryMaterialHtml += '</div>';
+                        }
+                    });
+                } else {
+                     primaryMaterialHtml = '<p><em>No primary YouTube links for this week.</em></p>';
+                }
+
+
+                let otherReferencesHtml = '';
+                if (week.otherReferences && week.otherReferences.length > 0) {
+                    otherReferencesHtml += `<div class="section-divider"></div><h6><i class="fas fa-link me-2 text-info"></i>Other References</h6><ul class="list-group list-group-flush">`;
+                    week.otherReferences.forEach(ref => {
+                        otherReferencesHtml += `
+                            <li class="list-group-item">
+                                <a href="${ref.url}" target="_blank" rel="noopener noreferrer">${ref.title}</a>
+                            </li>`;
+                    });
+                    otherReferencesHtml += `</ul>`;
+                } else {
+                    otherReferencesHtml = '<p><em>No other references for this week.</em></p>';
+                }
+
+                const accordionItem = `
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading-${weekId}">
+                            <button class="accordion-button ${index === 0 ? '' : 'collapsed'}" type="button" data-bs-toggle="collapse" data-bs-target="#${collapseId}" aria-expanded="${index === 0 ? 'true' : 'false'}" aria-controls="${collapseId}">
+                                <strong>Week ${week.weekNumber}: ${week.topic}</strong>
+                            </button>
+                        </h2>
+                        <div id="${collapseId}" class="accordion-collapse collapse ${index === 0 ? 'show' : ''}" aria-labelledby="heading-${weekId}" data-bs-parent="#courseAccordion">
+                            <div class="accordion-body">
+                                ${primaryMaterialHtml}
+                                ${otherReferencesHtml}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                courseAccordion.innerHTML += accordionItem;
+            });
+
+            // Populate Textbooks
+            const textbooksSection = document.getElementById('textbooks-section');
+            if (courseData.textbooks && courseData.textbooks.length > 0) {
+                let textbooksHtml = `
+                    <div class="card">
+                        <div class="card-header">
+                            <h4><i class="fas fa-book-open me-2"></i>Textbooks</h4>
+                        </div>
+                        <ul class="list-group list-group-flush">`;
+                courseData.textbooks.forEach(book => {
+                    textbooksHtml += `<li class="list-group-item">
+                                        ${book.title} 
+                                        ${book.url ? `(<a href="${book.url}" target="_blank" rel="noopener noreferrer">Link</a>)` : ''}
+                                      </li>`;
+                });
+                textbooksHtml += `</ul></div>`;
+                textbooksSection.innerHTML = textbooksHtml;
+            }
+            
+            // Populate NLP References (if any)
+            const nlpReferencesSection = document.getElementById('nlp-references-section');
+            if (courseData.referencesForNLP && courseData.referencesForNLP.length > 0) {
+                let nlpRefHtml = `
+                    <div class="card">
+                        <div class="card-header">
+                            <h4><i class="fas fa-file-alt me-2"></i>References for NLP</h4>
+                        </div>
+                        <ul class="list-group list-group-flush">`;
+                courseData.referencesForNLP.forEach(ref => {
+                    nlpRefHtml += `<li class="list-group-item">
+                                        ${ref.url ? `<a href="${ref.url}" target="_blank" rel="noopener noreferrer">${ref.title}</a>` : ref.title}
+                                   </li>`;
+                });
+                nlpRefHtml += `</ul></div>`;
+                nlpReferencesSection.innerHTML = nlpRefHtml;
+            } else {
+                 // If no specific NLP refs, but PDF mentions it, add a note or clear the placeholder
+                 let nlpRefHtml = `
+                    <div class="card">
+                        <div class="card-header">
+                            <h4><i class="fas fa-file-alt me-2"></i>References for NLP</h4>
+                        </div>
+                        <div class="card-body">
+                            <p class="text-muted">Refer to NLP specific sections within weekly materials or standard NLP literature.</p>
+                        </div>
+                    </div>`;
+                 nlpReferencesSection.innerHTML = nlpRefHtml;
+            }
+
+        });
+    </script>
 {% endblock %}
