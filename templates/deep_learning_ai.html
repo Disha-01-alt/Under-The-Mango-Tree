@@ -4,50 +4,83 @@
 
 {% block content %}
     <!-- Hero Section -->
-    <section class="hero hero-ml">
-
-        <div class="container text-center text-white">
+    <section class="hero" style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://pixabay.com/get/gf1d0e7e2c973d49816e3df86df9d9b0b72a04022484f982d20878c23d0c0d354b3a15c1b92aef4236cdbec9b487f15b5_1280.jpg');">
+        <div class="container text-center">
             <h1>Deep Learning</h1>
-            <p>Explore deep learning concepts, neural networks, and cutting-edge AI methods with curated tutorials.</p>
+            <p>Explore deep learning concepts from fundamentals to advanced topics through our curated video tutorials.</p>
         </div>
     </section>
 
     <!-- Deep Learning Content -->
     <section class="py-5">
         <div class="container">
-            <h2 class="section-title">Deep Learning Resources</h2>
-            <p class="section-subtitle">Dive into neural networks, CNNs, RNNs, transformers, and more with practical lessons and projects.</p>
-
+            <h2 class="section-title">Deep Learning Tutorial Videos</h2>
+            <p class="section-subtitle">Follow our structured learning path to master deep learning step-by-step.</p>
+            
             <div class="card mb-4">
                 <div class="card-body">
-                    <h4>Learning Highlights</h4>
-                    <ul>
-                        <li>Neural Network Foundations</li>
-                        <li>Convolutional & Recurrent Networks</li>
-                        <li>Transfer Learning & Transformers</li>
-                        <li>Projects with TensorFlow and PyTorch</li>
-                    </ul>
-                    <p>Start learning from the curated materials at 
-                        <a href="https://tinyurl.com/deepselfshiksha" target="_blank" rel="noopener noreferrer">this resource</a>.
-                    </p>
+                    <div class="row align-items-center">
+                        <div class="col-lg-2 text-center mb-3 mb-lg-0">
+                            <i class="fas fa-brain fa-3x text-primary"></i>
+                        </div>
+                        <div class="col-lg-10">
+                            <h4>How to use this resource</h4>
+                            <p>Watch the videos in order to build your deep learning skills progressively. Each video contains detailed explanations and practical examples.</p>
+                            <p class="mb-0">Practice alongside to reinforce your understanding and revisit topics as needed.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
+            
+            <div class="table-responsive">
+                <table class="table table-bordered video-table">
+                    <thead>
+                        <tr>
+                            <th width="40%">Video</th>
+                            <th width="25%">Title</th>
+                            <th width="35%">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody id="video-table-body">
+                        <!-- JavaScript will populate this -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
 
-            <!-- Dynamic Video Table Section -->
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h4>Recommended Video Tutorials</h4>
-                    <div class="table-responsive">
-                        <table class="table table-bordered">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th>Video</th>
-                                    <th>Title</th>
-                                    <th>Description</th>
-                                </tr>
-                            </thead>
-                            <tbody id="video-table-body"></tbody>
-                        </table>
+    <!-- Additional Resources -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">Additional Deep Learning Resources</h2>
+            <p class="section-subtitle">Complement your learning with these valuable resources.</p>
+            
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4><i class="fas fa-book text-primary me-2"></i>Courses</h4>
+                            <p>Take online courses to deepen your knowledge and gain hands-on experience.</p>
+                            <a href="https://www.coursera.org/specializations/deep-learning" class="btn btn-sm btn-outline-primary" target="_blank">Deep Learning Specialization</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4><i class="fas fa-laptop-code text-primary me-2"></i>Practice</h4>
+                            <p>Experiment with deep learning projects and challenges to sharpen your skills.</p>
+                            <a href="https://www.kaggle.com/learn/deep-learning" class="btn btn-sm btn-outline-primary" target="_blank">Kaggle Deep Learning</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4><i class="fas fa-users text-primary me-2"></i>Community</h4>
+                            <p>Join forums and communities to get support and stay updated.</p>
+                            <a href="https://www.reddit.com/r/deeplearning/" class="btn btn-sm btn-outline-primary" target="_blank">Deep Learning Reddit</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -55,7 +88,6 @@
     </section>
 {% endblock %}
 
-{% block scripts %}
-    {{ super() }}
+{% block extra_js %}
     <script src="{{ url_for('static', filename='js/dl.js') }}"></script>
 {% endblock %}
