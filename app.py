@@ -129,7 +129,9 @@ def english_learning():
     return render_template('english_learning.html')
 @app.route('/machine-learning')
 def machine_learning():
-    return render_template('machine_learning.html')
+     instructor_name = "Dr. Kushal Shah" # Or get from ml_course_data if loaded in Python
+    return render_template('machine_learning.html', mlCourseData={'instructor': instructor_name}) 
+    
 
 @app.route('/deep-learning-ai')
 def deep_learning_ai():
