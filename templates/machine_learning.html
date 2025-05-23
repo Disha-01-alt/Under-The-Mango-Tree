@@ -26,16 +26,35 @@
                         <li>Reinforcement Learning Basics</li>
                         <li>Hands-on projects and datasets</li>
                     </ul>
-                    <p>Start learning from the materials curated at <a href="https://tinyurl.com/dsmlselfshiksha" target="_blank" rel="noopener noreferrer">this resource</a>.</p>
+                    <p>Start learning from the materials curated at 
+                        <a href="https://tinyurl.com/dsmlselfshiksha" target="_blank" rel="noopener noreferrer">this resource</a>.
+                    </p>
                 </div>
             </div>
 
+            <!-- Dynamic Video Table Section -->
             <div class="card mb-4">
                 <div class="card-body">
                     <h4>Recommended Video Tutorials</h4>
-                    <p>Videos will be updated soon.</p>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Video</th>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody id="video-table-body"></tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename='js/ml.js') }}"></script>
 {% endblock %}
