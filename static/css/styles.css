@@ -435,4 +435,18 @@ footer a:hover {
     .section-subtitle {
         font-size: 1rem;
     }
+
+.hero {
+    background-size: cover;
+    background-position: center;
+    padding: 80px 0;
+    color: white;
 }
+
+.hero-ml {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                url('https://pixabay.com/get/g4f6a0a192580f87199c23b924d75524c2bcb923c4a9e15a9bac1f4eb3d3db49a4b9fe46b42794a0cd747c5107770577d96f2c50f3e32a25246f88a729a9cef72_1280.jpg');
+}
+
+}
+
