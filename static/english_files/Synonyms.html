@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Synonym Word Practice</title>
+    <style>
+        :root {
+            --primary-color: #4f46e5;
+            --secondary-color: #6366f1;
+            --background-color: #f8fafc;
+            --card-background: #ffffff;
+            --text-color: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .vocab-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .word {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+        .back-button {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            padding: 0.5rem 1rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .options-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .option-btn {
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.5rem;
+            background: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .option-btn:hover {
+            border-color: var(--primary-color);
+            background: #f8fafc;
+        }
+
+        .option-btn.correct {
+            background: #22c55e;
+            color: white;
+            border-color: #22c55e;
+        }
+
+        .option-btn.incorrect {
+            background: #ef4444;
+            color: white;
+            border-color: #ef4444;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+        }
+
+        .btn:hover {
+            background: var(--secondary-color);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .feedback {
+            margin-top: 1rem;
+            font-weight: 600;
+            min-height: 1.5rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #e2e8f0;
+            border-radius: 5px;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+        .page-heading {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            .back-button {
+                position: static;
+                width: fit-content;
+                display:block;
+                margin-bottom: 1rem;
+            }
+
+            .container {
+                width: 100%;
+                padding: 0 1rem;
+            }
+
+            .word {
+                font-size: 2rem;
+            }
+
+            .options-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">← Back to Home</a>
+    <h1 class="page-heading">Synonyms</h1>
+    <div class="container">
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-value" id="current-score">0</div>
+                <div class="stat-label">Score</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" id="current-streak">0</div>
+                <div class="stat-label">Streak</div>
+            </div>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+
+        <div class="vocab-card">
+            <div class="word" id="current-word"></div>
+            <div class="options-container" id="options"></div>
+            <div class="feedback" id="feedback"></div>
+            <button class="btn" id="next-button" onclick="nextQuestion()" disabled>Next</button>
+        </div>
+    </div>
+
+    <script>
+       let currentWordIndex = 0;
+        let score = 0;
+        let streak = 0;
+        let hasAnswered = false;
+        let wordData = [];
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        async function loadWordData() {
+            try {
+                console.log('Attempting to fetch Synonyms.json...');
+                
+                const response = await fetch('Synonym.json');
+                
+                console.log('Fetch response:', response);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const contentType = response.headers.get('content-type');
+                console.log('Content Type:', contentType);
+                
+                if (!contentType || !contentType.includes('application/json')) {
+                    throw new Error('Response is not a JSON file');
+                }
+                
+                const data = await response.json();
+                
+                console.log('Parsed JSON data:', data);
+                
+                if (!data || !Array.isArray(data.words)) {
+                    throw new Error('Invalid JSON structure');
+                }
+
+                wordData = shuffleArray(data.words);
+                
+                console.log('Processed wordData:', wordData);
+
+                displayWord();
+                updateStats();
+            } catch (error) {
+                console.error('Detailed Error:', error);
+                
+                const errorContainer = document.getElementById('options');
+                if (errorContainer) {
+                    errorContainer.innerHTML = `
+                        <div style="color: red; text-align: center;">
+                            <p>Error Loading Words:</p>
+                            <p>${error.message}</p>
+                            <p>Please check file location and format.</p>
+                        </div>
+                    `;
+                }
+            }
+        }
+
+        function displayWord() {
+            if (!wordData || wordData.length === 0) {
+                console.error('No word data available');
+                return;
+            }
+
+            const currentWord = wordData[currentWordIndex];
+            
+            // Additional safety checks
+            if (!currentWord) {
+                console.error('Current word is undefined', {currentWordIndex, wordDataLength: wordData.length});
+                return;
+            }
+
+            document.getElementById('current-word').textContent = currentWord.word;
+            
+            const optionsContainer = document.getElementById('options');
+            optionsContainer.innerHTML = '';
+            
+            // Shuffle options
+            const shuffledOptions = shuffleArray([...currentWord.options]);
+            
+            shuffledOptions.forEach(option => {
+                const button = document.createElement('button');
+                button.className = 'option-btn';
+                button.textContent = option;
+                button.onclick = () => checkAnswer(option);
+                optionsContainer.appendChild(button);
+            });
+
+            document.getElementById('feedback').textContent = '';
+            document.getElementById('next-button').disabled = true;
+            hasAnswered = false;
+            updateProgress();
+        }
+
+        function checkAnswer(selectedOption) {
+            if (hasAnswered) return;
+            
+            const currentWord = wordData[currentWordIndex];
+            const feedback = document.getElementById('feedback');
+            const options = document.querySelectorAll('.option-btn');
+            
+            hasAnswered = true;
+
+            options.forEach(button => {
+                if (button.textContent === currentWord.correct) {
+                    button.classList.add('correct');
+                } else if (button.textContent === selectedOption && selectedOption !== currentWord.correct) {
+                    button.classList.add('incorrect');
+                }
+                button.disabled = true;
+            });
+
+            if (selectedOption === currentWord.correct) {
+                feedback.textContent = 'Correct! Well done!';
+                score++;
+                streak++;
+            } else {
+                feedback.textContent = `Incorrect. The correct answer is: ${currentWord.correct}`;
+                streak = 0;
+            }
+
+            document.getElementById('next-button').disabled = false;
+            updateStats();
+        }
+
+        function nextQuestion() {
+            currentWordIndex++;
+            
+            if (currentWordIndex < wordData.length) {
+                displayWord();
+            } else {
+                showFinalScore();
+            }
+        }
+
+        function updateProgress() {
+            const progress = (currentWordIndex / wordData.length) * 100;
+            document.getElementById('progress').style.width = `${progress}%`;
+        }
+
+        function updateStats() {
+            document.getElementById('current-score').textContent = score;
+            document.getElementById('current-streak').textContent = streak;
+        }
+
+        function showFinalScore() {
+            const container = document.querySelector('.container');
+            container.innerHTML = `
+                <div class="vocab-card">
+                    <h2>Practice Complete!</h2>
+                    <p>Final Score: ${score} out of ${wordData.length}</p>
+                    <button class="btn" onclick="location.reload()">Practice Again</button>
+                </div>
+            `;
+        }
+
+        // Call loadWordData when the page loads
+        window.onload = loadWordData;
+    
+        </script>
+</body>
+</html>

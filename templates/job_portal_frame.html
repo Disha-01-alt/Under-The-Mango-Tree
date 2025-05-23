@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block title %}Job Portal - Under The Mango Tree{% endblock %}
+
+{% block content %}
+    <iframe src="{{ url_for('job_portal_content') }}" style="width:100%; height:100vh; border:none; overflow:hidden;" title="Job Portal"></iframe>
+{% endblock %}

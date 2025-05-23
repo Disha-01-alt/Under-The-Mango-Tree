@@ -1,0 +1,1984 @@
+{
+    "conversations": [
+        {
+            "context": "Answering a question about your family",
+            "question": "How would you reply when someone asks how your family is doing?",
+            "options": [
+                "They're fine.",
+                "None of your business.",
+                "Why do you care?",
+                "They are all doing well, thank you for asking."
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Apologizing for being late",
+            "question": "How would you reply when you arrive late for a meeting?",
+            "options": [
+                "Sorry I'm late.",
+                "So?",
+                "I'm so sorry for being late. I encountered some unexpected delays.",
+                "Late."
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Asking a local farmer about sustainable farming methods",
+            "question": "How would you reply when you want to inquire with a farmer about eco-friendly farming practices?",
+            "options": [
+                "Green farm.",
+                "Eco farm?",
+                "Which eco-friendly practices do you use for farming?",
+                "Green grow?"
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "Asking about a way to get rid of pests that are eating crops",
+            "question": "How would you reply when you need to find a method for keeping pests away from your crops?",
+            "options": [
+                "Crops pests?",
+                "Pests cure?",
+                "Pests remove.",
+                "What's a good way to get rid of pests eating my crops?"
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "Asking about job availability in the market",
+            "question": "How would you reply when you are looking for a job at the local market?",
+            "options": [
+                "Market jobs.",
+                "Are there any available job positions at the local market?",
+                "Jobs market?",
+                "Available work?"
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "Asking about local celebrations and their meaning",
+            "question": "How would you reply when you're curious about local festivities and their history?",
+            "options": [
+                "Celebrate why?",
+                "Local fest.",
+                "Can you tell me about local celebrations and the history?",
+                "Celebrations history."
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "Asking about local customs",
+            "question": "How would you reply when you want to learn about local customs?",
+            "options": [
+                "Traditions?",
+                "Customs info?",
+                "Local customs?",
+                "Could you tell me more about the local customs and traditions here?"
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "Asking about local events",
+            "question": "How would you reply when you want to know about upcoming events in the village?",
+            "options": [
+                "Local events?",
+                "Events?",
+                "Anything happening around here?",
+                "Excuse me, are there any interesting events happening in the village soon?"
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Asking about local regulations for selling goods",
+            "question": "How would you reply when you need information on the rules and regulations for selling at the local market?",
+            "options": [
+                "Goods sell.",
+                "Sell rules?",
+                "Can you tell me about the local regulations for selling goods here?",
+                "Regulation market."
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Asking about someone's health",
+            "question": "How would you reply when you ask about someone's health?",
+            "options": [
+                "How have you been feeling lately?",
+                "You sick?",
+                "What's wrong with you?",
+                "You okay?"
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Asking about sustainable practices",
+            "question": "How would you reply when I want to know how to be sustainable",
+            "options": [
+                "Sustainable practices",
+                "Enviro help",
+                "Green Thanks",
+                "What is sustainable living"
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "Asking about the best location for fishing in a river",
+            "question": "How would you reply when you need to know a good place to fish in the river?",
+            "options": [
+                "River fish?",
+                "Where is a good spot to fish in this river?",
+                "Spot good.",
+                "Fishing place."
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "Asking about the history of a significant landmark",
+            "question": "How would you reply when you want to know the story behind an important local landmark?",
+            "options": [
+                "Landmark history.",
+                "What is the history behind that landmark?",
+                "History site.",
+                "History?"
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Asking about the price of something",
+            "question": "How would you reply when you want to know the price of an item at the market?",
+            "options": [
+                "How much?",
+                "Price?",
+                "Excuse me, how much does this cost?",
+                "Cost!"
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "Asking advice on how to best preserve herbs and spices",
+            "question": "How would you reply when you want to learn ways to safely store herbs and spices?",
+            "options": [
+                "Herbs store?",
+                "Spices good.",
+                "What's the best way to preserve herbs and spices?",
+                "Spice best?"
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Asking for a favor",
+            "question": "How would you reply when you need to ask someone for a small favor?",
+            "options": [
+                "Hey, help me with this.",
+                "I need your help.",
+                "Excuse me, would you mind helping me with this for a moment?",
+                "Do this for me."
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "Asking for a recommendation",
+            "question": "How would you reply when you want a recommendation for a good restaurant in town?",
+            "options": [
+                "Recommend restaurant.",
+                "Restaurant recommendation?",
+                "Good restaurant?",
+                "Do you know of any good restaurants in town you would recommend?"
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Asking for a recommendation for a local doctor",
+            "question": "How would you reply when you need to find a good doctor in the area?",
+            "options": [
+                "Good doctor?",
+                "Doctor recommend.",
+                "Doctor good?",
+                "Do you know of any good doctors in the area you would recommend?"
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "Asking for a refill of water",
+            "question": "How would you reply when your water glass is empty and you want a refill?",
+            "options": [
+                "More water?",
+                "Excuse me, could I get a refill of water, please?",
+                "Refill water.",
+                "Water refill."
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "Asking for a small loan",
+            "question": "How would you reply when you need to borrow a small amount of money from a friend?",
+            "options": [
+                "Can I borrow [amount]?",
+                "Need [amount].",
+                "Would it be possible to borrow [amount] from you? I'll pay you back soon.",
+                "Loan money?"
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "Asking for a solution to prevent insects from ruining crops",
+            "question": "How would you reply when you need help figuring out how to keep insects from destroying your crops?",
+            "options": [
+                "Insects fix.",
+                "Crops insects?",
+                "Stop insects.",
+                "Do you have a solution to prevent insects from ruining my crops?"
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "Asking for advice",
+            "question": "How would you reply when you need advice on a personal matter?",
+            "options": [
+                "Would you mind giving me some advice on something I'm struggling with?",
+                "Need advice.",
+                "Advice?",
+                "Give advice."
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Asking for assistance to carry heavy objects",
+            "question": "How would you reply when you need help to carry some heavy things?",
+            "options": [
+                "Carry please.",
+                "Carry help?",
+                "Could you give me a hand carrying these?",
+                "Help carry."
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "Asking for clarification",
+            "question": "How would you reply when you don't understand something someone said?",
+            "options": [
+                "Excuse me, could you please clarify that for me?",
+                "What?",
+                "Say what?",
+                "Huh?"
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "Asking for directions",
+            "question": "How would you reply when you need to ask for directions to the temple?",
+            "options": [
+                "Excuse me, could you please tell me how to get to the temple?",
+                "Temple? Which way?",
+                "Hey, where's the temple?",
+                "I need to go to the temple, tell me how."
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "Asking for help with directions (more specific)",
+            "question": "How would you reply when you're lost and need to find the community center?",
+            "options": [
+                "Need community center.",
+                "Community center?",
+                "Where's the community center?",
+                "Excuse me, I seem to be lost. Could you direct me to the community center?"
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "Asking for help with repairing something",
+            "question": "How would you reply when you need assistance with fixing a broken item?",
+            "options": [
+                "Fix help?",
+                "Would you be able to help me fix this? I'm not sure how.",
+                "Help repair.",
+                "Repair help."
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Asking for help with translation",
+            "question": "How would you reply when you need someone to translate a phrase for you?",
+            "options": [
+                "Could you help me translate this phrase into [language]?",
+                "Translate help.",
+                "Help translate.",
+                "Translate please."
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "Asking for information on safe methods for preserving food",
+            "question": "How would you reply when you want to learn about safe ways to preserve food at home?",
+            "options": [
+                "Preserve food?",
+                "Can you tell me about safe methods for preserving food at home?",
+                "Safe method.",
+                "Food keep safe."
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Asking for the best route to get somewhere",
+            "question": "How would you reply when you're seeking directions to a specific location?",
+            "options": [
+                "Best route.",
+                "Route please.",
+                "Route to [place]?",
+                "What's the best way to get to [place]?"
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "Asking for the best time to visit",
+            "question": "How would you reply when you want to know the best time to visit someone's home?",
+            "options": [
+                "Visiting time?",
+                "When can I come over?",
+                "Visit when?",
+                "What would be a good time for me to visit you?"
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Asking for the location of the nearest shop",
+            "question": "How would you reply when you're looking for the closest shop?",
+            "options": [
+                "Shop where?",
+                "Excuse me, could you tell me where the nearest shop is located?",
+                "Shop location.",
+                "Nearest shop."
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Asking for the price of an animal at a market",
+            "question": "How would you reply when you want to know the price of an animal at the market?",
+            "options": [
+                "Amount animal.",
+                "Price market.",
+                "How much do you want for that [animal]?",
+                "Animal price?"
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "Asking for the recipe of a dish",
+            "question": "How would you reply when you taste a delicious dish and want the recipe?",
+            "options": [
+                "Good recipe.",
+                "Recipe?",
+                "Recipe please.",
+                "This is delicious! Would you mind sharing the recipe?"
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "Asking for the time",
+            "question": "How would you reply when you need to ask someone for the current time?",
+            "options": [
+                "The time!",
+                "Time?",
+                "What time is it?",
+                "Excuse me, could you please tell me what time it is?"
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "Asking how to avoid a pest infestation",
+            "question": "How would you reply when I am wanting to keep pests away from my crops",
+            "options": [
+                "Help crop",
+                "Pest away",
+                "Damage pests",
+                "How can I avoid pests from damaging crops"
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "Asking how to brew tea",
+            "question": "How would you reply when I need skills to brew the perfect tea",
+            "options": [
+                "Tea craft",
+                "How can this herbal tea be made",
+                "Brew info",
+                "Brew assistance"
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "Asking how to care for animals",
+            "question": "How would you reply when I am wanting info on caring for farmyard animals",
+            "options": [
+                "Animals health",
+                "Animals health",
+                "How keep",
+                "How do you provide long term care for animals"
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "Asking how to craft item",
+            "question": "How would you reply when I am seeking guidance on crafting wooden furniture",
+            "options": [
+                "How would you make this wooden item",
+                "Wooden craft",
+                "Item help",
+                "Furniture guide"
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "Asking how to cure a common ailment with local herbs",
+            "question": "How would you reply when you want to know how to cure a common ailment using local herbs?",
+            "options": [
+                "Ailment fix.",
+                "How can I cure [ailment] with local herbs?",
+                "Cure herbs.",
+                "Herbs ailment?"
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Asking how to keep goats from escaping the pen",
+            "question": "How would you reply when you are seeking effective methods to keep your goats from getting out of their pen?",
+            "options": [
+                "Goats good?",
+                "Goats pen?",
+                "What's the best way to stop goats from escaping the pen?",
+                "Keep goats."
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "Asking how to repair a roof",
+            "question": "How would you reply when I am seeking info to repair the roof",
+            "options": [
+                "Help needed",
+                "How is this roof mended",
+                "Roof thanks",
+                "Roof assist"
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Asking how to safely store water for dry seasons",
+            "question": "How would you reply when you want to know safe practices for storing water to use during drought periods?",
+            "options": [
+                "Store safe.",
+                "Store water?",
+                "How can I safely store water to use during the dry season?",
+                "Water safe."
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "Asking how to weave",
+            "question": "How would you reply when I am seeking skills to weave fabrics",
+            "options": [
+                "Weaving skills",
+                "How can someone weave this",
+                "Craft thanks",
+                "Fabric help"
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "Asking if someone can help with installing a new water pump",
+            "question": "How would you reply when you need assistance setting up a new water pump?",
+            "options": [
+                "Pump setup?",
+                "Water pump.",
+                "Pump install?",
+                "Could you help me install my water pump?"
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "Asking if someone can help with planting crop",
+            "question": "How would you reply when I am seeking someone to help plant crops",
+            "options": [
+                "Help needed",
+                "Would you be able to lend a hand planting crops",
+                "Plant help",
+                "Crop plant"
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "Asking if they know someone who can repair shoes",
+            "question": "How would you reply when you need to find someone who repairs shoes?",
+            "options": [
+                "Shoes broken.",
+                "Shoe fix?",
+                "Do you know anyone who repairs shoes in this area?",
+                "Repair shoes."
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Asking if you can use someone's phone for an emergency",
+            "question": "How would you reply when you need to use someone's phone to make an emergency call?",
+            "options": [
+                "Emergency call.",
+                "Phone use now.",
+                "Phone help?",
+                "I have an emergency. Could I please use your phone?"
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Asking someone if they know the local herbalist",
+            "question": "How would you reply when you are trying to find the local herbalist?",
+            "options": [
+                "Local herbalist.",
+                "Do you happen to know the local herbalist, and where I can find him/her?",
+                "Herbalist find?",
+                "Herbalist know?"
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Asking someone what they know about beekeeping",
+            "question": "How would you reply when you're wanting to find out the most effective techniques for beekeeping?",
+            "options": [
+                "What are some important things to know about beekeeping here?",
+                "Bee learn.",
+                "Bees honey?",
+                "Bees village?"
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Asking the best time of year to plant fruit trees",
+            "question": "How would you reply when you need to know when the best time to plant fruit trees is?",
+            "options": [
+                "What's the best time of year to plant fruit trees here?",
+                "Trees best?",
+                "Plant trees.",
+                "Best plant."
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Asking the best way to protect crops against frost",
+            "question": "How would you reply when you want to know the most effective method of protecting your crops from frost?",
+            "options": [
+                "Frost crops.",
+                "Protect frost.",
+                "What's the best way to protect my crops from frost?",
+                "Frost fix?"
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "Asking the typical price for milk from cows in the village",
+            "question": "How would you reply when you need information regarding the typical price for cow's milk?",
+            "options": [
+                "Price cow.",
+                "Cow milk.",
+                "Milk price?",
+                "What's the price for a liter of cow's milk here?"
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Asking what is required to start a small business in village",
+            "question": "How would you reply when you are trying to find out the steps for beginning a business?",
+            "options": [
+                "Business good?",
+                "Biz village?",
+                "Biz start.",
+                "What are the requirements to start a small business here?"
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Asking what kind of material is best for making a rug",
+            "question": "How would you reply when you are seeking advice about which material is best to make a durable rug?",
+            "options": [
+                "What material is best for making a long-lasting rug?",
+                "Rug long.",
+                "Material rug.",
+                "Rug made."
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "Asking when the market day is in the neighboring village",
+            "question": "How would you reply when you need to know what day the market is held in the next village?",
+            "options": [
+                "What day is the market held in the next village?",
+                "Market next?",
+                "Day next village.",
+                "Market schedule."
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "Asking where to get tools sharpened in the village",
+            "question": "How would you reply when you need to find someone who can sharpen your tools in the village?",
+            "options": [
+                "Tools help?",
+                "Tools village.",
+                "Sharp tools?",
+                "Where can I get my tools sharpened in the village?"
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "Asking where you can find fresh local fruits",
+            "question": "How would you reply when you want to know where to buy local fresh fruit?",
+            "options": [
+                "Fruits please.",
+                "Where can I buy fresh local fruits around here?",
+                "Local fruits.",
+                "Fruits where?"
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "At a bank",
+            "question": "How do you inquire about opening an account?",
+            "options": [
+                "I need money stuff.",
+                "I'd like to learn about your account options.",
+                "Give me an account.",
+                "What's your best deal?"
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "At a bus stop",
+            "question": "How do you ask about the next bus?",
+            "options": [
+                "Bus late again?",
+                "Where's the bus?",
+                "Excuse me, do you know when the next number 5 bus arrives?",
+                "When's the bus coming?"
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "At a coffee shop",
+            "question": "What would be a polite way to order a coffee?",
+            "options": [
+                "Hey, coffee here!",
+                "Give me coffee now!",
+                "I'd like a coffee, please.",
+                "Coffee. Make it quick."
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "At a conference",
+            "question": "How do you approach a speaker after their presentation?",
+            "options": [
+                "Excuse me, I really enjoyed your presentation and had a question.",
+                "Let's debate your points.",
+                "You're wrong about everything.",
+                "Hey, got a minute?"
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "At a dentist",
+            "question": "How do you describe tooth pain?",
+            "options": [
+                "Make it stop!",
+                "It hurts!",
+                "Fix my tooth.",
+                "I've been experiencing sensitivity to cold in this tooth."
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "At a doctor's office",
+            "question": "How do you describe your symptoms?",
+            "options": [
+                "Whatever you think it is.",
+                "I've been experiencing headaches for the past week.",
+                "Just fix me up, doc.",
+                "Google says I'm dying."
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "At a grocery shop",
+            "question": "How would you reply when the cashier tells you the total amount?",
+            "options": [
+                "Fine.",
+                "That's too much!",
+                "Here you go, thank you.",
+                "Just take my money."
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "At a grocery store",
+            "question": "How do you ask where to find an item?",
+            "options": [
+                "This store is so disorganized.",
+                "I can't find anything here!",
+                "Excuse me, could you direct me to the dairy section?",
+                "Where's the milk?"
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "At a hotel",
+            "question": "How do you request a late checkout?",
+            "options": [
+                "Don't clean my room yet.",
+                "I'm staying longer.",
+                "You can't make me leave.",
+                "Would it be possible to have a late checkout?"
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "At a job interview",
+            "question": "How would you respond to 'Tell me about yourself'?",
+            "options": [
+                "Let's talk about something else.",
+                "I don't like talking about myself.",
+                "I have 5 years of experience in marketing and specialize in digital campaigns.",
+                "Uh, what do you want to know?"
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "At a movie theater",
+            "question": "How do you ask someone to be quiet?",
+            "options": [
+                "Excuse me, would you mind keeping it down a bit?",
+                "Stop talking!",
+                "*Shushes loudly*",
+                "Shut up!"
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "At a networking event",
+            "question": "How do you introduce yourself to a potential business contact?",
+            "options": [
+                "What's in it for me?",
+                "You look important, let's talk.",
+                "Hi, I'm Sarah from ABC Corp. It's nice to meet you.",
+                "Hey, got any job openings?"
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "At a party",
+            "question": "How do you politely decline more food?",
+            "options": [
+                "No more!",
+                "I'm on a diet.",
+                "Thank you, but I'm full. Everything was delicious.",
+                "Your cooking is terrible."
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "At a restaurant",
+            "question": "How would you get the server's attention politely?",
+            "options": [
+                "WAITER!",
+                "Hey you! Over here!",
+                "*Snaps fingers*",
+                "Excuse me, when you have a moment."
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "At a salon",
+            "question": "How do you describe the haircut you want?",
+            "options": [
+                "Just cut it.",
+                "Make me look good.",
+                "I'd like about two inches off with layers, please.",
+                "Don't mess it up."
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "At a store",
+            "question": "How do you ask for a refund?",
+            "options": [
+                "This doesn't work.",
+                "I'd like to return this item, please.",
+                "You sold me broken stuff.",
+                "Give me my money back!"
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "At a village festival",
+            "question": "How would you reply when someone offers you some local food?",
+            "options": [
+                "Is it free?",
+                "I'm not hungry.",
+                "What is it?",
+                "Thank you, it looks delicious!"
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "At a village well",
+            "question": "How would you reply when someone asks if the water is clean?",
+            "options": [
+                "Yes, it's tested regularly and safe to drink.",
+                "It looks clean enough, I guess.",
+                "Probably not, but what choice do we have?",
+                "Why are you asking me?"
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "At a wedding",
+            "question": "How do you congratulate the couple?",
+            "options": [
+                "Congratulations! I'm so happy for you both.",
+                "Good luck, you'll need it.",
+                "Finally!",
+                "About time!"
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "At the gym",
+            "question": "How do you ask how long someone has left on a machine?",
+            "options": [
+                "How many sets you got left?",
+                "Are you done yet?",
+                "You've been here forever!",
+                "Excuse me, approximately how much longer will you be?"
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "At the town market",
+            "question": "How would you reply when a vendor offers you a discount?",
+            "options": [
+                "Whatever, I'll take it.",
+                "Finally!",
+                "Is that the best you can do?",
+                "Thank you, I appreciate the offer."
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "At work",
+            "question": "How do you ask for a day off?",
+            "options": [
+                "Give me tomorrow off.",
+                "I would like to request a day off next Friday.",
+                "Don't expect me tomorrow.",
+                "I'm not coming in tomorrow."
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "Borrowing something",
+            "question": "How would you reply when you ask to borrow a tool from a neighbor?",
+            "options": [
+                "Would it be possible to borrow your [Tool Name]? I'll return it soon.",
+                "Can I borrow your [Tool Name]?",
+                "I need your [Tool Name].",
+                "Give me your [Tool Name]."
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Buying vegetables",
+            "question": "How would you reply when the vegetable seller asks what you want?",
+            "options": [
+                "How much for those?",
+                "I would like [quantity] of [vegetable], please.",
+                "Veggies here, now!",
+                "Give me [vegetable]."
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "Commenting on a child's behavior",
+            "question": "How would you reply when you want to politely comment on a child's good behavior?",
+            "options": [
+                "What a well-behaved child!",
+                "They're not usually this good.",
+                "They're quiet for once.",
+                "Lucky you."
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "Commenting on a good harvest",
+            "question": "How would you reply when you see a neighbor has had a particularly good harvest?",
+            "options": [
+                "Lucky you.",
+                "Okay harvest.",
+                "Your harvest looks amazing this year! You must be very pleased.",
+                "Good harvest."
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "Commenting on someone's cooking",
+            "question": "How would you reply when you want to compliment someone on their cooking?",
+            "options": [
+                "This is delicious! You're an excellent cook.",
+                "This is good.",
+                "Not bad.",
+                "Okay cooking."
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "Commenting on someone's hard work",
+            "question": "How would you reply when you notice someone has been working very hard?",
+            "options": [
+                "Workaholic.",
+                "You've been working so hard! I admire your dedication.",
+                "Hard work.",
+                "Working hard."
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "Commenting on someone's kindness",
+            "question": "How would you reply when someone performs a kind act for you?",
+            "options": [
+                "That was very kind of you. Thank you so much.",
+                "Kindness is okay.",
+                "Thanks, that's nice.",
+                "Okay, thanks."
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "Commenting on someone's singing",
+            "question": "How would you reply when you hear someone singing beautifully?",
+            "options": [
+                "You have a beautiful voice!",
+                "Nice singing.",
+                "Okay singing.",
+                "Singer."
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "Commenting on the beauty of nature",
+            "question": "How would you reply when you see a beautiful sunset?",
+            "options": [
+                "Whatever, sunset.",
+                "Sunset.",
+                "What a stunning sunset!",
+                "Nice sunset."
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "Commenting on the weather",
+            "question": "How would you reply when someone comments on the hot weather?",
+            "options": [
+                "So what?",
+                "Yes, it's quite hot today, isn't it?",
+                "It's always hot.",
+                "I hate this weather."
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Complaining about noise",
+            "question": "How would you reply when you want to politely complain about excessive noise?",
+            "options": [
+                "Excuse me, would it be possible to keep the noise down a bit?",
+                "Hey, be quiet!",
+                "Noise!",
+                "Shut up!"
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "Complimenting a local craft",
+            "question": "How would you reply when you admire a locally made item at the market?",
+            "options": [
+                "This is beautifully crafted! You have a real talent.",
+                "Whatever.",
+                "Okay.",
+                "Nice."
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Congratulating someone on an achievement",
+            "question": "How would you reply when you congratulate someone on winning a competition?",
+            "options": [
+                "Congrats.",
+                "Congratulations on your victory! That's a fantastic achievement.",
+                "You won.",
+                "Good job."
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Discussing crops",
+            "question": "How would you reply when someone asks about your crops this season?",
+            "options": [
+                "They might fail.",
+                "They're okay.",
+                "The crops are looking promising this year, thanks to the rain.",
+                "Don't ask me."
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "Expressing gratitude",
+            "question": "How would you reply when you want to express your gratitude for someone's help?",
+            "options": [
+                "Thanks a lot.",
+                "Appreciate it.",
+                "I'm so grateful for your help. Thank you very much.",
+                "Fine, thanks."
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "Greeting a neighbor",
+            "question": "How would you reply when you meet your neighbor in the morning?",
+            "options": [
+                "Don't talk to me.",
+                "What's up?",
+                "Morning.",
+                "Good morning, how are you today?"
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "Helping an elderly villager",
+            "question": "How would you reply when an elderly villager asks for help carrying something?",
+            "options": [
+                "Ugh, fine.",
+                "I'm busy right now.",
+                "Of course, I'm happy to help.",
+                "How much will you pay me?"
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "In a classroom",
+            "question": "How do you ask for clarification?",
+            "options": [
+                "I don't get it.",
+                "You're not explaining it right.",
+                "Could you please explain that point again?",
+                "This makes no sense."
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "In a library",
+            "question": "How do you ask for help finding a book?",
+            "options": [
+                "Where's the book I need?",
+                "Could you please help me locate this book?",
+                "Find this for me.",
+                "I can't find anything here."
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "In a meeting",
+            "question": "How do you disagree with a colleague professionally?",
+            "options": [
+                "Whatever, do what you want.",
+                "That's a stupid idea.",
+                "You're wrong.",
+                "I see your point, but I have a different perspective."
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "In a team meeting",
+            "question": "How do you propose a new idea?",
+            "options": [
+                "I'd like to suggest an alternative approach.",
+                "Listen to my idea!",
+                "My idea is better.",
+                "You're all doing it wrong."
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "In an elevator",
+            "question": "How do you ask someone to press a floor button?",
+            "options": [
+                "*Points at button*",
+                "Press 3!",
+                "Could you press floor 3, please?",
+                "Three."
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "In an email",
+            "question": "How do you start a formal business email?",
+            "options": [
+                "Dear Sir/Madam,",
+                "Listen up,",
+                "Yo,",
+                "Hey!"
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "In an office",
+            "question": "How do you ask a colleague to keep their voice down?",
+            "options": [
+                "Shut up!",
+                "Some people are trying to work!",
+                "Would you mind speaking a bit more quietly? I'm trying to focus.",
+                "You're too loud!"
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Inviting someone to tea",
+            "question": "How would you reply when you invite someone for tea?",
+            "options": [
+                "Tea at my place.",
+                "Tea later?",
+                "Come have tea.",
+                "Would you like to join me for tea this afternoon?"
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "Offering a seat",
+            "question": "How would you reply when you offer a seat to someone on the bus?",
+            "options": [
+                "Here, sit down.",
+                "Want my seat?",
+                "Get over here and sit.",
+                "Please, take my seat."
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "Offering condolences",
+            "question": "How would you reply when someone tells you about a loss in their family?",
+            "options": [
+                "Oh well.",
+                "That's too bad.",
+                "What do you want me to do?",
+                "I am so sorry for your loss. My deepest condolences."
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Offering encouragement",
+            "question": "How would you reply when someone tells you they are feeling discouraged?",
+            "options": [
+                "Don't give up! I believe in you.",
+                "You'll get there.",
+                "Whatever, just keep trying.",
+                "Keep trying."
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "Offering food to a guest",
+            "question": "How would you reply when you offer food to a guest in your home?",
+            "options": [
+                "More food?",
+                "Eat up.",
+                "Please, have some more food.",
+                "Dig in."
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "Offering help during harvest",
+            "question": "How would you reply when you offer to help with the harvest?",
+            "options": [
+                "I'd be happy to help with the harvest if you need an extra hand.",
+                "I guess I could help.",
+                "Want some help?",
+                "I'm free to do some work, if that's okay?"
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Offering to help with cooking",
+            "question": "How would you reply when someone is preparing a meal and looks overwhelmed?",
+            "options": [
+                "Help cooking?",
+                "Cooking help?",
+                "Can I help you with any of the cooking?",
+                "Need help?"
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "Offering to share",
+            "question": "How would you reply when you offer to share your food with someone?",
+            "options": [
+                "Share?",
+                "Want some?",
+                "Would you like to share my food with me?",
+                "Here, eat."
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "On a bus in the village",
+            "question": "How would you reply when someone asks if this bus goes to the next village?",
+            "options": [
+                "Ask the driver.",
+                "Yes, this bus goes to [Village Name].",
+                "Why would I know?",
+                "Maybe, I don't know."
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "On a phone call",
+            "question": "How do you answer a business call professionally?",
+            "options": [
+                "Who's this?",
+                "Yeah?",
+                "Hello, this is John speaking.",
+                "What's up?"
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "On public transport",
+            "question": "How do you ask someone to move their bag from a seat?",
+            "options": [
+                "Excuse me, would you mind if I sat here?",
+                "This seat's taken by your bag?",
+                "Move your stuff.",
+                "*Picks up and moves their bag*"
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "On the phone",
+            "question": "How do you end a business call?",
+            "options": [
+                "Later!",
+                "I'm hanging up now.",
+                "Thank you for your time. Have a great day.",
+                "Bye!"
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "Reacting to someone's sad news",
+            "question": "How would you reply when someone tells you they failed an exam?",
+            "options": [
+                "That sucks.",
+                "Serves you right.",
+                "I'm so sorry to hear that. I hope you do better next time.",
+                "Too bad."
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Responding to a compliment",
+            "question": "How would you reply when someone compliments your clothes?",
+            "options": [
+                "Yeah, they're new.",
+                "So?",
+                "Thank you, that's very kind of you to say.",
+                "I know, right?"
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "Responding to a compliment on your cooking skills",
+            "question": "How would you reply when someone compliments your cooking skills?",
+            "options": [
+                "Thank you! I've been practicing for a while.",
+                "Thanks, I cook.",
+                "Cook thank.",
+                "Cook skills."
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "Responding to a compliment on your farming methods",
+            "question": "How would you reply when someone praises your methods of farming?",
+            "options": [
+                "Farming thanks.",
+                "Thank you! I am just doing the best I can for a good harvest.",
+                "Thanks farming.",
+                "Method is work."
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "Responding to a compliment on your garden",
+            "question": "How would you reply when someone compliments your garden?",
+            "options": [
+                "Garden is good.",
+                "Thank you! I've put a lot of work into it.",
+                "Yeah, it's a garden.",
+                "Thanks."
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "Responding to a compliment on your handmade item",
+            "question": "How would you reply when someone compliments an item you crafted by hand?",
+            "options": [
+                "Made it thanks.",
+                "Thanks, I made it.",
+                "Handmade thanks.",
+                "Thank you! I put a lot of effort into making it."
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "Responding to a compliment on your knowledge of local history",
+            "question": "How would you reply when someone commends you on your understanding of local history?",
+            "options": [
+                "Thanks history.",
+                "History thanks.",
+                "Thank you! I've always found our local history fascinating.",
+                "History knowledge."
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "Responding to a gift of seeds",
+            "question": "How would you reply when neighbour is gifting seed's to sow",
+            "options": [
+                "How kind. I appreciate this gesture",
+                "Seed Thanks",
+                "Seed sow",
+                "Crop Gift"
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "Responding to a misunderstanding",
+            "question": "How would you reply when you realize someone has misunderstood what you said?",
+            "options": [
+                "Misunderstanding.",
+                "That's not what I meant.",
+                "You misunderstood.",
+                "I'm sorry, I didn't mean to say that. Let me clarify."
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "Responding to a neighbor helping harvest crops",
+            "question": "How would you reply when your neighbor is assisting you with gathering your crops?",
+            "options": [
+                "Crop thank.",
+                "Harvest help.",
+                "I appreciate the support. Thank you.",
+                "Crops help."
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "Responding to a question about your job",
+            "question": "How would you reply when someone asks about your occupation?",
+            "options": [
+                "I'm a [your occupation].",
+                "I do [your occupation].",
+                "Work [your occupation].",
+                "I work as a [your occupation] in the village."
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "Responding to a question about your weekend plans",
+            "question": "How would you reply when someone asks you what you plan to do over the weekend?",
+            "options": [
+                "[Activity].",
+                "Weekend doing.",
+                "I'm planning to [activity] over the weekend.",
+                "Weekend plans."
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "Responding to a request for help",
+            "question": "How would you reply when someone asks you for help with their work?",
+            "options": [
+                "I'd be glad to help you with that. What do you need assistance with?",
+                "Sure, I guess.",
+                "Yeah, I can help.",
+                "Help you do what?"
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "Responding to a request for information",
+            "question": "How would you reply when someone asks you for information about the local school?",
+            "options": [
+                "The local school is located on [street name] and offers classes for...",
+                "Find school.",
+                "School info?",
+                "School is there."
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "Responding to a request to join a game of cards",
+            "question": "How would you reply when someone asks you to join them for a game of cards?",
+            "options": [
+                "Join cards.",
+                "Cards sure.",
+                "Sure, I'd love to join!",
+                "Cards? Okay."
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "Responding to a request to keep a secret",
+            "question": "How would you reply when someone asks you to keep a secret?",
+            "options": [
+                "I won't tell.",
+                "Secret? Okay.",
+                "Whatever, I don't care.",
+                "You can trust me, I won't tell anyone."
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Responding to advice about avoiding a bad harvest",
+            "question": "How would you reply when someone is advising you on how to avoid a bad harvest?",
+            "options": [
+                "Thank you advice.",
+                "Advice thanks.",
+                "Harvest avoid.",
+                "Thank you very much for your advice. I appreciate it."
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "Responding to advice on how to grow herbs more effectively",
+            "question": "How would you reply when someone is giving you tips for better herb cultivation?",
+            "options": [
+                "Grow help.",
+                "I appreciate the advice. I will try growing them that way.",
+                "Herb grow.",
+                "Growing thanks."
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "Responding to an apology",
+            "question": "How would you reply when someone apologizes to you?",
+            "options": [
+                "It's about time.",
+                "Whatever.",
+                "You better be sorry.",
+                "That's alright, thank you for apologizing."
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Responding to an apology for bumping into someone",
+            "question": "How would you reply when someone accidentally bumps into you and apologizes?",
+            "options": [
+                "No problem.",
+                "Bump okay.",
+                "It's okay.",
+                "That's alright, no problem at all."
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Responding to an invitation",
+            "question": "How would you reply when you receive an invitation to a wedding?",
+            "options": [
+                "Whatever.",
+                "Maybe.",
+                "Thank you for the invitation! I'd love to attend.",
+                "Thanks, I'll think about it."
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "Responding to an invitation to play",
+            "question": "How would you reply when someone invites you to play a game?",
+            "options": [
+                "That sounds like fun! I'd love to play.",
+                "Sure, I'll play.",
+                "Playing? Fine.",
+                "Maybe later."
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Responding to an offer for a homemade herbal remedy",
+            "question": "How would you reply when someone offers you a homemade remedy for a headache?",
+            "options": [
+                "Herbal cure.",
+                "Herbal help.",
+                "Thank you for offering, I appreciate your herbal remedy.",
+                "Remedy good."
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "Responding to an offer for a ride on a donkey cart",
+            "question": "How would you reply when someone offers you a ride on their donkey cart?",
+            "options": [
+                "That's very kind, thank you, I'd appreciate a ride.",
+                "Ride cart.",
+                "Cart thanks.",
+                "Cart ride."
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "Responding to an offer of freshly baked bread",
+            "question": "How would you reply when someone offers you freshly baked bread?",
+            "options": [
+                "Offer bread.",
+                "Bread please.",
+                "Thank you so much, that smells absolutely wonderful.",
+                "Bread thanks."
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Responding to an offer of help with carrying groceries",
+            "question": "How would you reply when someone offers to help you carry your groceries?",
+            "options": [
+                "Thanks, I appreciate it.",
+                "Okay, thanks.",
+                "That's very kind of you, thank you so much!",
+                "Grocery help."
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Responding to an offer to taste homemade wine",
+            "question": "How would you reply when someone is offering you homemade wine?",
+            "options": [
+                "Wine please.",
+                "Thank you, I would love to try some of your homemade wine!",
+                "Wine taste.",
+                "Homemade wine."
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "Responding to an offer to use their oxen for plowing",
+            "question": "How would you reply when someone offers to let you borrow their oxen for plowing your field?",
+            "options": [
+                "Work oxen.",
+                "Plowing thanks.",
+                "Oxen help.",
+                "Your offer is truly generous, thank you."
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "Responding to an unexpected visit",
+            "question": "How would you reply when someone arrives at your house unexpectedly?",
+            "options": [
+                "What's up?",
+                "Unexpected visitor.",
+                "Oh, hi.",
+                "Welcome! It's nice to see you."
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "Responding to assistance during harvest",
+            "question": "How would you reply when my neighbour assists with harvesting a crop",
+            "options": [
+                "That is so kind of you. Thankyou.",
+                "Helpful thanks",
+                "Neighbour",
+                "Crop thanks"
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Responding to assistance with carrying a heavy bag of grain",
+            "question": "How would you reply when someone offers to help carry a heavy bag of grain for you?",
+            "options": [
+                "Carry help.",
+                "That is very thoughtful of you. Thank you for your help.",
+                "Grain carry.",
+                "Bag thanks."
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Responding to assistance with repairing fishing net",
+            "question": "How would you reply when someone is helping you fix a tear in your fishing net?",
+            "options": [
+                "Fish net.",
+                "Fish help.",
+                "Thanks netting.",
+                "Thanks, you've been a great help."
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "Responding to being given water from someone's well",
+            "question": "How would you reply when someone provides you water from their well when you're thirsty?",
+            "options": [
+                "Well water.",
+                "Give water.",
+                "Water thanks.",
+                "Thank you for your kindness in sharing your well's water."
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "Responding to being helped with fixing your cart",
+            "question": "How would you reply when someone is helping you fix your cart?",
+            "options": [
+                "Cart repair.",
+                "Thank you for your help!",
+                "Repair thanks.",
+                "Help good."
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "Responding to being offered local honey",
+            "question": "How would you reply when someone is offering you fresh local honey?",
+            "options": [
+                "Offer honey.",
+                "Thank you, I would love to have some local honey.",
+                "Honey please.",
+                "Sweet honey."
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Responding to being told a story about the village's history",
+            "question": "How would you reply when someone is telling you a story about the village's past?",
+            "options": [
+                "That is a very interesting story about the village's history.",
+                "About village.",
+                "History tale.",
+                "Village story."
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "Responding to fence repair help",
+            "question": "How would you reply when I am grateful that someone helped fence the farm",
+            "options": [
+                "Fence assist",
+                "That fence needed fixing for a while",
+                "Farm thanks",
+                "Thanks fence"
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "Responding to gifting of eggs",
+            "question": "How would you reply when neighbour is gifting me some fresh eggs",
+            "options": [
+                "Today's eggs",
+                "Thank you very much",
+                "Farm help",
+                "Egg Thanks"
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "Responding to good news",
+            "question": "How would you reply when someone shares good news with you?",
+            "options": [
+                "That's wonderful news! Congratulations!",
+                "Good for you.",
+                "So?",
+                "Whatever."
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "Responding to help delivering baskets to a market stand",
+            "question": "How would you reply when someone helps you carry baskets to your stand in the market?",
+            "options": [
+                "Thank you. Every bit of help is appreciated.",
+                "Market thanks.",
+                "Stall help.",
+                "Baskets carry."
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "Responding to help loading wood",
+            "question": "How would you reply when I am grateful to those that have helped carry",
+            "options": [
+                "Wood loading",
+                "Loading assistance",
+                "The wood is heavy",
+                ""
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "Responding to help loading your goods onto a donkey",
+            "question": "How would you reply when someone is helping you load goods onto your donkey?",
+            "options": [
+                "Thank you for assisting me with loading these goods.",
+                "Load help.",
+                "Donkey thanks.",
+                "Help load."
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "Responding to help removing heavy items from a stall",
+            "question": "How would you reply when someone assists you in removing heavy items from your market stall?",
+            "options": [
+                "Thank you, I greatly appreciate you helping me.",
+                "Heavy thanks.",
+                "Stall help.",
+                "Help stall."
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Responding to help untangling yarn and threads",
+            "question": "How would you reply when someone is assisting you in untangling a bunch of yarn?",
+            "options": [
+                "Thank you, I appreciate your patience with untangling this.",
+                "Untangle thanks.",
+                "Threads mess.",
+                "Yarn help."
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Responding to help with mending a broken fence",
+            "question": "How would you reply when someone helps you fix a broken fence around your property?",
+            "options": [
+                "Fence fix.",
+                "Fix thanks.",
+                "Thank you. That was a very kind gesture!",
+                "Broken fence."
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "Responding to help with plough",
+            "question": "How would you reply when I am grateful a neighbour is helping plough my field",
+            "options": [
+                "Thank plough",
+                "Plough assist",
+                "I am thankful for the work",
+                "Plough Thanks"
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "Responding to help with well",
+            "question": "How would you reply when I am assisting someone retrieve something from their well",
+            "options": [
+                "Thank you kindly",
+                "Well Thanks",
+                "That is very kind of you",
+                "Well assist"
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "Responding to neighbor helping with building an outdoor oven",
+            "question": "How would you reply when neighbor lends expertise for building an outdoor oven",
+            "options": [
+                "Thanks so much for your help - its much appreciated",
+                "Thanks building",
+                "Build neighbour",
+                "Oven build"
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Responding to news of a new baby",
+            "question": "How would you reply when someone announces the birth of their baby?",
+            "options": [
+                "Congratulations on your new baby! That's wonderful news.",
+                "Baby.",
+                "Congrats on the baby.",
+                "New baby."
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Responding to news of a promotion",
+            "question": "How would you reply when someone shares that they received a promotion at work?",
+            "options": [
+                "Congrats promote.",
+                "Promotion congrats.",
+                "Congratulations on the promotion! That's fantastic news.",
+                "Promote good."
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "Responding to news of someone's graduation",
+            "question": "How would you reply when someone tells you they graduated from school?",
+            "options": [
+                "Graduate good.",
+                "Congrats graduate.",
+                "Graduation congrats.",
+                "Congratulations on graduating! That's a wonderful accomplishment."
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "Responding to receiving help with a broken loom",
+            "question": "How would you reply when someone provides assistance fixing your loom used for weaving?",
+            "options": [
+                "Thank loom.",
+                "Thank you for giving me a hand with this.",
+                "Fix thank.",
+                "Help loom."
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "Responding to receiving milk",
+            "question": "How would you reply when a neighbour gifts a jug of fresh milk",
+            "options": [
+                "Today's Milk",
+                "Thanks you",
+                "Thankyou. I needed that today",
+                "Milk Thanks"
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "Responding to someone helping pull a vehicle out of mud",
+            "question": "How would you reply when someone helps you pull your vehicle out of mud?",
+            "options": [
+                "Vehicle help.",
+                "Stuck bad?",
+                "Mud pull.",
+                "Thank you for your kind assistance."
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "Responding to someone helping you find lost goat",
+            "question": "How would you reply when someone has helped you find your missing goat?",
+            "options": [
+                "Help goat find.",
+                "Goat thank.",
+                "Goat help.",
+                "I'm so grateful to you for helping me find my goat!"
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "Responding to someone offering to help milk a cow",
+            "question": "How would you reply when someone provides assistance in milking one of your cows?",
+            "options": [
+                "Milking help.",
+                "Thank you cow.",
+                "Thanks so much. That's very helpful.",
+                "Milk now."
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Responding to someone selling handmade baskets",
+            "question": "How would you reply when a vendor is showcasing and selling handmade baskets?",
+            "options": [
+                "These baskets are beautifully made. How much are they?",
+                "Like baskets.",
+                "Handmade price.",
+                "Baskets made."
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "Responding to someone sharing a funny story",
+            "question": "How would you reply when someone tells you a funny story?",
+            "options": [
+                "That's funny.",
+                "That's hilarious! Thanks for sharing.",
+                "Okay.",
+                "Ha."
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "Responding to the kindness of a stranger",
+            "question": "How would you reply when a stranger shows kindness to you?",
+            "options": [
+                "Thanks stranger.",
+                "That was very kind of you, thank you for your help!",
+                "Stranger kind thanks.",
+                "Kindness help."
+            ],
+            "correctIndex": 2
+        },
+        {
+            "context": "Responding to the news of a wedding in the village",
+            "question": "How would you reply when someone announces a wedding taking place in the village?",
+            "options": [
+                "That's wonderful news! Congratulations to the couple!",
+                "Wedding.",
+                "Wedding soon.",
+                "Couple wedding."
+            ],
+            "correctIndex": 1
+        },
+        {
+            "context": "Returning a borrowed item",
+            "question": "How would you reply when you return a borrowed item?",
+            "options": [
+                "Here's your thing back.",
+                "Took you long enough?",
+                "Thank you so much for letting me borrow this, here it is.",
+                "I'm done with it."
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "Saying goodbye",
+            "question": "How would you reply when you are leaving someone's house?",
+            "options": [
+                "See ya.",
+                "Bye.",
+                "Thank you for your hospitality. Goodbye.",
+                "Peace out."
+            ],
+            "correctIndex": 0
+        },
+        {
+            "context": "Starting a conversation",
+            "question": "How would you reply when you want to start a conversation with someone you don't know well?",
+            "options": [
+                "Hi.",
+                "Good morning/afternoon/evening. How is your day going?",
+                "Sup?",
+                "What's up?"
+            ],
+            "correctIndex": 3
+        },
+        {
+            "context": "Thanking someone for a gift",
+            "question": "How would you reply when you receive a gift from someone?",
+            "options": [
+                "Thanks.",
+                "Finally!",
+                "Thank you so much for the gift! It's lovely.",
+                "Cool."
+            ],
+            "correctIndex": 3
+        }
+    ]
+}

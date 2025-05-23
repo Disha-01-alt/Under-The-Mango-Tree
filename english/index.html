@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Under the Mango Tree</title>
+</head>
+<style>
+    :root {
+        --primary-color: #4f46e5;
+        --secondary-color: #6366f1;
+        --accent-color: #818cf8;
+        --background-color: #f8fafc;
+        --card-background: #ffffff;
+        --text-color: #1e293b;
+        --gradient-start: #4f46e5;
+        --gradient-end: #818cf8;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        line-height: 1.6;
+        background: 
+            radial-gradient(circle at 10% 20%, rgba(79, 70, 229, 0.05) 0%, transparent 20%),
+            radial-gradient(circle at 90% 50%, rgba(129, 140, 248, 0.05) 0%, transparent 25%),
+            radial-gradient(circle at 30% 80%, rgba(79, 70, 229, 0.05) 0%, transparent 20%),
+            var(--background-color);
+        color: var(--text-color);
+    }
+
+    header {
+        background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+        color: white;
+        padding: 1.25rem 2rem;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 4px 20px rgba(79, 70, 229, 0.2);
+    }
+
+    nav {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white; /* Fallback color */
+    background: linear-gradient(to right, #ffffff, #e0e7ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }   
+
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .nav-links a::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    .nav-links a:hover::before {
+        transform: translateX(0);
+    }
+
+    .hero {
+        position: relative;
+        padding: 3rem 1rem;
+        background: 
+            linear-gradient(120deg, rgba(79, 70, 229, 0.1), rgba(129, 140, 248, 0.1)),
+            linear-gradient(-120deg, rgba(129, 140, 248, 0.05), rgba(79, 70, 229, 0.05));
+        overflow: hidden;
+        min-height: auto;
+        display: flex;
+        align-items: center;
+    }
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        top: -50%;
+        left: -50%;
+        background: radial-gradient(circle at center, rgba(79, 70, 229, 0.05) 0%, transparent 50%);
+        animation: rotate 30s linear infinite;
+    }
+
+    @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    .hero-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 2rem;
+        align-items: center;
+        width: 100%;
+        padding: 0 1rem;
+    }
+
+    /* Hero content styles */
+    .hero-content {
+        position: relative;
+        z-index: 1;
+        text-align: left;
+        padding-right: 1rem;
+    }
+
+    /* Hero image container */
+    .hero-image {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: auto; /* Changed from fixed height */
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Hero image styles */
+    .hero-image img {
+        width: 100%;
+        height: auto; /* Changed from fixed height */
+        object-fit: contain;
+        border-radius: 1rem;
+        box-shadow: 0 20px 40px rgba(79, 70, 229, 0.15);
+    }
+
+    .hero h2 {
+        font-size: 3.5rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+        background: linear-gradient(to right, #2d3748, #4f46e5);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        line-height: 1.2;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .hero p {
+        font-size: 1.25rem;
+        color: #374151;
+        margin: 0;
+        line-height: 1.6;
+        font-weight: 500;
+    }
+    @media (max-width: 1024px) {
+        .hero-container {
+            max-width: 900px;
+            gap: 1.5rem;
+        }
+        
+        .hero-image {
+            max-width: 350px;
+        }
+    }
+    @media (max-width: 768px) {
+        .hero-container {
+            grid-template-columns: 1fr;
+            max-width: 600px;
+            text-align: center;
+            gap: 2rem;
+        }
+
+        .hero-content {
+            text-align: center;
+            padding-right: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero p {
+            text-align: center;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-image {
+            width: 90%;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+    }
+    @media (max-width: 480px) {
+        .hero {
+            padding: 1.5rem 0.5rem;
+        }
+
+        .hero-container {
+            max-width: 100%;
+            padding: 0 1rem;
+        }
+
+        .hero-content {
+            padding: 0;
+        }
+
+        .hero h2 {
+            font-size: 1.75rem;
+            padding: 0 0.5rem;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            padding: 0 0.5rem;
+        }
+
+        .hero-image {
+            width: 85%;
+            max-width: 250px;
+            height: auto;
+            margin: 1rem auto;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            width: 100%;
+        }
+    }
+
+    .activities-section {
+        padding: 6rem 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .section-title {
+    text-align: center;
+    margin-bottom: 4rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .activities-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 3rem;
+        position: relative;
+    }
+
+    .activity-card {
+        position: relative;
+        height: 400px;
+        transition: all 0.5s ease;
+        transform-style: preserve-3d;
+    }
+
+    .activity-card:hover {
+        transform: translateY(-10px) scale(1.02);
+    }
+
+    .card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 1.5rem;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        box-shadow: 
+            0 10px 30px rgba(79, 70, 229, 0.1),
+            0 1px 3px rgba(79, 70, 229, 0.05);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+    }
+
+    .activity-card:hover .card-inner {
+        box-shadow: 
+            0 20px 40px rgba(79, 70, 229, 0.15),
+            0 1px 5px rgba(79, 70, 229, 0.1);
+    }
+
+    .card-icon {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 2rem;
+        background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+        border-radius: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 2rem;
+        transform: rotate(-5deg);
+        transition: transform 0.3s ease;
+    }
+
+    .activity-card:hover .card-icon {
+        transform: rotate(0deg) scale(1.1);
+    }
+    .activities-container {
+        max-width: 1200px; /* Reduced from 1400px for better 2x2 layout */
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Changed to 2 columns */
+        gap: 2rem;
+        position: relative;
+    }
+
+    .activity-card {
+        cursor: pointer;
+        position: relative;
+        height: 400px;
+        transition: all 0.5s ease;
+        transform-style: preserve-3d;
+    }
+    .activity-card .card-inner {
+        cursor: pointer;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 1.5rem;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        box-shadow: 
+            0 10px 30px rgba(79, 70, 229, 0.1),
+            0 1px 3px rgba(79, 70, 229, 0.05);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+    }
+
+    /* Add media query for mobile responsiveness */
+    @media (max-width: 768px) {
+        .activities-container {
+            grid-template-columns: 1fr; /* Single column on mobile */
+        }
+    }
+
+    .card-content h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+    }
+
+    .card-content p {
+        color: #6b7280;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+    }
+
+    .explore-btn {
+        pointer-events: none; /* Make button non-interactive since whole card is clickable */
+        padding: 0.75rem 2rem;
+        background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+        color: white;
+        border: none;
+        border-radius: 0.75rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .explore-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transform: translateX(-100%);
+    }
+
+    .activity-card:hover .explore-btn::before {
+        animation: shine 1.5s infinite;
+    }
+
+    @keyframes shine {
+        100% {
+            transform: translateX(100%);
+        }
+    }
+
+    .floating-shapes {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: -1;
+    }
+
+    .shape {
+        position: absolute;
+        background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(129, 140, 248, 0.1));
+        border-radius: 50%;
+        animation: float 20s infinite linear;
+    }
+
+    .shape:nth-child(1) {
+        width: 300px;
+        height: 300px;
+        top: 10%;
+        left: 5%;
+        animation-delay: 0s;
+    }
+
+    .shape:nth-child(2) {
+        width: 200px;
+        height: 200px;
+        top: 60%;
+        right: 10%;
+        animation-delay: -5s;
+    }
+
+    .shape:nth-child(3) {
+        width: 150px;
+        height: 150px;
+        bottom: 10%;
+        left: 20%;
+        animation-delay: -10s;
+    }
+
+    @keyframes float {
+        0% {
+            transform: translate(0, 0) rotate(0deg);
+        }
+        50% {
+            transform: translate(100px, 50px) rotate(180deg);
+        }
+        100% {
+            transform: translate(0, 0) rotate(360deg);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .hero h2 {
+            font-size: 2.5rem;
+        }
+
+        .activities-container {
+            grid-template-columns: 1fr;
+        }
+
+        .nav-links {
+            display: none;
+        }
+    }
+</style>
+<body>
+    <header>
+        <nav>
+            <div class="nav-brand">Under the Mango Tree</div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h2>Learn English through Simple Games</h2>
+                </div>
+                <div class="hero-image">
+                    <img src="images/coverPic.webp" alt="Interactive Learning Cover" />
+                </div>
+            </div>
+        </section>
+
+        <section class="activities-section">
+            <div class="floating-shapes">
+                <div class="shape"></div>
+                <div class="shape"></div>
+                <div class="shape"></div>
+            </div>
+            <h2 class="section-title">Choose your Game <br> Click on any card below to play the games</h2>
+            <div id="activities" class="activities-container">
+                <!-- Cards will be created by JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Load JSON data and create cards
+        const sections = ['HinToEng', 'PicToEng', 'SentCorrect', 'QnA','guessWord','PrepositionGame','Synonyms','odd_one_out'];
+        
+        async function loadCardData() {
+    try {
+        const activities = document.getElementById('activities');
+        
+        const sectionData = {
+        'HinToEng': {
+            title: "Hindi to English Translation",
+            icon: '🔤' 
+        },
+        'PicToEng': {
+            title: "Picture Vocabulary",
+            icon: '🖼️' 
+        },
+        'SentCorrect': {
+            title: "Sentence Correctness",
+            icon: '✅' 
+        },
+        'QnA': {
+            title: "Random Q/A Practice",
+            icon: '❓' 
+        },
+        'guessWord': {
+            title: "Guess the Word",
+            icon: '🤔'
+        },
+        'PrepositionGame': {
+            title: "Fill in the blanks",
+            icon: '✍️'
+        },
+        'Synonyms': {
+            title: "Choose the correct Synonym",
+            icon: '🤝'
+        },
+        'odd_one_out': {
+            title: "Choose the odd one out",
+            icon: '🔄'
+        },
+    };
+        for (const section of sections) {
+                const card = createCard(section, sectionData[section]);
+                activities.appendChild(card);
+            }
+        } catch (error) {
+            console.error('Error loading card data:', error);
+        }
+        }
+
+        function createCard(section, data) {
+            const card = document.createElement('div');
+            card.className = `activity-card ${section}`;
+            // Add onclick to the card
+            card.onclick = () => navigateToSection(section);
+            
+            card.innerHTML = `
+                <div class="card-inner">
+                    <div class="card-icon">${data.icon}</div>
+                    <div class="card-content">
+                        <h3>${data.title}</h3>
+                    </div>
+                </div>
+            `;
+            return card;
+}
+            function navigateToSection(section) {
+            window.location.href = `/${section}.html`;
+        }
+
+        function getCardContent(section, data) {
+            switch(section) {
+                case 'HinToEng':
+                    return `<p>${data.words[0].word}: ${data.words[0].definition}</p>`;
+                case 'PicToEng':
+                    return `<p>${data.exercises[0].question}</p>
+                            <div class="options">
+                                ${data.exercises[0].options.map(option => 
+                                    `<button class="button" onclick="event.stopPropagation(); checkAnswer(this, '${data.exercises[0].correct}')">${option}</button>`
+                                ).join('')}
+                            </div>`;
+                case 'SentCorrect':
+                    return `<p>${data.exercises[0].text}</p>`;
+                case 'QnA':
+                    return `<p>${data.questions[0].question}</p>
+                            <div class="options">
+                                ${data.questions[0].options.map(option => 
+                                    `<button class="button" onclick="event.stopPropagation(); checkAnswer(this, '${data.questions[0].correct}')">${option}</button>`
+                                ).join('')}
+                            </div>
+                            <p class="question-category">${data.questions[0].category}</p>`;
+                case 'GuessWord':
+                    return `<p>Word Guessing Game</p>
+                            <p>Guess words from their descriptions!</p>
+                            <div class="game-features">
+                                <ul>
+                                    <li>Word descriptions</li>
+                                    <li>Score tracking</li>
+                                    <li>Streak counter</li>
+                                </ul>
+                            </div>`;
+                case 'Prepositions':
+                    return `<p>Preposition Practice</p>
+                            <p>Fill in the blanks with correct prepositions!</p>
+                            <div class="game-features">
+                                <ul>
+                                    <li>Practice common prepositions</li>
+                                    <li>Multiple choice format</li>
+                                    <li>Score tracking</li>
+                                    <li>Streak counter</li>
+                                </ul>
+                            </div>`;
+                case 'Synonyms':
+                    return `<p>Synonym Word Game</p>
+                            <p>Test your vocabulary with word synonyms!</p>
+                            <div class="game-features">
+                                <ul>
+                                    <li>Multiple choice format</li>
+                                    <li>Score tracking</li>
+                                    <li>Streak counter</li>
+                                    <li>Progress tracking</li>
+                                </ul>
+                            </div>`;
+                default:
+                    return '';
+            }
+        }
+
+        function createProgressDots(count) {
+            return Array(count).fill().map((_, i) => 
+                `<div class="progress-dot ${i === 0 ? 'active' : ''}"></div>`
+            ).join('');
+        }
+
+        function flipCard(card) {
+            card.classList.toggle('flipped');
+        }
+        
+        function checkAnswer(button, correct) {
+            event.stopPropagation();
+            const buttons = button.parentElement.querySelectorAll('button');
+            buttons.forEach(btn => {
+                btn.disabled = true;
+                btn.style.opacity = '0.7';
+            });
+
+            if (button.textContent === correct) {
+                button.style.backgroundColor = '#4ade80';
+                showFeedback('Correct! Well done!', 'success');
+            } else {
+                button.style.backgroundColor = '#ef4444';
+                showFeedback(`Try again! The correct answer is: ${correct}`, 'error');
+            }
+        }
+
+        function showFeedback(message, type) {
+            const feedback = document.createElement('div');
+            feedback.textContent = message;
+            feedback.style.position = 'fixed';
+            feedback.style.bottom = '20px';
+            feedback.style.left = '50%';
+            feedback.style.transform = 'translateX(-50%)';
+            feedback.style.padding = '1rem 2rem';
+            feedback.style.borderRadius = '0.5rem';
+            feedback.style.color = 'white';
+            feedback.style.backgroundColor = type === 'success' ? '#4ade80' : '#ef4444';
+            feedback.style.zIndex = '1000';
+            feedback.style.boxShadow = 'var(--shadow-lg)';
+            feedback.style.animation = 'slideFadeIn 0.3s ease-out';
+
+            document.body.appendChild(feedback);
+
+            setTimeout(() => {
+                feedback.style.animation = 'slideFadeOut 0.3s ease-in';
+                setTimeout(() => feedback.remove(), 300);
+            }, 2000);
+        }
+
+        // Add animations to stylesheet
+        const style = document.createElement('style');
+        style.textContent += `
+            .question-category {
+                font-size: 0.875rem;
+                color: #6b7280;
+                margin-top: 1rem;
+                padding: 0.25rem 0.75rem;
+                background-color: #f3f4f6;
+                border-radius: 9999px;
+                display: inline-block;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize card loading when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            loadCardData();
+            document.querySelectorAll('.activity-card').forEach((card, index) => {
+                card.style.animation = `fadeInUp 0.5s ease forwards ${index * 0.2}s`;
+            });
+        });
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const flippedCards = document.querySelectorAll('.activity-card.flipped');
+                flippedCards.forEach(card => card.classList.remove('flipped'));
+            }
+        });
+
+        // Add touch support for mobile devices
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
+
+        document.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+        
+
+        function handleSwipe() {
+            const SWIPE_THRESHOLD = 50;
+            if (touchEndX < touchStartX - SWIPE_THRESHOLD) {
+                // Swipe left - show next card
+                const currentCard = document.querySelector('.activity-card.flipped');
+                if (currentCard) {
+                    const nextCard = currentCard.nextElementSibling;
+                    if (nextCard) {
+                        currentCard.classList.remove('flipped');
+                        nextCard.classList.add('flipped');
+                    }
+                }
+            } else if (touchEndX > touchStartX + SWIPE_THRESHOLD) {
+                // Swipe right - show previous card
+                const currentCard = document.querySelector('.activity-card.flipped');
+                if (currentCard) {
+                    const prevCard = currentCard.previousElementSibling;
+                    if (prevCard) {
+                        currentCard.classList.remove('flipped');
+                        prevCard.classList.add('flipped');
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

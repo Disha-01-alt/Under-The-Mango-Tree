@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}Job Portal - Under The Mango Tree{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12 text-center mb-5">
+            <h1 class="display-4 fw-bold text-primary">UTMT Job Portal</h1>
+            <p class="lead">Find your next career opportunity or recruit top talent</p>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h3 class="card-title">For Job Seekers</h3>
+                    <p class="card-text">Create your profile, upload your resume, and apply to job listings from top companies.</p>
+                    <p class="card-text">Our job portal has everything you need to find your next opportunity.</p>
+                    <ul class="list-unstyled text-start">
+                        <li><i class="bi bi-check-circle-fill text-success"></i> Upload your resume and credentials</li>
+                        <li><i class="bi bi-check-circle-fill text-success"></i> Apply to multiple jobs from top companies</li>
+                        <li><i class="bi bi-check-circle-fill text-success"></i> Track your application status</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h3 class="card-title">For Employers</h3>
+                    <p class="card-text">Post job listings, review applications, and find the right candidates for your organization.</p>
+                    <p class="card-text">Our platform helps you connect with qualified talent.</p>
+                    <ul class="list-unstyled text-start">
+                        <li><i class="bi bi-check-circle-fill text-success"></i> Post detailed job listings</li>
+                        <li><i class="bi bi-check-circle-fill text-success"></i> Review candidate profiles and resumes</li>
+                        <li><i class="bi bi-check-circle-fill text-success"></i> Contact promising candidates directly</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <h3 class="card-title mb-4">Access Our Job Portal</h3>
+                    <p class="lead">Our full-featured job portal is available as a standalone application</p>
+                    <p>Click the button below to access the complete job portal with all features:</p>
+                    <div class="d-flex justify-content-center">
+                        <a href="/jobportal" class="btn btn-lg btn-primary">Launch Job Portal</a>
+                    </div>
+                    <p class="text-muted mt-3">Note: The job portal will open in a new page with all functionality from the original system</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow-sm bg-light">
+                <div class="card-body">
+                    <h4 class="card-title">About Our Job Portal</h4>
+                    <p>The UTMT Job Portal connects talented job seekers with organizations looking for qualified candidates. Our platform provides a streamlined experience for both candidates and employers.</p>
+                    <p>The job portal is currently in beta. We appreciate your feedback as we continue to improve the platform.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,4818 @@
+{
+    "words": [
+        {
+            "hindi": "अंक",
+            "english": "Marks",
+            "synonyms": [
+                "number",
+                "digit",
+                "mark"
+            ]
+        },
+        {
+            "hindi": "अच्छा",
+            "english": "good",
+            "synonyms": [
+                "good",
+                "nice",
+                "well"
+            ]
+        },
+        {
+            "hindi": "अज्ञानता",
+            "english": "ignorance",
+            "synonyms": [
+                "ignorance",
+                "unawareness"
+            ]
+        },
+        {
+            "hindi": "अंडा",
+            "english": "Egg",
+            "synonyms": [
+                "egg"
+            ]
+        },
+        {
+            "hindi": "अतिवृष्टि",
+            "english": "Excessive rain",
+            "synonyms": [
+                "heavy rainfall",
+                "excessive rain"
+            ]
+        },
+        {
+            "hindi": "अंदर",
+            "english": "inside",
+            "synonyms": [
+                "inside",
+                "within",
+                "in"
+            ]
+        },
+        {
+            "hindi": "अधिकार",
+            "english": "right",
+            "synonyms": [
+                "right",
+                "authority",
+                "entitlement"
+            ]
+        },
+        {
+            "hindi": "अंधेरा",
+            "english": "darkness",
+            "synonyms": [
+                "darkness",
+                "dimness"
+            ]
+        },
+        {
+            "hindi": "अध्ययन",
+            "english": "Study",
+            "synonyms": [
+                "study",
+                "learning",
+                "research"
+            ]
+        },
+        {
+            "hindi": "अध्यापक",
+            "english": "teacher",
+            "synonyms": [
+                "teacher",
+                "professor",
+                "instructor"
+            ]
+        },
+        {
+            "hindi": "अनाज",
+            "english": "grain",
+            "synonyms": [
+                "grain",
+                "cereal"
+            ]
+        },
+        {
+            "hindi": "अनाज भंडारण",
+            "english": "Grain storage",
+            "synonyms": [
+                "grain storage"
+            ]
+        },
+        {
+            "hindi": "अनावृष्टि",
+            "english": "Drought",
+            "synonyms": [
+                "drought",
+                "lack of rain"
+            ]
+        },
+        {
+            "hindi": "अनिश्चित",
+            "english": "Unstable",
+            "synonyms": [
+                "uncertain",
+                "indefinite",
+                "vague"
+            ]
+        },
+        {
+            "hindi": "अनुदान",
+            "english": "Grant",
+            "synonyms": [
+                "grant",
+                "subsidy",
+                "aid"
+            ]
+        },
+        {
+            "hindi": "अनुभव",
+            "english": "experience",
+            "synonyms": [
+                "experience",
+                "feeling",
+                "sense"
+            ]
+        },
+        {
+            "hindi": "अनुर्वर",
+            "english": "Barren",
+            "synonyms": [
+                "barren",
+                "infertile",
+                "unproductive"
+            ]
+        },
+        {
+            "hindi": "अनुसंधान",
+            "english": "Research",
+            "synonyms": [
+                "research",
+                "investigation"
+            ]
+        },
+        {
+            "hindi": "अन्याय",
+            "english": "injustice",
+            "synonyms": [
+                "injustice",
+                "unfairness"
+            ]
+        },
+        {
+            "hindi": "अपराध",
+            "english": "crime",
+            "synonyms": [
+                "crime",
+                "offense"
+            ]
+        },
+        {
+            "hindi": "अमीर",
+            "english": "Rich",
+            "synonyms": [
+                "rich",
+                "wealthy",
+                "affluent"
+            ]
+        },
+        {
+            "hindi": "अमीरी",
+            "english": "wealth",
+            "synonyms": [
+                "richness",
+                "wealth"
+            ]
+        },
+        {
+            "hindi": "अर्थशास्त्र",
+            "english": "economics",
+            "synonyms": [
+                "economics"
+            ]
+        },
+        {
+            "hindi": "अलमारी",
+            "english": "cupboard",
+            "synonyms": [
+                "cupboard",
+                "wardrobe",
+                "closet"
+            ]
+        },
+        {
+            "hindi": "अलर्ट",
+            "english": "Alert",
+            "synonyms": [
+                "alert",
+                "warning"
+            ]
+        },
+        {
+            "hindi": "अविश्वास",
+            "english": "distrust",
+            "synonyms": [
+                "distrust",
+                "mistrust",
+                "disbelief"
+            ]
+        },
+        {
+            "hindi": "अशांत",
+            "english": "Turbulent",
+            "synonyms": [
+                "restless",
+                "disturbed",
+                "turbulent"
+            ]
+        },
+        {
+            "hindi": "असफलता",
+            "english": "failure",
+            "synonyms": [
+                "failure",
+                "defeat"
+            ]
+        },
+        {
+            "hindi": "आकार",
+            "english": "shape",
+            "synonyms": [
+                "shape",
+                "size",
+                "form"
+            ]
+        },
+        {
+            "hindi": "आकाश",
+            "english": "sky",
+            "synonyms": [
+                "sky",
+                "heaven"
+            ]
+        },
+        {
+            "hindi": "आकाशगंगा",
+            "english": "galaxy",
+            "synonyms": [
+                "galaxy",
+                "milky way"
+            ]
+        },
+        {
+            "hindi": "आंख",
+            "english": "eye",
+            "synonyms": [
+                "eye"
+            ]
+        },
+        {
+            "hindi": "आग",
+            "english": "fire",
+            "synonyms": [
+                "fire"
+            ]
+        },
+        {
+            "hindi": "आँगन",
+            "english": "Courtyard",
+            "synonyms": [
+                "courtyard",
+                "patio"
+            ]
+        },
+        {
+            "hindi": "आगे",
+            "english": "forward",
+            "synonyms": [
+                "ahead",
+                "forward",
+                "in front"
+            ]
+        },
+        {
+            "hindi": "आज",
+            "english": "today",
+            "synonyms": [
+                "today"
+            ]
+        },
+        {
+            "hindi": "आत्मा",
+            "english": "soul",
+            "synonyms": [
+                "soul",
+                "spirit"
+            ]
+        },
+        {
+            "hindi": "आदमी",
+            "english": "man",
+            "synonyms": [
+                "man",
+                "person"
+            ]
+        },
+        {
+            "hindi": "आंधी",
+            "english": "Dust storm",
+            "synonyms": [
+                "storm",
+                "dust storm"
+            ]
+        },
+        {
+            "hindi": "आधुनिक",
+            "english": "Modern",
+            "synonyms": [
+                "modern",
+                "contemporary"
+            ]
+        },
+        {
+            "hindi": "आनंद",
+            "english": "joy",
+            "synonyms": [
+                "joy",
+                "pleasure",
+                "delight"
+            ]
+        },
+        {
+            "hindi": "आपदा",
+            "english": "Disaster",
+            "synonyms": [
+                "disaster",
+                "calamity"
+            ]
+        },
+        {
+            "hindi": "आराम",
+            "english": "rest",
+            "synonyms": [
+                "rest",
+                "relaxation",
+                "comfort"
+            ]
+        },
+        {
+            "hindi": "आर्थिक",
+            "english": "economic",
+            "synonyms": [
+                "economic",
+                "financial"
+            ]
+        },
+        {
+            "hindi": "आर्द्र",
+            "english": "Humid",
+            "synonyms": [
+                "moist",
+                "humid"
+            ]
+        },
+        {
+            "hindi": "आर्द्रता",
+            "english": "Humidity",
+            "synonyms": [
+                "humidity",
+                "moisture"
+            ]
+        },
+        {
+            "hindi": "आर्द्रतामापी",
+            "english": "Hygrometer",
+            "synonyms": [
+                "hygrometer"
+            ]
+        },
+        {
+            "hindi": "आशा",
+            "english": "hope",
+            "synonyms": [
+                "hope",
+                "expectation"
+            ]
+        },
+        {
+            "hindi": "आसान",
+            "english": "easy",
+            "synonyms": [
+                "easy",
+                "simple"
+            ]
+        },
+        {
+            "hindi": "आंसू",
+            "english": "tear",
+            "synonyms": [
+                "tear"
+            ]
+        },
+        {
+            "hindi": "इंजीनियरिंग",
+            "english": "engineering",
+            "synonyms": [
+                "engineering"
+            ]
+        },
+        {
+            "hindi": "इंटरनेट",
+            "english": "internet",
+            "synonyms": [
+                "internet"
+            ]
+        },
+        {
+            "hindi": "इतिहास",
+            "english": "history",
+            "synonyms": [
+                "history"
+            ]
+        },
+        {
+            "hindi": "इंसुलिन",
+            "english": "insulin",
+            "synonyms": [
+                "insulin"
+            ]
+        },
+        {
+            "hindi": "ईमानदारी",
+            "english": "honesty",
+            "synonyms": [
+                "honesty",
+                "integrity"
+            ]
+        },
+        {
+            "hindi": "ईर्ष्या",
+            "english": "jealousy",
+            "synonyms": [
+                "jealousy",
+                "envy"
+            ]
+        },
+        {
+            "hindi": "उंगली",
+            "english": "finger",
+            "synonyms": [
+                "finger"
+            ]
+        },
+        {
+            "hindi": "उत्तर",
+            "english": "answer",
+            "synonyms": [
+                "answer",
+                "reply",
+                "north"
+            ]
+        },
+        {
+            "hindi": "उत्पादन",
+            "english": "production",
+            "synonyms": [
+                "production",
+                "yield"
+            ]
+        },
+        {
+            "hindi": "उत्सव",
+            "english": "Festival",
+            "synonyms": [
+                "festival",
+                "celebration"
+            ]
+        },
+        {
+            "hindi": "उद्योग",
+            "english": "industry",
+            "synonyms": [
+                "industry",
+                "factory"
+            ]
+        },
+        {
+            "hindi": "उन्नति",
+            "english": "progress",
+            "synonyms": [
+                "progress",
+                "development",
+                "advancement"
+            ]
+        },
+        {
+            "hindi": "उपग्रह",
+            "english": "Satellite",
+            "synonyms": [
+                "satellite"
+            ]
+        },
+        {
+            "hindi": "उपज",
+            "english": "Yield",
+            "synonyms": [
+                "yield",
+                "produce",
+                "crop"
+            ]
+        },
+        {
+            "hindi": "उपजाऊ",
+            "english": "Fertile",
+            "synonyms": [
+                "fertile",
+                "productive"
+            ]
+        },
+        {
+            "hindi": "उपभोग",
+            "english": "consumption",
+            "synonyms": [
+                "consumption",
+                "usage"
+            ]
+        },
+        {
+            "hindi": "उर्वरक",
+            "english": "Fertilizer",
+            "synonyms": [
+                "fertilizer"
+            ]
+        },
+        {
+            "hindi": "उष्ण",
+            "english": "Warm",
+            "synonyms": [
+                "hot",
+                "warm",
+                "tropical"
+            ]
+        },
+        {
+            "hindi": "उष्णकटिबंधीय",
+            "english": "Tropical",
+            "synonyms": [
+                "tropical"
+            ]
+        },
+        {
+            "hindi": "ऊँचा",
+            "english": "tall",
+            "synonyms": [
+                "high",
+                "tall"
+            ]
+        },
+        {
+            "hindi": "ऊन",
+            "english": "Wool",
+            "synonyms": [
+                "wool"
+            ]
+        },
+        {
+            "hindi": "ऊपर",
+            "english": "up",
+            "synonyms": [
+                "above",
+                "up",
+                "over"
+            ]
+        },
+        {
+            "hindi": "ऊर्जा",
+            "english": "energy",
+            "synonyms": [
+                "energy",
+                "power"
+            ]
+        },
+        {
+            "hindi": "ऋण",
+            "english": "Loan",
+            "synonyms": [
+                "debt",
+                "loan"
+            ]
+        },
+        {
+            "hindi": "एकता",
+            "english": "Unity",
+            "synonyms": [
+                "unity",
+                "integrity"
+            ]
+        },
+        {
+            "hindi": "एंजाइम",
+            "english": "enzyme",
+            "synonyms": [
+                "enzyme"
+            ]
+        },
+        {
+            "hindi": "ओटला",
+            "english": "Veranda",
+            "synonyms": [
+                "veranda",
+                "porch"
+            ]
+        },
+        {
+            "hindi": "ओलावृष्टि",
+            "english": "Hailstorm",
+            "synonyms": [
+                "hailstorm"
+            ]
+        },
+        {
+            "hindi": "ओले",
+            "english": "Hail",
+            "synonyms": [
+                "hail"
+            ]
+        },
+        {
+            "hindi": "ओस",
+            "english": "Dew",
+            "synonyms": [
+                "dew"
+            ]
+        },
+        {
+            "hindi": "औजार",
+            "english": "Tools",
+            "synonyms": [
+                "tool",
+                "instrument"
+            ]
+        },
+        {
+            "hindi": "औरत",
+            "english": "woman",
+            "synonyms": [
+                "woman",
+                "female"
+            ]
+        },
+        {
+            "hindi": "कक्षा",
+            "english": "Classroom",
+            "synonyms": [
+                "class",
+                "classroom"
+            ]
+        },
+        {
+            "hindi": "कटाई",
+            "english": "Harvesting",
+            "synonyms": [
+                "harvesting",
+                "cutting"
+            ]
+        },
+        {
+            "hindi": "कठिन",
+            "english": "difficult",
+            "synonyms": [
+                "difficult",
+                "hard",
+                "tough"
+            ]
+        },
+        {
+            "hindi": "कथा",
+            "english": "Story",
+            "synonyms": [
+                "story",
+                "tale"
+            ]
+        },
+        {
+            "hindi": "कंधा",
+            "english": "shoulder",
+            "synonyms": [
+                "shoulder"
+            ]
+        },
+        {
+            "hindi": "कपड़े",
+            "english": "clothes",
+            "synonyms": [
+                "clothes",
+                "clothing"
+            ]
+        },
+        {
+            "hindi": "कंप्यूटर",
+            "english": "computer",
+            "synonyms": [
+                "computer"
+            ]
+        },
+        {
+            "hindi": "कंप्यूटर विज्ञान",
+            "english": "computer science",
+            "synonyms": [
+                "computer science"
+            ]
+        },
+        {
+            "hindi": "कमर",
+            "english": "waist",
+            "synonyms": [
+                "waist",
+                "hip"
+            ]
+        },
+        {
+            "hindi": "कमरा",
+            "english": "room",
+            "synonyms": [
+                "room"
+            ]
+        },
+        {
+            "hindi": "कर्ज",
+            "english": "Debt",
+            "synonyms": [
+                "debt",
+                "loan"
+            ]
+        },
+        {
+            "hindi": "कर्तव्य",
+            "english": "duty",
+            "synonyms": [
+                "duty",
+                "responsibility"
+            ]
+        },
+        {
+            "hindi": "कल",
+            "english": "tomorrow",
+            "synonyms": [
+                "yesterday",
+                "tomorrow"
+            ]
+        },
+        {
+            "hindi": "कलम",
+            "english": "pen",
+            "synonyms": [
+                "pen"
+            ]
+        },
+        {
+            "hindi": "कला",
+            "english": "art",
+            "synonyms": [
+                "art",
+                "skill"
+            ]
+        },
+        {
+            "hindi": "कलाई",
+            "english": "wrist",
+            "synonyms": [
+                "wrist"
+            ]
+        },
+        {
+            "hindi": "कष्ट",
+            "english": "suffering",
+            "synonyms": [
+                "pain",
+                "suffering",
+                "trouble"
+            ]
+        },
+        {
+            "hindi": "कहानियाँ",
+            "english": "Stories",
+            "synonyms": [
+                "stories"
+            ]
+        },
+        {
+            "hindi": "कागज",
+            "english": "paper",
+            "synonyms": [
+                "paper"
+            ]
+        },
+        {
+            "hindi": "कान",
+            "english": "ear",
+            "synonyms": [
+                "ear"
+            ]
+        },
+        {
+            "hindi": "कानून",
+            "english": "law",
+            "synonyms": [
+                "law",
+                "legislation"
+            ]
+        },
+        {
+            "hindi": "काम",
+            "english": "work",
+            "synonyms": [
+                "work",
+                "task",
+                "job"
+            ]
+        },
+        {
+            "hindi": "कारीगर",
+            "english": "Artisan",
+            "synonyms": [
+                "artisan",
+                "craftsman"
+            ]
+        },
+        {
+            "hindi": "कार्बोहाइड्रेट",
+            "english": "carbohydrate",
+            "synonyms": [
+                "carbohydrate"
+            ]
+        },
+        {
+            "hindi": "किताब",
+            "english": "book",
+            "synonyms": [
+                "book"
+            ]
+        },
+        {
+            "hindi": "किसान",
+            "english": "farmer",
+            "synonyms": [
+                "farmer",
+                "peasant"
+            ]
+        },
+        {
+            "hindi": "किसान क्रेडिट कार्ड",
+            "english": "Kisan Credit Card",
+            "synonyms": [
+                "farmer credit card"
+            ]
+        },
+        {
+            "hindi": "किसान संघ",
+            "english": "Farmer Union",
+            "synonyms": [
+                "farmer union"
+            ]
+        },
+        {
+            "hindi": "कीटनाशक",
+            "english": "Pesticide",
+            "synonyms": [
+                "pesticide",
+                "insecticide"
+            ]
+        },
+        {
+            "hindi": "कुआँ",
+            "english": "well",
+            "synonyms": [
+                "well"
+            ]
+        },
+        {
+            "hindi": "कुछ",
+            "english": "some",
+            "synonyms": [
+                "some",
+                "few",
+                "something"
+            ]
+        },
+        {
+            "hindi": "कुत्ता",
+            "english": "dog",
+            "synonyms": [
+                "dog"
+            ]
+        },
+        {
+            "hindi": "कुम्हार",
+            "english": "Potter",
+            "synonyms": [
+                "potter"
+            ]
+        },
+        {
+            "hindi": "कुर्सी",
+            "english": "chair",
+            "synonyms": [
+                "chair"
+            ]
+        },
+        {
+            "hindi": "कुल्हाड़ी",
+            "english": "axe",
+            "synonyms": [
+                "axe"
+            ]
+        },
+        {
+            "hindi": "कुहासा",
+            "english": "Mist",
+            "synonyms": [
+                "fog",
+                "mist"
+            ]
+        },
+        {
+            "hindi": "कृषि",
+            "english": "agriculture",
+            "synonyms": [
+                "agriculture",
+                "farming"
+            ]
+        },
+        {
+            "hindi": "कृषि अनुसंधान",
+            "english": "Agricultural Research",
+            "synonyms": [
+                "agricultural research"
+            ]
+        },
+        {
+            "hindi": "कृषि उपज मंडी",
+            "english": "Agricultural Produce Market Committee",
+            "synonyms": [
+                "agricultural produce market"
+            ]
+        },
+        {
+            "hindi": "कृषि ऋण",
+            "english": "Agricultural Loan",
+            "synonyms": [
+                "agricultural loan"
+            ]
+        },
+        {
+            "hindi": "कृषि मेला",
+            "english": "Agriculture Fair",
+            "synonyms": [
+                "agricultural fair"
+            ]
+        },
+        {
+            "hindi": "कृषि विज्ञान",
+            "english": "Agricultural Science",
+            "synonyms": [
+                "agricultural science"
+            ]
+        },
+        {
+            "hindi": "कृषि विभाग",
+            "english": "Agriculture Department",
+            "synonyms": [
+                "agricultural department"
+            ]
+        },
+        {
+            "hindi": "कृषि विश्वविद्यालय",
+            "english": "Agricultural University",
+            "synonyms": [
+                "agricultural university"
+            ]
+        },
+        {
+            "hindi": "कैलेंडर",
+            "english": "calendar",
+            "synonyms": [
+                "calendar"
+            ]
+        },
+        {
+            "hindi": "कैलोरी",
+            "english": "calorie",
+            "synonyms": [
+                "calorie"
+            ]
+        },
+        {
+            "hindi": "कॉपी",
+            "english": "Notebook",
+            "synonyms": [
+                "copy"
+            ]
+        },
+        {
+            "hindi": "कोई",
+            "english": "any",
+            "synonyms": [
+                "any",
+                "someone",
+                "anyone"
+            ]
+        },
+        {
+            "hindi": "कोशिका",
+            "english": "cell",
+            "synonyms": [
+                "cell"
+            ]
+        },
+        {
+            "hindi": "कोहनी",
+            "english": "elbow",
+            "synonyms": [
+                "elbow"
+            ]
+        },
+        {
+            "hindi": "कोहरा",
+            "english": "Fog",
+            "synonyms": [
+                "fog",
+                "mist"
+            ]
+        },
+        {
+            "hindi": "क्रूरता",
+            "english": "cruelty",
+            "synonyms": [
+                "cruelty",
+                "brutality"
+            ]
+        },
+        {
+            "hindi": "क्रोध",
+            "english": "anger",
+            "synonyms": [
+                "anger",
+                "rage"
+            ]
+        },
+        {
+            "hindi": "क्रोमोसोम",
+            "english": "chromosome",
+            "synonyms": [
+                "chromosome"
+            ]
+        },
+        {
+            "hindi": "क्षमा",
+            "english": "forgiveness",
+            "synonyms": [
+                "forgiveness",
+                "pardon"
+            ]
+        },
+        {
+            "hindi": "क्षेत्र",
+            "english": "Area",
+            "synonyms": [
+                "area",
+                "region",
+                "field"
+            ]
+        },
+        {
+            "hindi": "खगोल विज्ञान",
+            "english": "astronomy",
+            "synonyms": [
+                "astronomy"
+            ]
+        },
+        {
+            "hindi": "खतरनाक",
+            "english": "Dangerous",
+            "synonyms": [
+                "dangerous",
+                "hazardous"
+            ]
+        },
+        {
+            "hindi": "खनिज",
+            "english": "mineral",
+            "synonyms": [
+                "mineral"
+            ]
+        },
+        {
+            "hindi": "खपरैल",
+            "english": "Tiled roof",
+            "synonyms": [
+                "tile"
+            ]
+        },
+        {
+            "hindi": "खरपतवार",
+            "english": "Weed",
+            "synonyms": [
+                "weed"
+            ]
+        },
+        {
+            "hindi": "खरीदना",
+            "english": "Buying",
+            "synonyms": [
+                "buy",
+                "purchase"
+            ]
+        },
+        {
+            "hindi": "खलिहान",
+            "english": "Barn",
+            "synonyms": [
+                "barn",
+                "threshing floor"
+            ]
+        },
+        {
+            "hindi": "खाद्य",
+            "english": "Food",
+            "synonyms": [
+                "food",
+                "edible"
+            ]
+        },
+        {
+            "hindi": "खाली",
+            "english": "empty",
+            "synonyms": [
+                "empty",
+                "vacant"
+            ]
+        },
+        {
+            "hindi": "खिड़की",
+            "english": "window",
+            "synonyms": [
+                "window"
+            ]
+        },
+        {
+            "hindi": "खुला",
+            "english": "open",
+            "synonyms": [
+                "open",
+                "uncovered"
+            ]
+        },
+        {
+            "hindi": "खुशी",
+            "english": "happiness",
+            "synonyms": [
+                "happiness",
+                "joy",
+                "pleasure"
+            ]
+        },
+        {
+            "hindi": "खून",
+            "english": "blood",
+            "synonyms": [
+                "blood"
+            ]
+        },
+        {
+            "hindi": "खेत",
+            "english": "field",
+            "synonyms": [
+                "field",
+                "farm"
+            ]
+        },
+        {
+            "hindi": "खेत खलिहान",
+            "english": "Farmyard",
+            "synonyms": [
+                "farms and barns"
+            ]
+        },
+        {
+            "hindi": "खेत मजदूर",
+            "english": "Farm laborer",
+            "synonyms": [
+                "farm worker"
+            ]
+        },
+        {
+            "hindi": "खेती",
+            "english": "farming",
+            "synonyms": [
+                "farming",
+                "agriculture"
+            ]
+        },
+        {
+            "hindi": "खेती योग्य",
+            "english": "Arable",
+            "synonyms": [
+                "cultivable",
+                "arable"
+            ]
+        },
+        {
+            "hindi": "खेतीहर",
+            "english": "Agricultural",
+            "synonyms": [
+                "farmer",
+                "agriculturist"
+            ]
+        },
+        {
+            "hindi": "खेल",
+            "english": "game,sport",
+            "synonyms": [
+                "game",
+                "sport"
+            ]
+        },
+        {
+            "hindi": "खेलना",
+            "english": "To play",
+            "synonyms": [
+                "play"
+            ]
+        },
+        {
+            "hindi": "गणित",
+            "english": "mathematics",
+            "synonyms": [
+                "mathematics",
+                "math"
+            ]
+        },
+        {
+            "hindi": "गरज",
+            "english": "Thunder",
+            "synonyms": [
+                "thunder"
+            ]
+        },
+        {
+            "hindi": "गरम",
+            "english": "hot",
+            "synonyms": [
+                "hot",
+                "warm"
+            ]
+        },
+        {
+            "hindi": "गरीबी",
+            "english": "poverty",
+            "synonyms": [
+                "poverty"
+            ]
+        },
+        {
+            "hindi": "गर्दन",
+            "english": "neck",
+            "synonyms": [
+                "neck"
+            ]
+        },
+        {
+            "hindi": "गर्मी",
+            "english": "summer",
+            "synonyms": [
+                "heat",
+                "warmth"
+            ]
+        },
+        {
+            "hindi": "गला",
+            "english": "throat",
+            "synonyms": [
+                "throat"
+            ]
+        },
+        {
+            "hindi": "गाड़ी",
+            "english": "car",
+            "synonyms": [
+                "vehicle",
+                "car",
+                "cart"
+            ]
+        },
+        {
+            "hindi": "गाना",
+            "english": "song",
+            "synonyms": [
+                "song",
+                "singing"
+            ]
+        },
+        {
+            "hindi": "गाय",
+            "english": "Cow",
+            "synonyms": [
+                "cow"
+            ]
+        },
+        {
+            "hindi": "गाल",
+            "english": "cheek",
+            "synonyms": [
+                "cheek"
+            ]
+        },
+        {
+            "hindi": "गाँव",
+            "english": "village",
+            "synonyms": [
+                "village"
+            ]
+        },
+        {
+            "hindi": "गाँववाला",
+            "english": "Villager (informal)",
+            "synonyms": [
+                "villager"
+            ]
+        },
+        {
+            "hindi": "गिरजाघर",
+            "english": "Church",
+            "synonyms": [
+                "church"
+            ]
+        },
+        {
+            "hindi": "गिरता",
+            "english": "Falling",
+            "synonyms": [
+                "falling",
+                "declining"
+            ]
+        },
+        {
+            "hindi": "गुड़ वाला",
+            "english": "Jaggery maker",
+            "synonyms": [
+                "jaggery"
+            ]
+        },
+        {
+            "hindi": "गुलामी",
+            "english": "slavery",
+            "synonyms": [
+                "slavery"
+            ]
+        },
+        {
+            "hindi": "गोलार्द्ध",
+            "english": "Hemisphere",
+            "synonyms": [
+                "hemisphere"
+            ]
+        },
+        {
+            "hindi": "ग्रह",
+            "english": "planet",
+            "synonyms": [
+                "planet"
+            ]
+        },
+        {
+            "hindi": "ग्राम सभा",
+            "english": "Village assembly",
+            "synonyms": [
+                "village council"
+            ]
+        },
+        {
+            "hindi": "ग्रामवासी",
+            "english": "Villager (noun)",
+            "synonyms": [
+                "villager"
+            ]
+        },
+        {
+            "hindi": "ग्रामीण",
+            "english": "Villager (adjective)",
+            "synonyms": [
+                "rural",
+                "village"
+            ]
+        },
+        {
+            "hindi": "ग्रीनहाउस प्रभाव",
+            "english": "Greenhouse effect",
+            "synonyms": [
+                "greenhouse effect"
+            ]
+        },
+        {
+            "hindi": "ग्रीष्म लहर",
+            "english": "Heatwave",
+            "synonyms": [
+                "heat wave"
+            ]
+        },
+        {
+            "hindi": "ग्लूकोज",
+            "english": "glucose",
+            "synonyms": [
+                "glucose"
+            ]
+        },
+        {
+            "hindi": "घड़ी",
+            "english": "clock",
+            "synonyms": [
+                "clock",
+                "watch"
+            ]
+        },
+        {
+            "hindi": "घर",
+            "english": "house",
+            "synonyms": [
+                "house",
+                "home"
+            ]
+        },
+        {
+            "hindi": "घास",
+            "english": "Grass",
+            "synonyms": [
+                "grass"
+            ]
+        },
+        {
+            "hindi": "घी",
+            "english": "Ghee (clarified butter)",
+            "synonyms": [
+                "ghee",
+                "clarified butter"
+            ]
+        },
+        {
+            "hindi": "घुटना",
+            "english": "knee",
+            "synonyms": [
+                "knee"
+            ]
+        },
+        {
+            "hindi": "घृणा",
+            "english": "hatred,hate",
+            "synonyms": [
+                "hatred",
+                "disgust",
+                "aversion"
+            ]
+        },
+        {
+            "hindi": "चक्रवात",
+            "english": "Cyclone",
+            "synonyms": [
+                "cyclone",
+                "hurricane"
+            ]
+        },
+        {
+            "hindi": "चतुरता",
+            "english": "cleverness",
+            "synonyms": [
+                "cleverness",
+                "intelligence"
+            ]
+        },
+        {
+            "hindi": "चंद्रमा",
+            "english": "moon",
+            "synonyms": [
+                "moon"
+            ]
+        },
+        {
+            "hindi": "चश्मा",
+            "english": "glasses",
+            "synonyms": [
+                "glasses",
+                "spectacles"
+            ]
+        },
+        {
+            "hindi": "चाक",
+            "english": "Chalk",
+            "synonyms": [
+                "chalk"
+            ]
+        },
+        {
+            "hindi": "चाबी",
+            "english": "key",
+            "synonyms": [
+                "key"
+            ]
+        },
+        {
+            "hindi": "चारा",
+            "english": "Fodder",
+            "synonyms": [
+                "fodder",
+                "feed"
+            ]
+        },
+        {
+            "hindi": "चारागाह",
+            "english": "Pasture",
+            "synonyms": [
+                "pasture",
+                "grazing land"
+            ]
+        },
+        {
+            "hindi": "चावल",
+            "english": "Rice",
+            "synonyms": [
+                "rice"
+            ]
+        },
+        {
+            "hindi": "चिकित्सा",
+            "english": "medicine",
+            "synonyms": [
+                "medicine",
+                "treatment"
+            ]
+        },
+        {
+            "hindi": "चुनाव",
+            "english": "election",
+            "synonyms": [
+                "election",
+                "choice"
+            ]
+        },
+        {
+            "hindi": "चूल्हा",
+            "english": "Earthen stove",
+            "synonyms": [
+                "stove",
+                "hearth"
+            ]
+        },
+        {
+            "hindi": "चेतावनी",
+            "english": "Warning",
+            "synonyms": [
+                "warning",
+                "caution"
+            ]
+        },
+        {
+            "hindi": "चौकीदार",
+            "english": "Village watchman",
+            "synonyms": [
+                "watchman",
+                "guard"
+            ]
+        },
+        {
+            "hindi": "चौपाल",
+            "english": "Village square",
+            "synonyms": [
+                "village square",
+                "meeting place"
+            ]
+        },
+        {
+            "hindi": "छत",
+            "english": "roof",
+            "synonyms": [
+                "roof",
+                "ceiling"
+            ]
+        },
+        {
+            "hindi": "छाता",
+            "english": "umbrella",
+            "synonyms": [
+                "umbrella"
+            ]
+        },
+        {
+            "hindi": "छाती",
+            "english": "chest",
+            "synonyms": [
+                "chest"
+            ]
+        },
+        {
+            "hindi": "छात्र",
+            "english": "Student",
+            "synonyms": [
+                "student",
+                "pupil"
+            ]
+        },
+        {
+            "hindi": "छात्रा",
+            "english": "Female student",
+            "synonyms": [
+                "female student"
+            ]
+        },
+        {
+            "hindi": "छाया",
+            "english": "shadow",
+            "synonyms": [
+                "shadow",
+                "shade"
+            ]
+        },
+        {
+            "hindi": "छोटा",
+            "english": "small",
+            "synonyms": [
+                "small",
+                "little",
+                "short"
+            ]
+        },
+        {
+            "hindi": "जंगल",
+            "english": "forest",
+            "synonyms": [
+                "forest",
+                "jungle"
+            ]
+        },
+        {
+            "hindi": "जनसंख्या",
+            "english": "population",
+            "synonyms": [
+                "population"
+            ]
+        },
+        {
+            "hindi": "जमीन",
+            "english": "Ground",
+            "synonyms": [
+                "land",
+                "ground",
+                "earth"
+            ]
+        },
+        {
+            "hindi": "जलवायु",
+            "english": "Climate",
+            "synonyms": [
+                "climate"
+            ]
+        },
+        {
+            "hindi": "जलवायु परिवर्तन",
+            "english": "climate change",
+            "synonyms": [
+                "climate change"
+            ]
+        },
+        {
+            "hindi": "जानवर",
+            "english": "Animal",
+            "synonyms": [
+                "animal"
+            ]
+        },
+        {
+            "hindi": "जिला",
+            "english": "District",
+            "synonyms": [
+                "district"
+            ]
+        },
+        {
+            "hindi": "जीन",
+            "english": "gene",
+            "synonyms": [
+                "gene"
+            ]
+        },
+        {
+            "hindi": "जीभ",
+            "english": "tongue",
+            "synonyms": [
+                "tongue"
+            ]
+        },
+        {
+            "hindi": "जीव विज्ञान",
+            "english": "biology",
+            "synonyms": [
+                "biology"
+            ]
+        },
+        {
+            "hindi": "जीवन",
+            "english": "life",
+            "synonyms": [
+                "life"
+            ]
+        },
+        {
+            "hindi": "जुताई",
+            "english": "Tilling",
+            "synonyms": [
+                "plowing"
+            ]
+        },
+        {
+            "hindi": "जुलाहा",
+            "english": "Weaver",
+            "synonyms": [
+                "weaver"
+            ]
+        },
+        {
+            "hindi": "जूते",
+            "english": "shoes",
+            "synonyms": [
+                "shoes"
+            ]
+        },
+        {
+            "hindi": "जैव विविधता",
+            "english": "biodiversity",
+            "synonyms": [
+                "biodiversity"
+            ]
+        },
+        {
+            "hindi": "जैविक",
+            "english": "Organic",
+            "synonyms": [
+                "organic",
+                "biological"
+            ]
+        },
+        {
+            "hindi": "ज्ञान",
+            "english": "knowledge",
+            "synonyms": [
+                "knowledge",
+                "wisdom"
+            ]
+        },
+        {
+            "hindi": "झूठ",
+            "english": "lie",
+            "synonyms": [
+                "lie",
+                "falsehood"
+            ]
+        },
+        {
+            "hindi": "टखना",
+            "english": "ankle",
+            "synonyms": [
+                "ankle"
+            ]
+        },
+        {
+            "hindi": "टेबल",
+            "english": "table",
+            "synonyms": [
+                "table"
+            ]
+        },
+        {
+            "hindi": "टेलीविजन",
+            "english": "television",
+            "synonyms": [
+                "television"
+            ]
+        },
+        {
+            "hindi": "टोकरी बनाना",
+            "english": "Basket making",
+            "synonyms": [
+                "basket weaving"
+            ]
+        },
+        {
+            "hindi": "टोपी",
+            "english": "hat",
+            "synonyms": [
+                "hat",
+                "cap"
+            ]
+        },
+        {
+            "hindi": "ट्रैक्टर",
+            "english": "tractor",
+            "synonyms": [
+                "tractor"
+            ]
+        },
+        {
+            "hindi": "ठंडा",
+            "english": "cold",
+            "synonyms": [
+                "cold",
+                "cool"
+            ]
+        },
+        {
+            "hindi": "ठोड़ी",
+            "english": "chin",
+            "synonyms": [
+                "chin"
+            ]
+        },
+        {
+            "hindi": "डर",
+            "english": "fear",
+            "synonyms": [
+                "fear",
+                "fright"
+            ]
+        },
+        {
+            "hindi": "डरपोक",
+            "english": "cowardice",
+            "synonyms": [
+                "cowardly",
+                "timid"
+            ]
+        },
+        {
+            "hindi": "डीएनए",
+            "english": "DNA",
+            "synonyms": [
+                "DNA"
+            ]
+        },
+        {
+            "hindi": "डेटा",
+            "english": "data",
+            "synonyms": [
+                "data"
+            ]
+        },
+        {
+            "hindi": "तकनीकी",
+            "english": "technical",
+            "synonyms": [
+                "technical",
+                "technological"
+            ]
+        },
+        {
+            "hindi": "तापमान",
+            "english": "Temperature",
+            "synonyms": [
+                "temperature"
+            ]
+        },
+        {
+            "hindi": "तारा",
+            "english": "star",
+            "synonyms": [
+                "star"
+            ]
+        },
+        {
+            "hindi": "तारे",
+            "english": "Stars",
+            "synonyms": [
+                "stars"
+            ]
+        },
+        {
+            "hindi": "ताला",
+            "english": "lock",
+            "synonyms": [
+                "lock"
+            ]
+        },
+        {
+            "hindi": "तालाब",
+            "english": "pond",
+            "synonyms": [
+                "pond",
+                "pool"
+            ]
+        },
+        {
+            "hindi": "तितली",
+            "english": "Butterfly",
+            "synonyms": [
+                "butterfly"
+            ]
+        },
+        {
+            "hindi": "तूफान",
+            "english": "Storm",
+            "synonyms": [
+                "storm",
+                "hurricane"
+            ]
+        },
+        {
+            "hindi": "तेज़",
+            "english": "fast",
+            "synonyms": [
+                "fast",
+                "quick",
+                "sharp"
+            ]
+        },
+        {
+            "hindi": "तेज हवा",
+            "english": "Gale",
+            "synonyms": [
+                "strong wind"
+            ]
+        },
+        {
+            "hindi": "त्योहार",
+            "english": "Celebration",
+            "synonyms": [
+                "festival"
+            ]
+        },
+        {
+            "hindi": "त्वचा",
+            "english": "skin",
+            "synonyms": [
+                "skin"
+            ]
+        },
+        {
+            "hindi": "थर्मामीटर",
+            "english": "Thermometer",
+            "synonyms": [
+                "thermometer"
+            ]
+        },
+        {
+            "hindi": "दया",
+            "english": "mercy",
+            "synonyms": [
+                "compassion",
+                "mercy",
+                "kindness"
+            ]
+        },
+        {
+            "hindi": "दरवाजा",
+            "english": "door",
+            "synonyms": [
+                "door"
+            ]
+        },
+        {
+            "hindi": "दरांती",
+            "english": "sickle",
+            "synonyms": [
+                "sickle"
+            ]
+        },
+        {
+            "hindi": "दर्जी",
+            "english": "Tailor",
+            "synonyms": [
+                "tailor"
+            ]
+        },
+        {
+            "hindi": "दर्द",
+            "english": "pain",
+            "synonyms": [
+                "pain",
+                "ache"
+            ]
+        },
+        {
+            "hindi": "दर्शन",
+            "english": "philosophy",
+            "synonyms": [
+                "philosophy",
+                "vision"
+            ]
+        },
+        {
+            "hindi": "दांत",
+            "english": "teeth",
+            "synonyms": [
+                "tooth"
+            ]
+        },
+        {
+            "hindi": "दादा",
+            "english": "grandfather",
+            "synonyms": [
+                "grandfather"
+            ]
+        },
+        {
+            "hindi": "दादी",
+            "english": "grandmother",
+            "synonyms": [
+                "grandmother"
+            ]
+        },
+        {
+            "hindi": "दाल",
+            "english": "Lentils",
+            "synonyms": [
+                "lentil",
+                "pulse"
+            ]
+        },
+        {
+            "hindi": "दिन",
+            "english": "day",
+            "synonyms": [
+                "day"
+            ]
+        },
+        {
+            "hindi": "दिमाग",
+            "english": "brain",
+            "synonyms": [
+                "brain",
+                "mind"
+            ]
+        },
+        {
+            "hindi": "दिल",
+            "english": "heart",
+            "synonyms": [
+                "heart"
+            ]
+        },
+        {
+            "hindi": "दीवार",
+            "english": "wall",
+            "synonyms": [
+                "wall"
+            ]
+        },
+        {
+            "hindi": "दुकान",
+            "english": "shop",
+            "synonyms": [
+                "shop",
+                "store"
+            ]
+        },
+        {
+            "hindi": "दुख",
+            "english": "sadness",
+            "synonyms": [
+                "sorrow",
+                "grief",
+                "sadness"
+            ]
+        },
+        {
+            "hindi": "दुनिया",
+            "english": "world",
+            "synonyms": [
+                "world"
+            ]
+        },
+        {
+            "hindi": "दूध",
+            "english": "milk",
+            "synonyms": [
+                "milk"
+            ]
+        },
+        {
+            "hindi": "दूधवाला",
+            "english": "Milkman",
+            "synonyms": [
+                "milkman"
+            ]
+        },
+        {
+            "hindi": "दूरदर्शन",
+            "english": "Television ",
+            "synonyms": [
+                "television"
+            ]
+        },
+        {
+            "hindi": "देश",
+            "english": "country",
+            "synonyms": [
+                "country",
+                "nation"
+            ]
+        },
+        {
+            "hindi": "दोस्त",
+            "english": "friend",
+            "synonyms": [
+                "friend"
+            ]
+        },
+        {
+            "hindi": "धमनी",
+            "english": "artery",
+            "synonyms": [
+                "artery"
+            ]
+        },
+        {
+            "hindi": "धर्म",
+            "english": "religion",
+            "synonyms": [
+                "religion",
+                "duty"
+            ]
+        },
+        {
+            "hindi": "धीमा",
+            "english": "slow",
+            "synonyms": [
+                "slow"
+            ]
+        },
+        {
+            "hindi": "धुआँ",
+            "english": "Smoke",
+            "synonyms": [
+                "smoke"
+            ]
+        },
+        {
+            "hindi": "धुंध",
+            "english": "Smog",
+            "synonyms": [
+                "fog",
+                "mist"
+            ]
+        },
+        {
+            "hindi": "धूप",
+            "english": "sunshine",
+            "synonyms": [
+                "sunshine"
+            ]
+        },
+        {
+            "hindi": "धोखा",
+            "english": "deceit",
+            "synonyms": [
+                "deception",
+                "fraud"
+            ]
+        },
+        {
+            "hindi": "धोबी",
+            "english": "Washerman",
+            "synonyms": [
+                "washerman"
+            ]
+        },
+        {
+            "hindi": "ध्रुवीय",
+            "english": "Polar",
+            "synonyms": [
+                "polar"
+            ]
+        },
+        {
+            "hindi": "नदी",
+            "english": "river",
+            "synonyms": [
+                "river"
+            ]
+        },
+        {
+            "hindi": "नदी पार करना",
+            "english": "Crossing river",
+            "synonyms": [
+                "river crossing"
+            ]
+        },
+        {
+            "hindi": "नमी",
+            "english": "Moisture",
+            "synonyms": [
+                "moisture",
+                "humidity"
+            ]
+        },
+        {
+            "hindi": "नया",
+            "english": "new",
+            "synonyms": [
+                "new"
+            ]
+        },
+        {
+            "hindi": "नस",
+            "english": "vein",
+            "synonyms": [
+                "vein",
+                "nerve"
+            ]
+        },
+        {
+            "hindi": "नहीं",
+            "english": "no",
+            "synonyms": [
+                "no",
+                "not"
+            ]
+        },
+        {
+            "hindi": "नाई",
+            "english": "Barber",
+            "synonyms": [
+                "barber"
+            ]
+        },
+        {
+            "hindi": "नाक",
+            "english": "nose",
+            "synonyms": [
+                "nose"
+            ]
+        },
+        {
+            "hindi": "नाखून",
+            "english": "nail",
+            "synonyms": [
+                "nail"
+            ]
+        },
+        {
+            "hindi": "नाम",
+            "english": "name",
+            "synonyms": [
+                "name"
+            ]
+        },
+        {
+            "hindi": "नाला",
+            "english": "Stream",
+            "synonyms": [
+                "drain",
+                "stream"
+            ]
+        },
+        {
+            "hindi": "निराशा",
+            "english": "despair",
+            "synonyms": [
+                "disappointment",
+                "despair"
+            ]
+        },
+        {
+            "hindi": "निर्माण",
+            "english": "construction",
+            "synonyms": [
+                "construction",
+                "building"
+            ]
+        },
+        {
+            "hindi": "निवेश",
+            "english": "investment",
+            "synonyms": [
+                "investment"
+            ]
+        },
+        {
+            "hindi": "नीचा",
+            "english": "short",
+            "synonyms": [
+                "low",
+                "down"
+            ]
+        },
+        {
+            "hindi": "नीचे",
+            "english": "down",
+            "synonyms": [
+                "below",
+                "under",
+                "down"
+            ]
+        },
+        {
+            "hindi": "नीति",
+            "english": "Policy",
+            "synonyms": [
+                "policy",
+                "strategy"
+            ]
+        },
+        {
+            "hindi": "नीली क्रांति",
+            "english": "Blue Revolution",
+            "synonyms": [
+                "blue revolution"
+            ]
+        },
+        {
+            "hindi": "नुकसान",
+            "english": "Loss",
+            "synonyms": [
+                "loss",
+                "damage"
+            ]
+        },
+        {
+            "hindi": "नृत्य",
+            "english": "dance",
+            "synonyms": [
+                "dance"
+            ]
+        },
+        {
+            "hindi": "नेटवर्क",
+            "english": "network",
+            "synonyms": [
+                "network"
+            ]
+        },
+        {
+            "hindi": "न्याय",
+            "english": "justice",
+            "synonyms": [
+                "justice",
+                "fairness"
+            ]
+        },
+        {
+            "hindi": "पक्षी",
+            "english": "bird",
+            "synonyms": [
+                "bird"
+            ]
+        },
+        {
+            "hindi": "पंखा",
+            "english": "fan",
+            "synonyms": [
+                "fan"
+            ]
+        },
+        {
+            "hindi": "पगडंडी",
+            "english": "Footpath",
+            "synonyms": [
+                "trail",
+                "path"
+            ]
+        },
+        {
+            "hindi": "पंच",
+            "english": "Council member",
+            "synonyms": [
+                "panch",
+                "elder"
+            ]
+        },
+        {
+            "hindi": "पंचायत",
+            "english": "Village council",
+            "synonyms": [
+                "panchayat",
+                "village council"
+            ]
+        },
+        {
+            "hindi": "पंजा",
+            "english": "toe",
+            "synonyms": [
+                "paw",
+                "claw"
+            ]
+        },
+        {
+            "hindi": "पटवारी",
+            "english": "Village accountant",
+            "synonyms": [
+                "land record officer"
+            ]
+        },
+        {
+            "hindi": "पड़ोसी",
+            "english": "Neighbor",
+            "synonyms": [
+                "neighbor"
+            ]
+        },
+        {
+            "hindi": "पढ़ना",
+            "english": "reading",
+            "synonyms": [
+                "read",
+                "study"
+            ]
+        },
+        {
+            "hindi": "पतझड़",
+            "english": "autumn",
+            "synonyms": [
+                "autumn",
+                "fall"
+            ]
+        },
+        {
+            "hindi": "पतला",
+            "english": "thin",
+            "synonyms": [
+                "thin",
+                "slim"
+            ]
+        },
+        {
+            "hindi": "पता",
+            "english": "address",
+            "synonyms": [
+                "address",
+                "location"
+            ]
+        },
+        {
+            "hindi": "पत्ता",
+            "english": "leaf",
+            "synonyms": [
+                "leaf"
+            ]
+        },
+        {
+            "hindi": "पत्रिका",
+            "english": "magazine",
+            "synonyms": [
+                "magazine",
+                "journal"
+            ]
+        },
+        {
+            "hindi": "परंपरा",
+            "english": "Tradition",
+            "synonyms": [
+                "tradition",
+                "custom"
+            ]
+        },
+        {
+            "hindi": "परंपराएँ",
+            "english": "Traditions",
+            "synonyms": [
+                "traditions",
+                "customs"
+            ]
+        },
+        {
+            "hindi": "परसों",
+            "english": "day after tomorrow",
+            "synonyms": [
+                "day after tomorrow",
+                "day before yesterday"
+            ]
+        },
+        {
+            "hindi": "परिवर्तन",
+            "english": "change",
+            "synonyms": [
+                "change",
+                "transformation"
+            ]
+        },
+        {
+            "hindi": "परिवहन",
+            "english": "transportation",
+            "synonyms": [
+                "transportation",
+                "transport"
+            ]
+        },
+        {
+            "hindi": "परिवार",
+            "english": "family",
+            "synonyms": [
+                "family"
+            ]
+        },
+        {
+            "hindi": "परीक्षा",
+            "english": "Exam",
+            "synonyms": [
+                "examination",
+                "test"
+            ]
+        },
+        {
+            "hindi": "पर्यावरण",
+            "english": "environmental",
+            "synonyms": [
+                "environment"
+            ]
+        },
+        {
+            "hindi": "पर्यावरण विज्ञान",
+            "english": "environmental science",
+            "synonyms": [
+                "environmental science"
+            ]
+        },
+        {
+            "hindi": "पलक",
+            "english": "eyelash",
+            "synonyms": [
+                "eyelid"
+            ]
+        },
+        {
+            "hindi": "पशुधन",
+            "english": "Livestock",
+            "synonyms": [
+                "livestock"
+            ]
+        },
+        {
+            "hindi": "पशुपालन",
+            "english": "Animal Husbandry",
+            "synonyms": [
+                "animal husbandry"
+            ]
+        },
+        {
+            "hindi": "पसीना",
+            "english": "sweat",
+            "synonyms": [
+                "sweat",
+                "perspiration"
+            ]
+        },
+        {
+            "hindi": "पहला बादल",
+            "english": "Partly cloudy",
+            "synonyms": [
+                "first cloud"
+            ]
+        },
+        {
+            "hindi": "पहाड़",
+            "english": "mountain",
+            "synonyms": [
+                "mountain",
+                "hill"
+            ]
+        },
+        {
+            "hindi": "पानी",
+            "english": "water",
+            "synonyms": [
+                "water"
+            ]
+        },
+        {
+            "hindi": "पारंपरिक",
+            "english": "Traditional",
+            "synonyms": [
+                "traditional"
+            ]
+        },
+        {
+            "hindi": "पाला",
+            "english": "Frost",
+            "synonyms": [
+                "frost"
+            ]
+        },
+        {
+            "hindi": "पिता",
+            "english": "father",
+            "synonyms": [
+                "father"
+            ]
+        },
+        {
+            "hindi": "पीछे",
+            "english": "backward",
+            "synonyms": [
+                "behind",
+                "back"
+            ]
+        },
+        {
+            "hindi": "पीठ",
+            "english": "back",
+            "synonyms": [
+                "back"
+            ]
+        },
+        {
+            "hindi": "पीडा",
+            "english": "agony",
+            "synonyms": []
+        },
+        {
+            "hindi": "पीली क्रांति",
+            "english": "Yellow Revolution",
+            "synonyms": [
+                "yellow revolution"
+            ]
+        },
+        {
+            "hindi": "पुराना",
+            "english": "old",
+            "synonyms": [
+                "old",
+                "ancient"
+            ]
+        },
+        {
+            "hindi": "पूजा",
+            "english": "Worship",
+            "synonyms": [
+                "worship",
+                "prayer"
+            ]
+        },
+        {
+            "hindi": "पूर्वानुमान",
+            "english": "Prediction",
+            "synonyms": [
+                "forecast",
+                "prediction"
+            ]
+        },
+        {
+            "hindi": "पूर्वानुमानकर्ता",
+            "english": "Forecaster",
+            "synonyms": [
+                "forecaster"
+            ]
+        },
+        {
+            "hindi": "पृथ्वी",
+            "english": "earth",
+            "synonyms": [
+                "earth"
+            ]
+        },
+        {
+            "hindi": "पेट",
+            "english": "stomach",
+            "synonyms": [
+                "stomach",
+                "abdomen"
+            ]
+        },
+        {
+            "hindi": "पेड़",
+            "english": "tree",
+            "synonyms": [
+                "tree"
+            ]
+        },
+        {
+            "hindi": "पेंसिल",
+            "english": "pencil",
+            "synonyms": [
+                "pencil"
+            ]
+        },
+        {
+            "hindi": "पैर",
+            "english": "foot",
+            "synonyms": [
+                "foot",
+                "leg"
+            ]
+        },
+        {
+            "hindi": "पोषण",
+            "english": "Nutrition",
+            "synonyms": [
+                "nutrition",
+                "nourishment"
+            ]
+        },
+        {
+            "hindi": "प्यार",
+            "english": "love",
+            "synonyms": [
+                "love"
+            ]
+        },
+        {
+            "hindi": "प्रकाश",
+            "english": "light",
+            "synonyms": [
+                "light"
+            ]
+        },
+        {
+            "hindi": "प्रकृति",
+            "english": "Nature",
+            "synonyms": [
+                "nature"
+            ]
+        },
+        {
+            "hindi": "प्रगति",
+            "english": "advancement",
+            "synonyms": [
+                "progress",
+                "development"
+            ]
+        },
+        {
+            "hindi": "प्रदूषण",
+            "english": "pollution",
+            "synonyms": [
+                "pollution"
+            ]
+        },
+        {
+            "hindi": "प्रबंधन",
+            "english": "management",
+            "synonyms": [
+                "management",
+                "administration"
+            ]
+        },
+        {
+            "hindi": "प्रभाव",
+            "english": "Impact",
+            "synonyms": [
+                "effect",
+                "impact",
+                "influence"
+            ]
+        },
+        {
+            "hindi": "प्रशांत",
+            "english": "Peaceful",
+            "synonyms": [
+                "pacific"
+            ]
+        },
+        {
+            "hindi": "प्रश्न",
+            "english": "question",
+            "synonyms": [
+                "question"
+            ]
+        },
+        {
+            "hindi": "प्राकृतिक",
+            "english": "Natural",
+            "synonyms": [
+                "natural"
+            ]
+        },
+        {
+            "hindi": "प्रोटीन",
+            "english": "protein",
+            "synonyms": [
+                "protein"
+            ]
+        },
+        {
+            "hindi": "प्रौद्योगिकी",
+            "english": "Technology",
+            "synonyms": [
+                "technology"
+            ]
+        },
+        {
+            "hindi": "फर्श",
+            "english": "floor",
+            "synonyms": [
+                "floor"
+            ]
+        },
+        {
+            "hindi": "फल",
+            "english": "fruit",
+            "synonyms": [
+                "fruit"
+            ]
+        },
+        {
+            "hindi": "फसल",
+            "english": "Crop",
+            "synonyms": [
+                "crop",
+                "harvest"
+            ]
+        },
+        {
+            "hindi": "फाइबर",
+            "english": "fiber",
+            "synonyms": [
+                "fiber"
+            ]
+        },
+        {
+            "hindi": "फिल्म",
+            "english": "movie",
+            "synonyms": [
+                "film",
+                "movie"
+            ]
+        },
+        {
+            "hindi": "फूल",
+            "english": "flower",
+            "synonyms": [
+                "flower"
+            ]
+        },
+        {
+            "hindi": "फेफड़े",
+            "english": "lungs",
+            "synonyms": [
+                "lungs"
+            ]
+        },
+        {
+            "hindi": "बकरी",
+            "english": "Goat",
+            "synonyms": [
+                "goat"
+            ]
+        },
+        {
+            "hindi": "बचत",
+            "english": "saving",
+            "synonyms": [
+                "saving"
+            ]
+        },
+        {
+            "hindi": "बचाव",
+            "english": "Rescue",
+            "synonyms": [
+                "rescue",
+                "defense"
+            ]
+        },
+        {
+            "hindi": "बच्चा",
+            "english": "child",
+            "synonyms": [
+                "child",
+                "kid"
+            ]
+        },
+        {
+            "hindi": "बच्चे",
+            "english": "children",
+            "synonyms": [
+                "children",
+                "kids"
+            ]
+        },
+        {
+            "hindi": "बड़ा",
+            "english": "big",
+            "synonyms": [
+                "big",
+                "large",
+                "great"
+            ]
+        },
+        {
+            "hindi": "बढ़ई",
+            "english": "Carpenter",
+            "synonyms": [
+                "carpenter"
+            ]
+        },
+        {
+            "hindi": "बढ़ता",
+            "english": "Rising",
+            "synonyms": [
+                "growing",
+                "increasing"
+            ]
+        },
+        {
+            "hindi": "बंद",
+            "english": "closed",
+            "synonyms": [
+                "closed",
+                "shut"
+            ]
+        },
+        {
+            "hindi": "बदसूरत",
+            "english": "ugly",
+            "synonyms": [
+                "ugly",
+                "hideous"
+            ]
+        },
+        {
+            "hindi": "बरसात",
+            "english": "rainy season",
+            "synonyms": [
+                "rain",
+                "rainy season"
+            ]
+        },
+        {
+            "hindi": "बर्तन",
+            "english": "utensil",
+            "synonyms": [
+                "utensil",
+                "vessel"
+            ]
+        },
+        {
+            "hindi": "बर्तन बनाना",
+            "english": "Pottery",
+            "synonyms": [
+                "pottery"
+            ]
+        },
+        {
+            "hindi": "बर्फ",
+            "english": "ice",
+            "synonyms": [
+                "ice",
+                "snow"
+            ]
+        },
+        {
+            "hindi": "बर्फ़ीला तूफ़ान",
+            "english": "Blizzard",
+            "synonyms": [
+                "blizzard"
+            ]
+        },
+        {
+            "hindi": "बवंडर",
+            "english": "Tornado",
+            "synonyms": [
+                "whirlwind",
+                "tornado"
+            ]
+        },
+        {
+            "hindi": "बस",
+            "english": "bus",
+            "synonyms": [
+                "bus",
+                "just"
+            ]
+        },
+        {
+            "hindi": "बसंत",
+            "english": "spring",
+            "synonyms": [
+                "spring"
+            ]
+        },
+        {
+            "hindi": "बस्ता",
+            "english": "Schoolbag",
+            "synonyms": [
+                "bag",
+                "backpack"
+            ]
+        },
+        {
+            "hindi": "बहन",
+            "english": "sister",
+            "synonyms": [
+                "sister"
+            ]
+        },
+        {
+            "hindi": "बागवानी",
+            "english": "Horticulture",
+            "synonyms": [
+                "gardening",
+                "horticulture"
+            ]
+        },
+        {
+            "hindi": "बाजार",
+            "english": "market",
+            "synonyms": [
+                "market",
+                "bazaar"
+            ]
+        },
+        {
+            "hindi": "बाड़",
+            "english": "Fence",
+            "synonyms": [
+                "fence"
+            ]
+        },
+        {
+            "hindi": "बातचीत",
+            "english": "Conversation",
+            "synonyms": [
+                "conversation",
+                "discussion"
+            ]
+        },
+        {
+            "hindi": "बाथरूम",
+            "english": "bathroom",
+            "synonyms": [
+                "bathroom"
+            ]
+        },
+        {
+            "hindi": "बादल",
+            "english": "Cloud",
+            "synonyms": [
+                "cloud"
+            ]
+        },
+        {
+            "hindi": "बायाँ",
+            "english": "left",
+            "synonyms": [
+                "left"
+            ]
+        },
+        {
+            "hindi": "बारिश",
+            "english": "rain",
+            "synonyms": [
+                "rain"
+            ]
+        },
+        {
+            "hindi": "बारिश की बौछार",
+            "english": "Rain shower",
+            "synonyms": [
+                "shower"
+            ]
+        },
+        {
+            "hindi": "बाल",
+            "english": "hair",
+            "synonyms": [
+                "hair"
+            ]
+        },
+        {
+            "hindi": "बाहर",
+            "english": "outside",
+            "synonyms": [
+                "outside",
+                "out"
+            ]
+        },
+        {
+            "hindi": "बिक्री",
+            "english": "Sale",
+            "synonyms": [
+                "sale"
+            ]
+        },
+        {
+            "hindi": "बिजली",
+            "english": "Lightning",
+            "synonyms": [
+                "electricity",
+                "lightning"
+            ]
+        },
+        {
+            "hindi": "बिल्ली",
+            "english": "cat",
+            "synonyms": [
+                "cat"
+            ]
+        },
+        {
+            "hindi": "बिस्तर",
+            "english": "bed",
+            "synonyms": [
+                "bed"
+            ]
+        },
+        {
+            "hindi": "बीज",
+            "english": "seed",
+            "synonyms": [
+                "seed"
+            ]
+        },
+        {
+            "hindi": "बीता हुआ कल",
+            "english": "yesterday",
+            "synonyms": [
+                "yesterday"
+            ]
+        },
+        {
+            "hindi": "बीमा",
+            "english": "Insurance",
+            "synonyms": [
+                "insurance"
+            ]
+        },
+        {
+            "hindi": "बीमारी",
+            "english": "illness",
+            "synonyms": [
+                "disease",
+                "illness"
+            ]
+        },
+        {
+            "hindi": "बुआई",
+            "english": "Sowing",
+            "synonyms": [
+                "sowing",
+                "planting"
+            ]
+        },
+        {
+            "hindi": "बुज़ुर्ग",
+            "english": "Elder",
+            "synonyms": [
+                "elderly",
+                "senior"
+            ]
+        },
+        {
+            "hindi": "बुद्धि",
+            "english": "wisdom",
+            "synonyms": [
+                "intelligence",
+                "wisdom"
+            ]
+        },
+        {
+            "hindi": "बुनाई",
+            "english": "Weaving",
+            "synonyms": [
+                "weaving",
+                "knitting"
+            ]
+        },
+        {
+            "hindi": "बुरा",
+            "english": "bad",
+            "synonyms": [
+                "bad",
+                "evil"
+            ]
+        },
+        {
+            "hindi": "बेईमानी",
+            "english": "dishonesty",
+            "synonyms": [
+                "dishonesty",
+                "fraud"
+            ]
+        },
+        {
+            "hindi": "बेचना",
+            "english": "Selling",
+            "synonyms": [
+                "sell"
+            ]
+        },
+        {
+            "hindi": "बैक्टीरिया",
+            "english": "bacteria",
+            "synonyms": [
+                "bacteria"
+            ]
+        },
+        {
+            "hindi": "बैग",
+            "english": "bag",
+            "synonyms": [
+                "bag"
+            ]
+        },
+        {
+            "hindi": "बैरोमीटर",
+            "english": "Barometer",
+            "synonyms": [
+                "barometer"
+            ]
+        },
+        {
+            "hindi": "बैल",
+            "english": "ox",
+            "synonyms": [
+                "ox",
+                "bull"
+            ]
+        },
+        {
+            "hindi": "बोरी",
+            "english": "sack",
+            "synonyms": [
+                "sack",
+                "bag"
+            ]
+        },
+        {
+            "hindi": "ब्रह्मांड",
+            "english": "universe",
+            "synonyms": [
+                "universe",
+                "cosmos"
+            ]
+        },
+        {
+            "hindi": "ब्लैकबोर्ड",
+            "english": "Blackboard",
+            "synonyms": [
+                "blackboard"
+            ]
+        },
+        {
+            "hindi": "ब्लॉग",
+            "english": "blog",
+            "synonyms": [
+                "blog"
+            ]
+        },
+        {
+            "hindi": "भगवान",
+            "english": "god",
+            "synonyms": [
+                "god"
+            ]
+        },
+        {
+            "hindi": "भंडारण",
+            "english": "Storage",
+            "synonyms": [
+                "storage",
+                "warehousing"
+            ]
+        },
+        {
+            "hindi": "भरा",
+            "english": "full",
+            "synonyms": [
+                "full",
+                "filled"
+            ]
+        },
+        {
+            "hindi": "भविष्य",
+            "english": "Future",
+            "synonyms": [
+                "future"
+            ]
+        },
+        {
+            "hindi": "भाई",
+            "english": "brother",
+            "synonyms": [
+                "brother"
+            ]
+        },
+        {
+            "hindi": "भाषा",
+            "english": "language",
+            "synonyms": [
+                "language"
+            ]
+        },
+        {
+            "hindi": "भूगोल",
+            "english": "geography",
+            "synonyms": [
+                "geography"
+            ]
+        },
+        {
+            "hindi": "भूमध्य रेखा",
+            "english": "Equator",
+            "synonyms": [
+                "equator"
+            ]
+        },
+        {
+            "hindi": "भूमि",
+            "english": "Land",
+            "synonyms": [
+                "land",
+                "soil"
+            ]
+        },
+        {
+            "hindi": "भूमिहीन",
+            "english": "Landless",
+            "synonyms": [
+                "landless"
+            ]
+        },
+        {
+            "hindi": "भूविज्ञान",
+            "english": "geology",
+            "synonyms": [
+                "geology"
+            ]
+        },
+        {
+            "hindi": "भैंस",
+            "english": "Buffalo",
+            "synonyms": [
+                "buffalo"
+            ]
+        },
+        {
+            "hindi": "भौं",
+            "english": "eyebrow",
+            "synonyms": [
+                "eyebrow"
+            ]
+        },
+        {
+            "hindi": "भौतिकी",
+            "english": "physics",
+            "synonyms": [
+                "physics"
+            ]
+        },
+        {
+            "hindi": "मछली पालन",
+            "english": "Fisheries",
+            "synonyms": [
+                "fishery"
+            ]
+        },
+        {
+            "hindi": "मज़दूर",
+            "english": "Laborer",
+            "synonyms": [
+                "laborer",
+                "worker"
+            ]
+        },
+        {
+            "hindi": "मजदूरी",
+            "english": "Wages",
+            "synonyms": [
+                "wages",
+                "labor cost"
+            ]
+        },
+        {
+            "hindi": "मड़ाई",
+            "english": "Threshing",
+            "synonyms": [
+                "threshing"
+            ]
+        },
+        {
+            "hindi": "मदद",
+            "english": "Help",
+            "synonyms": [
+                "help",
+                "assistance"
+            ]
+        },
+        {
+            "hindi": "मंदिर",
+            "english": "Temple",
+            "synonyms": [
+                "temple"
+            ]
+        },
+        {
+            "hindi": "मनुष्य",
+            "english": "human",
+            "synonyms": [
+                "human",
+                "man"
+            ]
+        },
+        {
+            "hindi": "मनोविज्ञान",
+            "english": "psychology",
+            "synonyms": [
+                "psychology"
+            ]
+        },
+        {
+            "hindi": "मशीनरी",
+            "english": "Machinery",
+            "synonyms": [
+                "machinery"
+            ]
+        },
+        {
+            "hindi": "मस्जिद",
+            "english": "Mosque",
+            "synonyms": [
+                "mosque"
+            ]
+        },
+        {
+            "hindi": "महंगा",
+            "english": "expensive",
+            "synonyms": [
+                "expensive",
+                "costly"
+            ]
+        },
+        {
+            "hindi": "महाद्वीप",
+            "english": "continent",
+            "synonyms": [
+                "continent"
+            ]
+        },
+        {
+            "hindi": "महीना",
+            "english": "month",
+            "synonyms": [
+                "month"
+            ]
+        },
+        {
+            "hindi": "माता",
+            "english": "mother",
+            "synonyms": [
+                "mother"
+            ]
+        },
+        {
+            "hindi": "माथा",
+            "english": "forehead",
+            "synonyms": [
+                "forehead"
+            ]
+        },
+        {
+            "hindi": "मानवशास्त्र",
+            "english": "anthropology",
+            "synonyms": [
+                "anthropology"
+            ]
+        },
+        {
+            "hindi": "मानसून",
+            "english": "Monsoon",
+            "synonyms": [
+                "monsoon"
+            ]
+        },
+        {
+            "hindi": "मार्जिनल",
+            "english": "Marginal",
+            "synonyms": [
+                "marginal"
+            ]
+        },
+        {
+            "hindi": "मांस",
+            "english": "Meat",
+            "synonyms": [
+                "meat"
+            ]
+        },
+        {
+            "hindi": "मांसपेशी",
+            "english": "muscle",
+            "synonyms": [
+                "muscle"
+            ]
+        },
+        {
+            "hindi": "मिट्टी",
+            "english": "soil",
+            "synonyms": [
+                "soil",
+                "earth"
+            ]
+        },
+        {
+            "hindi": "मिट्टी का घर",
+            "english": "Mud house",
+            "synonyms": [
+                "mud house"
+            ]
+        },
+        {
+            "hindi": "मुखिया",
+            "english": "Leader",
+            "synonyms": [
+                "headman",
+                "chief"
+            ]
+        },
+        {
+            "hindi": "मुनाफा",
+            "english": "Profit",
+            "synonyms": [
+                "profit"
+            ]
+        },
+        {
+            "hindi": "मुर्गी",
+            "english": "Chicken",
+            "synonyms": [
+                "hen",
+                "chicken"
+            ]
+        },
+        {
+            "hindi": "मुंह",
+            "english": "mouth",
+            "synonyms": [
+                "mouth"
+            ]
+        },
+        {
+            "hindi": "मूत्र",
+            "english": "urine",
+            "synonyms": [
+                "urine"
+            ]
+        },
+        {
+            "hindi": "मूर्खता",
+            "english": "stupidity",
+            "synonyms": [
+                "foolishness",
+                "stupidity"
+            ]
+        },
+        {
+            "hindi": "मूल्य",
+            "english": "Price",
+            "synonyms": [
+                "value",
+                "price"
+            ]
+        },
+        {
+            "hindi": "मृत्यु",
+            "english": "death",
+            "synonyms": [
+                "death"
+            ]
+        },
+        {
+            "hindi": "मेघमय",
+            "english": "Cloudy",
+            "synonyms": [
+                "cloudy"
+            ]
+        },
+        {
+            "hindi": "मेज",
+            "english": "Desk",
+            "synonyms": [
+                "table"
+            ]
+        },
+        {
+            "hindi": "मेला",
+            "english": "Fair",
+            "synonyms": [
+                "fair",
+                "festival"
+            ]
+        },
+        {
+            "hindi": "मेले",
+            "english": "Fairs",
+            "synonyms": [
+                "fairs",
+                "festivals"
+            ]
+        },
+        {
+            "hindi": "मेहनत",
+            "english": "Hard work",
+            "synonyms": [
+                "hard work",
+                "labor"
+            ]
+        },
+        {
+            "hindi": "मैदान",
+            "english": "Playground",
+            "synonyms": [
+                "field",
+                "ground"
+            ]
+        },
+        {
+            "hindi": "मोजे",
+            "english": "socks",
+            "synonyms": [
+                "socks"
+            ]
+        },
+        {
+            "hindi": "मोटरसाइकिल",
+            "english": "motorcycle",
+            "synonyms": [
+                "motorcycle"
+            ]
+        },
+        {
+            "hindi": "मोटा",
+            "english": "fat",
+            "synonyms": [
+                "fat",
+                "thick"
+            ]
+        },
+        {
+            "hindi": "मोबाइल",
+            "english": "mobile",
+            "synonyms": [
+                "mobile",
+                "cell phone"
+            ]
+        },
+        {
+            "hindi": "मौसम",
+            "english": "season",
+            "synonyms": [
+                "weather",
+                "season"
+            ]
+        },
+        {
+            "hindi": "मौसम केंद्र",
+            "english": "Weather station",
+            "synonyms": [
+                "weather station"
+            ]
+        },
+        {
+            "hindi": "मौसम पूर्वानुमान",
+            "english": "Weather forecast",
+            "synonyms": [
+                "weather forecast"
+            ]
+        },
+        {
+            "hindi": "मौसम विज्ञान",
+            "english": "Meteorology",
+            "synonyms": [
+                "meteorology"
+            ]
+        },
+        {
+            "hindi": "यहाँ",
+            "english": "here",
+            "synonyms": [
+                "here"
+            ]
+        },
+        {
+            "hindi": "यात्रा",
+            "english": "travel",
+            "synonyms": [
+                "travel",
+                "journey"
+            ]
+        },
+        {
+            "hindi": "याद",
+            "english": "memory",
+            "synonyms": [
+                "memory",
+                "remembrance"
+            ]
+        },
+        {
+            "hindi": "याद करना",
+            "english": "To memorize",
+            "synonyms": [
+                "remember",
+                "memorize"
+            ]
+        },
+        {
+            "hindi": "युद्ध",
+            "english": "war",
+            "synonyms": [
+                "war",
+                "battle"
+            ]
+        },
+        {
+            "hindi": "युवा",
+            "english": "Youth",
+            "synonyms": [
+                "youth",
+                "young"
+            ]
+        },
+        {
+            "hindi": "योजना",
+            "english": "Scheme",
+            "synonyms": [
+                "plan",
+                "scheme"
+            ]
+        },
+        {
+            "hindi": "रंग",
+            "english": "color",
+            "synonyms": [
+                "color"
+            ]
+        },
+        {
+            "hindi": "रचना",
+            "english": "creation",
+            "synonyms": [
+                "composition",
+                "creation"
+            ]
+        },
+        {
+            "hindi": "रडार",
+            "english": "Radar",
+            "synonyms": [
+                "radar"
+            ]
+        },
+        {
+            "hindi": "रबड़",
+            "english": "Eraser",
+            "synonyms": [
+                "rubber"
+            ]
+        },
+        {
+            "hindi": "रसायन विज्ञान",
+            "english": "chemistry",
+            "synonyms": [
+                "chemistry"
+            ]
+        },
+        {
+            "hindi": "रसोई",
+            "english": "kitchen",
+            "synonyms": [
+                "kitchen"
+            ]
+        },
+        {
+            "hindi": "राजनीति",
+            "english": "politics",
+            "synonyms": [
+                "politics"
+            ]
+        },
+        {
+            "hindi": "राजनीति विज्ञान",
+            "english": "political science",
+            "synonyms": [
+                "political science"
+            ]
+        },
+        {
+            "hindi": "राजनीतिक",
+            "english": "political",
+            "synonyms": [
+                "political"
+            ]
+        },
+        {
+            "hindi": "राज्य",
+            "english": "state",
+            "synonyms": [
+                "state",
+                "kingdom"
+            ]
+        },
+        {
+            "hindi": "रात",
+            "english": "night",
+            "synonyms": [
+                "night"
+            ]
+        },
+        {
+            "hindi": "राय",
+            "english": "opinion",
+            "synonyms": [
+                "opinion",
+                "advice"
+            ]
+        },
+        {
+            "hindi": "रासायनिक",
+            "english": "Chemical",
+            "synonyms": [
+                "chemical"
+            ]
+        },
+        {
+            "hindi": "रास्ता",
+            "english": "Path",
+            "synonyms": [
+                "path",
+                "way",
+                "road"
+            ]
+        },
+        {
+            "hindi": "रिश्तेदार",
+            "english": "Relative",
+            "synonyms": [
+                "relative"
+            ]
+        },
+        {
+            "hindi": "रीति रिवाज",
+            "english": "Custom",
+            "synonyms": [
+                "customs",
+                "traditions"
+            ]
+        },
+        {
+            "hindi": "रीति-रिवाज",
+            "english": "Customs",
+            "synonyms": [
+                "customs",
+                "traditions"
+            ]
+        },
+        {
+            "hindi": "रेडियो",
+            "english": "radio",
+            "synonyms": [
+                "radio"
+            ]
+        },
+        {
+            "hindi": "रेलगाड़ी",
+            "english": "train",
+            "synonyms": [
+                "train"
+            ]
+        },
+        {
+            "hindi": "रोज़गार",
+            "english": "Employment",
+            "synonyms": [
+                "employment",
+                "job"
+            ]
+        },
+        {
+            "hindi": "रोटी",
+            "english": "bread",
+            "synonyms": [
+                "bread"
+            ]
+        },
+        {
+            "hindi": "लकड़ी",
+            "english": "Wood",
+            "synonyms": [
+                "wood"
+            ]
+        },
+        {
+            "hindi": "लार",
+            "english": "saliva",
+            "synonyms": [
+                "saliva"
+            ]
+        },
+        {
+            "hindi": "लिखना",
+            "english": "To write",
+            "synonyms": [
+                "write"
+            ]
+        },
+        {
+            "hindi": "लेखन",
+            "english": "writing",
+            "synonyms": [
+                "writing"
+            ]
+        },
+        {
+            "hindi": "लेखा",
+            "english": "accounting",
+            "synonyms": [
+                "accounting"
+            ]
+        },
+        {
+            "hindi": "लोकगीत",
+            "english": "Folk songs",
+            "synonyms": [
+                "folksong"
+            ]
+        },
+        {
+            "hindi": "लोकनृत्य",
+            "english": "Folk dances",
+            "synonyms": [
+                "folk dance"
+            ]
+        },
+        {
+            "hindi": "लोग",
+            "english": "people",
+            "synonyms": [
+                "people"
+            ]
+        },
+        {
+            "hindi": "लोहार",
+            "english": "Blacksmith",
+            "synonyms": [
+                "blacksmith"
+            ]
+        },
+        {
+            "hindi": "वनपालन",
+            "english": "Forestry",
+            "synonyms": [
+                "forestry"
+            ]
+        },
+        {
+            "hindi": "वनस्पति",
+            "english": "plant",
+            "synonyms": [
+                "vegetation",
+                "flora"
+            ]
+        },
+        {
+            "hindi": "वन्यजीव",
+            "english": "wildlife",
+            "synonyms": [
+                "wildlife"
+            ]
+        },
+        {
+            "hindi": "वर्षामापी",
+            "english": "Rain gauge",
+            "synonyms": [
+                "rain gauge"
+            ]
+        },
+        {
+            "hindi": "वहाँ",
+            "english": "there",
+            "synonyms": [
+                "there"
+            ]
+        },
+        {
+            "hindi": "वातावरण",
+            "english": "Environment",
+            "synonyms": [
+                "environment",
+                "atmosphere"
+            ]
+        },
+        {
+            "hindi": "वायरस",
+            "english": "virus",
+            "synonyms": [
+                "virus"
+            ]
+        },
+        {
+            "hindi": "वायुदाब",
+            "english": "Air pressure",
+            "synonyms": [
+                "air pressure"
+            ]
+        },
+        {
+            "hindi": "वायुमंडल",
+            "english": "Atmosphere",
+            "synonyms": [
+                "atmosphere"
+            ]
+        },
+        {
+            "hindi": "विकास",
+            "english": "development",
+            "synonyms": [
+                "development",
+                "growth"
+            ]
+        },
+        {
+            "hindi": "विचार",
+            "english": "idea",
+            "synonyms": [
+                "thought",
+                "idea",
+                "opinion"
+            ]
+        },
+        {
+            "hindi": "विज्ञान",
+            "english": "science",
+            "synonyms": [
+                "science"
+            ]
+        },
+        {
+            "hindi": "विज्ञापन",
+            "english": "advertising",
+            "synonyms": [
+                "advertisement",
+                "ad"
+            ]
+        },
+        {
+            "hindi": "विटामिन",
+            "english": "vitamin",
+            "synonyms": [
+                "vitamin"
+            ]
+        },
+        {
+            "hindi": "वितरण",
+            "english": "distribution",
+            "synonyms": [
+                "distribution",
+                "delivery"
+            ]
+        },
+        {
+            "hindi": "वित्त",
+            "english": "finance",
+            "synonyms": [
+                "finance"
+            ]
+        },
+        {
+            "hindi": "विनाश",
+            "english": "destruction",
+            "synonyms": [
+                "destruction",
+                "ruin"
+            ]
+        },
+        {
+            "hindi": "विनिमय",
+            "english": "exchange",
+            "synonyms": [
+                "exchange",
+                "trade"
+            ]
+        },
+        {
+            "hindi": "विपणन",
+            "english": "marketing",
+            "synonyms": [
+                "marketing"
+            ]
+        },
+        {
+            "hindi": "विश्लेषण",
+            "english": "Analysis",
+            "synonyms": [
+                "analysis"
+            ]
+        },
+        {
+            "hindi": "विश्वास",
+            "english": "trust",
+            "synonyms": [
+                "belief",
+                "trust",
+                "faith"
+            ]
+        },
+        {
+            "hindi": "विषय",
+            "english": "Subject",
+            "synonyms": [
+                "subject",
+                "topic"
+            ]
+        },
+        {
+            "hindi": "वेबसाइट",
+            "english": "website",
+            "synonyms": [
+                "website"
+            ]
+        },
+        {
+            "hindi": "वैज्ञानिक",
+            "english": "scientific",
+            "synonyms": [
+                "scientist",
+                "scientific"
+            ]
+        },
+        {
+            "hindi": "वैश्विक वार्मिंग",
+            "english": "Global warming",
+            "synonyms": [
+                "global warming"
+            ]
+        },
+        {
+            "hindi": "व्यवसाय",
+            "english": "business",
+            "synonyms": [
+                "business",
+                "occupation"
+            ]
+        },
+        {
+            "hindi": "व्यापार",
+            "english": "trade",
+            "synonyms": [
+                "trade",
+                "commerce"
+            ]
+        },
+        {
+            "hindi": "शहर",
+            "english": "city",
+            "synonyms": [
+                "city",
+                "town"
+            ]
+        },
+        {
+            "hindi": "शहरीकरण",
+            "english": "urbanization",
+            "synonyms": [
+                "urbanization"
+            ]
+        },
+        {
+            "hindi": "शांत",
+            "english": "Calm",
+            "synonyms": [
+                "calm",
+                "quiet",
+                "peaceful"
+            ]
+        },
+        {
+            "hindi": "शांति",
+            "english": "peace",
+            "synonyms": [
+                "peace"
+            ]
+        },
+        {
+            "hindi": "शादी",
+            "english": "Wedding",
+            "synonyms": [
+                "marriage",
+                "wedding"
+            ]
+        },
+        {
+            "hindi": "शाम",
+            "english": "evening",
+            "synonyms": [
+                "evening"
+            ]
+        },
+        {
+            "hindi": "शार्पनर",
+            "english": "Sharpener",
+            "synonyms": [
+                "sharpener"
+            ]
+        },
+        {
+            "hindi": "शिक्षा",
+            "english": "education",
+            "synonyms": [
+                "education"
+            ]
+        },
+        {
+            "hindi": "शीतकाल",
+            "english": "Winter",
+            "synonyms": [
+                "winter"
+            ]
+        },
+        {
+            "hindi": "शीतल",
+            "english": "Cool",
+            "synonyms": [
+                "cold",
+                "cool"
+            ]
+        },
+        {
+            "hindi": "शीतलहर",
+            "english": "Cold wave",
+            "synonyms": [
+                "cold wave"
+            ]
+        },
+        {
+            "hindi": "शुष्क",
+            "english": "Dry",
+            "synonyms": [
+                "dry",
+                "arid"
+            ]
+        },
+        {
+            "hindi": "शोर",
+            "english": "noise",
+            "synonyms": [
+                "noise"
+            ]
+        },
+        {
+            "hindi": "श्वेत क्रांति",
+            "english": "White Revolution",
+            "synonyms": [
+                "white revolution"
+            ]
+        },
+        {
+            "hindi": "संख्या",
+            "english": "number",
+            "synonyms": [
+                "number"
+            ]
+        },
+        {
+            "hindi": "संगीत",
+            "english": "music",
+            "synonyms": [
+                "music"
+            ]
+        },
+        {
+            "hindi": "संघर्ष",
+            "english": "Struggle",
+            "synonyms": [
+                "conflict",
+                "struggle"
+            ]
+        },
+        {
+            "hindi": "संचार",
+            "english": "communication",
+            "synonyms": [
+                "communication"
+            ]
+        },
+        {
+            "hindi": "सच्चाई",
+            "english": "truthfulness",
+            "synonyms": [
+                "truth",
+                "reality"
+            ]
+        },
+        {
+            "hindi": "सजा",
+            "english": "punishment",
+            "synonyms": [
+                "punishment"
+            ]
+        },
+        {
+            "hindi": "सड़क",
+            "english": "road",
+            "synonyms": [
+                "road",
+                "street"
+            ]
+        },
+        {
+            "hindi": "सत्य",
+            "english": "truth",
+            "synonyms": [
+                "truth"
+            ]
+        },
+        {
+            "hindi": "संदेश",
+            "english": "message",
+            "synonyms": [
+                "message"
+            ]
+        },
+        {
+            "hindi": "सपना",
+            "english": "dream",
+            "synonyms": [
+                "dream"
+            ]
+        },
+        {
+            "hindi": "सफलता",
+            "english": "success",
+            "synonyms": [
+                "success","achievement"
+            ]
+        },
+        {
+            "hindi": "सब्जी",
+            "english": "vegetable",
+            "synonyms": [
+                "vegetable"
+            ]
+        },
+        {
+            "hindi": "सब्जीवाला",
+            "english": "Vegetable seller",
+            "synonyms": [
+                "vegetable vendor"
+            ]
+        },
+        {
+            "hindi": "सभी",
+            "english": "all",
+            "synonyms": [
+                "all",
+                "everyone"
+            ]
+        },
+        {
+            "hindi": "समझ",
+            "english": "understanding",
+            "synonyms": [
+                "understanding",
+                "comprehension"
+            ]
+        },
+        {
+            "hindi": "समझना",
+            "english": "To understand",
+            "synonyms": [
+                "understand",
+                "comprehend"
+            ]
+        },
+        {
+            "hindi": "समझौता",
+            "english": "Compromise",
+            "synonyms": [
+                "agreement",
+                "compromise"
+            ]
+        },
+        {
+            "hindi": "समय",
+            "english": "time",
+            "synonyms": [
+                "time"
+            ]
+        },
+        {
+            "hindi": "समशीतोष्ण",
+            "english": "Temperate",
+            "synonyms": [
+                "temperate"
+            ]
+        },
+        {
+            "hindi": "समस्या",
+            "english": "problem",
+            "synonyms": [
+                "problem",
+                "issue"
+            ]
+        },
+        {
+            "hindi": "समाचार",
+            "english": "news",
+            "synonyms": [
+                "news"
+            ]
+        },
+        {
+            "hindi": "समाचार पत्र",
+            "english": "newspaper",
+            "synonyms": [
+                "newspaper"
+            ]
+        },
+        {
+            "hindi": "समाजशास्त्र",
+            "english": "sociology",
+            "synonyms": [
+                "sociology"
+            ]
+        },
+        {
+            "hindi": "समाधान",
+            "english": "solution",
+            "synonyms": [
+                "solution",
+                "resolution"
+            ]
+        },
+        {
+            "hindi": "समुदाय",
+            "english": "Community",
+            "synonyms": [
+                "community"
+            ]
+        },
+        {
+            "hindi": "समुद्र",
+            "english": "sea",
+            "synonyms": [
+                "sea",
+                "ocean"
+            ]
+        },
+        {
+            "hindi": "समुद्री तूफान",
+            "english": "Hurricane",
+            "synonyms": [
+                "sea storm",
+                "hurricane"
+            ]
+        },
+        {
+            "hindi": "समूह",
+            "english": "Group",
+            "synonyms": [
+                "group"
+            ]
+        },
+        {
+            "hindi": "सरकार",
+            "english": "government",
+            "synonyms": [
+                "government"
+            ]
+        },
+        {
+            "hindi": "सरपंच",
+            "english": "Village head",
+            "synonyms": [
+                "village head"
+            ]
+        },
+        {
+            "hindi": "संस्कृति",
+            "english": "culture",
+            "synonyms": [
+                "culture"
+            ]
+        },
+        {
+            "hindi": "सस्ता",
+            "english": "cheap",
+            "synonyms": [
+                "cheap",
+                "inexpensive"
+            ]
+        },
+        {
+            "hindi": "सहकारी",
+            "english": "Cooperative",
+            "synonyms": [
+                "cooperative"
+            ]
+        },
+        {
+            "hindi": "सहयोग",
+            "english": "Cooperation",
+            "synonyms": [
+                "cooperation",
+                "assistance"
+            ]
+        },
+        {
+            "hindi": "सहायता",
+            "english": "Support",
+            "synonyms": [
+                "help",
+                "assistance"
+            ]
+        },
+        {
+            "hindi": "साइकिल",
+            "english": "bicycle",
+            "synonyms": [
+                "bicycle",
+                "cycle"
+            ]
+        },
+        {
+            "hindi": "साफ़ आसमान",
+            "english": "Clear sky",
+            "synonyms": [
+                "clear sky"
+            ]
+        },
+        {
+            "hindi": "सामाजिक",
+            "english": "social",
+            "synonyms": [
+                "social"
+            ]
+        },
+        {
+            "hindi": "सामाजिक विज्ञान",
+            "english": "Social Science",
+            "synonyms": [
+                "social science"
+            ]
+        },
+        {
+            "hindi": "सामुदायिक",
+            "english": "Communal",
+            "synonyms": [
+                "community"
+            ]
+        },
+        {
+            "hindi": "साल",
+            "english": "year",
+            "synonyms": [
+                "year"
+            ]
+        },
+        {
+            "hindi": "सांस्कृतिक",
+            "english": "cultural",
+            "synonyms": [
+                "cultural"
+            ]
+        },
+        {
+            "hindi": "साहस",
+            "english": "courage",
+            "synonyms": [
+                "courage",
+                "bravery"
+            ]
+        },
+        {
+            "hindi": "साहित्य",
+            "english": "literature",
+            "synonyms": [
+                "literature"
+            ]
+        },
+        {
+            "hindi": "सिंचाई",
+            "english": "Irrigation",
+            "synonyms": [
+                "irrigation"
+            ]
+        },
+        {
+            "hindi": "सिनेमा",
+            "english": "cinema",
+            "synonyms": [
+                "cinema"
+            ]
+        },
+        {
+            "hindi": "सिर",
+            "english": "head",
+            "synonyms": [
+                "head"
+            ]
+        },
+        {
+            "hindi": "सिलाई",
+            "english": "Sewing",
+            "synonyms": [
+                "sewing"
+            ]
+        },
+        {
+            "hindi": "सीखना",
+            "english": "To learn",
+            "synonyms": [
+                "learn"
+            ]
+        },
+        {
+            "hindi": "सुंदर",
+            "english": "beautiful",
+            "synonyms": [
+                "beautiful",
+                "pretty"
+            ]
+        },
+        {
+            "hindi": "सुबह",
+            "english": "morning",
+            "synonyms": [
+                "morning"
+            ]
+        },
+        {
+            "hindi": "सुरक्षा",
+            "english": "Security",
+            "synonyms": [
+                "security",
+                "safety"
+            ]
+        },
+        {
+            "hindi": "सुरक्षित",
+            "english": "Safe",
+            "synonyms": [
+                "safe",
+                "secure"
+            ]
+        },
+        {
+            "hindi": "सूचना",
+            "english": "information",
+            "synonyms": [
+                "information",
+                "notice"
+            ]
+        },
+        {
+            "hindi": "सूरज",
+            "english": "sun",
+            "synonyms": [
+                "sun"
+            ]
+        },
+        {
+            "hindi": "सेवाएं",
+            "english": "services",
+            "synonyms": [
+                "services"
+            ]
+        },
+        {
+            "hindi": "सॉफ्टवेयर",
+            "english": "software",
+            "synonyms": [
+                "software"
+            ]
+        },
+        {
+            "hindi": "सोच",
+            "english": "thought",
+            "synonyms": [
+                "thought",
+                "thinking"
+            ]
+        },
+        {
+            "hindi": "सोशल मीडिया",
+            "english": "social media",
+            "synonyms": [
+                "social media"
+            ]
+        },
+        {
+            "hindi": "स्कूल",
+            "english": "school",
+            "synonyms": [
+                "school"
+            ]
+        },
+        {
+            "hindi": "स्थिर",
+            "english": "Stable",
+            "synonyms": [
+                "stable",
+                "steady"
+            ]
+        },
+        {
+            "hindi": "स्वतंत्रता",
+            "english": "freedom",
+            "synonyms": [
+                "freedom",
+                "independence"
+            ]
+        },
+        {
+            "hindi": "स्वास्थ्य",
+            "english": "healthcare",
+            "synonyms": [
+                "health"
+            ]
+        },
+        {
+            "hindi": "हड्डी",
+            "english": "bone",
+            "synonyms": [
+                "bone"
+            ]
+        },
+        {
+            "hindi": "हफ्ता",
+            "english": "week",
+            "synonyms": [
+                "week"
+            ]
+        },
+        {
+            "hindi": "हरित क्रांति",
+            "english": "Green Revolution",
+            "synonyms": [
+                "green revolution"
+            ]
+        },
+        {
+            "hindi": "हल",
+            "english": "plough",
+            "synonyms": [
+                "plow",
+                "solution"
+            ]
+        },
+        {
+            "hindi": "हल्की हवा",
+            "english": "Breeze",
+            "synonyms": [
+                "light breeze"
+            ]
+        },
+        {
+            "hindi": "हवा",
+            "english": "wind",
+            "synonyms": [
+                "air",
+                "wind"
+            ]
+        },
+        {
+            "hindi": "हवाई जहाज",
+            "english": "airplane",
+            "synonyms": [
+                "airplane"
+            ]
+        },
+        {
+            "hindi": "हाँ",
+            "english": "yes",
+            "synonyms": [
+                "yes"
+            ]
+        },
+        {
+            "hindi": "हाथ",
+            "english": "hand",
+            "synonyms": [
+                "hand"
+            ]
+        },
+        {
+            "hindi": "हार्डवेयर",
+            "english": "hardware",
+            "synonyms": [
+                "hardware"
+            ]
+        },
+        {
+            "hindi": "हार्मोन",
+            "english": "hormone",
+            "synonyms": [
+                "hormone"
+            ]
+        },
+        {
+            "hindi": "हिंदी",
+            "english": "Hindi",
+            "synonyms": [
+                "Hindi"
+            ]
+        },
+        {
+            "hindi": "हिमपात",
+            "english": "Snowfall",
+            "synonyms": [
+                "snowfall"
+            ]
+        }
+    ]
+}

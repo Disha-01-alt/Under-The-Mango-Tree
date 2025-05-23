@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+
+{% block title %}Learning Hub - Under The Mango Tree{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero learning-hub-hero">
+        <div class="container text-center">
+            <h1>Learning Hub</h1>
+            <p>Explore our comprehensive learning modules designed to enhance your skills and knowledge.</p>
+        </div>
+    </section>
+
+    <!-- Learning Modules Section -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title">Our Learning Modules</h2>
+            <p class="section-subtitle">Choose from our range of carefully crafted learning modules to begin your educational journey.</p>
+            
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="card module-card">
+                        <div class="card-body">
+                            <h3 class="card-title"><i class="fas fa-language text-primary me-2"></i>English Learning</h3>
+                            <p class="card-text">Our English module offers comprehensive language training through interactive lessons, vocabulary building exercises, grammar practice, and conversational activities.</p>
+                            <h5>What you'll learn:</h5>
+                            <ul>
+                                <li>Basic to advanced English grammar</li>
+                                <li>Vocabulary development</li>
+                                <li>Reading comprehension</li>
+                                <li>Writing skills</li>
+                                <li>Speaking and listening practice</li>
+                            </ul>
+                            <p>Perfect for beginners and intermediate learners looking to improve their communication abilities in English.</p>
+                            <a href="{{ url_for('english_learning') }}" class="btn btn-primary">Start Learning English</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card module-card">
+                        <div class="card-body">
+                            <h3 class="card-title"><i class="fas fa-code text-primary me-2"></i>Python Programming</h3>
+                            <p class="card-text">Our Python programming module provides a structured learning path from basics to advanced concepts through video tutorials and practical exercises.</p>
+                            <h5>What you'll learn:</h5>
+                            <ul>
+                                <li>Python syntax and basic concepts</li>
+                                <li>Data structures and algorithms</li>
+                                <li>Object-oriented programming</li>
+                                <li>File handling and data processing</li>
+                                <li>Web development with Python</li>
+                            </ul>
+                            <p>Ideal for aspiring programmers, data analysts, and anyone interested in learning this versatile programming language.</p>
+                            <a href="{{ url_for('python_learning') }}" class="btn btn-primary">Start Learning Python</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card bg-light mt-5">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h3>Coming Soon: More Learning Modules</h3>
+                            <p class="mb-0">We're constantly expanding our curriculum. Stay tuned for upcoming modules in mathematics, science, business, and more to further enhance your educational journey.</p>
+                        </div>
+                        <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                            <button class="btn btn-secondary" disabled>Coming Soon</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Approach Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">Our Learning Approach</h2>
+            <p class="section-subtitle">At Under The Mango Tree, we believe in a holistic and student-centered approach to education.</p>
+            
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-user-graduate fa-3x text-primary mb-3"></i>
+                            <h4>Student-Centered</h4>
+                            <p>Our learning modules are designed with the student in mind, offering flexibility and personalized learning paths.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-hands-helping fa-3x text-primary mb-3"></i>
+                            <h4>Interactive & Engaging</h4>
+                            <p>We believe in learning by doing, with interactive exercises and engaging content to enhance understanding.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-chart-line fa-3x text-primary mb-3"></i>
+                            <h4>Progress Tracking</h4>
+                            <p>Monitor your progress and achievements as you advance through each learning module.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-5">
+        <div class="container text-center">
+            <h2>Ready to Begin Your Learning Journey?</h2>
+            <p class="mb-4">Choose a learning module and start building valuable skills today.</p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="{{ url_for('english_learning') }}" class="btn btn-primary">
+                    <i class="fas fa-language me-2"></i>English Module
+                </a>
+                <a href="{{ url_for('python_learning') }}" class="btn btn-secondary">
+                    <i class="fas fa-code me-2"></i>Python Module
+                </a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

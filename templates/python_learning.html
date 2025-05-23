@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block title %}Python Learning - Under The Mango Tree{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero" style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://pixabay.com/get/g4f6a0a192580f87199c23b924d75524c2bcb923c4a9e15a9bac1f4eb3d3db49a4b9fe46b42794a0cd747c5107770577d96f2c50f3e32a25246f88a729a9cef72_1280.jpg');">
+        <div class="container text-center">
+            <h1>Python Programming</h1>
+            <p>Learn Python programming from beginner to advanced levels through our comprehensive video tutorials.</p>
+        </div>
+    </section>
+
+    <!-- Python Learning Content -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title">Python Tutorial Videos</h2>
+            <p class="section-subtitle">Follow along with our structured Python learning path, from basic concepts to advanced techniques.</p>
+            
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-lg-2 text-center mb-3 mb-lg-0">
+                            <i class="fas fa-info-circle fa-3x text-primary"></i>
+                        </div>
+                        <div class="col-lg-10">
+                            <h4>How to use this resource</h4>
+                            <p>Our Python tutorial videos are designed to be followed in sequence, building your knowledge progressively. Each video includes explanations and examples to help you understand the concepts.</p>
+                            <p class="mb-0">We recommend watching the videos in order, practicing the concepts after each lesson, and revisiting any topics you find challenging.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="table-responsive">
+                <table class="table table-bordered video-table">
+                    <thead>
+                        <tr>
+                            <th width="40%">Video</th>
+                            <th width="25%">Title</th>
+                            <th width="35%">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody id="video-table-body">
+                        <!-- JavaScript will populate this table -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Resources -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">Additional Python Resources</h2>
+            <p class="section-subtitle">Enhance your Python learning with these complementary resources.</p>
+            
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4><i class="fas fa-book text-primary me-2"></i>Documentation</h4>
+                            <p>Official Python documentation is an excellent reference as you progress in your learning journey.</p>
+                            <a href="https://docs.python.org/3/" class="btn btn-sm btn-outline-primary" target="_blank">Python Docs</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4><i class="fas fa-laptop-code text-primary me-2"></i>Practice Exercises</h4>
+                            <p>Apply what you've learned through coding challenges and exercises designed to reinforce concepts.</p>
+                            <a href="https://www.hackerrank.com/domains/python" class="btn btn-sm btn-outline-primary" target="_blank">Practice Python</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4><i class="fas fa-users text-primary me-2"></i>Community</h4>
+                            <p>Join the Python community to get help, share knowledge, and connect with other learners.</p>
+                            <a href="https://www.reddit.com/r/learnpython/" class="btn btn-sm btn-outline-primary" target="_blank">Python Community</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{{ url_for('static', filename='js/python_videos.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,2394 @@
+{
+    "title": "Sentence Correctness",
+    "description": "Test your English grammar by identifying correct and incorrect sentences. Practice with real-world examples.",
+    "exercises": [
+        {
+            "id": 1,
+            "sentence": "A lot of people is coming.",
+            "isCorrect": false,
+            "explanation": "A lot is plural. Corrected: A lot of people are coming."
+        },
+        {
+            "id": 2,
+            "sentence": "A lot of people went to the concert.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 3,
+            "sentence": "A number of students are absent.",
+            "isCorrect": true,
+            "explanation": "A number is plural in this context."
+        },
+        {
+            "id": 4,
+            "sentence": "Alot of people went to the concert.",
+            "isCorrect": false,
+            "explanation": "A lot is two words. Corrected: A lot of people went to the concert."
+        },
+        {
+            "id": 5,
+            "sentence": "At the present time, I am busy.",
+            "isCorrect": false,
+            "explanation": "Verbose. Corrected: I am busy now."
+        },
+        {
+            "id": 6,
+            "sentence": "At what time will you arrive?",
+            "isCorrect": true,
+            "explanation": "Correct usage of preposition."
+        },
+        {
+            "id": 7,
+            "sentence": "Between you and I, this is a secret.",
+            "isCorrect": false,
+            "explanation": "Incorrect pronoun case. Corrected: Between you and me, this is a secret."
+        },
+        {
+            "id": 8,
+            "sentence": "Bring the book to me.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 9,
+            "sentence": "Can I borrow your pencil?",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 10,
+            "sentence": "Can I lend your pencil?",
+            "isCorrect": false,
+            "explanation": "Wrong word use. Corrected: Can you lend me your pencil?"
+        },
+        {
+            "id": 11,
+            "sentence": "Can I please borrow your pencil?",
+            "isCorrect": true,
+            "explanation": "Correct syntax."
+        },
+        {
+            "id": 12,
+            "sentence": "Can you please borrow me a pencil?",
+            "isCorrect": false,
+            "explanation": "Borrow is wrong word. Corrected: Can you please lend me a pencil?"
+        },
+        {
+            "id": 13,
+            "sentence": "Can you please lend me your pencil?",
+            "isCorrect": true,
+            "explanation": "Correct syntax."
+        },
+        {
+            "id": 14,
+            "sentence": "Despite of the rain, we went for a walk.",
+            "isCorrect": false,
+            "explanation": "Redundant preposition. Corrected: Despite the rain, we went for a walk."
+        },
+        {
+            "id": 15,
+            "sentence": "Do you have patients?",
+            "isCorrect": false,
+            "explanation": "Wrong word use. Corrected: Do you have patience?"
+        },
+        {
+            "id": 16,
+            "sentence": "Each of the players try their best.",
+            "isCorrect": false,
+            "explanation": "Subject-verb agreement error. \"Each\" takes a singular verb. Corrected: Each of the players tries their best."
+        },
+        {
+            "id": 17,
+            "sentence": "Each of the students are responsible.",
+            "isCorrect": false,
+            "explanation": "Agreement error is \"is\" not \"are\". Corrected: Each of the students is responsible."
+        },
+        {
+            "id": 18,
+            "sentence": "Each students need a pencil.",
+            "isCorrect": false,
+            "explanation": "Student should be plural. Corrected: Each student needs a pencil."
+        },
+        {
+            "id": 19,
+            "sentence": "Either John or his friends is going to pick her up.",
+            "isCorrect": false,
+            "explanation": "Subject-verb agreement error. The verb should agree with the noun closest to it. Corrected: Either John or his friends are going to pick her up."
+        },
+        {
+            "id": 20,
+            "sentence": "Either John or Mary are coming.",
+            "isCorrect": false,
+            "explanation": "The first word of the pair is the correct one to use in the agreement. Corrected: Either John or Mary is coming."
+        },
+        {
+            "id": 21,
+            "sentence": "Either of those options work for me.",
+            "isCorrect": false,
+            "explanation": "Singular verb use. Corrected: Either of those options works for me."
+        },
+        {
+            "id": 22,
+            "sentence": "Every child want a toy.",
+            "isCorrect": false,
+            "explanation": "Child should be singular. Corrected: Every child wants a toy."
+        },
+        {
+            "id": 23,
+            "sentence": "Every student have to take the test.",
+            "isCorrect": false,
+            "explanation": "Every is singular. Corrected: Every student has to take the test."
+        },
+        {
+            "id": 24,
+            "sentence": "Everyday I go to school.",
+            "isCorrect": false,
+            "explanation": "Should be \"every day\", not \"everyday\" (adjective). Corrected: Every day I go to school."
+        },
+        {
+            "id": 25,
+            "sentence": "Everyone are going to the party.",
+            "isCorrect": false,
+            "explanation": "Subject-verb agreement. \"Everyone\" is singular. Corrected: Everyone is going to the party."
+        },
+        {
+            "id": 26,
+            "sentence": "Everyone are welcome.",
+            "isCorrect": false,
+            "explanation": "The singular use of every. Corrected: Everyone is welcome."
+        },
+        {
+            "id": 27,
+            "sentence": "Everyone but he went to the party.",
+            "isCorrect": false,
+            "explanation": "Pronoun case error. Corrected: Everyone but him went to the party."
+        },
+        {
+            "id": 28,
+            "sentence": "Everyone is happy.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 29,
+            "sentence": "Give it to John and I.",
+            "isCorrect": false,
+            "explanation": "Pronoun error. Corrected: Give it to John and me."
+        },
+        {
+            "id": 30,
+            "sentence": "He always has been on time.",
+            "isCorrect": false,
+            "explanation": "Order is bad. Corrected: He has always been on time."
+        },
+        {
+            "id": 31,
+            "sentence": "He don't like coffee.",
+            "isCorrect": false,
+            "explanation": "Subject-verb agreement error. Corrected: He doesn't like coffee."
+        },
+        {
+            "id": 32,
+            "sentence": "He done a good job.",
+            "isCorrect": false,
+            "explanation": "Incorrect verb form. Corrected: He did a good job."
+        },
+        {
+            "id": 33,
+            "sentence": "He drive good.",
+            "isCorrect": false,
+            "explanation": "Should be \"well\" (adverb) because it modifies the verb \"drive\". Corrected: He drives well."
+        },
+        {
+            "id": 34,
+            "sentence": "He felt good after the workout.",
+            "isCorrect": true,
+            "explanation": "Describes how he felt."
+        },
+        {
+            "id": 35,
+            "sentence": "He gave the book to Mary and I.",
+            "isCorrect": false,
+            "explanation": "Incorrect pronoun case. Corrected: He gave the book to Mary and me."
+        },
+        {
+            "id": 36,
+            "sentence": "He give the book to Mary and I.",
+            "isCorrect": false,
+            "explanation": "The correct case is \"me\" not \"I\". Corrected: He give the book to Mary and me."
+        },
+        {
+            "id": 37,
+            "sentence": "He has ate all of his dinner.",
+            "isCorrect": false,
+            "explanation": "Incorrect verb form. Corrected: He has eaten all of his dinner."
+        },
+        {
+            "id": 38,
+            "sentence": "He have a new car.",
+            "isCorrect": false,
+            "explanation": "Incorrect subject-verb agreement. Corrected: He has a new car."
+        },
+        {
+            "id": 39,
+            "sentence": "He insisted to pay for the meal.",
+            "isCorrect": false,
+            "explanation": "Wrong word use. Corrected: He insisted on paying for the meal."
+        },
+        {
+            "id": 40,
+            "sentence": "He is a good swimmer.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 41,
+            "sentence": "He is a great principle.",
+            "isCorrect": false,
+            "explanation": "Wrong word use. Corrected: He is a great principal."
+        },
+        {
+            "id": 42,
+            "sentence": "He is a honest man.",
+            "isCorrect": false,
+            "explanation": "Incorrect article usage. Corrected: He is an honest man."
+        },
+        {
+            "id": 43,
+            "sentence": "He is a real good player.",
+            "isCorrect": false,
+            "explanation": "Use \"really\" to modify an adjective. Corrected: He is a really good player."
+        },
+        {
+            "id": 44,
+            "sentence": "He is a unique person.",
+            "isCorrect": true,
+            "explanation": "Because unique sounds like \"you-neek\" then a is correct here."
+        },
+        {
+            "id": 45,
+            "sentence": "He is addicted from coffee.",
+            "isCorrect": false,
+            "explanation": "Incorrect preposition. Corrected: He is addicted to coffee."
+        },
+        {
+            "id": 46,
+            "sentence": "He is as tall as me.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 47,
+            "sentence": "He is cleaning the house.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 48,
+            "sentence": "He is dancing.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 49,
+            "sentence": "He is depending of his parents.",
+            "isCorrect": false,
+            "explanation": "The preposition \"on.\" Corrected: He is depending on his parents."
+        },
+        {
+            "id": 50,
+            "sentence": "He is different than me.",
+            "isCorrect": false,
+            "explanation": "Different from is generally preferred over \"different than\". Corrected: He is different from me."
+        },
+        {
+            "id": 51,
+            "sentence": "He is driving fastly.",
+            "isCorrect": false,
+            "explanation": "No such word. Corrected: He is driving fast."
+        },
+        {
+            "id": 52,
+            "sentence": "He is frowning.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 53,
+            "sentence": "He is going too the store.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage (\"too\" vs. \"to\"). Corrected: He is going to the store."
+        },
+        {
+            "id": 54,
+            "sentence": "He is good at math.",
+            "isCorrect": true,
+            "explanation": "Correct sentence."
+        },
+        {
+            "id": 55,
+            "sentence": "He is good in math.",
+            "isCorrect": false,
+            "explanation": "Corrected: He is good at math."
+        },
+        {
+            "id": 56,
+            "sentence": "He is good.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 57,
+            "sentence": "He is laying on the bed.",
+            "isCorrect": false,
+            "explanation": "The person is lying not laying on the bed. Corrected: He is lying on the bed."
+        },
+        {
+            "id": 58,
+            "sentence": "He is more taller than his brother.",
+            "isCorrect": false,
+            "explanation": "Redundant comparison. Corrected: He is taller than his brother."
+        },
+        {
+            "id": 59,
+            "sentence": "He is my best friend.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 60,
+            "sentence": "He is prejudice against them.",
+            "isCorrect": false,
+            "explanation": "Not the correct word. Corrected: He is prejudiced against them."
+        },
+        {
+            "id": 61,
+            "sentence": "He is taller as me.",
+            "isCorrect": false,
+            "explanation": "Use the word \"than\" for comparison. Corrected: He is taller than me."
+        },
+        {
+            "id": 62,
+            "sentence": "He is taller then me.",
+            "isCorrect": false,
+            "explanation": "Incorrect word choice. Corrected: He is taller than me."
+        },
+        {
+            "id": 63,
+            "sentence": "He is the best player on the team.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 64,
+            "sentence": "He is the fastest runner in the class.",
+            "isCorrect": true,
+            "explanation": "Correct sentence."
+        },
+        {
+            "id": 65,
+            "sentence": "He is the fastest runner of the two boys.",
+            "isCorrect": true,
+            "explanation": "Correct sentence."
+        },
+        {
+            "id": 66,
+            "sentence": "He is the only person who can to do that.",
+            "isCorrect": false,
+            "explanation": "Superfluous \"to\". Corrected: He is the only person who can do that."
+        },
+        {
+            "id": 67,
+            "sentence": "He is the taller of the two boys.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 68,
+            "sentence": "He is understanding the problem.",
+            "isCorrect": false,
+            "explanation": "Stative verb issue; While less strict than the others, \"understand\" is generally better in simple tense. Corrected: He understands"
+        },
+        {
+            "id": 69,
+            "sentence": "He is wishing.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 70,
+            "sentence": "He is writing a letter.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 71,
+            "sentence": "He laying on the couch.",
+            "isCorrect": false,
+            "explanation": "Lying or laying is not the correct form. Corrected: He is lying on the couch."
+        },
+        {
+            "id": 72,
+            "sentence": "He learned a lot in school.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 73,
+            "sentence": "He plays the piano very good.",
+            "isCorrect": false,
+            "explanation": "Piano is modify by verb. Corrected: He plays the piano very well."
+        },
+        {
+            "id": 74,
+            "sentence": "He raised the flag.",
+            "isCorrect": true,
+            "explanation": "Correct verb usage."
+        },
+        {
+            "id": 75,
+            "sentence": "He runned to the store.",
+            "isCorrect": false,
+            "explanation": "Incorrect verb form. Corrected: He ran to the store."
+        },
+        {
+            "id": 76,
+            "sentence": "He said that their going to be late.",
+            "isCorrect": false,
+            "explanation": "Incorrect word choice. Corrected: He said that they're going to be late."
+        },
+        {
+            "id": 77,
+            "sentence": "He were very happy to see her.",
+            "isCorrect": false,
+            "explanation": "Incorrect subject-verb agreement. Corrected: He was very happy to see her."
+        },
+        {
+            "id": 78,
+            "sentence": "He's car is red.",
+            "isCorrect": false,
+            "explanation": "Word usage. Corrected: His car is red."
+        },
+        {
+            "id": 79,
+            "sentence": "He's use to getting up early.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: He's used to getting up early."
+        },
+        {
+            "id": 80,
+            "sentence": "Her and me went shopping.",
+            "isCorrect": false,
+            "explanation": "Pronoun error. Corrected: She and I went shopping."
+        },
+        {
+            "id": 81,
+            "sentence": "I always set by the window.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: I always sit by the window."
+        },
+        {
+            "id": 82,
+            "sentence": "I am adverse to the plan.",
+            "isCorrect": true,
+            "explanation": "Correct syntax."
+        },
+        {
+            "id": 83,
+            "sentence": "I am going to by a new car.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: I am going to buy a new car."
+        },
+        {
+            "id": 84,
+            "sentence": "I am going to home.",
+            "isCorrect": false,
+            "explanation": "Superfluous preposition. Corrected: I am going home."
+        },
+        {
+            "id": 85,
+            "sentence": "I am going to set down.",
+            "isCorrect": false,
+            "explanation": "Set is not the correct verb. Corrected: I am going to sit down."
+        },
+        {
+            "id": 86,
+            "sentence": "I am going to the park later.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 87,
+            "sentence": "I am going to the store for buy milk.",
+            "isCorrect": false,
+            "explanation": "Use infinitive. Corrected: I am going to the store to buy milk."
+        },
+        {
+            "id": 88,
+            "sentence": "I am grateful for you.",
+            "isCorrect": false,
+            "explanation": "Correct usage. Corrected: I am grateful to you."
+        },
+        {
+            "id": 89,
+            "sentence": "I am interesting in learning Spanish.",
+            "isCorrect": false,
+            "explanation": "Incorrect word choice. Corrected: I am interested in learning Spanish."
+        },
+        {
+            "id": 90,
+            "sentence": "I am laughing.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 91,
+            "sentence": "I am learning how to play the piano.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 92,
+            "sentence": "I am listening to music.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 93,
+            "sentence": "I am looking forward to seeing you.",
+            "isCorrect": true,
+            "explanation": "Correct sentence."
+        },
+        {
+            "id": 94,
+            "sentence": "I am needing help.",
+            "isCorrect": false,
+            "explanation": "Stative verb issue; \"need\" isn't typically used in the continuous. Corrected: I need help."
+        },
+        {
+            "id": 95,
+            "sentence": "I am not use to this.",
+            "isCorrect": false,
+            "explanation": "Correct the word \"used\". Corrected: I am not used to this."
+        },
+        {
+            "id": 96,
+            "sentence": "I am seeing the doctor tomorrow.",
+            "isCorrect": true,
+            "explanation": "While \"see\" can be stative, it's commonly used in continuous tense to indicate an appointment. This is correct."
+        },
+        {
+            "id": 97,
+            "sentence": "I am studying English.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 98,
+            "sentence": "I am taller as him.",
+            "isCorrect": false,
+            "explanation": "Use the word \"than\" for comparison. Corrected: I am taller than him."
+        },
+        {
+            "id": 99,
+            "sentence": "I am thinking.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 100,
+            "sentence": "I am tired.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 101,
+            "sentence": "I am use to this.",
+            "isCorrect": false,
+            "explanation": "Corrected use. Corrected: I am used to this."
+        },
+        {
+            "id": 102,
+            "sentence": "I am very happy to see you.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 103,
+            "sentence": "I am very interesting in this book.",
+            "isCorrect": false,
+            "explanation": "Wrong adjective. Corrected: I am very interested in this book."
+        },
+        {
+            "id": 104,
+            "sentence": "I am very much happy to be here.",
+            "isCorrect": false,
+            "explanation": "More natural phrasing. Corrected: I am very happy to be here."
+        },
+        {
+            "id": 105,
+            "sentence": "I am waiting on the bus.",
+            "isCorrect": false,
+            "explanation": "Better usage of \"for\". Corrected: I am waiting for the bus."
+        },
+        {
+            "id": 106,
+            "sentence": "I appreciate you helping me.",
+            "isCorrect": true,
+            "explanation": "Could be re-worded."
+        },
+        {
+            "id": 107,
+            "sentence": "I appreciate your helping me.",
+            "isCorrect": true,
+            "explanation": "Correct syntax."
+        },
+        {
+            "id": 108,
+            "sentence": "I asked to her.",
+            "isCorrect": false,
+            "explanation": "Word error. Corrected: I asked her."
+        },
+        {
+            "id": 109,
+            "sentence": "I can't except your apology.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: I can't accept your apology."
+        },
+        {
+            "id": 110,
+            "sentence": "I can't hardly wait.",
+            "isCorrect": false,
+            "explanation": "Double negative. Corrected: I can hardly wait. OR I can't wait."
+        },
+        {
+            "id": 111,
+            "sentence": "I can't here you very well.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: I can't hear you very well."
+        },
+        {
+            "id": 112,
+            "sentence": "I can't see good.",
+            "isCorrect": false,
+            "explanation": "Grammar. Corrected: I can't see well."
+        },
+        {
+            "id": 113,
+            "sentence": "I could care less.",
+            "isCorrect": false,
+            "explanation": "Incorrect idiom; should be \"couldn't care less\". Corrected: I couldn't care less."
+        },
+        {
+            "id": 114,
+            "sentence": "I could of helped you.",
+            "isCorrect": false,
+            "explanation": "Incorrect usage. Corrected: I could have helped you."
+        },
+        {
+            "id": 115,
+            "sentence": "I didn't no he was coming.",
+            "isCorrect": false,
+            "explanation": "Wrong word use. Corrected: I didn't know he was coming."
+        },
+        {
+            "id": 116,
+            "sentence": "I don't have no money.",
+            "isCorrect": false,
+            "explanation": "Double negative. Corrected: I don't have any money. OR I have no money."
+        },
+        {
+            "id": 117,
+            "sentence": "I don't have no time to waste.",
+            "isCorrect": false,
+            "explanation": "Double negative. Corrected: I don't have any time to waste. or: I have no time to waste."
+        },
+        {
+            "id": 118,
+            "sentence": "I don't know whether or not to go.",
+            "isCorrect": true,
+            "explanation": "Correct usage of \"whether\"."
+        },
+        {
+            "id": 119,
+            "sentence": "I don't know who to give it to.",
+            "isCorrect": false,
+            "explanation": "Word usage and sentence issue. Corrected: I don't know to whom I should give it."
+        },
+        {
+            "id": 120,
+            "sentence": "I don't remember locking the door.",
+            "isCorrect": true,
+            "explanation": "Correct meaning/grammar."
+        },
+        {
+            "id": 121,
+            "sentence": "I feel badly about what happened.",
+            "isCorrect": false,
+            "explanation": "Use \"bad\" after a linking verb like \"feel.\" Corrected: I feel bad about what happened."
+        },
+        {
+            "id": 122,
+            "sentence": "I get use to the noise now.",
+            "isCorrect": false,
+            "explanation": "Incorrect verb tense. Corrected: I get used to the noise now."
+        },
+        {
+            "id": 123,
+            "sentence": "I have a dog and a cat.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 124,
+            "sentence": "I have a less amount of books than you.",
+            "isCorrect": false,
+            "explanation": "Correct use of \"fewer\". Corrected: I have a fewer amount of books than you."
+        },
+        {
+            "id": 125,
+            "sentence": "I have a lot of patience.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 126,
+            "sentence": "I have been knowing him for years.",
+            "isCorrect": false,
+            "explanation": "Correct syntax. Corrected: I have known him for years."
+        },
+        {
+            "id": 127,
+            "sentence": "I have been to London before.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 128,
+            "sentence": "I have less apples than her.",
+            "isCorrect": false,
+            "explanation": "Wrong word choice and comparison structure. Corrected: I have fewer apples than she does. or I have fewer apples than her."
+        },
+        {
+            "id": 129,
+            "sentence": "I have patients in my clinic.",
+            "isCorrect": true,
+            "explanation": "Correct sentence."
+        },
+        {
+            "id": 130,
+            "sentence": "I have seen that movie already.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 131,
+            "sentence": "I have to many books to carry.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: I have too many books to carry."
+        },
+        {
+            "id": 132,
+            "sentence": "I have trouble to understanding him.",
+            "isCorrect": false,
+            "explanation": "Incorrect word use. Corrected: I have trouble understanding him."
+        },
+        {
+            "id": 133,
+            "sentence": "I have went to Paris.",
+            "isCorrect": false,
+            "explanation": "Incorrect verb form. Corrected: I have gone to Paris."
+        },
+        {
+            "id": 134,
+            "sentence": "I is going to the beach tomorrow.",
+            "isCorrect": false,
+            "explanation": "Incorrect subject-verb agreement. Corrected: I am going to the beach tomorrow."
+        },
+        {
+            "id": 135,
+            "sentence": "I is going to the store.",
+            "isCorrect": false,
+            "explanation": "Subject-verb agreement error. Corrected: I am going to the store."
+        },
+        {
+            "id": 136,
+            "sentence": "I live in the United Kingdom.",
+            "isCorrect": true,
+            "explanation": "Correct sentence."
+        },
+        {
+            "id": 137,
+            "sentence": "I live in United Kingdom.",
+            "isCorrect": false,
+            "explanation": "Missing article. Corrected: I live in the United Kingdom."
+        },
+        {
+            "id": 138,
+            "sentence": "I love to singing in the shower.",
+            "isCorrect": false,
+            "explanation": "Verb error. Corrected: I love to sing in the shower."
+        },
+        {
+            "id": 139,
+            "sentence": "I must lay down now.",
+            "isCorrect": false,
+            "explanation": "Not the best usage. Corrected: I must lie down now."
+        },
+        {
+            "id": 140,
+            "sentence": "I now the answer to the question.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: I know the answer to the question."
+        },
+        {
+            "id": 141,
+            "sentence": "I now where he lives.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: I know where he lives."
+        },
+        {
+            "id": 142,
+            "sentence": "I prefer coffee over tea.",
+            "isCorrect": true,
+            "explanation": "Correct usage of prefer over."
+        },
+        {
+            "id": 143,
+            "sentence": "I seen him their yesterday.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: I saw him there yesterday."
+        },
+        {
+            "id": 144,
+            "sentence": "I seen him yesterday.",
+            "isCorrect": false,
+            "explanation": "Incorrect verb tense. Corrected: I saw him yesterday."
+        },
+        {
+            "id": 145,
+            "sentence": "I seen it with my own eyes.",
+            "isCorrect": false,
+            "explanation": "Incorrect verb tense. Corrected: I saw it with my own eyes."
+        },
+        {
+            "id": 146,
+            "sentence": "I seen the movie last night.",
+            "isCorrect": false,
+            "explanation": "Incorrect verb form. Corrected: I saw the movie last night."
+        },
+        {
+            "id": 147,
+            "sentence": "I use to go there.",
+            "isCorrect": false,
+            "explanation": "Did vs. use. Corrected: I used to go there."
+        },
+        {
+            "id": 148,
+            "sentence": "I use to live there.",
+            "isCorrect": false,
+            "explanation": "Incorrect past tense usage. Corrected: I used to live there."
+        },
+        {
+            "id": 149,
+            "sentence": "I wear everyday clothes to school.",
+            "isCorrect": true,
+            "explanation": "Correct usage of \"everyday\" as an adjective."
+        },
+        {
+            "id": 150,
+            "sentence": "I went too the store yesterday.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: I went to the store yesterday."
+        },
+        {
+            "id": 151,
+            "sentence": "I will always remember to visit London.",
+            "isCorrect": true,
+            "explanation": "Correct meaning/grammar."
+        },
+        {
+            "id": 152,
+            "sentence": "I will except your invitation.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: I will accept your invitation."
+        },
+        {
+            "id": 153,
+            "sentence": "I will learn you how to bake a cake.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: I will teach you how to bake a cake."
+        },
+        {
+            "id": 154,
+            "sentence": "I will meet you at the library on Tuesday.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 155,
+            "sentence": "I will never forget visiting London.",
+            "isCorrect": true,
+            "explanation": "Correct meaning/grammar."
+        },
+        {
+            "id": 156,
+            "sentence": "I wish I was taller.",
+            "isCorrect": true,
+            "explanation": "Acceptable usage of \"was\" in a wish."
+        },
+        {
+            "id": 157,
+            "sentence": "I wish I was you.",
+            "isCorrect": true,
+            "explanation": "Correct, informal construction."
+        },
+        {
+            "id": 158,
+            "sentence": "I wish I were taller.",
+            "isCorrect": true,
+            "explanation": "More formal and sometimes preferred usage of \"were\" in a wish."
+        },
+        {
+            "id": 159,
+            "sentence": "I wish I were you.",
+            "isCorrect": true,
+            "explanation": "Formal construction, also correct."
+        },
+        {
+            "id": 160,
+            "sentence": "I would of gone if I had known.",
+            "isCorrect": false,
+            "explanation": "Incorrect word choice. Corrected: I would have gone if I had known."
+        },
+        {
+            "id": 161,
+            "sentence": "I would of gone to the party, but I was sick.",
+            "isCorrect": false,
+            "explanation": "Incorrect use of \"of\" instead of \"have\". Corrected: I would have gone to the party, but I was sick."
+        },
+        {
+            "id": 162,
+            "sentence": "I'm boring.",
+            "isCorrect": false,
+            "explanation": "Wrong word use. Corrected: I'm bored."
+        },
+        {
+            "id": 163,
+            "sentence": "I'm not shore what you mean.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: I'm not sure what you mean."
+        },
+        {
+            "id": 164,
+            "sentence": "If he was there, he would have helped.",
+            "isCorrect": false,
+            "explanation": "Mixed conditional. Corrected: If he had been there, he would have helped."
+        },
+        {
+            "id": 165,
+            "sentence": "If I was rich, I would travel the world.",
+            "isCorrect": true,
+            "explanation": "Conditional sentence using \"was\" is correct in this context."
+        },
+        {
+            "id": 166,
+            "sentence": "If I was you, I would study.",
+            "isCorrect": true,
+            "explanation": "Correct, informal construction."
+        },
+        {
+            "id": 167,
+            "sentence": "If I were rich, I would travel the world.",
+            "isCorrect": true,
+            "explanation": "Conditional sentence using \"were\" is also correct."
+        },
+        {
+            "id": 168,
+            "sentence": "If I were you, I would study.",
+            "isCorrect": true,
+            "explanation": "Correct, formal construction."
+        },
+        {
+            "id": 169,
+            "sentence": "If I would have known, I would have told you.",
+            "isCorrect": false,
+            "explanation": "Incorrect conditional sentence structure. Corrected: If I had known, I would have told you."
+        },
+        {
+            "id": 170,
+            "sentence": "In my opinion, I think that is a good idea.",
+            "isCorrect": false,
+            "explanation": "Repetitive. Corrected: I think it's a good idea."
+        },
+        {
+            "id": 171,
+            "sentence": "Is important to practice every day.",
+            "isCorrect": false,
+            "explanation": "Missing word. Corrected: It is important to practice every day."
+        },
+        {
+            "id": 172,
+            "sentence": "It is a easy question.",
+            "isCorrect": false,
+            "explanation": "Corrected article. Corrected: It is an easy question."
+        },
+        {
+            "id": 173,
+            "sentence": "It is a interesting book.",
+            "isCorrect": false,
+            "explanation": "Incorrect article. Should be \"an\" before a vowel sound. Corrected: It is an interesting book."
+        },
+        {
+            "id": 174,
+            "sentence": "It is important to be quiet.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 175,
+            "sentence": "It is kind for you to help.",
+            "isCorrect": false,
+            "explanation": "Word usage. Corrected: It is kind of you to help."
+        },
+        {
+            "id": 176,
+            "sentence": "It is time to decide weather we should go.",
+            "isCorrect": false,
+            "explanation": "Wrong word use. Corrected: It is time to decide whether we should go."
+        },
+        {
+            "id": 177,
+            "sentence": "It is to late to go to the park.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: It is too late to go to the park."
+        },
+        {
+            "id": 178,
+            "sentence": "It was her whom called.",
+            "isCorrect": false,
+            "explanation": "Incorrect pronoun. Corrected: It was she who called."
+        },
+        {
+            "id": 179,
+            "sentence": "It's a nice day to go swimming to.",
+            "isCorrect": false,
+            "explanation": "Incorrect word choice. Corrected: It's a nice day to go swimming too."
+        },
+        {
+            "id": 180,
+            "sentence": "It's a nice whether today.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: It's a nice weather today."
+        },
+        {
+            "id": 181,
+            "sentence": "It's important too study hard.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: It's important to study hard."
+        },
+        {
+            "id": 182,
+            "sentence": "It's to cold to go swimming today.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: It's too cold to go swimming today."
+        },
+        {
+            "id": 183,
+            "sentence": "Its a beautiful day.",
+            "isCorrect": false,
+            "explanation": "Contraction error. Corrected: It's a beautiful day."
+        },
+        {
+            "id": 184,
+            "sentence": "Its important to be quiet.",
+            "isCorrect": false,
+            "explanation": "Contraction error. Corrected: It's important to be quiet."
+        },
+        {
+            "id": 185,
+            "sentence": "Its raining outside, so take an umbrella.",
+            "isCorrect": false,
+            "explanation": "Incorrect word use. Corrected: It's raining outside, so take an umbrella."
+        },
+        {
+            "id": 186,
+            "sentence": "John and me are best friends.",
+            "isCorrect": false,
+            "explanation": "Pronoun error. Corrected: John and I are best friends."
+        },
+        {
+            "id": 187,
+            "sentence": "John is a goodly student.",
+            "isCorrect": false,
+            "explanation": "Not really a word. Corrected: John is a good student."
+        },
+        {
+            "id": 188,
+            "sentence": "John lives at Elm Street.",
+            "isCorrect": false,
+            "explanation": "Not common. Corrected: John lives on Elm Street."
+        },
+        {
+            "id": 189,
+            "sentence": "Lay down on the couch.",
+            "isCorrect": false,
+            "explanation": "Lay vs. lie. Corrected: Lie down on the couch."
+        },
+        {
+            "id": 190,
+            "sentence": "Learn to play the guitar.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 191,
+            "sentence": "Let us buy it, shall we?",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 192,
+            "sentence": "Let's go to the beach, their is sun and sand.",
+            "isCorrect": false,
+            "explanation": "Should be \"there\". Corrected: Let's go to the beach, there is sun and sand."
+        },
+        {
+            "id": 193,
+            "sentence": "May I go to the restroom?",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 194,
+            "sentence": "May I have some water?",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 195,
+            "sentence": "Me and him went to the movies.",
+            "isCorrect": false,
+            "explanation": "Incorrect pronoun case. Corrected: He and I went to the movies."
+        },
+        {
+            "id": 196,
+            "sentence": "Me and John are going to the store.",
+            "isCorrect": false,
+            "explanation": "Word order/pronoun mistake. Corrected: John and I are going to the store."
+        },
+        {
+            "id": 197,
+            "sentence": "My brother and me went fishing.",
+            "isCorrect": false,
+            "explanation": "Incorrect pronoun case. Corrected: My brother and I went fishing."
+        },
+        {
+            "id": 198,
+            "sentence": "My favorite color is blue.",
+            "isCorrect": true,
+            "explanation": "Correct sentence."
+        },
+        {
+            "id": 199,
+            "sentence": "Neither John nor Mary are coming.",
+            "isCorrect": false,
+            "explanation": "The first word of the pair is the correct one to use in the agreement. Corrected: Neither John nor Mary is coming."
+        },
+        {
+            "id": 200,
+            "sentence": "Neither of them are going.",
+            "isCorrect": false,
+            "explanation": "Singular verb use. Corrected: Neither of them is going."
+        },
+        {
+            "id": 201,
+            "sentence": "Neither the cat nor the dogs is home.",
+            "isCorrect": false,
+            "explanation": "Subject-verb agreement error. The verb should agree with the noun closest to it. Corrected: Neither the cat nor the dogs are home."
+        },
+        {
+            "id": 202,
+            "sentence": "Nobody are perfect.",
+            "isCorrect": false,
+            "explanation": "Nobody is singular. Corrected: Nobody is perfect."
+        },
+        {
+            "id": 203,
+            "sentence": "None of us is going.",
+            "isCorrect": false,
+            "explanation": "None can be either singular or plural. Corrected: None of us are going."
+        },
+        {
+            "id": 204,
+            "sentence": "One of my friend is coming over.",
+            "isCorrect": false,
+            "explanation": "Make plural friends. Corrected: One of my friends is coming over."
+        },
+        {
+            "id": 205,
+            "sentence": "Please put the book over their.",
+            "isCorrect": false,
+            "explanation": "Incorrect word use. Corrected: Please put the book over there."
+        },
+        {
+            "id": 206,
+            "sentence": "Please set down.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage; sit vs. set. Corrected: Please sit down."
+        },
+        {
+            "id": 207,
+            "sentence": "Please, except my apology.",
+            "isCorrect": false,
+            "explanation": "Wrong word use. Corrected: Please, accept my apology."
+        },
+        {
+            "id": 208,
+            "sentence": "Raise your hand if you know the answer.",
+            "isCorrect": true,
+            "explanation": "Correct verb usage."
+        },
+        {
+            "id": 209,
+            "sentence": "Rise and shine!",
+            "isCorrect": true,
+            "explanation": "Correct verb usage."
+        },
+        {
+            "id": 210,
+            "sentence": "Run quickly!",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 211,
+            "sentence": "Set the book on the table.",
+            "isCorrect": true,
+            "explanation": "Correct usage of \"set\"."
+        },
+        {
+            "id": 212,
+            "sentence": "She always sites that author in her essays.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage; cite vs. site. Corrected: She always cites that author in her essays."
+        },
+        {
+            "id": 213,
+            "sentence": "She doesn't know nothing about it.",
+            "isCorrect": false,
+            "explanation": "Double negative. Corrected: She doesn't know anything about it. OR She knows nothing about it."
+        },
+        {
+            "id": 214,
+            "sentence": "She don't like chocolate.",
+            "isCorrect": false,
+            "explanation": "Incorrect subject-verb agreement. Corrected: She doesn't like chocolate."
+        },
+        {
+            "id": 215,
+            "sentence": "She enjoys to read books.",
+            "isCorrect": false,
+            "explanation": "Correct verb use. Corrected: She enjoys reading books."
+        },
+        {
+            "id": 216,
+            "sentence": "She goes to school at Monday.",
+            "isCorrect": false,
+            "explanation": "Missing preposition. Corrected: She goes to school on Monday."
+        },
+        {
+            "id": 217,
+            "sentence": "She has all ready finished her homework.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: She has already finished her homework."
+        },
+        {
+            "id": 218,
+            "sentence": "She has did a good job on the project.",
+            "isCorrect": false,
+            "explanation": "Incorrect verb form. Corrected: She has done a good job on the project."
+        },
+        {
+            "id": 219,
+            "sentence": "She invited John and me to her party.",
+            "isCorrect": true,
+            "explanation": "Correct pronoun case."
+        },
+        {
+            "id": 220,
+            "sentence": "She is a doctor.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 221,
+            "sentence": "She is a honest person.",
+            "isCorrect": false,
+            "explanation": "Incorrect article. Should be \"an\" before a vowel sound. Corrected: She is an honest person."
+        },
+        {
+            "id": 222,
+            "sentence": "She is a only child.",
+            "isCorrect": false,
+            "explanation": "Correct article. Corrected: She is an only child."
+        },
+        {
+            "id": 223,
+            "sentence": "She is a very nice person.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 224,
+            "sentence": "She is afraid of spiders.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 225,
+            "sentence": "She is always lose her keys.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: She is always losing her keys."
+        },
+        {
+            "id": 226,
+            "sentence": "She is coming to visit they're house.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: She is coming to visit their house."
+        },
+        {
+            "id": 227,
+            "sentence": "She is cooking dinner.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 228,
+            "sentence": "She is eating an apple.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 229,
+            "sentence": "She is good on math.",
+            "isCorrect": false,
+            "explanation": "The best is \"at.\" Corrected: She is good at math."
+        },
+        {
+            "id": 230,
+            "sentence": "She is hoping.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 231,
+            "sentence": "She is knowing the answer.",
+            "isCorrect": false,
+            "explanation": "Stative verb issue; \"know\" isn't typically used in the continuous. Corrected: She knows the answer."
+        },
+        {
+            "id": 232,
+            "sentence": "She is laying on the beach.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: She is lying on the beach."
+        },
+        {
+            "id": 233,
+            "sentence": "She is more smarter than her sister.",
+            "isCorrect": false,
+            "explanation": "Redundant comparison. Corrected: She is smarter than her sister."
+        },
+        {
+            "id": 234,
+            "sentence": "She is not hear right now.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: She is not here right now."
+        },
+        {
+            "id": 235,
+            "sentence": "She is not use to the noise.",
+            "isCorrect": false,
+            "explanation": "Incorrect idiom. Corrected: She is not used to the noise."
+        },
+        {
+            "id": 236,
+            "sentence": "She is reading a book.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 237,
+            "sentence": "She is setting on the chair.",
+            "isCorrect": false,
+            "explanation": "Incorrect verb form. Corrected: She is sitting on the chair."
+        },
+        {
+            "id": 238,
+            "sentence": "She is singing a song.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 239,
+            "sentence": "She is smiling.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 240,
+            "sentence": "She is taller then me.",
+            "isCorrect": false,
+            "explanation": "Incorrect word for comparison (\"than\" vs. \"then\"). Corrected: She is taller than me."
+        },
+        {
+            "id": 241,
+            "sentence": "She is the best singer of the three.",
+            "isCorrect": true,
+            "explanation": "Correct sentence."
+        },
+        {
+            "id": 242,
+            "sentence": "She is the best singer of the two.",
+            "isCorrect": false,
+            "explanation": "Use comparative form, better. Corrected: She is the better singer of the two."
+        },
+        {
+            "id": 243,
+            "sentence": "She is the best student from the class.",
+            "isCorrect": false,
+            "explanation": "Wrong preposition. Corrected: She is the best student in the class."
+        },
+        {
+            "id": 244,
+            "sentence": "She is the only one who know the answer.",
+            "isCorrect": false,
+            "explanation": "Subject-verb agreement error. Corrected: She is the only one who knows the answer."
+        },
+        {
+            "id": 245,
+            "sentence": "She is use to getting up early.",
+            "isCorrect": false,
+            "explanation": "Corrected: She is used to getting up early."
+        },
+        {
+            "id": 246,
+            "sentence": "She is very good at danceing.",
+            "isCorrect": false,
+            "explanation": "Incorrect spelling. Corrected: She is very good at dancing."
+        },
+        {
+            "id": 247,
+            "sentence": "She is very happy to here you.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage and missing preposition. Corrected: She is very happy to hear from you."
+        },
+        {
+            "id": 248,
+            "sentence": "She is wearing a red dress.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 249,
+            "sentence": "She laid the book on the table.",
+            "isCorrect": true,
+            "explanation": "Correct usage of \"laid\" as the past tense of \"lay\"."
+        },
+        {
+            "id": 250,
+            "sentence": "She played the music loudly.",
+            "isCorrect": true,
+            "explanation": "Correct."
+        },
+        {
+            "id": 251,
+            "sentence": "She plays the piano well.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 252,
+            "sentence": "She teached me how to swim.",
+            "isCorrect": false,
+            "explanation": "Incorrect verb form. Corrected: She taught me how to swim."
+        },
+        {
+            "id": 253,
+            "sentence": "Take the trash out.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 254,
+            "sentence": "Teach me how to sing.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 255,
+            "sentence": "That is my principal reason for not going.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 256,
+            "sentence": "The amount of rain were heavy.",
+            "isCorrect": false,
+            "explanation": "Amount is singular. Corrected: The amount of rain was heavy."
+        },
+        {
+            "id": 257,
+            "sentence": "The baby is crawling to they're mother.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: The baby is crawling to their mother."
+        },
+        {
+            "id": 258,
+            "sentence": "The baby is very quite.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: The baby is very quiet."
+        },
+        {
+            "id": 259,
+            "sentence": "The book is laying on the table.",
+            "isCorrect": false,
+            "explanation": "Incorrect verb choice; \"lay\" vs. \"lie\". Corrected: The book is lying on the table."
+        },
+        {
+            "id": 260,
+            "sentence": "The book is on the table.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 261,
+            "sentence": "The building site is dangerous.",
+            "isCorrect": true,
+            "explanation": "Correct usage of \"site\"."
+        },
+        {
+            "id": 262,
+            "sentence": "The cake smells well.",
+            "isCorrect": false,
+            "explanation": "Grammar. Corrected: The cake smells good."
+        },
+        {
+            "id": 263,
+            "sentence": "The car needed washed.",
+            "isCorrect": false,
+            "explanation": "Corrected: The car needed to be washed."
+        },
+        {
+            "id": 264,
+            "sentence": "The car needed washing.",
+            "isCorrect": true,
+            "explanation": "Correct syntax."
+        },
+        {
+            "id": 265,
+            "sentence": "The car needs washing.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 266,
+            "sentence": "The car stopped sudden.",
+            "isCorrect": false,
+            "explanation": "Sudden is an adjective, \"suddenly\" is an adverb. Corrected: The car stopped suddenly."
+        },
+        {
+            "id": 267,
+            "sentence": "The cat sat on the mat.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 268,
+            "sentence": "The children are playing to loud.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: The children are playing too loud."
+        },
+        {
+            "id": 269,
+            "sentence": "The children played happily in the garden.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 270,
+            "sentence": "The committee have met.",
+            "isCorrect": false,
+            "explanation": "Committee takes singular. Corrected: The committee has met."
+        },
+        {
+            "id": 271,
+            "sentence": "The cost is to high.",
+            "isCorrect": false,
+            "explanation": "The correct form to use is \"too\". Corrected: The cost is too high."
+        },
+        {
+            "id": 272,
+            "sentence": "The cost of the repairs where to high.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: The cost of the repairs was too high."
+        },
+        {
+            "id": 273,
+            "sentence": "The data is being collected.",
+            "isCorrect": true,
+            "explanation": "Depending on style, data can be treated as singular."
+        },
+        {
+            "id": 274,
+            "sentence": "The data is incorrect.",
+            "isCorrect": false,
+            "explanation": "Data is often treated as plural. Corrected: The data are incorrect."
+        },
+        {
+            "id": 275,
+            "sentence": "The dog chased it's tail.",
+            "isCorrect": false,
+            "explanation": "Incorrect possessive pronoun. Corrected: The dog chased its tail."
+        },
+        {
+            "id": 276,
+            "sentence": "The dog wagged it's tail excitedly.",
+            "isCorrect": false,
+            "explanation": "Incorrect pronoun. Corrected: The dog wagged its tail excitedly."
+        },
+        {
+            "id": 277,
+            "sentence": "The dog wagged it's tail.",
+            "isCorrect": false,
+            "explanation": "Incorrect use of possessive pronoun. Corrected: The dog wagged its tail."
+        },
+        {
+            "id": 278,
+            "sentence": "The door was opened by the wind.",
+            "isCorrect": true,
+            "explanation": "Correct usage of opened."
+        },
+        {
+            "id": 279,
+            "sentence": "The effect of the storm was devastating.",
+            "isCorrect": true,
+            "explanation": "Correct usage of \"effect\"."
+        },
+        {
+            "id": 280,
+            "sentence": "The flowers smell so nicely.",
+            "isCorrect": false,
+            "explanation": "Wrong word/linking verb. Corrected: The flowers smell so nice."
+        },
+        {
+            "id": 281,
+            "sentence": "The food tastes well.",
+            "isCorrect": false,
+            "explanation": "Requires adjective to describe state of being. Corrected: The food tastes good."
+        },
+        {
+            "id": 282,
+            "sentence": "The girls were exited about the trip.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: The girls were excited about the trip."
+        },
+        {
+            "id": 283,
+            "sentence": "The hen laid an egg.",
+            "isCorrect": true,
+            "explanation": "Correct syntax."
+        },
+        {
+            "id": 284,
+            "sentence": "The jury has reached a verdict.",
+            "isCorrect": true,
+            "explanation": "Jury treated singular."
+        },
+        {
+            "id": 285,
+            "sentence": "The movie was very bored.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: The movie was very boring."
+        },
+        {
+            "id": 286,
+            "sentence": "The number of students are increasing.",
+            "isCorrect": false,
+            "explanation": "Subject-verb agreement. \"Number\" is singular in this context. Corrected: The number of students is increasing."
+        },
+        {
+            "id": 287,
+            "sentence": "The numbers of cars is increasing.",
+            "isCorrect": false,
+            "explanation": "Numbers is plural. Corrected: The numbers of cars are increasing."
+        },
+        {
+            "id": 288,
+            "sentence": "The pizza smelled deliciously.",
+            "isCorrect": false,
+            "explanation": "Use \"delicious\" after a linking verb that describes state of being. Corrected: The pizza smelled delicious."
+        },
+        {
+            "id": 289,
+            "sentence": "The price is different than I expected.",
+            "isCorrect": false,
+            "explanation": "Correct the preposition \"from\". Corrected: The price is different from I expected."
+        },
+        {
+            "id": 290,
+            "sentence": "The principle of the school is very nice.",
+            "isCorrect": true,
+            "explanation": "Correct sentence."
+        },
+        {
+            "id": 291,
+            "sentence": "The reason he's late is because he missed the bus.",
+            "isCorrect": false,
+            "explanation": "Wordiness/redundancy. Corrected: The reason he's late is that he missed the bus. OR He's late because he missed the bus."
+        },
+        {
+            "id": 292,
+            "sentence": "The reason is because I wanted to see you.",
+            "isCorrect": false,
+            "explanation": "Redundant. Corrected: The reason is that I wanted to see you."
+        },
+        {
+            "id": 293,
+            "sentence": "The reason why he is late is because he overslept.",
+            "isCorrect": false,
+            "explanation": "This is redundant. Corrected: The reason he is late is that he overslept, or He is late because he overslept."
+        },
+        {
+            "id": 294,
+            "sentence": "The shirt fits to loose.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: The shirt fits too loose."
+        },
+        {
+            "id": 295,
+            "sentence": "The store is opened until 9 PM.",
+            "isCorrect": false,
+            "explanation": "The correct verb to use here is \"open\". Corrected: The store is open until 9 PM."
+        },
+        {
+            "id": 296,
+            "sentence": "The students studied good for the test.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: The students studied well for the test."
+        },
+        {
+            "id": 297,
+            "sentence": "The sun rises in the east.",
+            "isCorrect": true,
+            "explanation": "Correct verb usage."
+        },
+        {
+            "id": 298,
+            "sentence": "The teacher gave the test back to he and I.",
+            "isCorrect": false,
+            "explanation": "Incorrect pronoun case. Corrected: The teacher gave the test back to him and me."
+        },
+        {
+            "id": 299,
+            "sentence": "The teacher learned us a new song.",
+            "isCorrect": false,
+            "explanation": "Should be \"taught\". Corrected: The teacher taught us a new song."
+        },
+        {
+            "id": 300,
+            "sentence": "The teachers, Mr. Jones, are great.",
+            "isCorrect": false,
+            "explanation": "Subject-verb agreement error. The subject is \"teacher,\" which is singular. Corrected: The teacher, Mr. Jones, is great."
+        },
+        {
+            "id": 301,
+            "sentence": "The team are playing well.",
+            "isCorrect": false,
+            "explanation": "Collective nouns can take singular or plural verbs. Team is singular in this instance. Corrected: The team is playing well."
+        },
+        {
+            "id": 302,
+            "sentence": "The team have won the championship.",
+            "isCorrect": false,
+            "explanation": "Correct subject-verb agreement. Corrected: The team has won the championship."
+        },
+        {
+            "id": 303,
+            "sentence": "The weather is much more hotter today than yesterday.",
+            "isCorrect": false,
+            "explanation": "Redundant comparison. Corrected: The weather is much hotter today than yesterday."
+        },
+        {
+            "id": 304,
+            "sentence": "The weather is quit nice today.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: The weather is quite nice today."
+        },
+        {
+            "id": 305,
+            "sentence": "The whether is nice today.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage; whether vs. weather. Corrected: The weather is nice today."
+        },
+        {
+            "id": 306,
+            "sentence": "Their coming to visit.",
+            "isCorrect": false,
+            "explanation": "Wrong word use. Corrected: They're coming to visit."
+        },
+        {
+            "id": 307,
+            "sentence": "Their going to the store now.",
+            "isCorrect": false,
+            "explanation": "Incorrect use of \"their\". Corrected: They're going to the store now."
+        },
+        {
+            "id": 308,
+            "sentence": "Their house is very big.",
+            "isCorrect": true,
+            "explanation": "Correct usage of possessive pronoun \"their\"."
+        },
+        {
+            "id": 309,
+            "sentence": "Their my best friends.",
+            "isCorrect": false,
+            "explanation": "Wrong word use. Corrected: They're my best friends."
+        },
+        {
+            "id": 310,
+            "sentence": "There are many people here.",
+            "isCorrect": true,
+            "explanation": "Correct sentence."
+        },
+        {
+            "id": 311,
+            "sentence": "There are two many apples in the basket.",
+            "isCorrect": false,
+            "explanation": "Wrong word usage (\"too\" vs. \"two\"). Corrected: There are too many apples in the basket."
+        },
+        {
+            "id": 312,
+            "sentence": "There cat is sleeping on the mat.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: Their cat is sleeping on the mat."
+        },
+        {
+            "id": 313,
+            "sentence": "There going to be a party tonight.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: They're going to be a party tonight."
+        },
+        {
+            "id": 314,
+            "sentence": "There going to the game tonight.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: They're going to the game tonight."
+        },
+        {
+            "id": 315,
+            "sentence": "There is a cat on the roof.",
+            "isCorrect": true,
+            "explanation": "Correct use of \"there\" indicating a place."
+        },
+        {
+            "id": 316,
+            "sentence": "There is less water than usual in the lake.",
+            "isCorrect": true,
+            "explanation": "Less is acceptable for quantity."
+        },
+        {
+            "id": 317,
+            "sentence": "There is no milk left.",
+            "isCorrect": true,
+            "explanation": "Correct."
+        },
+        {
+            "id": 318,
+            "sentence": "There is only one slice of cake left.",
+            "isCorrect": true,
+            "explanation": "Correct sentence."
+        },
+        {
+            "id": 319,
+            "sentence": "They are affect by the weather.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage; affect vs. effect. Corrected: They are affected by the weather."
+        },
+        {
+            "id": 320,
+            "sentence": "They are always late.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 321,
+            "sentence": "They are always loosing there keys.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: They are always losing their keys."
+        },
+        {
+            "id": 322,
+            "sentence": "They are coming to visit to they're friend.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: They are coming to visit their friend."
+        },
+        {
+            "id": 323,
+            "sentence": "They are crying.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 324,
+            "sentence": "They are different as me.",
+            "isCorrect": false,
+            "explanation": "Corrected word \"from.\" Corrected: They are different from me."
+        },
+        {
+            "id": 325,
+            "sentence": "They are dreaming.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 326,
+            "sentence": "They are exited to go to the concert.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: They are excited to go to the concert."
+        },
+        {
+            "id": 327,
+            "sentence": "They are going to the beach.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 328,
+            "sentence": "They are going to there house.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: They are going to their house."
+        },
+        {
+            "id": 329,
+            "sentence": "They are my friends.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 330,
+            "sentence": "They are playing soccer.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 331,
+            "sentence": "They are wanting a new car.",
+            "isCorrect": false,
+            "explanation": "Stative verb issue; \"want\" isn't typically used in the continuous. Corrected: They want a new car."
+        },
+        {
+            "id": 332,
+            "sentence": "They are watching TV.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 333,
+            "sentence": "They are working hard.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 334,
+            "sentence": "They did well on the test hardly studying at all.",
+            "isCorrect": false,
+            "explanation": "Word usage. Corrected: They did well on the test, hardly studying at all."
+        },
+        {
+            "id": 335,
+            "sentence": "They has a big house.",
+            "isCorrect": false,
+            "explanation": "Subject-verb agreement error. Corrected: They have a big house."
+        },
+        {
+            "id": 336,
+            "sentence": "They have trouble finding they're way.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: They have trouble finding their way."
+        },
+        {
+            "id": 337,
+            "sentence": "They have went to the store.",
+            "isCorrect": false,
+            "explanation": "Incorrect verb form. Corrected: They have gone to the store."
+        },
+        {
+            "id": 338,
+            "sentence": "They have went to the zoo.",
+            "isCorrect": false,
+            "explanation": "Wrong verb form. Corrected: They have gone to the zoo."
+        },
+        {
+            "id": 339,
+            "sentence": "They is coming to the party.",
+            "isCorrect": false,
+            "explanation": "Subject-verb agreement error. Corrected: They are coming to the party."
+        },
+        {
+            "id": 340,
+            "sentence": "They is coming to visit us.",
+            "isCorrect": false,
+            "explanation": "Incorrect subject-verb agreement. Corrected: They are coming to visit us."
+        },
+        {
+            "id": 341,
+            "sentence": "They should of studied harder.",
+            "isCorrect": false,
+            "explanation": "Incorrect use of \"of\" instead of \"have\". Corrected: They should have studied harder."
+        },
+        {
+            "id": 342,
+            "sentence": "They stoped smoking.",
+            "isCorrect": true,
+            "explanation": "Valid construction."
+        },
+        {
+            "id": 343,
+            "sentence": "They stopped to smoke.",
+            "isCorrect": true,
+            "explanation": "Valid construction."
+        },
+        {
+            "id": 344,
+            "sentence": "They was happy to see us.",
+            "isCorrect": false,
+            "explanation": "Subject-verb agreement error. Corrected: They were happy to see us."
+        },
+        {
+            "id": 345,
+            "sentence": "They was playing in the park.",
+            "isCorrect": false,
+            "explanation": "Incorrect verb form. Corrected: They were playing in the park."
+        },
+        {
+            "id": 346,
+            "sentence": "They went to they're house.",
+            "isCorrect": false,
+            "explanation": "Incorrect possessive pronoun. Corrected: They went to their house."
+        },
+        {
+            "id": 347,
+            "sentence": "They're dog is very friendly.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: Their dog is very friendly."
+        },
+        {
+            "id": 348,
+            "sentence": "They're going to the store.",
+            "isCorrect": true,
+            "explanation": "Correct usage of the contraction \"they're\"."
+        },
+        {
+            "id": 349,
+            "sentence": "They're happy to be here.",
+            "isCorrect": true,
+            "explanation": "Correct sentence."
+        },
+        {
+            "id": 350,
+            "sentence": "They're is a problem with the car.",
+            "isCorrect": false,
+            "explanation": "Incorrect word choice. Corrected: There is a problem with the car."
+        },
+        {
+            "id": 351,
+            "sentence": "They're is no more milk.",
+            "isCorrect": false,
+            "explanation": "Incorrect use of \"they're\". Corrected: There is no more milk."
+        },
+        {
+            "id": 352,
+            "sentence": "They're were many people at the concert.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: There were many people at the concert."
+        },
+        {
+            "id": 353,
+            "sentence": "This book is hers and mines.",
+            "isCorrect": false,
+            "explanation": "Incorrect pronoun usage. Corrected: This book is hers and mine."
+        },
+        {
+            "id": 354,
+            "sentence": "This house is theirs.",
+            "isCorrect": true,
+            "explanation": "Correct sentence."
+        },
+        {
+            "id": 355,
+            "sentence": "This is a really good book.",
+            "isCorrect": true,
+            "explanation": "Grammar and syntax."
+        },
+        {
+            "id": 356,
+            "sentence": "This is a unique situation.",
+            "isCorrect": true,
+            "explanation": "Correct, since unique sounds like you-neek."
+        },
+        {
+            "id": 357,
+            "sentence": "This is between you and I.",
+            "isCorrect": false,
+            "explanation": "Incorrect pronoun case. Corrected: This is between you and me."
+        },
+        {
+            "id": 358,
+            "sentence": "This is the best cake I ever ate.",
+            "isCorrect": false,
+            "explanation": "Time agreement problem. Corrected: This is the best cake I have ever eaten."
+        },
+        {
+            "id": 359,
+            "sentence": "To understand this you have to practice a lot.",
+            "isCorrect": true,
+            "explanation": "Correct syntax."
+        },
+        {
+            "id": 360,
+            "sentence": "To, too, and two, they are all homophones.",
+            "isCorrect": false,
+            "explanation": "Missing article. Corrected: To, too, and two are all homophones."
+        },
+        {
+            "id": 361,
+            "sentence": "We are going to the park tomorrow.",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 362,
+            "sentence": "We could of gone to the beach.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: We could have gone to the beach."
+        },
+        {
+            "id": 363,
+            "sentence": "We like too eat pizza.",
+            "isCorrect": false,
+            "explanation": "The correct form to use is \"to\". Corrected: We like to eat pizza."
+        },
+        {
+            "id": 364,
+            "sentence": "We prefer coffee then tea.",
+            "isCorrect": false,
+            "explanation": "Correct preposition. Corrected: We prefer coffee to tea."
+        },
+        {
+            "id": 365,
+            "sentence": "We was going to the movies.",
+            "isCorrect": false,
+            "explanation": "Incorrect subject-verb agreement. Corrected: We were going to the movies."
+        },
+        {
+            "id": 366,
+            "sentence": "We went their for dinner.",
+            "isCorrect": false,
+            "explanation": "Wrong word use. Corrected: We went there for dinner."
+        },
+        {
+            "id": 367,
+            "sentence": "We went their yesterday.",
+            "isCorrect": false,
+            "explanation": "Incorrect usage. Corrected: We went there yesterday."
+        },
+        {
+            "id": 368,
+            "sentence": "We went too the beach yesterday.",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: We went to the beach yesterday."
+        },
+        {
+            "id": 369,
+            "sentence": "We will meet each other at 8 PM.",
+            "isCorrect": false,
+            "explanation": "The best to use the pronoun. Corrected: We will meet at 8 PM."
+        },
+        {
+            "id": 370,
+            "sentence": "What time will you arrive at?",
+            "isCorrect": false,
+            "explanation": "The preposition at is not necessary. Corrected: What time will you arrive?"
+        },
+        {
+            "id": 371,
+            "sentence": "Where do you live at?",
+            "isCorrect": false,
+            "explanation": "Should be no preposition. Corrected: Where do you live?"
+        },
+        {
+            "id": 372,
+            "sentence": "Who are you talking to?",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 373,
+            "sentence": "Who did you give it too?",
+            "isCorrect": false,
+            "explanation": "Word choice and sentence problem. Corrected: To whom did you give it?"
+        },
+        {
+            "id": 374,
+            "sentence": "Who did you see?",
+            "isCorrect": true,
+            "explanation": "This sentence is grammatically correct."
+        },
+        {
+            "id": 375,
+            "sentence": "Who is at the door?",
+            "isCorrect": true,
+            "explanation": "Correct use of \"who\" to inquire about a person."
+        },
+        {
+            "id": 376,
+            "sentence": "Who is going too the party?",
+            "isCorrect": false,
+            "explanation": "Incorrect word usage. Corrected: Who is going to the party?"
+        },
+        {
+            "id": 377,
+            "sentence": "Who's book is this?",
+            "isCorrect": false,
+            "explanation": "Word confusion. Corrected: Whose book is this?"
+        },
+        {
+            "id": 378,
+            "sentence": "Who's is it?",
+            "isCorrect": false,
+            "explanation": "Wrong word use. Corrected: Whose is it?"
+        },
+        {
+            "id": 379,
+            "sentence": "Whom did you see at the party?",
+            "isCorrect": true,
+            "explanation": "Correct use of \"whom\" as the object of the verb."
+        },
+        {
+            "id": 380,
+            "sentence": "Whose car is that?",
+            "isCorrect": true,
+            "explanation": "Correct use of \"whose\" to indicate possession."
+        },
+        {
+            "id": 381,
+            "sentence": "You should not talk loudly in the library.",
+            "isCorrect": true,
+            "explanation": "Correct, could be simplified."
+        },
+        {
+            "id": 382,
+            "sentence": "You should of taken the trash out yesterday.",
+            "isCorrect": false,
+            "explanation": "Word choice. Corrected: You should have taken the trash out yesterday."
+        },
+        {
+            "id": 383,
+            "sentence": "You was wrong.",
+            "isCorrect": false,
+            "explanation": "Subject-verb agreement error. Corrected: You were wrong."
+        },
+        {
+            "id": 384,
+            "sentence": "You're car is very nice.",
+            "isCorrect": false,
+            "explanation": "Wrong word use. Corrected: Your car is very nice."
+        },
+        {
+            "id": 385,
+            "sentence": "You're my best friend.",
+            "isCorrect": true,
+            "explanation": "Correct usage of the contraction \"you're\"."
+        },
+        {
+            "id": 386,
+            "sentence": "Your book is on the table.",
+            "isCorrect": true,
+            "explanation": "Correct usage of the possessive pronoun \"your\"."
+        },
+        {
+            "id": 387,
+            "sentence": "Your going to be late.",
+            "isCorrect": false,
+            "explanation": "Contraction error. Corrected: You're going to be late."
+        },
+        {
+            "id": 388,
+            "sentence": "Your the best.",
+            "isCorrect": false,
+            "explanation": "Wrong word use. Corrected: You're the best."
+        },
+        {
+            "id": 389,
+            "sentence": "I am going to the store tomorrow.",
+            "isCorrect": true,
+            "explanation": "This sentence has correct grammar and tense usage."
+        },
+        {
+            "id": 390,
+            "sentence": "He don't like pizza.",
+            "isCorrect": false,
+            "explanation": "Should be 'He doesn't like pizza' - third person singular requires 'doesn't'"
+        },
+        {
+            "id": 391,
+            "sentence": "They are watching television now.",
+            "isCorrect": true,
+            "explanation": "Correct use of present continuous tense."
+        },
+        {
+            "id": 392,
+            "sentence": "I have been to Paris last year.",
+            "isCorrect": false,
+            "explanation": "Should be 'I went to Paris last year' - use simple past for specific past time."
+        },
+        {
+            "id": 393,
+            "sentence": "She has finished her homework already.",
+            "isCorrect": true,
+            "explanation": "Correct use of present perfect tense."
+        },
+        {
+            "id": 394,
+            "sentence": "The children is playing in the park.",
+            "isCorrect": false,
+            "explanation": "Should be 'The children are playing' - plural subject requires 'are'"
+        },
+        {
+            "id": 395,
+            "sentence": "I enjoy to play tennis.",
+            "isCorrect": false,
+            "explanation": "Should be 'I enjoy playing tennis' - 'enjoy' is followed by gerund"
+        },
+        {
+            "id": 396,
+            "sentence": "We have been waiting for an hour.",
+            "isCorrect": true,
+            "explanation": "Correct use of present perfect continuous tense."
+        },
+        {
+            "id": 397,
+            "sentence": "If I will see him, I will tell him.",
+            "isCorrect": false,
+            "explanation": "Should be 'If I see him' - use simple present in if-clause"
+        },
+        {
+            "id": 398,
+            "sentence": "She asked me where I was going.",
+            "isCorrect": true,
+            "explanation": "Correct use of reported speech."
+        }
+    ]
+}

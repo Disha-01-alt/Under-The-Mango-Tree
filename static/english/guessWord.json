@@ -1,0 +1,752 @@
+{
+    "words": [
+        {
+            "word": "Ball",
+            "description": "Round object used for play catch."
+        },
+        {
+            "word": "Bamboo",
+            "description": "Flexible plant used for furniture and more."
+        },
+        {
+            "word": "Barn",
+            "description": "Farm building for animals and stored crops."
+        },
+        {
+            "word": "Barter",
+            "description": "Exchange without money."
+        },
+        {
+            "word": "Basket",
+            "description": "Used to carry fruits or items."
+        },
+        {
+            "word": "Bed",
+            "description": "Rest here, it has a frame or legs."
+        },
+        {
+            "word": "Bell",
+            "description": "Makes a sound when you ring."
+        },
+        {
+            "word": "Bird",
+            "description": "Flies in the sky, sings a song."
+        },
+        {
+            "word": "Blanket",
+            "description": "Cover to keep warm."
+        },
+        {
+            "word": "Boat",
+            "description": "Floats on water and carries people."
+        },
+        {
+            "word": "Bottle",
+            "description": "Keeps water or other drinks inside."
+        },
+        {
+            "word": "Box",
+            "description": "Put things inside."
+        },
+        {
+            "word": "Brick",
+            "description": "Clay baked, used in building."
+        },
+        {
+            "word": "Bridge",
+            "description": "Connects two places over water."
+        },
+        {
+            "word": "Broom",
+            "description": "Sweeps floors, has handle and bristles."
+        },
+        {
+            "word": "Bucket",
+            "description": "Used for holding water or tools."
+        },
+        {
+            "word": "Buffalo",
+            "description": "Large, strong animal found in fields."
+        },
+        {
+            "word": "Bull",
+            "description": "Strong animal with horns."
+        },
+        {
+            "word": "Bullock",
+            "description": "A large, strong animal used for farm work"
+        },
+        {
+            "word": "Bullock Cart",
+            "description": "Cattle pull this cart."
+        },
+        {
+            "word": "Butter",
+            "description": "Creamy spread for bread or cooking."
+        },
+        {
+            "word": "Canal",
+            "description": "Man-made river for boats or water."
+        },
+        {
+            "word": "Candle",
+            "description": "Gives light, made of wax, used to see in dark."
+        },
+        {
+            "word": "Cart",
+            "description": "Carry load, wheels, pull animal."
+        },
+        {
+            "word": "Cattle",
+            "description": "Farm animals that give milk."
+        },
+        {
+            "word": "Chaff",
+            "description": "Leftover parts of grains after processing."
+        },
+        {
+            "word": "Chair",
+            "description": "Something people sit on."
+        },
+        {
+            "word": "Clay",
+            "description": "Used for pottery and holding water."
+        },
+        {
+            "word": "Cloth",
+            "description": "Used to make what you wear, a soft material."
+        },
+        {
+            "word": "Cloud",
+            "description": "White in the sky, part of weather."
+        },
+        {
+            "word": "Comb",
+            "description": "Used for styling or brushing hair."
+        },
+        {
+            "word": "Corn",
+            "description": "Grows tall, used in food."
+        },
+        {
+            "word": "Courtyard",
+            "description": "Open space surrounded by buildings."
+        },
+        {
+            "word": "Cow",
+            "description": "Gives milk, big farm animal."
+        },
+        {
+            "word": "Crop",
+            "description": "Grows in fields, used for food."
+        },
+        {
+            "word": "Cup",
+            "description": "Holds liquid, often round shape."
+        },
+        {
+            "word": "Curd",
+            "description": "Thick, sour food made by fermenting milk."
+        },
+        {
+            "word": "Customer",
+            "description": "Buys things from a shop."
+        },
+        {
+            "word": "Dairy",
+            "description": "Place where milk and cheese come from."
+        },
+        {
+            "word": "Dam",
+            "description": "Blocks water flow, holds it back."
+        },
+        {
+            "word": "Dirt Road",
+            "description": "Unpaved path in rural areas."
+        },
+        {
+            "word": "Drum",
+            "description": "Used in music and celebrations."
+        },
+        {
+            "word": "Fair",
+            "description": "Equal treatment, no favoritism."
+        },
+        {
+            "word": "Fan",
+            "description": "Blows air to cool when hot."
+        },
+        {
+            "word": "Farm",
+            "description": "Where plants grow and food is harvested."
+        },
+        {
+            "word": "Farmer",
+            "description": "Person works with animals and grows food."
+        },
+        {
+            "word": "Fence",
+            "description": "A barrier that surrounds and protects an area."
+        },
+        {
+            "word": "Fertilizer",
+            "description": "Helps plants grow."
+        },
+        {
+            "word": "Festival",
+            "description": "Celebration with music, food, and fun."
+        },
+        {
+            "word": "Field",
+            "description": "Open space where crops grow."
+        },
+        {
+            "word": "Firewood",
+            "description": "Used to make fire; gather this."
+        },
+        {
+            "word": "Fish",
+            "description": "Swim in water."
+        },
+        {
+            "word": "Fishing",
+            "description": "Using a rod to catch something from water."
+        },
+        {
+            "word": "Flower",
+            "description": "It's colorful and grows in gardens."
+        },
+        {
+            "word": "Fruits",
+            "description": "Sweet food with seeds, people eat it."
+        },
+        {
+            "word": "Goat",
+            "description": "A small farm animal with horns that gives milk."
+        },
+        {
+            "word": "Grain",
+            "description": "Small, hard seeds used in food or crops."
+        },
+        {
+            "word": "Granary",
+            "description": "Store for keeping grain safe."
+        },
+        {
+            "word": "Grazing",
+            "description": "Eating grass."
+        },
+        {
+            "word": "Handicraft",
+            "description": "Made by hand, creative, skillful work."
+        },
+        {
+            "word": "Harvest",
+            "description": "Gather crops from fields."
+        },
+        {
+            "word": "Hen",
+            "description": "A female bird that lays eggs on a farm"
+        },
+        {
+            "word": "House",
+            "description": "place where people live with walls and a roof."
+        },
+        {
+            "word": "Hut",
+            "description": "A small, simple house usually made of mud or wood."
+        },
+        {
+            "word": "Irrigation",
+            "description": "Watering land to help plants grow."
+        },
+        {
+            "word": "Jute",
+            "description": "Strong plant fiber used for ropes."
+        },
+        {
+            "word": "Kerosene",
+            "description": "Used in lamps, flammable liquid."
+        },
+        {
+            "word": "Key",
+            "description": "Open locks"
+        },
+        {
+            "word": "Kitchen",
+            "description": "Where you find stove and eat food."
+        },
+        {
+            "word": "Knife",
+            "description": "Cuts things, made of metal."
+        },
+        {
+            "word": "Ladder",
+            "description": "Climb the rungs of success."
+        },
+        {
+            "word": "Lamp",
+            "description": "Gives light, often used at night."
+        },
+        {
+            "word": "Lantern",
+            "description": "Carried at night when there is no electricity."
+        },
+        {
+            "word": "Lock",
+            "description": "Keeps safe, found on doors."
+        },
+        {
+            "word": "Market",
+            "description": "Place where people buy and sell things."
+        },
+        {
+            "word": "Mat",
+            "description": "Flat, woven, covers the floor."
+        },
+        {
+            "word": "Measuring Cup",
+            "description": "Measures liquids or solids in the kitchen."
+        },
+        {
+            "word": "Milk",
+            "description": "White liquid from animals, used in food and drinks."
+        },
+        {
+            "word": "Millet",
+            "description": "Small grain used as a staple food."
+        },
+        {
+            "word": "Mirror",
+            "description": "You can see your face in it."
+        },
+        {
+            "word": "Moon",
+            "description": "Shines bright at night, not always seen."
+        },
+        {
+            "word": "Mud",
+            "description": "Wet dirt you find after rain."
+        },
+        {
+            "word": "Net",
+            "description": "Used to catch things, like fish or insects."
+        },
+        {
+            "word": "Oar",
+            "description": "Used in water, helps move a boat."
+        },
+        {
+            "word": "Paddle",
+            "description": "Moves water when used."
+        },
+        {
+            "word": "Paddy",
+            "description": "Grows in water, used for food."
+        },
+        {
+            "word": "Path",
+            "description": "Something you walk on."
+        },
+        {
+            "word": "Pillow",
+            "description": "Soft thing you rest your head on."
+        },
+        {
+            "word": "Plate",
+            "description": "Holds food, often round."
+        },
+        {
+            "word": "Ploughing",
+            "description": "Farming tool, digging soil, planting crops."
+        },
+        {
+            "word": "Plow",
+            "description": "Farming tool that breaks soil."
+        },
+        {
+            "word": "Pond",
+            "description": "Small water place in a village."
+        },
+        {
+            "word": "Pot",
+            "description": "Used for cooking, has a handle"
+        },
+        {
+            "word": "Pottery",
+            "description": "Made from clay, shaped by hand."
+        },
+        {
+            "word": "Rain",
+            "description": "Falls from the sky when it's wet outside."
+        },
+        {
+            "word": "River",
+            "description": "Flows between land, brings water, home to fish."
+        },
+        {
+            "word": "Road",
+            "description": "Where you walk or drive."
+        },
+        {
+            "word": "Roof",
+            "description": "The top cover of a building that stops rain."
+        },
+        {
+            "word": "Rope",
+            "description": "Used for tying or climbing."
+        },
+        {
+            "word": "Sack",
+            "description": "Something you carry things in."
+        },
+        {
+            "word": "Scarecrow",
+            "description": "A figure in fields that scares birds away."
+        },
+        {
+            "word": "Seed",
+            "description": "Small part that grows into a plant."
+        },
+        {
+            "word": "Seeds",
+            "description": "Tiny things that grow into plants."
+        },
+        {
+            "word": "Shed",
+            "description": "small simple building used for storage or animals"
+        },
+        {
+            "word": "Sheep",
+            "description": "Lives in a group and has soft wool."
+        },
+        {
+            "word": "Shop",
+            "description": "store where you buy or sell items."
+        },
+        {
+            "word": "Shopkeeper",
+            "description": "Sells items, runs a store."
+        },
+        {
+            "word": "Sickle",
+            "description": "Curved tool used for cutting grass or crops."
+        },
+        {
+            "word": "Soap",
+            "description": "Used for cleaning; often used with water."
+        },
+        {
+            "word": "Soil",
+            "description": "Plants grow in it. Part of the earth."
+        },
+        {
+            "word": "Spoon",
+            "description": "curved and has a handle"
+        },
+        {
+            "word": "Star",
+            "description": "Twinkle in the night sky."
+        },
+        {
+            "word": "Stick",
+            "description": "Long, straight, used for holding or carrying."
+        },
+        {
+            "word": "Storage",
+            "description": "Where you keep things to save for later."
+        },
+        {
+            "word": "Stove",
+            "description": "Used for cooking food with heat."
+        },
+        {
+            "word": "Straw",
+            "description": "Used for drinking, made from natural materials."
+        },
+        {
+            "word": "Sun",
+            "description": "Bright in the sky, gives light and warmth."
+        },
+        {
+            "word": "Sunlight",
+            "description": "Gives light from the bright, warm sun."
+        },
+        {
+            "word": "Table",
+            "description": "Flat place to eat, work, or put things."
+        },
+        {
+            "word": "Temple",
+            "description": "Place of worship, often quiet, sacred."
+        },
+        {
+            "word": "Thatched",
+            "description": "Used for roofs on houses, made from straw or reeds."
+        },
+        {
+            "word": "Threshing",
+            "description": "Removing parts of plants in farming."
+        },
+        {
+            "word": "Towel",
+            "description": "Used after bath, absorbs water."
+        },
+        {
+            "word": "Tractor",
+            "description": "Helps plow fields, has big wheels."
+        },
+        {
+            "word": "Tree",
+            "description": "Has leaves, gives shade, grows tall."
+        },
+        {
+            "word": "Vegetables",
+            "description": "Parts of plants we eat."
+        },
+        {
+            "word": "Vendor",
+            "description": "Sells things, maybe from a stall."
+        },
+        {
+            "word": "Village",
+            "description": "Small community where people live and work."
+        },
+        {
+            "word": "Village Square",
+            "description": "Place where people meet and gather."
+        },
+        {
+            "word": "Weeding",
+            "description": "Pulling out unwanted plants."
+        },
+        {
+            "word": "Weighing Scale",
+            "description": "Measures weight with numbers."
+        },
+        {
+            "word": "Well",
+            "description": "It can be a water hole or where water is found"
+        },
+        {
+            "word": "Wheat",
+            "description": "Used for bread, grows in fields."
+        },
+        {
+            "word": "Cat",
+            "description": "A furry pet that meows"
+        },
+        {
+            "word": "Dog",
+            "description": "A friendly pet that barks"
+        },
+        {
+            "word": "Book",
+            "description": "Has pages to read"
+        },
+        {
+            "word": "Pen",
+            "description": "Used to write with ink"
+        },
+        {
+            "word": "Hat",
+            "description": "Wear this on your head"
+        },
+        {
+            "word": "Sock",
+            "description": "Wear this on your feet"
+        },
+        {
+            "word": "Cake",
+            "description": "Sweet treat for birthdays"
+        },
+        {
+            "word": "Snow",
+            "description": "White and cold, falls in winter"
+        },
+        {
+            "word": "Hand",
+            "description": "Has five fingers"
+        },
+        {
+            "word": "Foot",
+            "description": "Used for walking"
+        },
+        {
+            "word": "Eye",
+            "description": "Used for seeing"
+        },
+        {
+            "word": "Nose",
+            "description": "Used for smelling"
+        },
+        {
+            "word": "Door",
+            "description": "Walk through to enter"
+        },
+        {
+            "word": "Wall",
+            "description": "Part of a building or room"
+        },
+        {
+            "word": "Food",
+            "description": "What you eat to live"
+        },
+        {
+            "word": "Toy",
+            "description": "Children play with this"
+        },
+        {
+            "word": "Car",
+            "description": "Vehicle with four wheels"
+        },
+        {
+            "word": "Bus",
+            "description": "Big vehicle that carries many people"
+        },
+        {
+            "word": "Bike",
+            "description": "Ride this with two wheels"
+        },
+        {
+            "word": "Home",
+            "description": "Where you live"
+        },
+        {
+            "word": "Shoe",
+            "description": "Wear this when walking outside"
+        },
+        {
+            "word": "Clock",
+            "description": "Tells you the time"
+        },
+        {
+            "word": "Phone",
+            "description": "Call people with this"
+        },
+        {
+            "word": "Game",
+            "description": "Play this for fun"
+        },
+        {
+            "word": "Baby",
+            "description": "Very young child"
+        },
+        {
+            "word": "Bag",
+            "description": "Carry things in this"
+        },
+        {
+            "word": "Ring",
+            "description": "Wear this on your finger"
+        },
+        {
+            "word": "Song",
+            "description": "Music you can sing"
+        },
+        {
+            "word": "Fire",
+            "description": "Hot and bright, gives warmth"
+        },
+        {
+            "word": "Ice",
+            "description": "Frozen water"
+        },
+        {
+            "word": "Leaf",
+            "description": "Green part of a plant"
+        },
+        {
+            "word": "Kite",
+            "description": "Flies in the wind"
+        },
+        {
+            "word": "Bear",
+            "description": "Large furry forest animal"
+        },
+        {
+            "word": "Lion",
+            "description": "King of the jungle"
+        },
+        {
+            "word": "Duck",
+            "description": "Bird that swims in water"
+        },
+        {
+            "word": "Pig",
+            "description": "Pink farm animal"
+        },
+        {
+            "word": "Ant",
+            "description": "Tiny insect that works hard"
+        },
+        {
+            "word": "Bee",
+            "description": "Makes honey and can sting"
+        },
+        {
+            "word": "Frog",
+            "description": "Green animal that hops"
+        },
+        {
+            "word": "Rock",
+            "description": "Hard thing found on ground"
+        },
+        {
+            "word": "Sand",
+            "description": "Found at the beach"
+        },
+        {
+            "word": "Gift",
+            "description": "Give this on special days"
+        },
+        {
+            "word": "Vest",
+            "description": "Wear this over your shirt"
+        },
+        {
+            "word": "Coat",
+            "description": "Wear this to stay warm"
+        },
+        {
+            "word": "Park",
+            "description": "Place to play outside"
+        },
+        {
+            "word": "Tent",
+            "description": "Sleep in this while camping"
+        },
+        {
+            "word": "Flag",
+            "description": "Waves in the wind on a pole"
+        },
+        {
+            "word": "Neck",
+            "description": "Between head and shoulders"
+        },
+        {
+            "word": "Desk",
+            "description": "Work or study on this"
+        },
+        {
+            "word": "Fork",
+            "description": "Use this to eat food"
+        },
+        {
+            "word": "Bowl",
+            "description": "Hold food in this"
+        },
+        {
+            "word": "Tail",
+            "description": "Animals have this at the back"
+        },
+        {
+            "word": "Wing",
+            "description": "Birds use these to fly"
+        },
+        {
+            "word": "Crab",
+            "description": "Walks sideways on the beach"
+        }
+    ]
+}
