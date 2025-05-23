@@ -16,7 +16,7 @@ GOOGLE_DISCOVERY_URL = "https://accounts.google.com/.well-known/openid-configura
 def get_redirect_url():
     base_url = os.environ.get("REPLIT_DEV_DOMAIN")
     if base_url:
-        return f'https://{base_url}/google_login/callback'
+        return f'https://{base_url}/job-portal/google_login/callback'
     else:
         return 'http://localhost:5000/google_login/callback'
 
