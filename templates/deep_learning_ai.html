@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}Deep Learning - Under The Mango Tree{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://pixabay.com/get/g2552cf7df3316d18a09a612d8d01b202b7c9f9c6ff2597bb76ae355498b82a0ff8a0f803dd6223f2d1859b00104a4b2172a30db2ffdfc2cfa4201f18a282abde_1280.jpg');">
+        <div class="container text-center text-white">
+            <h1>Deep Learning</h1>
+            <p>Explore deep learning concepts, neural networks, and cutting-edge AI methods with curated tutorials.</p>
+        </div>
+    </section>
+
+    <!-- Deep Learning Content -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title">Deep Learning Resources</h2>
+            <p class="section-subtitle">Dive into neural networks, CNNs, RNNs, transformers, and more with practical lessons and projects.</p>
+
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h4>Learning Highlights</h4>
+                    <ul>
+                        <li>Neural Network Foundations</li>
+                        <li>Convolutional & Recurrent Networks</li>
+                        <li>Transfer Learning & Transformers</li>
+                        <li>Projects with TensorFlow and PyTorch</li>
+                    </ul>
+                    <p>Start learning from the curated materials at 
+                        <a href="https://tinyurl.com/deepselfshiksha" target="_blank" rel="noopener noreferrer">this resource</a>.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Dynamic Video Table Section -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h4>Recommended Video Tutorials</h4>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Video</th>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody id="video-table-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename='js/dl.js') }}"></script>
+{% endblock %}
