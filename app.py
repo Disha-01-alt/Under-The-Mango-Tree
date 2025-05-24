@@ -138,8 +138,8 @@ def machine_learning():
 
 @app.route('/deep-learning-ai')
 def deep_learning_ai():
-    instructor = "Dr. Kushal Shah"
-    return render_template('deep_learning_ai.html', instructor_name=instructor)
+    
+    return render_template('deep_learning_ai.html')
 
 
 
