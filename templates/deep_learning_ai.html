@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
-{% block title %}Deep Learning Course - By {{ instructor_name }}{% endblock %} 
-{% block extra_css %}
 
+{% block title %}Deep Learning Course{% endblock %} {# Instructor name removed from title #}
+
+{% block extra_css %}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
     .hero-dl {
@@ -12,23 +13,23 @@
         margin-bottom: 30px;
     }
     .dl-table th {
-        background-color: #343a40; /* Dark background for table headers */
+        background-color: #343a40;
         color: white;
         vertical-align: middle;
     }
     .dl-table td {
-        vertical-align: top; /* Align content to the top of table cells */
+        vertical-align: top;
         padding: 0.75rem;
     }
-    .video-container-table { /* For embedding one video per topic in the table */
+    .video-container-table {
         position: relative;
-        padding-bottom: 56.25%; /* 16:9 */
+        padding-bottom: 56.25%;
         height: 0;
         overflow: hidden;
-        max-width: 320px; /* Max width for embedded video in table */
-        margin: 0 auto 10px auto; /* Center and add some bottom margin */
+        max-width: 320px;
+        margin: 0 auto 10px auto;
         background: #000;
-        border-radius: 0.25rem; /* Optional: rounded corners for the video embed */
+        border-radius: 0.25rem;
     }
     .video-container-table iframe {
         position: absolute;
@@ -38,8 +39,8 @@
         height: 100%;
     }
     .list-unstyled li {
-        padding-bottom: 0.4rem; /* Increased spacing for readability */
-        font-size: 0.9rem; /* Slightly smaller font for list items */
+        padding-bottom: 0.4rem;
+        font-size: 0.9rem;
     }
     .list-unstyled a {
         text-decoration: none;
@@ -49,28 +50,27 @@
         text-decoration: underline;
     }
     .sub-topic-heading {
-        font-weight: 600; /* Bolder sub-topic */
+        font-weight: 600;
         margin-top: 12px;
         margin-bottom: 6px;
-        color: #17a2b8; /* Teal color for sub-topics */
+        color: #17a2b8;
         font-size: 1rem;
-        border-bottom: 1px solid #e9ecef; /* Light underline for sub-topic */
+        border-bottom: 1px solid #e9ecef;
         padding-bottom: 4px;
     }
     .sub-topic-heading:first-child {
-        margin-top: 0; /* No top margin for the first sub-topic in a cell */
+        margin-top: 0;
     }
-
-    .card-dl-refs { /* Styling for textbook/NLP ref cards */
-        margin-top: 2.5rem; /* Increased margin */
-        box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075); /* Subtle shadow */
+    .card-dl-refs {
+        margin-top: 2.5rem;
+        box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
     }
     .card-dl-refs .card-header {
         font-weight: bold;
         font-size: 1.1rem;
     }
-    #dl-instructor-name, #dl-prerequisite-subject {
-        font-weight: 600; /* Make instructor/prereq slightly bolder in hero */
+    #dl-prerequisite-subject {
+        font-weight: 600;
     }
 </style>
 {% endblock %}
@@ -79,13 +79,13 @@
     <section class="hero-dl">
         <div class="container text-center">
             <h1>Deep Learning Course</h1>
-            <p class="lead">Instructor: <span id="dl-instructor-name">Loading...</span></p>
-            <p>Before starting Deep Learning, make sure to first learn basics of <span id="dl-prerequisite-subject">Loading...</span>.</p>
+            {# Instructor name paragraph removed #}
+            <p class="lead">Before starting Deep Learning, make sure to first learn basics of <span id="dl-prerequisite-subject">Loading...</span>.</p>
         </div>
     </section>
 
     <section class="py-5">
-        <div class="container-fluid"> {# Use container-fluid for wider table if needed #}
+        <div class="container-fluid">
             <h2 class="mb-4 text-center">Course Curriculum</h2>
             <p class="text-center text-muted mb-4">Explore topics, primary video resources, and supplementary materials for your Deep Learning journey.</p>
 
@@ -93,14 +93,12 @@
                 <table class="table table-bordered table-hover dl-table">
                     <thead>
                         <tr>
-                            <!-- Week column removed -->
                             <th scope="col" style="width: 20%;">Topic</th>
                             <th scope="col" style="width: 40%;">Primary YouTube Materials</th>
                             <th scope="col" style="width: 40%;">Other References & Resources</th>
                         </tr>
                     </thead>
                     <tbody id="dl-table-body">
-                        <!-- Table rows will be dynamically inserted here by JavaScript -->
                         <tr>
                             <td colspan="3" class="text-center p-5" id="table-loading-placeholder">
                                 <div class="spinner-border text-primary" role="status">
@@ -121,7 +119,6 @@
                     <!-- NLP References will be dynamically inserted here if any -->
                 </div>
             </div>
-
         </div>
     </section>
 {% endblock %}
@@ -135,13 +132,12 @@
 
             if (typeof courseData === 'undefined' || !courseData.syllabus) {
                 console.error("CRITICAL: courseData object or courseData.syllabus is not defined. Ensure dl.js is loaded and correct.");
-                document.getElementById('dl-instructor-name').textContent = "Error: Data not loaded";
                 document.getElementById('dl-prerequisite-subject').textContent = "Error: Data not loaded";
                 if(tableLoadingPlaceholder) tableLoadingPlaceholder.parentNode.innerHTML = "<td colspan='3' class='text-danger text-center p-3'>Error loading course content. Please check data file or try again.</td>";
                 return;
             }
 
-            document.getElementById('dl-instructor-name').textContent = courseData.instructor;
+            // Instructor name population removed
             document.getElementById('dl-prerequisite-subject').textContent = courseData.prerequisite;
 
             const dlTableBody = document.getElementById('dl-table-body');
@@ -149,7 +145,7 @@
                 console.error("CRITICAL: Element with ID 'dl-table-body' not found.");
                 return;
             }
-            dlTableBody.innerHTML = ''; // Clear loading placeholder (the <tr><td>...</td></tr>)
+            dlTableBody.innerHTML = ''; // Clear loading placeholder
 
             if (courseData.syllabus.length === 0) {
                 dlTableBody.innerHTML = '<tr><td colspan="3" class="text-center text-muted p-4">No course modules are currently available.</td></tr>';
@@ -158,12 +154,10 @@
             courseData.syllabus.forEach(item => {
                 const row = document.createElement('tr');
 
-                // Topic Cell
                 const topicCell = document.createElement('td');
                 topicCell.innerHTML = `<strong>${item.topic}</strong>`;
                 row.appendChild(topicCell);
 
-                // Primary YouTube Links Cell
                 const primaryLinksCell = document.createElement('td');
                 let primaryHtml = '';
                 let firstVideoEmbeddedThisTopic = false;
@@ -174,10 +168,10 @@
                             primaryHtml += `<h6 class="sub-topic-heading">${group.subTopic}</h6>`;
                         }
                         const ul = document.createElement('ul');
-                        ul.classList.add('list-unstyled', 'ps-3'); // ps-3 for a bit more indent
+                        ul.classList.add('list-unstyled', 'ps-3');
                         if (group.links && group.links.length > 0) {
                             group.links.forEach(link => {
-                                const videoId = getYoutubeVideoId(link.url);
+                                const videoId = getYoutubeVideoId(link.url); // Assuming getYoutubeVideoId is defined in dl.js or here
                                 if (videoId && !firstVideoEmbeddedThisTopic) {
                                     primaryHtml += `
                                         <div class="video-container-table">
@@ -197,28 +191,27 @@
                                                 </a>`;
                                 ul.appendChild(li);
                             });
-                        } else if (group.subTopic) { // Subtopic title exists but no links under it
+                        } else if (group.subTopic) {
                             const li = document.createElement('li');
                             li.innerHTML = `<span class="text-muted fst-italic small">No specific videos listed under this sub-topic.</span>`;
                             ul.appendChild(li);
                         }
-                        if (ul.hasChildNodes()) { // Only append ul if it has items
+                        if (ul.hasChildNodes()) {
                            primaryHtml += ul.outerHTML;
                         }
                     });
                 }
-                if (!primaryHtml.trim()) { // Check if primaryHtml is empty or just whitespace
+                if (!primaryHtml.trim()) {
                     primaryHtml = '<p class="text-muted fst-italic small mt-2">No primary YouTube materials listed for this topic.</p>';
                 }
                 primaryLinksCell.innerHTML = primaryHtml;
                 row.appendChild(primaryLinksCell);
 
-                // Other References Cell
                 const otherReferencesCell = document.createElement('td');
                 let otherHtml = '';
                 if (item.otherReferences && item.otherReferences.length > 0) {
                     const ul = document.createElement('ul');
-                    ul.classList.add('list-unstyled', 'ps-0'); // ps-0 if categories are bold enough
+                    ul.classList.add('list-unstyled', 'ps-0');
                     item.otherReferences.forEach(ref => {
                         const li = document.createElement('li');
                         if (ref.url) {
@@ -245,7 +238,6 @@
                 dlTableBody.appendChild(row);
             });
 
-            // Populate Textbooks
             const textbooksSection = document.getElementById('textbooks-section-dl');
             if (textbooksSection && courseData.textbooks && courseData.textbooks.length > 0) {
                 let textbooksHtml = `
@@ -263,10 +255,9 @@
                 textbooksHtml += `</ul></div>`;
                 textbooksSection.innerHTML = textbooksHtml;
             } else if (textbooksSection) {
-                textbooksSection.innerHTML = ''; // Clear if no textbooks
+                textbooksSection.innerHTML = '';
             }
 
-            // Populate NLP References (Optional Section)
             const nlpReferencesSection = document.getElementById('nlp-references-section-dl');
             if (nlpReferencesSection && courseData.referencesForNLP && courseData.referencesForNLP.length > 0) {
                 let nlpRefHtml = `
@@ -283,20 +274,8 @@
                 nlpRefHtml += `</ul></div>`;
                 nlpReferencesSection.innerHTML = nlpRefHtml;
             } else if (nlpReferencesSection) {
-                 nlpReferencesSection.innerHTML = ''; // Clear if no general NLP refs
-                 // Or provide a default message:
-                 /*
-                 nlpReferencesSection.innerHTML = `
-                    <div class="card card-dl-refs">
-                        <div class="card-header bg-secondary text-white">
-                            <i class="fas fa-file-alt me-2"></i>Additional References for NLP
-                        </div>
-                        <div class="card-body">
-                            <p class="text-muted small">Specific NLP references are included within relevant course modules. Consult standard NLP literature for broader study.</p>
-                        </div>
-                    </div>`;
-                 */
+                 nlpReferencesSection.innerHTML = '';
             }
-        });
+        }); // End of DOMContentLoaded
     </script>
 {% endblock %}
