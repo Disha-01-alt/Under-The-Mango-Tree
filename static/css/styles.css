@@ -449,4 +449,16 @@ footer a:hover {
 }
 
 }
+/* Dropdown on Hover */
+@media (min-width: 992px) { /* Apply only on desktop */
+    .navbar .dropdown:hover .dropdown-menu {
+        display: block;
+        margin-top: 0; /* Ensures the dropdown is aligned */
+    }
+
+    .navbar .dropdown-toggle::after {
+        transform: rotate(180deg); /* Optional: visual cue */
+    }
+}
+
 
