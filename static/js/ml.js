@@ -53,7 +53,7 @@ const courseData = {
             // week: 2,
             topic: "Bayes' Theorem",
             youTubeLinks: [
-                { title: "Bayes' Theorem Explained", url: "https://youtu.be/q0p6VWj8N41" }
+                { title: "Bayes' Theorem Explained", url: "https://www.youtube.com/watch?v=q0p6VWj8N4I" } 
             ],
             references: [
                 { title: "Conditional probability (MathIsFun)", url: "https://www.mathsisfun.com/data/probability-events-conditional.html" },
@@ -82,7 +82,7 @@ const courseData = {
             // week: 2, (continued)
             topic: "Supervised Learning: Regression vs Classification, Curse of Dimensionality",
             youTubeLinks: [
-                { title: "Regression vs Classification", url: "https://youtu.be/NYJZDRRUO84" }
+                { title: "Regression vs Classification", url: "https://www.youtube.com/watch?v=NYJZDRRUO84" }
             ],
             references: [
                 { title: "Regression vs Classification (Springboard)", url: "https://in.springboard.com/blog/regression-vs-classification-in-machine-learning/" }
@@ -128,7 +128,7 @@ const courseData = {
             // week: 4,
             topic: "Supervised Learning: Gradient Descent & Regularisation",
             youTubeLinks: [
-                { title: "Gradient Descent & Regularisation", url: "https://youtu.be/lUmFzIU-Cp4" }
+                { title: "Gradient Descent & Regularisation", url: "https://www.youtube.com/watch?v=IUmFzIU-Cp4" }
             ],
             references: [
                 { title: "Gradient Descent, Learning Rate, Feature Scaling", url: "https://towardsdatascience.com/gradient-descent-the-learning-rate-and-the-importance-of-feature-scaling-6c0b416596e1" },
@@ -185,7 +185,7 @@ const courseData = {
             // week: 5, (continued)
             topic: "Logistic Regression: Multiclass Classification",
             youTubeLinks: [
-                { title: "Multiclass Logistic Regression", url: "https://youtu.be/E6MNiNsESI4" }
+                { title: "Multiclass Logistic Regression", url: "https://www.youtube.com/watch?v=E6MNiNsESl4" }
             ],
             references: [
                 { title: "Stanford SLP3 Ch5 (Classification)", url: "https://web.stanford.edu/~jurafsky/slp3/5.pdf" },
@@ -207,7 +207,7 @@ const courseData = {
             // week: 6,
             topic: "Support Vector Machines with Linear Kernel",
             youTubeLinks: [
-                { title: "SVM with Linear Kernel", url: "https://youtu.be/Kvldyz0KdCU" }
+                { title: "SVM with Linear Kernel", url: "https://www.youtube.com/watch?v=KvIdyz0KdCU" }
             ],
             references: [
                 { title: "SVM Applications (Medium)", url: "https://medium.com/@rinu.gour123/8-unique-real-life-applications-of-svm-8a96ca43313" },
@@ -414,7 +414,7 @@ const courseData = {
             // week: 11, (continued)
             topic: "Gaussian Mixture Models",
             youTubeLinks: [
-                { title: "Gaussian Mixture Models", url: "https://youtu.be/he4ll0w1G-g" }
+                { title: "Gaussian Mixture Models", url: "https://www.youtube.com/watch?v=he4lI0w1G-g" }
             ],
             references: [
                 { title: "Gaussian Mixture Model (Brilliant.org)", url: "https://brilliant.org/wiki/gaussian-mixture-model/" },
