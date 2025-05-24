@@ -2,88 +2,222 @@
 
 {% block title %}Our Team - Under The Mango Tree{% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+    .team-page-hero {
+        /* Add specific hero styles for this page if needed, or use a general hero style */
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("{{ url_for('static', filename='images/team_hero_background.jpg') }}") no-repeat center center; /* Example background */
+        background-size: cover;
+        color: white;
+        padding: 80px 20px; /* Increased padding */
+    }
+
+    .section-title {
+        text-align: center;
+        margin-bottom: 1rem; /* Reduced bottom margin */
+        font-weight: 300; /* Lighter font weight */
+        font-size: 2.5rem; /* Standardized size */
+    }
+
+    .section-subtitle {
+        text-align: center;
+        margin-bottom: 3rem; /* Increased bottom margin for better spacing */
+        color: #6c757d; /* Standard muted text color */
+        font-size: 1.1rem; /* Slightly larger subtitle */
+    }
+
+    .team-card {
+        border: 1px solid #e0e0e0; /* Lighter border for cards */
+        border-radius: 0.5rem; /* More rounded corners */
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Softer shadow */
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        display: flex; /* Enable flexbox for card content alignment */
+        flex-direction: column; /* Stack card content vertically */
+        height: 100%; /* Ensure cards in a row take up full height */
+    }
+
+    .team-card:hover {
+        transform: translateY(-5px); /* Subtle lift effect on hover */
+        box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
+
+    .team-card .card-img-top {
+        width: 100%;
+        height: 250px; /* Fixed height for images */
+        object-fit: cover; /* Ensures image covers the area, might crop */
+        object-position: top center; /* Prioritize top of the image */
+        border-top-left-radius: 0.5rem; /* Match card's rounded corners */
+        border-top-right-radius: 0.5rem;
+    }
+
+    .team-card .card-body {
+        padding: 1.5rem; /* Increased padding in card body */
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1; /* Allows card body to grow and push footer down */
+    }
+
+    .team-card .card-title {
+        font-size: 1.25rem; /* Standardized title size */
+        font-weight: 600; /* Bolder title */
+        color: #333;
+    }
+
+    .team-card .card-subtitle {
+        font-size: 0.9rem; /* Standardized subtitle size */
+        color: #555;
+    }
+
+    .team-card .card-text {
+        font-size: 0.9rem; /* Standardized text size */
+        color: #454545; /* Slightly darker text for better readability */
+        line-height: 1.6; /* Improved line spacing */
+        flex-grow: 1; /* Allows text to take available space before links */
+    }
+    .team-card .card-links-footer {
+        margin-top: auto; /* Pushes this to the bottom of the card body */
+        padding-top: 1rem; /* Space above the links */
+        border-top: 1px solid #f0f0f0; /* Subtle separator for links */
+    }
+
+    .team-card .card-links-footer .card-link img,
+    .team-card .card-links-footer .card-link i { /* For Font Awesome icons if used */
+        width: 24px; /* Standardized icon size */
+        height: 24px;
+        margin-right: 8px; /* Space between multiple icons */
+        vertical-align: middle;
+        filter: grayscale(50%) opacity(0.7); /* Subtle icon styling */
+        transition: filter 0.2s ease-in-out;
+    }
+    .team-card .card-links-footer .card-link:hover img,
+    .team-card .card-links-footer .card-link:hover i {
+        filter: grayscale(0%) opacity(1); /* Full color on hover */
+    }
+    .team-card .card-links-footer .portal-link { /* Specific class for non-social links */
+        font-size: 0.85rem;
+        display: block; /* Make it take its own line */
+        margin-top: 0.5rem;
+    }
+
+    /* Ensure rows have consistent bottom margin for spacing between sections */
+    .leadership-team-row .col-lg-4,
+    .leadership-team-row .col-md-6 { /* Target cols within this specific row */
+        margin-bottom: 1.5rem; /* Consistent bottom margin for cards */
+    }
+
+    /* Support Team Card Specifics */
+    .support-team-card .card-body i { /* Icons in support team cards */
+        font-size: 2.5rem; /* Make Font Awesome icons larger */
+    }
+</style>
+{% endblock %}
+
 {% block content %}
     <!-- Hero Section -->
     <section class="hero team-page-hero">
         <div class="container text-center">
-            <h1>Our Team</h1>
-            <p>Meet the dedicated professionals behind Under The Mango Tree.</p>
+            <h1>Our Esteemed Team</h1> {# Changed wording slightly #}
+            <p class="lead">Meet the dedicated professionals driving the mission of Under The Mango Tree.</p> {# Updated lead text #}
         </div>
     </section>
 
     <!-- Team Content -->
     <section class="py-5">
         <div class="container">
-            <h2 class="section-title">Leadership Team</h2>
-            <p class="section-subtitle">Our leadership team brings together decades of experience in education, technology, and career development.</p>
+            <h2 class="section-title">Leadership & Faculty</h2> {# Combined for a more unified section #}
+            <p class="section-subtitle">Our core team brings together decades of experience in education, technology, and professional development.</p>
             
-            <div class="row">
-                <div class="col-md-4">
-    <div class="card h-100">
-        <img src="{{ url_for('static', filename='english/images/Kushal Shah.jpeg') }}" class="card-img-top" alt="Kushal Shah">
-        <div class="card-body">
-            <h5 class="card-title">Kushal Shah</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Tech & Strategy Lead</h6>
-            <p class="card-text">
-                Kushal Shah is a multidisciplinary technologist and strategist driving UTMT’s digital direction. With a background spanning education, data science, and design, he creates tools that translate complexity into clarity. His mission is to bridge the digital divide through empathy-driven innovation and strategic impact. He also supports UTMT's outreach and storytelling with scalable tech solutions.
-            </p>
-            <p>
-                 <a href="https://www.linkedin.com/in/kushal-shah-95b9a3b/" target="_blank" class="card-link">
-            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn" width="24">
-        </a>
-               <a href="https://pythonpal.org/" target="_blank" class="card-link">Check out my portal for Python coding practice</a>
-            </p>
-        </div>
-    </div>
-</div>
+            <div class="row leadership-team-row justify-content-center"> {# Added justify-content-center for better alignment if not full row #}
+                {# Kushal Shah #}
+                <div class="col-lg-4 col-md-6 mb-4"> {# Use col-lg-4 for 3 cards per row on large screens, col-md-6 for 2 on medium #}
+                    <div class="card team-card">
+                        <img src="{{ url_for('static', filename='english/images/Kushal Shah.jpeg') }}" class="card-img-top" alt="Kushal Shah">
+                        <div class="card-body">
+                            <h5 class="card-title">Kushal Shah</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Tech & Strategy Lead</h6>
+                            <p class="card-text">
+                                Kushal is a multidisciplinary technologist driving UTMT’s digital direction. With a background spanning education, data science, and design, he creates tools that translate complexity into clarity, aiming to bridge the digital divide through empathy-driven innovation.
+                            </p>
+                            <div class="card-links-footer">
+                                <a href="https://www.linkedin.com/in/kushal-shah-95b9a3b/" target="_blank" class="card-link" aria-label="Kushal Shah LinkedIn">
+                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn">
+                                </a>
+                                <a href="https://pythonpal.org/" target="_blank" class="card-link portal-link" aria-label="Kushal Shah PythonPal Portal">
+                                    <i class="fas fa-laptop-code text-primary"></i> PythonPal Coding Portal
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                <div class="col-md-4">
-    <div class="card team-card">
-        <img src="{{ url_for('static', filename='english/images/Preeti Shukla.jpeg') }}" class="card-img-top" alt="Preeti Shukla">
-        <div class="card-body">
-            <h5 class="card-title">Preeti Shukla</h5>
-            <h6 class="card-subtitle">Faculty, Language and Communication</h6>
-            <p class="card-text">
-                Preeti Shukla brings a rich background in language education and communication. At UTMT, she plays a crucial role
-                in nurturing learners’ expression, clarity, and confidence. With years of experience in curriculum design and classroom instruction,
-                she empowers students to connect ideas and convey them meaningfully across disciplines.
-            </p>
-            <p>
-                <a href="https://www.linkedin.com/in/preeti-shukla-3756268/" target="_blank" class="card-link">
-            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn" width="24">
-        </a>
-            </p>
-        </div>
-    </div>
-</div>
+                {# Preeti Shukla #}
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card team-card">
+                        <img src="{{ url_for('static', filename='english/images/Preeti Shukla.jpeg') }}" class="card-img-top" alt="Preeti Shukla">
+                        <div class="card-body">
+                            <h5 class="card-title">Preeti Shukla</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Faculty, Language and Communication</h6>
+                            <p class="card-text">
+                                Preeti brings a rich background in language education. At UTMT, she plays a crucial role
+                                in nurturing learners’ expression and clarity. With experience in curriculum design,
+                                she empowers students to connect ideas meaningfully.
+                            </p>                            
+                            <div class="card-links-footer">
+                                <a href="https://www.linkedin.com/in/preeti-shukla-3756268/" target="_blank" class="card-link" aria-label="Preeti Shukla LinkedIn">
+                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-               <div class="col-lg-4 col-md-6 mb-4">
-  <div class="card team-card">
-     <img src="{{ url_for('static', filename='english/images/Kalpesh Kapoor.jpeg') }}" class="card-img-top" alt="Kalpesh Kapoor">
-    <div class="card-body">
-      <h5 class="card-title">Kalpesh Kapoor</h5>
-      <h6 class="card-subtitle mb-2 text-muted">Visiting Faculty, IISER Pune</h6>
-      <p class="card-text">
-        Visiting faculty at IISER Pune's Data Science department, and Professor at IIT Guwahati’s Mathematics department. Kalpesh specializes in advanced mathematical modeling and data science. Connect with him for insights into modern data analysis techniques.
-      </p>
-      <p>
-        <a href="mailto:k.kapoor@acm.org" class="card-link">k.kapoor@acm.org</a>
-      </p>
-      <p>
-        <a href="https://scholar.google.com/citations?user=gmBA2MgAAAAJ&amp;hl=en" target="_blank" class="card-link">
-            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/googlescholar.svg" alt="Google Scholar" width="24" >
-
-        </a>
-        <a href="https://www.linkedin.com/in/kalpeshkapoor/?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAESB2DMBJB0QgWys0Rrh6vIVjGysrh75KCQ" target="_blank" class="card-link">
-            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn" width="24">
-        </a>
-      </p>
-    </div>
-  </div>
-</div>
-
+                {# Kalpesh Kapoor #}
+                <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="card team-card">
+                     <img src="{{ url_for('static', filename='english/images/Kalpesh Kapoor.jpeg') }}" class="card-img-top" alt="Kalpesh Kapoor">
+                    <div class="card-body">
+                      <h5 class="card-title">Prof. Kalpesh Kapoor</h5> {# Added Prof. title #}
+                      <h6 class="card-subtitle mb-2 text-muted">Visiting Faculty (IISER Pune & IIT Guwahati)</h6> {# Condensed subtitle #}
+                      <p class="card-text">
+                        Specializing in advanced mathematical modeling and data science, Prof. Kapoor enriches our curriculum with insights into modern data analysis techniques from his roles at IISER Pune and IIT Guwahati.
+                      </p>
+                      <div class="card-links-footer">
+                        <a href="https://scholar.google.com/citations?user=gmBA2MgAAAAJ&hl=en" target="_blank" class="card-link" aria-label="Kalpesh Kapoor Google Scholar">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/googlescholar.svg" alt="Google Scholar">
+                        </a>
+                        <a href="https://www.linkedin.com/in/kalpeshkapoor/?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAESB2DMBJB0QgWys0Rrh6vIVjGysrh75KCQ" target="_blank" class="card-link" aria-label="Kalpesh Kapoor LinkedIn">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn">
+                        </a>
+                         <a href="mailto:k.kapoor@acm.org" class="card-link portal-link" aria-label="Email Kalpesh Kapoor">
+                            <i class="fas fa-envelope text-primary"></i> k.kapoor@acm.org
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 
-               
+                {# Dr. Anish Roychowdhury - NEWLY ADDED #}
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card team-card">
+                        <img src="{{ url_for('static', filename='images/anish_roychowdhury.jpeg') }}" class="card-img-top" alt="Dr. Anish Roychowdhury">
+                        <div class="card-body">
+                            <h5 class="card-title">Dr. Anish Roychowdhury</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Associate Director of Data Science, Plaksha University</h6>
+                            <p class="card-text">
+                                Dr. Anish is a seasoned Data Science professional with 20+ years in industry and academia.
+                                He excels in leading digital transformations and has deep expertise in Machine Learning, Deep Learning, and Generative AI, dedicated to advancing Data Science education.
+                            </p>
+                            <div class="card-links-footer">
+                                {# Replace with actual LinkedIn profile URL #}
+                                <a href="YOUR_LINKEDIN_PROFILE_URL_HERE_FOR_ANISH" target="_blank" class="card-link" aria-label="Dr. Anish Roychowdhury LinkedIn">
+                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn">
+                                </a>
+                                {# Add other relevant links for Dr. Anish if available #}
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 
             </div>
         </div>
@@ -92,43 +226,44 @@
     <!-- Support Team -->
     <section class="py-5 bg-light">
         <div class="container">
-            <h2 class="section-title">Our Support Team</h2>
-            <p class="section-subtitle">The dedicated individuals who ensure a smooth learning experience for all our students.</p>
+            <h2 class="section-title">Our Support Pillars</h2> {# Changed title slightly #}
+            <p class="section-subtitle">The dedicated individuals ensuring a smooth and enriching learning experience for all our students.</p>
             
             <div class="row">
-                <div class="col-md-3 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body text-center">
-                            <i class="fas fa-chalkboard-teacher fa-3x text-primary mb-3"></i>
+                {# Using col-lg-3 for 4 cards per row on large screens, col-md-6 for 2 on medium #}
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card h-100 support-team-card">
+                        <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
+                            <i class="fas fa-chalkboard-teacher text-primary mb-3"></i>
                             <h4>Teaching Assistants</h4>
-                            <p>Our team of teaching assistants provide additional support to students, answering questions and offering guidance throughout the learning process.</p>
+                            <p class="small">Providing additional support, answering questions, and offering guidance throughout the learning process.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body text-center">
-                            <i class="fas fa-laptop-code fa-3x text-primary mb-3"></i>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card h-100 support-team-card">
+                        <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
+                            <i class="fas fa-laptop-code text-primary mb-3"></i>
                             <h4>Technical Support</h4>
-                            <p>Our technical support team ensures the platform runs smoothly, resolving any issues quickly to maintain an uninterrupted learning experience.</p>
+                            <p class="small">Ensuring our platform runs smoothly and resolving technical issues quickly for an uninterrupted learning experience.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body text-center">
-                            <i class="fas fa-hands-helping fa-3x text-primary mb-3"></i>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card h-100 support-team-card">
+                        <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
+                            <i class="fas fa-hands-helping text-primary mb-3"></i>
                             <h4>Student Services</h4>
-                            <p>Dedicated to addressing student needs, from enrollment assistance to general inquiries about our programs and services.</p>
+                            <p class="small">Dedicated to addressing student needs, from enrollment assistance to general inquiries about our programs.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body text-center">
-                            <i class="fas fa-chart-line fa-3x text-primary mb-3"></i>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card h-100 support-team-card">
+                        <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
+                            <i class="fas fa-chart-line text-primary mb-3"></i>
                             <h4>Curriculum Development</h4>
-                            <p>Constantly updating and refining our course materials to ensure they remain relevant, engaging, and effective.</p>
+                            <p class="small">Constantly updating and refining course materials to ensure they remain relevant, engaging, and effective.</p>
                         </div>
                     </div>
                 </div>
@@ -141,13 +276,13 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-8 mb-4 mb-lg-0">
-                    <h2>Join Our Team</h2>
-                    <p class="mb-4">We're always looking for passionate educators and professionals to join the Under The Mango Tree team. If you're dedicated to making quality education accessible to all and want to be part of our mission, we'd love to hear from you.</p>
-                    <p>Current openings include positions in curriculum development, instruction, student support, and technology. Send your resume and a cover letter explaining why you'd be a good fit for our team.</p>
+                    <h2>Join Our Mission</h2> {# Changed title slightly #}
+                    <p class="lead mb-4">We're always looking for passionate educators and professionals to join the Under The Mango Tree team.</p>
+                    <p>If you're dedicated to making quality education accessible and want to be part of our mission, we'd love to hear from you. Current openings include positions in curriculum development, instruction, student support, and technology. Send your resume and a cover letter explaining why you'd be a good fit for our team.</p>
                 </div>
                 <div class="col-lg-4 text-center text-lg-end">
-                    <a href="mailto:careers@utmt.edu" class="btn btn-primary">
-                        <i class="fas fa-paper-plane me-2"></i>Contact Us
+                    <a href="mailto:careers@utmt.edu" class="btn btn-primary btn-lg"> {# Made button larger #}
+                        <i class="fas fa-paper-plane me-2"></i>Express Interest
                     </a>
                 </div>
             </div>
