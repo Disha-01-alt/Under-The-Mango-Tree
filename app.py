@@ -130,9 +130,9 @@ def english_learning():
 @app.route('/machine-learning')
 def machine_learning():
     # CORRECTED: 4 spaces of indentation
-    instructor_name = "Dr. Kushal Shah" # Or get from ml_course_data if loaded in Python
+     # Or get from ml_course_data if loaded in Python
     # CORRECTED: 4 spaces of indentation, same as the line above
-    return render_template('machine_learning.html', mlCourseData={'instructor': instructor_name})
+    return render_template('machine_learning.html')
 
     
 
