@@ -1,11 +1,10 @@
-// static/js/dl.js (or dl_data.js - ensure filename consistency)
+// static/js/dl.js
 
 const courseData = {
-    instructor: "Dr. Kushal Shah",
+    // instructor: "Dr. Kushal Shah", // Instructor property REMOVED
     prerequisite: "Machine Learning",
     syllabus: [
         {
-            // week: 1, // Internal reference, not displayed
             topic: "Artificial Neural Networks",
             primaryYouTubeLinks: [
                 {
@@ -59,7 +58,6 @@ const courseData = {
             ]
         },
         {
-            // week: 2,
             topic: "Boosting Algorithms",
             primaryYouTubeLinks: [
                 {
@@ -74,7 +72,6 @@ const courseData = {
             otherReferences: []
         },
         {
-            // week: 3,
             topic: "Computer Vision - Basic CNN Model",
             primaryYouTubeLinks: [
                 {
@@ -116,7 +113,6 @@ const courseData = {
             ]
         },
         {
-            // week: 4,
             topic: "Computer Vision - CNN Architectures",
             primaryYouTubeLinks: [
                 {
@@ -132,7 +128,6 @@ const courseData = {
             ]
         },
         {
-            // week: 5,
             topic: "Computer Vision - Autoencoders & GANs",
             primaryYouTubeLinks: [
                 {
@@ -149,7 +144,6 @@ const courseData = {
             ]
         },
         {
-            // week: 6,
             topic: "Computer Vision - Practical Considerations",
             primaryYouTubeLinks: [ /* No primary links listed for week 6 in OCR */ ],
             otherReferences: [
@@ -157,7 +151,6 @@ const courseData = {
             ]
         },
         {
-            // week: 7,
             topic: "Sequence Modeling - RNNs and LSTMs I",
             primaryYouTubeLinks: [
                 {
@@ -179,11 +172,10 @@ const courseData = {
             ]
         },
         {
-            // week: 8,
             topic: "Sequence Modeling - RNNs and LSTMs II",
             primaryYouTubeLinks: [
                 {
-                    subTopic: "RNN & LSTM Practical", // No specific video, Karpathy link is more general
+                    subTopic: "RNN & LSTM Practical",
                     links: []
                 }
             ],
@@ -195,7 +187,6 @@ const courseData = {
             ]
         },
         {
-            // week: 9,
             topic: "NLP - Transformer Architecture and LLMs",
             primaryYouTubeLinks: [
                 {
@@ -228,13 +219,12 @@ const courseData = {
             ]
         },
         {
-            // week: 10,
             topic: "NLP - LLM Pre-Training",
             primaryYouTubeLinks: [
                 {
                     subTopic: "LLM Pre-Training",
                     links: [
-                        { title: "LLM Pre-Training", url: "https://www.youtube.com/watch?v=knTc-NQSİKA" } // Note: İ - correct for actual URL
+                        { title: "LLM Pre-Training", url: "https://www.youtube.com/watch?v=knTc-NQSIKA" } // Corrected İ to I
                     ]
                 }
             ],
@@ -248,7 +238,6 @@ const courseData = {
             ]
         },
         {
-            // week: 11,
             topic: "NLP - Fine Tuning LLMs",
             primaryYouTubeLinks: [
                 {
@@ -256,7 +245,7 @@ const courseData = {
                     links: [
                         { title: "Fine Tuning LLMs 1", url: "https://www.youtube.com/watch?v=kCc8FmEb1nY" },
                         { title: "Fine Tuning LLMs 2", url: "https://www.youtube.com/watch?v=mw7ay38--ak" },
-                        { title: "Fine Tuning LLMs 3", url: "https://www.youtube.com/watch?v=dzyDHMусх_c" } // Note: Cyrillic - correct for actual URL
+                        { title: "Fine Tuning LLMs 3", url: "https://www.youtube.com/watch?v=dzyDHMyeh_c" } // Corrected Cyrillic
                     ]
                 }
             ],
@@ -271,7 +260,6 @@ const courseData = {
             ]
         },
         {
-            // week: 12,
             topic: "NLP - Retrieval Augmented Generation",
             primaryYouTubeLinks: [
                 {
@@ -289,7 +277,6 @@ const courseData = {
             ]
         },
         {
-            // week: 13,
             topic: "Image Captioning, Text to Image",
             primaryYouTubeLinks: [
                 {
@@ -298,7 +285,7 @@ const courseData = {
                         { title: "Image Captioning/Text to Image 1", url: "https://www.youtube.com/watch?v=JmATtG0yA5E" },
                         { title: "Image Captioning/Text to Image 2", url: "https://www.youtube.com/watch?v=pea3sH6orMc" },
                         { title: "Image Captioning/Text to Image 3", url: "https://www.youtube.com/watch?v=fUSTbGrL1tc" },
-                        { title: "Image Captioning/Text to Image 4", url: "https://www.youtube.com/watch?v=LWIZİ_RJYİM" }, // Note: İ - correct for actual URL
+                        { title: "Image Captioning/Text to Image 4", url: "https://www.youtube.com/watch?v=LWIZI_RJYIM" }, // Corrected İ to I
                         { title: "Image Captioning/Text to Image 5", url: "https://www.youtube.com/watch?v=aaP7JJZuvGs" }
                     ]
                 }
@@ -310,9 +297,8 @@ const courseData = {
             ]
         },
         {
-            // week: 14,
             topic: "Deployment",
-            primaryYouTubeLinks: [ /* No primary links listed for week 14 in OCR */ ],
+            primaryYouTubeLinks: [ /* No primary links listed */ ],
             otherReferences: [
                 { category: "Full Stack Deep Learning Course (2022)", url: "https://fullstackdeeplearning.com/course/2022/" }
             ]
@@ -323,7 +309,7 @@ const courseData = {
         { title: "Deep Learning by Ian Goodfellow, Yoshua Bengio & Aaron Courville", url: "http://www.deeplearningbook.org/" },
         { title: "Deep Learning by Christopher Bishop and Hugh Bishop", url: null }
     ],
-    referencesForNLP: [] // Kept empty; specific NLP refs are within topics. Add general ones here if needed.
+    referencesForNLP: []
 };
 
 // Helper function to extract YouTube Video ID
@@ -345,9 +331,8 @@ function getYoutubeVideoId(url) {
         }
     }
     if (videoId) {
-        const cleanedId = videoId.split('&')[0].split('#')[0]; // Remove params like &list=...
-        // Check if the cleaned ID looks like a typical YouTube ID (11 chars, or allowing for OCR errors)
-        if (/^[a-zA-Z0-9\-_]{11}$/.test(cleanedId) || /^[a-zA-Z0-9\-_İусх]{11,}$/.test(cleanedId)) {
+        const cleanedId = videoId.split('&')[0].split('#')[0];
+        if (/^[a-zA-Z0-9\-_]{11}$/.test(cleanedId) || /^[a-zA-Z0-9\-_İусх]{11,}$/.test(cleanedId)) { // Allow for some OCR errors
              return cleanedId;
         }
     }
