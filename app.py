@@ -24,7 +24,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
 # Create required directories
-os.makedirs('static/images', exist_ok=True)
+os.makedirs('static/english/images', exist_ok=True)
 os.makedirs('static/english', exist_ok=True)
 os.makedirs('uploads/cv', exist_ok=True)
 os.makedirs('uploads/id_card', exist_ok=True)
