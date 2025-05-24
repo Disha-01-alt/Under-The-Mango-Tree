@@ -44,7 +44,7 @@
 
     .team-card .card-img-top {
         width: 100%;
-        height: 250px; /* Fixed height for images */
+        height: 300px; /* Fixed height for images */
         object-fit: cover; /* Ensures image covers the area, might crop */
         object-position: top center; /* Prioritize top of the image */
         border-top-left-radius: 0.5rem; /* Match card's rounded corners */
@@ -210,7 +210,7 @@
                             </p>
                             <div class="card-links-footer">
                                 {# Replace with actual LinkedIn profile URL #}
-                                <a href="YOUR_LINKEDIN_PROFILE_URL_HERE_FOR_ANISH" target="_blank" class="card-link" aria-label="Dr. Anish Roychowdhury LinkedIn">
+                                <a href="https://www.linkedin.com/in/dr-anish-roychowdhury-a2463714/" target="_blank" class="card-link" aria-label="Dr. Anish Roychowdhury LinkedIn">
                                     <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn">
                                 </a>
                                 {# Add other relevant links for Dr. Anish if available #}
@@ -218,7 +218,48 @@
                         </div>
                     </div>
                 </div>
-                
+                                {# Dr. S. Balaji - NEWLY ADDED #}
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card team-card">
+                        {# Replace with actual image path #}
+                        <img src="{{ url_for('static', filename='images/Balaji Srinivasan.jpeg.jpg') }}" class="card-img-top" alt="Dr. S. Balaji">
+                        <div class="card-body">
+                            <h5 class="card-title">Dr. S. Balaji</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Professor, Mechanical Engineering, IIT Madras</h6> {# Assuming role from URL #}
+                            <p class="card-text">
+                                Dr. Balaji brings extensive expertise in Mechanical Engineering from IIT Madras. His research and teaching focus on [mention key area if known, e.g., thermodynamics, fluid mechanics, or manufacturing processes], contributing valuable insights to our programs.
+                                {# **Please refine this description based on his actual role/contribution to UTMT** #}
+                            </p>
+                            <div class="card-links-footer">
+                                <a href="https://mech.iitm.ac.in/profile.php?fname=sbalaji" target="_blank" class="card-link portal-link" aria-label="Dr. S. Balaji IITM Profile">
+                                    <i class="fas fa-university text-primary"></i> IITM Profile
+                                </a>
+                                {# Add LinkedIn or other relevant links if available #}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                {# Nagapranay Tumuluri - NEWLY ADDED #}
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card team-card">
+                        {# Replace with actual image path #}
+                        <img src="{{ url_for('static', filename='images/Naga Pranay Tumuluri .jpeg.jpg') }}" class="card-img-top" alt="Nagapranay Tumuluri">
+                        <div class="card-body">
+                            <h5 class="card-title">Nagapranay Tumuluri</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Data Science & ML Professional / Mentor</h6> {# Generic subtitle, please update #}
+                            <p class="card-text">
+                                Nagapranay is a skilled professional with a strong background in [mention key skills from LinkedIn, e.g., data analysis, machine learning applications]. He contributes to UTMT by [mention role, e.g., mentoring students, developing course content, or leading projects].
+                                {# **Please refine this description based on his actual role/contribution to UTMT** #}
+                            </p>
+                            <div class="card-links-footer">
+                                <a href="https://www.linkedin.com/in/nagapranaytumuluri?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="card-link" aria-label="Nagapranay Tumuluri LinkedIn">
+                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn">
+                                </a>
+                                {# Add other relevant links if available #}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
