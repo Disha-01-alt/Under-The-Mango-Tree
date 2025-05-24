@@ -39,7 +39,7 @@ app.register_blueprint(candidate_bp, url_prefix='/candidate')
 app.register_blueprint(admin_bp, url_prefix='/admin')
 app.register_blueprint(company_bp, url_prefix='/company')
 # app.register_blueprint(google_auth) # OLD
-app.register_blueprint(google_auth, url_prefix='/job-portal') # NEW
+app.register_blueprint(google_auth) # NEW
 
 # Import database initialization
 from database import init_db
