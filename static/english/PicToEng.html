@@ -325,7 +325,7 @@
             
             if (currentExercise) {
                 const img = document.getElementById('current-image');
-                img.src = currentExercise.image;
+                img.src = '/static/english/' + currentExercise.image;
                 img.className = 'image-fade';
                 
                 // Store the current exercise's word as a data attribute for checking
