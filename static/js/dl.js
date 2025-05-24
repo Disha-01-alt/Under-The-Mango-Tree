@@ -63,7 +63,7 @@ const courseData = {
                 {
                     subTopic: "Boosting Concepts",
                     links: [
-                        { title: "Boosting 1", url: "https://www.youtube.com/watch?v=kho60ANGU_A" },
+                        { title: "Boosting 1", url: "https://www.youtube.com/watch?v=kho6oANGu_A" },
                         { title: "Boosting 2", url: "https://www.youtube.com/watch?v=LsK-xG1cLYA" },
                         { title: "Boosting 3", url: "https://www.youtube.com/watch?v=OtD8wVaFm6E" }
                     ]
@@ -133,7 +133,7 @@ const courseData = {
                 {
                     subTopic: "Autoencoders & GANs",
                     links: [
-                        { title: "Autoencoders & GANs 1", url: "https://www.youtube.com/watch?v=5WoltGTWV54" },
+                        { title: "Autoencoders & GANs 1", url: "https://www.youtube.com/watch?v=5WoItGTWV54" },
                         { title: "Autoencoders & GANs 2", url: "https://www.youtube.com/watch?v=9zKuYvjFFS8" }
                     ]
                 }
@@ -156,7 +156,7 @@ const courseData = {
                 {
                     subTopic: "RNN & LSTM Theory",
                     links: [
-                        { title: "RNN & LSTM Theory", url: "https://www.youtube.com/watch?v=6nigTuYFZLQ" }
+                        { title: "RNN & LSTM Theory", url: "https://www.youtube.com/watch?v=ySEx_Bqxvvo" }
                     ]
                 }
             ],
@@ -224,7 +224,7 @@ const courseData = {
                 {
                     subTopic: "LLM Pre-Training",
                     links: [
-                        { title: "LLM Pre-Training", url: "https://www.youtube.com/watch?v=knTc-NQSIKA" } // Corrected İ to I
+                        { title: "LLM Pre-Training", url: "https://www.youtube.com/watch?v=knTc-NQSjKA" } // Corrected İ to I
                     ]
                 }
             ],
