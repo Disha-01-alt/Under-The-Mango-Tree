@@ -31,7 +31,7 @@ os.makedirs('uploads/id_card', exist_ok=True)
 os.makedirs('uploads/marksheet', exist_ok=True)
 
 # Setup English learning module
-english_path = os.path.join('english')
+english_path = os.path.join('static', 'english')
 if os.path.exists(english_path):
     print(f"English learning module found at {english_path}")
 else:
