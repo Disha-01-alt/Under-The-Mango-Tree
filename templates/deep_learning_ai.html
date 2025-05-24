@@ -1,9 +1,8 @@
 {% extends 'base.html' %}
-
-{# The instructor_name variable will be passed from your Flask route #}
-{% block title %}Deep Learning Course - By {{ instructor_name }}{% endblock %}
-
+{% block title %}Deep Learning Course - By {{ instructor_name }}{% endblock %} 
 {% block extra_css %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
     .hero-dl {
         background: linear-gradient(rgba(29, 38, 113, 0.7), rgba(19, 73, 100, 0.7)), url('https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZGF0YSUyMHNjaWVuY2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60') no-repeat center center;
@@ -12,43 +11,66 @@
         padding: 60px 20px;
         margin-bottom: 30px;
     }
-    .video-container {
+    .dl-table th {
+        background-color: #343a40; /* Dark background for table headers */
+        color: white;
+        vertical-align: middle;
+    }
+    .dl-table td {
+        vertical-align: top; /* Align content to the top of table cells */
+        padding: 0.75rem;
+    }
+    .video-container-table { /* For embedding one video per topic in the table */
         position: relative;
-        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        padding-bottom: 56.25%; /* 16:9 */
         height: 0;
         overflow: hidden;
-        max-width: 100%;
+        max-width: 320px; /* Max width for embedded video in table */
+        margin: 0 auto 10px auto; /* Center and add some bottom margin */
         background: #000;
-        margin-bottom: 15px;
+        border-radius: 0.25rem; /* Optional: rounded corners for the video embed */
     }
-    .video-container iframe {
+    .video-container-table iframe {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
     }
-    .accordion-button:not(.collapsed) {
-        color: #0c63e4;
-        background-color: #e7f1ff;
+    .list-unstyled li {
+        padding-bottom: 0.4rem; /* Increased spacing for readability */
+        font-size: 0.9rem; /* Slightly smaller font for list items */
     }
-    .list-group-item a {
+    .list-unstyled a {
         text-decoration: none;
+        color: #007bff;
     }
-    .list-group-item a:hover {
+    .list-unstyled a:hover {
         text-decoration: underline;
     }
-    .section-divider {
-        margin-top: 20px;
-        margin-bottom: 20px;
-        border-bottom: 1px solid #dee2e6;
+    .sub-topic-heading {
+        font-weight: 600; /* Bolder sub-topic */
+        margin-top: 12px;
+        margin-bottom: 6px;
+        color: #17a2b8; /* Teal color for sub-topics */
+        font-size: 1rem;
+        border-bottom: 1px solid #e9ecef; /* Light underline for sub-topic */
+        padding-bottom: 4px;
     }
-    .primary-material-section h5 {
-        margin-top: 20px;
-        margin-bottom: 10px;
-        color: #333;
-        border-left: 3px solid #007bff;
-        padding-left: 10px;
+    .sub-topic-heading:first-child {
+        margin-top: 0; /* No top margin for the first sub-topic in a cell */
+    }
+
+    .card-dl-refs { /* Styling for textbook/NLP ref cards */
+        margin-top: 2.5rem; /* Increased margin */
+        box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075); /* Subtle shadow */
+    }
+    .card-dl-refs .card-header {
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+    #dl-instructor-name, #dl-prerequisite-subject {
+        font-weight: 600; /* Make instructor/prereq slightly bolder in hero */
     }
 </style>
 {% endblock %}
@@ -57,224 +79,224 @@
     <section class="hero-dl">
         <div class="container text-center">
             <h1>Deep Learning Course</h1>
-            {# These spans will be populated by JavaScript using courseData from dl.js #}
-            <p class="lead">Instructor: <span id="instructor-name"></span></p>
-            <p>Before starting Deep Learning, make sure to first learn basics of <span id="prerequisite-subject"></span>.</p>
+            <p class="lead">Instructor: <span id="dl-instructor-name">Loading...</span></p>
+            <p>Before starting Deep Learning, make sure to first learn basics of <span id="dl-prerequisite-subject">Loading...</span>.</p>
         </div>
     </section>
 
     <section class="py-5">
-        <div class="container">
-            <h2 class="mb-4 text-center">Course Content</h2>
+        <div class="container-fluid"> {# Use container-fluid for wider table if needed #}
+            <h2 class="mb-4 text-center">Course Curriculum</h2>
+            <p class="text-center text-muted mb-4">Explore topics, primary video resources, and supplementary materials for your Deep Learning journey.</p>
 
-            <div class="accordion" id="courseAccordion">
-                <!-- Weeks will be dynamically inserted here by JavaScript -->
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover dl-table">
+                    <thead>
+                        <tr>
+                            <!-- Week column removed -->
+                            <th scope="col" style="width: 20%;">Topic</th>
+                            <th scope="col" style="width: 40%;">Primary YouTube Materials</th>
+                            <th scope="col" style="width: 40%;">Other References & Resources</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dl-table-body">
+                        <!-- Table rows will be dynamically inserted here by JavaScript -->
+                        <tr>
+                            <td colspan="3" class="text-center p-5" id="table-loading-placeholder">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                                <p class="mt-2">Loading course content...</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
-            <div id="textbooks-section" class="mt-5">
-                <!-- Textbooks will be dynamically inserted here -->
+            <div class="row mt-5 justify-content-center">
+                <div class="col-lg-8 col-xl-6 mb-4" id="textbooks-section-dl">
+                    <!-- Textbooks will be dynamically inserted here -->
+                </div>
+                <div class="col-lg-8 col-xl-6 mb-4" id="nlp-references-section-dl">
+                    <!-- NLP References will be dynamically inserted here if any -->
+                </div>
             </div>
 
-            <div id="nlp-references-section" class="mt-5">
-                <!-- NLP References will be dynamically inserted here -->
-            </div>
         </div>
     </section>
 {% endblock %}
 
 {% block extra_js %}
-    {# Ensure this filename matches your actual JS file containing the courseData object #}
     <script src="{{ url_for('static', filename='js/dl.js') }}"></script>
-    {# Changed from dl.js to dl_data.js as that's where courseData is likely defined #}
 
     <script>
-        // Helper function to extract YouTube Video ID
-        function getYoutubeVideoId(url) {
-            if (!url) return null;
-            let videoId = null;
-            const youtubeRegex = [
-                /(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([^&#]+)/,
-                /(?:https?:\/\/)?youtu\.be\/([^?#]+)/,
-                /(?:https?:\/\/)?(?:www\.)?youtube\.com\/embed\/([^?#]+)/,
-                /(?:https?:\/\/)?(?:www\.)?youtube\.com\/v\/([^?#]+)/,
-                /(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?.*v=([^&]+)/
-            ];
-            for (const regex of youtubeRegex) {
-                const match = url.match(regex);
-                if (match && match[1]) {
-                    videoId = match[1];
-                    break;
-                }
-            }
-            if (videoId) {
-                if (/^[a-zA-Z0-9\-_İусх]+$/.test(videoId)) {
-                    return videoId;
-                }
-            }
-            console.warn("Could not extract video ID from URL:", url);
-            return null;
-        }
-
         document.addEventListener('DOMContentLoaded', function() {
-            // Check if courseData is loaded from dl_data.js
-            if (typeof courseData === 'undefined') {
-                console.error("CRITICAL: courseData object is not defined. Ensure dl_data.js is loaded correctly and defines 'courseData'.");
-                // Optionally, display a message to the user on the page
-                document.getElementById('instructor-name').textContent = "Error: Data not loaded";
-                document.getElementById('prerequisite-subject').textContent = "Error: Data not loaded";
-                return; // Stop further execution if data is missing
-            }
+            const tableLoadingPlaceholder = document.getElementById('table-loading-placeholder');
 
-            // Populate header info in the body using JavaScript
-            document.getElementById('instructor-name').textContent = courseData.instructor;
-            document.getElementById('prerequisite-subject').textContent = courseData.prerequisite;
-
-            const courseAccordion = document.getElementById('courseAccordion');
-            if (!courseAccordion) {
-                console.error("CRITICAL: Element with ID 'courseAccordion' not found.");
+            if (typeof courseData === 'undefined' || !courseData.syllabus) {
+                console.error("CRITICAL: courseData object or courseData.syllabus is not defined. Ensure dl.js is loaded and correct.");
+                document.getElementById('dl-instructor-name').textContent = "Error: Data not loaded";
+                document.getElementById('dl-prerequisite-subject').textContent = "Error: Data not loaded";
+                if(tableLoadingPlaceholder) tableLoadingPlaceholder.parentNode.innerHTML = "<td colspan='3' class='text-danger text-center p-3'>Error loading course content. Please check data file or try again.</td>";
                 return;
             }
 
-            courseData.weeks.forEach((week, index) => {
-                const weekId = `week-${week.weekNumber}`;
-                const collapseId = `collapse-${week.weekNumber}`;
+            document.getElementById('dl-instructor-name').textContent = courseData.instructor;
+            document.getElementById('dl-prerequisite-subject').textContent = courseData.prerequisite;
 
-                let primaryMaterialHtml = '';
-                if (week.primaryMaterial && week.primaryMaterial.length > 0) {
-                    primaryMaterialHtml += `<h6><i class="fas fa-video me-2 text-danger"></i>Primary YouTube Links</h6>`;
-                    week.primaryMaterial.forEach(section => {
-                        if (section.title) {
-                             primaryMaterialHtml += `<div class="primary-material-section"><h5>${section.title}</h5></div>`;
+            const dlTableBody = document.getElementById('dl-table-body');
+            if (!dlTableBody) {
+                console.error("CRITICAL: Element with ID 'dl-table-body' not found.");
+                return;
+            }
+            dlTableBody.innerHTML = ''; // Clear loading placeholder (the <tr><td>...</td></tr>)
+
+            if (courseData.syllabus.length === 0) {
+                dlTableBody.innerHTML = '<tr><td colspan="3" class="text-center text-muted p-4">No course modules are currently available.</td></tr>';
+            }
+
+            courseData.syllabus.forEach(item => {
+                const row = document.createElement('tr');
+
+                // Topic Cell
+                const topicCell = document.createElement('td');
+                topicCell.innerHTML = `<strong>${item.topic}</strong>`;
+                row.appendChild(topicCell);
+
+                // Primary YouTube Links Cell
+                const primaryLinksCell = document.createElement('td');
+                let primaryHtml = '';
+                let firstVideoEmbeddedThisTopic = false;
+
+                if (item.primaryYouTubeLinks && item.primaryYouTubeLinks.length > 0) {
+                    item.primaryYouTubeLinks.forEach(group => {
+                        if (group.subTopic) {
+                            primaryHtml += `<h6 class="sub-topic-heading">${group.subTopic}</h6>`;
                         }
-                        if (section.videos && section.videos.length > 0) {
-                            primaryMaterialHtml += '<div class="row">';
-                            section.videos.forEach(video => {
-                                const videoId = getYoutubeVideoId(video.url);
-                                if (videoId) {
-                                    primaryMaterialHtml += `
-                                        <div class="col-md-6 col-lg-4 mb-3">
-                                            <div class="card h-100">
-                                                <div class="video-container">
-                                                    <iframe src="https://www.youtube.com/embed/${videoId}"
-                                                            title="${video.description || section.title || 'YouTube video player'}"
-                                                            frameborder="0"
-                                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                            allowfullscreen>
-                                                    </iframe>
-                                                </div>
-                                                <div class="card-body py-2">
-                                                    <p class="card-text small mb-0">${video.description || 'Related Video'}</p>
-                                                </div>
-                                            </div>
+                        const ul = document.createElement('ul');
+                        ul.classList.add('list-unstyled', 'ps-3'); // ps-3 for a bit more indent
+                        if (group.links && group.links.length > 0) {
+                            group.links.forEach(link => {
+                                const videoId = getYoutubeVideoId(link.url);
+                                if (videoId && !firstVideoEmbeddedThisTopic) {
+                                    primaryHtml += `
+                                        <div class="video-container-table">
+                                            <iframe src="https://www.youtube.com/embed/${videoId}"
+                                                    title="${link.title || group.subTopic || item.topic || 'YouTube video'}"
+                                                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                    allowfullscreen>
+                                            </iframe>
                                         </div>
                                     `;
-                                } else {
-                                    primaryMaterialHtml += `
-                                    <div class="col-md-6 col-lg-4 mb-3">
-                                        <div class="card h-100">
-                                            <div class="card-body py-2">
-                                                <p class="card-text small mb-0">
-                                                    <i class="fas fa-exclamation-triangle text-warning me-1"></i>
-                                                    Could not embed: <a href="${video.url}" target="_blank" rel="noopener noreferrer">${video.description || video.url}</a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    `;
+                                    firstVideoEmbeddedThisTopic = true;
                                 }
+                                const li = document.createElement('li');
+                                li.innerHTML = `<a href="${link.url}" target="_blank" rel="noopener noreferrer" title="${link.title || 'Watch video'}">
+                                                    <i class="fab fa-youtube text-danger me-1"></i> ${link.title || 'Link'}
+                                                    <i class="fas fa-external-link-alt fa-xs ms-1"></i>
+                                                </a>`;
+                                ul.appendChild(li);
                             });
-                            primaryMaterialHtml += '</div>';
+                        } else if (group.subTopic) { // Subtopic title exists but no links under it
+                            const li = document.createElement('li');
+                            li.innerHTML = `<span class="text-muted fst-italic small">No specific videos listed under this sub-topic.</span>`;
+                            ul.appendChild(li);
+                        }
+                        if (ul.hasChildNodes()) { // Only append ul if it has items
+                           primaryHtml += ul.outerHTML;
                         }
                     });
-                } else {
-                     primaryMaterialHtml = '<p><em>No primary YouTube links for this week.</em></p>';
                 }
+                if (!primaryHtml.trim()) { // Check if primaryHtml is empty or just whitespace
+                    primaryHtml = '<p class="text-muted fst-italic small mt-2">No primary YouTube materials listed for this topic.</p>';
+                }
+                primaryLinksCell.innerHTML = primaryHtml;
+                row.appendChild(primaryLinksCell);
 
-
-                let otherReferencesHtml = '';
-                if (week.otherReferences && week.otherReferences.length > 0) {
-                    otherReferencesHtml += `<div class="section-divider"></div><h6><i class="fas fa-link me-2 text-info"></i>Other References</h6><ul class="list-group list-group-flush">`;
-                    week.otherReferences.forEach(ref => {
-                        otherReferencesHtml += `
-                            <li class="list-group-item">
-                                <a href="${ref.url}" target="_blank" rel="noopener noreferrer">${ref.title}</a>
-                            </li>`;
+                // Other References Cell
+                const otherReferencesCell = document.createElement('td');
+                let otherHtml = '';
+                if (item.otherReferences && item.otherReferences.length > 0) {
+                    const ul = document.createElement('ul');
+                    ul.classList.add('list-unstyled', 'ps-0'); // ps-0 if categories are bold enough
+                    item.otherReferences.forEach(ref => {
+                        const li = document.createElement('li');
+                        if (ref.url) {
+                            const displayUrl = ref.url.length > 45 ? ref.url.substring(0, 42) + '...' : ref.url;
+                            li.innerHTML = `<strong>${ref.category || 'Reference'}:</strong> 
+                                            <a href="${ref.url}" target="_blank" rel="noopener noreferrer" title="${ref.url}">
+                                            ${displayUrl} <i class="fas fa-external-link-alt fa-xs"></i>
+                                            </a>`;
+                        } else {
+                            li.innerHTML = `<strong>${ref.category || 'Reference'}:</strong> <span class="text-muted">N/A</span>`;
+                        }
+                        ul.appendChild(li);
                     });
-                    otherReferencesHtml += `</ul>`;
-                } else {
-                    // No need to add "No other references" if primary material is also empty.
-                    // It can make the UI cleaner. Or add it if you prefer:
-                    // otherReferencesHtml = '<p><em>No other references for this week.</em></p>';
+                     if (ul.hasChildNodes()) {
+                        otherHtml = ul.outerHTML;
+                    }
                 }
+                if (!otherHtml.trim()) {
+                    otherHtml = '<p class="text-muted fst-italic small mt-2">No other references listed for this topic.</p>';
+                }
+                otherReferencesCell.innerHTML = otherHtml;
+                row.appendChild(otherReferencesCell);
 
-                const accordionItem = `
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="heading-${weekId}">
-                            <button class="accordion-button ${index === 0 ? '' : 'collapsed'}" type="button" data-bs-toggle="collapse" data-bs-target="#${collapseId}" aria-expanded="${index === 0 ? 'true' : 'false'}" aria-controls="${collapseId}">
-                                <strong>Week ${week.weekNumber}: ${week.topic}</strong>
-                            </button>
-                        </h2>
-                        <div id="${collapseId}" class="accordion-collapse collapse ${index === 0 ? 'show' : ''}" aria-labelledby="heading-${weekId}" data-bs-parent="#courseAccordion">
-                            <div class="accordion-body">
-                                ${primaryMaterialHtml}
-                                ${otherReferencesHtml}
-                            </div>
-                        </div>
-                    </div>
-                `;
-                courseAccordion.innerHTML += accordionItem;
+                dlTableBody.appendChild(row);
             });
 
             // Populate Textbooks
-            const textbooksSection = document.getElementById('textbooks-section');
+            const textbooksSection = document.getElementById('textbooks-section-dl');
             if (textbooksSection && courseData.textbooks && courseData.textbooks.length > 0) {
                 let textbooksHtml = `
-                    <div class="card">
-                        <div class="card-header">
-                            <h4><i class="fas fa-book-open me-2"></i>Textbooks</h4>
+                    <div class="card card-dl-refs">
+                        <div class="card-header bg-primary text-white">
+                           <i class="fas fa-book-open me-2"></i>Recommended Textbooks
                         </div>
                         <ul class="list-group list-group-flush">`;
                 courseData.textbooks.forEach(book => {
                     textbooksHtml += `<li class="list-group-item">
                                         ${book.title}
-                                        ${book.url ? `(<a href="${book.url}" target="_blank" rel="noopener noreferrer">Link</a>)` : ''}
+                                        ${book.url ? `(<a href="${book.url}" target="_blank" rel="noopener noreferrer">Link <i class="fas fa-external-link-alt fa-xs"></i></a>)` : ''}
                                       </li>`;
                 });
                 textbooksHtml += `</ul></div>`;
                 textbooksSection.innerHTML = textbooksHtml;
+            } else if (textbooksSection) {
+                textbooksSection.innerHTML = ''; // Clear if no textbooks
             }
 
-            // Populate NLP References
-            const nlpReferencesSection = document.getElementById('nlp-references-section');
-            if (nlpReferencesSection) {
-                if (courseData.referencesForNLP && courseData.referencesForNLP.length > 0) {
-                    let nlpRefHtml = `
-                        <div class="card">
-                            <div class="card-header">
-                                <h4><i class="fas fa-file-alt me-2"></i>References for NLP</h4>
-                            </div>
-                            <ul class="list-group list-group-flush">`;
-                    courseData.referencesForNLP.forEach(ref => {
-                        nlpRefHtml += `<li class="list-group-item">
-                                            ${ref.url ? `<a href="${ref.url}" target="_blank" rel="noopener noreferrer">${ref.title}</a>` : ref.title}
-                                       </li>`;
-                    });
-                    nlpRefHtml += `</ul></div>`;
-                    nlpReferencesSection.innerHTML = nlpRefHtml;
-                } else {
-                     let nlpRefHtml = `
-                        <div class="card">
-                            <div class="card-header">
-                                <h4><i class="fas fa-file-alt me-2"></i>References for NLP</h4>
-                            </div>
-                            <div class="card-body">
-                                <p class="text-muted">Refer to NLP specific sections within weekly materials or standard NLP literature.</p>
-                            </div>
-                        </div>`;
-                     nlpReferencesSection.innerHTML = nlpRefHtml;
-                }
+            // Populate NLP References (Optional Section)
+            const nlpReferencesSection = document.getElementById('nlp-references-section-dl');
+            if (nlpReferencesSection && courseData.referencesForNLP && courseData.referencesForNLP.length > 0) {
+                let nlpRefHtml = `
+                    <div class="card card-dl-refs">
+                        <div class="card-header bg-info text-white">
+                            <i class="fas fa-file-alt me-2"></i>Additional References for NLP
+                        </div>
+                        <ul class="list-group list-group-flush">`;
+                courseData.referencesForNLP.forEach(ref => {
+                    nlpRefHtml += `<li class="list-group-item">
+                                        ${ref.url ? `<a href="${ref.url}" target="_blank" rel="noopener noreferrer">${ref.title} <i class="fas fa-external-link-alt fa-xs"></i></a>` : ref.title}
+                                   </li>`;
+                });
+                nlpRefHtml += `</ul></div>`;
+                nlpReferencesSection.innerHTML = nlpRefHtml;
+            } else if (nlpReferencesSection) {
+                 nlpReferencesSection.innerHTML = ''; // Clear if no general NLP refs
+                 // Or provide a default message:
+                 /*
+                 nlpReferencesSection.innerHTML = `
+                    <div class="card card-dl-refs">
+                        <div class="card-header bg-secondary text-white">
+                            <i class="fas fa-file-alt me-2"></i>Additional References for NLP
+                        </div>
+                        <div class="card-body">
+                            <p class="text-muted small">Specific NLP references are included within relevant course modules. Consult standard NLP literature for broader study.</p>
+                        </div>
+                    </div>`;
+                 */
             }
-
         });
     </script>
 {% endblock %}
