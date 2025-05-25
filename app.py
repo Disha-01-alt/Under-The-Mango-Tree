@@ -140,39 +140,19 @@ def machine_learning():
 def deep_learning_ai():
     
     return render_template('deep_learning_ai.html')
+from flask_login import LoginManager
+from jobportal import create_job_portal
+
+# Set up login
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'jp_auth.login'
+
+# Register job portal Blueprint under /job-portal
+job_portal_bp = create_job_portal(login_manager, app=app)
+app.register_blueprint(job_portal_bp, url_prefix='/job-portal')
 
 
-
-@app.route('/job-portal', defaults={'path': ''})
-@app.route('/job-portal/<path:path>')
-def job_portal(path=''):
-    from job_portal_bridge import app as job_portal_app
-    from flask import request, Response, session
-    
-    with job_portal_app.test_client() as client:
-        # Preserve session
-        if 'user_id' in session:
-            with client.session_transaction() as sess:
-                sess['user_id'] = session['user_id']
-        
-        # Forward the request
-        url = f'/{path}' if path else '/'
-        resp = client.open(
-            url,
-            method=request.method,
-            headers={k:v for k,v in request.headers if k != 'Host'},
-            data=request.get_data(),
-            base_url=request.url_root.rstrip('/') + '/job-portal'
-        )
-        
-        # Handle static files
-        if path.startswith(('static/', 'uploads/')):
-            return send_from_directory('jobportal', path)
-            
-        excluded_headers = ['content-length', 'content-encoding', 'transfer-encoding']
-        headers = [(k, v) for k, v in resp.headers if k.lower() not in excluded_headers]
-        
-        return Response(resp.get_data(), resp.status_code, headers)
 
 @app.route('/team')
 def team():
