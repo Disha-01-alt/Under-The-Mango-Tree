@@ -78,6 +78,7 @@ def login():
         
     authorization_endpoint = google_provider_cfg["authorization_endpoint"]
     redirect_uri = get_redirect_url()
+    flash(f"DEBUG: Sending this Redirect URI to Google: {redirect_uri}", "warning")
     
     logging.debug(f"Google OAuth: Initiating login. Redirect URI will be: {redirect_uri}")
 
