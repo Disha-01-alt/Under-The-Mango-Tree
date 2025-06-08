@@ -1,8 +1,3 @@
-# ===================================================================
-# google_auth.py - FORCED UPDATE
-# ===================================================================
-print("--- LOADING NEW google_auth.py with /portal fix ---") # DEBUG LINE
-
 import json
 import os
 import requests
@@ -59,7 +54,6 @@ def get_redirect_url():
         logging.info(f"Using Render auto-detected redirect URI: {redirect_uri}")
         return redirect_uri
     
-    # THIS IS THE CRITICAL LINE FOR LOCAL DEVELOPMENT
     local_redirect_uri = "http://127.0.0.1:5000/portal/google_login/callback"
     logging.info(f"Using local development redirect URI: {local_redirect_uri}")
     return local_redirect_uri
@@ -78,7 +72,6 @@ def login():
         
     authorization_endpoint = google_provider_cfg["authorization_endpoint"]
     redirect_uri = get_redirect_url()
-    flash(f"DEBUG: Sending this Redirect URI to Google: {redirect_uri}", "warning")
     
     logging.debug(f"Google OAuth: Initiating login. Redirect URI will be: {redirect_uri}")
 
@@ -106,7 +99,8 @@ def callback():
         error_reason = request.args.get("error_description") or request.args.get("error")
         logging.error(f"Google OAuth callback error: Missing 'code'. Reason: {error_reason}")
         flash(f"Authentication failed with Google. Reason: {error_reason or 'Code not provided.'}", "error")
-        return redirect(url_for("google_auth.login")) 
+        # CORRECTED REDIRECT
+        return redirect(url_for("job_portal_index")) 
 
     google_provider_cfg = get_google_provider_cfg()
     if not google_provider_cfg or "token_endpoint" not in google_provider_cfg:
@@ -144,15 +138,18 @@ def callback():
     except requests.exceptions.RequestException as e:
         logging.error(f"Google OAuth network/HTTP error: {e}", exc_info=True)
         flash(f"Authentication with Google failed. Please check Redirect URI in Google Console. Error: {e}", "error")
-        return redirect(url_for("google_auth.login"))
+        # CORRECTED REDIRECT
+        return redirect(url_for("job_portal_index"))
     except Exception as e: 
         logging.exception(f"Unexpected error processing Google callback: {e}")
         flash("An unexpected error occurred during Google sign-in.", "error")
-        return redirect(url_for("google_auth.login"))
+        # CORRECTED REDIRECT
+        return redirect(url_for("job_portal_index"))
 
     if not userinfo.get("email_verified"):
         flash("Your Google email is not verified.", "warning")
-        return redirect(url_for("google_auth.login"))
+        # CORRECTED REDIRECT
+        return redirect(url_for("job_portal_index"))
 
     unique_id = userinfo.get("sub")
     users_email = userinfo.get("email","").lower() 
@@ -162,7 +159,8 @@ def callback():
     if not unique_id or not users_email:
         logging.error(f"Google OAuth response missing sub/email. Info: {userinfo}")
         flash("Could not get profile information from Google.", "error")
-        return redirect(url_for("google_auth.login"))
+        # CORRECTED REDIRECT
+        return redirect(url_for("job_portal_index"))
 
     existing_user_model = get_user_by_email(users_email)
     logging.info(f"Google login for {users_email}. User in DB: {existing_user_model is not None}")
@@ -201,7 +199,8 @@ def callback():
             if not newly_created_user_model:
                 logging.critical(f"CRITICAL: Failed to fetch new user (ID: {user_id}) for {users_email}.")
                 flash("Error setting up your account. Please try again.", "error")
-                return redirect(url_for('google_auth.login'))
+                # CORRECTED REDIRECT
+                return redirect(url_for("job_portal_index"))
 
             login_user(newly_created_user_model) 
             
@@ -216,7 +215,8 @@ def callback():
         except Exception as e:
             logging.exception(f"Error creating user for {users_email}:")
             flash("An error occurred while setting up your account.", "error")
-            return redirect(url_for('google_auth.login'))
+            # CORRECTED REDIRECT
+            return redirect(url_for("job_portal_index"))
 
 @google_auth.route("/logout")
 @login_required 
