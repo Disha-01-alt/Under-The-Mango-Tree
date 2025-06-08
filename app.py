@@ -1,34 +1,124 @@
 import os
 import sys
-from flask import Flask, render_template, send_from_directory, url_for, redirect, send_file, flash
-from flask_sqlalchemy import SQLAlchemy
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+from flask import Flask, render_template, send_from_directory, url_for, redirect, send_file, flash,request
 import importlib.util
 import logging
+import json
+from flask_login import LoginManager
+from werkzeug.middleware.proxy_fix import ProxyFix
+from dotenv import load_dotenv
+load_dotenv()  # Automatically loads the .env file
+from ateam import team_members, support_pillars
+# Make sure these paths are correct relative to your app.py
+from routes.auth_routes import auth_bp
+from routes.candidate_routes import candidate_bp
+from routes.admin_routes import admin_bp
+from routes.company_routes import company_bp
+from google_auth import google_auth
+from database import init_db
+from auth import setup_auth
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
 
 # Create the Flask app
 app = Flask(__name__, static_folder='static', template_folder='templates')
-app.secret_key = os.environ.get("SESSION_SECRET", "utmt_default_secret_key")
+cloudinary.config(
+    cloud_name = os.environ.get('CLOUDINARY_CLOUD_NAME'),
+    api_key = os.environ.get('CLOUDINARY_API_KEY'),
+    api_secret = os.environ.get('CLOUDINARY_API_SECRET'),
+    secure = True # Ensures HTTPS URLs
+)
+logging.info("Cloudinary configured.") # Add logging to confirm
 
-# Configure database
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
-app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {
-    "pool_recycle": 300,
-    "pool_pre_ping": True,
-}
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.secret_key = os.environ.get("SESSION_SECRET", "utmt_default_secret_key")
+app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
+# Initialize Flask-Login
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'google_auth.login'
+login_manager.login_message = 'Please log in to access this page.'
+# IMPORTANT: Register with a URL Prefix
+PORTAL_PREFIX = '/portal'
+app.register_blueprint(auth_bp, url_prefix=f'{PORTAL_PREFIX}/auth')
+app.register_blueprint(candidate_bp, url_prefix=f'{PORTAL_PREFIX}/candidate')
+app.register_blueprint(admin_bp, url_prefix=f'{PORTAL_PREFIX}/admin')
+app.register_blueprint(company_bp, url_prefix=f'{PORTAL_PREFIX}/company')
+# The google_auth blueprint handles its own root-level URLs like /google_login
+app.register_blueprint(google_auth, url_prefix=PORTAL_PREFIX)
+# Import database initialization
+from database import init_db
 
 # Initialize database
-db = SQLAlchemy(app)
+with app.app_context():
+    init_db()
 
+# Import auth setup
+from auth import setup_auth
+setup_auth(login_manager)
+# Load Python learning data from JSON file
+try:
+    with open(os.path.join('data', 'python_learning_data.json'), 'r') as f:
+        python_data = json.load(f)
+        PY_VIDEO_DATA = python_data['PY_VIDEO_DATA']
+        SIDEBAR_TOPICS = python_data['SIDEBAR_TOPICS']
+except FileNotFoundError:
+    print("ERROR: python_learning_data.json not found. Creating empty placeholders.")
+    PY_VIDEO_DATA = {}
+    SIDEBAR_TOPICS = []
+# --- END OF NEW BLOCK ---
+# --- ADD THIS NEW BLOCK FOR MACHINE LEARNING DATA ---
+try:
+    with open(os.path.join('data', 'machine_learning_data.json'), 'r') as f:
+        ml_data = json.load(f)
+        ML_VIDEO_DATA = ml_data['ML_VIDEO_DATA']
+        ML_SIDEBAR_TOPICS = ml_data['ML_SIDEBAR_TOPICS']
+except FileNotFoundError:
+    print("ERROR: machine_learning_data.json not found. Creating empty placeholders.")
+    ML_VIDEO_DATA = {}
+    ML_SIDEBAR_TOPICS = []
+# --- END OF NEW BLOCK ---
+try:
+    with open(os.path.join('data', 'deep_learning_data.json'), 'r') as f:
+        dl_data = json.load(f)
+        DL_VIDEO_DATA = dl_data['DL_VIDEO_DATA']
+        DL_SIDEBAR_TOPICS = dl_data['DL_SIDEBAR_TOPICS']
+except (FileNotFoundError, json.JSONDecodeError, KeyError) as e:
+    print(f"ERROR: Could not load or parse deep_learning_data.json: {e}")
+    DL_VIDEO_DATA = {}
+    DL_SIDEBAR_TOPICS = []
+# --- END OF NEW BLOCK ---
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max file size
+app.config['UPLOAD_FOLDER'] = 'uploads'
 # Create required directories
 os.makedirs('static/english/images', exist_ok=True)
 os.makedirs('static/english', exist_ok=True)
-os.makedirs('uploads/cv', exist_ok=True)
-os.makedirs('uploads/id_card', exist_ok=True)
-os.makedirs('uploads/marksheet', exist_ok=True)
+upload_dirs = ['uploads/cvs', 'uploads/id_cards', 'uploads/marksheets', 'uploads/temp_cvs']
+for directory in upload_dirs:
+    os.makedirs(directory, exist_ok=True)
+# --- 6. Create a Route for the Job Portal Homepage ---
+@app.route(PORTAL_PREFIX) # e.g., yoursite.com/portal
+def job_portal_index():
+    # This renders the Job Portal's main landing page
+    return redirect(url_for('job_portal_main_page'))
+
+# This is the original index route from the job portal's app.py, now repurposed
+@app.route(f'{PORTAL_PREFIX}/index')
+def job_portal_main_page():
+    from flask_login import current_user
+    if current_user.is_authenticated:
+        # These url_for calls will correctly point to the prefixed routes
+        if current_user.role == 'candidate':
+            return redirect(url_for('candidate_routes.dashboard'))
+        elif current_user.role == 'admin':
+            return redirect(url_for('admin_routes.dashboard'))
+        elif current_user.role == 'company':
+            return redirect(url_for('company_routes.dashboard'))
+    return render_template('job_portal/index.html')
+
 
 # Setup English learning module
 english_path = os.path.join('static', 'english')
@@ -36,13 +126,6 @@ if os.path.exists(english_path):
     print(f"English learning module found at {english_path}")
 else:
     print(f"English learning module not found at {english_path}")
-
-# Setup Job Portal module
-job_portal_path = os.path.join('jobportal') 
-if os.path.exists(job_portal_path):
-    print(f"Job Portal module found at {job_portal_path}")
-else:
-    print(f"Job Portal module not found at {job_portal_path}")
 
 # Serve English learning files directly
 @app.route('/HinToEng.html')
@@ -121,42 +204,100 @@ def learning_hub():
 
 @app.route('/python-learning')
 def python_learning():
-    return render_template('python_learning.html')
+    # First, check if the data loaded correctly.
+    if not SIDEBAR_TOPICS:
+        # If the list is empty, don't crash. Render the page with an error message.
+        flash("Error: Python learning data could not be loaded. Please check the server configuration.", "danger")
+        return render_template('python_learning.html', 
+                               videos=[], 
+                               sidebar_topics=[],
+                               selected_topic=None)
 
+    # If we have topics, proceed as normal.
+    selected_topic = request.args.get('topic', SIDEBAR_TOPICS[0])
+    
+    videos = PY_VIDEO_DATA.get(selected_topic, [])
+    
+    sidebar_topics_with_status = []
+    for topic in SIDEBAR_TOPICS:
+        topic_data = {
+            'name': topic,
+            'video_count': len(PY_VIDEO_DATA.get(topic, [])),
+            'is_active': topic == selected_topic,
+            'url_param': topic.replace(' ', '%20')
+        }
+        sidebar_topics_with_status.append(topic_data)
+    
+    return render_template('python_learning.html', 
+                           videos=videos, 
+                           sidebar_topics=sidebar_topics_with_status,
+                           selected_topic=selected_topic)
+# It's a copy of the machine_learning route, adapted for the new DL variables.
+@app.route('/deep-learning-ai')
+def deep_learning_ai():
+    # Use the new variables we created from the JSON transformation
+    if not DL_SIDEBAR_TOPICS:
+        flash("Deep Learning course data is currently unavailable.", "warning")
+        selected_topic = None
+    else:
+        selected_topic = request.args.get('topic', DL_SIDEBAR_TOPICS[0])
+
+    # Get all videos for the selected topic
+    videos = DL_VIDEO_DATA.get(selected_topic, [])
+    
+    # Create sidebar topics with status indicators
+    sidebar_topics_with_status = []
+    for topic in DL_SIDEBAR_TOPICS:
+        topic_data = {
+            'name': topic,
+            'video_count': len(DL_VIDEO_DATA.get(topic, [])),
+            'is_active': topic == selected_topic,
+            'url_param': topic.replace(' ', '%20')
+        }
+        sidebar_topics_with_status.append(topic_data)
+    
+    # IMPORTANT: We re-use the machine_learning.html template!
+    return render_template('deep_learning_ai.html',
+                           videos=videos,
+                           sidebar_topics=sidebar_topics_with_status,
+                           selected_topic=selected_topic,
+                           course_title="Deep Learning & AI") # Optional: Pass a title
 @app.route('/english-learning')
 def english_learning():
     # Use the custom English learning page with cards
     return render_template('english_learning.html')
+
 @app.route('/machine-learning')
 def machine_learning():
-    # CORRECTED: 4 spaces of indentation
-     # Or get from ml_course_data if loaded in Python
-    # CORRECTED: 4 spaces of indentation, same as the line above
-    return render_template('machine_learning.html')
-
+    # Get selected topic from query parameter, default to first topic
+    # This line will now work correctly if data loads, or fail gracefully if it doesn't
+    selected_topic = request.args.get('topic', ML_SIDEBAR_TOPICS[0] if ML_SIDEBAR_TOPICS else None)
     
-
-@app.route('/deep-learning-ai')
-def deep_learning_ai():
+    # Get all videos for the selected topic (no pagination)
+    videos = ML_VIDEO_DATA.get(selected_topic, [])
     
-    return render_template('deep_learning_ai.html')
-from flask_login import LoginManager
-from jobportal import create_job_portal
-
-# Set up login
-login_manager = LoginManager()
-login_manager.init_app(app)
-login_manager.login_view = 'jp_auth.login'
-
-# Register job portal Blueprint under /job-portal
-job_portal_bp = create_job_portal(login_manager, app=app)
-app.register_blueprint(job_portal_bp, url_prefix='/job-portal')
-
-
-
+    # Create sidebar topics with status indicators
+    sidebar_topics_with_status = []
+    for topic in ML_SIDEBAR_TOPICS:
+        topic_data = {
+            'name': topic,
+            'video_count': len(ML_VIDEO_DATA.get(topic, [])),
+            'is_active': topic == selected_topic,
+            'url_param': topic.replace(' ', '%20')  # URL encode spaces
+        }
+        sidebar_topics_with_status.append(topic_data)
+    
+    return render_template('machine_learning.html',
+                           videos=videos,
+                           sidebar_topics=sidebar_topics_with_status,
+                           selected_topic=selected_topic)
 @app.route('/team')
 def team():
-    return render_template('team.html')
+    return render_template('team.html', 
+                         team_members=team_members, 
+                         support_pillars=support_pillars)
+# for rule in app.url_map.iter_rules():
+#     print(rule.endpoint, rule.rule)
 
 # Error handling
 @app.errorhandler(404)
@@ -166,3 +307,26 @@ def page_not_found(e):
 @app.errorhandler(500)
 def server_error(e):
     return render_template('index.html'), 500
+# ERROR HANDLERS
+# ===================================================================
+
+@app.errorhandler(404)
+def page_not_found(e):
+    # This renders your main site's 404 page (or index as a fallback)
+    return render_template('index.html'), 404
+
+@app.errorhandler(500)
+def server_error(e):
+    logging.error(f"Server Error: {e}", exc_info=True)
+    # This renders your main site's 500 page (or index as a fallback)
+    return render_template('index.html'), 500
+
+
+# ===================================================================
+# APP RUNNER
+# ===================================================================
+
+if __name__ == '__main__':
+    port = int(os.environ.get("PORT", 5000))
+    # Set debug=False for production
+    app.run(host='0.0.0.0', port=port, debug=True)

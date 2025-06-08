@@ -1,168 +1,233 @@
-# google_auth.py
+# ===================================================================
+# google_auth.py - FORCED UPDATE
+# ===================================================================
+print("--- LOADING NEW google_auth.py with /portal fix ---") # DEBUG LINE
+
 import json
 import os
 import requests
 from flask import Blueprint, redirect, request, url_for, session, flash
-from flask_login import login_user, logout_user # current_user (not used here)
+from flask_login import login_user, logout_user, current_user, login_required
 from oauthlib.oauth2 import WebApplicationClient
-from database import get_user_by_email, create_user # Assuming these are correct
-from models import User # Assuming this is correct
+from database import get_user_by_email, create_user, get_user_by_id
+from models import User
+import logging
 
+# --- Environment Variable Handling for OAuthLib ---
+if os.environ.get("FLASK_ENV") == "development" or not os.environ.get("RENDER_EXTERNAL_URL"):
+    os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+    logging.warning("OAUTHLIB_INSECURE_TRANSPORT enabled. Ensure HTTPS and this is disabled in production.")
+
+# --- Google OAuth Configuration ---
 GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_OAUTH_CLIENT_ID")
 GOOGLE_CLIENT_SECRET = os.environ.get("GOOGLE_OAUTH_CLIENT_SECRET")
 GOOGLE_DISCOVERY_URL = "https://accounts.google.com/.well-known/openid-configuration"
 
-client = WebApplicationClient(GOOGLE_CLIENT_ID)
+# --- Blueprint Definition ---
 google_auth = Blueprint("google_auth", __name__)
 
-# (Your instructional print statement can stay or go, it doesn't affect this)
+# --- OAuth Client Initialization ---
+if not GOOGLE_CLIENT_ID:
+    logging.critical("CRITICAL: GOOGLE_OAUTH_CLIENT_ID is NOT SET. Google OAuth will fail.")
+    client = None
+else:
+    client = WebApplicationClient(GOOGLE_CLIENT_ID)
 
+# --- Helper Functions ---
+def get_google_provider_cfg():
+    """Fetches Google's OpenID configuration."""
+    try:
+        response = requests.get(GOOGLE_DISCOVERY_URL, timeout=10)
+        response.raise_for_status()
+        return response.json()
+    except requests.exceptions.RequestException as e:
+        logging.error(f"Failed to fetch Google's OpenID configuration: {e}")
+        return None
+
+def get_redirect_url():
+    """
+    Determines the correct OAuth2 redirect URI based on the environment.
+    """
+    env_redirect_uri = os.environ.get("GOOGLE_OAUTH_REDIRECT_URI")
+    if env_redirect_uri:
+        logging.info(f"Using GOOGLE_OAUTH_REDIRECT_URI from environment: {env_redirect_uri}")
+        return env_redirect_uri
+
+    render_external_url = os.environ.get("RENDER_EXTERNAL_URL")
+    if render_external_url:
+        redirect_uri = f"{render_external_url}/portal/google_login/callback"
+        logging.info(f"Using Render auto-detected redirect URI: {redirect_uri}")
+        return redirect_uri
+    
+    # THIS IS THE CRITICAL LINE FOR LOCAL DEVELOPMENT
+    local_redirect_uri = "http://127.0.0.1:5000/portal/google_login/callback"
+    logging.info(f"Using local development redirect URI: {local_redirect_uri}")
+    return local_redirect_uri
+
+# --- Routes ---
 @google_auth.route("/google_login")
 def login():
-    # Find out what URL to hit for Google login
-    google_provider_cfg = requests.get(GOOGLE_DISCOVERY_URL).json()
+    if not client:
+        flash("Google OAuth is not configured on the server. Please contact support.", "error")
+        return redirect(url_for('job_portal_index'))
+
+    google_provider_cfg = get_google_provider_cfg()
+    if not google_provider_cfg or "authorization_endpoint" not in google_provider_cfg:
+        flash("Could not connect to Google for authentication (config error). Please try again later.", "error")
+        return redirect(url_for("job_portal_index"))
+        
     authorization_endpoint = google_provider_cfg["authorization_endpoint"]
+    redirect_uri = get_redirect_url()
+    
+    logging.debug(f"Google OAuth: Initiating login. Redirect URI will be: {redirect_uri}")
 
-    # Construct the redirect_uri
-    # This is the line we are interested in!
-    actual_redirect_uri_sent_to_google = request.base_url.replace("http://", "https://") + "/callback"
-
-    # ======================================================================
-    # SIMPLE DEBUG: PRINT THE URI TO THE LOGS
-    # ======================================================================
-    print("--------------------------------------------------------------------")
-    print(f"DEBUG: The redirect_uri my Flask app is about to send to Google is:")
-    print(f"'{actual_redirect_uri_sent_to_google}'")
-    print(f"(Compare this EXACT string with your Google Cloud Console URIs)")
-    print("--------------------------------------------------------------------")
-    # ======================================================================
-
-    # Use library to construct the request for Google login
-    request_uri = client.prepare_request_uri(
-        authorization_endpoint,
-        redirect_uri=actual_redirect_uri_sent_to_google, # Use the URI we just printed
-        scope=["openid", "email", "profile"],
-    )
+    try:
+        request_uri = client.prepare_request_uri(
+            authorization_endpoint,
+            redirect_uri=redirect_uri,
+            scope=["openid", "email", "profile"],
+        )
+    except Exception as e:
+        logging.error(f"Error preparing Google request URI: {e}. Check client_id/redirect_uri.")
+        flash("Error initiating Google Sign-In. Check server configuration.", "error")
+        return redirect(url_for('job_portal_index'))
+        
     return redirect(request_uri)
 
 @google_auth.route("/google_login/callback")
 def callback():
-    # Get authorization code Google sent back to you
+    if not client:
+        flash("Google OAuth is not configured on the server (callback).", "error")
+        return redirect(url_for('job_portal_index'))
+
     code = request.args.get("code")
+    if not code:
+        error_reason = request.args.get("error_description") or request.args.get("error")
+        logging.error(f"Google OAuth callback error: Missing 'code'. Reason: {error_reason}")
+        flash(f"Authentication failed with Google. Reason: {error_reason or 'Code not provided.'}", "error")
+        return redirect(url_for("google_auth.login")) 
 
-    # --- Start: Simple print for callback redirect_url (for token exchange) ---
-    # This must match the URI sent in the login step (the one printed above)
-    # AND one of the URIs in Google Cloud Console.
-    redirect_url_for_token_exchange = request.base_url.replace("http://", "https://")
-    print("--------------------------------------------------------------------")
-    print(f"DEBUG: In CALLBACK, the redirect_url being used for TOKEN EXCHANGE is:")
-    print(f"'{redirect_url_for_token_exchange}'")
-    print("--------------------------------------------------------------------")
-    # --- End: Simple print ---
+    google_provider_cfg = get_google_provider_cfg()
+    if not google_provider_cfg or "token_endpoint" not in google_provider_cfg:
+        flash("Could not verify auth with Google (server config error).", "error")
+        return redirect(url_for("job_portal_index"))
 
-
-    # Find out what URL to hit to get tokens
-    google_provider_cfg = requests.get(GOOGLE_DISCOVERY_URL).json()
     token_endpoint = google_provider_cfg["token_endpoint"]
+    redirect_uri_for_token = get_redirect_url()
 
-    # Prepare and send a request to get tokens!
-    token_url, headers, body = client.prepare_token_request(
-        token_endpoint,
-        authorization_response=request.url.replace("http://", "https://"),
-        redirect_url=redirect_url_for_token_exchange, # Use the one we just printed
-        code=code,
-    )
-    token_response = requests.post(
-        token_url,
-        headers=headers,
-        data=body,
-        auth=(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET),
-    )
-
-    # Check for token exchange error (simplified for now)
-    if not token_response.ok:
-        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-        print(f"ERROR: Token exchange failed! Status: {token_response.status_code}")
-        print(f"Response: {token_response.text}")
-        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-        flash("Error during Google sign-in (token exchange). Please try again.", "error")
-        return redirect(url_for('index')) # Or your main/login page
-
-    # Parse the tokens!
-    client.parse_request_body_response(json.dumps(token_response.json()))
-
-    # ... (rest of your callback function for fetching userinfo, etc.)
-    # (Keep your existing userinfo fetching and user handling logic here)
-
-    userinfo_endpoint = google_provider_cfg["userinfo_endpoint"]
-    uri, headers, body = client.add_token(userinfo_endpoint)
-    userinfo_response = requests.get(uri, headers=headers, data=body)
-
-    if not userinfo_response.ok:
-        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-        print(f"ERROR: Fetching userinfo failed! Status: {userinfo_response.status_code}")
-        print(f"Response: {userinfo_response.text}")
-        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-        flash("Error during Google sign-in (userinfo). Please try again.", "error")
-        return redirect(url_for('index'))
-
-    userinfo = userinfo_response.json()
-    if userinfo.get("email_verified"):
-        unique_id = userinfo["sub"]
-        users_email = userinfo["email"]
-        users_name = userinfo["given_name"]
-        picture = userinfo["picture"]
-    else:
-        flash("User email not available or not verified by Google.", "error")
-        return redirect(url_for('index')) # Or your login page
-
-    existing_user = get_user_by_email(users_email)
-    
-    if existing_user:
-        user = User(
-            user_id=existing_user['id'],
-            email=existing_user['email'],
-            password_hash='',
-            role=existing_user['role'],
-            full_name=existing_user.get('full_name', users_name), # Use Google name as fallback
-            phone=existing_user.get('phone'),
-            linkedin=existing_user.get('linkedin'),
-            github=existing_user.get('github'),
-            is_approved=existing_user.get('is_approved', False)
+    try:
+        token_url, headers, body = client.prepare_token_request(
+            token_endpoint,
+            authorization_response=request.url, 
+            redirect_url=redirect_uri_for_token, 
+            code=code
         )
-        login_user(user)
-        
-        session['google_id'] = unique_id
-        session['google_name'] = users_name
-        session['google_picture'] = picture
-        
-        if user.role == 'admin':
-            return redirect(url_for('admin_routes.dashboard'))
-        elif user.role == 'company':
-            if user.is_approved:
-                return redirect(url_for('company_routes.dashboard'))
-            else:
-                flash('Your company account is pending admin approval.', 'info')
-                return redirect(url_for('index'))
-        else: # candidate
-            return redirect(url_for('candidate_routes.dashboard'))
-    else:
-        session['google_id'] = unique_id
-        session['google_email'] = users_email
-        session['google_name'] = users_name
-        session['google_picture'] = picture
-        session['pending_registration'] = True
-        
-        return redirect(url_for('auth_routes.complete_registration'))
+        logging.debug(f"Requesting token. URL: {token_url}, Redirect: {redirect_uri_for_token}")
 
+        token_response = requests.post(
+            token_url, headers=headers, data=body,
+            auth=(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET), timeout=10
+        )
+        token_response.raise_for_status()
+        client.parse_request_body_response(json.dumps(token_response.json()))
+
+        userinfo_endpoint = google_provider_cfg.get("userinfo_endpoint")
+        if not userinfo_endpoint: 
+            raise ValueError("Userinfo endpoint not found in Google config.")
+        
+        uri, headers, body = client.add_token(userinfo_endpoint)
+        userinfo_response = requests.get(uri, headers=headers, data=body, timeout=10)
+        userinfo_response.raise_for_status()
+        userinfo = userinfo_response.json()
+
+    except requests.exceptions.RequestException as e:
+        logging.error(f"Google OAuth network/HTTP error: {e}", exc_info=True)
+        flash(f"Authentication with Google failed. Please check Redirect URI in Google Console. Error: {e}", "error")
+        return redirect(url_for("google_auth.login"))
+    except Exception as e: 
+        logging.exception(f"Unexpected error processing Google callback: {e}")
+        flash("An unexpected error occurred during Google sign-in.", "error")
+        return redirect(url_for("google_auth.login"))
+
+    if not userinfo.get("email_verified"):
+        flash("Your Google email is not verified.", "warning")
+        return redirect(url_for("google_auth.login"))
+
+    unique_id = userinfo.get("sub")
+    users_email = userinfo.get("email","").lower() 
+    users_name_from_google = userinfo.get("given_name") or (userinfo.get("name", "New User").split(" ")[0])
+    picture = userinfo.get("picture")
+
+    if not unique_id or not users_email:
+        logging.error(f"Google OAuth response missing sub/email. Info: {userinfo}")
+        flash("Could not get profile information from Google.", "error")
+        return redirect(url_for("google_auth.login"))
+
+    existing_user_model = get_user_by_email(users_email)
+    logging.info(f"Google login for {users_email}. User in DB: {existing_user_model is not None}")
+
+    if existing_user_model:
+        login_user(existing_user_model)
+        session['google_id'] = unique_id 
+        session['google_name'] = existing_user_model.full_name or users_name_from_google
+        session['google_picture'] = picture
+        session.pop('needs_registration_completion', None) 
+
+        flash(f'Welcome back, {existing_user_model.full_name or existing_user_model.email}!', 'success')
+        
+        if existing_user_model.role == 'admin': return redirect(url_for('admin_routes.dashboard'))
+        if existing_user_model.role == 'company':
+            return redirect(url_for('company_routes.dashboard')) if existing_user_model.is_approved else redirect(url_for('job_portal_index'))
+        if existing_user_model.role == 'candidate': return redirect(url_for('candidate_routes.dashboard'))
+        if existing_user_model.role == 'pending_setup':
+            session['needs_registration_completion'] = True
+            flash('Welcome back! Please complete your registration.', 'info')
+            return redirect(url_for('candidate_routes.jobs'))
+        
+        logging.warning(f"User {users_email} has unexpected role: {existing_user_model.role}. Redirecting home.")
+        return redirect(url_for('job_portal_index')) 
+    else:
+        try:
+            logging.info(f"New user from Google: {users_email}. Creating 'pending_setup' user.")
+            user_id = create_user(
+                email=users_email, 
+                password='',
+                role="pending_setup", 
+                full_name=users_name_from_google
+            )
+            
+            newly_created_user_model = get_user_by_id(user_id)
+            if not newly_created_user_model:
+                logging.critical(f"CRITICAL: Failed to fetch new user (ID: {user_id}) for {users_email}.")
+                flash("Error setting up your account. Please try again.", "error")
+                return redirect(url_for('google_auth.login'))
+
+            login_user(newly_created_user_model) 
+            
+            session['google_id'] = unique_id
+            session['google_name'] = users_name_from_google 
+            session['google_picture'] = picture
+            session['needs_registration_completion'] = True
+
+            flash(f'Welcome, {users_name_from_google}! Please complete your registration.', 'info')
+            return redirect(url_for('candidate_routes.jobs'))
+        
+        except Exception as e:
+            logging.exception(f"Error creating user for {users_email}:")
+            flash("An error occurred while setting up your account.", "error")
+            return redirect(url_for('google_auth.login'))
 
 @google_auth.route("/logout")
+@login_required 
 def logout():
-    logout_user()
-    session.pop('google_id', None)
-    session.pop('google_email', None)
-    session.pop('google_name', None)
-    session.pop('google_picture', None)
-    session.pop('pending_registration', None)
+    user_email_for_log = current_user.email if current_user.is_authenticated else "Unknown"
+    logout_user() 
+    
+    keys_to_pop = ['google_id', 'google_email', 'google_name', 'google_picture', 
+                   'needs_registration_completion', '_flashes'] 
+    for key in keys_to_pop:
+        session.pop(key, None)
+    
     flash('You have been logged out successfully.', 'info')
-    return redirect(url_for('index'))
+    logging.info(f"User {user_email_for_log} logged out.")
+    return redirect(url_for('job_portal_index'))

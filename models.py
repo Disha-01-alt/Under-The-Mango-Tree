@@ -1,89 +1,93 @@
-from flask_sqlalchemy import SQLAlchemy
+# jobportal/models.py
+
 from flask_login import UserMixin
+from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 
-db = SQLAlchemy()
+class User(UserMixin):
+    # ... (no changes here for now) ...
+    def __init__(self, user_id, email, password_hash, role, full_name=None, 
+                 phone=None, linkedin=None, github=None, created_at=None, 
+                 is_approved=True):
+        self.id = user_id
+        self.email = email
+        self.password_hash = password_hash
+        self.role = role
+        self.full_name = full_name
+        self.phone = phone
+        self.linkedin = linkedin
+        self.github = github
+        self.created_at = created_at or datetime.now()
+        self.is_approved = is_approved
 
-class User(UserMixin, db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(64), unique=True, nullable=False)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    password_hash = db.Column(db.String(256))
-    is_admin = db.Column(db.Boolean, default=False)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
-    # Relationships
-    enrollments = db.relationship('Enrollment', backref='student', lazy=True)
-    submissions = db.relationship('Assignment', backref='student', lazy=True)
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
 
-class Course(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100), nullable=False)
-    description = db.Column(db.Text)
-    category = db.Column(db.String(50)) # E.g., "English", "Python"
-    image_url = db.Column(db.String(255))
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
-    # Relationships
-    lessons = db.relationship('Lesson', backref='course', lazy=True)
-    enrollments = db.relationship('Enrollment', backref='course', lazy=True)
+    @staticmethod
+    def create_password_hash(password):
+        return generate_password_hash(password)
 
-class Lesson(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100), nullable=False)
-    content = db.Column(db.Text)
-    video_url = db.Column(db.String(255))
-    order = db.Column(db.Integer)
-    course_id = db.Column(db.Integer, db.ForeignKey('course.id'), nullable=False)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+class CandidateProfile:
+    def __init__(self, user_id, summary=None,cv_filename=None, id_card_filename=None, 
+                 marksheet_filename=None, rating=None, admin_feedback=None,
+                 created_at=None, # This was in your original file, but DB schema puts it in users
+                                   # and has `updated_at` in candidate_profiles. Let's align.
+                 updated_at=None, # Corresponds to updated_at in DB schema
+                 # New fields
+                 ews_certificate_filename=None,
+                 college_name=None,
+                 degree=None,
+                 graduation_year=None,
+                 core_interest_domains=None,
+                 twelfth_school_type=None,
+                 parental_annual_income=None,
+                 admin_tags=None,
+                 is_certified=False,
+                  profile_status=None,
+                 linkedin_data=None,
+                 cv_data=None
+                 ):
+        self.user_id = user_id
+        self.summary = summary
+        self.cv_filename = cv_filename
+        self.id_card_filename = id_card_filename
+        self.marksheet_filename = marksheet_filename
+        self.rating = rating
+        self.admin_feedback = admin_feedback
+        # self.created_at = created_at or datetime.now() # Belongs to user table
+        self.updated_at = updated_at or datetime.now()
 
-class Enrollment(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    course_id = db.Column(db.Integer, db.ForeignKey('course.id'), nullable=False)
-    enrolled_at = db.Column(db.DateTime, default=datetime.utcnow)
-    completed = db.Column(db.Boolean, default=False)
-    progress = db.Column(db.Float, default=0.0)  # Percentage of completion
-    
-class Assignment(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100), nullable=False)
-    description = db.Column(db.Text)
-    lesson_id = db.Column(db.Integer, db.ForeignKey('lesson.id'), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    submission_text = db.Column(db.Text)
-    submission_url = db.Column(db.String(255))
-    grade = db.Column(db.Float)
-    feedback = db.Column(db.Text)
-    submitted_at = db.Column(db.DateTime, default=datetime.utcnow)
-    
-class Job(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100), nullable=False)
-    company = db.Column(db.String(100), nullable=False)
-    location = db.Column(db.String(100))
-    description = db.Column(db.Text)
-    requirements = db.Column(db.Text)
-    salary_range = db.Column(db.String(50))
-    job_type = db.Column(db.String(50))  # Full-time, Part-time, Contract, etc.
-    contact_email = db.Column(db.String(120))
-    post_date = db.Column(db.DateTime, default=datetime.utcnow)
-    is_active = db.Column(db.Boolean, default=True)
-    # Relationships
-    applications = db.relationship('JobApplication', backref='job', lazy=True)
+        # New fields
+        self.ews_certificate_filename = ews_certificate_filename
+        self.college_name = college_name
+        self.degree = degree
+        self.graduation_year = graduation_year
+        self.core_interest_domains = core_interest_domains # Store as comma-separated string or JSON string
+        self.twelfth_school_type = twelfth_school_type
+        self.parental_annual_income = parental_annual_income
+        self.admin_tags = admin_tags # Store as comma-separated string or JSON string
+        self.is_certified = is_certified
+        self.profile_status = profile_status
+        self.linkedin_data = linkedin_data
+        self.cv_data = cv_data
 
-class JobApplication(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    job_id = db.Column(db.Integer, db.ForeignKey('job.id'), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    cover_letter = db.Column(db.Text)
-    resume_url = db.Column(db.String(255))
-    status = db.Column(db.String(50), default='Applied')  # Applied, Reviewed, Interviewed, Offered, Rejected
-    submitted_at = db.Column(db.DateTime, default=datetime.utcnow)
-    
-class TeamMember(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
-    title = db.Column(db.String(100), nullable=False)
-    bio = db.Column(db.Text)
-    photo_url = db.Column(db.String(255))
-    email = db.Column(db.String(120))
-    order = db.Column(db.Integer)  # For sorting on the team page
+
+class Job:
+    def __init__(self, job_id, title, company, location, description, 
+                 requirements, salary_range=None, job_type=None, 
+                 posted_by=None, created_at=None, linkedin_url=None,
+                 # New field
+                 job_tags=None):
+        self.id = job_id
+        self.title = title
+        self.company = company
+        self.location = location
+        self.description = description
+        self.requirements = requirements
+        self.salary_range = salary_range
+        self.job_type = job_type # Can be used for On-Site/Remote/Hybrid
+        self.posted_by = posted_by
+        self.created_at = created_at or datetime.now()
+        self.linkedin_url = linkedin_url
+        # New field
+        self.job_tags = job_tags # Store as comma-separated string or JSON string

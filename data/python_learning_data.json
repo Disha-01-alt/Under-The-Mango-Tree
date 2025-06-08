@@ -1,0 +1,303 @@
+{
+  "SIDEBAR_TOPICS": [
+    "Basic Introduction",
+    "Basic Operators",
+    "Indentation",
+    "If Else",
+    "Functions",
+    "Break, Continue and Pass",
+    "Lists",
+    "Loops",
+    "Sorting",
+    "Dictionaries",
+    "String"
+  ],
+  "PY_VIDEO_DATA": {
+    "Basic Introduction": [
+      {
+        "id": 0,
+        "title": "Python Tutorial 01 - Basic Introduction",
+        "description": "Introduction to Python programming and its basic structure.",
+        "youtube_url": "https://www.youtube.com/watch?v=ruGpu6BilYs",
+        "image_url": "https://img.youtube.com/vi/ruGpu6BilYs/hqdefault.jpg",
+        "status": "not-started",
+        "resources": [
+          { "name": "Sample Code", "url": "#", "icon": "fas fa-code" },
+          { "name": "Python Installer", "url": "#", "icon": "fas fa-download" }
+        ]
+      }
+    ],
+    "Basic Operators": [
+      {
+        "id": 1,
+        "title": "Python Tutorial 02 - Basic Operators",
+        "description": "Learn arithmetic and comparison operators in Python.",
+        "youtube_url": "https://www.youtube.com/watch?v=_YkSrGKNgFI",
+        "image_url": "https://img.youtube.com/vi/_YkSrGKNgFI/hqdefault.jpg",
+        "status": "not-started",
+        "resources": [
+          { "name": "Sample Code", "url": "#", "icon": "fas fa-code" },
+          { "name": "Python Installer", "url": "#", "icon": "fas fa-download" }
+        ]
+      }
+    ],
+    "Indentation": [
+      {
+        "id": 2,
+        "title": "Python Tutorial 03 - Indentation",
+        "description": "Understand Python's indentation rules and block structures.",
+        "youtube_url": "https://www.youtube.com/watch?v=pS7uCnnFKYs",
+        "image_url": "https://img.youtube.com/vi/pS7uCnnFKYs/hqdefault.jpg",
+        "status": "not-started",
+        "resources": [
+          { "name": "Sample Code", "url": "#", "icon": "fas fa-code" },
+          { "name": "Python Installer", "url": "#", "icon": "fas fa-download" }
+        ]
+      }
+    ],
+    "If Else": [
+      {
+        "id": 3,
+        "title": "Python Tutorial 04 - Decision Making using If Else",
+        "description": "Learn how to use if, else, and elif for decision-making.",
+        "youtube_url": "https://www.youtube.com/watch?v=PRz0RmvYsE4",
+        "image_url": "https://img.youtube.com/vi/PRz0RmvYsE4/hqdefault.jpg",
+        "status": "not-started",
+        "resources": [
+          { "name": "Sample Code", "url": "#", "icon": "fas fa-code" },
+          { "name": "Python Installer", "url": "#", "icon": "fas fa-download" }
+        ]
+      }
+    ],
+    "Functions": [
+      {
+        "id": 4,
+        "title": "Python Tutorial 05 - Function with One Input Variable",
+        "description": "Define and use a function with one input parameter.",
+        "youtube_url": "https://www.youtube.com/watch?v=wURLEjcMwmE",
+        "image_url": "https://img.youtube.com/vi/wURLEjcMwmE/hqdefault.jpg",
+        "status": "not-started",
+        "resources": [
+          { "name": "Sample Code", "url": "#", "icon": "fas fa-code" },
+          { "name": "Python Installer", "url": "#", "icon": "fas fa-download" }
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Python Tutorial 06 - Function Output",
+        "description": "How to return results from Python functions.",
+        "youtube_url": "https://www.youtube.com/watch?v=K4Zsfgkb-nE",
+        "image_url": "https://img.youtube.com/vi/K4Zsfgkb-nE/hqdefault.jpg",
+        "status": "not-started",
+        "resources": [
+          { "name": "Sample Code", "url": "#", "icon": "fas fa-code" },
+          { "name": "Python Installer", "url": "#", "icon": "fas fa-download" }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Python Tutorial 07 - Function with Two Input Variables",
+        "description": "Functions that accept and operate on two inputs.",
+        "youtube_url": "https://www.youtube.com/watch?v=AtnC-eHPjUE",
+        "image_url": "https://img.youtube.com/vi/AtnC-eHPjUE/hqdefault.jpg",
+        "status": "not-started",
+        "resources": [
+          { "name": "Sample Code", "url": "#", "icon": "fas fa-code" },
+          { "name": "Python Installer", "url": "#", "icon": "fas fa-download" }
+        ]
+      }
+    ],
+    "Break, Continue and Pass": [
+      {
+        "id": 7,
+        "title": "Python Tutorial 08 - Break, Continue and Pass",
+        "description": "Use break, continue, and pass in loops for control flow.",
+        "youtube_url": "https://www.youtube.com/watch?v=jdPwiner0aI",
+        "image_url": "https://img.youtube.com/vi/jdPwiner0aI/hqdefault.jpg",
+        "status": "not-started",
+        "resources": [
+          { "name": "Sample Code", "url": "#", "icon": "fas fa-code" },
+          { "name": "Python Installer", "url": "#", "icon": "fas fa-download" }
+        ]
+      }
+    ],
+    "Lists": [
+      {
+        "id": 8,
+        "title": "Python Tutorial 09 - Lists",
+        "description": "Introduction to Python lists and how to create them.",
+        "youtube_url": "https://www.youtube.com/watch?v=OoGezi_REq4",
+        "image_url": "https://img.youtube.com/vi/OoGezi_REq4/hqdefault.jpg",
+        "status": "not-started",
+        "resources": [
+          { "name": "Sample Code", "url": "#", "icon": "fas fa-code" },
+          { "name": "Python Installer", "url": "#", "icon": "fas fa-download" }
+        ]
+      },
+      {
+        "id": 9,
+        "title": "Python Tutorial 10 - List Operations",
+        "description": "Perform common operations on Python lists like append, pop, and slicing.",
+        "youtube_url": "https://www.youtube.com/watch?v=NoH-MfljqH8",
+        "image_url": "https://img.youtube.com/vi/NoH-MfljqH8/hqdefault.jpg",
+        "status": "not-started",
+        "resources": [
+          { "name": "Sample Code", "url": "#", "icon": "fas fa-code" },
+          { "name": "Python Installer", "url": "#", "icon": "fas fa-download" }
+        ]
+      }
+    ],
+    "Loops": [
+      {
+        "id": 10,
+        "title": "Python Tutorial 11 - For Loops",
+        "description": "Iterate over data using for loops.",
+        "youtube_url": "https://www.youtube.com/watch?v=rZBihU7Vybk",
+        "image_url": "https://img.youtube.com/vi/rZBihU7Vybk/hqdefault.jpg",
+        "status": "not-started",
+        "resources": [
+          { "name": "Sample Code", "url": "#", "icon": "fas fa-code" },
+          { "name": "Python Installer", "url": "#", "icon": "fas fa-download" }
+        ]
+      },
+      {
+        "id": 11,
+        "title": "Python Tutorial 12 - Loops with Lists",
+        "description": "Loop through list elements and perform operations.",
+        "youtube_url": "https://www.youtube.com/watch?v=9mKG_gB9u28",
+        "image_url": "https://img.youtube.com/vi/9mKG_gB9u28/hqdefault.jpg",
+        "status": "not-started",
+        "resources": [
+          { "name": "Sample Code", "url": "#", "icon": "fas fa-code" },
+          { "name": "Python Installer", "url": "#", "icon": "fas fa-download" }
+        ]
+      },
+      {
+        "id": 12,
+        "title": "Python Tutorial 13 - While Loops",
+        "description": "Use while loops for conditional iteration.",
+        "youtube_url": "https://www.youtube.com/watch?v=jOq5j3265Tw",
+        "image_url": "https://img.youtube.com/vi/jOq5j3265Tw/hqdefault.jpg",
+        "status": "not-started",
+        "resources": [
+          { "name": "Sample Code", "url": "#", "icon": "fas fa-code" },
+          { "name": "Python Installer", "url": "#", "icon": "fas fa-download" }
+        ]
+      },
+      {
+        "id": 13,
+        "title": "Python Tutorial 14 - Maximum and Minimum of List of Numbers",
+        "description": "Find the max and min values in a list.",
+        "youtube_url": "https://www.youtube.com/watch?v=BEvoeyLx9oM",
+        "image_url": "https://img.youtube.com/vi/BEvoeyLx9oM/hqdefault.jpg",
+        "status": "not-started",
+        "resources": [
+          { "name": "Sample Code", "url": "#", "icon": "fas fa-code" },
+          { "name": "Python Installer", "url": "#", "icon": "fas fa-download" }
+        ]
+      },
+      {
+        "id": 14,
+        "title": "Python Tutorial 15 - Nested Loops",
+        "description": "Use loops inside other loops for complex iterations.",
+        "youtube_url": "https://www.youtube.com/watch?v=xvuf71GLlww",
+        "image_url": "https://img.youtube.com/vi/xvuf71GLlww/hqdefault.jpg",
+        "status": "not-started",
+        "resources": [
+          { "name": "Sample Code", "url": "#", "icon": "fas fa-code" },
+          { "name": "Python Installer", "url": "#", "icon": "fas fa-download" }
+        ]
+      }
+    ],
+    "Sorting": [
+      {
+        "id": 15,
+        "title": "Python Tutorial 16 - Sorting",
+        "description": "Learn how to sort data using built-in methods.",
+        "youtube_url": "https://www.youtube.com/watch?v=ST_pQyLSg78",
+        "image_url": "https://img.youtube.com/vi/ST_pQyLSg78/hqdefault.jpg",
+        "status": "not-started",
+        "resources": [
+          { "name": "Sample Code", "url": "#", "icon": "fas fa-code" },
+          { "name": "Python Installer", "url": "#", "icon": "fas fa-download" }
+        ]
+      }
+    ],
+    "Dictionaries": [
+      {
+        "id": 16,
+        "title": "Python Tutorial 17 - Dictionaries",
+        "description": "Understand dictionaries and key-value pairs in Python.",
+        "youtube_url": "https://www.youtube.com/watch?v=bNEbY0HwPmw",
+        "image_url": "https://img.youtube.com/vi/bNEbY0HwPmw/hqdefault.jpg",
+        "status": "not-started",
+        "resources": [
+          { "name": "Sample Code", "url": "#", "icon": "fas fa-code" },
+          { "name": "Python Installer", "url": "#", "icon": "fas fa-download" }
+        ]
+      },
+      {
+        "id": 17,
+        "title": "Python Tutorial 18 - Dictionary Copying and Updation",
+        "description": "Copy and update dictionaries.",
+        "youtube_url": "https://www.youtube.com/watch?v=sX5-xSbdEFY",
+        "image_url": "https://img.youtube.com/vi/sX5-xSbdEFY/hqdefault.jpg",
+        "status": "not-started",
+        "resources": [
+          { "name": "Sample Code", "url": "#", "icon": "fas fa-code" },
+          { "name": "Python Installer", "url": "#", "icon": "fas fa-download" }
+        ]
+      },
+      {
+        "id": 18,
+        "title": "Python Tutorial 19 - Loops with Dictionaries",
+        "description": "Loop through dictionary keys and values.",
+        "youtube_url": "https://www.youtube.com/watch?v=dMCmxObS3g0",
+        "image_url": "https://img.youtube.com/vi/dMCmxObS3g0/hqdefault.jpg",
+        "status": "not-started",
+        "resources": [
+          { "name": "Sample Code", "url": "#", "icon": "fas fa-code" },
+          { "name": "Python Installer", "url": "#", "icon": "fas fa-download" }
+        ]
+      },
+      {
+        "id": 19,
+        "title": "Python Tutorial 20 - Dictionary Example",
+        "description": "Practical example of using dictionaries.",
+        "youtube_url": "https://www.youtube.com/watch?v=G6IGOZXvCHA",
+        "image_url": "https://img.youtube.com/vi/G6IGOZXvCHA/hqdefault.jpg",
+        "status": "not-started",
+        "resources": [
+          { "name": "Sample Code", "url": "#", "icon": "fas fa-code" },
+          { "name": "Python Installer", "url": "#", "icon": "fas fa-download" }
+        ]
+      }
+    ],
+    "String": [
+      {
+        "id": 20,
+        "title": "Python Tutorial 21 - String Introduction",
+        "description": "Introduction to strings in Python.",
+        "youtube_url": "https://www.youtube.com/watch?v=CT1A-Twctr4",
+        "image_url": "https://img.youtube.com/vi/CT1A-Twctr4/hqdefault.jpg",
+        "status": "not-started",
+        "resources": [
+          { "name": "Sample Code", "url": "#", "icon": "fas fa-code" },
+          { "name": "Python Installer", "url": "#", "icon": "fas fa-download" }
+        ]
+      },
+      {
+        "id": 21,
+        "title": "Python Tutorial 22 - String Examples",
+        "description": "Examples of working with strings in Python.",
+        "youtube_url": "https://www.youtube.com/watch?v=zufr18LtyIs",
+        "image_url": "https://img.youtube.com/vi/zufr18LtyIs/hqdefault.jpg",
+        "status": "not-started",
+        "resources": [
+          { "name": "Sample Code", "url": "#", "icon": "fas fa-code" },
+          { "name": "Python Installer", "url": "#", "icon": "fas fa-download" }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,424 @@
+{
+  "ML_SIDEBAR_TOPICS": [
+    "Data Science & Machine Learning Overview",
+    "Random Variables and Probability Distributions",
+    "Expectation, Moments and CLT",
+    "Bayes' Theorem",
+    "Supervised Learning: Regression vs Classification",
+    "Bayesian Parameter Estimation",
+    "Maximum Likelihood Estimation",
+    "Maximum A Posteriori Estimation",
+    "Supervised Learning: Gradient Descent & Regularisation",
+    "Linear Regression: Normal Equation & Regularisation",
+    "Logistic Regression: Loss Function, Convexity, Gradient Descent",
+    "Logistic Regression: Multiclass Classification",
+    "Support Vector Machines",
+    "Decision Trees",
+    "Random Forest + Comparison of Trees, SVM & LogisticRegression",
+    "Artificial Neural Networks",
+    "Solving ODEs using ANN",
+    "Deep Learning (Introduction)",
+    "Generative Vs. Discriminative Models",
+    "Probabilistic Graphical Models",
+    "Expectation Maximization",
+    "K-Means clustering",
+    "Gaussian Mixture Models",
+    "Principal Component Analysis (PCA)",
+    "Reinforcement Learning",
+    "Big data technologies & Information management in Big Data"
+  ],
+  "ML_VIDEO_DATA": {
+    "Data Science & Machine Learning Overview": [
+      {
+        "id": 1,
+        "title": "Data Science & Machine Learning Overview - Overview Video 1",
+        "status": "not-started",
+        "youtubeLink": "https://youtu.be/DwqbxP5BDFo",
+        "reference": "",
+        "code": "https://data-flair.training/blogs/advanced-python-project-detecting-fake-news/",
+        "dataset": "https://bekushal.medium.com/curated-machine-learning-datasets-for-college-students-ba8cfbc98b6b",
+        "imageUrl": "https://img.youtube.com/vi/DwqbxP5BDFo/hqdefault.jpg"
+      },
+      {
+        "id": 2,
+        "title": "Data Science & Machine Learning Overview - Overview Video 2",
+        "status": "not-started",
+        "youtubeLink": "https://youtu.be/UnjyNYco7uQ",
+        "reference": "",
+        "code": "https://data-flair.training/blogs/advanced-python-project-detecting-fake-news/",
+        "dataset": "https://bekushal.medium.com/curated-machine-learning-datasets-for-college-students-ba8cfbc98b6b",
+        "imageUrl": "https://img.youtube.com/vi/UnjyNYco7uQ/hqdefault.jpg"
+      }
+    ],
+    "Random Variables and Probability Distributions": [
+      {
+        "id": 3,
+        "title": "Random Variables and Probability Distributions - Random Variables & Probability",
+        "status": "not-started",
+        "youtubeLink": "https://youtu.be/rGYqfhmdEmo",
+        "reference": "",
+        "code": "",
+        "dataset": "",
+        "imageUrl": "https://img.youtube.com/vi/rGYqfhmdEmo/hqdefault.jpg"
+      }
+    ],
+    "Expectation, Moments and CLT": [
+      {
+        "id": 4,
+        "title": "Expectation, Moments and CLT - Expectation, Moments, CLT",
+        "status": "not-started",
+        "youtubeLink": "https://youtu.be/3-A2siEN8w8",
+        "reference": "https://www.youtube.com/watch?v=JNm3M9cqWyc",
+        "code": "",
+        "dataset": "",
+        "imageUrl": "https://img.youtube.com/vi/3-A2siEN8w8/hqdefault.jpg"
+      }
+    ],
+    "Bayes' Theorem": [
+      {
+        "id": 5,
+        "title": "Bayes' Theorem - Bayes' Theorem Explained",
+        "status": "not-started",
+        "youtubeLink": "https://www.youtube.com/watch?v=q0p6VWj8N4I",
+        "reference": "https://www.mathsisfun.com/data/probability-events-conditional.html",
+        "code": "https://www.kdnuggets.com/2020/07/spam-filter-python-naive-bayes-scratch.html",
+        "dataset": "",
+        "imageUrl": "https://img.youtube.com/vi/q0p6VWj8N4I/hqdefault.jpg"
+      },
+      {
+        "id": 6,
+        "title": "Naïve Bayes, Gaussian Naive Bayes, Bayes' Optimal Classifier - Naive Bayes Introduction",
+        "status": "not-started",
+        "youtubeLink": "https://youtu.be/DV3F7AZOAE0",
+        "reference": "https://www.youtube.com/watch?v=O2L2Uv9pdDA",
+        "code": "https://machinelearningmastery.com/naive-bayes-classifier-scratch-python/",
+        "dataset": "",
+        "imageUrl": "https://img.youtube.com/vi/DV3F7AZOAE0/hqdefault.jpg"
+      }
+    ],
+    "Supervised Learning: Regression vs Classification": [
+      {
+        "id": 7,
+        "title": "Supervised Learning: Regression vs Classification, Curse of Dimensionality - Regression vs Classification",
+        "status": "not-started",
+        "youtubeLink": "https://www.youtube.com/watch?v=NYJZDRRUO84",
+        "reference": "https://in.springboard.com/blog/regression-vs-classification-in-machine-learning/",
+        "code": "https://scikit-learn.org/stable/modules/neighbors.html",
+        "dataset": "",
+        "imageUrl": "https://img.youtube.com/vi/NYJZDRRUO84/hqdefault.jpg"
+      }
+    ],
+    "Bayesian Parameter Estimation": [
+      {
+        "id": 8,
+        "title": "Bayesian Parameter Estimation - Bayesian Parameter Estimation",
+        "status": "not-started",
+        "youtubeLink": "https://youtu.be/8P7tdwFF0is",
+        "reference": "",
+        "code": "",
+        "dataset": "",
+        "imageUrl": "https://img.youtube.com/vi/8P7tdwFF0is/hqdefault.jpg"
+      }
+    ],
+    "Maximum Likelihood Estimation": [
+      {
+        "id": 9,
+        "title": "Maximum Likelihood Estimation - Maximum Likelihood Estimation",
+        "status": "not-started",
+        "youtubeLink": "https://youtu.be/WIPUh9yWM4c",
+        "reference": "https://allenkunle.me/deriving-ml-cost-functions-part1",
+        "code": "",
+        "dataset": "",
+        "imageUrl": "https://img.youtube.com/vi/WIPUh9yWM4c/hqdefault.jpg"
+      }
+    ],
+    "Maximum A Posteriori Estimation": [
+      {
+        "id": 10,
+        "title": "Maximum A Posteriori Estimation - Maximum A Posteriori Estimation",
+        "status": "not-started",
+        "youtubeLink": "https://youtu.be/XKkfIU8ugjM",
+        "reference": "https://towardsdatascience.com/mle-vs-map-a989f423ae5c",
+        "code": "",
+        "dataset": "",
+        "imageUrl": "https://img.youtube.com/vi/XKkfIU8ugjM/hqdefault.jpg"
+      }
+    ],
+    "Supervised Learning: Gradient Descent & Regularisation": [
+      {
+        "id": 11,
+        "title": "Supervised Learning: Gradient Descent & Regularisation - Gradient Descent & Regularisation",
+        "status": "not-started",
+        "youtubeLink": "https://www.youtube.com/watch?v=IUmFzIU-Cp4",
+        "reference": "https://towardsdatascience.com/gradient-descent-the-learning-rate-and-the-importance-of-feature-scaling-6c0b416596e1",
+        "code": "",
+        "dataset": "",
+        "imageUrl": "https://img.youtube.com/vi/IUmFzIU-Cp4/hqdefault.jpg"
+      }
+    ],
+    "Linear Regression: Normal Equation & Regularisation": [
+      {
+        "id": 12,
+        "title": "Linear Regression: Normal Equation & Regularisation - Linear Regression Part 1",
+        "status": "not-started",
+        "youtubeLink": "https://youtu.be/BGiAcoU4yWk",
+        "reference": "https://machinelearningmastery.com/linear-regression-for-machine-learning/",
+        "code": "https://inria.github.io/scikit-learn-mooc/python_scripts/linear_models_regularization.html",
+        "dataset": "",
+        "imageUrl": "https://img.youtube.com/vi/BGiAcoU4yWk/hqdefault.jpg"
+      },
+      {
+        "id": 13,
+        "title": "Linear Regression: Normal Equation & Regularisation - Linear Regression Part 2",
+        "status": "not-started",
+        "youtubeLink": "https://www.youtube.com/watch?v=VqKq78PVO9g",
+        "reference": "https://machinelearningmastery.com/linear-regression-for-machine-learning/",
+        "code": "https://inria.github.io/scikit-learn-mooc/python_scripts/linear_models_regularization.html",
+        "dataset": "",
+        "imageUrl": "https://img.youtube.com/vi/VqKq78PVO9g/hqdefault.jpg"
+      }
+    ],
+    "Logistic Regression: Loss Function, Convexity, Gradient Descent": [
+      {
+        "id": 14,
+        "title": "Logistic Regression: Loss Function, Convexity, Gradient Descent - Logistic Regression Intro",
+        "status": "not-started",
+        "youtubeLink": "https://youtu.be/sxaYUg6zc7I",
+        "reference": "https://activewizards.com/blog/5-real-world-examples-of-logistic-regression-application",
+        "code": "https://heartbeat.fritz.ai/logistic-regression-in-python-using-scikit-learn-d34e882eebb1",
+        "dataset": "",
+        "imageUrl": "https://img.youtube.com/vi/sxaYUg6zc7I/hqdefault.jpg"
+      }
+    ],
+    "Logistic Regression: Multiclass Classification": [
+      {
+        "id": 15,
+        "title": "Logistic Regression: Multiclass Classification - Multiclass Logistic Regression",
+        "status": "not-started",
+        "youtubeLink": "https://www.youtube.com/watch?v=E6MNiNsESl4",
+        "reference": "https://web.stanford.edu/~jurafsky/slp3/5.pdf",
+        "code": "https://towardsdatascience.com/multiclass-classification-algorithm-from-scratch-with-a-project-in-python-step-by-step-guide-485a83c79992",
+        "dataset": "",
+        "imageUrl": "https://img.youtube.com/vi/E6MNiNsESl4/hqdefault.jpg"
+      }
+    ],
+    "Support Vector Machines": [
+      {
+        "id": 16,
+        "title": "Support Vector Machines with Linear Kernel - SVM with Linear Kernel",
+        "status": "not-started",
+        "youtubeLink": "https://www.youtube.com/watch?v=KvIdyz0KdCU",
+        "reference": "https://medium.com/@rinu.gour123/8-unique-real-life-applications-of-svm-8a96ca43313",
+        "code": "https://scikit-learn.org/stable/modules/svm.html",
+        "dataset": "",
+        "imageUrl": "https://img.youtube.com/vi/KvIdyz0KdCU/hqdefault.jpg"
+      },
+      {
+        "id": 17,
+        "title": "Support Vector Machines: Slack Variables and Nonlinear Kernels - SVM Slack & Nonlinear Kernels",
+        "status": "not-started",
+        "youtubeLink": "https://youtu.be/kPuHAK4RCfM",
+        "reference": "http://openclassroom.stanford.edu/MainFolder/DocumentPage.php?course=MachineLearning&doc=exercises/ex8/ex8.html",
+        "code": "https://scikit-learn.org/stable/modules/svm.html",
+        "dataset": "",
+        "imageUrl": "https://img.youtube.com/vi/kPuHAK4RCfM/hqdefault.jpg"
+      }
+    ],
+    "Decision Trees": [
+      {
+        "id": 18,
+        "title": "Decision Trees - Decision Trees Intro",
+        "status": "not-started",
+        "youtubeLink": "https://youtu.be/OlreMWwTJ_8",
+        "reference": "https://www.youtube.com/watch?v=7VeUPuFGJHk",
+        "code": "https://www.geeksforgeeks.org/decision-tree-implementation-python/",
+        "dataset": "",
+        "imageUrl": "https://img.youtube.com/vi/OlreMWwTJ_8/hqdefault.jpg"
+      }
+    ],
+    "Random Forest + Comparison of Trees, SVM & LogisticRegression": [
+      {
+        "id": 19,
+        "title": "Random Forest + Comparison of Trees, SVM & LogisticRegression - Random Forest & Comparisons",
+        "status": "not-started",
+        "youtubeLink": "https://youtu.be/pEFBH_371sU",
+        "reference": "https://www.youtube.com/watch?v=4EOCQJgqAOY",
+        "code": "https://towardsdatascience.com/an-implementation-and-explanation-of-the-random-forest-in-python-77bf308a9b76",
+        "dataset": "",
+        "imageUrl": "https://img.youtube.com/vi/pEFBH_371sU/hqdefault.jpg"
+      }
+    ],
+    "Artificial Neural Networks": [
+      {
+        "id": 20,
+        "title": "Artificial Neural Networks: Introduction - ANN Introduction",
+        "status": "not-started",
+        "youtubeLink": "https://youtu.be/6nkylSKqaAc",
+        "reference": "http://neuralnetworksanddeeplearning.com/chap4.html",
+        "code": "https://medium.com/@robertjohn_15390/simple-housing-price-prediction-using-neural-networks-with-tensorflow-8b486d3db3ca",
+        "dataset": "",
+        "imageUrl": "https://img.youtube.com/vi/6nkylSKqaAc/hqdefault.jpg"
+      },
+      {
+        "id": 21,
+        "title": "Artificial Neural Networks: Backpropagation - ANN Backpropagation",
+        "status": "not-started",
+        "youtubeLink": "https://youtu.be/ntnwjWEpnkk",
+        "reference": "http://neuralnetworksanddeeplearning.com/chap2.html",
+        "code": "https://machinelearningmastery.com/implement-backpropagation-algorithm-scratch-python/",
+        "dataset": "",
+        "imageUrl": "https://img.youtube.com/vi/ntnwjWEpnkk/hqdefault.jpg"
+      },
+      {
+        "id": 22,
+        "title": "Artificial Neural Networks: Activation Functions, Loss functions & Optimization Algorithms - ANN Activation, Loss, Optimization",
+        "status": "not-started",
+        "youtubeLink": "https://youtu.be/qctUEQn9Hj8",
+        "reference": "https://towardsdatascience.com/comparison-of-activation-functions-for-deep-neural-networks-706ac4284c8a",
+        "code": "",
+        "dataset": "",
+        "imageUrl": "https://img.youtube.com/vi/qctUEQn9Hj8/hqdefault.jpg"
+      }
+    ],
+    "Solving ODEs using ANN": [
+      {
+        "id": 23,
+        "title": "Solving ODEs using ANN - ANN for ODEs",
+        "status": "not-started",
+        "youtubeLink": "https://youtu.be/-pMLqoMarEk",
+        "reference": "https://www.sciencedirect.com/science/article/pii/S0021999118307125",
+        "code": "https://towardsdatascience.com/how-to-solve-an-ode-with-a-neural-network-917d11918932",
+        "dataset": "",
+        "imageUrl": "https://img.youtube.com/vi/-pMLqoMarEk/hqdefault.jpg"
+      }
+    ],
+    "Deep Learning (Introduction)": [
+      {
+        "id": 24,
+        "title": "Deep Learning (Introduction) - Deep Learning Intro Video",
+        "status": "not-started",
+        "youtubeLink": "https://youtu.be/MTbBOu4M7_M",
+        "reference": "http://yann.lecun.com/exdb/mnist/",
+        "code": "",
+        "dataset": "http://yann.lecun.com/exdb/mnist/",
+        "imageUrl": "https://img.youtube.com/vi/MTbBOu4M7_M/hqdefault.jpg"
+      }
+    ],
+    "Generative Vs. Discriminative Models": [
+      {
+        "id": 25,
+        "title": "Generative Vs. Discriminative Models - Generative vs Discriminative",
+        "status": "not-started",
+        "youtubeLink": "https://youtu.be/WSxUOIGuGi8",
+        "reference": "",
+        "code": "https://machinelearningmastery.com/how-to-develop-a-generative-adversarial-network-for-an-mnist-handwritten-digits-from-scratch-in-keras/",
+        "dataset": "",
+        "imageUrl": "https://img.youtube.com/vi/WSxUOIGuGi8/hqdefault.jpg"
+      }
+    ],
+    "Probabilistic Graphical Models": [
+      {
+        "id": 26,
+        "title": "Probabilistic Graphical Models: Bayesian Network and Markov Network - PGM Intro Video 1",
+        "status": "not-started",
+        "youtubeLink": "https://youtu.be/xJtyVQMV1A8",
+        "reference": "https://www.cs.ubc.ca/~murphyk/Bayes/bnintro.html",
+        "code": "https://www.youtube.com/watch?v=SkC8S3wulfg",
+        "dataset": "",
+        "imageUrl": "https://img.youtube.com/vi/xJtyVQMV1A8/hqdefault.jpg"
+      },
+      {
+        "id": 27,
+        "title": "Probabilistic Graphical Models: Bayesian Network and Markov Network - PGM Intro Video 2",
+        "status": "not-started",
+        "youtubeLink": "https://youtu.be/PNrghbfK5r0",
+        "reference": "https://www.cs.ubc.ca/~murphyk/Bayes/bnintro.html",
+        "code": "https://www.youtube.com/watch?v=SkC8S3wulfg",
+        "dataset": "",
+        "imageUrl": "https://img.youtube.com/vi/PNrghbfK5r0/hqdefault.jpg"
+      }
+    ],
+    "Expectation Maximization": [
+      {
+        "id": 28,
+        "title": "Expectation Maximization - Expectation Maximization",
+        "status": "not-started",
+        "youtubeLink": "https://youtu.be/PNrghbfK5r0",
+        "reference": "https://www.nature.com/articles/nbt1406",
+        "code": "https://people.duke.edu/~ccc14/sta-663/EMAlgorithm.html",
+        "dataset": "",
+        "imageUrl": "https://img.youtube.com/vi/PNrghbfK5r0/hqdefault.jpg"
+      }
+    ],
+    "K-Means clustering": [
+      {
+        "id": 29,
+        "title": "K-Means clustering - K-Means Clustering",
+        "status": "not-started",
+        "youtubeLink": "https://youtu.be/92-h3_1Yfz8",
+        "reference": "https://becominghuman.ai/comprehending-k-means-and-knn-algorithms-c791be90883d",
+        "code": "https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html",
+        "dataset": "",
+        "imageUrl": "https://img.youtube.com/vi/92-h3_1Yfz8/hqdefault.jpg"
+      }
+    ],
+    "Gaussian Mixture Models": [
+      {
+        "id": 30,
+        "title": "Gaussian Mixture Models - Gaussian Mixture Models",
+        "status": "not-started",
+        "youtubeLink": "https://www.youtube.com/watch?v=he4lI0w1G-g",
+        "reference": "https://brilliant.org/wiki/gaussian-mixture-model/",
+        "code": "https://www.analyticsvidhya.com/blog/2019/10/gaussian-mixture-models-clustering/",
+        "dataset": "",
+        "imageUrl": "https://img.youtube.com/vi/he4lI0w1G-g/hqdefault.jpg"
+      }
+    ],
+    "Principal Component Analysis (PCA)": [
+      {
+        "id": 31,
+        "title": "Principal Component Analysis (PCA) - I - PCA Part 1",
+        "status": "not-started",
+        "youtubeLink": "https://youtu.be/cERNIfg9TLM",
+        "reference": "https://builtin.com/data-science/step-step-explanation-principal-component-analysis",
+        "code": "https://www.analyticsvidhya.com/blog/2016/03/pca-practical-guide-principal-component-analysis-python/",
+        "dataset": "",
+        "imageUrl": "https://img.youtube.com/vi/cERNIfg9TLM/hqdefault.jpg"
+      },
+      {
+        "id": 32,
+        "title": "Principal Component Analysis (PCA) - II - PCA Part 2",
+        "status": "not-started",
+        "youtubeLink": "https://youtu.be/ml1d1zC0jsg",
+        "reference": "https://shankarmsy.github.io/posts/pca-vs-lr.html",
+        "code": "https://shankarmsy.github.io/posts/pca-sklearn.html",
+        "dataset": "",
+        "imageUrl": "https://img.youtube.com/vi/ml1d1zC0jsg/hqdefault.jpg"
+      }
+    ],
+    "Reinforcement Learning": [
+      {
+        "id": 33,
+        "title": "Reinforcement Learning - Reinforcement Learning Intro",
+        "status": "not-started",
+        "youtubeLink": "https://youtu.be/KEQhaBIZ9yk",
+        "reference": "https://medium.com/vernacular-ai/reinforcement-learning-step-by-step-17cde7dbc56c",
+        "code": "https://amunategui.github.io/reinforcement-learning/index.html",
+        "dataset": "https://www.kaggle.com/code/nelver/rock-paper-scissors-q-learning",
+        "imageUrl": "https://img.youtube.com/vi/KEQhaBIZ9yk/hqdefault.jpg"
+      }
+    ],
+    "Big data technologies & Information management in Big Data": [
+      {
+        "id": 41,
+        "title": "Big data technologies & Information management in Big Data - Big Data & Info Management",
+        "status": "not-started",
+        "youtubeLink": "https://youtu.be/5dSmXcKsEBo",
+        "reference": "https://www.edureka.co/blog/top-big-data-technologies/",
+        "code": "",
+        "dataset": "",
+        "imageUrl": "https://img.youtube.com/vi/5dSmXcKsEBo/hqdefault.jpg"
+      }
+    ]
+  }
+}

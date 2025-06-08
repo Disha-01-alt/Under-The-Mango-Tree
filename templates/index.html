@@ -1,96 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Under The Mango Tree - Education Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .bg-hero {
+            background-image: linear-gradient(rgba(30, 61, 89, 0.9) 0%, rgba(30, 61, 89, 0.7) 100%), 
+                              url('https://readdy.ai/api/search-image?query=diverse%20group%20of%20students%20studying%20together%20in%20a%20modern%20educational%20environment%20with%20digital%20devices%20and%20books%2C%20bright%20natural%20lighting%2C%20collaborative%20atmosphere%2C%20education%20technology&width=1440&height=600&seq=hero1&orientation=landscape&quot;); filter: brightness(0.7)');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-scale:hover {
+            transform: translateY(-4px);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #007BFF, #FF6B35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+        
+        .btn-glow {
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
+        }
+        
+        .btn-glow:hover {
+            box-shadow: 0 0 30px rgba(255, 107, 53, 0.5);
+        }
+        /* Smooth transitions for mobile menu */
+        #mobile-menu {
+            transition: all 0.3s ease-in-out;
+        }
 
-{% extends 'base.html' %}
+        #submenu-icon {
+            transition: transform 0.3s ease;
+        }
 
-{% block title %}Under The Mango Tree - Education for All{% endblock %}
+        /* Ensure proper spacing for mobile submenu */
+        #mobile-submenu {
+            transition: all 0.3s ease-in-out;
+        }
 
-{% block content %}
+        /* Animation for menu icon */
+        #menu-icon {
+            transition: all 0.3s ease;
+        }
+        /* home viewport */
+        #home {
+            min-height: 50vh;
+        }
+    </style>
+    
+</head>
+<body class="font-sans smooth-scroll">
+    <!-- Header -->
+    {% include 'header.html' %}
+    
+
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="container text-center">
-            <h1>Welcome to Under The Mango Tree</h1>
-            <p class="lead">Making quality education and job opportunities accessible to students from government schools</p>
-            <div class="d-flex justify-content-center gap-3 flex-wrap">
-                <a href="{{ url_for('learning_hub') }}" class="btn btn-primary btn-lg">
-                    <i class="fas fa-book-open me-2"></i>Start Learning
-                </a>
-                <a href="{{ url_for('job_portal') }}" class="btn btn-secondary btn-lg">
-                    <i class="fas fa-briefcase me-2"></i>Find Jobs
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Main Features -->
-    <section class="py-5">
-        <div class="container">
-            <h2 class="text-center mb-5">How We Help You Succeed</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <div class="card-body text-center">
-                            <i class="fas fa-language fa-3x text-primary mb-3"></i>
-                            <h3>Free English Learning</h3>
-                            <p>Learn English through interactive lessons, games, and activities designed especially for Hindi medium students</p>
-                        </div>
-                    </div>
+    <section id="home" class="relative bg-hero  flex items-center">
+        <div class="container mx-auto px-6 py-20 md:py-32 text-center md:text-left">
+            <div class="max-w-2xl">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight animate-float">
+                    Welcome to <span class="gradient-text">Under The Mango Tree</span>
+                </h1>
+                <p class="text-lg md:text-xl text-white/90 mb-10 leading-relaxed">
+                    Making quality education and job opportunities accessible to students from government schools
+                </p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center md:justify-start">
+                    <a href="{{ url_for('python_learning') }}" class="bg-[#007BFF] hover:bg-[#0069d9] text-white px-8 py-4 rounded-lg transition duration-300 shadow-lg flex items-center justify-center hover-scale">
+                        <button>
+                            <i class="fas fa-book-open mr-2"></i> START LEARNING
+                        </button>
+                    </a>
+                    <button class="bg-[#FF6B35] hover:bg-[#e05a2a] text-white px-8 py-4 rounded-lg transition duration-300 shadow-lg flex items-center justify-center hover-scale btn-glow">
+                        <i class="fas fa-briefcase mr-2"></i> FIND JOBS
+                    </button>
                 </div>
-                <div class="col-md-4">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <div class="card-body text-center">
-                            <i class="fas fa-laptop-code fa-3x text-success mb-3"></i>
-                            <h3>Computer Skills</h3>
-                            <p>Build essential computer and programming skills needed for today's job market</p>
-                        </div>
+                <div class="mt-12 grid grid-cols-3 gap-6 text-white">
+                    <div class="text-center hover-scale">
+                        <div class="text-3xl font-bold text-[#FF6B35] mb-2">10,000+</div>
+                        <div class="text-sm opacity-80">Students Trained</div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <div class="card-body text-center">
-                            <i class="fas fa-handshake fa-3x text-info mb-3"></i>
-                            <h3>Job Connections</h3>
-                            <p>Connect with companies offering entry-level positions and internships for freshers</p>
-                        </div>
+                    <div class="text-center hover-scale">
+                        <div class="text-3xl font-bold text-[#FF6B35] mb-2">500+</div>
+                        <div class="text-sm opacity-80">Job Placements</div>
+                    </div>
+                    <div class="text-center hover-scale">
+                        <div class="text-3xl font-bold text-[#FF6B35] mb-2">50+</div>
+                        <div class="text-sm opacity-80">Partner Companies</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Support Section -->
-    <section class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center mb-5">Special Support for Students</h2>
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <ul class="list-unstyled">
-                        <li class="mb-3">
-                            <i class="fas fa-check-circle text-success me-2"></i>
-                            Free access to all learning materials
-                        </li>
-                        <li class="mb-3">
-                            <i class="fas fa-check-circle text-success me-2"></i>
-                            Study materials in Hindi and English
-                        </li>
-                        <li class="mb-3">
-                            <i class="fas fa-check-circle text-success me-2"></i>
-                            Special job opportunities
-                        </li>
-                        <li class="mb-3">
-                            <i class="fas fa-check-circle text-success me-2"></i>
-                            Career guidance and mentorship
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-6">
-                    <div class="card border-0 shadow">
-                        <div class="card-body text-center p-5">
-                            <h3 class="mb-4">Start Your Journey Today</h3>
-                            <p class="mb-4">Join thousands of students who have already transformed their careers through our platform</p>
-                            <a href="{{ url_for('learning_hub') }}" class="btn btn-primary btn-lg">Get Started</a>
+    <!-- How We Help Section -->
+    <section class="py-20 bg-gradient-to-b from-white to-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center text-[#1E3D59] mb-16">How We Help You Succeed</h2>
+            <div class="grid md:grid-cols-3 gap-10">
+                <!-- English Learning -->
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden hover-scale group">
+                    <div class="p-8 flex flex-col items-center text-center">
+                        <div class="bg-gradient-to-r from-blue-100 to-blue-200 p-6 rounded-full mb-6 group-hover:scale-110 transition duration-300">
+                            <i class="fas fa-language text-[#007BFF] text-4xl"></i>
                         </div>
+                        <h3 class="text-xl font-bold text-[#1E3D59] mb-4">Free English Learning</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Learn English through interactive lessons, games, and activities designed especially for Hindi medium students
+                        </p>
+                        <a href="#" class="text-[#007BFF] font-medium hover:text-[#0069d9] flex items-center group-hover:translate-x-2 transition duration-300">
+                            Explore courses <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Computer Skills -->
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden hover-scale group">
+                    <div class="p-8 flex flex-col items-center text-center">
+                        <div class="bg-gradient-to-r from-green-100 to-green-200 p-6 rounded-full mb-6 group-hover:scale-110 transition duration-300">
+                            <i class="fas fa-laptop-code text-green-600 text-4xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-[#1E3D59] mb-4">Computer Skills</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Build essential computer and programming skills needed for today's job market
+                        </p>
+                        <a href="#" class="text-green-600 font-medium hover:text-green-700 flex items-center group-hover:translate-x-2 transition duration-300">
+                            View programs <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Job Connections -->
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden hover-scale group">
+                    <div class="p-8 flex flex-col items-center text-center">
+                        <div class="bg-gradient-to-r from-purple-100 to-purple-200 p-6 rounded-full mb-6 group-hover:scale-110 transition duration-300">
+                            <i class="fas fa-handshake text-purple-600 text-4xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-[#1E3D59] mb-4">Job Connections</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Connect with companies offering entry-level positions and internships for freshers
+                        </p>
+                        <a href="#" class="text-purple-600 font-medium hover:text-purple-700 flex items-center group-hover:translate-x-2 transition duration-300">
+                            Find opportunities <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-{% endblock %}
+
+    <!-- Special Support Section -->
+    <section class="py-20 bg-gradient-to-r from-gray-50 to-blue-50">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-10 lg:mb-0 pr-0 lg:pr-10">
+                    <h2 class="text-4xl font-bold text-[#1E3D59] mb-10">Special Support for Students</h2>
+                    <div class="space-y-6">
+                        <div class="flex items-start bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover-scale">
+                            <div class="bg-green-100 p-3 rounded-full mr-4 flex-shrink-0">
+                                <i class="fas fa-check-circle text-green-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-[#1E3D59] text-lg">Free access to all learning materials</h3>
+                                <p class="text-gray-600 mt-2">No hidden costs or premium content restrictions</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover-scale">
+                            <div class="bg-green-100 p-3 rounded-full mr-4 flex-shrink-0">
+                                <i class="fas fa-check-circle text-green-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-[#1E3D59] text-lg">Study materials in Hindi and English</h3>
+                                <p class="text-gray-600 mt-2">Learn in the language you're most comfortable with</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover-scale">
+                            <div class="bg-green-100 p-3 rounded-full mr-4 flex-shrink-0">
+                                <i class="fas fa-check-circle text-green-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-[#1E3D59] text-lg">Special job opportunities</h3>
+                                <p class="text-gray-600 mt-2">Exclusive positions reserved for our students</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover-scale">
+                            <div class="bg-green-100 p-3 rounded-full mr-4 flex-shrink-0">
+                                <i class="fas fa-check-circle text-green-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-[#1E3D59] text-lg">Career guidance and mentorship</h3>
+                                <p class="text-gray-600 mt-2">One-on-one support from industry professionals</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 bg-white rounded-xl shadow-xl p-10 flex flex-col justify-center">
+                    <h2 class="text-3xl font-bold text-[#1E3D59] mb-6 text-center">Start Your Journey Today</h2>
+                    <p class="text-gray-600 mb-8 text-center leading-relaxed">
+                        Join thousands of students who have already transformed their careers through our platform
+                    </p>
+                    <div class="mb-8">
+                        <div class="flex flex-col space-y-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-graduation-cap text-[#FF6B35] mr-3 text-xl"></i>
+                                <span class="text-gray-700">Access to 100+ courses and workshops</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-users text-[#FF6B35] mr-3 text-xl"></i>
+                                <span class="text-gray-700">Join a community of 10,000+ learners</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-certificate text-[#FF6B35] mr-3 text-xl"></i>
+                                <span class="text-gray-700">Earn recognized certificates</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="{{ url_for('python_learning') }}" class="bg-[#007BFF] hover:bg-[#0069d9] text-white py-4 px-8 rounded-lg font-medium shadow-lg mx-auto hover-scale transition duration-300">
+                        <button>
+                            GET STARTED
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center text-[#1E3D59] mb-16">What Our Students Say</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover-scale">
+                    <div class="flex items-center mb-6">
+                        <div class="w-14 h-14 bg-gradient-to-r from-[#1E3D59] to-[#FF6B35] rounded-full flex items-center justify-center text-white font-bold text-xl">
+                            RS
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-[#1E3D59]">Rahul Singh</h4>
+                            <p class="text-gray-600 text-sm">Software Developer</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic leading-relaxed mb-4">
+                        "The English and programming courses helped me secure a job at a top tech company. The mentors were always available to clear my doubts."
+                    </p>
+                    <div class="text-[#FF6B35]">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-gradient-to-br from-gray-50 to-green-50 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover-scale">
+                    <div class="flex items-center mb-6">
+                        <div class="w-14 h-14 bg-gradient-to-r from-[#1E3D59] to-green-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                            PK
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-[#1E3D59]">Priya Kumari</h4>
+                            <p class="text-gray-600 text-sm">Customer Support Specialist</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic leading-relaxed mb-4">
+                        "As someone from a Hindi medium school, I was nervous about my English skills. The interactive lessons made learning fun and effective."
+                    </p>
+                    <div class="text-[#FF6B35]">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-gradient-to-br from-gray-50 to-purple-50 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover-scale">
+                    <div class="flex items-center mb-6">
+                        <div class="w-14 h-14 bg-gradient-to-r from-[#1E3D59] to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                            AK
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-[#1E3D59]">Amit Kumar</h4>
+                            <p class="text-gray-600 text-sm">Web Developer</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic leading-relaxed mb-4">
+                        "The job portal connected me directly with employers looking for freshers. I got three interview calls within a week of completing my course!"
+                    </p>
+                    <div class="text-[#FF6B35]">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="py-20 bg-gradient-to-r from-gray-50 to-blue-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center text-[#1E3D59] mb-16">Our Partners</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-scale">
+                    <i class="fab fa-google text-5xl text-blue-500 mb-4"></i>
+                    <span class="font-medium text-gray-800">Google</span>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-scale">
+                    <i class="fab fa-microsoft text-5xl text-blue-600 mb-4"></i>
+                    <span class="font-medium text-gray-800">Microsoft</span>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-scale">
+                    <i class="fab fa-amazon text-5xl text-orange-500 mb-4"></i>
+                    <span class="font-medium text-gray-800">Amazon</span>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-scale">
+                    <i class="fab fa-ibm text-5xl text-blue-700 mb-4"></i>
+                    <span class="font-medium text-gray-800">IBM</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section 
+        class="py-24 relative overflow-hidden bg-cover bg-center bg-no-repeat" 
+        style="background-image: url('https://www.shutterstock.com/image-photo/person-leads-finger-on-lines-260nw-1864366570.jpg'); filter: grayscale(40%);">
+
+        <!-- Content -->
+        <div class="container mx-auto px-6 text-center relative z-10 text-black color-white">
+            <h2 class="text-4xl md:text-5xl font-bold mb-8 text-white">Ready to Transform Your Career?</h2>
+            <p class="text-xl mb-12 max-w-3xl mx-auto leading-relaxed text-white">
+            Join thousands of students who have already taken the first step towards a brighter future.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+            <!-- Register Button -->
+            <button class="bg-[#FF6B35] hover:bg-[#e05a2a] text-white px-10 py-4 rounded-lg font-medium shadow-lg transition duration-300">
+                <i class="fas fa-user-plus mr-2"></i> Register Now
+            </button>
+            <!-- Learn More Button -->
+            <button class="bg-white text-black border-2 border-white hover:bg-gray-100 px-10 py-4 rounded-lg font-medium transition duration-300">
+                <i class="fas fa-info-circle mr-2"></i> Learn More
+            </button>
+            </div>
+        </div>
+    </section>
+
+    {% include 'footer.html' %}
+
+<!--    
+    <script>
+        // Mobile menu toggle functionality
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileSubmenuBtn = document.getElementById('mobile-submenu-btn');
+        const mobileSubmenu = document.getElementById('mobile-submenu');
+        const submenuIcon = document.getElementById('submenu-icon');
+
+        // Toggle main mobile menu
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+            
+            // Change hamburger to X icon
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            }
+        });
+
+        // Toggle mobile submenu (Learning dropdown)
+        mobileSubmenuBtn.addEventListener('click', function() {
+            mobileSubmenu.classList.toggle('hidden');
+            
+            // Rotate arrow icon
+            if (mobileSubmenu.classList.contains('hidden')) {
+                submenuIcon.style.transform = 'rotate(0deg)';
+            } else {
+                submenuIcon.style.transform = 'rotate(180deg)';
+            }
+        });
+
+        // Close mobile menu when clicking on links
+        const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+    </script> -->
+
+    <!-- script for desktop nev bar -->
+    <!-- <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggleBtn = document.getElementById('learningToggle');
+            const menu = document.getElementById('learningMenu');
+    
+            toggleBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                menu.classList.toggle('hidden');
+            });
+    
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function (e) {
+                if (!menu.contains(e.target) && !toggleBtn.contains(e.target)) {
+                    menu.classList.add('hidden');
+                }
+            });
+        });
+    </script>     -->
+
+</body>
+</html>

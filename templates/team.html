@@ -1,378 +1,696 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team - Under The Mango Tree</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Custom animations */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .animate-slideUp {
+            animation: slideUp 0.8s ease-out forwards;
+        }
+        
+        .animate-fadeIn {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        
+        /* Card flip effects */
+        .team-card {
+            perspective: 1000px;
+            height: 400px;
+        }
+        
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        
+        .team-card:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-back {
+            background: #1E3D59;
+            color: white;
+            transform: rotateY(180deg);
+        }
+        
+        /* Parallax effect */
+        .parallax-header {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        /* Mobile menu */
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .mobile-menu.active {
+            max-height: 500px;
+        }
+        
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background: #1E3D59;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: #FF6B35;
+            transform: translateY(-2px);
+        }
+        
+        /* Smooth transitions for mobile menu */
+        #mobile-menu {
+            transition: all 0.3s ease-in-out;
+        }
 
-{% block title %}Our Team - Under The Mango Tree{% endblock %}
+        #submenu-icon {
+            transition: transform 0.3s ease;
+        }
 
-{% block extra_css %}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<style>
-    .team-page-hero {
-        /* Add specific hero styles for this page if needed, or use a general hero style */
-        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("{{ url_for('static', filename='images/team_hero_background.jpg') }}") no-repeat center center; /* Example background */
-        background-size: cover;
-        color: white;
-        padding: 80px 20px; /* Increased padding */
-    }
+        /* Ensure proper spacing for mobile submenu */
+        #mobile-submenu {
+            transition: all 0.3s ease-in-out;
+        }
 
-    .section-title {
-        text-align: center;
-        margin-bottom: 1rem; /* Reduced bottom margin */
-        font-weight: 300; /* Lighter font weight */
-        font-size: 2.5rem; /* Standardized size */
-    }
+        /* Animation for menu icon */
+        #menu-icon {
+            transition: all 0.3s ease;
+        }
+        /* profile image  */
+        .profile-container {
+            width: 128px;
+            height: 128px;
+            border-radius: 100%;
+            overflow: hidden;
+            /* border: 4px solid #e5e7eb; Tailwind's gray-200 */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            
+        }
+        .profile-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    </style>
+    <style>
+        .clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            max-height: 4.5em; /* Approx height for 3 lines */
+        }
+        
+        .bio-text.expanded {
+            -webkit-line-clamp: unset;
+            max-height: none;
+        }
+    </style>
+        
+</head>
+<body class="min-h-screen flex flex-col">
+    
+    <!-- Header -->
+    {% include 'header.html' %}
+    
 
-    .section-subtitle {
-        text-align: center;
-        margin-bottom: 3rem; /* Increased bottom margin for better spacing */
-        color: #6c757d; /* Standard muted text color */
-        font-size: 1.1rem; /* Slightly larger subtitle */
-    }
-
-    .team-card {
-        border: 1px solid #e0e0e0; /* Lighter border for cards */
-        border-radius: 0.5rem; /* More rounded corners */
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Softer shadow */
-        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        display: flex; /* Enable flexbox for card content alignment */
-        flex-direction: column; /* Stack card content vertically */
-        height: 100%; /* Ensure cards in a row take up full height */
-    }
-
-    .team-card:hover {
-        transform: translateY(-5px); /* Subtle lift effect on hover */
-        box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-    }
-
-    .team-card .card-img-top {
-        width: 100%;
-        height: 300px; /* Fixed height for images */
-        object-fit: cover; /* Ensures image covers the area, might crop */
-        object-position: top center; /* Prioritize top of the image */
-        border-top-left-radius: 0.5rem; /* Match card's rounded corners */
-        border-top-right-radius: 0.5rem;
-    }
-
-    .team-card .card-body {
-        padding: 1.5rem; /* Increased padding in card body */
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1; /* Allows card body to grow and push footer down */
-    }
-
-    .team-card .card-title {
-        font-size: 1.25rem; /* Standardized title size */
-        font-weight: 600; /* Bolder title */
-        color: #333;
-    }
-
-    .team-card .card-subtitle {
-        font-size: 0.9rem; /* Standardized subtitle size */
-        color: #555;
-    }
-
-    .team-card .card-text {
-        font-size: 0.9rem; /* Standardized text size */
-        color: #454545; /* Slightly darker text for better readability */
-        line-height: 1.6; /* Improved line spacing */
-        flex-grow: 1; /* Allows text to take available space before links */
-    }
-    .team-card .card-links-footer {
-        margin-top: auto; /* Pushes this to the bottom of the card body */
-        padding-top: 1rem; /* Space above the links */
-        border-top: 1px solid #f0f0f0; /* Subtle separator for links */
-    }
-
-    .team-card .card-links-footer .card-link img,
-    .team-card .card-links-footer .card-link i { /* For Font Awesome icons if used */
-        width: 24px; /* Standardized icon size */
-        height: 24px;
-        margin-right: 8px; /* Space between multiple icons */
-        vertical-align: middle;
-        filter: grayscale(50%) opacity(0.7); /* Subtle icon styling */
-        transition: filter 0.2s ease-in-out;
-    }
-    .team-card .card-links-footer .card-link:hover img,
-    .team-card .card-links-footer .card-link:hover i {
-        filter: grayscale(0%) opacity(1); /* Full color on hover */
-    }
-    .team-card .card-links-footer .portal-link { /* Specific class for non-social links */
-        font-size: 0.85rem;
-        display: block; /* Make it take its own line */
-        margin-top: 0.5rem;
-    }
-
-    /* Ensure rows have consistent bottom margin for spacing between sections */
-    .leadership-team-row .col-lg-4,
-    .leadership-team-row .col-md-6 { /* Target cols within this specific row */
-        margin-bottom: 1.5rem; /* Consistent bottom margin for cards */
-    }
-
-    /* Support Team Card Specifics */
-    .support-team-card .card-body i { /* Icons in support team cards */
-        font-size: 2.5rem; /* Make Font Awesome icons larger */
-    }
-</style>
-{% endblock %}
-
-{% block content %}
-    <!-- Hero Section -->
-    <section class="hero team-page-hero">
-        <div class="container text-center">
-            <h1>Our Esteemed Team</h1> {# Changed wording slightly #}
-            <p class="lead">Meet the dedicated professionals driving the mission of Under The Mango Tree.</p> {# Updated lead text #}
+    <!-- Hero Section with Parallax Effect -->
+    <section id="team-header" class="relative h-[400px] bg-cover bg-center parallax-header" 
+             style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1471&q=80');">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#1E3D59]/90 to-[#1E3D59]/70"></div>
+        <div class="relative container mx-auto px-6 h-full flex items-center">
+            <div class="max-w-3xl animate-fadeIn">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight opacity-0 animate-slideUp" style="animation: slideUp 0.8s ease-out forwards;">
+                    Our Esteemed Team
+                </h1>
+                <p class="text-lg md:text-xl text-white/90 mb-10 opacity-0 animate-slideUp" style="animation: slideUp 0.8s ease-out 0.3s forwards;">
+                    A diverse collection of passionate educators who dedicate their lives to Under The Mango Tree.
+                </p>
+            </div>
         </div>
     </section>
 
-    <!-- Team Content -->
-    <section class="py-5">
-        <div class="container">
-            <h2 class="section-title">Leadership & Faculty</h2> {# Combined for a more unified section #}
-            <p class="section-subtitle">Our core team brings together decades of experience in education, technology, and professional development.</p>
-            
-            <div class="row leadership-team-row justify-content-center"> {# Added justify-content-center for better alignment if not full row #}
-                {# Kushal Shah #}
-                <div class="col-lg-4 col-md-6 mb-4"> {# Use col-lg-4 for 3 cards per row on large screens, col-md-6 for 2 on medium #}
-                    <div class="card team-card">
-                        <img src="{{ url_for('static', filename='english/images/Kushal Shah.jpeg') }}" class="card-img-top" alt="Kushal Shah">
-                        <div class="card-body">
-                            <h5 class="card-title">Kushal Shah</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Tech & Strategy Lead</h6>
-                            <p class="card-text">
-                                Kushal is a multidisciplinary technologist driving UTMT’s digital direction. With a background spanning education, data science, and design, he creates tools that translate complexity into clarity, aiming to bridge the digital divide through empathy-driven innovation.
-                            </p>
-                            <div class="card-links-footer">
-                                <a href="https://www.linkedin.com/in/kushal-shah-95b9a3b/" target="_blank" class="card-link" aria-label="Kushal Shah LinkedIn">
-                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn">
+    <!-- Leadership & Faculty Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-[#1E3D59]">Leadership & Faculty</h2>
+                <p class="text-gray-600 mt-4 max-w-3xl mx-auto">
+                    Our team consists of passionate educators and industry experts committed to providing the highest quality of education and mentorship.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {% for member in team_members %}
+                <div class="team-card">
+                    <div class="card-inner">
+                        <!-- Front of card -->
+                        <div class="card-front bg-white p-6 rounded-xl shadow-lg flex flex-col items-center text-center transition-transform duration-300 hover:scale-105">
+                            <!-- Profile Image -->
+                            <!-- <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-gray-200 shadow-md mb-6">
+                                <img src="{{ member.profileUrl }}"
+                                     alt="{{ member.name }}"
+                                     class="w-full h-full object-cover object-center">
+                            </div>                                   -->
+
+                            <div class="profile-container">
+                                <img src="{{ member.profileUrl }}" alt="{{ member.name }}">
+                            </div>
+
+                            <!-- Name and Role -->
+                            <h3 class="text-2xl font-semibold text-[#1E3D59] mb-1">{{ member.name }}</h3>
+                            <p class="text-[#FF6B35] font-medium mb-3 tracking-wide uppercase text-sm">{{ member.role }}</p>
+
+                            <!-- Bio -->
+                            <div class="bio-wrapper text-gray-600 mb-6 px-2 text-sm relative">
+                                <p id="bio-{{ loop.index }}" class="bio-text clamp-3 transition-all duration-300 ease-in-out">
+                                    {{ member.bio }}
+                                </p>
+                                <button type="button" id="bio-toggle-{{ loop.index }}" class="text-blue-600 text-xs mt-1 hover:underline"
+                                        onclick="event.stopPropagation(); toggleBio({{ loop.index }})">
+                                    Read more
+                                </button>
+                            </div>
+                            
+
+                            <!-- Social and Profile -->
+                            <div class="flex items-center justify-center space-x-4 mt-auto">
+                                <!-- LinkedIn Icon -->
+                                <a href="{{ member.linkedIn }}" target="_blank" rel="noopener noreferrer"
+                                class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-[#1E3D59] hover:bg-[#1E3D59] hover:text-white transition duration-300">
+                                    <i class="fab fa-linkedin-in"></i>
                                 </a>
-                                <a href="https://pythonpal.org/" target="_blank" class="card-link portal-link" aria-label="Kushal Shah PythonPal Portal">
-                                    <i class="fas fa-laptop-code text-primary"></i> PythonPal Coding Portal
+
+                                <!-- Profile Link -->
+                                <a href="{{ member.profileUrl }}" class="text-[#007BFF] font-medium hover:text-[#0056b3] flex items-center text-sm">
+                                    View Profile <i class="fas fa-arrow-right ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        
+                        <!-- Back of card -->
+                        <div class="card-back p-8 flex flex-col">
+                            <h3 class="text-xl font-bold mb-2">{{ member.name }}</h3>
+                            <p class="text-[#FF6B35] font-medium mb-4">{{ member.role }}</p>
+                            <div class="mb-4">
+                                <h4 class="font-semibold mb-2">Expertise:</h4>
+                                <p class="text-white/90 text-sm">Educational Leadership, Curriculum Development, Technology Integration</p>
+                            </div>
+                            <div class="mb-4">
+                                <h4 class="font-semibold mb-2">Education:</h4>
+                                <p class="text-white/90 text-sm">Ph.D. in Education, Masters in Educational Technology</p>
+                            </div>
+                            <div class="mb-4">
+                                <h4 class="font-semibold mb-2">Contact:</h4>
+                                <p class="text-white/90 text-sm">{{ member.name.lower().replace(' ', '.') }}@utmt.edu</p>
+                            </div>
+                            <div class="flex space-x-4 mt-auto">
+                                <a href="{{ member.linkedIn }}" class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white hover:bg-white hover:text-[#1E3D59] transition duration-300">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="{{ member.profileUrl }}" class="text-white font-medium hover:text-[#FF6B35] flex items-center">
+                                    View Full Profile <i class="fas fa-arrow-right ml-2"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
 
-                {# Preeti Shukla #}
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card team-card">
-                        <img src="{{ url_for('static', filename='english/images/Preeti Shukla.jpeg') }}" class="card-img-top" alt="Preeti Shukla">
-                        <div class="card-body">
-                            <h5 class="card-title">Preeti Shukla</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Faculty, Language and Communication</h6>
-                            <p class="card-text">
-                                Preeti brings a rich background in language education. At UTMT, she plays a crucial role
-                                in nurturing learners’ expression and clarity. With experience in curriculum design,
-                                she empowers students to connect ideas meaningfully.
-                            </p>                            
-                            <div class="card-links-footer">
-                                <a href="https://www.linkedin.com/in/preeti-shukla-3756268/" target="_blank" class="card-link" aria-label="Preeti Shukla LinkedIn">
-                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn">
-                                </a>
-                            </div>
-                        </div>
+    <!-- Support Pillars Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-[#1E3D59]">Our Support Pillars</h2>
+                <p class="text-gray-600 mt-4 max-w-3xl mx-auto">
+                    The core support systems that enable our students to thrive academically and professionally.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {% for pillar in support_pillars %}
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 p-8 border-t-4 border-[#1E3D59] group">
+                    <div class="w-16 h-16 rounded-full bg-[#1E3D59] group-hover:bg-[#FF6B35] flex items-center justify-center text-white mb-6 transition-colors duration-300 mx-auto">
+                        <i class="fas fa-{{ pillar.icon }} text-2xl"></i>
                     </div>
+                    <h3 class="text-xl font-bold text-[#1E3D59] mb-4 text-center">{{ pillar.title }}</h3>
+                    <p class="text-gray-600 text-center">{{ pillar.description }}</p>
                 </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
 
-                {# Kalpesh Kapoor #}
-                <div class="col-lg-4 col-md-6 mb-4">
-                  <div class="card team-card">
-                     <img src="{{ url_for('static', filename='english/images/Kalpesh Kapoor.jpeg') }}" class="card-img-top" alt="Kalpesh Kapoor">
-                    <div class="card-body">
-                      <h5 class="card-title">Prof. Kalpesh Kapoor</h5> {# Added Prof. title #}
-                      <h6 class="card-subtitle mb-2 text-muted">Visiting Faculty (IISER Pune & IIT Guwahati)</h6> {# Condensed subtitle #}
-                      <p class="card-text">
-                        Specializing in advanced mathematical modeling and data science, Prof. Kapoor enriches our curriculum with insights into modern data analysis techniques from his roles at IISER Pune and IIT Guwahati.
-                      </p>
-                      <div class="card-links-footer">
-                        <a href="https://scholar.google.com/citations?user=gmBA2MgAAAAJ&hl=en" target="_blank" class="card-link" aria-label="Kalpesh Kapoor Google Scholar">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/googlescholar.svg" alt="Google Scholar">
-                        </a>
-                        <a href="https://www.linkedin.com/in/kalpeshkapoor/?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAESB2DMBJB0QgWys0Rrh6vIVjGysrh75KCQ" target="_blank" class="card-link" aria-label="Kalpesh Kapoor LinkedIn">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn">
-                        </a>
-                         <a href="mailto:k.kapoor@acm.org" class="card-link portal-link" aria-label="Email Kalpesh Kapoor">
-                            <i class="fas fa-envelope text-primary"></i> k.kapoor@acm.org
-                        </a>
-                      </div>
+    <!-- Join Our Mission Section -->
+    <section class="py-16 bg-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-cover bg-center opacity-10" 
+             style="background-image: url('https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');"></div>
+        <div class="container mx-auto px-6 relative">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-[#1E3D59] mb-6">Join Our Mission</h2>
+                <p class="text-gray-700 mb-10 text-lg">
+                    Our team is dedicated to bridging the gap between education and employment for students from government schools. We believe in creating equal opportunities for all through quality education.
+                </p>
+                <div class="bg-[#1E3D59] text-white p-8 rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300">
+                    <p class="italic text-lg mb-6">
+                        "Education is the most powerful weapon which you can use to change the world."
+                    </p>
+                    <p class="font-medium">- Nelson Mandela</p>
+                </div>
+                <button class="mt-10 bg-[#FF6B35] hover:bg-[#e05a2a] text-white px-8 py-3 rounded-lg font-medium shadow-md transition duration-300 flex items-center mx-auto">
+                    <i class="fas fa-hands-helping mr-2"></i> Join Our Team
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <div id="back-to-top" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#0d2b45] text-white pt-16 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <!-- Brand -->
+                <div>
+                    <div class="flex items-center mb-6">
+                        <i class="fas fa-tree text-2xl mr-2"></i>
+                        <h3 class="text-xl font-bold">Under The Mango Tree</h3>
                     </div>
-                  </div>
+                    <p class="text-gray-300 mb-6">
+                        Empowering students through quality education and career opportunities in a supportive, university-style environment.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-[#1E3D59] flex items-center justify-center hover:bg-[#FF6B35] transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-[#1E3D59] flex items-center justify-center hover:bg-[#FF6B35] transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-[#1E3D59] flex items-center justify-center hover:bg-[#FF6B35] transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-[#1E3D59] flex items-center justify-center hover:bg-[#FF6B35] transition duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
                 </div>
                 
-                {# Dr. Anish Roychowdhury - NEWLY ADDED #}
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card team-card">
-                     <img src="{{ url_for('static', filename='english/images/Anish Roychowdhury.jpg') }}" class="card-img-top" alt="Anish Roychowdhury">
-                        <div class="card-body">
-                            <h5 class="card-title">Dr. Anish Roychowdhury</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Associate Director of Data Science, Plaksha University</h6>
-                            <p class="card-text">
-                                Dr. Anish is a seasoned Data Science professional with 20+ years in industry and academia.
-                                He excels in leading digital transformations and has deep expertise in Machine Learning, Deep Learning, and Generative AI, dedicated to advancing Data Science education.
-                            </p>
-                            <div class="card-links-footer">
-                                {# Replace with actual LinkedIn profile URL #}
-                                <a href="https://www.linkedin.com/in/dr-anish-roychowdhury-a2463714/" target="_blank" class="card-link" aria-label="Dr. Anish Roychowdhury LinkedIn">
-                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn">
-                                </a>
-                                {# Add other relevant links for Dr. Anish if available #}
-                            </div>
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-bold mb-6 border-b border-gray-700 pb-2">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-300 hover:text-[#FF6B35] transition duration-300">Home</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-[#FF6B35] transition duration-300">Learning Hub</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-[#FF6B35] transition duration-300">Job Portal</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-[#FF6B35] transition duration-300">Our Team</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Learning Resources -->
+                <div>
+                    <h3 class="text-lg font-bold mb-6 border-b border-gray-700 pb-2">Learning Resources</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-300 hover:text-[#FF6B35] transition duration-300">English Learning</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-[#FF6B35] transition duration-300">Python Programming</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-[#FF6B35] transition duration-300">Machine Learning</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-[#FF6B35] transition duration-300">Deep Learning & AI</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-[#FF6B35] transition duration-300">Python Blog</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Us -->
+                <div>
+                    <h3 class="text-lg font-bold mb-6 border-b border-gray-700 pb-2">Contact Us</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-[#FF6B35]"></i>
+                            <span>123 Education Avenue, Knowledge City</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3 text-[#FF6B35]"></i>
+                            <span>info@utmt.edu</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-3 text-[#FF6B35]"></i>
+                            <span>(123) 456-7890</span>
+                        </li>
+                    </ul>
+                    <div class="mt-6">
+                        <div class="flex items-center">
+                            <input type="email" placeholder="Subscribe to newsletter" 
+                                   class="bg-[#0a1f33] text-white py-2 px-4 rounded-l-lg focus:outline-none border-none text-sm">
+                            <button class="bg-[#FF6B35] hover:bg-[#e05a2a] text-white py-2 px-4 rounded-r-lg transition duration-300">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
-                                {# Dr. S. Balaji - NEWLY ADDED #}
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card team-card">
-                        {# Replace with actual image path #}
-                                             <img src="{{ url_for('static', filename='english/images/Balaji Srinivasan.jpeg') }}" class="card-img-top" alt="Balaji Srinivasan">
-                        <div class="card-body">
-                            <h5 class="card-title">Dr. S. Balaji</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Professor, Mechanical Engineering, IIT Madras</h6> {# Assuming role from URL #}
-                            <p class="card-text">
-                                Dr. Balaji brings extensive expertise in Mechanical Engineering from IIT Madras. His research and teaching focus on [mention key area if known, e.g., thermodynamics, fluid mechanics, or manufacturing processes], contributing valuable insights to our programs.
-                                {# **Please refine this description based on his actual role/contribution to UTMT** #}
-                            </p>
-                            <div class="card-links-footer">
-                                <a href="https://mech.iitm.ac.in/profile.php?fname=sbalaji" target="_blank" class="card-link portal-link" aria-label="Dr. S. Balaji IITM Profile">
-                                    <i class="fas fa-university text-primary"></i> IITM Profile
-                                </a>
-                                {# Add LinkedIn or other relevant links if available #}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                                {# Nagapranay Tumuluri - NEWLY ADDED #}
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card team-card">
-                        {# Replace with actual image path #}
-                     <img src="{{ url_for('static', filename='english/images/Naga Pranay Tumuluri .jpeg') }}" class="card-img-top" alt="Naga Pranay Tumuluri">
-                        <div class="card-body">
-                            <h5 class="card-title">Nagapranay Tumuluri</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Data Science & ML Professional / Mentor</h6> {# Generic subtitle, please update #}
-                            <p class="card-text">
-                                Nagapranay is a skilled professional with a strong background in [mention key skills from LinkedIn, e.g., data analysis, machine learning applications]. He contributes to UTMT by [mention role, e.g., mentoring students, developing course content, or leading projects].
-                                {# **Please refine this description based on his actual role/contribution to UTMT** #}
-                            </p>
-                            <div class="card-links-footer">
-                                <a href="https://www.linkedin.com/in/nagapranaytumuluri?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="card-link" aria-label="Nagapranay Tumuluri LinkedIn">
-                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn">
-                                </a>
-                                {# Add other relevant links if available #}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                                {# Vibhanshu G - NEWLY ADDED & CORRECTED #}
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card team-card">
-                        {# Replace with actual image path for Vibhanshu G #}
-                        <img src="{{ url_for('static', filename='english/images/Vibhanshu G.jpeg') }}" class="card-img-top" alt="Vibhanshu G">
-                        <div class="card-body">
-                            <h5 class="card-title">Vibhanshu G</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Founder, TakeOff Talent | AI & Data Science Lead | Mentor</h6>
-                            <p class="card-text">
-                                Vibhanshu is a Data Science and AI leader with 9+ years of experience, specializing in building impactful AI products and talent solutions. As Founder of TakeOff Talent, he helps companies hire top tech talent swiftly and mentors professionals in their data science careers.
-                                {# **Please refine this description to reflect his specific role/contribution at UTMT, if any.** #}
-                                {# If his role at UTMT is primarily as a mentor or advisor, highlight that. #}
-                            </p>
-                            <div class="card-links-footer">
-                                <a href="https://www.linkedin.com/in/vibvibgyor" target="_blank" class="card-link" aria-label="Vibhanshu G LinkedIn">
-                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn">
-                                </a>
-                                {# You could add a link to TakeOff Talent if relevant to UTMT #}
-                                {# <a href="https://services.takeofftalent.com" target="_blank" class="card-link portal-link" aria-label="TakeOff Talent Services">
-                                #    <i class="fas fa-briefcase text-primary"></i> TakeOff Talent
-                                # </a> #}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                                    {# Arvind Sivdas - NEWLY ADDED #}
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card team-card">
-                        {# Replace with actual image path #}
-                        <img src="{{ url_for('static', filename='english/images/Arvind Sivdas.jpeg') }}" class="card-img-top" alt="Arvind Sivdas">
-                        <div class="card-body">
-                            <h5 class="card-title">Arvind Sivdas</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Tech & Product Leader | Advisor</h6> {# Example subtitle - please update for UTMT role #}
-                            <p class="card-text">
-                                Arvind is an experienced leader in technology and product development, known for [mention 1-2 key strengths e.g., scaling tech platforms, driving product innovation]. He supports UTMT by [mention role, e.g., advising on tech strategy, mentoring product teams, or contributing to platform development].
-                                {# **Please refine this description based on his actual role/contribution to UTMT** #}
-                            </p>
-                            <div class="card-links-footer">
-                                <a href="https://www.linkedin.com/in/arvindsivdas/" target="_blank" class="card-link" aria-label="Arvind Sivdas LinkedIn">
-                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn">
-                                </a>
-                                {# Add other relevant links if available, e.g., personal website, company website if relevant to his UTMT role #}
-                            </div>
-                        </div>
-                    </div>
-                </div>          
             </div>
-        </div>
-    </section>
-
-    <!-- Support Team -->
-    <section class="py-5 bg-light">
-        <div class="container">
-            <h2 class="section-title">Our Support Pillars</h2> {# Changed title slightly #}
-            <p class="section-subtitle">The dedicated individuals ensuring a smooth and enriching learning experience for all our students.</p>
             
-            <div class="row">
-                {# Using col-lg-3 for 4 cards per row on large screens, col-md-6 for 2 on medium #}
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="card h-100 support-team-card">
-                        <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
-                            <i class="fas fa-chalkboard-teacher text-primary mb-3"></i>
-                            <h4>Teaching Assistants</h4>
-                            <p class="small">Providing additional support, answering questions, and offering guidance throughout the learning process.</p>
-                        </div>
-                    </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400 text-sm">
+                <p>© 2025 Under The Mango Tree. All rights reserved.</p>
+                <div class="mt-4 flex justify-center space-x-6">
+                    <a href="#" class="hover:text-[#FF6B35] transition duration-300">Privacy Policy</a>
+                    <a href="#" class="hover:text-[#FF6B35] transition duration-300">Terms of Service</a>
+                    <a href="#" class="hover:text-[#FF6B35] transition duration-300">Cookie Policy</a>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="card h-100 support-team-card">
-                        <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
-                            <i class="fas fa-laptop-code text-primary mb-3"></i>
-                            <h4>Technical Support</h4>
-                            <p class="small">Ensuring our platform runs smoothly and resolving technical issues quickly for an uninterrupted learning experience.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="card h-100 support-team-card">
-                        <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
-                            <i class="fas fa-hands-helping text-primary mb-3"></i>
-                            <h4>Student Services</h4>
-                            <p class="small">Dedicated to addressing student needs, from enrollment assistance to general inquiries about our programs.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="card h-100 support-team-card">
-                        <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
-                            <i class="fas fa-chart-line text-primary mb-3"></i>
-                            <h4>Curriculum Development</h4>
-                            <p class="small">Constantly updating and refining course materials to ensure they remain relevant, engaging, and effective.</p>
-                        </div>
-                    </div>
+                <div class="mt-6 flex justify-center space-x-4">
+                    <i class="fab fa-cc-visa text-2xl"></i>
+                    <i class="fab fa-cc-mastercard text-2xl"></i>
+                    <i class="fab fa-cc-paypal text-2xl"></i>
+                    <i class="fab fa-cc-apple-pay text-2xl"></i>
                 </div>
             </div>
         </div>
-    </section>
+    </footer>
 
-    <!-- Join Our Team -->
-    <section class="py-5">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-8 mb-4 mb-lg-0">
-                    <h2>Join Our Mission</h2> {# Changed title slightly #}
-                    <p class="lead mb-4">We're always looking for passionate educators and professionals to join the Under The Mango Tree team.</p>
-                    <p>If you're dedicated to making quality education accessible and want to be part of our mission, we'd love to hear from you. Current openings include positions in curriculum development, instruction, student support, and technology. Send your resume and a cover letter explaining why you'd be a good fit for our team.</p>
-                </div>
-                <div class="col-lg-4 text-center text-lg-end">
-                    <a href="mailto:careers@utmt.edu" class="btn btn-primary btn-lg"> {# Made button larger #}
-                        <i class="fas fa-paper-plane me-2"></i>Express Interest
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-{% endblock %}
+    <script>
+        // Mobile menu toggle
+        // const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        // const mobileMenu = document.getElementById('mobile-menu');
+        // const mobileSubmenuBtn = document.getElementById('mobile-submenu-btn');
+        // const mobileSubmenu = document.getElementById('mobile-submenu');
+
+        // let isMenuOpen = false;
+        // let isSubmenuOpen = false;
+
+        // mobileMenuBtn.addEventListener('click', () => {
+        //     isMenuOpen = !isMenuOpen;
+        //     mobileMenu.classList.toggle('active');
+        //     const icon = mobileMenuBtn.querySelector('i');
+        //     icon.className = isMenuOpen ? 'fas fa-times text-xl' : 'fas fa-bars text-xl';
+        // });
+
+        // mobileSubmenuBtn.addEventListener('click', () => {
+        //     isSubmenuOpen = !isSubmenuOpen;
+        //     mobileSubmenu.classList.toggle('hidden');
+        //     const icon = mobileSubmenuBtn.querySelector('i');
+        //     icon.className = isSubmenuOpen ? 'fas fa-chevron-up text-xs ml-1' : 'fas fa-chevron-down text-xs ml-1';
+        // });
+
+        // // Parallax effect for header
+        // window.addEventListener('scroll', () => {
+        //     const header = document.getElementById('team-header');
+        //     const scrollPosition = window.pageYOffset;
+        //     header.style.backgroundPositionY = `${scrollPosition * 0.4}px`;
+            
+        //     // Back to top button visibility
+        //     const backToTop = document.getElementById('back-to-top');
+        //     if (scrollPosition > 300) {
+        //         backToTop.classList.add('visible');
+        //     } else {
+        //         backToTop.classList.remove('visible');
+        //     }
+        // });
+
+        // // Back to top functionality
+        // document.getElementById('back-to-top').addEventListener('click', () => {
+        //     window.scrollTo({
+        //         top: 0,
+        //         behavior: 'smooth'
+        //     });
+        // });
+
+        // // Newsletter subscription
+        // const newsletterForm = document.querySelector('footer input[type="email"]').parentElement;
+        // const newsletterInput = newsletterForm.querySelector('input[type="email"]');
+        // const newsletterBtn = newsletterForm.querySelector('button');
+
+        // newsletterBtn.addEventListener('click', (e) => {
+        //     e.preventDefault();
+        //     const email = newsletterInput.value.trim();
+            
+        //     if (email && isValidEmail(email)) {
+        //         // Here you would typically send the email to your backend
+        //         alert('Thank you for subscribing to our newsletter!');
+        //         newsletterInput.value = '';
+        //     } else {
+        //         alert('Please enter a valid email address.');
+        //     }
+        // });
+
+        // // Email validation helper function
+        // function isValidEmail(email) {
+        //     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        //     return emailRegex.test(email);
+        // }
+
+        // // Smooth scroll for anchor links
+        // document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        //     anchor.addEventListener('click', function (e) {
+        //         e.preventDefault();
+        //         const target = document.querySelector(this.getAttribute('href'));
+        //         if (target) {
+        //             target.scrollIntoView({
+        //                 behavior: 'smooth',
+        //                 block: 'start'
+        //             });
+        //         }
+        //     });
+        // });
+
+        // // Animation on scroll for team cards
+        // const observerOptions = {
+        //     threshold: 0.1,
+        //     rootMargin: '0px 0px -50px 0px'
+        // };
+
+        // const observer = new IntersectionObserver((entries) => {
+        //     entries.forEach(entry => {
+        //         if (entry.isIntersecting) {
+        //             entry.target.style.animationDelay = `${entry.target.dataset.delay || 0}ms`;
+        //             entry.target.classList.add('animate-slideUp');
+        //             observer.unobserve(entry.target);
+        //         }
+        //     });
+        // }, observerOptions);
+
+        // // Observe team cards for animation
+        // document.querySelectorAll('.team-card').forEach((card, index) => {
+        //     card.dataset.delay = index * 100;
+        //     observer.observe(card);
+        // });
+
+        // // Observe support pillar cards for animation
+        // document.querySelectorAll('.bg-white.rounded-xl.shadow-md').forEach((card, index) => {
+        //     if (card.querySelector('.fas.fa-')) { // Only support pillar cards
+        //         card.dataset.delay = index * 150;
+        //         observer.observe(card);
+        //     }
+        // });
+
+        // // Add loading animation for images
+        // document.querySelectorAll('img').forEach(img => {
+        //     img.addEventListener('load', function() {
+        //         this.style.opacity = '1';
+        //         this.style.transform = 'scale(1)';
+        //     });
+            
+        //     // Set initial state for loading animation
+        //     img.style.opacity = '0';
+        //     img.style.transform = 'scale(0.9)';
+        //     img.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        // });
+
+        // // Handle form submissions (if you have contact forms)
+        // document.querySelectorAll('form').forEach(form => {
+        //     form.addEventListener('submit', function(e) {
+        //         e.preventDefault();
+        //         // Add your form submission logic here
+        //         console.log('Form submitted:', new FormData(this));
+        //     });
+        // });
+
+        // // Add hover effects for interactive elements
+        // document.querySelectorAll('.team-card').forEach(card => {
+        //     card.addEventListener('mouseenter', function() {
+        //         this.style.transform = 'translateY(-5px)';
+        //     });
+            
+        //     card.addEventListener('mouseleave', function() {
+        //         this.style.transform = 'translateY(0)';
+        //     });
+        // });
+
+        // // Keyboard navigation support
+        // document.addEventListener('keydown', (e) => {
+        //     // ESC key closes mobile menu
+        //     if (e.key === 'Escape' && isMenuOpen) {
+        //         mobileMenuBtn.click();
+        //     }
+            
+        //     // Enter key activates focused buttons
+        //     if (e.key === 'Enter' && document.activeElement.tagName === 'BUTTON') {
+        //         document.activeElement.click();
+        //     }
+        // });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add any initialization code here
+            console.log('Team page loaded successfully');
+            
+            // Preload critical images
+            const criticalImages = [
+                'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1471&q=80'
+            ];
+            
+            criticalImages.forEach(src => {
+                const img = new Image();
+                img.src = src;
+            });
+        });
+
+        // Mobile menu toggle functionality
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileSubmenuBtn = document.getElementById('mobile-submenu-btn');
+        const mobileSubmenu = document.getElementById('mobile-submenu');
+        const submenuIcon = document.getElementById('submenu-icon');
+
+        // Toggle main mobile menu
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+            
+            // Change hamburger to X icon
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            }
+        });
+
+        // Toggle mobile submenu (Learning dropdown)
+        mobileSubmenuBtn.addEventListener('click', function() {
+            mobileSubmenu.classList.toggle('hidden');
+            
+            // Rotate arrow icon
+            if (mobileSubmenu.classList.contains('hidden')) {
+                submenuIcon.style.transform = 'rotate(0deg)';
+            } else {
+                submenuIcon.style.transform = 'rotate(180deg)';
+            }
+        });
+
+        // Close mobile menu when clicking on links
+        const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+    </script>
+    <!-- script for desktop nev bar -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggleBtn = document.getElementById('learningToggle');
+            const menu = document.getElementById('learningMenu');
+    
+            toggleBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                menu.classList.toggle('hidden');
+            });
+    
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function (e) {
+                if (!menu.contains(e.target) && !toggleBtn.contains(e.target)) {
+                    menu.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+    <script>
+        function toggleBio(index) {
+            const bio = document.getElementById('bio-' + index);
+            const btn = document.getElementById('bio-toggle-' + index);
+        
+            bio.classList.toggle('expanded');
+            btn.textContent = bio.classList.contains('expanded') ? 'Read less' : 'Read more';
+        }
+    </script>
+    <script src="{{ url_for('static', filename='js/header.js')}}"></script>
+</body>
+</html>

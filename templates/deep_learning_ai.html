@@ -1,285 +1,939 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Educational Learning</title>
+    <!-- Font Awesome 6.4.0 (CSS and JS, consistent versions) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 
-{% block title %}Deep Learning Course{% endblock %} {# Instructor name removed from title #}
+    <script src="https://cdn.tailwindcss.com"></script>
 
-{% block extra_css %}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<style>
-    .hero-dl {
-        background: linear-gradient(rgba(29, 38, 113, 0.7), rgba(19, 73, 100, 0.7)), url('https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZGF0YSUyMHNjaWVuY2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60') no-repeat center center;
-        background-size: cover;
-        color: white;
-        padding: 60px 20px;
-        margin-bottom: 30px;
-    }
-    .hero-dl h1 {
-        color: white !important; /* Ensures the H1 text is white */
-        /* You can also add other H1 specific styles here if needed, e.g., font-size, margin */
-    }
-    .dl-table th {
-        background-color: #343a40;
-        color: white;
-        vertical-align: middle;
-    }
-    .dl-table td {
-        vertical-align: top;
-        padding: 0.75rem;
-    }
-    .video-container-table {
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #f3f4f6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 100%);
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            padding: 1.5rem 0;
+        }
+
+        .header h1 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: #bfdbfe;
+        }
+
+        /* Main Content Layout */
+        .main {
+            padding: 2rem 0;
+        }
+
+        .content-wrapper {
+            display: flex;
+            gap: 1.5rem;
+            flex-direction: column;
+        }
+
+        @media (min-width: 768px) {
+            .content-wrapper {
+                flex-direction: row;
+            }
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 100%;
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            height: fit-content;
+        }
+
+        @media (min-width: 768px) {
+            .sidebar {
+                width: 20rem;
+                position: sticky;
+                top: 1rem;
+            }
+        }
+
+        .sidebar h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1f2937;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 0.75rem;
+            border-radius: 0.375rem;
+            color: #374151;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .sidebar a:hover {
+            background-color: #f3f4f6;
+            color: #2563eb;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 50%;
+            margin-left: 0.5rem;
+        }
+
+        .status-complete {
+            background-color: #10b981;
+        }
+
+        .status-progress {
+            background-color: #3b82f6;
+        }
+
+        /* Video Cards Styles */
+        .video-section {
+            flex: 1;
+        }
+
+        .video-section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #1f2937;
+        }
+
+        .video-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+
+            width: 100%;
+            max-width: 680px;
+            margin: 0 auto; /* center the card */
+        }
+
+
+        .video-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-image-container {
+            position: relative;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            width: 100%;              /* Ensures full width */
+            height: 300px;            /* Fixed height for predictable layout */
+        }
+
+        .video-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;              /* Fill container */
+            height: 100%;             /* Fill container */
+            object-fit: cover;        /* Ensures full coverage without stretching */
+            transition: transform 0.3s ease;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-image-container:hover .video-overlay {
+            opacity: 1;
+        }
+
+
+        .play-button {
+            background: #dc2626;
+            color: white;
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            cursor: pointer;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+        }
+
+        .status-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            color: white;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .status-complete-badge {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+
+        .status-progress-badge {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        }
+
+        .video-content {
+            padding: 1.5rem;
+        }
+
+        .video-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .video-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .youtube-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #dc2626;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .youtube-link:hover {
+            color: #b91c1c;
+        }
+
+        .expand-button {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .expand-button.collapsed {
+            background-color: #f9fafb;
+            color: #374151;
+        }
+
+        .expand-button.collapsed:hover {
+            background-color: #f3f4f6;
+        }
+
+        .expand-button.expanded {
+            background: linear-gradient(135deg, #eff6ff 0%, #f3e8ff 100%);
+            color: #1d4ed8;
+        }
+
+        .chevron {
+            transition: transform 0.2s ease;
+        }
+
+        .chevron.rotated {
+            transform: rotate(180deg);
+        }
+
+        .details-section {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #f9fafb;
+            border-radius: 0.5rem;
+            border: 1px solid #e5e7eb;
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+
+        .details-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .details-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .details-section h4 {
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.5rem;
+        }
+
+        .details-section p {
+            color: #6b7280;
+        }
+
+        .resource-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .resource-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #2563eb;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .resource-link:hover {
+            color: #1d4ed8;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #1f2937;
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-content {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+
+        .footer h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .footer p {
+            color: #9ca3af;
+            margin-top: 0.25rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            color: #9ca3af;
+            font-size: 1.25rem;
+            transition: color 0.2s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #374151;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+        /* mobile responcive */
+        /* Smooth transitions for mobile menu */
+        #mobile-menu {
+            transition: all 0.3s ease-in-out;
+        }
+
+        #submenu-icon {
+            transition: transform 0.3s ease;
+        }
+
+        /* Ensure proper spacing for mobile submenu */
+        #mobile-submenu {
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Animation for menu icon */
+        #menu-icon {
+            transition: all 0.3s ease;
+        }
+    </style>
+    <style>
+        /* Add this CSS to your existing styles for active topic highlighting */
+        .sidebar a.active-topic {
+            background: linear-gradient(135deg, #eff6ff 0%, #f3e8ff 100%);
+            color: #1d4ed8;
+            font-weight: 600;
+            border-left: 4px solid #3b82f6;
+            padding-left: calc(0.75rem - 4px);
+        }
+
+        .sidebar a.active-topic:hover {
+            background: linear-gradient(135deg, #dbeafe 0%, #e9d5ff 100%);
+            color: #1d4ed8;
+        }
+
+    /* Topic link animations */
+    .sidebar a.topic-link {
         position: relative;
-        padding-bottom: 56.25%;
+        overflow: hidden;
+    }
+
+    .sidebar a.topic-link::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+        transition: left 0.5s;
+    }
+
+    .sidebar a.topic-link:hover::before {
+        left: 100%;
+    }
+
+    /* Video container loading state */
+    #video-container {
+        transition: opacity 0.3s ease;
+    }
+
+    /* Responsive improvements for topic switching */
+    @media (max-width: 768px) {
+        .sidebar a.active-topic {
+            border-left: none;
+            border-top: 3px solid #3b82f6;
+            padding-left: 0.75rem;
+            padding-top: calc(0.75rem - 3px);
+        }
+    }
+    .video-iframe-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
         height: 0;
         overflow: hidden;
-        max-width: 320px;
-        margin: 0 auto 10px auto;
+        margin-bottom: 1rem;
         background: #000;
-        border-radius: 0.25rem;
     }
-    .video-container-table iframe {
+
+    .video-iframe-container iframe {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
+        border: 0;
     }
-    .list-unstyled li {
-        padding-bottom: 0.4rem;
-        font-size: 0.9rem;
+
+    .materials-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
     }
-    .list-unstyled a {
+
+    .materials-list li {
+        margin-bottom: 0.5rem;
+    }
+
+    .materials-list a {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #3b82f6;
         text-decoration: none;
-        color: #007bff;
+        transition: color 0.2s;
     }
-    .list-unstyled a:hover {
-        text-decoration: underline;
+
+    .materials-list a:hover {
+        color: #2563eb;
     }
-    .sub-topic-heading {
-        font-weight: 600;
-        margin-top: 12px;
-        margin-bottom: 6px;
-        color: #17a2b8;
-        font-size: 1rem;
-        border-bottom: 1px solid #e9ecef;
-        padding-bottom: 4px;
+
+    .topic-link {
+        cursor: pointer;
     }
-    .sub-topic-heading:first-child {
-        margin-top: 0;
-    }
-    .card-dl-refs {
-        margin-top: 2.5rem;
-        box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
-    }
-    .card-dl-refs .card-header {
-        font-weight: bold;
-        font-size: 1.1rem;
-    }
-    #dl-prerequisite-subject {
+
+    .topic-link.active-topic {
+        background-color: #e5e7eb;
         font-weight: 600;
     }
-</style>
-{% endblock %}
 
-{% block content %}
-    <section class="hero-dl">
-        <div class="container text-center">
-            <h1>Deep Learning Course</h1>
-            {# Instructor name paragraph removed #}
-            <p class="lead">Before starting Deep Learning, make sure to first learn basics of <span id="dl-prerequisite-subject">Loading...</span>.</p>
-        </div>
-    </section>
+    .video-image-container iframe {
+            border-radius: 0.75rem 0.75rem 0 0; /* Match the card's border radius */
+        }
+        
+    /* Ensure iframe is responsive */
+    @media (max-width: 768px) {
+        .video-image-container iframe {
+            height: 200px; /* Smaller height on mobile */
+        }
+    }
+    </style>
 
-    <section class="py-5">
-        <div class="container-fluid">
-            <h2 class="mb-4 text-center">Course Curriculum</h2>
-            <p class="text-center text-muted mb-4">Explore topics, primary video resources, and supplementary materials for your Deep Learning journey.</p>
 
-            <div class="table-responsive">
-                <table class="table table-bordered table-hover dl-table">
-                    <thead>
-                        <tr>
-                            <th scope="col" style="width: 20%;">Topic</th>
-                            <th scope="col" style="width: 40%;">Primary YouTube Materials</th>
-                            <th scope="col" style="width: 40%;">Other References & Resources</th>
-                        </tr>
-                    </thead>
-                    <tbody id="dl-table-body">
-                        <tr>
-                            <td colspan="3" class="text-center p-5" id="table-loading-placeholder">
-                                <div class="spinner-border text-primary" role="status">
-                                    <span class="visually-hidden">Loading...</span>
+</head>
+<body  class = "font-sans smooth-scroll">
+    <!-- Header -->
+    {% include 'header.html' %}
+    
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <div class="content-wrapper">
+                <!-- Sidebar Navigation -->
+                <!-- Updated Sidebar Navigation for ML page -->
+                <aside class="sidebar">
+                    <h2>Topics</h2>
+                    <ul>
+                        {% for topic in sidebar_topics %}
+                        <li>
+                            <a href="?topic={{ topic.name|urlencode }}" class="topic-link {% if topic.name == selected_topic %}active-topic{% endif %}">
+                                <b> {{ topic.name }}</b>
+                                {% if topic.name == selected_topic %}
+                                <span class="status-indicator status-progress"></span>
+                                {% endif %}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </aside>
+
+                <!-- Video Section -->
+                <div class="video-section">
+                    <h2>{{ selected_topic }}</h2>
+                    {% if videos %}
+                    <div class="video-list" id="video-container">
+                        {% for video in videos %}
+                        <div class="video-card" id="video-{{ video.id }}">
+                            <div class="video-iframe-container">
+                                {% set youtube_id = video.youtubeLink.split('/')[-1] if '/' in video.youtubeLink else video.youtubeLink.split('=')[-1] %}
+                                <iframe 
+                                    width="100%" 
+                                    height="300"
+                                    src="https://www.youtube.com/embed/{{ youtube_id }}?controls=1" 
+                                    frameborder="0" 
+                                    allowfullscreen>
+                                </iframe>
+                                <div class="status-badge {% if video.status == 'Complete' %}status-complete-badge{% elif video.status == 'progress' %}status-progress-badge{% else %}status-not-started-badge{% endif %}">
+                                    {% if video.status == 'Complete' %}Complete{% elif video.status == 'progress' %}In Progress{% else %}Not Started{% endif %}
                                 </div>
-                                <p class="mt-2">Loading course content...</p>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                            </div>
+                
+                            <div class="video-content">
+                                <h3 class="video-title">{{ video.title }}</h3>
+                                
+                                <div class="video-links">
+                                    <a href="{{ video.youtubeLink }}" target="_blank" rel="noopener noreferrer" class="youtube-link">
+                                        <i class="fab fa-youtube"></i>
+                                        <span>Watch on YouTube</span>
+                                    </a>
+                                </div>
+                
+                                <button class="expand-button collapsed" onclick="toggleExpand({{ video.id }})">
+                                    <span>Resources & Links</span>
+                                    <i class="fas fa-chevron-down chevron" id="chevron-{{ video.id }}"></i>
+                                </button>
+                
+                                <div class="details-section hidden" id="details-{{ video.id }}">
+                                    <div class="details-grid">
+                                        <div>
+                                            <h4>Reference</h4>
+                                            <p>{{ video.reference if video.reference else 'No reference available' }}</p>
+                                        </div>
+                                        <div>
+                                            <h4>Resources</h4>
+                                            <div class="resource-links">
+                                                {% if video.code %}
+                                                <a href="{{ video.code }}" target="_blank" rel="noopener noreferrer" class="resource-link">
+                                                    <i class="fas fa-code"></i>
+                                                    <span>Code Repository</span>
+                                                </a>
+                                                {% endif %}
+                                                {% if video.dataset %}
+                                                <a href="{{ video.dataset }}" target="_blank" rel="noopener noreferrer" class="resource-link">
+                                                    <i class="fas fa-database"></i>
+                                                    <span>Dataset</span>
+                                                </a>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
 
-            <div class="row mt-5 justify-content-center">
-                <div class="col-lg-8 col-xl-6 mb-4" id="textbooks-section-dl">
-                    <!-- Textbooks will be dynamically inserted here -->
+                    {% else %}
+                    <div class="no-videos-message">
+                        <p class="text-gray-500 text-center py-8">No videos available for this topic yet.</p>
+                    </div>
+                    {% endif %}
                 </div>
-                <div class="col-lg-8 col-xl-6 mb-4" id="nlp-references-section-dl">
-                    <!-- NLP References will be dynamically inserted here if any -->
-                </div>
+
             </div>
         </div>
-    </section>
-{% endblock %}
+    </main>
 
-{% block extra_js %}
-    <script src="{{ url_for('static', filename='js/dl.js') }}"></script>
+    <!-- Footer -->
+    {% include 'footer.html' %}        
 
+    
+
+    <!-- script for desktop nev bar -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const tableLoadingPlaceholder = document.getElementById('table-loading-placeholder');
-
-            if (typeof courseData === 'undefined' || !courseData.syllabus) {
-                console.error("CRITICAL: courseData object or courseData.syllabus is not defined. Ensure dl.js is loaded and correct.");
-                document.getElementById('dl-prerequisite-subject').textContent = "Error: Data not loaded";
-                if(tableLoadingPlaceholder) tableLoadingPlaceholder.parentNode.innerHTML = "<td colspan='3' class='text-danger text-center p-3'>Error loading course content. Please check data file or try again.</td>";
-                return;
-            }
-
-            // Instructor name population removed
-            document.getElementById('dl-prerequisite-subject').textContent = courseData.prerequisite;
-
-            const dlTableBody = document.getElementById('dl-table-body');
-            if (!dlTableBody) {
-                console.error("CRITICAL: Element with ID 'dl-table-body' not found.");
-                return;
-            }
-            dlTableBody.innerHTML = ''; // Clear loading placeholder
-
-            if (courseData.syllabus.length === 0) {
-                dlTableBody.innerHTML = '<tr><td colspan="3" class="text-center text-muted p-4">No course modules are currently available.</td></tr>';
-            }
-
-            courseData.syllabus.forEach(item => {
-                const row = document.createElement('tr');
-
-                const topicCell = document.createElement('td');
-                topicCell.innerHTML = `<strong>${item.topic}</strong>`;
-                row.appendChild(topicCell);
-
-                const primaryLinksCell = document.createElement('td');
-                let primaryHtml = '';
-                let firstVideoEmbeddedThisTopic = false;
-
-                if (item.primaryYouTubeLinks && item.primaryYouTubeLinks.length > 0) {
-                    item.primaryYouTubeLinks.forEach(group => {
-                        if (group.subTopic) {
-                            primaryHtml += `<h6 class="sub-topic-heading">${group.subTopic}</h6>`;
-                        }
-                        const ul = document.createElement('ul');
-                        ul.classList.add('list-unstyled', 'ps-3');
-                        if (group.links && group.links.length > 0) {
-                            group.links.forEach(link => {
-                                const videoId = getYoutubeVideoId(link.url); // Assuming getYoutubeVideoId is defined in dl.js or here
-                                if (videoId && !firstVideoEmbeddedThisTopic) {
-                                    primaryHtml += `
-                                        <div class="video-container-table">
-                                            <iframe src="https://www.youtube.com/embed/${videoId}"
-                                                    title="${link.title || group.subTopic || item.topic || 'YouTube video'}"
-                                                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                    allowfullscreen>
-                                            </iframe>
-                                        </div>
-                                    `;
-                                    firstVideoEmbeddedThisTopic = true;
-                                }
-                                const li = document.createElement('li');
-                                li.innerHTML = `<a href="${link.url}" target="_blank" rel="noopener noreferrer" title="${link.title || 'Watch video'}">
-                                                    <i class="fab fa-youtube text-danger me-1"></i> ${link.title || 'Link'}
-                                                    <i class="fas fa-external-link-alt fa-xs ms-1"></i>
-                                                </a>`;
-                                ul.appendChild(li);
-                            });
-                        } else if (group.subTopic) {
-                            const li = document.createElement('li');
-                            li.innerHTML = `<span class="text-muted fst-italic small">No specific videos listed under this sub-topic.</span>`;
-                            ul.appendChild(li);
-                        }
-                        if (ul.hasChildNodes()) {
-                           primaryHtml += ul.outerHTML;
-                        }
-                    });
-                }
-                if (!primaryHtml.trim()) {
-                    primaryHtml = '<p class="text-muted fst-italic small mt-2">No primary YouTube materials listed for this topic.</p>';
-                }
-                primaryLinksCell.innerHTML = primaryHtml;
-                row.appendChild(primaryLinksCell);
-
-                const otherReferencesCell = document.createElement('td');
-                let otherHtml = '';
-                if (item.otherReferences && item.otherReferences.length > 0) {
-                    const ul = document.createElement('ul');
-                    ul.classList.add('list-unstyled', 'ps-0');
-                    item.otherReferences.forEach(ref => {
-                        const li = document.createElement('li');
-                        if (ref.url) {
-                            const displayUrl = ref.url.length > 45 ? ref.url.substring(0, 42) + '...' : ref.url;
-                            li.innerHTML = `<strong>${ref.category || 'Reference'}:</strong> 
-                                            <a href="${ref.url}" target="_blank" rel="noopener noreferrer" title="${ref.url}">
-                                            ${displayUrl} <i class="fas fa-external-link-alt fa-xs"></i>
-                                            </a>`;
-                        } else {
-                            li.innerHTML = `<strong>${ref.category || 'Reference'}:</strong> <span class="text-muted">N/A</span>`;
-                        }
-                        ul.appendChild(li);
-                    });
-                     if (ul.hasChildNodes()) {
-                        otherHtml = ul.outerHTML;
-                    }
-                }
-                if (!otherHtml.trim()) {
-                    otherHtml = '<p class="text-muted fst-italic small mt-2">No other references listed for this topic.</p>';
-                }
-                otherReferencesCell.innerHTML = otherHtml;
-                row.appendChild(otherReferencesCell);
-
-                dlTableBody.appendChild(row);
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggleBtn = document.getElementById('learningToggle');
+            const menu = document.getElementById('learningMenu');
+    
+            toggleBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                menu.classList.toggle('hidden');
             });
-
-            const textbooksSection = document.getElementById('textbooks-section-dl');
-            if (textbooksSection && courseData.textbooks && courseData.textbooks.length > 0) {
-                let textbooksHtml = `
-                    <div class="card card-dl-refs">
-                        <div class="card-header bg-primary text-white">
-                           <i class="fas fa-book-open me-2"></i>Recommended Textbooks
-                        </div>
-                        <ul class="list-group list-group-flush">`;
-                courseData.textbooks.forEach(book => {
-                    textbooksHtml += `<li class="list-group-item">
-                                        ${book.title}
-                                        ${book.url ? `(<a href="${book.url}" target="_blank" rel="noopener noreferrer">Link <i class="fas fa-external-link-alt fa-xs"></i></a>)` : ''}
-                                      </li>`;
-                });
-                textbooksHtml += `</ul></div>`;
-                textbooksSection.innerHTML = textbooksHtml;
-            } else if (textbooksSection) {
-                textbooksSection.innerHTML = '';
-            }
-
-            const nlpReferencesSection = document.getElementById('nlp-references-section-dl');
-            if (nlpReferencesSection && courseData.referencesForNLP && courseData.referencesForNLP.length > 0) {
-                let nlpRefHtml = `
-                    <div class="card card-dl-refs">
-                        <div class="card-header bg-info text-white">
-                            <i class="fas fa-file-alt me-2"></i>Additional References for NLP
-                        </div>
-                        <ul class="list-group list-group-flush">`;
-                courseData.referencesForNLP.forEach(ref => {
-                    nlpRefHtml += `<li class="list-group-item">
-                                        ${ref.url ? `<a href="${ref.url}" target="_blank" rel="noopener noreferrer">${ref.title} <i class="fas fa-external-link-alt fa-xs"></i></a>` : ref.title}
-                                   </li>`;
-                });
-                nlpRefHtml += `</ul></div>`;
-                nlpReferencesSection.innerHTML = nlpRefHtml;
-            } else if (nlpReferencesSection) {
-                 nlpReferencesSection.innerHTML = '';
-            }
-        }); // End of DOMContentLoaded
+    
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function (e) {
+                if (!menu.contains(e.target) && !toggleBtn.contains(e.target)) {
+                    menu.classList.add('hidden');
+                }
+            });
+        });
     </script>
-{% endblock %}
+
+    <!-- topic wise and iframe -->
+    <script>
+        let currentTopic = null;
+        let expandedVideo = null;
+    
+        // Function to toggle video details
+        function toggleExpand(videoId) {
+            const detailsSection = document.getElementById(`details-${videoId}`);
+            const chevron = document.getElementById(`chevron-${videoId}`);
+            const button = detailsSection.previousElementSibling;
+    
+            if (expandedVideo === videoId) {
+                // Collapse current video
+                detailsSection.classList.add('hidden');
+                chevron.classList.remove('rotated');
+                button.classList.remove('expanded');
+                button.classList.add('collapsed');
+                expandedVideo = null;
+            } else {
+                // Collapse previously expanded video if any
+                if (expandedVideo !== null) {
+                    const prevDetails = document.getElementById(`details-${expandedVideo}`);
+                    const prevChevron = document.getElementById(`chevron-${expandedVideo}`);
+                    const prevButton = prevDetails.previousElementSibling;
+                    
+                    prevDetails.classList.add('hidden');
+                    prevChevron.classList.remove('rotated');
+                    prevButton.classList.remove('expanded');
+                    prevButton.classList.add('collapsed');
+                }
+    
+                // Expand current video
+                detailsSection.classList.remove('hidden');
+                chevron.classList.add('rotated');
+                button.classList.remove('collapsed');
+                button.classList.add('expanded');
+                expandedVideo = videoId;
+            }
+        }
+    
+        // Function to load videos for a specific topic
+        function loadTopicVideos(topicId, topicName) {
+            currentTopic = topicId;
+            
+            // Update URL without page refresh
+            const newUrl = `${window.location.pathname}?topic=${encodeURIComponent(topicId)}`;
+            window.history.pushState({topic: topicId}, '', newUrl);
+            
+            // Update page title
+            const titleElement = document.getElementById('current-topic-title');
+            if (titleElement) {
+                titleElement.textContent = topicName;
+            }
+            
+            // Update active topic in sidebar
+            document.querySelectorAll('.sidebar .topic-link').forEach(link => {
+                link.classList.remove('active-topic');
+                const indicator = link.querySelector('.status-indicator');
+                if (indicator) {
+                    indicator.remove();
+                }
+            });
+            
+            // Add active class to clicked topic
+            const clickedLink = event.target;
+            clickedLink.classList.add('active-topic');
+            clickedLink.innerHTML += '<span class="status-indicator status-progress"></span>';
+            
+            // Load videos for the selected topic
+            loadTopicPage(1);
+        }
+    
+        // Function to load a specific page of videos for the current topic
+        function loadTopicPage(pageNum) {
+            if (!currentTopic) {
+                console.warn('No topic selected');
+                return;
+            }
+    
+            const container = document.getElementById('video-container');
+            if (container) {
+                container.style.opacity = '0.5';
+            }
+    
+            // Show loading state
+            container.innerHTML = '<p class="text-center py-8">Loading videos...</p>';
+            
+            // Make API call to get videos for the topic
+            fetch(`/api/videos?topic=${encodeURIComponent(currentTopic)}&page=${pageNum}`)
+                .then(response => response.json())
+                .then(data => {
+                    updateVideoContainer(data.videos);
+                    if (container) {
+                        container.style.opacity = '1';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading videos:', error);
+                    container.innerHTML = '<p class="text-red-500 text-center py-8">Error loading videos. Please try again.</p>';
+                    if (container) {
+                        container.style.opacity = '1';
+                    }
+                });
+        }
+    
+        // Function to create video card
+        function createVideoCard(video) {
+            const videoId = getYouTubeVideoId(video.youtubeLink);
+            if (!videoId) {
+                console.error('Invalid YouTube URL:', video.youtubeLink);
+                return null;
+            }
+    
+            const card = document.createElement('div');
+            card.className = 'video-card';
+            card.id = `video-${video.id}`;
+            
+            card.innerHTML = `
+                <div class="video-iframe-container">
+                    <iframe 
+                        src="https://www.youtube.com/embed/${videoId}"
+                        title="${video.title || 'Video'}"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-content">
+                    <h3 class="video-title">${video.title || 'Untitled Video'}</h3>
+                    <div class="video-description">
+                        <p>${video.description || 'No description available.'}</p>
+                    </div>
+                    <button class="expand-button collapsed" onclick="toggleExpand(${video.id})">
+                        <span>Resources & Links</span>
+                        <i class="fas fa-chevron-down chevron" id="chevron-${video.id}"></i>
+                    </button>
+                    <div class="details-section hidden" id="details-${video.id}">
+                        <div class="details-grid">
+                            ${video.materials ? `
+                                <div class="materials-section">
+                                    <h4>Materials</h4>
+                                    <ul class="materials-list">
+                                        ${video.materials.map(material => `
+                                            <li>
+                                                <a href="${material.url}" target="_blank" rel="noopener noreferrer">
+                                                    <i class="fas ${getMaterialIcon(material.type)}"></i>
+                                                    ${material.title}
+                                                </a>
+                                            </li>
+                                        `).join('')}
+                                    </ul>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            return card;
+        }
+    
+        // Helper function to get YouTube video ID
+        function getYouTubeVideoId(url) {
+            if (!url) return null;
+            
+            try {
+                const urlObj = new URL(url);
+                if (urlObj.hostname.includes('youtu.be')) {
+                    return urlObj.pathname.slice(1);
+                }
+                if (urlObj.hostname.includes('youtube.com')) {
+                    return urlObj.searchParams.get('v');
+                }
+            } catch (e) {
+                console.error('Error parsing YouTube URL:', e);
+            }
+            return null;
+        }
+    
+        // Helper function to get material icon
+        function getMaterialIcon(type) {
+            switch (type?.toLowerCase()) {
+                case 'pdf':
+                    return 'fa-file-pdf';
+                case 'code':
+                    return 'fa-code';
+                case 'link':
+                    return 'fa-link';
+                case 'dataset':
+                    return 'fa-database';
+                default:
+                    return 'fa-file';
+            }
+        }
+    
+        // Function to update video container
+        function updateVideoContainer(videos) {
+            const container = document.getElementById('video-container');
+            if (!container) return;
+    
+            container.innerHTML = '';
+            
+            if (Array.isArray(videos) && videos.length > 0) {
+                videos.forEach(video => {
+                    const videoCard = createVideoCard(video);
+                    if (videoCard) {
+                        container.appendChild(videoCard);
+                    }
+                });
+            } else {
+                container.innerHTML = '<p class="text-gray-500 text-center py-8">No videos available for this topic.</p>';
+            }
+        }
+    
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const topicId = urlParams.get('topic');
+            
+            if (topicId) {
+                const topicLink = document.querySelector(`.topic-link[data-topic-id="${topicId}"]`);
+                if (topicLink) {
+                    const topicName = topicLink.textContent.trim();
+                    loadTopicVideos(topicId, topicName);
+                }
+            }
+        });
+    </script>
+    
+    <script src="{{ url_for('static', filename='js/header.js')}}"></script>
+</body>
+</html>

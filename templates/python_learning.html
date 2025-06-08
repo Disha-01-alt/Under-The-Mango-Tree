@@ -1,93 +1,1810 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Programming Course - Under The Mango Tree</title>
+    <!-- Font Awesome 6.4.0 (CSS and JS, consistent versions) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 
-{% block title %}Python Learning - Under The Mango Tree{% endblock %}
+    <script src="https://cdn.tailwindcss.com"></script>
 
-{% block content %}
-    <!-- Hero Section -->
-    <section class="hero" style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://pixabay.com/get/g4f6a0a192580f87199c23b924d75524c2bcb923c4a9e15a9bac1f4eb3d3db49a4b9fe46b42794a0cd747c5107770577d96f2c50f3e32a25246f88a729a9cef72_1280.jpg');">
-        <div class="container text-center">
-            <h1>Python Programming</h1>
-            <p>Learn Python programming from beginner to advanced levels through our comprehensive video tutorials.</p>
-        </div>
-    </section>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <!-- Python Learning Content -->
-    <section class="py-5">
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #f3f4f6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 100%);
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            padding: 1.5rem 0;
+        }
+
+        .header h1 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: #bfdbfe;
+        }
+
+        /* Main Content Layout */
+        .main {
+            padding: 2rem 0;
+        }
+
+        .content-wrapper {
+            display: flex;
+            gap: 1.5rem;
+            flex-direction: column;
+        }
+
+        @media (min-width: 768px) {
+            .content-wrapper {
+                flex-direction: row;
+            }
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 100%;
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            height: fit-content;
+        }
+
+        @media (min-width: 768px) {
+            .sidebar {
+                width: 20rem;
+                position: sticky;
+                top: 1rem;
+                /* display: hidden; */
+            }
+        }
+
+        .sidebar h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1f2937;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 0.75rem;
+            border-radius: 0.375rem;
+            color: #374151;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .sidebar a:hover {
+            background-color: #f3f4f6;
+            color: #2563eb;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 50%;
+            margin-left: 0.5rem;
+        }
+
+        .status-complete {
+            background-color: #10b981;
+        }
+
+        .status-progress {
+            background-color: #3b82f6;
+        }
+
+        .status-not-started {
+            background-color: #9ca3af;
+        }
+
+        /* Video Cards Styles */
+        .video-section {
+            flex: 1;
+        }
+
+        .video-section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #1f2937;
+        }
+
+        .video-list {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+
+            width: 100%;
+            max-width: 680px;
+            margin: 0 auto; /* center the card */
+        }
+
+        .video-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-image-container {
+            position: relative;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            width: 100%;              /* Ensures full width */
+            height: 300px;            /* Fixed height for predictable layout */
+        }
+
+        .video-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;              /* Fill container */
+            height: 100%;             /* Fill container */
+            object-fit: cover;        /* Ensures full coverage without stretching */
+            transition: transform 0.3s ease;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-image-container:hover .video-overlay {
+            opacity: 1;
+        }
+
+        .play-button {
+            background: #dc2626;
+            color: white;
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            cursor: pointer;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+        }
+
+        .status-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            color: white;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .status-complete-badge {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+
+        .status-progress-badge {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        }
+
+        .status-not-started-badge {
+            background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%);
+        }
+
+        .video-content {
+            padding: 1.5rem;
+        }
+
+        .video-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .video-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .youtube-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #dc2626;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .youtube-link:hover {
+            color: #b91c1c;
+        }
+
+        .expand-button {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .expand-button.collapsed {
+            background-color: #f9fafb;
+            color: #374151;
+        }
+
+        .expand-button.collapsed:hover {
+            background-color: #f3f4f6;
+        }
+
+        .expand-button.expanded {
+            background: linear-gradient(135deg, #eff6ff 0%, #f3e8ff 100%);
+            color: #1d4ed8;
+        }
+
+        .chevron {
+            transition: transform 0.2s ease;
+        }
+
+        .chevron.rotated {
+            transform: rotate(180deg);
+        }
+
+        .details-section {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #f9fafb;
+            border-radius: 0.5rem;
+            border: 1px solid #e5e7eb;
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+
+        .details-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .details-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .details-section h4 {
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.5rem;
+        }
+
+        .details-section p {
+            color: #6b7280;
+        }
+
+        .resource-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .resource-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #2563eb;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .resource-link:hover {
+            color: #1d4ed8;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #1f2937;
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-content {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+
+        .footer h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .footer p {
+            color: #9ca3af;
+            margin-top: 0.25rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            color: #9ca3af;
+            font-size: 1.25rem;
+            transition: color 0.2s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #374151;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+        /* mobile responcive */
+        /* Smooth transitions for mobile menu */
+        #mobile-menu {
+            transition: all 0.3s ease-in-out;
+        }
+
+        #submenu-icon {
+            transition: transform 0.3s ease;
+        }
+
+        /* Ensure proper spacing for mobile submenu */
+        #mobile-submenu {
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Animation for menu icon */
+        #menu-icon {
+            transition: all 0.3s ease;
+        }
+    </style>
+
+    <!-- sidebar feature -->
+    <style>
+        /* Add these CSS classes to your existing stylesheet */
+        .topic-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .topic-link:hover {
+            background-color: rgba(59, 130, 246, 0.1);
+            transform: translateX(4px);
+        }
+
+        .topic-link.active-topic {
+            background-color: rgba(59, 130, 246, 0.15);
+            border-left: 4px solid #3b82f6;
+            font-weight: 600;
+            color: #3b82f6;
+        }
+
+        /* .video-count {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-left: 8px;
+        } */
+
+        .status-active {
+            background-color: #10b981;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-left: 8px;
+        }
+
+        .topic-info {
+            margin-bottom: 24px;
+            padding: 16px;
+            background-color: rgba(59, 130, 246, 0.05);
+            border-radius: 8px;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .topic-info p {
+            margin: 0;
+            font-size: 0.875rem;
+        }
+    </style>
+     <!-- Add CSS to ensure proper iframe responsiveness -->
+    <style>
+        .video-image-container iframe {
+            border-radius: 0.75rem 0.75rem 0 0; /* Match the card's border radius */
+        }
+        
+        /* Ensure iframe is responsive */
+        @media (max-width: 768px) {
+            .video-image-container iframe {
+                height: 200px; /* Smaller height on mobile */
+            }
+        }
+    </style>
+</head>
+<body class="font-sans smooth-scroll">
+    <!-- Header -->
+    {% include 'header.html' %}
+
+    <!-- Main Content -->
+    <main class="main">
         <div class="container">
-            <h2 class="section-title">Python Tutorial Videos</h2>
-            <p class="section-subtitle">Follow along with our structured Python learning path, from basic concepts to advanced techniques.</p>
-            
-            <div class="card mb-4">
-                <div class="card-body">
-                    <div class="row align-items-center">
-                        <div class="col-lg-2 text-center mb-3 mb-lg-0">
-                            <i class="fas fa-info-circle fa-3x text-primary"></i>
+            <div class="content-wrapper">
+                <!-- Replace the sidebar section with this updated version -->
+                <aside class="sidebar">
+                    <h2>Python Topics</h2>
+                    <ul>
+                        {% for topic in sidebar_topics %}
+                        <li>
+                            <a href="?topic={{ topic.url_param }}" 
+                            class="topic-link {% if topic.is_active %}active-topic{% endif %}"
+                            onclick="loadTopicVideos('{{ topic.name }}', event)">
+                                <b>{{ topic.name }}</b>
+                                <!-- <span class="video-count">({{ topic.video_count }} videos)</span> -->
+                                {% if topic.is_active %}
+                                <span class="status-indicator status-active"></span>
+                                {% endif %}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </aside>
+                <!-- Video Section - Replace the hardcoded video-list div -->
+                <div class="video-section">
+                    
+                    
+                    <h2>{{ selected_topic }} - Python Course</h2>
+                    <!-- Rest of your video-list div remains the same -->
+                    <div class="video-list" id="video-container">
+                        
+                        {% for video in videos %}
+                        <div class="video-card" id="video-{{ video.id }}">
+                            <div class="video-image-container">
+                                {% set video_id = video.youtube_url.split('v=')[1].split('&')[0] if 'v=' in video.youtube_url else video.youtube_url.split('/')[-1] %}
+                                <iframe width="100%" 
+                                    height="300" 
+                                    src="https://www.youtube.com/embed/{{ video_id }}?controls=1" 
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen>
+                                </iframe>
+
+                                <div class="status-badge 
+                                    {% if video.status == 'complete' %}status-complete-badge
+                                    {% elif video.status == 'progress' %}status-progress-badge
+                                    {% else %}status-not-started-badge{% endif %}">
+                                    {% if video.status == 'complete' %}Complete
+                                    {% elif video.status == 'progress' %}In Progress
+                                    {% else %}Not Started{% endif %}
+                                </div>
+                            </div>
+                            
+                
+                            <div class="video-content">
+                                <h3 class="video-title">{{ video.title }}</h3>
+                                
+                                <div class="video-links">
+                                    <a href="{{ video.youtube_url }}" target="_blank" rel="noopener noreferrer" class="youtube-link">
+                                        <i class="fab fa-youtube"></i>
+                                        <span>Watch on YouTube</span>
+                                    </a>
+                                </div>
+                
+                                <button class="expand-button collapsed" onclick="toggleExpand({{ video.id }})">
+                                    <span>Details & Resources</span>
+                                    <i class="fas fa-chevron-down chevron" id="chevron-{{ video.id }}"></i>
+                                </button>
+                
+                                <div class="details-section hidden" id="details-{{ video.id }}">
+                                    <div class="details-grid">
+                                        <div>
+                                            <h4>What You'll Learn</h4>
+                                            <p>{{ video.description }}</p>
+                                        </div>
+                                        <div>
+                                            <h4>Resources</h4>
+                                            <div class="resource-links">
+                                                {% for resource in video.resources %}
+                                                <a href="{{ resource.url }}" target="_blank" rel="noopener noreferrer" class="resource-link">
+                                                    <i class="{{ resource.icon }}"></i>
+                                                    <span>{{ resource.name }}</span>
+                                                </a>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-lg-10">
-                            <h4>How to use this resource</h4>
-                            <p>Our Python tutorial videos are designed to be followed in sequence, building your knowledge progressively. Each video includes explanations and examples to help you understand the concepts.</p>
-                            <p class="mb-0">We recommend watching the videos in order, practicing the concepts after each lesson, and revisiting any topics you find challenging.</p>
-                        </div>
+                        {% endfor %}
                     </div>
+                
                 </div>
-            </div>
-            
-            <div class="table-responsive">
-                <table class="table table-bordered video-table">
-                    <thead>
-                        <tr>
-                            <th width="40%">Video</th>
-                            <th width="25%">Title</th>
-                            <th width="35%">Description</th>
-                        </tr>
-                    </thead>
-                    <tbody id="video-table-body">
-                        <!-- JavaScript will populate this table -->
-                    </tbody>
-                </table>
             </div>
         </div>
-    </section>
+    </main>
 
-    <!-- Additional Resources -->
-    <section class="py-5 bg-light">
-        <div class="container">
-            <h2 class="section-title">Additional Python Resources</h2>
-            <p class="section-subtitle">Enhance your Python learning with these complementary resources.</p>
+    {% include 'footer.html' %}
+    <!-- <script>
+        // Global variables
+        let selectedCourse = null;
+        let allCourses = document.querySelectorAll('.course-item');
+
+        // Toggle course content
+        function toggleCourse(courseId) {
+            const content = document.getElementById(`content-${courseId}`);
+            const arrow = document.getElementById(`arrow-${courseId}`);
             
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h4><i class="fas fa-book text-primary me-2"></i>Documentation</h4>
-                            <p>Official Python documentation is an excellent reference as you progress in your learning journey.</p>
-                            <a href="https://docs.python.org/3/" class="btn btn-sm btn-outline-primary" target="_blank">Python Docs</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h4><i class="fas fa-laptop-code text-primary me-2"></i>Practice Exercises</h4>
-                            <p>Apply what you've learned through coding challenges and exercises designed to reinforce concepts.</p>
-                            <a href="https://www.hackerrank.com/domains/python" class="btn btn-sm btn-outline-primary" target="_blank">Practice Python</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h4><i class="fas fa-users text-primary me-2"></i>Community</h4>
-                            <p>Join the Python community to get help, share knowledge, and connect with other learners.</p>
-                            <a href="https://www.reddit.com/r/learnpython/" class="btn btn-sm btn-outline-primary" target="_blank">Python Community</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-{% endblock %}
+            if (selectedCourse === courseId) {
+                // Close current course
+                content.classList.remove('active');
+                arrow.classList.remove('fa-chevron-down');
+                arrow.classList.add('fa-chevron-right');
+                selectedCourse = null;
+            } else {
+                // Close previously opened course
+                if (selectedCourse !== null) {
+                    const prevContent = document.getElementById(`content-${selectedCourse}`);
+                    const prevArrow = document.getElementById(`arrow-${selectedCourse}`);
+                    prevContent.classList.remove('active');
+                    prevArrow.classList.remove('fa-chevron-down');
+                    prevArrow.classList.add('fa-chevron-right');
+                }
+                
+                // Open new course
+                content.classList.add('active');
+                arrow.classList.remove('fa-chevron-right');
+                arrow.classList.add('fa-chevron-down');
+                selectedCourse = courseId;
+            }
+        }
 
-{% block extra_js %}
-    <script src="{{ url_for('static', filename='js/python_videos.js') }}"></script>
-{% endblock %}
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        const clearSearch = document.getElementById('clearSearch');
+        const courseList = document.getElementById('courseList');
+        const noResults = document.getElementById('noResults');
+
+        searchInput.addEventListener('input', function(e) {
+            const query = e.target.value.toLowerCase().trim();
+            
+            if (query) {
+                clearSearch.classList.remove('hidden');
+            } else {
+                clearSearch.classList.add('hidden');
+            }
+
+            filterCourses(query);
+        });
+
+        clearSearch.addEventListener('click', function() {
+            searchInput.value = '';
+            clearSearch.classList.add('hidden');
+            filterCourses('');
+        });
+
+        function filterCourses(query) {
+            let visibleCount = 0;
+            
+            allCourses.forEach(course => {
+                const title = course.dataset.title;
+                if (title.includes(query)) {
+                    course.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    course.style.display = 'none';
+                }
+            });
+
+            if (visibleCount === 0 && query) {
+                noResults.classList.remove('hidden');
+                courseList.style.display = 'none';
+            } else {
+                noResults.classList.add('hidden');
+                courseList.style.display = 'flex';
+            }
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add loading animation to buttons
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                if (!this.classList.contains('loading')) {
+                    this.classList.add('loading');
+                    setTimeout(() => {
+                        this.classList.remove('loading');
+                    }, 1000);
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Animate course items on scroll
+        allCourses.forEach((course, index) => {
+            course.style.opacity = '0';
+            course.style.transform = 'translateY(20px)';
+            course.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+            observer.observe(course);
+        });
+
+        // Progress bar animation
+        window.addEventListener('load', function() {
+            const progressBar = document.querySelector('.progress-fill');
+            if (progressBar) {
+                setTimeout(() => {
+                    progressBar.style.transform = 'scaleX(1)';
+                }, 500);
+            }
+        });
+    </script>
+
+    <script>
+        // Mobile menu toggle functionality
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileSubmenuBtn = document.getElementById('mobile-submenu-btn');
+        const mobileSubmenu = document.getElementById('mobile-submenu');
+        const submenuIcon = document.getElementById('submenu-icon');
+
+        // Toggle main mobile menu
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+            
+            // Change hamburger to X icon
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            }
+        });
+
+        // Toggle mobile submenu (Learning dropdown)
+        mobileSubmenuBtn.addEventListener('click', function() {
+            mobileSubmenu.classList.toggle('hidden');
+            
+            // Rotate arrow icon
+            if (mobileSubmenu.classList.contains('hidden')) {
+                submenuIcon.style.transform = 'rotate(0deg)';
+            } else {
+                submenuIcon.style.transform = 'rotate(180deg)';
+            }
+        });
+
+        // Close mobile menu when clicking on links
+        const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+    </script>
+
+    <script>
+    // Complete AJAX Pagination JavaScript
+        function toggleExpand(videoId) {
+            const detailsSection = document.getElementById(`details-${videoId}`);
+            const chevron = document.getElementById(`chevron-${videoId}`);
+            const button = chevron.closest('.expand-button');
+            
+            if (detailsSection.classList.contains('hidden')) {
+                // Expand
+                detailsSection.classList.remove('hidden');
+                chevron.classList.add('rotated');
+                button.classList.remove('collapsed');
+                button.classList.add('expanded');
+            } else {
+                // Collapse
+                detailsSection.classList.add('hidden');
+                chevron.classList.remove('rotated');
+                button.classList.remove('expanded');
+                button.classList.add('collapsed');
+            }
+        }
+
+        // AJAX Pagination
+        // function loadPage(pageNum) {
+        //     // Show loading state
+        //     const container = document.getElementById('video-container');
+        //     container.style.opacity = '0.5';
+            
+        //     fetch(`/load_more_videos?page=${pageNum}`)
+        //         .then(response => response.json())
+        //         .then(data => {
+        //             // Update video container with new videos
+        //             updateVideoContainer(data.videos);
+        //             updatePagination(data.pagination);
+        //             // Restore opacity
+        //             container.style.opacity = '1';
+        //             // Scroll to top of video section
+        //             document.querySelector('.video-section').scrollIntoView({ behavior: 'smooth' });
+        //         })
+        //         .catch(error => {
+        //             console.error('Error loading videos:', error);
+        //             container.style.opacity = '1';
+        //         });
+        // }
+
+        function updateVideoContainer(videos) {
+            const container = document.getElementById('video-container');
+            container.innerHTML = ''; // Clear existing videos
+            
+            videos.forEach(video => {
+                // Create video card HTML dynamically
+                const videoCard = createVideoCard(video);
+                container.appendChild(videoCard);
+            });
+        }
+
+        function createVideoCard(video) {
+            // Create the main video card div
+            const videoCard = document.createElement('div');
+            videoCard.className = 'video-card';
+            videoCard.id = `video-${video.id}`;
+            
+            // Get status classes
+            const statusBadgeClass = getStatusBadgeClass(video.status);
+            const statusText = getStatusText(video.status);
+            
+            // Build resources HTML
+            const resourcesHTML = video.resources.map(resource => 
+                `<a href="${resource.url}" target="_blank" rel="noopener noreferrer" class="resource-link">
+                    <i class="${resource.icon}"></i>
+                    <span>${resource.name}</span>
+                </a>`
+            ).join('');
+            
+            // Create the complete HTML structure
+            videoCard.innerHTML = `
+                <div class="video-image-container">
+                    <img src="${video.image_url}" alt="${video.title}" class="video-image">
+                    <div class="video-overlay">
+                        <button class="play-button" onclick="window.open('${video.youtube_url}', '_blank')">
+                            <i class="fas fa-play"></i>
+                        </button>
+                    </div>
+                    <div class="status-badge ${statusBadgeClass}">
+                        ${statusText}
+                    </div>
+                </div>
+
+                <div class="video-content">
+                    <h3 class="video-title">${video.title}</h3>
+                    
+                    <div class="video-links">
+                        <a href="${video.youtube_url}" target="_blank" rel="noopener noreferrer" class="youtube-link">
+                            <i class="fab fa-youtube"></i>
+                            <span>Watch on YouTube</span>
+                        </a>
+                    </div>
+
+                    <button class="expand-button collapsed" onclick="toggleExpand(${video.id})">
+                        <span>Details & Resources</span>
+                        <i class="fas fa-chevron-down chevron" id="chevron-${video.id}"></i>
+                    </button>
+
+                    <div class="details-section hidden" id="details-${video.id}">
+                        <div class="details-grid">
+                            <div>
+                                <h4>What You'll Learn</h4>
+                                <p>${video.description}</p>
+                            </div>
+                            <div>
+                                <h4>Resources</h4>
+                                <div class="resource-links">
+                                    ${resourcesHTML}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            return videoCard;
+        }
+
+        function getStatusBadgeClass(status) {
+            switch(status) {
+                case 'complete':
+                    return 'status-complete-badge';
+                case 'progress':
+                    return 'status-progress-badge';
+                case 'not-started':
+                default:
+                    return 'status-not-started-badge';
+            }
+        }
+
+        function getStatusText(status) {
+            switch(status) {
+                case 'complete':
+                    return 'Complete';
+                case 'progress':
+                    return 'In Progress';
+                case 'not-started':
+                default:
+                    return 'Not Started';
+            }
+        }
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggleBtn = document.getElementById('learningToggle');
+            const menu = document.getElementById('learningMenu');
+    
+            toggleBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                menu.classList.toggle('hidden');
+            });
+    
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function (e) {
+                if (!menu.contains(e.target) && !toggleBtn.contains(e.target)) {
+                    menu.classList.add('hidden');
+                }
+            });
+        });
+    </script> -->
+
+    <!-- script for desktop nev bar -->
+    
+    <!-- <script>
+        // Add this function for topic selection
+        function loadTopicVideos(topicName, event) {
+            event.preventDefault();
+            
+            // Show loading state
+            const container = document.getElementById('video-container');
+            container.style.opacity = '0.5';
+            
+            // Update URL without page reload
+            const url = new URL(window.location);
+            url.searchParams.set('topic', topicName);
+            url.searchParams.delete('page'); // Reset to page 1 for new topic
+            window.history.pushState({}, '', url);
+            
+            // Fetch videos for the selected topic
+            fetch(`/python-learning?topic=${encodeURIComponent(topicName)}`)
+                .then(response => response.text())
+                .then(html => {
+                    // Create a temporary DOM to extract the video container
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = html;
+                    
+                    // Update video container
+                    const newVideoContainer = tempDiv.querySelector('#video-container');
+                    const newTopicInfo = tempDiv.querySelector('.topic-info');
+                    const newVideoSectionHeader = tempDiv.querySelector('.video-section h2');
+                    
+                    if (newVideoContainer) {
+                        container.innerHTML = newVideoContainer.innerHTML;
+                    }
+                    
+                    
+                    // Update topic info
+                    if (newTopicInfo) {
+                        const currentTopicInfo = document.querySelector('.topic-info');
+                        if (currentTopicInfo) {
+                            currentTopicInfo.innerHTML = newTopicInfo.innerHTML;
+                        }
+                    }
+                    
+                    // Update header
+                    if (newVideoSectionHeader) {
+                        const currentHeader = document.querySelector('.video-section h2');
+                        if (currentHeader) {
+                            currentHeader.textContent = newVideoSectionHeader.textContent;
+                        }
+                    }
+                    
+                    // Update sidebar active state
+                    updateSidebarActiveState(topicName);
+                    
+                    // Restore opacity
+                    container.style.opacity = '1';
+                    
+                    // Re-initialize pagination event listeners
+                    // initializePaginationListeners();
+                })
+                .catch(error => {
+                    console.error('Error loading topic videos:', error);
+                    container.style.opacity = '1';
+                });
+        }
+
+        // Function to update sidebar active state
+        function updateSidebarActiveState(activeTopic) {
+            // Remove active class from all topic links
+            document.querySelectorAll('.topic-link').forEach(link => {
+                link.classList.remove('active-topic');
+                const indicator = link.querySelector('.status-indicator');
+                if (indicator) {
+                    indicator.remove();
+                }
+            });
+            
+            // Add active class to selected topic
+            document.querySelectorAll('.topic-link').forEach(link => {
+                const topicName = link.textContent.trim().split('(')[0].trim(); // Extract topic name
+                if (topicName === activeTopic) {
+                    link.classList.add('active-topic');
+                    // Add active indicator
+                    const indicator = document.createElement('span');
+                    indicator.className = 'status-indicator status-active';
+                    link.appendChild(indicator);
+                }
+            });
+        }
+
+        // Update the existing loadPage function to include topic parameter
+        function loadPage(pageNum) {
+            const urlParams = new URLSearchParams(window.location.search);
+            const currentTopic = urlParams.get('topic') || 'Basic Introduction';
+            
+            // Show loading state
+            const container = document.getElementById('video-container');
+            container.style.opacity = '0.5';
+            
+            fetch(`/load_more_videos?page=${pageNum}&topic=${encodeURIComponent(currentTopic)}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Update video container with new videos
+                    updateVideoContainer(data.videos);
+                    // updatePagination(data.pagination, currentTopic);
+                    // Restore opacity
+                    container.style.opacity = '1';
+                    // Scroll to top of video section
+                    document.querySelector('.video-section').scrollIntoView({ behavior: 'smooth' });
+                })
+                .catch(error => {
+                    console.error('Error loading videos:', error);
+                    container.style.opacity = '1';
+                });
+        }
+
+    </script>
+
+    <script>
+        // Add this function for topic selection
+        function loadTopicVideos(topicName, event) {
+            event.preventDefault();
+            
+            // Show loading state
+            const container = document.getElementById('video-container');
+            container.style.opacity = '0.5';
+            
+            // Update URL without page reload
+            const url = new URL(window.location);
+            url.searchParams.set('topic', topicName);
+            url.searchParams.delete('page'); // Reset to page 1 for new topic
+            window.history.pushState({}, '', url);
+            
+            // Fetch videos for the selected topic
+            fetch(`/python-learning?topic=${encodeURIComponent(topicName)}`)
+                .then(response => response.text())
+                .then(html => {
+                    // Create a temporary DOM to extract the video container
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = html;
+                    
+                    // Update video container
+                    const newVideoContainer = tempDiv.querySelector('#video-container');
+                    const newTopicInfo = tempDiv.querySelector('.topic-info');
+                    const newVideoSectionHeader = tempDiv.querySelector('.video-section h2');
+                    
+                    if (newVideoContainer) {
+                        container.innerHTML = newVideoContainer.innerHTML;
+                    }
+                    
+                    
+                    // Update topic info
+                    if (newTopicInfo) {
+                        const currentTopicInfo = document.querySelector('.topic-info');
+                        if (currentTopicInfo) {
+                            currentTopicInfo.innerHTML = newTopicInfo.innerHTML;
+                        }
+                    }
+                    
+                    // Update header
+                    if (newVideoSectionHeader) {
+                        const currentHeader = document.querySelector('.video-section h2');
+                        if (currentHeader) {
+                            currentHeader.textContent = newVideoSectionHeader.textContent;
+                        }
+                    }
+                    
+                    // Update sidebar active state
+                    updateSidebarActiveState(topicName);
+                    
+                    // Restore opacity
+                    container.style.opacity = '1';
+                    
+                    // Re-initialize pagination event listeners
+                    // initializePaginationListeners();
+                })
+                .catch(error => {
+                    console.error('Error loading topic videos:', error);
+                    container.style.opacity = '1';
+                });
+        }
+
+        // Function to update sidebar active state
+        function updateSidebarActiveState(activeTopic) {
+            // Remove active class from all topic links
+            document.querySelectorAll('.topic-link').forEach(link => {
+                link.classList.remove('active-topic');
+                const indicator = link.querySelector('.status-indicator');
+                if (indicator) {
+                    indicator.remove();
+                }
+            });
+            
+            // Add active class to selected topic
+            document.querySelectorAll('.topic-link').forEach(link => {
+                const topicName = link.textContent.trim().split('(')[0].trim(); // Extract topic name
+                if (topicName === activeTopic) {
+                    link.classList.add('active-topic');
+                    // Add active indicator
+                    const indicator = document.createElement('span');
+                    indicator.className = 'status-indicator status-active';
+                    link.appendChild(indicator);
+                }
+            });
+        }
+
+        // Update the existing loadPage function to include topic parameter
+        function loadPage(pageNum) {
+            const urlParams = new URLSearchParams(window.location.search);
+            const currentTopic = urlParams.get('topic') || 'Basic Introduction';
+            
+            // Show loading state
+            const container = document.getElementById('video-container');
+            container.style.opacity = '0.5';
+            
+            fetch(`/load_more_videos?page=${pageNum}&topic=${encodeURIComponent(currentTopic)}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Update video container with new videos
+                    updateVideoContainer(data.videos);
+                    // updatePagination(data.pagination, currentTopic);
+                    // Restore opacity
+                    container.style.opacity = '1';
+                    // Scroll to top of video section
+                    document.querySelector('.video-section').scrollIntoView({ behavior: 'smooth' });
+                })
+                .catch(error => {
+                    console.error('Error loading videos:', error);
+                    container.style.opacity = '1';
+                });
+        }
+    </script> -->
+
+    <!-- add this JavaScript function to extract YouTube video ID from URL -->
+    <!-- <script>
+        function getYouTubeVideoId(url) {
+            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+            const match = url.match(regExp);
+            return (match && match[2].length === 11) ? match[2] : null;
+        }
+    </script>
+     -->
+    <!-- Update the createVideoCard function in your existing JavaScript -->
+    <!-- <script>
+        function createVideoCard(video) {
+            // Create the main video card div
+            const videoCard = document.createElement('div');
+            videoCard.className = 'video-card';
+            videoCard.id = `video-${video.id}`;
+            
+            // Get status classes
+            const statusBadgeClass = getStatusBadgeClass(video.status);
+            const statusText = getStatusText(video.status);
+            
+            // Extract YouTube video ID for iframe
+            const videoId = getYouTubeVideoId(video.youtube_url);
+            const embedUrl = `https://www.youtube.com/embed/${videoId}?controls=1`;
+            
+            // Build resources HTML
+            const resourcesHTML = video.resources.map(resource => 
+                `<a href="${resource.url}" target="_blank" rel="noopener noreferrer" class="resource-link">
+                    <i class="${resource.icon}"></i>
+                    <span>${resource.name}</span>
+                </a>`
+            ).join('');
+            
+            // Create the complete HTML structure with iframe instead of image
+            videoCard.innerHTML = `
+                <div class="video-image-container">
+
+                    <iframe width="100%" height="300" src="${embedUrl}" 
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+
+                    <div class="status-badge ${statusBadgeClass}">
+                        ${statusText}
+                    </div>
+                </div>
+        
+                <div class="video-content">
+                    <h3 class="video-title">${video.title}</h3>
+                    
+                    <div class="video-links">
+                        <a href="${video.youtube_url}" target="_blank" rel="noopener noreferrer" class="youtube-link">
+                            <i class="fab fa-youtube"></i>
+                            <span>Watch on YouTube</span>
+                        </a>
+                    </div>
+        
+                    <button class="expand-button collapsed" onclick="toggleExpand(${video.id})">
+                        <span>Details & Resources</span>
+                        <i class="fas fa-chevron-down chevron" id="chevron-${video.id}"></i>
+                    </button>
+        
+                    <div class="details-section hidden" id="details-${video.id}">
+                        <div class="details-grid">
+                            <div>
+                                <h4>What You'll Learn</h4>
+                                <p>${video.description}</p>
+                            </div>
+                            <div>
+                                <h4>Resources</h4>
+                                <div class="resource-links">
+                                    ${resourcesHTML}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            return videoCard;
+        }
+    </script> -->
+
+    
+
+    <script>
+                // ====================================
+        // GLOBAL VARIABLES
+        // ====================================
+        let selectedCourse = null;
+        let allCourses = document.querySelectorAll('.course-item');
+
+        // ====================================
+        // COURSE FUNCTIONALITY
+        // ====================================
+        function toggleCourse(courseId) {
+            const content = document.getElementById(`content-${courseId}`);
+            const arrow = document.getElementById(`arrow-${courseId}`);
+            
+            if (selectedCourse === courseId) {
+                // Close current course
+                content.classList.remove('active');
+                arrow.classList.remove('fa-chevron-down');
+                arrow.classList.add('fa-chevron-right');
+                selectedCourse = null;
+            } else {
+                // Close previously opened course
+                if (selectedCourse !== null) {
+                    const prevContent = document.getElementById(`content-${selectedCourse}`);
+                    const prevArrow = document.getElementById(`arrow-${selectedCourse}`);
+                    prevContent.classList.remove('active');
+                    prevArrow.classList.remove('fa-chevron-down');
+                    prevArrow.classList.add('fa-chevron-right');
+                }
+                
+                // Open new course
+                content.classList.add('active');
+                arrow.classList.remove('fa-chevron-right');
+                arrow.classList.add('fa-chevron-down');
+                selectedCourse = courseId;
+            }
+        }
+
+        // ====================================
+        // SEARCH FUNCTIONALITY
+        // ====================================
+        function initializeSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const clearSearch = document.getElementById('clearSearch');
+            const courseList = document.getElementById('courseList');
+            const noResults = document.getElementById('noResults');
+
+            if (!searchInput) return; // Exit if search elements don't exist
+
+            searchInput.addEventListener('input', function(e) {
+                const query = e.target.value.toLowerCase().trim();
+                
+                if (query) {
+                    clearSearch.classList.remove('hidden');
+                } else {
+                    clearSearch.classList.add('hidden');
+                }
+
+                filterCourses(query);
+            });
+
+            clearSearch.addEventListener('click', function() {
+                searchInput.value = '';
+                clearSearch.classList.add('hidden');
+                filterCourses('');
+            });
+
+            function filterCourses(query) {
+                let visibleCount = 0;
+                
+                allCourses.forEach(course => {
+                    const title = course.dataset.title;
+                    if (title.includes(query)) {
+                        course.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        course.style.display = 'none';
+                    }
+                });
+
+                if (visibleCount === 0 && query) {
+                    noResults.classList.remove('hidden');
+                    courseList.style.display = 'none';
+                } else {
+                    noResults.classList.add('hidden');
+                    courseList.style.display = 'flex';
+                }
+            }
+        }
+
+        // ====================================
+        // MOBILE MENU FUNCTIONALITY
+        // ====================================
+        function initializeMobileMenu() {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const mobileSubmenuBtn = document.getElementById('mobile-submenu-btn');
+            const mobileSubmenu = document.getElementById('mobile-submenu');
+            const submenuIcon = document.getElementById('submenu-icon');
+
+            if (!mobileMenuBtn || !mobileMenu) return; // Exit if mobile menu elements don't exist
+
+            // Toggle main mobile menu
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+                
+                // Change hamburger to X icon
+                if (mobileMenu.classList.contains('hidden')) {
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                } else {
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-times');
+                }
+            });
+
+            // Toggle mobile submenu (Learning dropdown)
+            if (mobileSubmenuBtn && mobileSubmenu) {
+                mobileSubmenuBtn.addEventListener('click', function() {
+                    mobileSubmenu.classList.toggle('hidden');
+                    
+                    // Rotate arrow icon
+                    if (mobileSubmenu.classList.contains('hidden')) {
+                        submenuIcon.style.transform = 'rotate(0deg)';
+                    } else {
+                        submenuIcon.style.transform = 'rotate(180deg)';
+                    }
+                });
+            }
+
+            // Close mobile menu when clicking on links
+            const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                });
+            });
+        }
+
+        // ====================================
+        // DESKTOP DROPDOWN FUNCTIONALITY
+        // ====================================
+        function initializeDesktopDropdown() {
+            const toggleBtn = document.getElementById('learningToggle');
+            const menu = document.getElementById('learningMenu');
+
+            if (!toggleBtn || !menu) return; // Exit if dropdown elements don't exist
+
+            toggleBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                menu.classList.toggle('hidden');
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function (e) {
+                if (!menu.contains(e.target) && !toggleBtn.contains(e.target)) {
+                    menu.classList.add('hidden');
+                }
+            });
+        }
+
+        // ====================================
+        // VIDEO FUNCTIONALITY
+        // ====================================
+        function toggleExpand(videoId) {
+            const detailsSection = document.getElementById(`details-${videoId}`);
+            const chevron = document.getElementById(`chevron-${videoId}`);
+            const button = chevron.closest('.expand-button');
+            
+            if (detailsSection.classList.contains('hidden')) {
+                // Expand
+                detailsSection.classList.remove('hidden');
+                chevron.classList.add('rotated');
+                button.classList.remove('collapsed');
+                button.classList.add('expanded');
+            } else {
+                // Collapse
+                detailsSection.classList.add('hidden');
+                chevron.classList.remove('rotated');
+                button.classList.remove('expanded');
+                button.classList.add('collapsed');
+            }
+        }
+
+        function getYouTubeVideoId(url) {
+            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+            const match = url.match(regExp);
+            return (match && match[2].length === 11) ? match[2] : null;
+        }
+
+        function getStatusBadgeClass(status) {
+            switch(status) {
+                case 'complete':
+                    return 'status-complete-badge';
+                case 'progress':
+                    return 'status-progress-badge';
+                case 'not-started':
+                default:
+                    return 'status-not-started-badge';
+            }
+        }
+
+        function getStatusText(status) {
+            switch(status) {
+                case 'complete':
+                    return 'Complete';
+                case 'progress':
+                    return 'In Progress';
+                case 'not-started':
+                default:
+                    return 'Not Started';
+            }
+        }
+
+        function createVideoCard(video) {
+            // Create the main video card div
+            const videoCard = document.createElement('div');
+            videoCard.className = 'video-card';
+            videoCard.id = `video-${video.id}`;
+            
+            // Get status classes
+            const statusBadgeClass = getStatusBadgeClass(video.status);
+            const statusText = getStatusText(video.status);
+            
+            // Extract YouTube video ID for iframe
+            const videoId = getYouTubeVideoId(video.youtube_url);
+            const embedUrl = `https://www.youtube.com/embed/${videoId}?controls=1`;
+            
+            // Build resources HTML
+            const resourcesHTML = video.resources.map(resource => 
+                `<a href="${resource.url}" target="_blank" rel="noopener noreferrer" class="resource-link">
+                    <i class="${resource.icon}"></i>
+                    <span>${resource.name}</span>
+                </a>`
+            ).join('');
+            
+            // Create the complete HTML structure with iframe
+            videoCard.innerHTML = `
+                <div class="video-image-container">
+                    <iframe width="100%" height="300" src="${embedUrl}" 
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                    <div class="status-badge ${statusBadgeClass}">
+                        ${statusText}
+                    </div>
+                </div>
+
+                <div class="video-content">
+                    <h3 class="video-title">${video.title}</h3>
+                    
+                    <div class="video-links">
+                        <a href="${video.youtube_url}" target="_blank" rel="noopener noreferrer" class="youtube-link">
+                            <i class="fab fa-youtube"></i>
+                            <span>Watch on YouTube</span>
+                        </a>
+                    </div>
+
+                    <button class="expand-button collapsed" onclick="toggleExpand(${video.id})">
+                        <span>Details & Resources</span>
+                        <i class="fas fa-chevron-down chevron" id="chevron-${video.id}"></i>
+                    </button>
+
+                    <div class="details-section hidden" id="details-${video.id}">
+                        <div class="details-grid">
+                            <div>
+                                <h4>What You'll Learn</h4>
+                                <p>${video.description}</p>
+                            </div>
+                            <div>
+                                <h4>Resources</h4>
+                                <div class="resource-links">
+                                    ${resourcesHTML}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            return videoCard;
+        }
+
+        function updateVideoContainer(videos) {
+            const container = document.getElementById('video-container');
+            if (!container) return;
+            
+            container.innerHTML = ''; // Clear existing videos
+            
+            videos.forEach(video => {
+                const videoCard = createVideoCard(video);
+                container.appendChild(videoCard);
+            });
+        }
+
+        // ====================================
+        // TOPIC LOADING FUNCTIONALITY
+        // ====================================
+        function loadTopicVideos(topicName, event) {
+            event.preventDefault();
+            
+            // Show loading state
+            const container = document.getElementById('video-container');
+            if (!container) return;
+            
+            container.style.opacity = '0.5';
+            
+            // Update URL without page reload
+            const url = new URL(window.location);
+            url.searchParams.set('topic', topicName);
+            url.searchParams.delete('page'); // Reset to page 1 for new topic
+            window.history.pushState({}, '', url);
+            
+            // Fetch videos for the selected topic
+            fetch(`/python-learning?topic=${encodeURIComponent(topicName)}`)
+                .then(response => response.text())
+                .then(html => {
+                    // Create a temporary DOM to extract the video container
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = html;
+                    
+                    // Update video container
+                    const newVideoContainer = tempDiv.querySelector('#video-container');
+                    const newTopicInfo = tempDiv.querySelector('.topic-info');
+                    const newVideoSectionHeader = tempDiv.querySelector('.video-section h2');
+                    
+                    if (newVideoContainer) {
+                        container.innerHTML = newVideoContainer.innerHTML;
+                    }
+                    
+                    // Update topic info
+                    if (newTopicInfo) {
+                        const currentTopicInfo = document.querySelector('.topic-info');
+                        if (currentTopicInfo) {
+                            currentTopicInfo.innerHTML = newTopicInfo.innerHTML;
+                        }
+                    }
+                    
+                    // Update header
+                    if (newVideoSectionHeader) {
+                        const currentHeader = document.querySelector('.video-section h2');
+                        if (currentHeader) {
+                            currentHeader.textContent = newVideoSectionHeader.textContent;
+                        }
+                    }
+                    
+                    // Update sidebar active state
+                    updateSidebarActiveState(topicName);
+                    
+                    // Restore opacity
+                    container.style.opacity = '1';
+                })
+                .catch(error => {
+                    console.error('Error loading topic videos:', error);
+                    container.style.opacity = '1';
+                });
+        }
+
+        function updateSidebarActiveState(activeTopic) {
+            // Remove active class from all topic links
+            document.querySelectorAll('.topic-link').forEach(link => {
+                link.classList.remove('active-topic');
+                const indicator = link.querySelector('.status-indicator');
+                if (indicator) {
+                    indicator.remove();
+                }
+            });
+            
+            // Add active class to selected topic
+            document.querySelectorAll('.topic-link').forEach(link => {
+                const topicName = link.textContent.trim().split('(')[0].trim(); // Extract topic name
+                if (topicName === activeTopic) {
+                    link.classList.add('active-topic');
+                    // Add active indicator
+                    const indicator = document.createElement('span');
+                    indicator.className = 'status-indicator status-active';
+                    link.appendChild(indicator);
+                }
+            });
+        }
+
+        function loadPage(pageNum) {
+            const urlParams = new URLSearchParams(window.location.search);
+            const currentTopic = urlParams.get('topic') || 'Basic Introduction';
+            
+            // Show loading state
+            const container = document.getElementById('video-container');
+            if (!container) return;
+            
+            container.style.opacity = '0.5';
+            
+            fetch(`/load_more_videos?page=${pageNum}&topic=${encodeURIComponent(currentTopic)}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Update video container with new videos
+                    updateVideoContainer(data.videos);
+                    // Restore opacity
+                    container.style.opacity = '1';
+                    // Scroll to top of video section
+                    const videoSection = document.querySelector('.video-section');
+                    if (videoSection) {
+                        videoSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading videos:', error);
+                    container.style.opacity = '1';
+                });
+        }
+
+        // ====================================
+        // ANIMATION AND UI ENHANCEMENTS
+        // ====================================
+        function initializeAnimations() {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Add loading animation to buttons
+            document.querySelectorAll('.btn').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    if (!this.classList.contains('loading')) {
+                        this.classList.add('loading');
+                        setTimeout(() => {
+                            this.classList.remove('loading');
+                        }, 1000);
+                    }
+                });
+            });
+
+            // Intersection Observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Animate course items on scroll
+            allCourses.forEach((course, index) => {
+                course.style.opacity = '0';
+                course.style.transform = 'translateY(20px)';
+                course.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+                observer.observe(course);
+            });
+
+            // Progress bar animation
+            window.addEventListener('load', function() {
+                const progressBar = document.querySelector('.progress-fill');
+                if (progressBar) {
+                    setTimeout(() => {
+                        progressBar.style.transform = 'scaleX(1)';
+                    }, 500);
+                }
+            });
+        }
+
+        // ====================================
+        // INITIALIZATION
+        // ====================================
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize all functionality
+            initializeSearch();
+            initializeMobileMenu();
+            initializeDesktopDropdown();
+            initializeAnimations();
+            
+            // Update allCourses selector after DOM is loaded
+            allCourses = document.querySelectorAll('.course-item');
+        });
+    </script>
+    
+    <script src="{{ url_for('static', filename='js/header.js')}}"></script>
+</body>
+</html>

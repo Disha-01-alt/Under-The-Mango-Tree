@@ -1,0 +1,83 @@
+{
+  "DL_SIDEBAR_TOPICS": [
+    "Artificial Neural Networks",
+    "Boosting Algorithms",
+    "Computer Vision - Basic CNN Model",
+    "Computer Vision - CNN Architectures",
+    "Computer Vision - Autoencoders & GANs",
+    "Sequence Modeling - RNNs and LSTMs",
+    "NLP - Transformer Architecture and LLMs",
+    "NLP - LLM Pre-Training",
+    "NLP - Fine Tuning LLMs",
+    "NLP - Retrieval Augmented Generation",
+    "Image Captioning and Text to Image"
+  ],
+  "DL_VIDEO_DATA": {
+    "Artificial Neural Networks": [
+      { "id": 200, "title": "ANN basics: ANN Basic 1", "youtubeLink": "https://youtu.be/6nkylSKqaAc", "imageUrl": "https://img.youtube.com/vi/6nkylSKqaAc/hqdefault.jpg", "status": "not-started" },
+      { "id": 201, "title": "ANN basics: ANN Basic 2", "youtubeLink": "https://youtu.be/ntnwjWEpnkk", "imageUrl": "https://img.youtube.com/vi/ntnwjWEpnkk/hqdefault.jpg", "status": "not-started" },
+      { "id": 202, "title": "ANN basics: ANN Basic 3", "youtubeLink": "https://youtu.be/qctUEQn9Hj8", "imageUrl": "https://img.youtube.com/vi/qctUEQn9Hj8/hqdefault.jpg", "status": "not-started" },
+      { "id": 203, "title": "ANN basics: ANN Basic 4", "youtubeLink": "https://www.youtube.com/watch?v=llg3gGewQ5U", "imageUrl": "https://img.youtube.com/vi/llg3gGewQ5U/hqdefault.jpg", "status": "not-started" },
+      { "id": 204, "title": "Advanced ANN: Advanced ANN 1", "youtubeLink": "https://www.youtube.com/watch?v=nUUqwaxLnWs", "imageUrl": "https://img.youtube.com/vi/nUUqwaxLnWs/hqdefault.jpg", "status": "not-started" },
+      { "id": 205, "title": "Advanced ANN: Advanced ANN 2", "youtubeLink": "https://www.youtube.com/watch?v=dXB-KQYkzNU", "imageUrl": "https://img.youtube.com/vi/dXB-KQYkzNU/hqdefault.jpg", "status": "not-started" },
+      { "id": 206, "title": "Advanced ANN: Advanced ANN 3", "youtubeLink": "https://www.youtube.com/watch?v=NE88eqLnaka", "imageUrl": "https://img.youtube.com/vi/NE88eqLnaka/hqdefault.jpg", "status": "not-started" },
+      { "id": 207, "title": "Advanced ANN: Advanced ANN 4", "youtubeLink": "https://www.youtube.com/watch?v=k8fTYJPd3_I", "imageUrl": "https://img.youtube.com/vi/k8fTYJPd3_I/hqdefault.jpg", "status": "not-started" },
+      { "id": 208, "title": "Advanced ANN: Advanced ANN 5 (Playlist)", "youtubeLink": "https://www.youtube.com/watch?v=1waHlpKiNyY&list=PLkDaE6sCZn6Hn0vK8co82zjQtt3T2Nkqc", "imageUrl": "https://img.youtube.com/vi/1waHlpKiNyY/hqdefault.jpg", "status": "not-started" },
+      { "id": 209, "title": "Advanced ANN: Advanced ANN 6", "youtubeLink": "https://www.youtube.com/watch?v=Gey9CG6R6w8", "imageUrl": "https://img.youtube.com/vi/Gey9CG6R6w8/hqdefault.jpg", "status": "not-started" },
+      { "id": 210, "title": "Advanced ANN: Advanced ANN 7", "youtubeLink": "https://www.youtube.com/watch?v=Q1JCrG1bJ-A", "imageUrl": "https://img.youtube.com/vi/Q1JCrG1bJ-A/hqdefault.jpg", "status": "not-started" },
+      { "id": 211, "title": "Deep Learning Intro: DL Intro", "youtubeLink": "https://youtu.be/MTbBOu4M7_M", "imageUrl": "https://img.youtube.com/vi/MTbBOu4M7_M/hqdefault.jpg", "status": "not-started" }
+    ],
+    "Boosting Algorithms": [
+      { "id": 212, "title": "Boosting Concepts: Boosting 1", "youtubeLink": "https://www.youtube.com/watch?v=kho6oANGu_A", "imageUrl": "https://img.youtube.com/vi/kho6oANGu_A/hqdefault.jpg", "status": "not-started" },
+      { "id": 213, "title": "Boosting Concepts: Boosting 2", "youtubeLink": "https://www.youtube.com/watch?v=LsK-xG1cLYA", "imageUrl": "https://img.youtube.com/vi/LsK-xG1cLYA/hqdefault.jpg", "status": "not-started" },
+      { "id": 214, "title": "Boosting Concepts: Boosting 3", "youtubeLink": "https://www.youtube.com/watch?v=OtD8wVaFm6E", "imageUrl": "https://img.youtube.com/vi/OtD8wVaFm6E/hqdefault.jpg", "status": "not-started" }
+    ],
+    "Computer Vision - Basic CNN Model": [
+      { "id": 215, "title": "CNN Basics: CNN Basic 1", "youtubeLink": "https://www.youtube.com/watch?v=UHBmv7qCey4", "imageUrl": "https://img.youtube.com/vi/UHBmv7qCey4/hqdefault.jpg", "status": "not-started" },
+      { "id": 216, "title": "CNN Basics: CNN Basic 2", "youtubeLink": "https://www.youtube.com/watch?v=NmLK_WQBXB4", "imageUrl": "https://img.youtube.com/vi/NmLK_WQBXB4/hqdefault.jpg", "status": "not-started" },
+      { "id": 217, "title": "CNN Basics: CNN Basic 3", "youtubeLink": "https://www.youtube.com/watch?v=QzY57FaENXq", "imageUrl": "https://img.youtube.com/vi/QzY57FaENXq/hqdefault.jpg", "status": "not-started" },
+      { "id": 218, "title": "CNN Basics: CNN Basic 4", "youtubeLink": "https://www.youtube.com/watch?v=HGwBXDKFk9l", "imageUrl": "https://img.youtube.com/vi/HGwBXDKFk9l/hqdefault.jpg", "status": "not-started" },
+      { "id": 219, "title": "CNN Basics: CNN Basic 5", "youtubeLink": "https://www.youtube.com/watch?v=2-OI7ZB0MmU", "imageUrl": "https://img.youtube.com/vi/2-OI7ZB0MmU/hqdefault.jpg", "status": "not-started" },
+      { "id": 220, "title": "Backprop in CNN: CNN Backprop", "youtubeLink": "https://www.youtube.com/watch?v=pUCCd2-17vl", "imageUrl": "https://img.youtube.com/vi/pUCCd2-17vl/hqdefault.jpg", "status": "not-started" },
+      { "id": 221, "title": "Image Segmentation: Image Segmentation", "youtubeLink": "https://www.youtube.com/watch?v=FNHZ64k83e8", "imageUrl": "https://img.youtube.com/vi/FNHZ64k83e8/hqdefault.jpg", "status": "not-started" },
+      { "id": 222, "title": "Object Detection using YOLO: YOLO Object Detection", "youtubeLink": "https://www.youtube.com/watch?v=MhftoBaoZpq", "imageUrl": "https://img.youtube.com/vi/MhftoBaoZpq/hqdefault.jpg", "status": "not-started" }
+    ],
+    "Computer Vision - CNN Architectures": [
+      { "id": 223, "title": "CNN Architectures Overview: CNN Architectures", "youtubeLink": "https://www.youtube.com/watch?v=DAOcjicFr1Y", "imageUrl": "https://img.youtube.com/vi/DAOcjicFr1Y/hqdefault.jpg", "status": "not-started" }
+    ],
+    "Computer Vision - Autoencoders & GANs": [
+      { "id": 224, "title": "Autoencoders & GANs: Autoencoders & GANs 1", "youtubeLink": "https://www.youtube.com/watch?v=5WoItGTWV54", "imageUrl": "https://img.youtube.com/vi/5WoItGTWV54/hqdefault.jpg", "status": "not-started" },
+      { "id": 225, "title": "Autoencoders & GANs: Autoencoders & GANs 2", "youtubeLink": "https://www.youtube.com/watch?v=9zKuYvjFFS8", "imageUrl": "https://img.youtube.com/vi/9zKuYvjFFS8/hqdefault.jpg", "status": "not-started" }
+    ],
+    "Sequence Modeling - RNNs and LSTMs": [
+      { "id": 226, "title": "RNN & LSTM Theory: RNN & LSTM Theory", "youtubeLink": "https://www.youtube.com/watch?v=ySEx_Bqxvvo", "imageUrl": "https://img.youtube.com/vi/ySEx_Bqxvvo/hqdefault.jpg", "status": "not-started" }
+    ],
+    "NLP - Transformer Architecture and LLMs": [
+      { "id": 227, "title": "Transformer & LLMs Introduction: Transformer & LLMs", "youtubeLink": "https://www.youtube.com/watch?v=SZorAJ4I-sA", "imageUrl": "https://img.youtube.com/vi/SZorAJ4I-sA/hqdefault.jpg", "status": "not-started" },
+      { "id": 228, "title": "Transformer & LLMs Introduction: Transformer & LLMs 2", "youtubeLink": "https://www.youtube.com/watch?v=TQQIZhbC5ps", "imageUrl": "https://img.youtube.com/vi/TQQIZhbC5ps/hqdefault.jpg", "status": "not-started" },
+      { "id": 229, "title": "Transformer & LLMs Introduction: Transformer & LLMs 3", "youtubeLink": "https://www.youtube.com/watch?v=wjZofJX0v4M", "imageUrl": "https://img.youtube.com/vi/wjZofJX0v4M/hqdefault.jpg", "status": "not-started" },
+      { "id": 230, "title": "Transformer & LLMs Introduction: Transformer & LLMs 4", "youtubeLink": "https://www.youtube.com/watch?v=eMIx5fFNoYc", "imageUrl": "https://img.youtube.com/vi/eMIx5fFNoYc/hqdefault.jpg", "status": "not-started" },
+      { "id": 231, "title": "Transformer & LLMs Introduction: Transformer & LLMs 5", "youtubeLink": "https://www.youtube.com/watch?v=OyFJWRnt_AY", "imageUrl": "https://img.youtube.com/vi/OyFJWRnt_AY/hqdefault.jpg", "status": "not-started" },
+      { "id": 232, "title": "Transformer & LLMs Introduction: Transformer & LLMs 6", "youtubeLink": "https://www.youtube.com/watch?v=UPtG_38Oq80", "imageUrl": "https://img.youtube.com/vi/UPtG_38Oq80/hqdefault.jpg", "status": "not-started" }
+    ],
+    "NLP - LLM Pre-Training": [
+      { "id": 233, "title": "LLM Pre-Training: LLM Pre-Training", "youtubeLink": "https://www.youtube.com/watch?v=knTc-NQSjKA", "imageUrl": "https://img.youtube.com/vi/knTc-NQSjKA/hqdefault.jpg", "status": "not-started" }
+    ],
+    "NLP - Fine Tuning LLMs": [
+      { "id": 234, "title": "Fine Tuning LLMs: Fine Tuning LLMs 1", "youtubeLink": "https://www.youtube.com/watch?v=kCc8FmEb1nY", "imageUrl": "https://img.youtube.com/vi/kCc8FmEb1nY/hqdefault.jpg", "status": "not-started" },
+      { "id": 235, "title": "Fine Tuning LLMs: Fine Tuning LLMs 2", "youtubeLink": "https://www.youtube.com/watch?v=mw7ay38--ak", "imageUrl": "https://img.youtube.com/vi/mw7ay38--ak/hqdefault.jpg", "status": "not-started" },
+      { "id": 236, "title": "Fine Tuning LLMs: Fine Tuning LLMs 3", "youtubeLink": "https://www.youtube.com/watch?v=dzyDHMyeh_c", "imageUrl": "https://img.youtube.com/vi/dzyDHMyeh_c/hqdefault.jpg", "status": "not-started" }
+    ],
+    "NLP - Retrieval Augmented Generation": [
+      { "id": 237, "title": "RAG: RAG (Playlist)", "youtubeLink": "https://www.youtube.com/watch?v=wd7TZ4w1mSw&list=PLfaDFEXuae2LXbO1_PKyVJiQ23ZztA0x", "imageUrl": "https://img.youtube.com/vi/wd7TZ4w1mSw/hqdefault.jpg", "status": "not-started" },
+      { "id": 238, "title": "RAG: RAG 2", "youtubeLink": "https://www.youtube.com/watch?v=ahnGLM-RC1Y", "imageUrl": "https://img.youtube.com/vi/ahnGLM-RC1Y/hqdefault.jpg", "status": "not-started" }
+    ],
+    "Image Captioning and Text to Image": [
+      { "id": 239, "title": "Image/Text Generation: Image Captioning/Text to Image 1", "youtubeLink": "https://www.youtube.com/watch?v=JmATtG0yA5E", "imageUrl": "https://img.youtube.com/vi/JmATtG0yA5E/hqdefault.jpg", "status": "not-started" },
+      { "id": 240, "title": "Image/Text Generation: Image Captioning/Text to Image 2", "youtubeLink": "https://www.youtube.com/watch?v=pea3sH6orMc", "imageUrl": "https://img.youtube.com/vi/pea3sH6orMc/hqdefault.jpg", "status": "not-started" },
+      { "id": 241, "title": "Image/Text Generation: Image Captioning/Text to Image 3", "youtubeLink": "https://www.youtube.com/watch?v=fUSTbGrL1tc", "imageUrl": "https://img.youtube.com/vi/fUSTbGrL1tc/hqdefault.jpg", "status": "not-started" },
+      { "id": 242, "title": "Image/Text Generation: Image Captioning/Text to Image 4", "youtubeLink": "https://www.youtube.com/watch?v=LWIZI_RJYIM", "imageUrl": "https://img.youtube.com/vi/LWIZI_RJYIM/hqdefault.jpg", "status": "not-started" },
+      { "id": 243, "title": "Image/Text Generation: Image Captioning/Text to Image 5", "youtubeLink": "https://www.youtube.com/watch?v=aaP7JJZuvGs", "imageUrl": "https://img.youtube.com/vi/aaP7JJZuvGs/hqdefault.jpg", "status": "not-started" }
+    ]
+  }
+}
