@@ -594,54 +594,51 @@ p.text-muted.mb-3 { /* "Found X job postings" */
     border-top: 1px solid rgba(var(--bs-primary-rgb, 13, 110, 253), 0.2);
 }
 /* ============================================= */
-/* Dark Theme Form Input & Textarea Fix          */
+/* Dark Theme Form Styling (Inputs, Textareas)   */
 /* ============================================= */
 
-/* Style for text inputs, textareas, and select dropdowns */
+/* This rule applies to ALL text inputs, textareas, and select menus */
 .form-control,
 .form-select {
-    color: #dee2e6; /* Light grey text color for readability */
-    background-color: #2b3035; /* A slightly off-black background */
-    background-clip: padding-box;
-    border: 1px solid #495057; /* A subtle border that's not pure white */
+    color: #dee2e6;
+    background-color: #2b3035; /* Dark background */
+    border: 1px solid #495057; /* A subtle border */
 }
 
-/* Style for when the input is focused (clicked on) */
+/* This rule applies when you CLICK on an input */
 .form-control:focus,
 .form-select:focus {
     color: #dee2e6;
-    background-color: #343a40; /* Slightly lighter background on focus */
-    border-color: #80bdff; /* A common blue focus color */
-    outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Glow effect */
+    background-color: #343a40;
+    border-color: #80bdff; /* Standard blue focus color */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Blue glow */
 }
 
-/* Style for placeholder text (e.g., "Enter your feedback here...") */
+/* This rule styles the placeholder text inside an empty input */
 .form-control::placeholder {
-    color: #6c757d; /* Muted grey for placeholder text */
+    color: #6c757d;
     opacity: 1;
 }
 
-/* Style for disabled inputs */
+/* This rule styles inputs that are disabled or readonly */
 .form-control:disabled,
 .form-control[readonly] {
-    background-color: #343a40; /* Darker background for disabled fields */
-    opacity: 0.7;
+    background-color: #212529; /* Even darker for disabled fields */
+    opacity: 0.6;
 }
 
-/* Specifically target textareas to ensure they are covered */
-textarea.form-control {
-    min-height: 120px; /* Give textareas a decent default height */
+/* This ensures all parts of a file input are styled correctly */
+.form-control[type="file"] {
+    color: #6c757d;
+}
+.form-control[type="file"]:focus {
+    color: #dee2e6;
 }
 
-/* Fix for light-background sections if you have them inside dark pages */
-.bg-light .form-control,
-.bg-light .form-select {
-    color: #212529; /* Black text on light background */
-    background-color: #fff; /* White background */
-    border: 1px solid #ced4da; /* Standard light-theme border */
+/* Specifically target the feedback textarea in the admin view */
+#feedback, textarea[name="feedback"] {
+    min-height: 100px;
 }
-
 /* Dropdown enhancements */
 .dropdown-menu {
     border: none;
