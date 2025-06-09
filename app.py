@@ -199,23 +199,32 @@ def learning_hub():
 
 @app.route('/python-learning')
 def python_learning():
-    # Find the first video to use as a default
+    # Attempt to find the ID of the very first video in the course
     first_video_id = None
     if PYTHON_DATA.get('topics') and PYTHON_DATA['topics'][0].get('videos'):
         first_video_id = PYTHON_DATA['topics'][0]['videos'][0]['id']
 
-    video_id_to_find = request.args.get('video_id', first_video_id)
+    video_id_to_find = request.args.get('video_id')
 
+    # CORE CHANGE: If no video ID is in the URL, redirect to the first one.
     if not video_id_to_find:
-        flash("No Python learning content is available at the moment.", "warning")
-        return render_template('python_learning.html', course_data=PYTHON_DATA, current_video=None, current_topic_name=None)
+        if first_video_id is not None:
+            # This redirect ensures the page always has a video_id in the URL
+            return redirect(url_for('python_learning', video_id=first_video_id))
+        else:
+            # Fallback for a completely empty JSON file
+            flash("No Python learning content is available at this time.", "warning")
+            return render_template('python_learning.html', course_data=PYTHON_DATA, current_video=None, current_topic_name=None)
 
+    # Now we are guaranteed to have a video_id_to_find
     current_video, current_topic_name = find_video_by_id(video_id_to_find, PYTHON_DATA)
     
+    # If the ID in the URL is invalid, redirect to the first video as a safe fallback
     if not current_video:
-        flash(f"The requested video (ID: {video_id_to_find}) could not be found.", "danger")
-        return redirect(url_for('python_learning'))
+        flash(f"The requested video (ID: {video_id_to_find}) could not be found. Showing the first lesson.", "danger")
+        return redirect(url_for('python_learning', video_id=first_video_id))
 
+    # Success! Render the page with the found video.
     return render_template(
         'python_learning.html',
         course_data=PYTHON_DATA,
@@ -223,23 +232,27 @@ def python_learning():
         current_topic_name=current_topic_name
     )
 
+
 @app.route('/machine-learning')
 def machine_learning():
     first_video_id = None
     if ML_DATA.get('topics') and ML_DATA['topics'][0].get('videos'):
         first_video_id = ML_DATA['topics'][0]['videos'][0]['id']
 
-    video_id_to_find = request.args.get('video_id', first_video_id)
+    video_id_to_find = request.args.get('video_id')
 
     if not video_id_to_find:
-        flash("No Machine Learning content is available at the moment.", "warning")
-        return render_template('machine_learning.html', course_data=ML_DATA, current_video=None, current_topic_name=None)
+        if first_video_id is not None:
+            return redirect(url_for('machine_learning', video_id=first_video_id))
+        else:
+            flash("No Machine Learning content is available.", "warning")
+            return render_template('machine_learning.html', course_data=ML_DATA, current_video=None, current_topic_name=None)
 
     current_video, current_topic_name = find_video_by_id(video_id_to_find, ML_DATA)
     
     if not current_video:
-        flash(f"The requested video (ID: {video_id_to_find}) could not be found.", "danger")
-        return redirect(url_for('machine_learning'))
+        flash(f"Video with ID '{video_id_to_find}' not found. Showing first lesson.", "danger")
+        return redirect(url_for('machine_learning', video_id=first_video_id))
 
     return render_template(
         'machine_learning.html',
@@ -248,23 +261,27 @@ def machine_learning():
         current_topic_name=current_topic_name
     )
 
+
 @app.route('/deep-learning-ai')
 def deep_learning_ai():
     first_video_id = None
     if DL_DATA.get('topics') and DL_DATA['topics'][0].get('videos'):
         first_video_id = DL_DATA['topics'][0]['videos'][0]['id']
 
-    video_id_to_find = request.args.get('video_id', first_video_id)
+    video_id_to_find = request.args.get('video_id')
 
     if not video_id_to_find:
-        flash("No Deep Learning content is available at the moment.", "warning")
-        return render_template('deep_learning_ai.html', course_data=DL_DATA, current_video=None, current_topic_name=None)
+        if first_video_id is not None:
+            return redirect(url_for('deep_learning_ai', video_id=first_video_id))
+        else:
+            flash("No Deep Learning content is available.", "warning")
+            return render_template('deep_learning_ai.html', course_data=DL_DATA, current_video=None, current_topic_name=None)
 
     current_video, current_topic_name = find_video_by_id(video_id_to_find, DL_DATA)
     
     if not current_video:
-        flash(f"The requested video (ID: {video_id_to_find}) could not be found.", "danger")
-        return redirect(url_for('deep_learning_ai'))
+        flash(f"Video with ID '{video_id_to_find}' not found. Showing first lesson.", "danger")
+        return redirect(url_for('deep_learning_ai', video_id=first_video_id))
 
     return render_template(
         'deep_learning_ai.html',
