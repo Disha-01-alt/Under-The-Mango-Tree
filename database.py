@@ -224,22 +224,19 @@ def update_candidate_profile(user_id, **kwargs):
         cur.execute(query, values)
         conn.commit()
 
+# In database.py
 def get_all_jobs(**filters):
-    """Get all jobs with optional filters"""
     with get_db() as conn:
         cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
         query = "SELECT j.*, u.full_name as posted_by_name FROM jobs j LEFT JOIN users u ON j.posted_by = u.id WHERE 1=1"
         params = []
-        # (Your filtering logic can be added here)
+        # (filter logic here)
         query += " ORDER BY j.created_at DESC"
         cur.execute(query, tuple(params))
-        jobs = []
+        
         from models import Job
-        for row in cur.fetchall():
-            # Use **row now that Job class is fixed
-            job_obj = Job(**row)
-            job_obj.posted_by_name = row.get('posted_by_name')
-            jobs.append(job_obj)
+        # THE FIX IS HERE: The loop is now simpler.
+        jobs = [Job(**row) for row in cur.fetchall()]
         return jobs
 
 def create_job(title, company, location, description, requirements, posted_by, salary_range=None, job_type=None, linkedin_url=None, job_tags=None):
