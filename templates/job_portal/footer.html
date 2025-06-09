@@ -28,7 +28,7 @@
       <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
         <h5 class="text-white">For Candidates</h5>
         <ul class="list-unstyled mb-0">
-          <li><a href="{{ url_for('auth_routes.register', role='candidate') }}" class="text-white-50">Create Profile</a></li>
+          <li><a href="{{ url_for('google_auth.login') }}" class="text-white-50">Create Profile / Sign In</a></li>
           {% if current_user.is_authenticated and current_user.role == 'candidate' %}
             <li><a href="{{ url_for('candidate_routes.dashboard') }}" class="text-white-50">My Dashboard</a></li>
             <li><a href="{{ url_for('candidate_routes.profile') }}" class="text-white-50">Edit Profile</a></li>
