@@ -98,16 +98,27 @@ def find_video_by_id(video_id, data_source):
             if str(video.get('id')) == str(video_id):
                 return video, topic.get('name')  # Return the video object and its topic name
     return None, None  # Return None if not found
+DL_SIDEBAR_TOPICS
 try:
     with open(os.path.join('data', 'deep_learning_data.json'), 'r') as f:
-        dl_data = json.load(f)
-        DL_VIDEO_DATA = dl_data['DL_VIDEO_DATA']
-        DL_SIDEBAR_TOPICS = dl_data['DL_SIDEBAR_TOPICS']
-except (FileNotFoundError, json.JSONDecodeError, KeyError) as e:
-    print(f"ERROR: Could not load or parse deep_learning_data.json: {e}")
-    DL_VIDEO_DATA = {}
-    DL_SIDEBAR_TOPICS = []
-# --- END OF NEW BLOCK ---
+        DL_DATA = json.load(f)
+except (FileNotFoundError, json.JSONDecodeError) as e:
+    print(f"ERROR loading deep_learning_data.json: {e}")
+    # Create a default empty structure so the app doesn't crash
+    DL_DATA = {"topics": [], "course_title": "Error: Data Not Found"}
+
+# The find_video_by_id helper function is reusable for all courses.
+# Make sure it is defined once in your app.py.
+def find_video_by_id(video_id, data_source):
+    """Helper function to find a specific video and its topic from the structured data."""
+    if not video_id:
+        return None, None
+    for topic in data_source.get('topics', []):
+        for video in topic.get('videos', []):
+            if str(video.get('id')) == str(video_id):
+                return video, topic.get('name')  # Return the video object and its topic name
+    return None, None  # Return None if not found
+
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max file size
 app.config['UPLOAD_FOLDER'] = 'uploads'
 # Create required directories
@@ -258,36 +269,42 @@ def python_learning():
         current_video=current_video,    # The specific video object to display
         current_topic_name=current_topic_name # The name of the topic for highlighting
     )
-# It's a copy of the machine_learning route, adapted for the new DL variables.
+# --- THE NEW AND FINAL DEEP LEARNING ROUTE ---
 @app.route('/deep-learning-ai')
 def deep_learning_ai():
-    # Use the new variables we created from the JSON transformation
-    if not DL_SIDEBAR_TOPICS:
-        flash("Deep Learning course data is currently unavailable.", "warning")
-        selected_topic = None
-    else:
-        selected_topic = request.args.get('topic', DL_SIDEBAR_TOPICS[0])
+    # Attempt to load the first available video if no specific ID is given
+    first_video_id = None
+    if DL_DATA.get('topics') and DL_DATA['topics'][0].get('videos'):
+        first_video_id = DL_DATA['topics'][0]['videos'][0]['id']
 
-    # Get all videos for the selected topic
-    videos = DL_VIDEO_DATA.get(selected_topic, [])
-    
-    # Create sidebar topics with status indicators
-    sidebar_topics_with_status = []
-    for topic in DL_SIDEBAR_TOPICS:
-        topic_data = {
-            'name': topic,
-            'video_count': len(DL_VIDEO_DATA.get(topic, [])),
-            'is_active': topic == selected_topic,
-            'url_param': topic.replace(' ', '%20')
-        }
-        sidebar_topics_with_status.append(topic_data)
-    
-    # IMPORTANT: We re-use the machine_learning.html template!
-    return render_template('deep_learning_ai.html',
-                           videos=videos,
-                           sidebar_topics=sidebar_topics_with_status,
-                           selected_topic=selected_topic,
-                           course_title="Deep Learning & AI") # Optional: Pass a title
+    # Get video_id from URL, or default to the first video if available
+    video_id_to_find = request.args.get('video_id', first_video_id)
+
+    # CASE 1: No videos exist in the data file at all
+    if not video_id_to_find:
+        flash("No Deep Learning content is available at the moment.", "warning")
+        return render_template(
+            'deep_learning_ai.html', 
+            course_data=DL_DATA, 
+            current_video=None, 
+            current_topic_name=None
+        )
+
+    # CASE 2: A video ID exists, so we try to find the video
+    current_video, current_topic_name = find_video_by_id(video_id_to_find, DL_DATA)
+
+    # If the specific video wasn't found (e.g., bad ID in URL), redirect
+    if not current_video:
+        flash(f"The requested video (ID: {video_id_to_find}) could not be found. Showing the first video instead.", "info")
+        return redirect(url_for('deep_learning_ai', video_id=first_video_id))
+        
+    # SUCCESS CASE: Video was found, render the page
+    return render_template(
+        'deep_learning_ai.html', 
+        course_data=DL_DATA,
+        current_video=current_video,
+        current_topic_name=current_topic_name
+    )
 @app.route('/english-learning')
 def english_learning():
     # Use the custom English learning page with cards
