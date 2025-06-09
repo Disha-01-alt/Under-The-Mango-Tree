@@ -1,0 +1,61 @@
+<!-- templates/job_portal/footer.html -->
+<footer class="footer mt-auto py-4 bg-dark text-white-50">
+  <div class="container">
+    <div class="row">
+      
+      <!-- About Section -->
+      <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+        <h5 class="text-white">About the Job Portal</h5>
+        <p class="small">
+          Connecting talented students with leading companies. Our mission is to bridge the gap between education and career opportunities.
+        </p>
+        <p class="small">
+          © <span id="current-year">2024</span> Under The Mango Tree. All Rights Reserved.
+        </p>
+      </div>
+
+      <!-- Quick Links Section -->
+      <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+        <h5 class="text-white">Quick Links</h5>
+        <ul class="list-unstyled mb-0">
+          <li><a href="{{ url_for('job_portal_index') }}" class="text-white-50">Home</a></li>
+          <li><a href="{{ url_for('candidate_routes.jobs') }}" class="text-white-50">Browse Jobs</a></li>
+          <li><a href="{{ url_for('google_auth.login') }}" class="text-white-50">Sign In</a></li>
+        </ul>
+      </div>
+
+      <!-- For Candidates Section -->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <h5 class="text-white">For Candidates</h5>
+        <ul class="list-unstyled mb-0">
+          <li><a href="{{ url_for('auth_routes.register', role='candidate') }}" class="text-white-50">Create Profile</a></li>
+          {% if current_user.is_authenticated and current_user.role == 'candidate' %}
+            <li><a href="{{ url_for('candidate_routes.dashboard') }}" class="text-white-50">My Dashboard</a></li>
+            <li><a href="{{ url_for('candidate_routes.profile') }}" class="text-white-50">Edit Profile</a></li>
+          {% endif %}
+        </ul>
+      </div>
+
+      <!-- Contact / Social Media Section -->
+      <div class="col-lg-3 col-md-6">
+        <h5 class="text-white">Follow Us</h5>
+        <p class="small">Stay updated with the latest news and job openings.</p>
+        <div>
+          <!-- Replace '#' with your actual social media links -->
+          <a href="#" class="text-white-50 me-3"><i class="fab fa-linkedin fa-lg"></i></a>
+          <a href="#" class="text-white-50 me-3"><i class="fab fa-twitter fa-lg"></i></a>
+          <a href="#" class="text-white-50"><i class="fab fa-facebook-f fa-lg"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+<script>
+    // This script ensures the year is always current.
+    // It's safe to keep it with the footer.
+    if (document.getElementById('current-year')) {
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    }
+</script>
