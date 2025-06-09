@@ -105,7 +105,8 @@ def callback():
                 with get_db() as conn:
                     with conn.cursor() as cur:
                         cur.execute("UPDATE users SET role = 'company' WHERE id = %s", (user.id,))
-                conn.commit()
+                    # THE FIX IS HERE: conn.commit() is now INSIDE the 'with' block
+                    conn.commit()
                 user.role = 'company' # Update the in-memory object for this request
         else:
             # User does not exist, so create a new one.
@@ -151,7 +152,6 @@ def callback():
 @login_required
 def logout():
     logout_user()
-    # Clear all session keys for a clean logout
     session.clear()
     flash('You have been logged out successfully.', 'info')
     return redirect(url_for('job_portal_index'))
