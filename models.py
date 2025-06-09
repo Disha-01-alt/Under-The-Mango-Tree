@@ -78,7 +78,7 @@ class Job:
                  posted_by=None, created_at=None, linkedin_url=None,
                  # New field
                  job_tags=None):
-        self.id = job_id
+        self.id = id
         self.title = title
         self.company = company
         self.location = location
