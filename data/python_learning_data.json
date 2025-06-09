@@ -1,5 +1,5 @@
 {
-  "course_title": "Python Programming",
+  "course_title": "Python Programming Fundamentals",
   "topics": [
     {
       "name": "Basic Introduction",
@@ -9,13 +9,13 @@
           "title": "Python Tutorial 01 - Basic Introduction",
           "youtube_url": "https://www.youtube.com/watch?v=ruGpu6BilYs",
           "what_you_will_learn": [
-            "What Python is and why it's popular.",
-            "How to set up your Python environment.",
-            "The basic syntax of a Python script."
+            "What Python is and why it's a popular first language.",
+            "How to set up your Python programming environment.",
+            "The basic syntax of a Python script and how to run it."
           ],
-          "content_covered": "This video provides a gentle introduction to the Python programming language. It covers the history of Python, its key features, and walks you through writing and running your first 'Hello, World!' program. No prior programming experience is required.",
+          "content_covered": "This video provides a gentle introduction to the Python programming language. It covers the history of Python, its key features (like readability and versatility), and walks you through writing and running your very first 'Hello, World!' program. No prior programming experience is required.",
           "resources": [
-            { "name": "Sample Code", "url": "#", "icon": "fas fa-code" },
+            { "name": "Official Python Website", "url": "https://www.python.org/", "icon": "fas fa-globe" },
             { "name": "Python Installer", "url": "https://www.python.org/downloads/", "icon": "fas fa-download" }
           ]
         }
@@ -29,13 +29,52 @@
           "title": "Python Tutorial 02 - Basic Operators",
           "youtube_url": "https://www.youtube.com/watch?v=_YkSrGKNgFI",
           "what_you_will_learn": [
-            "Arithmetic operators (+, -, *, /).",
-            "Comparison operators (==, !=, >, <).",
-            "How to use operators in expressions."
+            "How to use arithmetic operators like +, -, *, / for calculations.",
+            "How to use comparison operators like ==, !=, >, < to compare values.",
+            "The order of operations in Python expressions."
           ],
-          "content_covered": "Learn the fundamental building blocks of Python logic. This tutorial explains how to perform mathematical calculations and compare values, which is essential for making decisions in your code.",
+          "content_covered": "Learn the fundamental building blocks of Python logic. This tutorial explains how to perform mathematical calculations and how to compare different values, a skill that is essential for making decisions and controlling the flow of your programs.",
           "resources": [
-            { "name": "Operator Cheatsheet", "url": "#", "icon": "fas fa-file-alt" }
+            { "name": "Sample Code Snippets", "url": "#", "icon": "fas fa-code" },
+            { "name": "Python Operators Cheatsheet", "url": "#", "icon": "fas fa-file-alt" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Indentation",
+      "videos": [
+        {
+          "id": 2,
+          "title": "Python Tutorial 03 - Indentation",
+          "youtube_url": "https://www.youtube.com/watch?v=pS7uCnnFKYs",
+          "what_you_will_learn": [
+            "Why indentation is mandatory in Python, not just for style.",
+            "How to correctly indent code blocks.",
+            "Common indentation errors and how to fix them."
+          ],
+          "content_covered": "Unlike many other languages, Python uses whitespace indentation to define code structure. This video explains this unique and crucial feature, showing you how to create code blocks for loops, functions, and conditional statements.",
+          "resources": [
+            { "name": "Style Guide (PEP 8)", "url": "https://www.python.org/dev/peps/pep-0008/#indentation", "icon": "fas fa-book" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "If Else",
+      "videos": [
+        {
+          "id": 3,
+          "title": "Python Tutorial 04 - Decision Making",
+          "youtube_url": "https://www.youtube.com/watch?v=PRz0RmvYsE4",
+          "what_you_will_learn": [
+            "How to use `if` to execute code based on a condition.",
+            "How to use `else` to provide an alternative path.",
+            "How to handle multiple conditions with `elif`."
+          ],
+          "content_covered": "Make your programs smarter by enabling them to make decisions. This tutorial covers the `if`, `elif`, and `else` statements, allowing you to control which parts of your code run based on specific conditions.",
+          "resources": [
+            { "name": "Conditional Statements Examples", "url": "#", "icon": "fas fa-code" }
           ]
         }
       ]
@@ -45,45 +84,285 @@
       "videos": [
         {
           "id": 4,
-          "title": "Python Tutorial 05 - Function with One Input",
+          "title": "Function with One Input Variable",
           "youtube_url": "https://www.youtube.com/watch?v=wURLEjcMwmE",
           "what_you_will_learn": [
-            "How to define a function using `def`.",
-            "How to pass a single argument to a function.",
-            "The concept of reusable code blocks."
+            "How to define a function using the `def` keyword.",
+            "The concept of parameters and how to pass a single argument.",
+            "Why functions are critical for writing clean, reusable code."
           ],
-          "content_covered": "Functions are the core of organized programming. This video teaches you how to create a simple function that takes one piece of data, processes it, and prints a result.",
+          "content_covered": "Functions are the core of organized and efficient programming. This video teaches you how to create a simple function that takes one piece of data (an argument), processes it, and prints a result.",
           "resources": [
-            { "name": "Sample Code", "url": "#", "icon": "fas fa-code" }
+            { "name": "Function Examples", "url": "#", "icon": "fas fa-code" }
           ]
         },
         {
           "id": 5,
-          "title": "Python Tutorial 06 - Function Output",
+          "title": "Function Output with Return",
           "youtube_url": "https://www.youtube.com/watch?v=K4Zsfgkb-nE",
           "what_you_will_learn": [
             "Using the `return` statement to send data back from a function.",
-            "Capturing the returned value in a variable.",
-            "The difference between printing and returning."
+            "How to capture the returned value in a variable for later use.",
+            "Understanding the crucial difference between printing and returning."
           ],
-          "content_covered": "Learn how to make your functions truly powerful by having them return values that can be used elsewhere in your program. This is a critical concept for building complex applications.",
+          "content_covered": "Learn how to make your functions truly powerful by having them return values that can be used elsewhere in your program. This is a critical concept for any non-trivial application.",
           "resources": [
-            { "name": "Sample Code", "url": "#", "icon": "fas fa-code" }
+            { "name": "Return Statement Docs", "url": "https://docs.python.org/3/tutorial/controlflow.html#defining-functions", "icon": "fas fa-book" }
           ]
         },
         {
-            "id": 6,
-            "title": "Python Tutorial 07 - Function with Two Inputs",
-            "youtube_url": "https://www.youtube.com/watch?v=AtnC-eHPjUE",
-            "what_you_will_learn": [
-                "Defining functions that accept multiple arguments.",
-                "Performing operations with two or more inputs.",
-                "Building a simple calculator function."
-            ],
-            "content_covered": "Expand your knowledge of functions by learning how to work with multiple input parameters. This video demonstrates creating a function to add two numbers, a common and practical example.",
-            "resources": [
-              { "name": "Sample Code", "url": "#", "icon": "fas fa-code" }
-            ]
+          "id": 6,
+          "title": "Function with Two Input Variables",
+          "youtube_url": "https://www.youtube.com/watch?v=AtnC-eHPjUE",
+          "what_you_will_learn": [
+            "Defining functions that accept multiple arguments.",
+            "Performing operations with two or more inputs.",
+            "Building a simple calculator function as a practical example."
+          ],
+          "content_covered": "Expand your knowledge of functions by learning how to work with multiple input parameters. This video demonstrates creating a function that takes two numbers, a common and highly practical use case.",
+          "resources": [
+            { "name": "Multiple Argument Examples", "url": "#", "icon": "fas fa-code" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Control Flow",
+      "videos": [
+        {
+          "id": 7,
+          "title": "Break, Continue, and Pass",
+          "youtube_url": "https://www.youtube.com/watch?v=jdPwiner0aI",
+          "what_you_will_learn": [
+            "How to exit a loop early with `break`.",
+            "How to skip the current iteration and move to the next with `continue`.",
+            "How to use `pass` as a placeholder in empty code blocks."
+          ],
+          "content_covered": "Gain fine-grained control over your loops. This tutorial explains the `break`, `continue`, and `pass` statements, which allow you to alter the standard flow of your loops for more complex logic.",
+          "resources": [
+            { "name": "Control Flow Examples", "url": "#", "icon": "fas fa-code" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Lists",
+      "videos": [
+        {
+          "id": 8,
+          "title": "Introduction to Lists",
+          "youtube_url": "https://www.youtube.com/watch?v=OoGezi_REq4",
+          "what_you_will_learn": [
+            "What a Python list is and how to create one.",
+            "How to store different data types in a single list.",
+            "Accessing elements in a list using their index."
+          ],
+          "content_covered": "Lists are one of Python's most versatile data structures. This video introduces you to lists, showing you how to create them and how to store and retrieve ordered collections of items.",
+          "resources": [
+            { "name": "Python List Documentation", "url": "https://docs.python.org/3/tutorial/datastructures.html", "icon": "fas fa-book" }
+          ]
+        },
+        {
+          "id": 9,
+          "title": "List Operations",
+          "youtube_url": "https://www.youtube.com/watch?v=NoH-MfljqH8",
+          "what_you_will_learn": [
+            "Adding elements with `append()` and `insert()`.",
+            "Removing elements with `pop()` and `remove()`.",
+            "Slicing lists to get specific sub-sections of data."
+          ],
+          "content_covered": "Go beyond basic list creation and learn how to manipulate them. This tutorial covers essential list operations like adding, removing, and slicing elements, giving you the tools to manage dynamic data.",
+          "resources": [
+            { "name": "List Methods Examples", "url": "#", "icon": "fas fa-code" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Loops",
+      "videos": [
+        {
+          "id": 10,
+          "title": "For Loops",
+          "youtube_url": "https://www.youtube.com/watch?v=rZBihU7Vybk",
+          "what_you_will_learn": [
+            "How to iterate over a sequence (like a list) using a `for` loop.",
+            "The basic syntax of a for loop.",
+            "Using the `range()` function to loop a specific number of times."
+          ],
+          "content_covered": "Automate repetitive tasks with `for` loops. This video teaches you how to iterate through collections of data like lists, executing a block of code for each item in the collection.",
+          "resources": [
+            { "name": "For Loop Examples", "url": "#", "icon": "fas fa-code" }
+          ]
+        },
+        {
+          "id": 11,
+          "title": "Loops with Lists",
+          "youtube_url": "https://www.youtube.com/watch?v=9mKG_gB9u28",
+          "what_you_will_learn": [
+            "Practical examples of combining loops and lists.",
+            "How to perform an operation on every element in a list.",
+            "Building new lists based on existing ones."
+          ],
+          "content_covered": "Combine the power of lists and loops. This tutorial provides practical examples of looping through list elements to perform operations, a fundamental pattern in data processing and manipulation.",
+          "resources": [
+            { "name": "Code Examples", "url": "#", "icon": "fas fa-code" }
+          ]
+        },
+        {
+          "id": 12,
+          "title": "While Loops",
+          "youtube_url": "https://www.youtube.com/watch?v=jOq5j3265Tw",
+          "what_you_will_learn": [
+            "How to create a loop that runs as long as a condition is true.",
+            "The structure of a `while` loop.",
+            "The importance of an exit condition to avoid infinite loops."
+          ],
+          "content_covered": "Learn another way to create loops with the `while` statement. This is useful for situations where you don't know in advance how many times you need to loop, but you have a condition that must be met.",
+          "resources": [
+            { "name": "While Loop Examples", "url": "#", "icon": "fas fa-code" }
+          ]
+        },
+        {
+          "id": 13,
+          "title": "Maximum and Minimum of a List",
+          "youtube_url": "https://www.youtube.com/watch?v=BEvoeyLx9oM",
+          "what_you_will_learn": [
+            "How to find the largest and smallest values in a list of numbers.",
+            "Using built-in `max()` and `min()` functions.",
+            "Writing a loop to find the max/min manually to understand the logic."
+          ],
+          "content_covered": "A common programming task is to find the maximum or minimum value in a collection. This video shows you both the easy way with Python's built-in functions and the manual way using a loop to solidify your understanding.",
+          "resources": [
+            { "name": "Code Examples", "url": "#", "icon": "fas fa-code" }
+          ]
+        },
+        {
+          "id": 14,
+          "title": "Nested Loops",
+          "youtube_url": "https://www.youtube.com/watch?v=xvuf71GLlww",
+          "what_you_will_learn": [
+            "How to place one loop inside another loop.",
+            "How nested loops execute (outer vs. inner loop).",
+            "Practical use cases like iterating over a grid or 2D list."
+          ],
+          "content_covered": "Tackle more complex iteration problems with nested loops. This tutorial explains how to put a loop inside another, a technique often used for working with multi-dimensional data structures like grids or matrices.",
+          "resources": [
+            { "name": "Nested Loop Examples", "url": "#", "icon": "fas fa-code" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sorting",
+      "videos": [
+        {
+          "id": 15,
+          "title": "Introduction to Sorting",
+          "youtube_url": "https://www.youtube.com/watch?v=ST_pQyLSg78",
+          "what_you_will_learn": [
+            "How to sort a list in place using the `.sort()` method.",
+            "How to create a new, sorted list using the `sorted()` function.",
+            "How to sort in reverse (descending) order."
+          ],
+          "content_covered": "Learn how to easily organize your data. Python provides simple, powerful tools for sorting lists of numbers or strings. This video covers the two main methods for sorting data collections.",
+          "resources": [
+            { "name": "Sorting HOW TO Guide", "url": "https://docs.python.org/3/howto/sorting.html", "icon": "fas fa-book" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dictionaries",
+      "videos": [
+        {
+          "id": 16,
+          "title": "Introduction to Dictionaries",
+          "youtube_url": "https://www.youtube.com/watch?v=bNEbY0HwPmw",
+          "what_you_will_learn": [
+            "What a dictionary is and how it uses key-value pairs.",
+            "How to create a dictionary and access values using keys.",
+            "The difference between dictionaries and lists."
+          ],
+          "content_covered": "Discover Python's dictionary data structure for storing unordered data. Dictionaries are incredibly useful for mapping unique keys to specific values, much like a real-world dictionary.",
+          "resources": [
+            { "name": "Dictionary Examples", "url": "#", "icon": "fas fa-code" }
+          ]
+        },
+        {
+          "id": 17,
+          "title": "Dictionary Copying and Updating",
+          "youtube_url": "https://www.youtube.com/watch?v=sX5-xSbdEFY",
+          "what_you_will_learn": [
+            "How to add new key-value pairs or update existing ones.",
+            "The difference between a shallow and a deep copy.",
+            "Using the `.update()` method to merge dictionaries."
+          ],
+          "content_covered": "This tutorial covers how to modify and manage your dictionaries by adding, updating, and safely copying data to avoid unintended side effects.",
+          "resources": [
+            { "name": "Code Examples", "url": "#", "icon": "fas fa-code" }
+          ]
+        },
+        {
+          "id": 18,
+          "title": "Loops with Dictionaries",
+          "youtube_url": "https://www.youtube.com/watch?v=dMCmxObS3g0",
+          "what_you_will_learn": [
+            "How to loop through a dictionary's keys.",
+            "How to loop through a dictionary's values.",
+            "How to loop through both keys and values at once using `.items()`."
+          ],
+          "content_covered": "Learn the different ways to iterate through the data stored in a dictionary. This video shows you how to access keys, values, or both, allowing you to process all the information in your dictionary.",
+          "resources": [
+            { "name": "Looping Techniques", "url": "https://docs.python.org/3/tutorial/datastructures.html#looping-techniques", "icon": "fas fa-book" }
+          ]
+        },
+        {
+          "id": 19,
+          "title": "Dictionary Example",
+          "youtube_url": "https://www.youtube.com/watch?v=G6IGOZXvCHA",
+          "what_you_will_learn": [
+            "A practical, real-world example of using a dictionary.",
+            "How to structure data to solve a problem.",
+            "Combining dictionaries with loops and conditionals."
+          ],
+          "content_covered": "This video puts everything together with a practical example, showing you how dictionaries can be used to solve a real-world problem, reinforcing the concepts you've learned.",
+          "resources": [
+            { "name": "Full Project Code", "url": "#", "icon": "fas fa-code" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Strings",
+      "videos": [
+        {
+          "id": 20,
+          "title": "String Introduction",
+          "youtube_url": "https://www.youtube.com/watch?v=CT1A-Twctr4",
+          "what_you_will_learn": [
+            "How to create and store text data using strings.",
+            "Using single and double quotes.",
+            "Basic string operations like concatenation."
+          ],
+          "content_covered": "This tutorial introduces you to strings, Python's data type for handling text. Learn how to create strings and perform basic manipulations, a fundamental skill for any application that interacts with text.",
+          "resources": [
+            { "name": "String Methods Docs", "url": "https://docs.python.org/3/library/stdtypes.html#string-methods", "icon": "fas fa-book" }
+          ]
+        },
+        {
+          "id": 21,
+          "title": "String Examples",
+          "youtube_url": "https://www.youtube.com/watch?v=zufr18LtyIs",
+          "what_you_will_learn": [
+            "Practical examples of common string methods like `.upper()`, `.lower()`, and `.split()`.",
+            "How to format strings for clean output.",
+            "Searching for substrings within a string."
+          ],
+          "content_covered": "Explore the rich set of methods available for working with strings in Python. This video provides practical examples of how to manipulate, format, and search text data effectively.",
+          "resources": [
+            { "name": "String Formatting Examples", "url": "#", "icon": "fas fa-code" }
+          ]
         }
       ]
     }
