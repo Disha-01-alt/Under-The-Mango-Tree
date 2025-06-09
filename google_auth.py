@@ -99,24 +99,27 @@ def callback():
         user = get_user_by_email(users_email)
 
         if user:
-            # User exists. Check if their role needs to be updated to 'company'.
+            # User exists. ALWAYS clear the registration flag for existing users.
+            session.pop('needs_registration_completion', None)
+            
+            # Check if their role needs to be updated to 'company'.
             if user.role != 'company' and is_company_email(users_email):
                 logging.warning(f"Correcting role for existing user {users_email} to 'company'.")
                 with get_db() as conn:
                     with conn.cursor() as cur:
                         cur.execute("UPDATE users SET role = 'company' WHERE id = %s", (user.id,))
-                    # THE FIX IS HERE: conn.commit() is now INSIDE the 'with' block
                     conn.commit()
-                user.role = 'company' # Update the in-memory object for this request
+                user.role = 'company'
         else:
             # User does not exist, so create a new one.
             if is_company_email(users_email):
                 logging.info(f"New whitelisted company user: {users_email}. Creating 'company' account.")
                 user_id = create_user(email=users_email, password=None, role='company', full_name=users_name)
+                session.pop('needs_registration_completion', None) # Ensure flag is clear for new companies
             else:
                 logging.info(f"New candidate user: {users_email}. Creating 'pending_setup' account.")
                 user_id = create_user(email=users_email, password=None, role='pending_setup', full_name=users_name)
-                session['needs_registration_completion'] = True
+                session['needs_registration_completion'] = True # Set flag ONLY for new candidates
             
             user = get_user_by_id(user_id)
             if not user:
@@ -152,6 +155,7 @@ def callback():
 @login_required
 def logout():
     logout_user()
+    # Using session.clear() is the most robust way to ensure no data is left over.
     session.clear()
     flash('You have been logged out successfully.', 'info')
     return redirect(url_for('job_portal_index'))
