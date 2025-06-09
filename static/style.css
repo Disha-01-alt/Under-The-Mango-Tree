@@ -1,6 +1,9 @@
 /* Custom styles for Job Portal */
 
-/* Root variables for consistency */
+/* =================================================================== */
+/* 1. Root Variables & Global Styles
+/* =================================================================== */
+
 :root {
     --primary-color: #0d6efd;
     --secondary-color: #6c757d;
@@ -15,11 +18,19 @@
     --transition: all 0.15s ease-in-out;
 }
 
-/* Hero section */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* =================================================================== */
+/* 2. Page Sections (Hero)
+/* =================================================================== */
+
 .hero-section {
   position: relative;
-  min-height: 400px; /* or desired height */
-  background-image: url('/static/images/job_portal_about.svg'); /* your image path */
+  min-height: 400px;
+  background-image: url('/static/images/job_portal_about.svg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -37,743 +48,184 @@
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
   background: rgba(0, 0, 0, 0.75); /* semi-transparent black overlay */
-  z-index: 0;
+  z-index: -1;
 }
 
 .hero-section > .container {
   position: relative;
   z-index: 1; /* ensure text is above overlay */
 }
-/* --- Admin Dashboard Specific Styles --- */
 
-/* General container and heading for the dashboard page */
-.container.py-4 { /* Or a more specific class if needed */
-    /* If your overall admin theme is dark, ensure body/main container has a dark bg */
-    /* background-color: #212529; /* Example: Bootstrap dark */
-    /* color: #f8f9fa; /* Example: Bootstrap light text */
-}
+/* =================================================================== */
+/* 3. General Component Enhancements
+/* =================================================================== */
 
-.container.py-4 h1,
-.container.py-4 h3 { /* Dashboard section titles */
-    /* color: #e9ecef; /* Slightly off-white for less harshness */
-    font-weight: 600; /* More prominent titles */
-    margin-bottom: 1.5rem !important; /* Consistent bottom margin */
-}
-.container.py-4 h1 .fas { /* Icon in main title */
-    color: var(--primary-color); /* Or a specific accent color */
-}
-
-.container.py-4 p.lead.text-muted {
-    /* color: #adb5bd !important; /* Softer muted text for dark theme */
-    margin-bottom: 2.5rem; /* More space after lead paragraph */
-}
-
-
-/* --- Statistics Cards Enhancements --- */
-.row.g-4.mb-5 .card { /* Target stat cards specifically */
-    background-color: #2c3034; /* Slightly lighter than pitch black for depth */
-    border: 1px solid #3e444a; /* Subtle border */
-    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.15);
-    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
-    border-radius: var(--border-radius); /* Use your root variable */
-}
-
-.row.g-4.mb-5 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.25);
-}
-
-.row.g-4.mb-5 .card .card-body {
-    padding: 1.5rem;
-}
-
-.row.g-4.mb-5 .card i.fas { /* Icons in stat cards */
-    font-size: 2.25rem !important; /* Slightly smaller if 2.5rem is too big */
-    margin-bottom: 0.75rem !important; /* Consistent spacing */
-    /* Colors are already set by text-primary, text-info etc. which is good */
-    /* Optional: add a subtle background to the icon itself */
-    /*
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
-    border-radius: 50%;
-    background-color: rgba(255,255,255,0.05);
-    */
-}
-
-.row.g-4.mb-5 .card h3.card-title {
-    font-size: 2rem; /* Prominent numbers */
-    font-weight: 700;
-    color: #f8f9fa; /* Bright white for numbers */
-    margin-bottom: 0.25rem;
-}
-
-.row.g-4.mb-5 .card p.card-text {
-    font-size: 0.9rem;
-    color: #adb5bd; /* Muted text for labels */
-}
-
-
-/* --- Pending Company Approvals Card --- */
-.card .card-header h5.mb-0 {
-    color: #e9ecef;
-    font-weight: 500;
-}
-.card .card-header h5.mb-0 .fas {
-    /* color: var(--warning-color); -- already set by text-warning */
-}
-.card .card-header { /* General card header style from your global css is fine */
-    background-color: rgba(var(--bs-light-rgb), 0.03); /* Very subtle dark header */
-    border-bottom: 1px solid #3e444a;
-}
-
-.card-body .d-flex.justify-content-between.align-items-center.mb-3.p-3.border.rounded {
-    background-color: rgba(var(--bs-light-rgb), 0.02); /* Subtle background for each item */
-    border-color: #373b3e !important; /* Darker border */
-    transition: background-color 0.2s ease;
-}
-.card-body .d-flex.justify-content-between.align-items-center.mb-3.p-3.border.rounded:hover {
-    background-color: rgba(var(--bs-light-rgb), 0.04);
-}
-
-.card-body hr {
-    border-top: 1px solid #373b3e; /* Darker hr */
-}
-
-
-/* --- Quick Actions Cards --- */
-.row.g-3.mb-5 .card { /* Target quick action cards */
-    background-color: #2c3034;
-    border: 1px solid #3e444a;
-    height: 100%; /* Ensure cards in a row are same height */
-    display: flex;
-    flex-direction: column;
-    border-radius: var(--border-radius);
-}
-.row.g-3.mb-5 .card .card-body {
-    padding: 1.25rem;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1; /* Make body take available space */
-}
-.row.g-3.mb-5 .card i.fas {
-    font-size: 1.75rem !important; /* Slightly smaller icons for quick actions */
-    margin-bottom: 0.75rem !important;
-}
-.row.g-3.mb-5 .card h6.card-title {
-    color: #e9ecef;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-}
-.row.g-3.mb-5 .card p.card-text.small {
-    color: #adb5bd;
-    font-size: 0.85rem;
-    flex-grow: 1; /* Push button to bottom */
-    margin-bottom: 1rem;
-}
-.row.g-3.mb-5 .card .btn-sm { /* Button at the bottom */
-    margin-top: auto; /* Pushes button to bottom if card-body is flex column */
-    padding: 0.375rem 1rem; /* Slightly larger padding for sm buttons */
-    font-weight: 500;
-}
-
-
-/* --- Recent Activity Cards --- */
-.row .col-lg-6 .card { /* Target recent activity cards */
-    background-color: #2c3034;
-    border: 1px solid #3e444a;
-    border-radius: var(--border-radius);
-}
-.row .col-lg-6 .card .card-header h5.mb-0 {
-    color: #e9ecef;
-}
-.row .col-lg-6 .card .card-header .fas {
-    color: var(--secondary-color); /* Subtler icon color for these headers */
-}
-.row .col-lg-6 .card .card-body h6.mb-1 {
-    color: #dee2e6;
-    font-weight: 500;
-}
-.row .col-lg-6 .card .text-muted {
-    /* color: #868e96 !important; -- Bootstrap's default text-muted for dark bg is ok */
-}
-.row .col-lg-6 .card .btn-outline-primary,
-.row .col-lg-6 .card .btn-outline-info {
-    /* Make outline buttons stand out more on dark background */
-    /* Colors are fine, maybe slightly thicker border or more padding */
-    border-width: 1px; /* Bootstrap default, can be 2px */
-    padding: 0.3rem 0.75rem;
-}
-
-/* General improvements for buttons on dark background if not already covered */
-.btn-success {
-    /* color: #fff; -- Bootstrap default */
-    /* background-color: var(--success-color); -- Bootstrap default */
-    /* border-color: var(--success-color); -- Bootstrap default */
-}
-.btn-primary { }
-.btn-info { }
-.btn-warning {
-    color: #000 !important; /* Ensure text is dark on yellow for accessibility */
-}
-
-/* Star rating in recent candidates */
-.row .col-lg-6 .card .fa-star.text-muted {
-    color: #49505d !important; /* Darker muted star for more contrast */
-}
-/* Global styles */
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    line-height: 1.6;
-}
-/* --- Browse Jobs Page Specific Styles --- */
-
-/* Main page heading and lead paragraph */
-.container.py-4 h1.mb-3 { /* For "Explore Job Opportunities" */
-    color: #e9ecef; /* Light text for dark theme */
-    font-weight: 600;
-}
-.container.py-4 h1.mb-3 .fas.fa-search {
-    color: var(--primary-color); /* Accent color for the icon */
-}
-.container.py-4 p.lead.text-muted {
-    color: #adb5bd !important; /* Softer muted text for dark theme */
-    margin-bottom: 2.5rem; /* More space after lead */
-}
-
-/* --- Job Filters Card --- */
-.card.filter-card { /* Add class="filter-card" to the filter card div */
-    background-color: #2c3034; /* Darker card background */
-    border: 1px solid #3e444a; /* Subtle border for definition */
-    border-radius: var(--border-radius);
-    margin-bottom: 2.5rem !important; /* More space below filter card */
-}
-
-.card.filter-card .card-header {
-    background-color: rgba(var(--bs-light-rgb), 0.03); /* Very subtle dark header */
-    border-bottom: 1px solid #3e444a;
-    padding: 0.75rem 1.25rem;
-}
-.card.filter-card .card-header h5 {
-    color: #e9ecef;
-    font-weight: 500;
-}
-.card.filter-card .card-header .fas.fa-filter {
-    color: var(--secondary-color); /* Or your preferred accent for filter icon */
-}
-
-.card.filter-card .card-body {
-    padding: 1.5rem; /* More padding inside the card body */
-}
-
-/* Filter form elements styling */
-.card.filter-card .form-label {
-    font-size: 0.875rem;
-    color: #ced4da; /* Lighter label text */
-    margin-bottom: 0.35rem;
-}
-
-.card.filter-card .form-control-sm,
-.card.filter-card .form-select-sm {
-    background-color: #343a40; /* Darker input background */
-    color: #f8f9fa; /* Light input text */
-    border: 1px solid #495057; /* Darker border */
-    font-size: 0.875rem; /* Ensure sm is applied if not default */
-}
-.card.filter-card .form-control-sm::placeholder {
-    color: #868e96; /* Lighter placeholder text */
-}
-.card.filter-card .form-control-sm:focus,
-.card.filter-card .form-select-sm:focus {
-    background-color: #3a4147;
-    color: #f8f9fa;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 0.2rem rgba(var(--bs-primary-rgb), 0.25); /* Bootstrap's default focus */
-}
-
-/* Spacing for filter buttons */
-/* The .row.g-3.align-items-end already provides good horizontal/vertical alignment */
-/* The issue is the button column's own margin/padding.
-   Bootstrap's .col-md-auto for buttons is fine for width.
-   The mt-3 mt-md-0 and mt-2 mt-md-0 on button columns handle responsive top margin.
-*/
-.card.filter-card form .row > [class*="col-"]:last-child, /* Last column in the filter row (likely a button) */
-.card.filter-card form .row > [class*="col-"]:nth-last-child(2) { /* Second to last for clear button */
-    /* This ensures buttons align correctly with the bottom of the inputs due to align-items-end */
-}
-
-/* --- Job Results Count --- */
-p.text-muted.mb-3 { /* "Found X job postings" */
-    color: #adb5bd !important;
-    font-size: 0.95rem;
-}
-
-/* --- Job Cards Enhancements (class="job-card") --- */
-.job-card {
-    background-color: #2c3034;
-    border: 1px solid #3e444a;
-    border-radius: var(--border-radius);
-    transition: var(--transition);
-    box-shadow: var(--box-shadow); /* Use your existing subtle shadow */
-    height: 100%; /* Ensures cards in a row are same height */
-    display: flex;
-    flex-direction: column;
-}
-.job-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 0.5rem 1.25rem rgba(0,0,0,0.2); /* Enhanced shadow on hover */
-    border-color: #495057;
-}
-
-.job-card .card-body {
-    padding: 1.25rem;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1; /* Allow body to grow and push footer to bottom */
-}
-
-.job-card .card-title {
-    color: #e9ecef;
-    font-weight: 600;
-}
-.job-card h6.text-primary { /* Company Name */
-    color: var(--primary-color) !important; /* Ensure it stands out */
-    font-weight: 500;
-}
-.job-card .text-muted { /* General muted text in cards */
-    color: #adb5bd !important;
-}
-.job-card .text-success.small { /* Salary */
-    color: var(--success-color) !important;
-    font-weight: 500;
-}
-
-/* Job Type Badge */
-.job-card .badge.bg-info {
-    /* background-color: var(--info-color) !important; -- Already bg-info */
-    color: #000 !important; /* Ensure dark text for good contrast on info blue */
-    font-weight: 500;
-    padding: 0.3em 0.6em;
-}
-
-/* "not found" text - replace with a proper badge or style better */
-/* Assuming "not found" is within a span or small tag. If it's text-danger, style that */
-.job-card .text-danger, /* Or whatever class 'not found' has */
-.job-card .badge.bg-danger { /* If you make it a badge */
-    font-size: 0.75rem;
-    font-weight: 500;
-    padding: 0.3em 0.6em;
-    /* background-color: var(--danger-color);
-    color: white;
-    border-radius: var(--border-radius); */
-}
-
-
-/* Job Tags */
-.job-card .job-tags .badge.rounded-pill {
-    background-color: #3e444a !important; /* Darker background for tags */
-    color: #ced4da !important; /* Lighter text for tags */
-    border: 1px solid #495057 !important;
-    font-weight: 400;
-    padding: 0.3em 0.65em;
-    font-size: 0.75rem;
-}
-
-.job-card .description-preview {
-    font-size: 0.875rem;
-    line-height: 1.5;
-}
-
-.job-card .mt-auto.d-flex { /* Footer of the card */
-    padding-top: 1rem;
-    border-top: 1px solid #3e444a; /* Separator line */
-}
-.job-card .btn-outline-primary {
-    /* color: var(--primary-color); -- Bootstrap default
-    border-color: var(--primary-color); -- Bootstrap default */
-}
-.job-card .btn-outline-primary:hover {
-    /* background-color: var(--primary-color);
-    color: white; */
-}
-
-/* --- "How to Apply" Alert --- */
-.alert.alert-info {
-    background-color: rgba(var(--bs-info-rgb), 0.15); /* Slightly more prominent info for dark theme */
-    border: 1px solid rgba(var(--bs-info-rgb), 0.3);
-    color: #b8eaff; /* Lighter text for info alert */
-}
-.alert.alert-info .alert-heading {
-    color: #d1f0ff;
-}
-.alert.alert-info .fas.fa-info-circle {
-    color: var(--info-color);
-}
-
-/* --- "No Jobs Match" Section --- */
-.text-center.py-5 .fas.fa-search-minus {
-    font-size: 3.5rem !important; /* Slightly smaller */
-    color: #6c757d !important; /* Muted color */
-}
-.text-center.py-5 h4 {
-    color: #ced4da;
-}
-.text-center.py-5 p.text-muted {
-    color: #868e96 !important;
-}
-
-/* Navigation enhancements */
+/* --- Navigation --- */
 .navbar-brand {
     font-weight: 700;
     font-size: 1.5rem;
 }
-
 .navbar-nav .nav-link {
     font-weight: 500;
     transition: var(--transition);
     border-radius: var(--border-radius);
     margin: 0 0.25rem;
 }
-
 .navbar-nav .nav-link:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Card enhancements */
+/* --- Cards --- */
 .card {
-    border: none;
+    border: 1px solid #3e444a;
     box-shadow: var(--box-shadow);
     transition: var(--transition);
     border-radius: var(--border-radius);
+    background-color: #2c3034;
 }
-
 .card:hover {
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
     transform: translateY(-2px);
 }
-
 .card-header {
-    background-color: rgba(var(--bs-primary-rgb, 13, 110, 253), 0.1);
-    border-bottom: 1px solid rgba(var(--bs-primary-rgb, 13, 110, 253), 0.2);
+    background-color: #343a40;
+    border-bottom: 1px solid #495057;
     font-weight: 600;
 }
 
-/* Button enhancements */
+/* --- Buttons --- */
 .btn {
     font-weight: 500;
     border-radius: var(--border-radius);
     transition: var(--transition);
-    border: 1px solid transparent;
 }
-
 .btn:hover {
     transform: translateY(-1px);
-    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 }
-
 .btn-group .btn:hover {
-    transform: none;
+    transform: none; /* Disable hover effect for grouped buttons */
+}
+.btn-warning {
+    color: #000 !important; /* Ensure text is dark on yellow for accessibility */
 }
 
-/* Form enhancements */
-.form-control, .form-select {
-    border-radius: var(--border-radius);
-    border: 1px solid #ced4da;
-    transition: var(--transition);
-}
-
-.form-control:focus, .form-select:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 0.2rem rgba(var(--bs-primary-rgb, 13, 110, 253), 0.25);
-}
-
-.input-group-text {
-    background-color: rgba(var(--bs-primary-rgb, 13, 110, 253), 0.1);
-    border-color: #ced4da;
-    color: var(--primary-color);
-}
-
-/* Badge enhancements */
-.badge {
-    font-weight: 500;
-    border-radius: var(--border-radius);
-    padding: 0.375rem 0.75rem;
-}
-
-/* Alert enhancements */
+/* --- Alerts --- */
 .alert {
     border: none;
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
 }
-
-.alert-dismissible .btn-close {
-    padding: 0.75rem;
+.alert.alert-info {
+    background-color: rgba(var(--bs-info-rgb), 0.15);
+    border-color: rgba(var(--bs-info-rgb), 0.3);
+    color: #b8eaff;
 }
 
-/* Table enhancements */
+/* --- Tables --- */
 .table {
     border-radius: var(--border-radius);
     overflow: hidden;
 }
-
 .table th {
     font-weight: 600;
     border-top: none;
 }
-
 .table-hover tbody tr:hover {
     background-color: rgba(var(--bs-primary-rgb, 13, 110, 253), 0.05);
 }
 
-/* Progress bar enhancements */
-.progress {
-    border-radius: var(--border-radius);
-    background-color: rgba(var(--bs-secondary-rgb, 108, 117, 125), 0.2);
+/* =================================================================== */
+/* 4. Admin Dashboard Specific Styles
+/* =================================================================== */
+
+.container.py-4 h1,
+.container.py-4 h3 {
+    font-weight: 600;
+    margin-bottom: 1.5rem !important;
 }
 
-.progress-bar {
-    border-radius: var(--border-radius);
-    transition: width 0.6s ease;
+.row.g-4.mb-5 .card { /* Stat cards */
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+.row.g-4.mb-5 .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.25);
+}
+.row.g-4.mb-5 .card i.fas { /* Stat card icons */
+    font-size: 2.25rem !important;
+    margin-bottom: 0.75rem !important;
+}
+.row.g-4.mb-5 .card h3.card-title {
+    font-size: 2rem;
+    font-weight: 700;
 }
 
-/* Rating stars */
+/* =================================================================== */
+/* 5. Miscellaneous & Utilities
+/* =================================================================== */
+
+/* --- Rating Stars --- */
 .rating-input {
     display: flex;
     gap: 0.25rem;
     align-items: center;
 }
-
 .rating-star {
     cursor: pointer;
     font-size: 1.25rem;
     color: var(--secondary-color);
     transition: var(--transition);
 }
-
 .rating-star:hover,
 .rating-star.active {
     color: var(--warning-color);
     transform: scale(1.1);
 }
 
-/* File upload styling */
-.form-control[type="file"] {
-    padding: 0.375rem 0.75rem;
+/* --- Animations --- */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.form-control[type="file"]::-webkit-file-upload-button {
-    padding: 0.375rem 0.75rem;
-    margin: -0.375rem -0.75rem -0.375rem 0;
-    border: none;
-    border-radius: var(--border-radius) 0 0 var(--border-radius);
-    background-color: var(--light-color);
-    color: var(--dark-color);
-    font-weight: 500;
-    transition: var(--transition);
-}
+/* --- Custom Scrollbar --- */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--dark-color); }
+::-webkit-scrollbar-thumb { background: var(--secondary-color); border-radius: var(--border-radius); }
+::-webkit-scrollbar-thumb:hover { background: var(--primary-color); }
 
-.form-control[type="file"]::-webkit-file-upload-button:hover {
-    background-color: var(--primary-color);
-    color: white;
-}
+/* =================================================================== */
+/* 6. DEFINITIVE DARK THEME FORM FIX (Inputs/Textareas)
+/* This block is last to ensure it has high priority.
+/* The '!important' flag guarantees these styles override Bootstrap defaults.
+/* =================================================================== */
 
-/* Modal enhancements */
-.modal-content {
-    border: none;
-    border-radius: var(--border-radius);
-    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
-}
-
-.modal-header {
-    border-bottom: 1px solid rgba(var(--bs-primary-rgb, 13, 110, 253), 0.2);
-}
-
-.modal-footer {
-    border-top: 1px solid rgba(var(--bs-primary-rgb, 13, 110, 253), 0.2);
-}
-/* ============================================= */
-/* Dark Theme Form Styling (Inputs, Textareas)   */
-/* ============================================= */
-
-/* 
-This is the most important rule. The '!important' flag ensures that our
-dark theme styles override any default Bootstrap styles for these elements.
-*/
-.form-control,
-.form-select {
+html[data-bs-theme="dark"] .form-control,
+html[data-bs-theme="dark"] .form-select {
     color: #dee2e6 !important;
     background-color: #2b3035 !important;
     border: 1px solid #495057 !important;
 }
 
-/* Style for when the input is focused (clicked on) */
-.form-control:focus,
-.form-select:focus {
+html[data-bs-theme="dark"] .form-control:focus,
+html[data-bs-theme="dark"] .form-select:focus {
     color: #dee2e6 !important;
     background-color: #343a40 !important;
     border-color: #80bdff !important;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25) !important;
 }
 
-/* Style for placeholder text */
-.form-control::placeholder {
+html[data-bs-theme="dark"] .form-control::placeholder {
     color: #6c757d !important;
     opacity: 1;
 }
 
-/* Style for disabled or readonly inputs */
-.form-control:disabled,
-.form-control[readonly] {
+html[data-bs-theme="dark"] .form-control:disabled,
+html[data-bs-theme="dark"] .form-control[readonly] {
     background-color: #212529 !important;
     opacity: 0.7 !important;
 }
-/* Dropdown enhancements */
-.dropdown-menu {
-    border: none;
-    border-radius: var(--border-radius);
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-    margin-top: 0.25rem;
-}
-
-.dropdown-item {
-    transition: var(--transition);
-    border-radius: calc(var(--border-radius) - 2px);
-    margin: 0.125rem;
-}
-
-.dropdown-item:hover {
-    background-color: rgba(var(--bs-primary-rgb, 13, 110, 253), 0.1);
-    color: var(--primary-color);
-}
-
-/* Pagination enhancements */
-.page-link {
-    border: none;
-    border-radius: var(--border-radius);
-    margin: 0 0.125rem;
-    color: var(--primary-color);
-    transition: var(--transition);
-}
-
-.page-link:hover {
-    background-color: rgba(var(--bs-primary-rgb, 13, 110, 253), 0.1);
-    color: var(--primary-color);
-    transform: translateY(-1px);
-}
-
-.page-item.active .page-link {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-}
-
-/* Loading states */
-.loading {
-    opacity: 0.6;
-    pointer-events: none;
-    position: relative;
-}
-
-.loading::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 1rem;
-    height: 1rem;
-    border: 2px solid var(--primary-color);
-    border-top: 2px solid transparent;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    transform: translate(-50%, -50%);
-}
-
-@keyframes spin {
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
-    100% { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
-/* Responsive utilities */
-@media (max-width: 768px) {
-    .navbar-brand {
-        font-size: 1.25rem;
-    }
-    
-    .card-body {
-        padding: 1rem;
-    }
-    
-    .btn-group-vertical .btn {
-        margin-bottom: 0.25rem;
-    }
-    
-    .rating-star {
-        font-size: 1rem;
-    }
-    
-    .table-responsive {
-        font-size: 0.875rem;
-    }
-}
-
-/* Animation utilities */
-.fade-in {
-    animation: fadeIn 0.5s ease-in;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.slide-in {
-    animation: slideIn 0.3s ease-out;
-}
-
-@keyframes slideIn {
-    from { opacity: 0; transform: translateX(-20px); }
-    to { opacity: 1; transform: translateX(0); }
-}
-
-/* Focus states for accessibility */
-.btn:focus,
-.form-control:focus,
-.form-select:focus {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--light-color);
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--secondary-color);
-    border-radius: var(--border-radius);
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-color);
-}
-
-/* Print styles */
-@media print {
-    .navbar,
-    .footer,
-    .btn,
-    .alert {
-        display: none !important;
-    }
-    
-    .card {
-        box-shadow: none;
-<<<<<<< HEAD
-=======
-
->>>>>>> f805ca8 (Your commit message here)
