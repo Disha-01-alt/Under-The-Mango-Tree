@@ -1,327 +1,84 @@
 {
-  "course_title": "Machine Learning Foundations",
+  "course_title": "Data Science & Machine Learning",
   "topics": [
     {
-      "name": "Data Science & Machine Learning Overview",
+      "name": "Data Science & ML Overview",
       "videos": [
-        {
-          "id": 0,
-          "title": "Data Science & ML Overview",
-          "youtube_url": "https://youtu.be/DwqbxP5BDFo",
-          "what_you_will_learn": ["Understand the scope of Data Science.", "Differentiate between AI, ML, and DL.", "Explore real-world applications of Machine Learning."],
-          "content_covered": "This video provides a high-level overview of the entire field, setting the stage for the course. It explains what Data Science is and how Machine Learning fits into the broader ecosystem.",
-          "resources": [
-            { "name": "Advanced Python Project", "url": "https://data-flair.training/blogs/advanced-python-project-detecting-fake-news/", "icon": "fas fa-code" },
-            { "name": "Curated ML Datasets", "url": "https://bekushal.medium.com/curated-machine-learning-datasets-for-college-students-ba8cfbc98b6b", "icon": "fas fa-database" }
-          ]
-        },
-        {
-          "id": 1,
-          "title": "A Practical Introduction",
-          "youtube_url": "https://youtu.be/UnjyNYco7uQ",
-          "what_you_will_learn": ["See a simple end-to-end ML project.", "Understand the key steps in an ML workflow.", "Appreciate the role of data in training models."],
-          "content_covered": "A follow-up to the overview, this video gives a more practical look at what a machine learning project entails, from data collection to model evaluation.",
-          "resources": [
-            { "name": "Advanced Python Project", "url": "https://data-flair.training/blogs/advanced-python-project-detecting-fake-news/", "icon": "fas fa-code" },
-            { "name": "Curated ML Datasets", "url": "https://bekushal.medium.com/curated-machine-learning-datasets-for-college-students-ba8cfbc98b6b", "icon": "fas fa-database" }
-          ]
-        }
+        { "id": 0, "title": "Overview Part 1", "youtube_url": "https://youtu.be/DwqbxP5BDFo", "what_you_will_learn": ["The scope of Data Science.", "The difference between AI, ML, and DL.", "Real-world applications of Machine Learning."], "content_covered": "This video provides a high-level overview of the entire field, setting the stage for the course. It explains what Data Science is and how Machine Learning fits into the broader ecosystem.", "resources": [ { "name": "Fake News Detection Project", "url": "https://data-flair.training/blogs/advanced-python-project-detecting-fake-news/", "icon": "fas fa-code" }, { "name": "Curated ML Datasets", "url": "https://bekushal.medium.com/curated-machine-learning-datasets-for-college-students-ba8cfbc98b6b", "icon": "fas fa-database" }, { "name": "NLTK Code for Fictometer", "url": "#", "icon": "fas fa-code" } ] },
+        { "id": 1, "title": "Overview Part 2", "youtube_url": "https://youtu.be/UnjyNYco7uQ", "what_you_will_learn": ["A simple end-to-end ML project.", "The key steps in an ML workflow.", "The role of data in training models."], "content_covered": "A follow-up to the overview, this video gives a practical look at what a machine learning project entails, from data collection to model evaluation.", "resources": [] }
       ]
     },
     {
       "name": "Probability & Statistics",
       "videos": [
-        {
-          "id": 2,
-          "title": "Random Variables and Probability",
-          "youtube_url": "https://youtu.be/rGYqfhmdEmo",
-          "what_you_will_learn": ["Define Random Variables.", "Understand Probability Distributions.", "Key concepts for statistical modeling."],
-          "content_covered": "Machine learning is built on a foundation of probability. This video covers the essential concepts of random variables and probability distributions.",
-          "resources": []
-        },
-        {
-          "id": 3,
-          "title": "Expectation, Moments and CLT",
-          "youtube_url": "https://youtu.be/3-A2siEN8w8",
-          "what_you_will_learn": ["Calculate the expectation of a variable.", "Understand moments like variance.", "Grasp the importance of the Central Limit Theorem (CLT)."],
-          "content_covered": "Dive deeper into statistical concepts that are critical for understanding how ML algorithms work, including expectation, variance, and the powerful Central Limit Theorem.",
-          "resources": [
-            { "name": "Reference Video on CLT", "url": "https://www.youtube.com/watch?v=JNm3M9cqWyc", "icon": "fab fa-youtube" }
-          ]
-        }
+        { "id": 2, "title": "Random Variables & Probability", "youtube_url": "https://youtu.be/rGYqfhmdEmo", "what_you_will_learn": ["Defining Random Variables.", "Understanding Probability Distributions.", "Key concepts for statistical modeling."], "content_covered": "Machine learning is built on a foundation of probability. This video covers the essential concepts of random variables and probability distributions.", "resources": [] },
+        { "id": 3, "title": "Expectation, Moments & CLT", "youtube_url": "https://youtu.be/3-A2siEN8w8", "what_you_will_learn": ["Calculating expectation.", "Understanding moments like variance.", "The importance of the Central Limit Theorem (CLT)."], "content_covered": "Dive deeper into statistical concepts critical for understanding ML algorithms, including expectation, variance, and the powerful Central Limit Theorem.", "resources": [ { "name": "Reference Video on CLT", "url": "https://www.youtube.com/watch?v=JNm3M9cqWyc", "icon": "fab fa-youtube" }, { "name": "UChicago Paper on CLT", "url": "http://www.math.uchicago.edu/~may/VIGRE/VIGRE2011/REUPapers/Krokhmal.pdf", "icon": "fas fa-file-pdf" } ] }
       ]
     },
     {
       "name": "Bayesian Concepts",
       "videos": [
-        {
-          "id": 4,
-          "title": "Bayes' Theorem Explained",
-          "youtube_url": "https://www.youtube.com/watch?v=q0p6VWj8N4I",
-          "what_you_will_learn": ["The formula for Bayes' Theorem.", "The intuition behind conditional probability.", "How prior knowledge can be updated with new evidence."],
-          "content_covered": "Bayes' Theorem is a cornerstone of machine learning, enabling us to update our beliefs in the face of new data. This video provides a clear explanation of the theorem and its components.",
-          "resources": [
-            { "name": "Spam Filter Code Example", "url": "https://www.kdnuggets.com/2020/07/spam-filter-python-naive-bayes-scratch.html", "icon": "fas fa-code" },
-            { "name": "Conditional Probability Explained", "url": "https://www.mathsisfun.com/data/probability-events-conditional.html", "icon": "fas fa-link" }
-          ]
-        },
-        {
-          "id": 5,
-          "title": "Naïve Bayes Classifier",
-          "youtube_url": "https://youtu.be/DV3F7AZOAE0",
-          "what_you_will_learn": ["The 'naïve' assumption in Naive Bayes.", "How to apply Bayes' theorem for classification.", "Understand Gaussian and other types of Naive Bayes."],
-          "content_covered": "The Naive Bayes classifier is a simple yet powerful algorithm for classification tasks like spam filtering. This video explains its mechanics and the assumptions it makes.",
-          "resources": [
-            { "name": "Naive Bayes from Scratch (Code)", "url": "https://machinelearningmastery.com/naive-bayes-classifier-scratch-python/", "icon": "fas fa-code" },
-            { "name": "Naive Bayes Reference Video", "url": "https://www.youtube.com/watch?v=O2L2Uv9pdDA", "icon": "fab fa-youtube" }
-          ]
-        }
+        { "id": 4, "title": "Bayes' Theorem", "youtube_url": "https://youtu.be/q0p6VWj8N4I", "what_you_will_learn": ["The formula for Bayes' Theorem.", "The intuition behind conditional probability.", "Updating knowledge with new evidence."], "content_covered": "Bayes' Theorem is a cornerstone of ML, enabling us to update our beliefs in the face of new data. This video provides a clear explanation.", "resources": [ { "name": "Conditional Probability Explained", "url": "https://www.mathsisfun.com/data/probability-events-conditional.html", "icon": "fas fa-link" }, { "name": "Practice Problems", "url": "https://www.statisticshowto.com/bayes-theorem-problems/", "icon": "fas fa-question-circle" } ] },
+        { "id": 5, "title": "Naïve Bayes Classifier", "youtube_url": "https://youtu.be/DV3F7AZOAE0", "what_you_will_learn": ["The 'naïve' assumption.", "Applying Bayes' theorem for classification.", "Gaussian and other types of Naive Bayes."], "content_covered": "The Naive Bayes classifier is a simple yet powerful algorithm for tasks like spam filtering. This video explains its mechanics and assumptions.", "resources": [ { "name": "Spam Filter Code Example", "url": "https://www.kdnuggets.com/2020/07/spam-filter-python-naive-bayes-scratch.html", "icon": "fas fa-code" }, { "name": "Gaussian Naive Bayes Video", "url": "https://www.youtube.com/watch?v=H3EjCKtlVog", "icon": "fab fa-youtube" } ] }
       ]
     },
     {
-        "name": "Supervised Learning Fundamentals",
-        "videos": [
-            {
-                "id": 6,
-                "title": "Regression vs Classification",
-                "youtube_url": "https://www.youtube.com/watch?v=NYJZDRRUO84",
-                "what_you_will_learn": ["The difference between regression (predicting a number) and classification (predicting a category).", "How to identify which type of problem you are solving.", "The concept of the Curse of Dimensionality."],
-                "content_covered": "This is a foundational concept in supervised learning. This video clearly distinguishes between the two main types of supervised problems and introduces the challenge of high-dimensional data.",
-                "resources": [
-                    { "name": "Blog: Regression vs Classification", "url": "https://in.springboard.com/blog/regression-vs-classification-in-machine-learning/", "icon": "fas fa-book-open" },
-                    { "name": "K-Nearest Neighbors (Code)", "url": "https://scikit-learn.org/stable/modules/neighbors.html", "icon": "fas fa-code" }
-                ]
-            },
-            {
-                "id": 7,
-                "title": "Gradient Descent & Regularisation",
-                "youtube_url": "https://www.youtube.com/watch?v=IUmFzIU-Cp4",
-                "what_you_will_learn": ["The core idea of Gradient Descent.", "The importance of learning rate and feature scaling.", "What regularization is and why it's used to prevent overfitting."],
-                "content_covered": "Learn how most machine learning models are trained. This video explains the Gradient Descent optimization algorithm and the concept of regularization to create more robust models.",
-                "resources": [
-                  { "name": "Blog: Gradient Descent Explained", "url": "https://towardsdatascience.com/gradient-descent-the-learning-rate-and-the-importance-of-feature-scaling-6c0b416596e1", "icon": "fas fa-book-open" }
-                ]
-            }
-        ]
-    },
-    {
-        "name": "Parameter Estimation",
-        "videos": [
-            {
-                "id": 8,
-                "title": "Bayesian Parameter Estimation",
-                "youtube_url": "https://youtu.be/8P7tdwFF0is",
-                "what_you_will_learn": ["The Bayesian approach to estimating model parameters.", "How this differs from the frequentist approach.", "Understanding posterior distributions."],
-                "content_covered": "This video introduces the Bayesian perspective on parameter estimation, where parameters are treated as random variables with their own distributions.",
-                "resources": []
-            },
-            {
-                "id": 9,
-                "title": "Maximum Likelihood Estimation (MLE)",
-                "youtube_url": "https://youtu.be/WIPUh9yWM4c",
-                "what_you_will_learn": ["The principle of Maximum Likelihood Estimation.", "How to find parameters that maximize the likelihood of observing the data.", "Its relationship with cost functions."],
-                "content_covered": "MLE is a fundamental method for parameter estimation. This video explains how to find the model parameters that make the observed data most probable.",
-                "resources": [
-                  { "name": "Deriving Cost Functions (Blog)", "url": "https://allenkunle.me/deriving-ml-cost-functions-part1", "icon": "fas fa-book-open" }
-                ]
-            },
-            {
-                "id": 10,
-                "title": "Maximum A Posteriori (MAP) Estimation",
-                "youtube_url": "https://youtu.be/XKkfIU8ugjM",
-                "what_you_will_learn": ["How MAP combines MLE with a prior distribution.", "The relationship between MAP, MLE, and Bayesian estimation.", "When to use MAP over MLE."],
-                "content_covered": "Maximum A Posteriori (MAP) estimation is a Bayesian approach that incorporates prior knowledge about the parameters, often leading to more regularized and stable models.",
-                "resources": [
-                  { "name": "Blog: MLE vs MAP", "url": "https://towardsdatascience.com/mle-vs-map-a989f423ae5c", "icon": "fas fa-book-open" }
-                ]
-            }
-        ]
-    },
-    {
-      "name": "Regression Models",
+      "name": "Supervised Learning Fundamentals",
       "videos": [
-        {
-          "id": 11,
-          "title": "Linear Regression: Normal Equation",
-          "youtube_url": "https://youtu.be/BGiAcoU4yWk",
-          "what_you_will_learn": ["The mathematical formula for the Normal Equation.", "How to solve for linear regression parameters analytically.", "When this method is preferred over Gradient Descent."],
-          "content_covered": "This video covers the Normal Equation, a direct, non-iterative method for finding the optimal parameters for a linear regression model.",
-          "resources": [
-            { "name": "Linear Regression Guide", "url": "https://machinelearningmastery.com/linear-regression-for-machine-learning/", "icon": "fas fa-book-open" },
-            { "name": "Regularization Code", "url": "https://inria.github.io/scikit-learn-mooc/python_scripts/linear_models_regularization.html", "icon": "fas fa-code" }
-          ]
-        },
-        {
-          "id": 12,
-          "title": "Linear Regression: Regularisation",
-          "youtube_url": "https://www.youtube.com/watch?v=VqKq78PVO9g",
-          "what_you_will_learn": ["What Ridge and Lasso regression are.", "How regularization helps prevent overfitting in linear models.", "The practical application of these techniques."],
-          "content_covered": "Learn how to improve your linear regression models with regularization techniques like Ridge (L2) and Lasso (L1), which help to handle multicollinearity and prevent overfitting.",
-          "resources": [
-             { "name": "Linear Regression Guide", "url": "https://machinelearningmastery.com/linear-regression-for-machine-learning/", "icon": "fas fa-book-open" },
-             { "name": "Regularization Code", "url": "https://inria.github.io/scikit-learn-mooc/python_scripts/linear_models_regularization.html", "icon": "fas fa-code" }
-          ]
-        }
+        { "id": 6, "title": "Regression vs Classification", "youtube_url": "https://youtu.be/NYJZDRRUO84", "what_you_will_learn": ["The difference between predicting a number (regression) and a category (classification).", "Identifying your problem type.", "The Curse of Dimensionality."], "content_covered": "This is a foundational concept in supervised learning, clearly distinguishing between the two main problem types.", "resources": [ { "name": "Blog: Regression vs Classification", "url": "https://in.springboard.com/blog/regression-vs-classification-in-machine-learning/", "icon": "fas fa-book-open" }, { "name": "KNN from Scratch (Code)", "url": "https://machinelearningmastery.com/tutorial-to-implement-k-nearest-neighbors-in-python-from-scratch/", "icon": "fas fa-code" } ] }
       ]
     },
     {
-        "name": "Classification Models",
-        "videos": [
-            {
-                "id": 13,
-                "title": "Logistic Regression: Core Concepts",
-                "youtube_url": "https://youtu.be/sxaYUg6zc7I",
-                "what_you_will_learn": ["How Logistic Regression is used for classification.", "The role of the Sigmoid function.", "Understanding loss, convexity, and gradient descent for this model."],
-                "content_covered": "Despite its name, Logistic Regression is a go-to algorithm for binary classification problems. This video covers its core mathematical and conceptual underpinnings.",
-                "resources": [
-                    { "name": "Real-world Examples", "url": "https://activewizards.com/blog/5-real-world-examples-of-logistic-regression-application", "icon": "fas fa-link" },
-                    { "name": "Scikit-Learn Code", "url": "https://heartbeat.fritz.ai/logistic-regression-in-python-using-scikit-learn-d34e882eebb1", "icon": "fas fa-code" }
-                ]
-            },
-            {
-                "id": 14,
-                "title": "Logistic Regression: Multiclass",
-                "youtube_url": "https://www.youtube.com/watch?v=E6MNiNsESl4",
-                "what_you_will_learn": ["Techniques like One-vs-Rest (OvR) to extend logistic regression.", "How to handle problems with more than two classes.", "The use of the Softmax function."],
-                "content_covered": "Learn how to adapt the binary Logistic Regression classifier to handle multiclass classification problems, where an instance can belong to one of three or more categories.",
-                "resources": [
-                    { "name": "Stanford Notes", "url": "https://web.stanford.edu/~jurafsky/slp3/5.pdf", "icon": "fas fa-book" },
-                    { "name": "Multiclass from Scratch (Code)", "url": "https://towardsdatascience.com/multiclass-classification-algorithm-from-scratch-with-a-project-in-python-step-by-step-guide-485a83c79992", "icon": "fas fa-code" }
-                ]
-            }
-        ]
+      "name": "Parameter Estimation",
+      "videos": [
+        { "id": 7, "title": "Bayesian Parameter Estimation", "youtube_url": "https://youtu.be/8P7tdwFF0is", "what_you_will_learn": ["The Bayesian approach to estimating parameters.", "Differences from the frequentist approach.", "Understanding posterior distributions."], "content_covered": "This video introduces the Bayesian perspective, where parameters are treated as random variables with their own distributions.", "resources": [] },
+        { "id": 8, "title": "Maximum Likelihood Estimation (MLE)", "youtube_url": "https://youtu.be/WIPUh9yWM4c", "what_you_will_learn": ["The principle of MLE.", "Finding parameters that maximize data likelihood.", "Its relationship with cost functions."], "content_covered": "MLE is a fundamental method for finding model parameters that make the observed data most probable.", "resources": [ { "name": "Deriving Cost Functions Pt 1", "url": "https://allenkunle.me/deriving-ml-cost-functions-part1", "icon": "fas fa-book-open" }, { "name": "Deriving Cost Functions Pt 2", "url": "https://allenkunle.me/deriving-ml-cost-functions-part2", "icon": "fas fa-book-open" } ] },
+        { "id": 9, "title": "Maximum A Posteriori (MAP)", "youtube_url": "https://youtu.be/XKkfIU8ugjM", "what_you_will_learn": ["How MAP combines MLE with a prior distribution.", "The relationship between MAP, MLE, and Bayesian estimation.", "When to use MAP over MLE."], "content_covered": "MAP estimation is a Bayesian approach that incorporates prior knowledge, often leading to more regularized models.", "resources": [ { "name": "Blog: MLE vs MAP", "url": "https://towardsdatascience.com/mle-vs-map-a989f423ae5c", "icon": "fas fa-book-open" } ] }
+      ]
     },
     {
-        "name": "Support Vector Machines",
-        "videos": [
-            {
-                "id": 15,
-                "title": "SVM with Linear Kernel",
-                "youtube_url": "https://www.youtube.com/watch?v=KvIdyz0KdCU",
-                "what_you_will_learn": ["The core idea of finding the maximum-margin hyperplane.", "The role of support vectors in defining the decision boundary.", "How SVMs work for linearly separable data."],
-                "content_covered": "Support Vector Machines (SVMs) are a powerful class of supervised algorithms used for classification and regression. This video introduces the fundamental concepts of SVMs for linear problems.",
-                "resources": [
-                    { "name": "SVM Applications", "url": "https://medium.com/@rinu.gour123/8-unique-real-life-applications-of-svm-8a96ca43313", "icon": "fas fa-link" },
-                    { "name": "Scikit-Learn SVM Code", "url": "https://scikit-learn.org/stable/modules/svm.html", "icon": "fas fa-code" }
-                ]
-            },
-            {
-                "id": 16,
-                "title": "SVM: Slack & Nonlinear Kernels",
-                "youtube_url": "https://youtu.be/kPuHAK4RCfM",
-                "what_you_will_learn": ["How slack variables handle non-linearly separable data.", "The concept of the 'kernel trick' for complex decision boundaries.", "Understanding popular kernels like RBF and Polynomial."],
-                "content_covered": "Unlock the true power of SVMs by learning how they handle complex, real-world data using slack variables and the kernel trick, which maps data to higher dimensions.",
-                "resources": [
-                    { "name": "Stanford SVM Exercises", "url": "http://openclassroom.stanford.edu/MainFolder/DocumentPage.php?course=MachineLearning&doc=exercises/ex8/ex8.html", "icon": "fas fa-book" }
-                ]
-            }
-        ]
+      "name": "Linear & Logistic Regression",
+      "videos": [
+        { "id": 10, "title": "Gradient Descent & Regularisation", "youtube_url": "https://youtu.be/lUmFzIU-Cp4", "what_you_will_learn": ["The core idea of Gradient Descent.", "Importance of learning rate and feature scaling.", "What regularization is and why it's used."], "content_covered": "Learn how most models are trained. This video explains the Gradient Descent algorithm and regularization for robust models.", "resources": [ { "name": "Handling Class Imbalance", "url": "https://medium.com/data-science-in-your-pocket/handling-class-imbalance-in-classification-algorithms-explained-2b0b7377aa34", "icon": "fas fa-link" } ] },
+        { "id": 11, "title": "Linear Regression & Normal Equation", "youtube_url": "https://youtu.be/BGiAcoU4yWk", "what_you_will_learn": ["The formula for the Normal Equation.", "Solving for parameters analytically.", "When this is preferred over Gradient Descent."], "content_covered": "This video covers the Normal Equation, a direct, non-iterative method for finding the optimal parameters for linear regression.", "resources": [ { "name": "Linear Regression Guide", "url": "https://machinelearningmastery.com/linear-regression-for-machine-learning/", "icon": "fas fa-book-open" }, { "name": "The Normal Equation & Matrix Calc", "url": "https://eli.thegreenplace.net/2015/the-normal-equation-and-matrix-calculus/", "icon": "fas fa-book-open" } ] },
+        { "id": 12, "title": "Logistic Regression Concepts", "youtube_url": "https://youtu.be/sxaYUg6zc7I", "what_you_will_learn": ["How Logistic Regression is used for classification.", "The role of the Sigmoid function.", "Loss, convexity, and gradient descent for this model."], "content_covered": "Logistic Regression is a go-to algorithm for binary classification. This video covers its core mathematical underpinnings.", "resources": [ { "name": "Real-world Examples", "url": "https://activewizards.com/blog/5-real-world-examples-of-logistic-regression-application", "icon": "fas fa-link" }, { "name": "Logistic Regression Code", "url": "https://heartbeat.fritz.ai/logistic-regression-in-python-using-scikit-learn-d34e882eebb1", "icon": "fas fa-code" } ] },
+        { "id": 13, "title": "Logistic Regression: Multiclass", "youtube_url": "https://youtu.be/E6MNiNsESI4", "what_you_will_learn": ["Techniques like One-vs-Rest (OvR) to extend logistic regression.", "How to handle problems with more than two classes.", "The use of the Softmax function."], "content_covered": "Learn how to adapt the binary Logistic Regression classifier to handle multiclass classification problems, where an instance can belong to one of three or more categories.", "resources": [ { "name": "Stanford NLP Notes", "url": "https://web.stanford.edu/~jurafsky/slp3/5.pdf", "icon": "fas fa-book" }, { "name": "Multiclass from Scratch (Code)", "url": "https://towardsdatascience.com/multiclass-classification-algorithm-from-scratch-with-a-project-in-python-step-by-step-guide-485a83c79992", "icon": "fas fa-code" } ] }
+      ]
     },
     {
-        "name": "Tree-Based Models",
-        "videos": [
-            {
-                "id": 17,
-                "title": "Introduction to Decision Trees",
-                "youtube_url": "https://youtu.be/OlreMWwTJ_8",
-                "what_you_will_learn": ["How a decision tree makes predictions.", "Concepts like root nodes, branches, and leaf nodes.", "The idea of splitting data based on features."],
-                "content_covered": "Decision Trees are intuitive and interpretable models that mimic human decision-making. This video introduces the basic structure and logic of a decision tree classifier.",
-                "resources": [
-                    { "name": "Decision Tree Implementation (Code)", "url": "https://www.geeksforgeeks.org/decision-tree-implementation-python/", "icon": "fas fa-code" },
-                    { "name": "Reference Video", "url": "https://www.youtube.com/watch?v=7VeUPuFGJHk", "icon": "fab fa-youtube" }
-                ]
-            },
-            {
-                "id": 18,
-                "title": "Random Forest & Model Comparison",
-                "youtube_url": "https://youtu.be/pEFBH_371sU",
-                "what_you_will_learn": ["What an ensemble model is.", "How Random Forest improves on a single Decision Tree.", "The concepts of bagging and feature randomness."],
-                "content_covered": "Learn about ensemble learning through Random Forests, a powerful model that combines multiple decision trees to produce more accurate and robust predictions.",
-                "resources": [
-                    { "name": "Random Forest from Scratch (Code)", "url": "https://towardsdatascience.com/an-implementation-and-explanation-of-the-random-forest-in-python-77bf308a9b76", "icon": "fas fa-code" },
-                    { "name": "Bagging vs Boosting Video", "url": "https://www.youtube.com/watch?v=4EOCQJgqAOY", "icon": "fab fa-youtube" }
-                ]
-            }
-        ]
+      "name": "Support Vector Machines (SVM)",
+      "videos": [
+        { "id": 14, "title": "SVM with Linear Kernel", "youtube_url": "https://youtu.be/Kvldyz0KdCU", "what_you_will_learn": ["The core idea of finding the maximum-margin hyperplane.", "The role of support vectors in defining the decision boundary.", "How SVMs work for linearly separable data."], "content_covered": "SVMs are a powerful class of supervised algorithms used for classification. This video introduces the fundamental concepts of SVMs for linear problems.", "resources": [ { "name": "SVM Applications", "url": "https://medium.com/@rinu.gour123/8-unique-real-life-applications-of-svm-8a96ca43313", "icon": "fas fa-link" }, { "name": "Scikit-Learn SVM Code", "url": "https://scikit-learn.org/stable/modules/svm.html", "icon": "fas fa-code" } ] },
+        { "id": 15, "title": "SVM: Slack & Nonlinear Kernels", "youtube_url": "https://youtu.be/kPuHAK4RCfM", "what_you_will_learn": ["How slack variables handle non-linearly separable data.", "The concept of the 'kernel trick' for complex decision boundaries.", "Understanding popular kernels like RBF and Polynomial."], "content_covered": "Unlock the true power of SVMs by learning how they handle complex, real-world data using slack variables and the kernel trick, which maps data to higher dimensions.", "resources": [ { "name": "Stanford SVM Exercises", "url": "http://openclassroom.stanford.edu/MainFolder/DocumentPage.php?course=MachineLearning&doc=exercises/ex8/ex8.html", "icon": "fas fa-book" } ] }
+      ]
     },
     {
-        "name": "Unsupervised Learning",
-        "videos": [
-            {
-                "id": 19,
-                "title": "K-Means Clustering",
-                "youtube_url": "https://youtu.be/92-h3_1Yfz8",
-                "what_you_will_learn": ["The goal of clustering: to find groups in unlabeled data.", "The iterative algorithm behind K-Means.", "How to choose the number of clusters (K)."],
-                "content_covered": "This video introduces unsupervised learning with K-Means, one of the most popular clustering algorithms used to partition data into distinct, non-overlapping subgroups.",
-                "resources": [
-                    { "name": "K-Means vs KNN (Blog)", "url": "https://becominghuman.ai/comprehending-k-means-and-knn-algorithms-c791be90883d", "icon": "fas fa-book-open" },
-                    { "name": "Scikit-Learn K-Means (Code)", "url": "https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html", "icon": "fas fa-code" }
-                ]
-            },
-            {
-                "id": 20,
-                "title": "Gaussian Mixture Models (GMM)",
-                "youtube_url": "https://www.youtube.com/watch?v=he4lI0w1G-g",
-                "what_you_will_learn": ["How GMMs provide a probabilistic approach to clustering.", "The difference between hard and soft clustering.", "When to use GMMs over K-Means."],
-                "content_covered": "Go beyond K-Means with Gaussian Mixture Models, a more flexible clustering algorithm that assumes data points are generated from a mixture of several Gaussian distributions.",
-                "resources": [
-                    { "name": "GMM Explained (Article)", "url": "https://brilliant.org/wiki/gaussian-mixture-model/", "icon": "fas fa-book" },
-                    { "name": "GMM Clustering (Code)", "url": "https://www.analyticsvidhya.com/blog/2019/10/gaussian-mixture-models-clustering/", "icon": "fas fa-code" }
-                ]
-            }
-        ]
+      "name": "Tree-Based & Ensemble Models",
+      "videos": [
+        { "id": 16, "title": "Introduction to Decision Trees", "youtube_url": "https://youtu.be/OlreMWwTJ_8", "what_you_will_learn": ["How a decision tree makes predictions.", "Concepts like root nodes, branches, and leaf nodes.", "The idea of splitting data based on features."], "content_covered": "Decision Trees are intuitive and interpretable models that mimic human decision-making. This video introduces the basic structure and logic of a decision tree classifier.", "resources": [ { "name": "Decision Tree Implementation (Code)", "url": "https://www.geeksforgeeks.org/decision-tree-implementation-python/", "icon": "fas fa-code" }, { "name": "Reference Video", "url": "https://www.youtube.com/watch?v=7VeUPuFGJHk", "icon": "fab fa-youtube" } ] },
+        { "id": 17, "title": "Random Forest & Model Comparison", "youtube_url": "https://youtu.be/pEFBH_371sU", "what_you_will_learn": ["What an ensemble model is.", "How Random Forest improves on a single Decision Tree.", "The concepts of bagging and feature randomness."], "content_covered": "Learn about ensemble learning through Random Forests, a powerful model that combines multiple decision trees to produce more accurate and robust predictions.", "resources": [ { "name": "Random Forest from Scratch (Code)", "url": "https://towardsdatascience.com/an-implementation-and-explanation-of-the-random-forest-in-python-77bf308a9b76", "icon": "fas fa-code" }, { "name": "Bagging vs Boosting Video", "url": "https://www.youtube.com/watch?v=4EOCQJgqAOY", "icon": "fab fa-youtube" } ] }
+      ]
     },
     {
-        "name": "Dimensionality Reduction",
-        "videos": [
-            {
-                "id": 21,
-                "title": "Principal Component Analysis (PCA) - Part 1",
-                "youtube_url": "https://youtu.be/cERNIfg9TLM",
-                "what_you_will_learn": ["The motivation for dimensionality reduction.", "The goal of PCA: to find the directions of maximum variance.", "The concept of principal components."],
-                "content_covered": "This video introduces Principal Component Analysis (PCA), a fundamental technique for dimensionality reduction that helps in data visualization and improving algorithm performance.",
-                "resources": [
-                    { "name": "PCA Step-by-Step Explanation", "url": "https://builtin.com/data-science/step-step-explanation-principal-component-analysis", "icon": "fas fa-book-open" }
-                ]
-            },
-            {
-                "id": 22,
-                "title": "Principal Component Analysis (PCA) - Part 2",
-                "youtube_url": "https://youtu.be/ml1d1zC0jsg",
-                "what_you_will_learn": ["How to implement PCA in practice.", "Interpreting the results of PCA.", "The difference between PCA and Linear Regression."],
-                "content_covered": "This second part of the PCA series delves into the practical implementation and interpretation, solidifying your understanding of this key unsupervised learning technique.",
-                "resources": [
-                    { "name": "PCA vs Linear Regression (Blog)", "url": "https://shankarmsy.github.io/posts/pca-vs-lr.html", "icon": "fas fa-book-open" },
-                    { "name": "PCA with Scikit-Learn (Code)", "url": "https://shankarmsy.github.io/posts/pca-sklearn.html", "icon": "fas fa-code" }
-                ]
-            }
-        ]
+      "name": "Unsupervised Learning",
+      "videos": [
+        { "id": 18, "title": "K-Means Clustering", "youtube_url": "https://youtu.be/92-h3_1Yfz8", "what_you_will_learn": ["The goal of clustering: to find groups in unlabeled data.", "The iterative algorithm behind K-Means.", "How to choose the number of clusters (K)."], "content_covered": "This video introduces unsupervised learning with K-Means, one of the most popular clustering algorithms used to partition data into distinct, non-overlapping subgroups.", "resources": [ { "name": "K-Means vs KNN (Blog)", "url": "https://becominghuman.ai/comprehending-k-means-and-knn-algorithms-c791be90883d", "icon": "fas fa-book-open" }, { "name": "Scikit-Learn K-Means (Code)", "url": "https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html", "icon": "fas fa-code" } ] },
+        { "id": 19, "title": "Gaussian Mixture Models (GMM)", "youtube_url": "https://youtu.be/he4ll0w1G-g", "what_you_will_learn": ["How GMMs provide a probabilistic approach to clustering.", "The difference between hard and soft clustering.", "When to use GMMs over K-Means."], "content_covered": "Go beyond K-Means with Gaussian Mixture Models, a more flexible clustering algorithm that assumes data points are generated from a mixture of several Gaussian distributions.", "resources": [ { "name": "GMM Explained (Article)", "url": "https://brilliant.org/wiki/gaussian-mixture-model/", "icon": "fas fa-book" }, { "name": "GMM Clustering (Code)", "url": "https://www.analyticsvidhya.com/blog/2019/10/gaussian-mixture-models-clustering/", "icon": "fas fa-code" } ] }
+      ]
     },
     {
-        "name": "Advanced Topics",
-        "videos": [
-            {
-                "id": 23,
-                "title": "Reinforcement Learning Introduction",
-                "youtube_url": "https://youtu.be/KEQhaBIZ9yk",
-                "what_you_will_learn": ["The core concepts: agent, environment, state, action, reward.", "How Reinforcement Learning differs from supervised and unsupervised learning.", "Potential applications like game playing and robotics."],
-                "content_covered": "This video provides an introduction to Reinforcement Learning, a fascinating area of ML where an agent learns to make decisions by performing actions in an environment to maximize a cumulative reward.",
-                "resources": [
-                  { "name": "Tic-Tac-Toe RL Project (Code)", "url": "https://amunategui.github.io/reinforcement-learning/index.html", "icon": "fas fa-code" },
-                  { "name": "Rock-Paper-Scissors Dataset", "url": "https://www.kaggle.com/code/nelver/rock-paper-scissors-q-learning", "icon": "fas fa-database" }
-                ]
-            },
-            {
-                "id": 24,
-                "title": "Big Data Technologies",
-                "youtube_url": "https://youtu.be/5dSmXcKsEBo",
-                "what_you_will_learn": ["The challenges of working with Big Data.", "Overview of key technologies like Hadoop and Spark.", "The role of these technologies in the ML pipeline."],
-                "content_covered": "Machine Learning often involves massive datasets. This video introduces the field of Big Data and the technologies designed to store, manage, and process data at scale.",
-                "resources": [
-                  { "name": "Top Big Data Technologies (Blog)", "url": "https://www.edureka.co/blog/top-big-data-technologies/", "icon": "fas fa-book-open" }
-                ]
-            }
-        ]
+      "name": "Dimensionality Reduction",
+      "videos": [
+        { "id": 20, "title": "Principal Component Analysis (PCA) Part 1", "youtube_url": "https://youtu.be/cERNIfg9TLM", "what_you_will_learn": ["The motivation for dimensionality reduction.", "The goal of PCA: to find the directions of maximum variance.", "The concept of principal components."], "content_covered": "This video introduces Principal Component Analysis (PCA), a fundamental technique for dimensionality reduction that helps in data visualization and improving algorithm performance.", "resources": [ { "name": "PCA Step-by-Step Explanation", "url": "https://builtin.com/data-science/step-step-explanation-principal-component-analysis", "icon": "fas fa-book-open" } ] },
+        { "id": 21, "title": "Principal Component Analysis (PCA) Part 2", "youtube_url": "https://youtu.be/ml1d1zC0jsg", "what_you_will_learn": ["How to implement PCA in practice.", "Interpreting the results of PCA.", "The difference between PCA and Linear Regression."], "content_covered": "This second part of the PCA series delves into the practical implementation and interpretation, solidifying your understanding of this key unsupervised learning technique.", "resources": [ { "name": "PCA vs Linear Regression (Blog)", "url": "https://shankarmsy.github.io/posts/pca-vs-lr.html", "icon": "fas fa-book-open" }, { "name": "PCA with Scikit-Learn (Code)", "url": "https://shankarmsy.github.io/posts/pca-sklearn.html", "icon": "fas fa-code" } ] }
+      ]
+    },
+    {
+      "name": "Advanced Topics",
+      "videos": [
+        { "id": 22, "title": "Reinforcement Learning Intro", "youtube_url": "https://youtu.be/KEQhaBIZ9yk", "what_you_will_learn": ["The core concepts: agent, environment, state, action, reward.", "How Reinforcement Learning differs from other learning types.", "Potential applications like game playing and robotics."], "content_covered": "This video provides an introduction to Reinforcement Learning, where an agent learns to make decisions by performing actions in an environment to maximize a cumulative reward.", "resources": [ { "name": "Tic-Tac-Toe RL Project (Code)", "url": "https://amunategui.github.io/reinforcement-learning/index.html", "icon": "fas fa-code" }, { "name": "Rock-Paper-Scissors Dataset", "url": "https://www.kaggle.com/code/nelver/rock-paper-scissors-q-learning", "icon": "fas fa-database" } ] },
+        { "id": 23, "title": "Big Data Technologies", "youtube_url": "https://youtu.be/5dSmXcKsEBo", "what_you_will_learn": ["The challenges of working with Big Data.", "Overview of key technologies like Hadoop and Spark.", "The role of these technologies in the ML pipeline."], "content_covered": "Machine Learning often involves massive datasets. This video introduces the field of Big Data and the technologies designed to store, manage, and process data at scale.", "resources": [ { "name": "Top Big Data Technologies (Blog)", "url": "https://www.edureka.co/blog/top-big-data-technologies/", "icon": "fas fa-book-open" } ] }
+      ]
     }
   ]
 }
