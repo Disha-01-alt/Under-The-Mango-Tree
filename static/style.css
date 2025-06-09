@@ -597,47 +597,37 @@ p.text-muted.mb-3 { /* "Found X job postings" */
 /* Dark Theme Form Styling (Inputs, Textareas)   */
 /* ============================================= */
 
-/* This rule applies to ALL text inputs, textareas, and select menus */
+/* 
+This is the most important rule. The '!important' flag ensures that our
+dark theme styles override any default Bootstrap styles for these elements.
+*/
 .form-control,
 .form-select {
-    color: #dee2e6;
-    background-color: #2b3035; /* Dark background */
-    border: 1px solid #495057; /* A subtle border */
+    color: #dee2e6 !important;
+    background-color: #2b3035 !important;
+    border: 1px solid #495057 !important;
 }
 
-/* This rule applies when you CLICK on an input */
+/* Style for when the input is focused (clicked on) */
 .form-control:focus,
 .form-select:focus {
-    color: #dee2e6;
-    background-color: #343a40;
-    border-color: #80bdff; /* Standard blue focus color */
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Blue glow */
+    color: #dee2e6 !important;
+    background-color: #343a40 !important;
+    border-color: #80bdff !important;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25) !important;
 }
 
-/* This rule styles the placeholder text inside an empty input */
+/* Style for placeholder text */
 .form-control::placeholder {
-    color: #6c757d;
+    color: #6c757d !important;
     opacity: 1;
 }
 
-/* This rule styles inputs that are disabled or readonly */
+/* Style for disabled or readonly inputs */
 .form-control:disabled,
 .form-control[readonly] {
-    background-color: #212529; /* Even darker for disabled fields */
-    opacity: 0.6;
-}
-
-/* This ensures all parts of a file input are styled correctly */
-.form-control[type="file"] {
-    color: #6c757d;
-}
-.form-control[type="file"]:focus {
-    color: #dee2e6;
-}
-
-/* Specifically target the feedback textarea in the admin view */
-#feedback, textarea[name="feedback"] {
-    min-height: 100px;
+    background-color: #212529 !important;
+    opacity: 0.7 !important;
 }
 /* Dropdown enhancements */
 .dropdown-menu {
