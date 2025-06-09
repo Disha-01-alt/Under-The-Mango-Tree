@@ -1,0 +1,60 @@
+{
+  "course_title": "Data Structures & Algorithms",
+  "topics": [
+    {
+      "name": "Introduction to Algorithms",
+      "videos": [
+        {
+          "id": 0,
+          "title": "What is an Algorithm?",
+          "youtube_url": "https://www.youtube.com/watch?v=6hfOvs8pY1k",
+          "what_you_will_learn": [
+            "The formal definition of an algorithm.",
+            "How to measure an algorithm's efficiency with Big O notation.",
+            "The difference between time and space complexity."
+          ],
+          "content_covered": "This essential introduction lays the groundwork for the entire course. We define what an algorithm is and introduce the critical concept of Big O notation, which is used to analyze and compare the efficiency of different solutions to a problem.",
+          "resources": [
+            { "name": "Big O Cheatsheet", "url": "https://www.bigocheatsheet.com/", "icon": "fas fa-tachometer-alt" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Arrays and Strings",
+      "videos": [
+        {
+          "id": 1,
+          "title": "Array Manipulation Techniques",
+          "youtube_url": "https://www.youtube.com/watch?v=4s_eI7h_oU4",
+          "what_you_will_learn": [
+            "Common array traversal patterns.",
+            "In-place operations to save memory.",
+            "Techniques like two-pointers for solving common problems."
+          ],
+          "content_covered": "Arrays are the most fundamental data structure. This video covers essential techniques for manipulating array data efficiently, including the widely-used two-pointer technique to solve problems in linear time.",
+          "resources": [
+            { "name": "Practice Problems", "url": "https://leetcode.com/tag/array/", "icon": "fas fa-code" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sorting Algorithms",
+      "videos": [
+        {
+          "id": 2,
+          "title": "Bubble Sort vs. Merge Sort",
+          "youtube_url": "https://www.youtube.com/watch?v=XaqR3G_NVoo",
+          "what_you_will_learn": [
+            "The simple but inefficient logic of Bubble Sort.",
+            "The recursive 'divide and conquer' strategy of Merge Sort.",
+            "Comparing their time complexities and when to use each one."
+          ],
+          "content_covered": "Sorting is a classic computer science problem. We compare a simple O(n^2) algorithm, Bubble Sort, with a highly efficient O(n log n) divide-and-conquer algorithm, Merge Sort, to highlight the importance of algorithmic efficiency.",
+          "resources": []
+        }
+      ]
+    }
+  ]
+}
