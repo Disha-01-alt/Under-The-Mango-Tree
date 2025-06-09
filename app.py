@@ -228,7 +228,7 @@ def python_learning():
             # This is an edge case: the JSON file is empty or malformed.
             flash("No Python learning content is available at the moment.", "warning")
             return render_template(
-                'python_course_page.html',
+                'python_learning.html',
                 course_data=PYTHON_DATA,
                 current_video=None,
                 current_topic_name=None
