@@ -81,14 +81,23 @@ def find_video_by_id(video_id, data_source):
 # --- ADD THIS NEW BLOCK FOR MACHINE LEARNING DATA ---
 try:
     with open(os.path.join('data', 'machine_learning_data.json'), 'r') as f:
-        ml_data = json.load(f)
-        ML_VIDEO_DATA = ml_data['ML_VIDEO_DATA']
-        ML_SIDEBAR_TOPICS = ml_data['ML_SIDEBAR_TOPICS']
-except FileNotFoundError:
-    print("ERROR: machine_learning_data.json not found. Creating empty placeholders.")
-    ML_VIDEO_DATA = {}
-    ML_SIDEBAR_TOPICS = []
-# --- END OF NEW BLOCK ---
+        ML_DATA = json.load(f)
+except (FileNotFoundError, json.JSONDecodeError) as e:
+    print(f"ERROR loading machine_learning_data.json: {e}")
+    # Create a default empty structure so the app doesn't crash
+    ML_DATA = {"topics": [], "course_title": "Error: Data Not Found"}
+
+# The find_video_by_id helper function is reusable for all courses.
+# Ensure it is defined once in your app.py, like this:
+def find_video_by_id(video_id, data_source):
+    """Helper function to find a specific video and its topic from the structured data."""
+    if not video_id:
+        return None, None
+    for topic in data_source.get('topics', []):
+        for video in topic.get('videos', []):
+            if str(video.get('id')) == str(video_id):
+                return video, topic.get('name')  # Return the video object and its topic name
+    return None, None  # Return None if not found
 try:
     with open(os.path.join('data', 'deep_learning_data.json'), 'r') as f:
         dl_data = json.load(f)
@@ -286,28 +295,39 @@ def english_learning():
 
 @app.route('/machine-learning')
 def machine_learning():
-    # Get selected topic from query parameter, default to first topic
-    # This line will now work correctly if data loads, or fail gracefully if it doesn't
-    selected_topic = request.args.get('topic', ML_SIDEBAR_TOPICS[0] if ML_SIDEBAR_TOPICS else None)
-    
-    # Get all videos for the selected topic (no pagination)
-    videos = ML_VIDEO_DATA.get(selected_topic, [])
-    
-    # Create sidebar topics with status indicators
-    sidebar_topics_with_status = []
-    for topic in ML_SIDEBAR_TOPICS:
-        topic_data = {
-            'name': topic,
-            'video_count': len(ML_VIDEO_DATA.get(topic, [])),
-            'is_active': topic == selected_topic,
-            'url_param': topic.replace(' ', '%20')  # URL encode spaces
-        }
-        sidebar_topics_with_status.append(topic_data)
-    
-    return render_template('machine_learning.html',
-                           videos=videos,
-                           sidebar_topics=sidebar_topics_with_status,
-                           selected_topic=selected_topic)
+    # Attempt to load the first available video if no specific ID is given
+    first_video_id = None
+    if ML_DATA.get('topics') and ML_DATA['topics'][0].get('videos'):
+        first_video_id = ML_DATA['topics'][0]['videos'][0]['id']
+
+    # Get video_id from URL, or default to the first video if available
+    video_id_to_find = request.args.get('video_id', first_video_id)
+
+    # CASE 1: No videos exist in the data file at all
+    if not video_id_to_find:
+        flash("No Machine Learning content is available at the moment.", "warning")
+        return render_template(
+            'machine_learning.html', 
+            course_data=ML_DATA, 
+            current_video=None, 
+            current_topic_name=None
+        )
+
+    # CASE 2: A video ID exists, so we try to find the video
+    current_video, current_topic_name = find_video_by_id(video_id_to_find, ML_DATA)
+
+    # If the specific video wasn't found (e.g., bad ID in URL), redirect
+    if not current_video:
+        flash(f"The requested video (ID: {video_id_to_find}) could not be found. Showing the first video instead.", "info")
+        return redirect(url_for('machine_learning', video_id=first_video_id))
+        
+    # SUCCESS CASE: Video was found, render the page
+    return render_template(
+        'machine_learning.html', 
+        course_data=ML_DATA,
+        current_video=current_video,
+        current_topic_name=current_topic_name
+    )
 @app.route('/team')
 def team():
     return render_template('team.html', 
