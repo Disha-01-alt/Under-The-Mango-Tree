@@ -229,3 +229,14 @@ html[data-bs-theme="dark"] .form-control[readonly] {
     background-color: #212529 !important;
     opacity: 0.7 !important;
 }
+/* ================================================= */
+/*  Custom Dark Display Box for Read-Only Info      */
+/* ================================================= */
+
+.dark-display-box {
+    background-color: #2b3035 !important; /* Dark background */
+    border: 1px solid #495057 !important; /* Subtle border */
+    color: #dee2e6 !important;             /* Light grey text */
+    min-height: 80px;                     /* Give it some height */
+    height: auto;
+}
