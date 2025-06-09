@@ -292,7 +292,7 @@ def deep_learning_ai():
         current_video=current_video,
         current_topic_name=current_topic_name
     )
-    @app.route('/algorithms')
+@app.route('/algorithms')
 def algorithms():
     first_video_id = None
     if ALGORITHMS_DATA.get('topics') and ALGORITHMS_DATA['topics'][0].get('videos'):
