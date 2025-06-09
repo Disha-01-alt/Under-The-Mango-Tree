@@ -1,0 +1,43 @@
+{
+  "course_title": "Technical Interview Preparation",
+  "topics": [
+    {
+      "name": "Behavioral Questions",
+      "videos": [
+        {
+          "id": 0,
+          "title": "Mastering the STAR Method",
+          "youtube_url": "https://www.youtube.com/watch?v=PSH18A2x47s",
+          "what_you_will_learn": [
+            "The STAR method: Situation, Task, Action, Result.",
+            "How to structure compelling stories about your experiences.",
+            "Answering questions like 'Tell me about a time you failed...'"
+          ],
+          "content_covered": "Behavioral questions are designed to assess your soft skills and past performance. The STAR method is the gold standard for providing clear, concise, and impactful answers that showcase your abilities.",
+          "resources": [
+            { "name": "Common Behavioral Questions", "url": "https://www.indeed.com/career-advice/interviewing/most-common-behavioral-interview-questions", "icon": "fas fa-list-alt" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "System Design",
+      "videos": [
+        {
+          "id": 1,
+          "title": "System Design Intro: TinyURL",
+          "youtube_url": "https://www.youtube.com/watch?v=fQr4IOLsUsc",
+          "what_you_will_learn": [
+            "The process of scoping a system design problem.",
+            "Designing APIs and data models.",
+            "Considering scalability, availability, and latency."
+          ],
+          "content_covered": "System design interviews test your ability to build large-scale systems. We use the classic 'Design a URL shortener' problem to walk through the fundamental steps, from clarifying requirements to handling database scaling and API design.",
+          "resources": [
+            { "name": "System Design Primer", "url": "https://github.com/donnemartin/system-design-primer", "icon": "fab fa-github" }
+          ]
+        }
+      ]
+    }
+  ]
+}
