@@ -6,6 +6,7 @@ from flask_login import login_user, logout_user, current_user, login_required
 from oauthlib.oauth2 import WebApplicationClient
 from database import get_user_by_email, create_user, get_user_by_id
 from models import User
+from database import get_user_by_email, create_user, get_user_by_id, is_company_email
 import logging
 
 # --- Environment Variable Handling for OAuthLib ---
@@ -185,23 +186,42 @@ def callback():
         
         logging.warning(f"User {users_email} has unexpected role: {existing_user_model.role}. Redirecting home.")
         return redirect(url_for('job_portal_index')) 
-    else:
+    else: # This block handles NEW users who are not in the database yet.
         try:
-            logging.info(f"New user from Google: {users_email}. Creating 'pending_setup' user.")
+            # Check if the new user's email is on the company whitelist
+            if is_company_email(users_email):
+                logging.info(f"New whitelisted company user: {users_email}. Creating 'company' account.")
+                # If they are a company, create their account with the 'company' role directly.
+                user_id = create_user(
+                    email=users_email,
+                    password='', # No password for Google users
+                    role='company',
+                    full_name=users_name_from_google
+                )
+                newly_created_user_model = get_user_by_id(user_id)
+                login_user(newly_created_user_model)
+                flash(f'Welcome, {users_name_from_google}! Your company account is now active.', 'success')
+                return redirect(url_for('company_routes.dashboard'))
+        else:
+            # If they are NOT a company, they must be a candidate.
+            # Create a 'pending_setup' account and send them to the "Complete Registration" form.
+            logging.info(f"New candidate user: {users_email}. Creating 'pending_setup' account.")
             user_id = create_user(
-                email=users_email, 
+                email=users_email,
                 password='',
-                role="pending_setup", 
+                role='pending_setup',
                 full_name=users_name_from_google
             )
-            
             newly_created_user_model = get_user_by_id(user_id)
-            if not newly_created_user_model:
-                logging.critical(f"CRITICAL: Failed to fetch new user (ID: {user_id}) for {users_email}.")
-                flash("Error setting up your account. Please try again.", "error")
-                # CORRECTED REDIRECT
-                return redirect(url_for("job_portal_index"))
+            login_user(newly_created_user_model)
+            session['needs_registration_completion'] = True
+            flash(f'Welcome, {users_name_from_google}! Please complete your registration.', 'info')
+            return redirect(url_for('auth_routes.complete_registration'))
 
+    except Exception as e:
+        logging.exception(f"Error during new user creation for {users_email}:")
+        flash("An error occurred while setting up your account. Please try again.", "error")
+        return redirect(url_for('job_portal_index'))
             login_user(newly_created_user_model) 
             
             session['google_id'] = unique_id
