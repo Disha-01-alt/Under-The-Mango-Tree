@@ -167,6 +167,20 @@ def callback():
     logging.info(f"Google login for {users_email}. User in DB: {existing_user_model is not None}")
 
     if existing_user_model:
+        # In google_auth.py, inside the callback() function
+if existing_user_model:
+    # If the user's email is on the company list but their role is not 'company', fix it.
+    if is_company_email(users_email) and existing_user_model.role != 'company':
+        from database import get_db
+        logging.warning(f"Correcting role for {users_email} to 'company' based on whitelist.")
+        with get_db() as conn:
+            with conn.cursor() as cur:
+                cur.execute("UPDATE users SET role = 'company' WHERE id = %s", (existing_user_model.id,))
+        conn.commit()
+        existing_user_model.role = 'company'
+
+    login_user(existing_user_model)
+    # ... (rest of the existing user logic is fine)
         login_user(existing_user_model)
         session['google_id'] = unique_id 
         session['google_name'] = existing_user_model.full_name or users_name_from_google
