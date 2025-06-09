@@ -170,13 +170,13 @@
                             
                             <div class="mb-3">
                                 <strong>Description:</strong>
-                                <div class="mt-1 p-3 bg-light border rounded" style="max-height: 200px; overflow-y: auto;">
+                                <div class="mt-1 p-3 form-control border rounded" style="max-height: 200px; overflow-y: auto;">
                                     {% if job.description and (job.description|string).strip() != '' %}{{ job.description|replace('\n', '<br>')|safe }}{% else %}<p class="text-muted">No description.</p>{% endif %}
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <strong>Requirements:</strong>
-                                <div class="mt-1 p-3 bg-light border rounded" style="max-height: 200px; overflow-y: auto;">
+                                <div class="mt-1 p-3 form-control border rounded" style="max-height: 200px; overflow-y: auto;">
                                     {% if job.requirements and (job.requirements|string).strip() != '' %}{{ job.requirements|replace('\n', '<br>')|safe }}{% else %}<p class="text-muted">No requirements.</p>{% endif %}
                                 </div>
                             </div>
