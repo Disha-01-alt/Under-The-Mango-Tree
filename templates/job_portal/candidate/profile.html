@@ -134,8 +134,8 @@
                                 <label for="parental_annual_income" class="form-label">Family Parental Annual Income *</label>
                                 <select class="form-select" id="parental_annual_income" name="parental_annual_income" required>
                                     <option value="">Select income range</option>
-                                    <option value="Below 1 Lakh" {{ 'selected' if profile and profile.parental_annual_income == 'Below 1 Lakh' else '' }}>Below 3 Lakh</option>
-                                    <option value="1-2.5 Lakhs" {{ 'selected' if profile and profile.parental_annual_income == '1-2.5 Lakhs' else '' }}>3 to 8 Lakhs</option>
+                                    <option value="Below 3 Lakh" {{ 'selected' if profile and profile.parental_annual_income == 'Below 3 Lakh' else '' }}>Below 3 Lakh</option>
+                                    <option value="3 to 8 Lakhs" {{ 'selected' if profile and profile.parental_annual_income == '3 to 8 Lakhs' else '' }}>3 to 8 Lakhs</option>
             
                                     <option value="Above 8 Lakhs" {{ 'selected' if profile and profile.parental_annual_income == 'Above 8 Lakhs' else '' }}>Above 8 Lakhs</option>
                                 </select>
