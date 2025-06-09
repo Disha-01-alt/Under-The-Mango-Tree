@@ -37,16 +37,24 @@
                             </div>
                         </div>
                         
-                        <div class="mb-3">
-                            <label for="role" class="form-label">Account Type *</label>
-                            <select class="form-select" id="role" name="role" required>
-                                <option value="">Select account type...</option>
-                                <option value="candidate" {% if (form_data and form_data.role == 'candidate') or (not form_data and pre_selected_role == 'candidate') %}selected{% endif %}>
-                                    Candidate/Student
-                                </option>
-                            </select>
-                            <small class="text-muted">Company accounts require admin approval after registration.</small>
-                        </div>
+                      {% if pre_selected_role == 'candidate' %}
+    <!-- If role is pre-selected, hide the dropdown and use a hidden input -->
+    <div class="alert alert-info text-center">
+        You are registering as a <strong>Job Seeker / Student</strong>.
+    </div>
+    <input type="hidden" name="role" value="candidate">
+{% else %}
+    <!-- Fallback: If no role is pre-selected (e.g., user navigates directly to /register), show the dropdown. -->
+    <div class="mb-3">
+        <label for="role" class="form-label">Account Type *</label>
+        <select class="form-select" id="role" name="role" required>
+            <option value="">Select account type...</option>
+            <option value="candidate" {% if form_data and form_data.role == 'candidate' %}selected{% endif %}>
+                Candidate/Student
+            </option>
+        </select>
+    </div>
+{% endif %}
                         
                         <div class="row">
                             <div class="col-md-6 mb-3">
