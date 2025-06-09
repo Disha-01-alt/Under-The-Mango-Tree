@@ -3,116 +3,197 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Dynamic title for the browser tab -->
     <title>{{ current_video.title if current_video else course_data.course_title }} - Under The Mango Tree</title>
     
-    <!-- External Libraries (Bootstrap & Font Awesome) -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    
+
     <!-- Custom Styles -->
     <style>
-        body { background-color: #f8f9fa; }
-        .main-content { display: flex; flex-direction: column; gap: 1.5rem; }
-        @media (min-width: 992px) { .main-content { flex-direction: row; } }
-        .sidebar { flex: 0 0 100%; }
-        @media (min-width: 992px) { .sidebar { flex: 0 0 340px; position: sticky; top: 1rem; align-self: flex-start; max-height: calc(100vh - 2rem); overflow-y: auto; } }
-        .video-content-area { flex: 1; }
-        .accordion-button:not(.collapsed) { color: #0c63e4; background-color: #e7f1ff; }
-        .accordion-button:focus { box-shadow: none; }
-        .video-link-list-group a { padding-left: 2.25rem; border: none; font-size: 0.95rem; }
-        .video-link-list-group a.active { background-color: #0d6efd; color: white; font-weight: 500; }
-        .video-iframe-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 0.375rem; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        .video-iframe-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-        .content-card .card-header { font-weight: 500; }
-        .content-card ul { padding-left: 0; list-style: none; }
-        .content-card li { display: flex; align-items: flex-start; padding: 0.5rem 0; }
-        .content-card i.fa-check-circle { color: #198754; }
-        .content-card i { margin-right: 0.75rem; margin-top: 0.25rem; color: #6c757d; }
+        /* General Styles */
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; }
+
+        /* Sidebar Accordion Styling */
+        .sidebar-accordion .accordion-button {
+            background-color: #f9fafb;
+            border-bottom: 1px solid #e5e7eb;
+            font-weight: 600;
+            padding: 0.75rem 1rem;
+            text-align: left;
+            width: 100%;
+            cursor: pointer;
+            position: relative;
+        }
+        .sidebar-accordion .accordion-button:hover { background-color: #f3f4f6; }
+        .sidebar-accordion .accordion-button::after {
+            content: '\f078'; /* Font Awesome chevron-down */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 1rem;
+            transition: transform 0.2s ease-in-out;
+        }
+        .sidebar-accordion .accordion-button.collapsed::after {
+            transform: rotate(-90deg);
+        }
+        .sidebar-accordion .accordion-content {
+            display: none;
+            background-color: white;
+        }
+        .sidebar-accordion .accordion-content.show {
+            display: block;
+        }
+        .sidebar-accordion .video-link {
+            display: block;
+            padding: 0.6rem 1rem 0.6rem 2rem;
+            color: #374151;
+            text-decoration: none;
+            border-bottom: 1px solid #f3f4f6;
+            transition: background-color 0.2s;
+        }
+        .sidebar-accordion .video-link:last-child { border-bottom: none; }
+        .sidebar-accordion .video-link:hover { background-color: #eff6ff; }
+        .sidebar-accordion .video-link.active {
+            background-color: #3b82f6;
+            color: white;
+            font-weight: 500;
+        }
+
+        /* Video Iframe Container */
+        .video-iframe-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 0.5rem;
+        }
+        .video-iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Content Card Styling */
+        .content-card ul li {
+            display: flex;
+            align-items: flex-start;
+        }
+        .content-card ul i {
+            margin-top: 0.25rem;
+        }
     </style>
 </head>
-<body>
+<body class="bg-gray-100">
+
     {% include 'header.html' %}
 
-    <main class="container py-4">
-        <div class="main-content">
+    <main class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+        <div class="lg:grid lg:grid-cols-12 lg:gap-8">
             
-            <!-- Sidebar with Accordion Menu -->
-            <aside class="sidebar">
-                <div class="p-3 bg-white rounded shadow-sm">
-                    <h4 class="mb-3">{{ course_data.course_title }}</h4>
-                    <div class="accordion" id="sidebarAccordion">
-                        {% for topic in course_data.topics %}
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="heading-py-{{ loop.index }}">
-                                <button class="accordion-button {% if topic.name != current_topic_name %}collapsed{% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-py-{{ loop.index }}" aria-expanded="{% if topic.name == current_topic_name %}true{% else %}false{% endif %}">
-                                    <b>{{ topic.name }}</b>
-                                </button>
-                            </h2>
-                            <div id="collapse-py-{{ loop.index }}" class="accordion-collapse collapse {% if topic.name == current_topic_name %}show{% endif %}">
-                                <div class="list-group list-group-flush video-link-list-group">
-                                    {% for video in topic.videos %}
-                                    <a href="{{ url_for('python_learning', video_id=video.id) }}" class="list-group-item list-group-item-action {% if current_video and video.id == current_video.id %}active{% endif %}">
-                                        {{ video.title }}
-                                    </a>
-                                    {% endfor %}
+            <!-- Sidebar -->
+            <aside class="lg:col-span-4 xl:col-span-3">
+                <div class="sticky top-4 space-y-4">
+                    <section aria-labelledby="course-sidebar-title">
+                        <div class="bg-white rounded-lg shadow">
+                            <div class="p-6">
+                                <h2 id="course-sidebar-title" class="text-lg font-medium text-gray-900">
+                                    {{ course_data.course_title }}
+                                </h2>
+                            </div>
+                            <div class="sidebar-accordion border-t border-gray-200">
+                                {% for topic in course_data.topics %}
+                                <div class="accordion-item border-b border-gray-200">
+                                    <button class="accordion-button {% if topic.name != current_topic_name %}collapsed{% endif %}" onclick="toggleAccordion(this)">
+                                        <span>{{ topic.name }}</span>
+                                    </button>
+                                    <div class="accordion-content {% if topic.name == current_topic_name %}show{% endif %}">
+                                        {% for video in topic.videos %}
+                                        <a href="{{ url_for('python_learning', video_id=video.id) }}" class="video-link {% if current_video and video.id == current_video.id %}active{% endif %}">
+                                            {{ video.title }}
+                                        </a>
+                                        {% endfor %}
+                                    </div>
                                 </div>
+                                {% endfor %}
                             </div>
                         </div>
-                        {% endfor %}
-                    </div>
+                    </section>
                 </div>
             </aside>
 
-            <!-- Main Video and Content Area -->
-            <div class="video-content-area">
+            <!-- Main Content -->
+            <div class="lg:col-span-8 xl:col-span-9">
                 {% if current_video %}
-                    <h2 class="mb-3">{{ current_video.title }}</h2>
+                    <div class="space-y-6">
+                        <!-- Video Player -->
+                        <div>
+                            <h1 class="text-2xl font-bold text-gray-900 mb-4">{{ current_video.title }}</h1>
+                            <div class="bg-black rounded-lg shadow-lg">
+                                <div class="video-iframe-container">
+                                    {% set video_id = current_video.youtube_url.split('v=')[-1].split('&')[0] %}
+                                    <iframe src="https://www.youtube.com/embed/{{ video_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- What You Will Learn -->
+                        <div class="bg-white rounded-lg shadow content-card">
+                            <div class="p-6">
+                                <h3 class="font-medium text-gray-900 flex items-center">
+                                    <i class="fas fa-graduation-cap text-blue-500 mr-3"></i>
+                                    <span>What You Will Learn</span>
+                                </h3>
+                                <ul class="mt-4 space-y-2 text-gray-600">
+                                    {% for point in current_video.what_you_will_learn %}
+                                    <li><i class="fas fa-check-circle text-green-500 w-5 mr-2"></i><span>{{ point }}</span></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
 
-                    <div class="video-iframe-container mb-4">
-                        {% set video_id_part = current_video.youtube_url.split('v=')[-1] %}
-                        {% set video_id = video_id_part.split('&')[0] %}
-                        <iframe src="https://www.youtube.com/embed/{{ video_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
+                        <!-- Content Covered -->
+                        <div class="bg-white rounded-lg shadow content-card">
+                            <div class="p-6">
+                                <h3 class="font-medium text-gray-900 flex items-center">
+                                    <i class="fas fa-file-alt text-indigo-500 mr-3"></i>
+                                    <span>Content Covered</span>
+                                </h3>
+                                <p class="mt-4 text-gray-600">{{ current_video.content_covered }}</p>
+                            </div>
+                        </div>
 
-                    <!-- "What You Will Learn" Card -->
-                    <div class="card mb-4 content-card">
-                        <div class="card-header bg-primary text-white"><i class="fas fa-graduation-cap me-2"></i>What You Will Learn</div>
-                        <div class="card-body">
-                            <ul>
-                                {% for point in current_video.what_you_will_learn %}
-                                <li><i class="fas fa-check-circle"></i><span>{{ point }}</span></li>
-                                {% endfor %}
-                            </ul>
+                        <!-- Resources -->
+                        <div class="bg-white rounded-lg shadow content-card">
+                            <div class="p-6">
+                                <h3 class="font-medium text-gray-900 flex items-center">
+                                    <i class="fas fa-tools text-gray-500 mr-3"></i>
+                                    <span>Resources</span>
+                                </h3>
+                                <ul class="mt-4 space-y-3">
+                                    {% if current_video.resources %}
+                                        {% for resource in current_video.resources %}
+                                        <li>
+                                            <a href="{{ resource.url }}" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline flex items-center">
+                                                <i class="{{ resource.icon }} w-5 mr-3 text-gray-400"></i>
+                                                <span>{{ resource.name }}</span>
+                                            </a>
+                                        </li>
+                                        {% endfor %}
+                                    {% else %}
+                                        <li class="text-gray-500 italic">No additional resources for this lesson.</li>
+                                    {% endif %}
+                                </ul>
+                            </div>
                         </div>
                     </div>
-
-                    <!-- "Content Covered" Card -->
-                    <div class="card mb-4 content-card">
-                        <div class="card-header bg-info text-white"><i class="fas fa-file-alt me-2"></i>Content Covered</div>
-                        <div class="card-body"><p>{{ current_video.content_covered }}</p></div>
-                    </div>
-
-                    <!-- "Resources" Card -->
-                    <div class="card content-card">
-                        <div class="card-header bg-secondary text-white"><i class="fas fa-tools me-2"></i>Resources</div>
-                        <ul class="list-group list-group-flush">
-                            {% if current_video.resources %}
-                                {% for resource in current_video.resources %}
-                                <li class="list-group-item">
-                                    <i class="{{ resource.icon }}"></i>
-                                    <a href="{{ resource.url }}" target="_blank" class="text-decoration-none">{{ resource.name }}</a>
-                                </li>
-                                {% endfor %}
-                            {% else %}
-                                <li class="list-group-item text-muted">No additional resources for this video.</li>
-                            {% endif %}
-                        </ul>
-                    </div>
-
                 {% else %}
-                    <div class="alert alert-info text-center">
-                        Please select a lesson from the sidebar to begin your learning journey.
+                    <!-- Fallback message if no video is loaded -->
+                    <div class="bg-white rounded-lg shadow p-8 text-center">
+                        <h2 class="text-xl font-medium text-gray-900">Welcome!</h2>
+                        <p class="mt-2 text-gray-600">Please select a lesson from the sidebar to begin your learning journey.</p>
                     </div>
                 {% endif %}
             </div>
@@ -120,8 +201,14 @@
     </main>
 
     {% include 'footer.html' %}
-    
-    <!-- Bootstrap JS for Accordion Functionality -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Simple JavaScript for the Accordion -->
+    <script>
+        function toggleAccordion(button) {
+            const content = button.nextElementSibling;
+            button.classList.toggle('collapsed');
+            content.classList.toggle('show');
+        }
+    </script>
 </body>
 </html>
