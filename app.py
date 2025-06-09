@@ -208,7 +208,7 @@ def python_learning():
 
     if not video_id_to_find:
         flash("No Python learning content is available at the moment.", "warning")
-        return render_template('python_learning.html', course_data=PYTHON_DATA, current_video=None, current_topic_name=None)
+        return render_template('python_course_page.html', course_data=PYTHON_DATA, current_video=None, current_topic_name=None)
 
     current_video, current_topic_name = find_video_by_id(video_id_to_find, PYTHON_DATA)
     
@@ -217,46 +217,13 @@ def python_learning():
         return redirect(url_for('python_learning'))
 
     return render_template(
-        'python_learning.html',
+        'python_course_page.html',
         course_data=PYTHON_DATA,
         current_video=current_video,
         current_topic_name=current_topic_name
     )
-    @app.route('/deep-learning-ai')
-def deep_learning_ai():
-    first_video_id = None
-    if DL_DATA.get('topics') and DL_DATA['topics'][0].get('videos'):
-        first_video_id = DL_DATA['topics'][0]['videos'][0]['id']
 
-    video_id_to_find = request.args.get('video_id', first_video_id)
-
-    if not video_id_to_find:
-        flash("No Deep Learning content is available at the moment.", "warning")
-        return render_template('deep_learning_ai.html', course_data=DL_DATA, current_video=None, current_topic_name=None)
-
-    current_video, current_topic_name = find_video_by_id(video_id_to_find, DL_DATA)
-    
-    if not current_video:
-        flash(f"The requested video (ID: {video_id_to_find}) could not be found.", "danger")
-        return redirect(url_for('deep_learning_ai'))
-
-    return render_template(
-        'deep_learning_ai.html',
-        course_data=DL_DATA,
-        current_video=current_video,
-        current_topic_name=current_topic_name
-    )
-
-
-
-@app.route('/english-learning')
-def english_learning():
-    # Use the custom English learning page with cards
-    return render_template('english_learning.html')
-
-
-
-  @app.route('/machine-learning')
+@app.route('/machine-learning')
 def machine_learning():
     first_video_id = None
     if ML_DATA.get('topics') and ML_DATA['topics'][0].get('videos'):
@@ -266,7 +233,7 @@ def machine_learning():
 
     if not video_id_to_find:
         flash("No Machine Learning content is available at the moment.", "warning")
-        return render_template('machine_learning.html', course_data=ML_DATA, current_video=None, current_topic_name=None)
+        return render_template('ml_course_page.html', course_data=ML_DATA, current_video=None, current_topic_name=None)
 
     current_video, current_topic_name = find_video_by_id(video_id_to_find, ML_DATA)
     
@@ -275,11 +242,42 @@ def machine_learning():
         return redirect(url_for('machine_learning'))
 
     return render_template(
-        'machine_learning.html',
+        'ml_course_page.html',
         course_data=ML_DATA,
         current_video=current_video,
         current_topic_name=current_topic_name
     )
+
+@app.route('/deep-learning-ai')
+def deep_learning_ai():
+    first_video_id = None
+    if DL_DATA.get('topics') and DL_DATA['topics'][0].get('videos'):
+        first_video_id = DL_DATA['topics'][0]['videos'][0]['id']
+
+    video_id_to_find = request.args.get('video_id', first_video_id)
+
+    if not video_id_to_find:
+        flash("No Deep Learning content is available at the moment.", "warning")
+        return render_template('dl_course_page.html', course_data=DL_DATA, current_video=None, current_topic_name=None)
+
+    current_video, current_topic_name = find_video_by_id(video_id_to_find, DL_DATA)
+    
+    if not current_video:
+        flash(f"The requested video (ID: {video_id_to_find}) could not be found.", "danger")
+        return redirect(url_for('deep_learning_ai'))
+
+    return render_template(
+        'dl_course_page.html',
+        course_data=DL_DATA,
+        current_video=current_video,
+        current_topic_name=current_topic_name
+    )
+
+@app.route('/english-learning')
+def english_learning():
+    # Use the custom English learning page with cards
+    return render_template('english_learning.html')
+
 @app.route('/team')
 def team():
     return render_template('team.html', 
