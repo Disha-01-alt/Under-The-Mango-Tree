@@ -351,29 +351,51 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section 
-        class="py-24 relative overflow-hidden bg-cover bg-center bg-no-repeat" 
-        style="background-image: url('https://www.shutterstock.com/image-photo/person-leads-finger-on-lines-260nw-1864366570.jpg'); filter: grayscale(40%);">
+   <!-- CTA Section -->
+<section 
+    class="py-24 relative overflow-hidden bg-cover bg-center bg-no-repeat" 
+    style="background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2070&auto=format&fit=crop');">
+    
+    <!-- Dark Overlay for Readability -->
+    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
 
-        <!-- Content -->
-        <div class="container mx-auto px-6 text-center relative z-10 text-black color-white">
-            <h2 class="text-4xl md:text-5xl font-bold mb-8 text-white">Ready to Transform Your Career?</h2>
-            <p class="text-xl mb-12 max-w-3xl mx-auto leading-relaxed text-white">
-            Join thousands of students who have already taken the first step towards a brighter future.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-            <!-- Register Button -->
-            <button class="bg-[#FF6B35] hover:bg-[#e05a2a] text-white px-10 py-4 rounded-lg font-medium shadow-lg transition duration-300">
-                <i class="fas fa-user-plus mr-2"></i> Register Now
-            </button>
-            <!-- Learn More Button -->
-            <button class="bg-white text-black border-2 border-white hover:bg-gray-100 px-10 py-4 rounded-lg font-medium transition duration-300">
-                <i class="fas fa-info-circle mr-2"></i> Learn More
-            </button>
-            </div>
+    <!-- Content -->
+    <div class="container mx-auto px-6 text-center relative z-10">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white leading-tight">
+            Your Next Career Opportunity Awaits
+        </h2>
+        <p class="text-xl mb-10 max-w-3xl mx-auto leading-relaxed text-gray-200">
+            Whether you are just starting out, seeking a change, or looking for specialized roles, our platform connects you with the right employers.
+        </p>
+
+        <!-- Specific Audience Callouts -->
+        <div class="flex flex-wrap justify-center gap-x-4 gap-y-3 mb-12 text-white">
+            <span class="bg-white/10 border border-white/20 rounded-full px-4 py-2 text-sm font-medium backdrop-blur-sm">
+                <i class="fas fa-user-graduate fa-fw mr-2 opacity-80"></i>Newly Graduated
+            </span>
+            <span class="bg-white/10 border border-white/20 rounded-full px-4 py-2 text-sm font-medium backdrop-blur-sm">
+                <i class="fas fa-briefcase fa-fw mr-2 opacity-80"></i>Experienced Professionals
+            </span>
+            <span class="bg-white/10 border border-white/20 rounded-full px-4 py-2 text-sm font-medium backdrop-blur-sm">
+                <i class="fas fa-star fa-fw mr-2 opacity-80"></i>EWS Category
+            </span>
+            <span class="bg-white/10 border border-white/20 rounded-full px-4 py-2 text-sm font-medium backdrop-blur-sm">
+                <i class="fas fa-lightbulb fa-fw mr-2 opacity-80"></i>Career Changers
+            </span>
         </div>
-    </section>
+
+        <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+            <!-- Find a Job Button (Login/Register) -->
+            <a href="{{ url_for('google_auth.login') }}" class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-lg font-bold shadow-lg transition duration-300 text-lg transform hover:scale-105">
+                <i class="fas fa-search mr-2"></i> Find a Job Now
+            </a>
+            <!-- Browse Jobs Button (No Login Required) -->
+            <a href="{{ url_for('candidate_routes.jobs') }}" class="bg-white/90 text-gray-800 border-2 border-transparent hover:bg-white px-10 py-4 rounded-lg font-bold transition duration-300 text-lg transform hover:scale-105">
+                <i class="fas fa-briefcase mr-2"></i> Browse Opportunities
+            </a>
+        </div>
+    </div>
+</section>
 
     {% include 'footer.html' %}
 
