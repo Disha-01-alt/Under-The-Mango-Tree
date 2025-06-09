@@ -75,6 +75,9 @@ def load_course_data(filename):
 PYTHON_DATA = load_course_data('python_learning_data.json')
 ML_DATA = load_course_data('machine_learning_data.json')
 DL_DATA = load_course_data('deep_learning_data.json')
+ALGORITHMS_DATA = load_course_data('algorithms_data.json')
+INTERVIEW_PREP_DATA = load_course_data('interview_prep_data.json')
+
 
 def find_video_by_id(video_id, data_source):
     """Helper function to find a specific video and its topic from any course data."""
@@ -289,6 +292,63 @@ def deep_learning_ai():
         current_video=current_video,
         current_topic_name=current_topic_name
     )
+    @app.route('/algorithms')
+def algorithms():
+    first_video_id = None
+    if ALGORITHMS_DATA.get('topics') and ALGORITHMS_DATA['topics'][0].get('videos'):
+        first_video_id = ALGORITHMS_DATA['topics'][0]['videos'][0]['id']
+
+    video_id_to_find = request.args.get('video_id', first_video_id)
+
+    if not video_id_to_find:
+        if first_video_id is not None:
+            return redirect(url_for('algorithms', video_id=first_video_id))
+        else:
+            flash("No Algorithms content is available at this time.", "warning")
+            return render_template('algorithms_course_page.html', course_data=ALGORITHMS_DATA, current_video=None, current_topic_name=None)
+
+    current_video, current_topic_name = find_video_by_id(video_id_to_find, ALGORITHMS_DATA)
+    
+    if not current_video:
+        flash(f"Video with ID '{video_id_to_find}' not found. Showing first lesson.", "danger")
+        return redirect(url_for('algorithms', video_id=first_video_id))
+
+    return render_template(
+        'algorithms_course_page.html',
+        course_data=ALGORITHMS_DATA,
+        current_video=current_video,
+        current_topic_name=current_topic_name
+    )
+
+
+@app.route('/interview-preparation')
+def interview_preparation():
+    first_video_id = None
+    if INTERVIEW_PREP_DATA.get('topics') and INTERVIEW_PREP_DATA['topics'][0].get('videos'):
+        first_video_id = INTERVIEW_PREP_DATA['topics'][0]['videos'][0]['id']
+
+    video_id_to_find = request.args.get('video_id', first_video_id)
+
+    if not video_id_to_find:
+        if first_video_id is not None:
+            return redirect(url_for('interview_preparation', video_id=first_video_id))
+        else:
+            flash("No Interview Prep content is available at this time.", "warning")
+            return render_template('interview_prep_course_page.html', course_data=INTERVIEW_PREP_DATA, current_video=None, current_topic_name=None)
+
+    current_video, current_topic_name = find_video_by_id(video_id_to_find, INTERVIEW_PREP_DATA)
+    
+    if not current_video:
+        flash(f"Video with ID '{video_id_to_find}' not found. Showing first lesson.", "danger")
+        return redirect(url_for('interview_preparation', video_id=first_video_id))
+
+    return render_template(
+        'interview_prep_course_page.html',
+        course_data=INTERVIEW_PREP_DATA,
+        current_video=current_video,
+        current_topic_name=current_topic_name
+    )
+
 
 @app.route('/english-learning')
 def english_learning():
