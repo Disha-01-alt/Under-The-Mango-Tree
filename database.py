@@ -115,45 +115,34 @@ def init_db():
         
         # Create admin user(s)
         from werkzeug.security import generate_password_hash
-        
         admin_accounts = [
-            {'email': 'dishasahu786forstudy@gmail.com', 'name': 'System Administrator', 'password': 'admin123'},
-            {'email': 'atmabodha@gmail.com', 'name': 'Operations Admin', 'password': 'admin123'}
+            {'email': 'dishasahu786forstudy@gmail.com', 'name': 'System Administrator', 'password': 'admin123'}
         ]
         for admin in admin_accounts:
             admin_password_hash = generate_password_hash(admin['password'])
-            # ON CONFLICT (email) DO NOTHING prevents errors if the admin already exists.
             cur.execute("""
                 INSERT INTO users (email, password_hash, role, full_name, is_approved)
                 VALUES (%s, %s, 'admin', %s, TRUE)
                 ON CONFLICT (email) DO NOTHING
             """, (admin['email'].lower(), admin_password_hash, admin['name']))
-        
-        logging.info(f"Default admin accounts checked/populated.")
+        logging.info(f"Admin accounts checked/populated.")
 
-        # Pre-populate the companies table with default emails
+        # Pre-populate the companies table
         default_companies = [
-            {'email': 'atmabodha@gmail.com', 'company_name': 'Tech Innovators'},
-            {'email': 'contact.dishasahu@gmail.com', 'company_name': 'Solution Works'},
-            {'email': 'careers@global-data.net', 'company_name': 'Global Data Inc.'}
+            {'email': 'hr@techcorp.com', 'company_name': 'TechCorp Inc.'}
         ]
         for company in default_companies:
-            # ON CONFLICT (email) DO NOTHING ensures we don't get an error
-            # if the email already exists. It will only insert new ones.
             cur.execute("""
                 INSERT INTO companies (email, company_name)
                 VALUES (%s, %s)
                 ON CONFLICT (email) DO NOTHING
             """, (company['email'].lower(), company['company_name']))
-        
         logging.info(f"Default company emails checked/populated.")
         
         conn.commit()
         logging.info("Database initialized successfully.")
 
-
 def is_company_email(email):
-    """Check if an email is in the whitelisted companies table."""
     with get_db() as conn:
         cur = conn.cursor()
         cur.execute("SELECT 1 FROM companies WHERE email = %s", (email.lower(),))
@@ -162,70 +151,42 @@ def is_company_email(email):
 def create_user(email, password, role, full_name=None, phone=None, linkedin=None, github=None):
     from models import User
     password_hash = User.create_password_hash(password if password is not None else os.urandom(16).hex())
-    is_approved_status = True
-    
     with get_db() as conn:
         cur = conn.cursor()
         cur.execute("""
             INSERT INTO users (email, password_hash, role, full_name, phone, linkedin, github, is_approved)
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
             RETURNING id
-        """, (email, password_hash, role, full_name, phone, linkedin, github, is_approved_status))
+        """, (email, password_hash, role, full_name, phone, linkedin, github, True))
         user_id = cur.fetchone()[0]
         conn.commit()
         return user_id
 
 def get_user_by_email(email):
-    """Get user by email"""
     with get_db() as conn:
         cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
         cur.execute("SELECT * FROM users WHERE email = %s", (email,))
         row = cur.fetchone()
         if row:
             from models import User
-            return User(
-                user_id=row['id'],
-                email=row['email'],
-                password_hash=row['password_hash'],
-                role=row['role'],
-                full_name=row['full_name'],
-                phone=row['phone'],
-                linkedin=row['linkedin'],
-                github=row['github'],
-                created_at=row['created_at'],
-                is_approved=row['is_approved']
-            )
+            return User(**row)
         return None
 
 def get_user_by_id(user_id):
-    """Get user by ID"""
     with get_db() as conn:
         cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
         cur.execute("SELECT * FROM users WHERE id = %s", (user_id,))
         row = cur.fetchone()
         if row:
             from models import User
-            return User(
-                user_id=row['id'],
-                email=row['email'],
-                password_hash=row['password_hash'],
-                role=row['role'],
-                full_name=row['full_name'],
-                phone=row['phone'],
-                linkedin=row['linkedin'],
-                github=row['github'],
-                created_at=row['created_at'],
-                is_approved=row['is_approved']
-            )
+            return User(**row)
         return None
 
 def get_candidate_details_by_id(user_id):
-    """Get comprehensive candidate details by user ID."""
     with get_db() as conn:
         cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
         cur.execute("""
-            SELECT u.*, cp.*
-            FROM users u
+            SELECT u.*, cp.* FROM users u
             LEFT JOIN candidate_profiles cp ON u.id = cp.user_id
             WHERE u.id = %s AND u.role = 'candidate'
         """, (user_id,))
@@ -233,7 +194,6 @@ def get_candidate_details_by_id(user_id):
         return dict(row) if row else None
 
 def get_candidate_profile(user_id):
-    """Get candidate profile"""
     with get_db() as conn:
         cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
         cur.execute("SELECT * FROM candidate_profiles WHERE user_id = %s", (user_id,))
@@ -244,9 +204,7 @@ def get_candidate_profile(user_id):
         return None
 
 def update_candidate_profile(user_id, **kwargs):
-    """Update candidate profile"""
-    if not kwargs:
-        return
+    if not kwargs: return
     with get_db() as conn:
         cur = conn.cursor()
         set_clauses = [f"{key} = %s" for key in kwargs]
@@ -258,25 +216,23 @@ def update_candidate_profile(user_id, **kwargs):
         conn.commit()
 
 def get_all_jobs(**filters):
-    """Get all jobs with optional filters"""
     with get_db() as conn:
         cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
         query = "SELECT j.*, u.full_name as posted_by_name FROM jobs j LEFT JOIN users u ON j.posted_by = u.id WHERE 1=1"
         params = []
-        # (Your filtering logic remains unchanged)
+        # Your existing filter logic can be added here if needed
         query += " ORDER BY j.created_at DESC"
         cur.execute(query, tuple(params))
         jobs = []
         from models import Job
         for row in cur.fetchall():
+            # **row will now work correctly with the updated Job model
             job_obj = Job(**row)
-            job_obj.id = row['id'] # Ensure Job model gets the ID
-            job_obj.posted_by_name = row['posted_by_name']
+            job_obj.posted_by_name = row.get('posted_by_name') # Safely get the extra field
             jobs.append(job_obj)
         return jobs
 
 def create_job(title, company, location, description, requirements, posted_by, salary_range=None, job_type=None, linkedin_url=None, job_tags=None):
-    """Create a new job"""
     with get_db() as conn:
         cur = conn.cursor()
         cur.execute("""
@@ -289,22 +245,17 @@ def create_job(title, company, location, description, requirements, posted_by, s
         return job_id
 
 def get_all_candidates():
-    """Get all candidates with their profiles"""
     with get_db() as conn:
         cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
         cur.execute("""
-            SELECT u.*, cp.*
-            FROM users u
+            SELECT u.*, cp.* FROM users u
             LEFT JOIN candidate_profiles cp ON u.id = cp.user_id
-            WHERE u.role = 'candidate'
-            ORDER BY u.created_at DESC
+            WHERE u.role = 'candidate' ORDER BY u.created_at DESC
         """)
         return [dict(row) for row in cur.fetchall()]
 
 def update_user_details(user_id, **kwargs):
-    """Updates specific details for a user."""
-    if not kwargs:
-        return
+    if not kwargs: return
     with get_db() as conn:
         cur = conn.cursor()
         set_clauses = [f"{key} = %s" for key in kwargs]
@@ -315,9 +266,7 @@ def update_user_details(user_id, **kwargs):
         conn.commit()
 
 def update_candidate_rating_feedback(user_id, **kwargs):
-    """Update candidate rating, feedback, tags, etc."""
-    if not kwargs:
-        return
+    if not kwargs: return
     with get_db() as conn:
         cur = conn.cursor()
         set_clauses = [f"{key} = %s" for key in kwargs]
@@ -329,37 +278,32 @@ def update_candidate_rating_feedback(user_id, **kwargs):
         conn.commit()
 
 def search_candidates(**filters):
-    """Search candidates with filters"""
     with get_db() as conn:
         cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
         query = """
-            SELECT u.*, cp.*
-            FROM users u
+            SELECT u.*, cp.* FROM users u
             LEFT JOIN candidate_profiles cp ON u.id = cp.user_id
             WHERE u.role = 'candidate' AND u.is_approved = TRUE
         """
         params = []
-        # (Your filtering logic remains unchanged)
+        # Your existing filter logic can be added here if needed
         query += " ORDER BY cp.rating DESC NULLS LAST, u.created_at DESC"
         cur.execute(query, tuple(params))
         return [dict(row) for row in cur.fetchall()]
 
 def get_all_companies():
-    """Get all users with the 'company' role."""
     with get_db() as conn:
         cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
         cur.execute("SELECT * FROM users WHERE role = 'company' ORDER BY created_at DESC")
         return cur.fetchall()
 
 def get_pending_companies():
-    """Get all companies waiting for approval"""
     with get_db() as conn:
         cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
         cur.execute("SELECT * FROM users WHERE role = 'company' AND is_approved = false ORDER BY created_at DESC")
         return [dict(row) for row in cur.fetchall()]
 
 def approve_company(company_id):
-    """Approve a company account"""
     with get_db() as conn:
         cur = conn.cursor()
         cur.execute("UPDATE users SET is_approved = true WHERE id = %s AND role = 'company'", (company_id,))
@@ -367,27 +311,24 @@ def approve_company(company_id):
         return cur.rowcount > 0
 
 def delete_job(job_id):
-    """Delete a job"""
     with get_db() as conn:
         cur = conn.cursor()
         cur.execute("DELETE FROM jobs WHERE id = %s", (job_id,))
         conn.commit()
 
 def get_job_by_id(job_id):
-    """Get job by ID"""
     with get_db() as conn:
         cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
         cur.execute("SELECT * FROM jobs WHERE id = %s", (job_id,))
         row = cur.fetchone()
         if row:
             from models import Job
+            # **row will now work correctly
             return Job(**row)
         return None
 
 def update_job(job_id, **kwargs):
-    """Update job"""
-    if not kwargs:
-        return
+    if not kwargs: return
     with get_db() as conn:
         cur = conn.cursor()
         set_clauses = [f"{key} = %s" for key in kwargs]
