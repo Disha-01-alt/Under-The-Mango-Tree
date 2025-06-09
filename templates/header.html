@@ -65,64 +65,49 @@
 
 <!-- JavaScript for Navigation Interactivity -->
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // --- Desktop Dropdown ---
-        const learningToggle = document.getElementById('learningToggle');
-        const learningMenu = document.getElementById('learningMenu');
-        if (learningToggle && learningMenu) {
-            learningToggle.addEventListener('click', function (e) {
-                e.stopPropagation();
-                learningMenu.classList.toggle('hidden');
-            });
-            document.addEventListener('click', function (e) {
-                if (!learningMenu.contains(e.target) && !learningToggle.contains(e.target)) {
-                    learningMenu.classList.add('hidden');
-                }
-            });
-        }
+document.addEventListener('DOMContentLoaded', function () {
 
-        // --- Mobile Menu ---
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuIcon = document.getElementById('menu-icon');
-        if (mobileMenuBtn && mobileMenu && menuIcon) {
-            mobileMenuBtn.addEventListener('click', function() {
-                const isHidden = mobileMenu.classList.toggle('hidden');
-                menuIcon.classList.toggle('fa-bars', isHidden);
-                menuIcon.classList.toggle('fa-times', !isHidden);
-            });
-        }
+    // ==========================================================
+    // SCRIPT FOR BOOTSTRAP DROPDOWN ON HOVER (Desktop)
+    // ==========================================================
+    const hoverDropdowns = document.querySelectorAll('.navbar .dropdown');
+    
+    if (hoverDropdowns.length > 0) {
+        hoverDropdowns.forEach(function(dd) {
+            // Get the necessary Bootstrap components
+            const ddToggle = dd.querySelector('.dropdown-toggle');
+            const bsDropdown = new bootstrap.Dropdown(ddToggle);
 
-        // --- Mobile Submenu ---
-        const mobileSubmenuBtn = document.getElementById('mobile-submenu-btn');
-        const mobileSubmenu = document.getElementById('mobile-submenu');
-        const submenuIcon = document.getElementById('submenu-icon');
-        if (mobileSubmenuBtn && mobileSubmenu && submenuIcon) {
-            mobileSubmenuBtn.addEventListener('click', function() {
-                const isHidden = mobileSubmenu.classList.toggle('hidden');
-                submenuIcon.style.transform = isHidden ? 'rotate(0deg)' : 'rotate(180deg)';
-            });
-        }
-    });
-    <!-- At the end of templates/header.html -->
-
-    const dropdowns = document.querySelectorAll('.navbar .dropdown');
-    if (dropdowns.length > 0) {
-        dropdowns.forEach(function(dd) {
-            let ddToggle = dd.querySelector('.dropdown-toggle');
-            let ddMenu = dd.querySelector('.dropdown-menu');
-            let bsDropdown = new bootstrap.Dropdown(ddToggle);
-
+            // Show dropdown on mouse enter
             dd.addEventListener('mouseenter', function() {
                 bsDropdown.show();
             });
 
+            // Hide dropdown on mouse leave
             dd.addEventListener('mouseleave', function() {
                 bsDropdown.hide();
             });
         });
     }
+
+    // ==========================================================
+    // SCRIPT FOR MOBILE MENU TOGGLE (Click)
+    // ==========================================================
+    // Note: Standard Bootstrap handles this automatically if your HTML
+    // has the correct data-bs-toggle and data-bs-target attributes.
+    // This custom script is generally not needed for the main mobile menu.
+    // However, if you have a custom mobile implementation, you can place that logic here.
+    
+    // Example for a custom mobile button if you have one:
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', function() {
+            // This is just an example. Bootstrap's collapse plugin is preferred.
+            mobileMenu.classList.toggle('show');
+        });
+    }
+
 });
-
 </script>
-
