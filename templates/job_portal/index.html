@@ -33,6 +33,27 @@
         </div>
     </div>
 </div>
+<!-- Stats Section -->
+{# ... (Stats section as before, using bg-secondary or bg-light as you prefer) ... #}
+<div class="bg-secondary py-5">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-4 mb-4">
+                <div class="display-4 fw-bold text-primary mb-2"><i class="fas fa-users"></i></div>
+                <h5>Talented Candidates</h5><p class="text-muted small">Connect with skilled professionals ready to contribute.</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="display-4 fw-bold text-info mb-2"><i class="fas fa-briefcase"></i></div>
+                <h5>Quality Job Opportunities</h5><p class="text-muted small">Accurate and detailed job postings via AI extraction.</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="display-4 fw-bold text-success mb-2"><i class="fas fa-handshake"></i></div>
+                <h5>Perfect Matches</h5><p class="text-muted small">Advanced filtering for optimal candidate matching.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <!-- Features Section -->
 <div class="container py-5">
@@ -106,44 +127,4 @@
     </div>
 </div>
 
-<!-- Stats Section -->
-{# ... (Stats section as before, using bg-secondary or bg-light as you prefer) ... #}
-<div class="bg-secondary py-5">
-    <div class="container">
-        <div class="row text-center">
-            <div class="col-md-4 mb-4">
-                <div class="display-4 fw-bold text-primary mb-2"><i class="fas fa-users"></i></div>
-                <h5>Talented Candidates</h5><p class="text-muted small">Connect with skilled professionals ready to contribute.</p>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="display-4 fw-bold text-info mb-2"><i class="fas fa-briefcase"></i></div>
-                <h5>Quality Job Opportunities</h5><p class="text-muted small">Accurate and detailed job postings via AI extraction.</p>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="display-4 fw-bold text-success mb-2"><i class="fas fa-handshake"></i></div>
-                <h5>Perfect Matches</h5><p class="text-muted small">Advanced filtering for optimal candidate matching.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- CTA Section -->
-{% if not current_user.is_authenticated %}
-<div class="container py-5">
-    <div class="row">
-        <div class="col-12 text-center">
-            <h2 class="display-5 fw-bold mb-3">Ready to Get Started?</h2>
-            <p class="lead mb-4">Register today or sign in with Google to find your next opportunity.</p>
-            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                <a href="{{ url_for('auth_routes.register') }}" class="btn btn-primary btn-lg px-4 gap-3">
-                    <i class="fas fa-user-plus me-2"></i>Create Account Manually
-                </a>
-                <a href="{{ url_for('google_auth.login') }}" class="btn btn-outline-light btn-lg px-4"> 
-                    <i class="fab fa-google me-2"></i>Sign in with Google
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-{% endif %}
 {% endblock %}
