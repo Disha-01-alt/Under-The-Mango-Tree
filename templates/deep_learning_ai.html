@@ -44,16 +44,16 @@
                     <div class="accordion" id="sidebarAccordion">
                         {% for topic in course_data.topics %}
                         <div class="accordion-item">
-                            <h2 class="accordion-header" id="heading-ml-{{ loop.index }}">
-                                <button class="accordion-button {% if topic.name != current_topic_name %}collapsed{% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-ml-{{ loop.index }}" aria-expanded="{% if topic.name == current_topic_name %}true{% else %}false{% endif %}">
+                            <h2 class="accordion-header" id="heading-dl-{{ loop.index }}">
+                                <button class="accordion-button {% if topic.name != current_topic_name %}collapsed{% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-dl-{{ loop.index }}" aria-expanded="{% if topic.name == current_topic_name %}true{% else %}false{% endif %}">
                                     <b>{{ topic.name }}</b>
                                 </button>
                             </h2>
-                            <div id="collapse-ml-{{ loop.index }}" class="accordion-collapse collapse {% if topic.name == current_topic_name %}show{% endif %}">
+                            <div id="collapse-dl-{{ loop.index }}" class="accordion-collapse collapse {% if topic.name == current_topic_name %}show{% endif %}">
                                 <div class="list-group list-group-flush video-link-list-group">
                                     {% for video in topic.videos %}
-                                    <!-- This link correctly points to the 'machine_learning' endpoint -->
-                                    <a href="{{ url_for('machine_learning', video_id=video.id) }}" class="list-group-item list-group-item-action {% if current_video and video.id == current_video.id %}active{% endif %}">
+                                    <!-- This link correctly points to the 'deep_learning_ai' endpoint -->
+                                    <a href="{{ url_for('deep_learning_ai', video_id=video.id) }}" class="list-group-item list-group-item-action {% if current_video and video.id == current_video.id %}active{% endif %}">
                                         {{ video.title }}
                                     </a>
                                     {% endfor %}
@@ -71,8 +71,9 @@
                     <h2 class="mb-3">{{ current_video.title }}</h2>
 
                     <div class="video-iframe-container mb-4">
-                        {% set youtube_id = current_video.youtube_url.split('v=')[-1].split('&')[0] %}
-                        <iframe src="https://www.youtube.com/embed/{{ youtube_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        {% set video_id_part = current_video.youtube_url.split('v=')[-1] %}
+                        {% set video_id = video_id_part.split('&')[0] %}
+                        <iframe src="https://www.youtube.com/embed/{{ video_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
 
                     <div class="card mb-4 content-card">
