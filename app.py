@@ -244,7 +244,7 @@ def python_learning():
 
     # SUCCESS: We found the video. Render the page with all the necessary data.
     return render_template(
-        'python_course_page.html',
+        'python_learning.html',
         course_data=PYTHON_DATA,        # The entire course data for the sidebar
         current_video=current_video,    # The specific video object to display
         current_topic_name=current_topic_name # The name of the topic for highlighting
