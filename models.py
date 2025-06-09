@@ -85,3 +85,5 @@ class Job:
         self.created_at = created_at or datetime.now()
         self.linkedin_url = linkedin_url
         self.job_tags = job_tags
+        self.posted_by_name = posted_by_name
+                    
