@@ -77,7 +77,7 @@ ML_DATA = load_course_data('machine_learning_data.json')
 DL_DATA = load_course_data('deep_learning_data.json')
 ALGORITHMS_DATA = load_course_data('algorithms_data.json')
 INTERVIEW_PREP_DATA = load_course_data('interview_prep_data.json')
-
+PROJECTS_DATA = load_course_data('projects_data.json')
 
 def find_video_by_id(video_id, data_source):
     """Helper function to find a specific video and its topic from any course data."""
@@ -349,7 +349,19 @@ def interview_preparation():
         current_topic_name=current_topic_name
     )
 
+@app.route('/projects')
+def projects():
+    # Get the list of projects and other page data from the loaded JSON
+    project_list = PROJECTS_DATA.get('projects', [])
+    page_title = PROJECTS_DATA.get('page_title', 'Projects')
+    hero_image = PROJECTS_DATA.get('hero_image_url', '')
 
+    return render_template(
+        'projects.html', 
+        projects=project_list,
+        page_title=page_title,
+        hero_image=hero_image
+    )
 @app.route('/english-learning')
 def english_learning():
     # Use the custom English learning page with cards
