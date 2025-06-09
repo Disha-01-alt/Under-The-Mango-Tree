@@ -20,14 +20,11 @@
                     </div>
                     
                     <form method="POST">
-                        <div class="mb-3">
-                            <label for="role" class="form-label">I am a <span class="text-danger">*</span></label>
-                            <select class="form-select" id="role" name="role" required>
-                                <option value="">Select your role</option>
-                                <option value="candidate">Job Seeker / Student</option>
-                                <option value="company">Company / HR Representative</option>
-                            </select>
-                        </div>
+                       <!-- The role is automatically set to 'candidate' since companies cannot self-register -->
+<div class="alert alert-info text-center">
+    Account Type: <strong>Job Seeker / Student</strong>
+</div>
+<input type="hidden" name="role" value="candidate">
                         
                         <div class="mb-3">
                             <label for="full_name" class="form-label">Full Name</label>
