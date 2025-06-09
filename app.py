@@ -208,7 +208,7 @@ def python_learning():
 
     if not video_id_to_find:
         flash("No Python learning content is available at the moment.", "warning")
-        return render_template('python_course_page.html', course_data=PYTHON_DATA, current_video=None, current_topic_name=None)
+        return render_template('python_learning.html', course_data=PYTHON_DATA, current_video=None, current_topic_name=None)
 
     current_video, current_topic_name = find_video_by_id(video_id_to_find, PYTHON_DATA)
     
@@ -217,7 +217,7 @@ def python_learning():
         return redirect(url_for('python_learning'))
 
     return render_template(
-        'python_course_page.html',
+        'python_learning.html',
         course_data=PYTHON_DATA,
         current_video=current_video,
         current_topic_name=current_topic_name
@@ -233,7 +233,7 @@ def machine_learning():
 
     if not video_id_to_find:
         flash("No Machine Learning content is available at the moment.", "warning")
-        return render_template('ml_course_page.html', course_data=ML_DATA, current_video=None, current_topic_name=None)
+        return render_template('machine_learning.html', course_data=ML_DATA, current_video=None, current_topic_name=None)
 
     current_video, current_topic_name = find_video_by_id(video_id_to_find, ML_DATA)
     
@@ -242,7 +242,7 @@ def machine_learning():
         return redirect(url_for('machine_learning'))
 
     return render_template(
-        'ml_course_page.html',
+        'machine_learning.html',
         course_data=ML_DATA,
         current_video=current_video,
         current_topic_name=current_topic_name
@@ -258,7 +258,7 @@ def deep_learning_ai():
 
     if not video_id_to_find:
         flash("No Deep Learning content is available at the moment.", "warning")
-        return render_template('dl_course_page.html', course_data=DL_DATA, current_video=None, current_topic_name=None)
+        return render_template('deep_learning_ai.html', course_data=DL_DATA, current_video=None, current_topic_name=None)
 
     current_video, current_topic_name = find_video_by_id(video_id_to_find, DL_DATA)
     
@@ -267,7 +267,7 @@ def deep_learning_ai():
         return redirect(url_for('deep_learning_ai'))
 
     return render_template(
-        'dl_course_page.html',
+        'deep_learning_ai.html',
         course_data=DL_DATA,
         current_video=current_video,
         current_topic_name=current_topic_name
