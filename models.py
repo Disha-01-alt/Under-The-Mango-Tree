@@ -71,7 +71,7 @@ class Job:
     def __init__(self, id, title, company, location, description, 
                  requirements, salary_range=None, job_type=None, 
                  posted_by=None, created_at=None, linkedin_url=None,
-                 job_tags=None):
+                 job_tags=None, posted_by_name=None):
         # AND THE FIX IS HERE: self.id is assigned from the 'id' parameter.
         self.id = id
         self.title = title
