@@ -64,50 +64,10 @@
 </header>
 
 <!-- JavaScript for Navigation Interactivity -->
+<!-- DELETE THIS ENTIRE SCRIPT BLOCK -->
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-
-    // ==========================================================
-    // SCRIPT FOR BOOTSTRAP DROPDOWN ON HOVER (Desktop)
-    // ==========================================================
-    const hoverDropdowns = document.querySelectorAll('.navbar .dropdown');
-    
-    if (hoverDropdowns.length > 0) {
-        hoverDropdowns.forEach(function(dd) {
-            // Get the necessary Bootstrap components
-            const ddToggle = dd.querySelector('.dropdown-toggle');
-            const bsDropdown = new bootstrap.Dropdown(ddToggle);
-
-            // Show dropdown on mouse enter
-            dd.addEventListener('mouseenter', function() {
-                bsDropdown.show();
-            });
-
-            // Hide dropdown on mouse leave
-            dd.addEventListener('mouseleave', function() {
-                bsDropdown.hide();
-            });
-        });
-    }
-
-    // ==========================================================
-    // SCRIPT FOR MOBILE MENU TOGGLE (Click)
-    // ==========================================================
-    // Note: Standard Bootstrap handles this automatically if your HTML
-    // has the correct data-bs-toggle and data-bs-target attributes.
-    // This custom script is generally not needed for the main mobile menu.
-    // However, if you have a custom mobile implementation, you can place that logic here.
-    
-    // Example for a custom mobile button if you have one:
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    if (mobileMenuBtn && mobileMenu) {
-        mobileMenuBtn.addEventListener('click', function() {
-            // This is just an example. Bootstrap's collapse plugin is preferred.
-            mobileMenu.classList.toggle('show');
-        });
-    }
-
+document.addEventListener("DOMContentLoaded", function() {
+    const dropdowns = document.querySelectorAll('.navbar .dropdown');
+    // ... all the hover javascript ...
 });
 </script>
