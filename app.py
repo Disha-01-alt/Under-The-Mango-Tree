@@ -59,58 +59,25 @@ with app.app_context():
 # Import auth setup
 from auth import setup_auth
 setup_auth(login_manager)
-# Load Python learning data from JSON file
-try:
-    with open(os.path.join('data', 'python_learning_data.json'), 'r') as f:
-        PYTHON_DATA = json.load(f)
-except (FileNotFoundError, json.JSONDecodeError) as e:
-    print(f"ERROR loading python_learning_data.json: {e}")
-    # Create a default empty structure so the app doesn't crash
-    PYTHON_DATA = {"topics": [], "course_title": "Error: Data Not Found"}
+def load_course_data(filename):
+    """A robust function to load a JSON data file from the 'data' directory."""
+    try:
+        # Construct the full path to the file
+        filepath = os.path.join(os.path.dirname(__file__), 'data', filename)
+        with open(filepath, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError) as e:
+        print(f"CRITICAL ERROR: Could not load or parse {filename}: {e}")
+        # Return a safe, empty structure so the app can still run
+        return {"topics": [], "course_title": f"Error: {filename} Not Found"}
+
+# Load all course data at startup
+PYTHON_DATA = load_course_data('python_learning_data.json')
+ML_DATA = load_course_data('machine_learning_data.json')
+DL_DATA = load_course_data('deep_learning_data.json')
 
 def find_video_by_id(video_id, data_source):
-    """Helper function to find a specific video and its topic from the structured data."""
-    if not video_id:
-        return None, None
-    for topic in data_source.get('topics', []):
-        for video in topic.get('videos', []):
-            if str(video.get('id')) == str(video_id):
-                return video, topic.get('name')  # Return the video object and its topic name
-    return None, None  # Return None if not found
-
-# --- ADD THIS NEW BLOCK FOR MACHINE LEARNING DATA ---
-try:
-    with open(os.path.join('data', 'machine_learning_data.json'), 'r') as f:
-        ML_DATA = json.load(f)
-except (FileNotFoundError, json.JSONDecodeError) as e:
-    print(f"ERROR loading machine_learning_data.json: {e}")
-    # Create a default empty structure so the app doesn't crash
-    ML_DATA = {"topics": [], "course_title": "Error: Data Not Found"}
-
-# The find_video_by_id helper function is reusable for all courses.
-# Ensure it is defined once in your app.py, like this:
-def find_video_by_id(video_id, data_source):
-    """Helper function to find a specific video and its topic from the structured data."""
-    if not video_id:
-        return None, None
-    for topic in data_source.get('topics', []):
-        for video in topic.get('videos', []):
-            if str(video.get('id')) == str(video_id):
-                return video, topic.get('name')  # Return the video object and its topic name
-    return None, None  # Return None if not found
-DL_SIDEBAR_TOPICS
-try:
-    with open(os.path.join('data', 'deep_learning_data.json'), 'r') as f:
-        DL_DATA = json.load(f)
-except (FileNotFoundError, json.JSONDecodeError) as e:
-    print(f"ERROR loading deep_learning_data.json: {e}")
-    # Create a default empty structure so the app doesn't crash
-    DL_DATA = {"topics": [], "course_title": "Error: Data Not Found"}
-
-# The find_video_by_id helper function is reusable for all courses.
-# Make sure it is defined once in your app.py.
-def find_video_by_id(video_id, data_source):
-    """Helper function to find a specific video and its topic from the structured data."""
+    """Helper function to find a specific video and its topic from any course data."""
     if not video_id:
         return None, None
     for topic in data_source.get('topics', []):
@@ -230,117 +197,85 @@ def home():
 def learning_hub():
     return render_template('learning_hub.html')
 
-# In app.py
-
 @app.route('/python-learning')
 def python_learning():
-    # Get the requested video ID from the URL's query parameters
-    video_id_to_find = request.args.get('video_id')
-    
-    # CASE 1: The user just arrived at /python-learning without a specific video ID.
-    # We should redirect them to the very first video in the course.
-    if not video_id_to_find:
-        # Try to find the first video ID to redirect to
-        if PYTHON_DATA.get('topics') and PYTHON_DATA['topics'][0].get('videos'):
-            first_video_id = PYTHON_DATA['topics'][0]['videos'][0]['id']
-            return redirect(url_for('python_learning', video_id=first_video_id))
-        else:
-            # This is an edge case: the JSON file is empty or malformed.
-            flash("No Python learning content is available at the moment.", "warning")
-            return render_template(
-                'python_learning.html',
-                course_data=PYTHON_DATA,
-                current_video=None,
-                current_topic_name=None
-            )
+    # Find the first video to use as a default
+    first_video_id = None
+    if PYTHON_DATA.get('topics') and PYTHON_DATA['topics'][0].get('videos'):
+        first_video_id = PYTHON_DATA['topics'][0]['videos'][0]['id']
 
-    # CASE 2: A video ID was provided. Find the video.
+    video_id_to_find = request.args.get('video_id', first_video_id)
+
+    if not video_id_to_find:
+        flash("No Python learning content is available at the moment.", "warning")
+        return render_template('python_learning.html', course_data=PYTHON_DATA, current_video=None, current_topic_name=None)
+
     current_video, current_topic_name = find_video_by_id(video_id_to_find, PYTHON_DATA)
     
-    # If the video ID from the URL is invalid, redirect to the homepage or a safe default.
     if not current_video:
         flash(f"The requested video (ID: {video_id_to_find}) could not be found.", "danger")
-        return redirect(url_for('home')) # Redirect to the main homepage
+        return redirect(url_for('python_learning'))
 
-    # SUCCESS: We found the video. Render the page with all the necessary data.
     return render_template(
         'python_learning.html',
-        course_data=PYTHON_DATA,        # The entire course data for the sidebar
-        current_video=current_video,    # The specific video object to display
-        current_topic_name=current_topic_name # The name of the topic for highlighting
+        course_data=PYTHON_DATA,
+        current_video=current_video,
+        current_topic_name=current_topic_name
     )
-# --- THE NEW AND FINAL DEEP LEARNING ROUTE ---
-@app.route('/deep-learning-ai')
+    @app.route('/deep-learning-ai')
 def deep_learning_ai():
-    # Attempt to load the first available video if no specific ID is given
     first_video_id = None
     if DL_DATA.get('topics') and DL_DATA['topics'][0].get('videos'):
         first_video_id = DL_DATA['topics'][0]['videos'][0]['id']
 
-    # Get video_id from URL, or default to the first video if available
     video_id_to_find = request.args.get('video_id', first_video_id)
 
-    # CASE 1: No videos exist in the data file at all
     if not video_id_to_find:
         flash("No Deep Learning content is available at the moment.", "warning")
-        return render_template(
-            'deep_learning_ai.html', 
-            course_data=DL_DATA, 
-            current_video=None, 
-            current_topic_name=None
-        )
+        return render_template('deep_learning_ai.html', course_data=DL_DATA, current_video=None, current_topic_name=None)
 
-    # CASE 2: A video ID exists, so we try to find the video
     current_video, current_topic_name = find_video_by_id(video_id_to_find, DL_DATA)
-
-    # If the specific video wasn't found (e.g., bad ID in URL), redirect
+    
     if not current_video:
-        flash(f"The requested video (ID: {video_id_to_find}) could not be found. Showing the first video instead.", "info")
-        return redirect(url_for('deep_learning_ai', video_id=first_video_id))
-        
-    # SUCCESS CASE: Video was found, render the page
+        flash(f"The requested video (ID: {video_id_to_find}) could not be found.", "danger")
+        return redirect(url_for('deep_learning_ai'))
+
     return render_template(
-        'deep_learning_ai.html', 
+        'deep_learning_ai.html',
         course_data=DL_DATA,
         current_video=current_video,
         current_topic_name=current_topic_name
     )
+
+
+
 @app.route('/english-learning')
 def english_learning():
     # Use the custom English learning page with cards
     return render_template('english_learning.html')
 
-@app.route('/machine-learning')
+
+
+  @app.route('/machine-learning')
 def machine_learning():
-    # Attempt to load the first available video if no specific ID is given
     first_video_id = None
     if ML_DATA.get('topics') and ML_DATA['topics'][0].get('videos'):
         first_video_id = ML_DATA['topics'][0]['videos'][0]['id']
 
-    # Get video_id from URL, or default to the first video if available
     video_id_to_find = request.args.get('video_id', first_video_id)
 
-    # CASE 1: No videos exist in the data file at all
     if not video_id_to_find:
         flash("No Machine Learning content is available at the moment.", "warning")
-        return render_template(
-            'machine_learning.html', 
-            course_data=ML_DATA, 
-            current_video=None, 
-            current_topic_name=None
-        )
+        return render_template('machine_learning.html', course_data=ML_DATA, current_video=None, current_topic_name=None)
 
-    # CASE 2: A video ID exists, so we try to find the video
     current_video, current_topic_name = find_video_by_id(video_id_to_find, ML_DATA)
-
-    # If the specific video wasn't found (e.g., bad ID in URL), redirect
+    
     if not current_video:
-        flash(f"The requested video (ID: {video_id_to_find}) could not be found. Showing the first video instead.", "info")
-        return redirect(url_for('machine_learning', video_id=first_video_id))
-        
-    # SUCCESS CASE: Video was found, render the page
+        flash(f"The requested video (ID: {video_id_to_find}) could not be found.", "danger")
+        return redirect(url_for('machine_learning'))
+
     return render_template(
-        'machine_learning.html', 
+        'machine_learning.html',
         course_data=ML_DATA,
         current_video=current_video,
         current_topic_name=current_topic_name
