@@ -44,9 +44,6 @@
                                 <option value="candidate" {% if (form_data and form_data.role == 'candidate') or (not form_data and pre_selected_role == 'candidate') %}selected{% endif %}>
                                     Candidate/Student
                                 </option>
-                                <option value="company" {% if (form_data and form_data.role == 'company') or (not form_data and pre_selected_role == 'company') %}selected{% endif %}>
-                                    Company/HR Representative
-                                </option>
                             </select>
                             <small class="text-muted">Company accounts require admin approval after registration.</small>
                         </div>
