@@ -104,5 +104,25 @@
             });
         }
     });
+    <!-- At the end of templates/header.html -->
+
+    const dropdowns = document.querySelectorAll('.navbar .dropdown');
+    if (dropdowns.length > 0) {
+        dropdowns.forEach(function(dd) {
+            let ddToggle = dd.querySelector('.dropdown-toggle');
+            let ddMenu = dd.querySelector('.dropdown-menu');
+            let bsDropdown = new bootstrap.Dropdown(ddToggle);
+
+            dd.addEventListener('mouseenter', function() {
+                bsDropdown.show();
+            });
+
+            dd.addEventListener('mouseleave', function() {
+                bsDropdown.hide();
+            });
+        });
+    }
+});
+
 </script>
 
