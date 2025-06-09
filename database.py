@@ -130,7 +130,8 @@ def init_db():
 
         # Pre-populate the companies table
         default_companies = [
-            {'email': 'hr@techcorp.com', 'company_name': 'TechCorp Inc.'}
+            {'email': 'contact.dishasahu@gmail.com', 'company_name': 'TechCorp Inc.'},
+            {'email': 'atmabodha@gmail.com', 'company_name': 'TechCorp Inc.'}
         ]
         for company in default_companies:
             cur.execute("""
