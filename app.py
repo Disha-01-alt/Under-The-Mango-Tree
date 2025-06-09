@@ -207,34 +207,31 @@ def learning_hub():
 
 @app.route('/python-learning')
 def python_learning():
-    # First, check if the data loaded correctly.
-    if not SIDEBAR_TOPICS:
-        # If the list is empty, don't crash. Render the page with an error message.
-        flash("Error: Python learning data could not be loaded. Please check the server configuration.", "danger")
-        return render_template('python_learning.html', 
-                               videos=[], 
-                               sidebar_topics=[],
-                               selected_topic=None)
+    video_id = request.args.get('video_id')
+    
+    # If no video_id is provided, show the first video of the first topic
+    if not video_id:
+        if PYTHON_DATA['topics'] and PYTHON_DATA['topics'][0]['videos']:
+            first_video_id = PYTHON_DATA['topics'][0]['videos'][0]['id']
+            return redirect(url_for('python_learning', video_id=first_video_id))
+        else:
+            # Handle case where there is no data at all
+            flash("No Python learning videos are available at the moment.", "warning")
+            return render_template('course_page_new.html', course_data=PYTHON_DATA, current_video=None, current_topic_name=None)
 
-    # If we have topics, proceed as normal.
-    selected_topic = request.args.get('topic', SIDEBAR_TOPICS[0])
-    
-    videos = PY_VIDEO_DATA.get(selected_topic, [])
-    
-    sidebar_topics_with_status = []
-    for topic in SIDEBAR_TOPICS:
-        topic_data = {
-            'name': topic,
-            'video_count': len(PY_VIDEO_DATA.get(topic, [])),
-            'is_active': topic == selected_topic,
-            'url_param': topic.replace(' ', '%20')
-        }
-        sidebar_topics_with_status.append(topic_data)
-    
-    return render_template('python_learning.html', 
-                           videos=videos, 
-                           sidebar_topics=sidebar_topics_with_status,
-                           selected_topic=selected_topic)
+    # Find the requested video
+    current_video, current_topic_name = find_video_by_id(video_id, PYTHON_DATA)
+
+    if not current_video:
+        flash(f"Video with ID {video_id} not found.", "danger")
+        return redirect(url_for('python_learning')) # Redirect to the first video
+
+    return render_template(
+        'course_page_new.html', 
+        course_data=PYTHON_DATA,       # Pass the whole data structure for the sidebar
+        current_video=current_video,   # Pass the single video object to display
+        current_topic_name=current_topic_name # Pass the topic name for highlighting
+    )
 # It's a copy of the machine_learning route, adapted for the new DL variables.
 @app.route('/deep-learning-ai')
 def deep_learning_ai():
