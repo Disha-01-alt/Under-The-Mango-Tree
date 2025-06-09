@@ -98,6 +98,20 @@ a:hover {
     max-width: 800px;
     margin: 0 auto 2rem;
 }
+/* ================================================= */
+/*  Bootstrap Dropdown on Hover
+/* ================================================= */
+
+/* This targets a dropdown item when its parent nav item is hovered */
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; /* Adjust this to prevent a gap */
+}
+
+/* Optional: A small fade-in animation for a smoother effect */
+.dropdown-menu {
+    transition: all 0.3s ease-in-out;
+}
 
 /* Buttons */
 .btn-primary {
