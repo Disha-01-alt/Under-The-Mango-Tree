@@ -84,26 +84,24 @@
             </div>
         </div>
         
-        <!-- For Companies -->
-        <div class="col-lg-4">
-            <div class="card h-100 text-center">
-                <div class="card-body d-flex flex-column">
-                    <div class="mb-4">
-                        <i class="fas fa-building text-info" style="font-size: 3rem;"></i>
-                    </div>
-                    <h4 class="card-title">For Companies</h4>
-                    <ul class="list-unstyled text-start small">
-                        <li class="mb-1"><i class="fas fa-check text-success me-2"></i>Search qualified candidates</li>
-                        <li class="mb-1"><i class="fas fa-check text-success me-2"></i>Filter by skills and experience</li>
-                        <li class="mb-1"><i class="fas fa-check text-success me-2"></i>View detailed candidate profiles</li>
-                        <li class="mb-1"><i class="fas fa-check text-success me-2"></i>Download CVs and documents</li>
-                    </ul>
-                    {# Button always shows "Join as Company" and goes to register with role pre-fill hint #}
-                    <a href="{{ url_for('auth_routes.register', role='company') }}" class="btn btn-info mt-auto"> {# ADDED role='company' #}
-                        Join as Company
-                    </a>
-                </div>
+       <!-- For Companies / Recruiters -->
+<div class="col-lg-4">
+    <div class="card h-100 text-center">
+        <div class="card-body d-flex flex-column">
+            <div class="mb-4">
+                <i class="fas fa-building text-info" style="font-size: 3rem;"></i>
             </div>
+            <h4 class="card-title">For Recruiters</h4>
+            <ul class="list-unstyled text-start small">
+                <li class="mb-1"><i class="fas fa-check text-success me-2"></i>Access a pre-vetted talent pool</li>
+                <li class="mb-1"><i class="fas fa-check text-success me-2"></i>Search candidates by skills & ratings</li>
+                <li class="mb-1"><i class="fas fa-check text-success me-2"></i>View detailed profiles & documents</li>
+                <li class="mb-1"><i class="fas fa-check text-success me-2"></i>Contact candidates directly</li>
+            </ul>
+            <!-- The button now directs to the main login page -->
+            <a href="{{ url_for('google_auth.login') }}" class="btn btn-info mt-auto">
+                Recruiter Sign-In
+            </a>
         </div>
     </div>
 </div>
