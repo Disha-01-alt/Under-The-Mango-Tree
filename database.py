@@ -115,6 +115,7 @@ def init_db():
         
         # Create admin user(s)
         from werkzeug.security import generate_password_hash
+        
         admin_accounts = [
             {'email': 'dishasahu786forstudy@gmail.com', 'name': 'System Administrator', 'password': 'admin123'}
         ]
@@ -125,7 +126,7 @@ def init_db():
                 VALUES (%s, %s, 'admin', %s, TRUE)
                 ON CONFLICT (email) DO NOTHING
             """, (admin['email'].lower(), admin_password_hash, admin['name']))
-        logging.info(f"Admin accounts checked/populated.")
+        logging.info("Admin accounts checked/populated.")
 
         # Pre-populate the companies table
         default_companies = [
@@ -137,12 +138,13 @@ def init_db():
                 VALUES (%s, %s)
                 ON CONFLICT (email) DO NOTHING
             """, (company['email'].lower(), company['company_name']))
-        logging.info(f"Default company emails checked/populated.")
+        logging.info("Default company emails checked/populated.")
         
         conn.commit()
         logging.info("Database initialized successfully.")
 
 def is_company_email(email):
+    """Check if an email is in the whitelisted companies table."""
     with get_db() as conn:
         cur = conn.cursor()
         cur.execute("SELECT 1 FROM companies WHERE email = %s", (email.lower(),))
@@ -163,26 +165,31 @@ def create_user(email, password, role, full_name=None, phone=None, linkedin=None
         return user_id
 
 def get_user_by_email(email):
+    """Get user by email"""
     with get_db() as conn:
         cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
         cur.execute("SELECT * FROM users WHERE email = %s", (email,))
         row = cur.fetchone()
         if row:
             from models import User
+            # Use **row now that User class is fixed
             return User(**row)
         return None
 
 def get_user_by_id(user_id):
+    """Get user by ID"""
     with get_db() as conn:
         cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
         cur.execute("SELECT * FROM users WHERE id = %s", (user_id,))
         row = cur.fetchone()
         if row:
             from models import User
+            # Use **row now that User class is fixed
             return User(**row)
         return None
 
 def get_candidate_details_by_id(user_id):
+    """Get comprehensive candidate details by user ID."""
     with get_db() as conn:
         cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
         cur.execute("""
@@ -194,6 +201,7 @@ def get_candidate_details_by_id(user_id):
         return dict(row) if row else None
 
 def get_candidate_profile(user_id):
+    """Get candidate profile"""
     with get_db() as conn:
         cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
         cur.execute("SELECT * FROM candidate_profiles WHERE user_id = %s", (user_id,))
@@ -216,19 +224,20 @@ def update_candidate_profile(user_id, **kwargs):
         conn.commit()
 
 def get_all_jobs(**filters):
+    """Get all jobs with optional filters"""
     with get_db() as conn:
         cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
         query = "SELECT j.*, u.full_name as posted_by_name FROM jobs j LEFT JOIN users u ON j.posted_by = u.id WHERE 1=1"
         params = []
-        # Your existing filter logic can be added here if needed
+        # (Your filtering logic can be added here)
         query += " ORDER BY j.created_at DESC"
         cur.execute(query, tuple(params))
         jobs = []
         from models import Job
         for row in cur.fetchall():
-            # **row will now work correctly with the updated Job model
+            # Use **row now that Job class is fixed
             job_obj = Job(**row)
-            job_obj.posted_by_name = row.get('posted_by_name') # Safely get the extra field
+            job_obj.posted_by_name = row.get('posted_by_name')
             jobs.append(job_obj)
         return jobs
 
@@ -286,7 +295,7 @@ def search_candidates(**filters):
             WHERE u.role = 'candidate' AND u.is_approved = TRUE
         """
         params = []
-        # Your existing filter logic can be added here if needed
+        # (Your filtering logic can be added here)
         query += " ORDER BY cp.rating DESC NULLS LAST, u.created_at DESC"
         cur.execute(query, tuple(params))
         return [dict(row) for row in cur.fetchall()]
@@ -323,7 +332,7 @@ def get_job_by_id(job_id):
         row = cur.fetchone()
         if row:
             from models import Job
-            # **row will now work correctly
+            # Use **row now that Job class is fixed
             return Job(**row)
         return None
 
