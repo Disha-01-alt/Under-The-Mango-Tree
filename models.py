@@ -6,10 +6,10 @@ from datetime import datetime
 
 class User(UserMixin):
     # ... (no changes here for now) ...
-    def __init__(self, user_id, email, password_hash, role, full_name=None, 
+    def __init__(self, id, email, password_hash, role, full_name=None, 
                  phone=None, linkedin=None, github=None, created_at=None, 
                  is_approved=True):
-        self.id = user_id
+        self.id = id
         self.email = email
         self.password_hash = password_hash
         self.role = role
