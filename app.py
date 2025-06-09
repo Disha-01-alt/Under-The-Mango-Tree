@@ -62,14 +62,17 @@ setup_auth(login_manager)
 # Load Python learning data from JSON file
 try:
     with open(os.path.join('data', 'python_learning_data.json'), 'r') as f:
-        python_data = json.load(f)
-        PY_VIDEO_DATA = python_data['PY_VIDEO_DATA']
-        SIDEBAR_TOPICS = python_data['SIDEBAR_TOPICS']
-except FileNotFoundError:
-    print("ERROR: python_learning_data.json not found. Creating empty placeholders.")
-    PY_VIDEO_DATA = {}
-    SIDEBAR_TOPICS = []
-# --- END OF NEW BLOCK ---
+        PYTHON_DATA = json.load(f)
+except (FileNotFoundError, json.JSONDecodeError):
+    PYTHON_DATA = {"topics": [], "course_title": "Error"}
+
+def find_video_by_id(video_id, data_source):
+    """Helper function to find a specific video and its topic."""
+    for topic in data_source.get('topics', []):
+        for video in topic.get('videos', []):
+            if str(video.get('id')) == str(video_id):
+                return video, topic['name'] # Return video and its topic name
+    return None, None # Not found
 # --- ADD THIS NEW BLOCK FOR MACHINE LEARNING DATA ---
 try:
     with open(os.path.join('data', 'machine_learning_data.json'), 'r') as f:
