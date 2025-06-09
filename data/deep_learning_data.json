@@ -1,180 +1,76 @@
 {
-  "course_title": "Deep Learning & Modern AI",
+  "course_title": "Deep Learning & AI",
   "topics": [
     {
-      "name": "Artificial Neural Networks",
+      "name": "Artificial Neural Networks (ANN)",
       "videos": [
-        {
-          "id": 0,
-          "title": "ANN basics: Introduction",
-          "youtube_url": "https://youtu.be/6nkylSKqaAc",
-          "what_you_will_learn": ["The basic structure of a neuron and its biological inspiration.", "How layers are connected in a simple feedforward neural network.", "The concept of Universal Approximation and why it's powerful."],
-          "content_covered": "This is the foundational video for Deep Learning, introducing the core component: the Artificial Neural Network (ANN). We explore the biological inspiration and the mathematical formulation of a simple neuron, setting the stage for more complex architectures.",
-          "resources": []
-        },
-        {
-          "id": 1,
-          "title": "ANN basics: Backpropagation",
-          "youtube_url": "https://youtu.be/ntnwjWEpnkk",
-          "what_you_will_learn": ["The intuition behind how networks learn from their mistakes.", "A conceptual understanding of the chain rule in calculus.", "How weights and biases are updated during the training process."],
-          "content_covered": "Backpropagation is the algorithm that allows neural networks to learn. This video demystifies the process, explaining how the network's error is 'propagated' backward to adjust its internal parameters and improve its performance.",
-          "resources": []
-        },
-        {
-          "id": 2,
-          "title": "ANN basics: Activation & Loss",
-          "youtube_url": "https://youtu.be/qctUEQn9Hj8",
-          "what_you_will_learn": ["The role of activation functions like ReLU and Sigmoid.", "What a loss function is and how it measures error.", "An overview of optimization algorithms that minimize loss."],
-          "content_covered": "Dive into the key components that make training possible. This video covers activation functions, which introduce non-linearity, and loss functions, which guide the learning process by quantifying the model's error.",
-          "resources": []
-        },
-        {
-          "id": 3,
-          "title": "Advanced ANN: Concepts",
-          "youtube_url": "https://www.youtube.com/watch?v=nUUqwaxLnWs",
-          "what_you_will_learn": ["Advanced optimization techniques beyond basic gradient descent.", "Methods for regularizing networks to prevent overfitting.", "Strategies for initializing weights for better convergence."],
-          "content_covered": "Go beyond the basics with this look at advanced techniques for training and improving neural networks, including popular optimizers, regularization methods like Dropout, and smart weight initialization.",
-          "resources": []
-        }
+        { "id": 0, "title": "ANN Basics: Introduction", "youtube_url": "https://youtu.be/6nkylSKqaAc", "what_you_will_learn": ["The structure of a neuron and its biological inspiration.", "How layers are connected in a neural network.", "The concept of Universal Approximation."], "content_covered": "This is the foundational video for Deep Learning, introducing the Artificial Neural Network (ANN). We explore its mathematical formulation and set the stage for more complex architectures.", "resources": [ { "name": "Universal Approximation Theorem", "url": "http://neuralnetworksanddeeplearning.com/chap4.html", "icon": "fas fa-book" } ] },
+        { "id": 1, "title": "ANN Basics: Backpropagation", "youtube_url": "https://youtu.be/ntnwjWEpnkk", "what_you_will_learn": ["The intuition behind how networks learn from error.", "Understanding the chain rule in calculus.", "How weights and biases are updated during training."], "content_covered": "Backpropagation is the algorithm that allows neural networks to learn. This video demystifies the process, explaining how the network's error is 'propagated' backward to adjust its internal parameters.", "resources": [ { "name": "Backprop from Scratch (Code)", "url": "https://machinelearningmastery.com/implement-backpropagation-algorithm-scratch-python/", "icon": "fas fa-code" } ] },
+        { "id": 2, "title": "ANN Basics: Activation & Loss", "youtube_url": "https://youtu.be/qctUEQn9Hj8", "what_you_will_learn": ["The role of activation functions like ReLU.", "What a loss function is and how it measures error.", "Overview of optimization algorithms."], "content_covered": "Dive into the key components that make training possible: activation functions that introduce non-linearity, and loss functions that guide the learning process.", "resources": [ { "name": "Activation Functions Compared", "url": "https://towardsdatascience.com/comparison-of-activation-functions-for-deep-neural-networks-706ac4284c8a", "icon": "fas fa-book-open" }, { "name": "Optimization Algorithms Paper", "url": "https://arxiv.org/pdf/1609.04747", "icon": "fas fa-file-pdf" } ] },
+        { "id": 3, "title": "ANN Basics: A Deeper Look", "youtube_url": "https://www.youtube.com/watch?v=llg3gGewQ5U", "what_you_will_learn": ["Further examples of ANN architecture.", "Discussion on hidden layers.", "Practical considerations for simple networks."], "content_covered": "This video expands on the basics, providing more examples and discussing practical considerations for building your first simple neural networks.", "resources": [] },
+        { "id": 4, "title": "Advanced ANN: Optimizers", "youtube_url": "https://www.youtube.com/watch?v=nUUqwaxLnWs", "what_you_will_learn": ["Advanced optimization techniques beyond basic gradient descent.", "Methods for regularizing networks to prevent overfitting.", "Strategies for initializing weights for better convergence."], "content_covered": "Go beyond the basics with this look at advanced techniques for training and improving neural networks, including popular optimizers, regularization methods like Dropout, and smart weight initialization.", "resources": [] },
+        { "id": 5, "title": "Advanced ANN: Regularization", "youtube_url": "https://www.youtube.com/watch?v=dXB-KQYkzNU", "what_you_will_learn": ["In-depth look at L1 and L2 regularization.", "How Dropout works as a regularization technique.", "The concept of early stopping."], "content_covered": "Overfitting is a major challenge in deep learning. This video covers key regularization techniques designed to make your models generalize better to new, unseen data.", "resources": [ { "name": "Dropout in Neural Networks", "url": "https://towardsdatascience.com/dropout-in-neural-networks-47a162d621d9", "icon": "fas fa-book-open" } ] },
+        { "id": 6, "title": "Advanced ANN: Batch Normalization", "youtube_url": "https://www.youtube.com/watch?v=NE88eqLnaka", "what_you_will_learn": ["The problem of internal covariate shift.", "How Batch Normalization standardizes layer inputs.", "The benefits for training speed and stability."], "content_covered": "Batch Normalization is a key technique for making deep neural networks train faster and more stably. This video explains the problem it solves and how it works.", "resources": [] },
+        { "id": 7, "title": "Advanced ANN: Weight Initialization", "youtube_url": "https://www.youtube.com/watch?v=k8fTYJPd3_I", "what_you_will_learn": ["Why proper weight initialization is crucial.", "Common strategies like Xavier and He initialization.", "Avoiding vanishing and exploding gradients at the start of training."], "content_covered": "How you start matters. This video explores different strategies for initializing the weights of a neural network to ensure a smooth and effective training process.", "resources": [] },
+        { "id": 8, "title": "Advanced ANN: Full Playlist", "youtube_url": "https://www.youtube.com/watch?v=1waHlpKiNyY&list=PLkDaE6sCZn6Hn0vK8co82zjQtt3T2Nkqc", "what_you_will_learn": ["A comprehensive series covering many advanced topics.", "Deeper dives into concepts covered in previous videos.", "Practical examples and implementations."], "content_covered": "This link points to a full playlist containing a deep and comprehensive series on advanced neural network concepts, perfect for further study.", "resources": [] },
+        { "id": 9, "title": "Deep Learning Intro", "youtube_url": "https://youtu.be/MTbBOu4M7_M", "what_you_will_learn": ["A high-level overview of the Deep Learning field.", "The relationship between Deep Learning, Machine Learning, and AI.", "A look at the impact and applications of modern deep learning."], "content_covered": "This video serves as a broad introduction to the entire field of Deep Learning, explaining its significance and showcasing some of the incredible applications it powers today.", "resources": [] }
       ]
     },
     {
       "name": "Boosting Algorithms",
       "videos": [
-        {
-          "id": 4,
-          "title": "Boosting Concepts",
-          "youtube_url": "https://www.youtube.com/watch?v=kho6oANGu_A",
-          "what_you_will_learn": ["The core idea of ensemble learning through boosting.", "How boosting builds models sequentially, each correcting its predecessor.", "An introduction to popular algorithms like AdaBoost and Gradient Boosting."],
-          "content_covered": "Boosting is a powerful ensemble technique that combines multiple weak learners into a single strong learner. This video explains the sequential nature of boosting and its effectiveness in creating highly accurate models.",
-          "resources": []
-        }
+        { "id": 10, "title": "Boosting Explained", "youtube_url": "https://www.youtube.com/watch?v=kho6oANGu_A", "what_you_will_learn": ["The core idea of ensemble learning via boosting.", "How models are built sequentially.", "Introduction to AdaBoost and Gradient Boosting."], "content_covered": "Boosting is a powerful ensemble technique that combines multiple weak learners into a single strong learner. This video explains the sequential nature of boosting.", "resources": [ { "name": "Gradient Boosting Networks", "url": "https://www.geeksforgeeks.org/grownet-gradient-boosting-neural-networks/", "icon": "fas fa-link" } ] },
+        { "id": 11, "title": "Boosting In-Depth Part 1", "youtube_url": "https://www.youtube.com/watch?v=LsK-xG1cLYA", "what_you_will_learn": ["A deeper mathematical look at boosting algorithms.", "The role of residuals in Gradient Boosting.", "Step-by-step walkthrough of the algorithm."], "content_covered": "This video provides a more detailed, mathematical exploration of how boosting algorithms like Gradient Boosting work under the hood.", "resources": [] },
+        { "id": 12, "title": "Boosting In-Depth Part 2", "youtube_url": "https://www.youtube.com/watch?v=OtD8wVaFm6E", "what_you_will_learn": ["Practical considerations for implementing boosting.", "Hyperparameter tuning for boosting models.", "Comparison of different boosting libraries."], "content_covered": "A continuation of the deep dive into boosting, this video focuses on practical implementation details and how to tune these powerful models for best performance.", "resources": [] }
       ]
     },
     {
       "name": "Computer Vision - CNNs",
       "videos": [
-        {
-          "id": 5,
-          "title": "Intro to Convolutional Neural Networks",
-          "youtube_url": "https://www.youtube.com/watch?v=UHBmv7qCey4",
-          "what_you_will_learn": ["Why regular ANNs are not ideal for images.", "The concepts of kernels (filters) and feature maps.", "How convolution and pooling layers work together to extract features."],
-          "content_covered": "Convolutional Neural Networks (CNNs) revolutionized computer vision. This video explains the specialized layers that allow CNNs to efficiently process image data by detecting hierarchies of patterns, from simple edges to complex objects.",
-          "resources": []
-        },
-        {
-          "id": 6,
-          "title": "Backpropagation in CNNs",
-          "youtube_url": "https://www.youtube.com/watch?v=pUCCd2-17vl",
-          "what_you_will_learn": ["How the backpropagation algorithm is adapted for convolutional layers.", "Understanding how filter weights are updated during training.", "The flow of gradients through both convolutional and pooling layers."],
-          "content_covered": "This video demystifies how a CNN learns. It explains the process of backpropagation as it applies specifically to the unique architecture of convolutional and pooling layers, showing how the network's filters are fine-tuned.",
-          "resources": []
-        },
-        {
-          "id": 7,
-          "title": "Image Segmentation",
-          "youtube_url": "https://www.youtube.com/watch?v=FNHZ64k83e8",
-          "what_you_will_learn": ["The difference between image classification, object detection, and segmentation.", "The goal of semantic segmentation: classifying every pixel.", "Overview of architectures like U-Net."],
-          "content_covered": "Go beyond simple image labels with image segmentation, a computer vision task that involves partitioning an image into multiple segments to locate objects and their boundaries at the pixel level.",
-          "resources": []
-        },
-        {
-          "id": 8,
-          "title": "Object Detection with YOLO",
-          "youtube_url": "https://www.youtube.com/watch?v=MhftoBaoZpq",
-          "what_you_will_learn": ["The concept of single-shot detectors.", "How YOLO (You Only Look Once) predicts bounding boxes and class probabilities simultaneously.", "The advantages of YOLO in real-time object detection."],
-          "content_covered": "YOLO is a state-of-the-art, real-time object detection system. This video explains its clever architecture that re-frames object detection as a single regression problem, making it incredibly fast and efficient.",
-          "resources": []
-        }
+        { "id": 13, "title": "Intro to CNNs", "youtube_url": "https://www.youtube.com/watch?v=UHBmv7qCey4", "what_you_will_learn": ["Why regular ANNs aren't ideal for images.", "The concept of kernels and feature maps.", "How convolution and pooling layers work."], "content_covered": "Convolutional Neural Networks (CNNs) revolutionized computer vision. This video explains the specialized layers that allow CNNs to efficiently process image data.", "resources": [ { "name": "A Guide to CNNs", "url": "https://towardsdatascience.com/a-comprehensive-guide-to-convolutional-neural-networks-the-eli5-way-3bd2b1164a53", "icon": "fas fa-book-open" } ] },
+        { "id": 14, "title": "Backpropagation in CNNs", "youtube_url": "https://www.youtube.com/watch?v=pUCCd2-17vl", "what_you_will_learn": ["How backpropagation is adapted for convolutional layers.", "How filter weights are updated.", "The flow of gradients through the network."], "content_covered": "This video demystifies how a CNN learns by explaining the process of backpropagation as it applies to the unique architecture of convolutional and pooling layers.", "resources": [] },
+        { "id": 15, "title": "CNN Architectures", "youtube_url": "https://www.youtube.com/watch?v=DAOcjicFr1Y", "what_you_will_learn": ["The evolution of famous architectures like LeNet, AlexNet, VGG, ResNet.", "Key innovations like residual connections.", "Trade-offs between model complexity and performance."], "content_covered": "This video takes a tour through the history of landmark CNN architectures, highlighting the key breakthroughs that have pushed the boundaries of computer vision.", "resources": [ { "name": "CNN Architectures Overview", "url": "https://www.geeksforgeeks.org/convolutional-neural-network-cnn-architectures/", "icon": "fas fa-link" } ] }
       ]
     },
     {
       "name": "Advanced Vision Models",
       "videos": [
-        {
-          "id": 9,
-          "title": "Overview of CNN Architectures",
-          "youtube_url": "https://www.youtube.com/watch?v=DAOcjicFr1Y",
-          "what_you_will_learn": ["The evolution of famous CNN architectures like LeNet, AlexNet, VGG, and ResNet.", "Key innovations like residual connections that enabled deeper networks.", "The trade-offs between model complexity and performance."],
-          "content_covered": "This video takes a tour through the history of landmark CNN architectures, highlighting the key breakthroughs that have pushed the boundaries of computer vision performance.",
-          "resources": []
-        },
-        {
-          "id": 10,
-          "title": "Autoencoders and GANs",
-          "youtube_url": "https://www.youtube.com/watch?v=5WoItGTWV54",
-          "what_you_will_learn": ["The encoder-decoder structure of an autoencoder for dimensionality reduction.", "The concept of generative models.", "The adversarial training process of Generative Adversarial Networks (GANs)."],
-          "content_covered": "Explore two powerful unsupervised architectures. Autoencoders learn efficient data codings, while GANs consist of a generator and a discriminator that compete to create realistic, synthetic data.",
-          "resources": []
-        }
+        { "id": 16, "title": "Autoencoders", "youtube_url": "https://www.youtube.com/watch?v=5W0ltGTWV54", "what_you_will_learn": ["The encoder-decoder structure of an autoencoder.", "Applications in dimensionality reduction and anomaly detection.", "The concept of a compressed 'latent space' representation."], "content_covered": "Autoencoders are an unsupervised neural network that learns efficient data codings. This video explains their architecture and common use cases.", "resources": [] },
+        { "id": 17, "title": "Generative Adversarial Networks (GANs)", "youtube_url": "https://www.youtube.com/watch?v=9zKuYvjFFS8", "what_you_will_learn": ["The concept of generative models.", "The adversarial training process of a Generator and a Discriminator.", "Applications in generating realistic synthetic data."], "content_covered": "GANs consist of two competing neural networks, a generator and a discriminator, which are trained together to create highly realistic, synthetic data like images or text.", "resources": [ { "name": "GANs for MNIST Digits (Code)", "url": "https://machinelearningmastery.com/how-to-develop-a-generative-adversarial-network-for-an-mnist-handwritten-digits-from-scratch-in-keras/", "icon": "fas fa-code" } ] }
       ]
     },
     {
-      "name": "Sequence Modeling",
+      "name": "Sequence Modeling - RNNs",
       "videos": [
-        {
-          "id": 11,
-          "title": "RNN & LSTM Theory",
-          "youtube_url": "https://www.youtube.com/watch?v=ySEx_Bqxvvo",
-          "what_you_will_learn": ["How Recurrent Neural Networks (RNNs) process sequential data.", "The problem of vanishing gradients in RNNs.", "How Long Short-Term Memory (LSTM) networks solve this problem with gates."],
-          "content_covered": "This video introduces models designed for sequential data like text or time series. It covers the basics of RNNs and explains why LSTMs are often preferred for their ability to remember long-term dependencies.",
-          "resources": []
-        }
+        { "id": 18, "title": "RNN & LSTM Theory", "youtube_url": "https://www.youtube.com/watch?v=6niqTuYFZLQ", "what_you_will_learn": ["How Recurrent Neural Networks (RNNs) process sequential data.", "The vanishing gradient problem in RNNs.", "How Long Short-Term Memory (LSTM) networks solve this with gates."], "content_covered": "This video introduces models for sequential data like text or time series. It covers RNN basics and explains why LSTMs are often preferred for their ability to remember long-term dependencies.", "resources": [ { "name": "Understanding LSTMs (Colah's Blog)", "url": "http://colah.github.io/posts/2015-08-Understanding-LSTMS/", "icon": "fas fa-book-open" }, { "name": "The Unreasonable Effectiveness of RNNs", "url": "http://karpathy.github.io/2015/05/21/rnn-effectiveness/", "icon": "fas fa-link" } ] }
       ]
     },
     {
       "name": "NLP - Transformers & LLMs",
       "videos": [
-        {
-          "id": 12,
-          "title": "The Transformer Architecture",
-          "youtube_url": "https://www.youtube.com/watch?v=SZorAJ4I-sA",
-          "what_you_will_learn": ["The limitation of sequential processing in RNNs/LSTMs.", "The revolutionary concept of the Self-Attention mechanism.", "How Transformers can process entire sequences in parallel."],
-          "content_covered": "The Transformer architecture is the backbone of modern Large Language Models (LLMs) like GPT. This video breaks down the Self-Attention mechanism that allows it to understand complex context in text.",
-          "resources": []
-        },
-        {
-          "id": 13,
-          "title": "LLM Pre-Training Concepts",
-          "youtube_url": "https://www.youtube.com/watch?v=knTc-NQSjKA",
-          "what_you_will_learn": ["What it means to 'pre-train' a large language model.", "Common pre-training objectives like Masked Language Modeling (MLM).", "The scale of data and computation required for pre-training."],
-          "content_covered": "Learn about the crucial first step in creating powerful LLMs: pre-training. This video explains how models learn general language understanding from vast amounts of text data before being fine-tuned for specific tasks.",
-          "resources": []
-        },
-        {
-          "id": 14,
-          "title": "Fine-Tuning LLMs",
-          "youtube_url": "https://www.youtube.com/watch?v=kCc8FmEb1nY",
-          "what_you_will_learn": ["What fine-tuning is and why it's necessary.", "How to adapt a pre-trained model for a specific downstream task (e.g., sentiment analysis).", "The concept of transfer learning in NLP."],
-          "content_covered": "Fine-tuning is the process of taking a general-purpose pre-trained model and specializing it for a particular task. This video explains the methodology and benefits of this powerful technique.",
-          "resources": []
-        }
+        { "id": 19, "title": "The Transformer Architecture", "youtube_url": "https://www.youtube.com/watch?v=SZorAJ4I-sA", "what_you_will_learn": ["The limitation of sequential processing in RNNs.", "The revolutionary Self-Attention mechanism.", "How Transformers process sequences in parallel."], "content_covered": "The Transformer architecture is the backbone of modern Large Language Models (LLMs). This video breaks down the Self-Attention mechanism that allows it to understand complex context in text.", "resources": [ { "name": "The Illustrated Transformer", "url": "https://jalammar.github.io/illustrated-transformer/", "icon": "fas fa-image" } ] },
+        { "id": 20, "title": "LLM Pre-Training Concepts", "youtube_url": "https://www.youtube.com/watch?v=knTc-NQSjKA", "what_you_will_learn": ["What it means to 'pre-train' a large model.", "Common objectives like Masked Language Modeling (MLM).", "The scale of data and computation required."], "content_covered": "Learn about the crucial first step in creating powerful LLMs: pre-training on vast amounts of text data to learn general language understanding.", "resources": [ { "name": "LLM from Scratch Notebooks", "url": "https://github.com/anishiisc/Build_LLM_from_Scratch/tree/main", "icon": "fab fa-github" } ] },
+        { "id": 21, "title": "Fine-Tuning LLMs", "youtube_url": "https://www.youtube.com/watch?v=mw7ay38--ak", "what_you_will_learn": ["What fine-tuning is and why it's necessary.", "How to adapt a pre-trained model for a specific task.", "The concept of transfer learning in NLP."], "content_covered": "Fine-tuning is the process of taking a general-purpose pre-trained model and specializing it for a particular task. This video explains the methodology and benefits.", "resources": [ { "name": "Fine-tuning BERT & LLaMA", "url": "https://weightwatcher.ai", "icon": "fas fa-cogs" }, { "name": "Fine-Tuning Video 2", "url": "https://www.youtube.com/watch?v=kCc8FmEb1nY", "icon": "fab fa-youtube" } ] }
       ]
     },
     {
       "name": "Advanced NLP Applications",
       "videos": [
-        {
-          "id": 15,
-          "title": "Retrieval Augmented Generation (RAG)",
-          "youtube_url": "https://www.youtube.com/watch?v=wd7TZ4w1mSw&list=PLfaDFEXuae2LXbO1_PKyVJiQ23ZztA0x",
-          "what_you_will_learn": ["The limitations of LLMs (knowledge cutoffs, hallucination).", "How RAG enhances LLMs by providing external, up-to-date knowledge.", "The basic workflow: retrieve relevant documents, then generate an answer."],
-          "content_covered": "Retrieval-Augmented Generation (RAG) is a technique for making LLMs more accurate and reliable by grounding them in external knowledge sources. This video explains the architecture and its advantages.",
-          "resources": []
-        }
+        { "id": 22, "title": "Retrieval Augmented Generation (RAG)", "youtube_url": "https://www.youtube.com/watch?v=wd7TZ4w1mSw", "what_you_will_learn": ["The limitations of LLMs (knowledge cutoffs, hallucination).", "How RAG enhances LLMs with external knowledge.", "The workflow: retrieve relevant documents, then generate an answer."], "content_covered": "RAG is a technique for making LLMs more accurate and reliable by grounding them in external knowledge sources. This video explains the architecture.", "resources": [] },
+        { "id": 23, "title": "RAG In-Depth", "youtube_url": "https://www.youtube.com/watch?v=ahnGLM-RC1Y", "what_you_will_learn": ["Vector databases and embeddings for retrieval.", "Different strategies for combining retrieved context with the prompt.", "Practical challenges in implementing RAG systems."], "content_covered": "This video goes deeper into the implementation details of a RAG system, covering the crucial components like vector databases and different strategies for prompt engineering.", "resources": [ { "name": "RAG using LangChain", "url": "#", "icon": "fas fa-link" }] }
       ]
     },
     {
       "name": "Multi-Modal AI",
       "videos": [
-        {
-          "id": 16,
-          "title": "Image Captioning & Text-to-Image",
-          "youtube_url": "https://www.youtube.com/watch?v=JmATtG0yA5E",
-          "what_you_will_learn": ["The challenge of combining vision and language models.", "Architectures for image captioning (generating text from an image).", "The basics of diffusion models for text-to-image generation (like DALL-E, Stable Diffusion)."],
-          "content_covered": "Explore the exciting field of multi-modal AI where models learn to bridge the gap between different data types, such as generating descriptive text for images or creating images from text prompts.",
-          "resources": []
-        }
+        { "id": 24, "title": "Image Captioning", "youtube_url": "https://www.youtube.com/watch?v=JmATtG0yA5E", "what_you_will_learn": ["The challenge of combining vision and language models.", "Common architectures for image captioning (e.g., Encoder-Decoder).", "How attention mechanisms help focus on relevant parts of the image."], "content_covered": "Explore the exciting field of multi-modal AI where models learn to bridge the gap between vision and language by generating descriptive text captions for images.", "resources": [] },
+        { "id": 25, "title": "Text-to-Image Generation", "youtube_url": "https://www.youtube.com/watch?v=pea3sH6orMc", "what_you_will_learn": ["The basics of diffusion models for text-to-image generation.", "How models like DALL-E and Stable Diffusion work.", "The concept of CLIP for guiding the generation process."], "content_covered": "This video introduces the powerful technology behind text-to-image models, explaining how diffusion models can create stunning and complex images from simple text prompts.", "resources": [ { "name": "Illustrated Stable Diffusion", "url": "https://jalammar.github.io/illustrated-stable-diffusion/", "icon": "fas fa-image" }, { "name": "Diffusion Models Video Explainer", "url": "https://www.youtube.com/watch?v=9BHQvQIsVdE", "icon": "fab fa-youtube" } ] }
+      ]
+    },
+    {
+      "name": "Deployment",
+      "videos": [
+        { "id": 26, "title": "Deploying ML Models", "youtube_url": "#", "what_you_will_learn": ["Considerations for taking a model from research to production.", "Common deployment patterns (e.g., API endpoints).", "Tools and platforms for model serving and MLOps."], "content_covered": "Training a model is only half the battle. This conceptual video discusses the challenges and best practices for deploying machine learning models into real-world applications so they can provide value.", "resources": [ { "name": "Full Stack Deep Learning Course", "url": "https://fullstackdeeplearning.com/course/2022/", "icon": "fas fa-graduation-cap" } ] }
       ]
     }
   ]
