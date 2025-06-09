@@ -1,0 +1,31 @@
+{
+  "page_title": "Our Projects",
+  "hero_image_url": "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+  "projects": [
+    {
+      "name": "Fake News Detection Model",
+      "description": "A machine learning model built with Python and Scikit-learn to classify news articles as either real or fake based on their content. Utilizes TF-IDF vectorization and a Passive-Aggressive Classifier.",
+      "link": "https://github.com/example/fake-news-detector"
+    },
+    {
+      "name": "E-commerce Web Application",
+      "description": "A full-stack e-commerce platform built with Flask and PostgreSQL. Features user authentication, product catalogs, a shopping cart, and Stripe integration for payments.",
+      "link": "https://github.com/example/flask-ecommerce-app"
+    },
+    {
+      "name": "Sentiment Analysis of Tweets",
+      "description": "A Natural Language Processing (NLP) project that analyzes the sentiment of real-time tweets about a specific topic. Uses the Twitter API, NLTK for text processing, and a pre-trained model for classification.",
+      "link": "https://github.com/example/tweet-sentiment-analysis"
+    },
+    {
+      "name": "Interactive Data Dashboard",
+      "description": "A data visualization dashboard built with Plotly Dash to display and interact with sales data. Allows users to filter by date, region, and product category to gain insights.",
+      "link": "https://github.com/example/sales-dashboard"
+    },
+    {
+      "name": "Deep Learning Image Classifier",
+      "description": "A Convolutional Neural Network (CNN) built with TensorFlow/Keras to classify images into 10 different categories (e.g., CIFAR-10 dataset). Includes data augmentation and model evaluation.",
+      "link": "https://github.com/example/cnn-image-classifier"
+    }
+  ]
+}
