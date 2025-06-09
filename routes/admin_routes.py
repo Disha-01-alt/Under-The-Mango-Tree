@@ -262,15 +262,19 @@ def candidate_detail(candidate_id):
         flash('Error loading candidate details. Please try again.', 'error')
         return redirect(url_for('admin_routes.review_candidates'))
 
+# In routes/admin_routes.py
+
 @admin_bp.route('/rate_candidate/<int:candidate_id>', methods=['POST'])
 def rate_candidate(candidate_id):
     try:
+        # --- 1. Get all data from the form ---
         rating_str = request.form.get('rating')
         feedback = request.form.get('feedback', '').strip()
         admin_tags_list = request.form.getlist('admin_tags')
         admin_tags = ','.join(admin_tags_list) if admin_tags_list else None
         is_certified = True if request.form.get('is_certified') == 'on' else False
         
+        # --- 2. Validate the rating ---
         rating = None 
         if rating_str: 
             try:
@@ -282,7 +286,19 @@ def rate_candidate(candidate_id):
                 flash('Invalid rating format.', 'error')
                 return redirect(url_for('admin_routes.candidate_detail', candidate_id=candidate_id))
         
-        update_candidate_rating_feedback(candidate_id, rating, feedback, admin_tags, is_certified)
+        # --- 3. THE FIX: Create a dictionary for the database function ---
+        updates_to_make = {
+            'rating': rating,
+            'admin_feedback': feedback,
+            'admin_tags': admin_tags,
+            'is_certified': is_certified
+        }
+        
+        # --- 4. Call the database function correctly ---
+        # The ** syntax unpacks the dictionary into keyword arguments
+        # e.g., rating=5, admin_feedback="...", etc.
+        update_candidate_rating_feedback(candidate_id, **updates_to_make)
+        
         flash('Candidate review updated successfully!', 'success')
         return redirect(url_for('admin_routes.candidate_detail', candidate_id=candidate_id)) 
     
