@@ -1,83 +1,181 @@
 {
-  "DL_SIDEBAR_TOPICS": [
-    "Artificial Neural Networks",
-    "Boosting Algorithms",
-    "Computer Vision - Basic CNN Model",
-    "Computer Vision - CNN Architectures",
-    "Computer Vision - Autoencoders & GANs",
-    "Sequence Modeling - RNNs and LSTMs",
-    "NLP - Transformer Architecture and LLMs",
-    "NLP - LLM Pre-Training",
-    "NLP - Fine Tuning LLMs",
-    "NLP - Retrieval Augmented Generation",
-    "Image Captioning and Text to Image"
-  ],
-  "DL_VIDEO_DATA": {
-    "Artificial Neural Networks": [
-      { "id": 200, "title": "ANN basics: ANN Basic 1", "youtubeLink": "https://youtu.be/6nkylSKqaAc", "imageUrl": "https://img.youtube.com/vi/6nkylSKqaAc/hqdefault.jpg", "status": "not-started" },
-      { "id": 201, "title": "ANN basics: ANN Basic 2", "youtubeLink": "https://youtu.be/ntnwjWEpnkk", "imageUrl": "https://img.youtube.com/vi/ntnwjWEpnkk/hqdefault.jpg", "status": "not-started" },
-      { "id": 202, "title": "ANN basics: ANN Basic 3", "youtubeLink": "https://youtu.be/qctUEQn9Hj8", "imageUrl": "https://img.youtube.com/vi/qctUEQn9Hj8/hqdefault.jpg", "status": "not-started" },
-      { "id": 203, "title": "ANN basics: ANN Basic 4", "youtubeLink": "https://www.youtube.com/watch?v=llg3gGewQ5U", "imageUrl": "https://img.youtube.com/vi/llg3gGewQ5U/hqdefault.jpg", "status": "not-started" },
-      { "id": 204, "title": "Advanced ANN: Advanced ANN 1", "youtubeLink": "https://www.youtube.com/watch?v=nUUqwaxLnWs", "imageUrl": "https://img.youtube.com/vi/nUUqwaxLnWs/hqdefault.jpg", "status": "not-started" },
-      { "id": 205, "title": "Advanced ANN: Advanced ANN 2", "youtubeLink": "https://www.youtube.com/watch?v=dXB-KQYkzNU", "imageUrl": "https://img.youtube.com/vi/dXB-KQYkzNU/hqdefault.jpg", "status": "not-started" },
-      { "id": 206, "title": "Advanced ANN: Advanced ANN 3", "youtubeLink": "https://www.youtube.com/watch?v=NE88eqLnaka", "imageUrl": "https://img.youtube.com/vi/NE88eqLnaka/hqdefault.jpg", "status": "not-started" },
-      { "id": 207, "title": "Advanced ANN: Advanced ANN 4", "youtubeLink": "https://www.youtube.com/watch?v=k8fTYJPd3_I", "imageUrl": "https://img.youtube.com/vi/k8fTYJPd3_I/hqdefault.jpg", "status": "not-started" },
-      { "id": 208, "title": "Advanced ANN: Advanced ANN 5 (Playlist)", "youtubeLink": "https://www.youtube.com/watch?v=1waHlpKiNyY&list=PLkDaE6sCZn6Hn0vK8co82zjQtt3T2Nkqc", "imageUrl": "https://img.youtube.com/vi/1waHlpKiNyY/hqdefault.jpg", "status": "not-started" },
-      { "id": 209, "title": "Advanced ANN: Advanced ANN 6", "youtubeLink": "https://www.youtube.com/watch?v=Gey9CG6R6w8", "imageUrl": "https://img.youtube.com/vi/Gey9CG6R6w8/hqdefault.jpg", "status": "not-started" },
-      { "id": 210, "title": "Advanced ANN: Advanced ANN 7", "youtubeLink": "https://www.youtube.com/watch?v=Q1JCrG1bJ-A", "imageUrl": "https://img.youtube.com/vi/Q1JCrG1bJ-A/hqdefault.jpg", "status": "not-started" },
-      { "id": 211, "title": "Deep Learning Intro: DL Intro", "youtubeLink": "https://youtu.be/MTbBOu4M7_M", "imageUrl": "https://img.youtube.com/vi/MTbBOu4M7_M/hqdefault.jpg", "status": "not-started" }
-    ],
-    "Boosting Algorithms": [
-      { "id": 212, "title": "Boosting Concepts: Boosting 1", "youtubeLink": "https://www.youtube.com/watch?v=kho6oANGu_A", "imageUrl": "https://img.youtube.com/vi/kho6oANGu_A/hqdefault.jpg", "status": "not-started" },
-      { "id": 213, "title": "Boosting Concepts: Boosting 2", "youtubeLink": "https://www.youtube.com/watch?v=LsK-xG1cLYA", "imageUrl": "https://img.youtube.com/vi/LsK-xG1cLYA/hqdefault.jpg", "status": "not-started" },
-      { "id": 214, "title": "Boosting Concepts: Boosting 3", "youtubeLink": "https://www.youtube.com/watch?v=OtD8wVaFm6E", "imageUrl": "https://img.youtube.com/vi/OtD8wVaFm6E/hqdefault.jpg", "status": "not-started" }
-    ],
-    "Computer Vision - Basic CNN Model": [
-      { "id": 215, "title": "CNN Basics: CNN Basic 1", "youtubeLink": "https://www.youtube.com/watch?v=UHBmv7qCey4", "imageUrl": "https://img.youtube.com/vi/UHBmv7qCey4/hqdefault.jpg", "status": "not-started" },
-      { "id": 216, "title": "CNN Basics: CNN Basic 2", "youtubeLink": "https://www.youtube.com/watch?v=NmLK_WQBXB4", "imageUrl": "https://img.youtube.com/vi/NmLK_WQBXB4/hqdefault.jpg", "status": "not-started" },
-      { "id": 217, "title": "CNN Basics: CNN Basic 3", "youtubeLink": "https://www.youtube.com/watch?v=QzY57FaENXq", "imageUrl": "https://img.youtube.com/vi/QzY57FaENXq/hqdefault.jpg", "status": "not-started" },
-      { "id": 218, "title": "CNN Basics: CNN Basic 4", "youtubeLink": "https://www.youtube.com/watch?v=HGwBXDKFk9l", "imageUrl": "https://img.youtube.com/vi/HGwBXDKFk9l/hqdefault.jpg", "status": "not-started" },
-      { "id": 219, "title": "CNN Basics: CNN Basic 5", "youtubeLink": "https://www.youtube.com/watch?v=2-OI7ZB0MmU", "imageUrl": "https://img.youtube.com/vi/2-OI7ZB0MmU/hqdefault.jpg", "status": "not-started" },
-      { "id": 220, "title": "Backprop in CNN: CNN Backprop", "youtubeLink": "https://www.youtube.com/watch?v=pUCCd2-17vl", "imageUrl": "https://img.youtube.com/vi/pUCCd2-17vl/hqdefault.jpg", "status": "not-started" },
-      { "id": 221, "title": "Image Segmentation: Image Segmentation", "youtubeLink": "https://www.youtube.com/watch?v=FNHZ64k83e8", "imageUrl": "https://img.youtube.com/vi/FNHZ64k83e8/hqdefault.jpg", "status": "not-started" },
-      { "id": 222, "title": "Object Detection using YOLO: YOLO Object Detection", "youtubeLink": "https://www.youtube.com/watch?v=MhftoBaoZpq", "imageUrl": "https://img.youtube.com/vi/MhftoBaoZpq/hqdefault.jpg", "status": "not-started" }
-    ],
-    "Computer Vision - CNN Architectures": [
-      { "id": 223, "title": "CNN Architectures Overview: CNN Architectures", "youtubeLink": "https://www.youtube.com/watch?v=DAOcjicFr1Y", "imageUrl": "https://img.youtube.com/vi/DAOcjicFr1Y/hqdefault.jpg", "status": "not-started" }
-    ],
-    "Computer Vision - Autoencoders & GANs": [
-      { "id": 224, "title": "Autoencoders & GANs: Autoencoders & GANs 1", "youtubeLink": "https://www.youtube.com/watch?v=5WoItGTWV54", "imageUrl": "https://img.youtube.com/vi/5WoItGTWV54/hqdefault.jpg", "status": "not-started" },
-      { "id": 225, "title": "Autoencoders & GANs: Autoencoders & GANs 2", "youtubeLink": "https://www.youtube.com/watch?v=9zKuYvjFFS8", "imageUrl": "https://img.youtube.com/vi/9zKuYvjFFS8/hqdefault.jpg", "status": "not-started" }
-    ],
-    "Sequence Modeling - RNNs and LSTMs": [
-      { "id": 226, "title": "RNN & LSTM Theory: RNN & LSTM Theory", "youtubeLink": "https://www.youtube.com/watch?v=ySEx_Bqxvvo", "imageUrl": "https://img.youtube.com/vi/ySEx_Bqxvvo/hqdefault.jpg", "status": "not-started" }
-    ],
-    "NLP - Transformer Architecture and LLMs": [
-      { "id": 227, "title": "Transformer & LLMs Introduction: Transformer & LLMs", "youtubeLink": "https://www.youtube.com/watch?v=SZorAJ4I-sA", "imageUrl": "https://img.youtube.com/vi/SZorAJ4I-sA/hqdefault.jpg", "status": "not-started" },
-      { "id": 228, "title": "Transformer & LLMs Introduction: Transformer & LLMs 2", "youtubeLink": "https://www.youtube.com/watch?v=TQQIZhbC5ps", "imageUrl": "https://img.youtube.com/vi/TQQIZhbC5ps/hqdefault.jpg", "status": "not-started" },
-      { "id": 229, "title": "Transformer & LLMs Introduction: Transformer & LLMs 3", "youtubeLink": "https://www.youtube.com/watch?v=wjZofJX0v4M", "imageUrl": "https://img.youtube.com/vi/wjZofJX0v4M/hqdefault.jpg", "status": "not-started" },
-      { "id": 230, "title": "Transformer & LLMs Introduction: Transformer & LLMs 4", "youtubeLink": "https://www.youtube.com/watch?v=eMIx5fFNoYc", "imageUrl": "https://img.youtube.com/vi/eMIx5fFNoYc/hqdefault.jpg", "status": "not-started" },
-      { "id": 231, "title": "Transformer & LLMs Introduction: Transformer & LLMs 5", "youtubeLink": "https://www.youtube.com/watch?v=OyFJWRnt_AY", "imageUrl": "https://img.youtube.com/vi/OyFJWRnt_AY/hqdefault.jpg", "status": "not-started" },
-      { "id": 232, "title": "Transformer & LLMs Introduction: Transformer & LLMs 6", "youtubeLink": "https://www.youtube.com/watch?v=UPtG_38Oq80", "imageUrl": "https://img.youtube.com/vi/UPtG_38Oq80/hqdefault.jpg", "status": "not-started" }
-    ],
-    "NLP - LLM Pre-Training": [
-      { "id": 233, "title": "LLM Pre-Training: LLM Pre-Training", "youtubeLink": "https://www.youtube.com/watch?v=knTc-NQSjKA", "imageUrl": "https://img.youtube.com/vi/knTc-NQSjKA/hqdefault.jpg", "status": "not-started" }
-    ],
-    "NLP - Fine Tuning LLMs": [
-      { "id": 234, "title": "Fine Tuning LLMs: Fine Tuning LLMs 1", "youtubeLink": "https://www.youtube.com/watch?v=kCc8FmEb1nY", "imageUrl": "https://img.youtube.com/vi/kCc8FmEb1nY/hqdefault.jpg", "status": "not-started" },
-      { "id": 235, "title": "Fine Tuning LLMs: Fine Tuning LLMs 2", "youtubeLink": "https://www.youtube.com/watch?v=mw7ay38--ak", "imageUrl": "https://img.youtube.com/vi/mw7ay38--ak/hqdefault.jpg", "status": "not-started" },
-      { "id": 236, "title": "Fine Tuning LLMs: Fine Tuning LLMs 3", "youtubeLink": "https://www.youtube.com/watch?v=dzyDHMyeh_c", "imageUrl": "https://img.youtube.com/vi/dzyDHMyeh_c/hqdefault.jpg", "status": "not-started" }
-    ],
-    "NLP - Retrieval Augmented Generation": [
-      { "id": 237, "title": "RAG: RAG (Playlist)", "youtubeLink": "https://www.youtube.com/watch?v=wd7TZ4w1mSw&list=PLfaDFEXuae2LXbO1_PKyVJiQ23ZztA0x", "imageUrl": "https://img.youtube.com/vi/wd7TZ4w1mSw/hqdefault.jpg", "status": "not-started" },
-      { "id": 238, "title": "RAG: RAG 2", "youtubeLink": "https://www.youtube.com/watch?v=ahnGLM-RC1Y", "imageUrl": "https://img.youtube.com/vi/ahnGLM-RC1Y/hqdefault.jpg", "status": "not-started" }
-    ],
-    "Image Captioning and Text to Image": [
-      { "id": 239, "title": "Image/Text Generation: Image Captioning/Text to Image 1", "youtubeLink": "https://www.youtube.com/watch?v=JmATtG0yA5E", "imageUrl": "https://img.youtube.com/vi/JmATtG0yA5E/hqdefault.jpg", "status": "not-started" },
-      { "id": 240, "title": "Image/Text Generation: Image Captioning/Text to Image 2", "youtubeLink": "https://www.youtube.com/watch?v=pea3sH6orMc", "imageUrl": "https://img.youtube.com/vi/pea3sH6orMc/hqdefault.jpg", "status": "not-started" },
-      { "id": 241, "title": "Image/Text Generation: Image Captioning/Text to Image 3", "youtubeLink": "https://www.youtube.com/watch?v=fUSTbGrL1tc", "imageUrl": "https://img.youtube.com/vi/fUSTbGrL1tc/hqdefault.jpg", "status": "not-started" },
-      { "id": 242, "title": "Image/Text Generation: Image Captioning/Text to Image 4", "youtubeLink": "https://www.youtube.com/watch?v=LWIZI_RJYIM", "imageUrl": "https://img.youtube.com/vi/LWIZI_RJYIM/hqdefault.jpg", "status": "not-started" },
-      { "id": 243, "title": "Image/Text Generation: Image Captioning/Text to Image 5", "youtubeLink": "https://www.youtube.com/watch?v=aaP7JJZuvGs", "imageUrl": "https://img.youtube.com/vi/aaP7JJZuvGs/hqdefault.jpg", "status": "not-started" }
-    ]
-  }
+  "course_title": "Deep Learning & Modern AI",
+  "topics": [
+    {
+      "name": "Artificial Neural Networks",
+      "videos": [
+        {
+          "id": 0,
+          "title": "ANN basics: Introduction",
+          "youtube_url": "https://youtu.be/6nkylSKqaAc",
+          "what_you_will_learn": ["The basic structure of a neuron and its biological inspiration.", "How layers are connected in a simple feedforward neural network.", "The concept of Universal Approximation and why it's powerful."],
+          "content_covered": "This is the foundational video for Deep Learning, introducing the core component: the Artificial Neural Network (ANN). We explore the biological inspiration and the mathematical formulation of a simple neuron, setting the stage for more complex architectures.",
+          "resources": []
+        },
+        {
+          "id": 1,
+          "title": "ANN basics: Backpropagation",
+          "youtube_url": "https://youtu.be/ntnwjWEpnkk",
+          "what_you_will_learn": ["The intuition behind how networks learn from their mistakes.", "A conceptual understanding of the chain rule in calculus.", "How weights and biases are updated during the training process."],
+          "content_covered": "Backpropagation is the algorithm that allows neural networks to learn. This video demystifies the process, explaining how the network's error is 'propagated' backward to adjust its internal parameters and improve its performance.",
+          "resources": []
+        },
+        {
+          "id": 2,
+          "title": "ANN basics: Activation & Loss",
+          "youtube_url": "https://youtu.be/qctUEQn9Hj8",
+          "what_you_will_learn": ["The role of activation functions like ReLU and Sigmoid.", "What a loss function is and how it measures error.", "An overview of optimization algorithms that minimize loss."],
+          "content_covered": "Dive into the key components that make training possible. This video covers activation functions, which introduce non-linearity, and loss functions, which guide the learning process by quantifying the model's error.",
+          "resources": []
+        },
+        {
+          "id": 3,
+          "title": "Advanced ANN: Concepts",
+          "youtube_url": "https://www.youtube.com/watch?v=nUUqwaxLnWs",
+          "what_you_will_learn": ["Advanced optimization techniques beyond basic gradient descent.", "Methods for regularizing networks to prevent overfitting.", "Strategies for initializing weights for better convergence."],
+          "content_covered": "Go beyond the basics with this look at advanced techniques for training and improving neural networks, including popular optimizers, regularization methods like Dropout, and smart weight initialization.",
+          "resources": []
+        }
+      ]
+    },
+    {
+      "name": "Boosting Algorithms",
+      "videos": [
+        {
+          "id": 4,
+          "title": "Boosting Concepts",
+          "youtube_url": "https://www.youtube.com/watch?v=kho6oANGu_A",
+          "what_you_will_learn": ["The core idea of ensemble learning through boosting.", "How boosting builds models sequentially, each correcting its predecessor.", "An introduction to popular algorithms like AdaBoost and Gradient Boosting."],
+          "content_covered": "Boosting is a powerful ensemble technique that combines multiple weak learners into a single strong learner. This video explains the sequential nature of boosting and its effectiveness in creating highly accurate models.",
+          "resources": []
+        }
+      ]
+    },
+    {
+      "name": "Computer Vision - CNNs",
+      "videos": [
+        {
+          "id": 5,
+          "title": "Intro to Convolutional Neural Networks",
+          "youtube_url": "https://www.youtube.com/watch?v=UHBmv7qCey4",
+          "what_you_will_learn": ["Why regular ANNs are not ideal for images.", "The concepts of kernels (filters) and feature maps.", "How convolution and pooling layers work together to extract features."],
+          "content_covered": "Convolutional Neural Networks (CNNs) revolutionized computer vision. This video explains the specialized layers that allow CNNs to efficiently process image data by detecting hierarchies of patterns, from simple edges to complex objects.",
+          "resources": []
+        },
+        {
+          "id": 6,
+          "title": "Backpropagation in CNNs",
+          "youtube_url": "https://www.youtube.com/watch?v=pUCCd2-17vl",
+          "what_you_will_learn": ["How the backpropagation algorithm is adapted for convolutional layers.", "Understanding how filter weights are updated during training.", "The flow of gradients through both convolutional and pooling layers."],
+          "content_covered": "This video demystifies how a CNN learns. It explains the process of backpropagation as it applies specifically to the unique architecture of convolutional and pooling layers, showing how the network's filters are fine-tuned.",
+          "resources": []
+        },
+        {
+          "id": 7,
+          "title": "Image Segmentation",
+          "youtube_url": "https://www.youtube.com/watch?v=FNHZ64k83e8",
+          "what_you_will_learn": ["The difference between image classification, object detection, and segmentation.", "The goal of semantic segmentation: classifying every pixel.", "Overview of architectures like U-Net."],
+          "content_covered": "Go beyond simple image labels with image segmentation, a computer vision task that involves partitioning an image into multiple segments to locate objects and their boundaries at the pixel level.",
+          "resources": []
+        },
+        {
+          "id": 8,
+          "title": "Object Detection with YOLO",
+          "youtube_url": "https://www.youtube.com/watch?v=MhftoBaoZpq",
+          "what_you_will_learn": ["The concept of single-shot detectors.", "How YOLO (You Only Look Once) predicts bounding boxes and class probabilities simultaneously.", "The advantages of YOLO in real-time object detection."],
+          "content_covered": "YOLO is a state-of-the-art, real-time object detection system. This video explains its clever architecture that re-frames object detection as a single regression problem, making it incredibly fast and efficient.",
+          "resources": []
+        }
+      ]
+    },
+    {
+      "name": "Advanced Vision Models",
+      "videos": [
+        {
+          "id": 9,
+          "title": "Overview of CNN Architectures",
+          "youtube_url": "https://www.youtube.com/watch?v=DAOcjicFr1Y",
+          "what_you_will_learn": ["The evolution of famous CNN architectures like LeNet, AlexNet, VGG, and ResNet.", "Key innovations like residual connections that enabled deeper networks.", "The trade-offs between model complexity and performance."],
+          "content_covered": "This video takes a tour through the history of landmark CNN architectures, highlighting the key breakthroughs that have pushed the boundaries of computer vision performance.",
+          "resources": []
+        },
+        {
+          "id": 10,
+          "title": "Autoencoders and GANs",
+          "youtube_url": "https://www.youtube.com/watch?v=5WoItGTWV54",
+          "what_you_will_learn": ["The encoder-decoder structure of an autoencoder for dimensionality reduction.", "The concept of generative models.", "The adversarial training process of Generative Adversarial Networks (GANs)."],
+          "content_covered": "Explore two powerful unsupervised architectures. Autoencoders learn efficient data codings, while GANs consist of a generator and a discriminator that compete to create realistic, synthetic data.",
+          "resources": []
+        }
+      ]
+    },
+    {
+      "name": "Sequence Modeling",
+      "videos": [
+        {
+          "id": 11,
+          "title": "RNN & LSTM Theory",
+          "youtube_url": "https://www.youtube.com/watch?v=ySEx_Bqxvvo",
+          "what_you_will_learn": ["How Recurrent Neural Networks (RNNs) process sequential data.", "The problem of vanishing gradients in RNNs.", "How Long Short-Term Memory (LSTM) networks solve this problem with gates."],
+          "content_covered": "This video introduces models designed for sequential data like text or time series. It covers the basics of RNNs and explains why LSTMs are often preferred for their ability to remember long-term dependencies.",
+          "resources": []
+        }
+      ]
+    },
+    {
+      "name": "NLP - Transformers & LLMs",
+      "videos": [
+        {
+          "id": 12,
+          "title": "The Transformer Architecture",
+          "youtube_url": "https://www.youtube.com/watch?v=SZorAJ4I-sA",
+          "what_you_will_learn": ["The limitation of sequential processing in RNNs/LSTMs.", "The revolutionary concept of the Self-Attention mechanism.", "How Transformers can process entire sequences in parallel."],
+          "content_covered": "The Transformer architecture is the backbone of modern Large Language Models (LLMs) like GPT. This video breaks down the Self-Attention mechanism that allows it to understand complex context in text.",
+          "resources": []
+        },
+        {
+          "id": 13,
+          "title": "LLM Pre-Training Concepts",
+          "youtube_url": "https://www.youtube.com/watch?v=knTc-NQSjKA",
+          "what_you_will_learn": ["What it means to 'pre-train' a large language model.", "Common pre-training objectives like Masked Language Modeling (MLM).", "The scale of data and computation required for pre-training."],
+          "content_covered": "Learn about the crucial first step in creating powerful LLMs: pre-training. This video explains how models learn general language understanding from vast amounts of text data before being fine-tuned for specific tasks.",
+          "resources": []
+        },
+        {
+          "id": 14,
+          "title": "Fine-Tuning LLMs",
+          "youtube_url": "https://www.youtube.com/watch?v=kCc8FmEb1nY",
+          "what_you_will_learn": ["What fine-tuning is and why it's necessary.", "How to adapt a pre-trained model for a specific downstream task (e.g., sentiment analysis).", "The concept of transfer learning in NLP."],
+          "content_covered": "Fine-tuning is the process of taking a general-purpose pre-trained model and specializing it for a particular task. This video explains the methodology and benefits of this powerful technique.",
+          "resources": []
+        }
+      ]
+    },
+    {
+      "name": "Advanced NLP Applications",
+      "videos": [
+        {
+          "id": 15,
+          "title": "Retrieval Augmented Generation (RAG)",
+          "youtube_url": "https://www.youtube.com/watch?v=wd7TZ4w1mSw&list=PLfaDFEXuae2LXbO1_PKyVJiQ23ZztA0x",
+          "what_you_will_learn": ["The limitations of LLMs (knowledge cutoffs, hallucination).", "How RAG enhances LLMs by providing external, up-to-date knowledge.", "The basic workflow: retrieve relevant documents, then generate an answer."],
+          "content_covered": "Retrieval-Augmented Generation (RAG) is a technique for making LLMs more accurate and reliable by grounding them in external knowledge sources. This video explains the architecture and its advantages.",
+          "resources": []
+        }
+      ]
+    },
+    {
+      "name": "Multi-Modal AI",
+      "videos": [
+        {
+          "id": 16,
+          "title": "Image Captioning & Text-to-Image",
+          "youtube_url": "https://www.youtube.com/watch?v=JmATtG0yA5E",
+          "what_you_will_learn": ["The challenge of combining vision and language models.", "Architectures for image captioning (generating text from an image).", "The basics of diffusion models for text-to-image generation (like DALL-E, Stable Diffusion)."],
+          "content_covered": "Explore the exciting field of multi-modal AI where models learn to bridge the gap between different data types, such as generating descriptive text for images or creating images from text prompts.",
+          "resources": []
+        }
+      ]
+    }
+  ]
 }
