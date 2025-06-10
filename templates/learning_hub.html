@@ -35,6 +35,7 @@
         <section class="bg-gray-50 py-16 text-center">
             <div class="container mx-auto px-4">
                 <h1 class="text-4xl md:text-5xl font-bold text-primary mb-4">Learning Hub</h1>
+
                 <p class="text-lg text-gray-600 max-w-2xl mx-auto">Choose from our range of carefully crafted modules to begin your educational journey.</p>
             </div>
         </section>
@@ -58,7 +59,9 @@
                         <i class="{{ m.icon }} fa-3x mb-4 {{ m.color }}"></i>
                         <h3 class="text-xl font-semibold mb-2">{{ m.title }}</h3>
                         <p class="text-gray-600 mb-4">{{ m.desc }}</p>
-                        <a href="{{ url_for(m.url) }}" class="mt-auto inline-block bg-primary text-white font-medium py-2 px-4 rounded-full hover:bg-indigo-600 transition duration-200">Start Course</a>
+                        <a href="{{ url_for(m.url) }}" class="mt-auto inline-block bg-primary text-white font-medium py-2 px-4 rounded-full hover:bg-[#162f45] transition duration-200">
+    Start Course
+</a>
                     </div>
                     {% endfor %}
 
