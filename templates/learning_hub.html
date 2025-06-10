@@ -31,15 +31,21 @@
     {% include 'header.html' %}
 
     <main class="flex-grow">
-        <!-- Hero Section -->
-        <section class="bg-gray-50 py-16 text-center">
-            <div class="container mx-auto px-4">
-                <h1 class="text-4xl md:text-5xl font-bold text-primary mb-4">Learning Hub</h1>
-
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Choose from our range of carefully crafted modules to begin your educational journey.</p>
+          <!-- Hero Section with Parallax Effect -->
+    <section id="team-header" class="relative h-[400px] bg-cover bg-center parallax-header" 
+             style="background-image: url('https://media.istockphoto.com/id/1399506394/vector/concept-of-up-skill-and-learning.jpg?s=612x612&w=0&k=20&c=_sN5jIE3OGQX-eFVcEk-Gwgne-Fy7CnfpCfHpfDvYug=');">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#1E3D59]/90 to-[#1E3D59]/70"></div>
+        <div class="relative container mx-auto px-6 h-full flex items-center">
+            <div class="max-w-3xl animate-fadeIn">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight opacity-0 animate-slideUp" style="animation: slideUp 0.8s ease-out forwards;">
+                    Learning Hub
+                </h1>
+                <p class="text-lg md:text-xl text-white/90 mb-10 opacity-0 animate-slideUp" style="animation: slideUp 0.8s ease-out 0.3s forwards;">
+                    Choose from our range of carefully crafted modules to begin your educational journey.
+                </p>
             </div>
-        </section>
-
+        </div>
+    </section>
         <!-- Learning Modules -->
         <section class="py-16">
             <div class="container mx-auto px-6">
