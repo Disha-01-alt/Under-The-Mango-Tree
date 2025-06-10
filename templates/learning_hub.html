@@ -1,127 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Learning Hub - Under The Mango Tree</title>
-    
-    <!-- Libraries (Bootstrap, Font Awesome) -->
-    <!-- Libraries -->
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    
-    <!-- Custom CSS for card hover effect -->
-    <style>
-        .module-card {
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-            border: 1px solid rgba(0,0,0,.08);
-        }
-        .module-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
-        }
-    </style>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+    <!-- Custom Tailwind Config (Optional) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#4f46e5',
+                    },
+                },
+            },
+        };
+    </script>
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body class="bg-white text-gray-800 font-sans flex flex-col min-h-screen">
 
     {% include 'header.html' %}
 
-    <main class="flex-grow-1">
+    <main class="flex-grow">
         <!-- Hero Section -->
-        <section class="hero learning-hub-hero text-center py-5" style="background-color: #f8f9fa;">
-            <div class="container">
-                <h1 class="display-4 fw-bold">Learning Hub</h1>
-                <p class="lead text-muted">Choose from our range of carefully crafted modules to begin your educational journey.</p>
+        <section class="bg-gray-50 py-16 text-center">
+            <div class="container mx-auto px-4">
+                <h1 class="text-4xl md:text-5xl font-bold text-primary mb-4">Learning Hub</h1>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Choose from our range of carefully crafted modules to begin your educational journey.</p>
             </div>
         </section>
 
-        <!-- Learning Module Cards Section -->
-        <section class="py-5">
-            <div class="container">
-                <div class="row g-4">
+        <!-- Learning Modules -->
+        <section class="py-16">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     
-                    <!-- Python Programming Card -->
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                        <div class="card module-card w-100">
-                            <div class="card-body d-flex flex-column text-center p-4">
-                                <div class="mb-3"><i class="fab fa-python fa-3x" style="color: #3776ab;"></i></div>
-                                <h4 class="card-title">Python Programming</h4>
-                                <p class="card-text text-muted">Master Python from the basics to advanced concepts with our structured video series.</p>
-                                <a href="{{ url_for('python_learning') }}" class="btn btn-primary mt-auto">Start Course</a>
-                            </div>
-                        </div>
-                    </div>
+                    {% set modules = [
+                        {'icon': 'fab fa-python', 'color': 'text-blue-500', 'title': 'Python Programming', 'desc': 'Master Python from the basics to advanced concepts with our structured video series.', 'url': 'python_learning'},
+                        {'icon': 'fas fa-robot', 'color': 'text-cyan-500', 'title': 'Machine Learning', 'desc': 'Dive into ML with hands-on projects covering regression, classification, and model evaluation.', 'url': 'machine_learning'},
+                        {'icon': 'fas fa-brain', 'color': 'text-yellow-500', 'title': 'Deep Learning & AI', 'desc': 'Explore neural networks and NLP to build cutting-edge AI-powered applications.', 'url': 'deep_learning_ai'},
+                        {'icon': 'fas fa-sitemap', 'color': 'text-green-500', 'title': 'Data Structures & Algorithms', 'desc': 'Build a strong foundation for technical interviews and complex problem-solving.', 'url': 'algorithms'},
+                        {'icon': 'fas fa-user-tie', 'color': 'text-red-500', 'title': 'Interview Prep', 'desc': 'Get ready with curated questions, mock interviews, and resume-building tips.', 'url': 'interview_preparation'},
+                        {'icon': 'fas fa-language', 'color': 'text-indigo-500', 'title': 'English Learning', 'desc': 'Improve grammar, vocabulary, and conversational skills through interactive games.', 'url': 'english_learning'}
+                    ] %}
 
-                    <!-- Machine Learning Card -->
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                        <div class="card module-card w-100">
-                            <div class="card-body d-flex flex-column text-center p-4">
-                                <div class="mb-3"><i class="fas fa-robot fa-3x text-info"></i></div>
-                                <h4 class="card-title">Machine Learning</h4>
-                                <p class="card-text text-muted">Dive into ML with hands-on projects covering regression, classification, and model evaluation.</p>
-                                <a href="{{ url_for('machine_learning') }}" class="btn btn-primary mt-auto">Start Course</a>
-                            </div>
-                        </div>
+                    {% for m in modules %}
+                    <div class="bg-white border border-gray-100 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 p-6 flex flex-col items-center text-center">
+                        <i class="{{ m.icon }} fa-3x mb-4 {{ m.color }}"></i>
+                        <h3 class="text-xl font-semibold mb-2">{{ m.title }}</h3>
+                        <p class="text-gray-600 mb-4">{{ m.desc }}</p>
+                        <a href="{{ url_for(m.url) }}" class="mt-auto inline-block bg-primary text-white font-medium py-2 px-4 rounded-full hover:bg-indigo-600 transition duration-200">Start Course</a>
                     </div>
-
-                    <!-- Deep Learning & AI Card -->
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                        <div class="card module-card w-100">
-                            <div class="card-body d-flex flex-column text-center p-4">
-                                <div class="mb-3"><i class="fas fa-brain fa-3x text-warning"></i></div>
-                                <h4 class="card-title">Deep Learning & AI</h4>
-                                <p class="card-text text-muted">Explore neural networks and NLP to build cutting-edge AI-powered applications.</p>
-                                <a href="{{ url_for('deep_learning_ai') }}" class="btn btn-primary mt-auto">Start Course</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Data Structures & Algorithms Card -->
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                        <div class="card module-card w-100">
-                            <div class="card-body d-flex flex-column text-center p-4">
-                                <div class="mb-3"><i class="fas fa-sitemap fa-3x text-success"></i></div>
-                                <h4 class="card-title">Data Structures & Algorithms</h4>
-                                <p class="card-text text-muted">Build a strong foundation for technical interviews and complex problem-solving.</p>
-                                <a href="{{ url_for('algorithms') }}" class="btn btn-primary mt-auto">Start Course</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Interview Prep Card -->
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                        <div class="card module-card w-100">
-                            <div class="card-body d-flex flex-column text-center p-4">
-                                <div class="mb-3"><i class="fas fa-user-tie fa-3x text-danger"></i></div>
-                                <h4 class="card-title">Interview Prep</h4>
-                                <p class="card-text text-muted">Get ready with curated questions, mock interviews, and resume-building tips.</p>
-                                <a href="{{ url_for('interview_preparation') }}" class="btn btn-primary mt-auto">Start Course</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- English Learning Card -->
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                        <div class="card module-card w-100">
-                            <div class="card-body d-flex flex-column text-center p-4">
-                                <div class="mb-3"><i class="fas fa-language fa-3x" style="color: #6366f1;"></i></div>
-                                <h4 class="card-title">English Learning</h4>
-                                <p class="card-text text-muted">Improve grammar, vocabulary, and conversational skills through interactive games.</p>
-                                <a href="{{ url_for('english_learning') }}" class="btn btn-primary mt-auto">Start Games</a>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
 
                 </div>
             </div>
         </section>
     </main>
-    
+
     {% include 'footer.html' %}
-    
-    <!-- Common JS Libraries -->
+
+    <!-- Bootstrap JS only if required elsewhere -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Link to your main javascript file -->
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 
 </body>
