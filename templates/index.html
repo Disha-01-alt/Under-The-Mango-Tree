@@ -182,43 +182,59 @@
         </div>
     </section>
 
-    <!-- Special Support Section -->
-    <section class="py-20 bg-gradient-to-r from-gray-50 to-blue-50">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col lg:flex-row items-center">
-                <div class="lg:w-1/2 mb-10 lg:mb-0 pr-0 lg:pr-10">
-                    <h2 class="text-4xl font-bold text-[#1E3D59] mb-10">Special Support for Students</h2>
-                    <div class="space-y-6">
-                        <div class="flex items-start bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover-scale">
-                            <div class="bg-green-100 p-3 rounded-full mr-4 flex-shrink-0">
-                                <i class="fas fa-check-circle text-green-600 text-xl"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-semibold text-[#1E3D59] text-lg">Free access to all learning materials</h3>
-                                <p class="text-gray-600 mt-2">No hidden costs or premium content restrictions</p>
-                            </div>
+   <!-- Special Support Section -->
+<section class="py-20 bg-gradient-to-r from-gray-50 to-blue-50">
+    <div class="container mx-auto px-6">
+        
+        <!--
+        ===============================================
+        THE FIX: Wrap the two columns in a flex container
+        and use 'items-stretch' to make them equal height.
+        ===============================================
+        -->
+        <div class="flex flex-col lg:flex-row lg:items-stretch lg:gap-x-10">
+
+            <!-- Left Column: Special Support for Students -->
+            <div class="lg:w-1/2 mb-10 lg:mb-0">
+                <h2 class="text-4xl font-bold text-[#1E3D59] mb-10">Special Support for Students</h2>
+                <div class="space-y-6">
+                    <!-- Feature 1 -->
+                    <div class="flex items-start bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                        <div class="bg-green-100 p-3 rounded-full mr-4 flex-shrink-0">
+                            <i class="fas fa-check-circle text-green-600 text-xl"></i>
                         </div>
-                        <div class="flex items-start bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover-scale">
-                            <div class="bg-green-100 p-3 rounded-full mr-4 flex-shrink-0">
-                                <i class="fas fa-check-circle text-green-600 text-xl"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-semibold text-[#1E3D59] text-lg">Special job opportunities</h3>
-                                <p class="text-gray-600 mt-2">Exclusive positions reserved for our students</p>
-                            </div>
+                        <div>
+                            <h3 class="font-semibold text-[#1E3D59] text-lg">Free access to all learning materials</h3>
+                            <p class="text-gray-600 mt-2">No hidden costs or premium content restrictions</p>
                         </div>
-                        <div class="flex items-start bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover-scale">
-                            <div class="bg-green-100 p-3 rounded-full mr-4 flex-shrink-0">
-                                <i class="fas fa-check-circle text-green-600 text-xl"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-semibold text-[#1E3D59] text-lg">Career guidance and mentorship</h3>
-                                <p class="text-gray-600 mt-2">One-on-one support from industry professionals</p>
-                            </div>
+                    </div>
+                    <!-- Feature 2 -->
+                    <div class="flex items-start bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                        <div class="bg-green-100 p-3 rounded-full mr-4 flex-shrink-0">
+                            <i class="fas fa-check-circle text-green-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-[#1E3D59] text-lg">Special job opportunities</h3>
+                            <p class="text-gray-600 mt-2">Exclusive positions reserved for our students</p>
+                        </div>
+                    </div>
+                    <!-- Feature 3 -->
+                    <div class="flex items-start bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                        <div class="bg-green-100 p-3 rounded-full mr-4 flex-shrink-0">
+                            <i class="fas fa-check-circle text-green-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-[#1E3D59] text-lg">Career guidance and mentorship</h3>
+                            <p class="text-gray-600 mt-2">One-on-one support from industry professionals</p>
                         </div>
                     </div>
                 </div>
-                <div class="lg:w-1/2 bg-white rounded-xl shadow-xl p-10 flex flex-col justify-center">
+            </div>
+
+            <!-- Right Column: Start Your Journey Today -->
+            <div class="lg:w-1/2">
+                <!-- Added 'h-full' to make this div fill the stretched height -->
+                <div class="bg-white rounded-xl shadow-xl p-10 flex flex-col justify-center h-full">
                     <h2 class="text-3xl font-bold text-[#1E3D59] mb-6 text-center">Start Your Journey Today</h2>
                     <p class="text-gray-600 mb-8 text-center leading-relaxed">
                         Join thousands of students who have already transformed their careers through our platform
@@ -239,16 +255,15 @@
                             </div>
                         </div>
                     </div>
-                    <a href="{{ url_for('python_learning') }}" class="bg-[#007BFF] hover:bg-[#0069d9] text-white py-4 px-8 rounded-lg font-medium shadow-lg mx-auto hover-scale transition duration-300">
-                        <button>
-                            GET STARTED
-                        </button>
+                    <!-- The button is now inside the parent 'a' tag -->
+                    <a href="{{ url_for('learning_hub') }}" class="bg-[#007BFF] hover:bg-[#0069d9] text-white py-4 px-8 rounded-lg font-medium shadow-lg mx-auto transform hover:scale-105 transition duration-300">
+                        GET STARTED
                     </a>
                 </div>
             </div>
         </div>
-    </section>
-
+    </div>
+</section>
     <!-- Testimonials Section -->
     <section class="py-20 bg-white">
         <div class="container mx-auto px-6">
