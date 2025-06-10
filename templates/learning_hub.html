@@ -10,7 +10,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
-    <!-- Custom Tailwind Config (Optional) -->
+    <!-- Custom Tailwind Config -->
     <script>
         tailwind.config = {
             theme: {
@@ -20,6 +20,15 @@
                     },
                     colors: {
                         primary: '#1E3D59',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
                     },
                 },
             },
@@ -31,22 +40,22 @@
     {% include 'header.html' %}
 
     <main class="flex-grow">
-          <!-- Hero Section with Parallax Effect -->
-    <section id="team-header" class="relative h-[400px] bg-cover bg-center parallax-header" 
-             style="background-image: url('https://media.istockphoto.com/id/1399506394/vector/concept-of-up-skill-and-learning.jpg?s=612x612&w=0&k=20&c=_sN5jIE3OGQX-eFVcEk-Gwgne-Fy7CnfpCfHpfDvYug=');">
-        <div class="absolute inset-0 bg-gradient-to-r from-[#1E3D59]/90 to-[#1E3D59]/70"></div>
-        <div class="relative container mx-auto px-6 h-full flex items-center">
-            <div class="max-w-3xl animate-fadeIn">
-              <h1 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight animate-fade-in">
-    Learning Hub
-</h1>
-<p class="text-lg md:text-xl text-white/90 mb-10 animate-fade-in delay-300">
-    Choose from our range of carefully crafted modules to begin your educational journey.
-</p>
-
+        <!-- Hero Section with Parallax Effect -->
+        <section id="team-header" class="relative h-[400px] bg-cover bg-center" 
+                 style="background-image: url('https://media.istockphoto.com/id/1399506394/vector/concept-of-up-skill-and-learning.jpg?s=612x612&w=0&k=20&c=_sN5jIE3OGQX-eFVcEk-Gwgne-Fy7CnfpCfHpfDvYug=');">
+            <div class="absolute inset-0 bg-gradient-to-r from-[#1E3D59]/90 to-[#1E3D59]/70"></div>
+            <div class="relative container mx-auto px-6 h-full flex items-center">
+                <div class="max-w-3xl">
+                    <h1 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight animate-fade-in">
+                        Learning Hub
+                    </h1>
+                    <p class="text-lg md:text-xl text-white/90 mb-10 animate-fade-in" style="animation-delay: 0.3s;">
+                        Choose from our range of carefully crafted modules to begin your educational journey.
+                    </p>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+
         <!-- Learning Modules -->
         <section class="py-16">
             <div class="container mx-auto px-6">
@@ -64,11 +73,11 @@
                     {% for m in modules %}
                     <div class="bg-white border border-gray-100 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 p-6 flex flex-col items-center text-center">
                         <i class="{{ m.icon }} fa-3x mb-4 {{ m.color }}"></i>
-                        <h3 class="text-xl font-semibold mb-2">{{ m.title }}</h3>
+                        <h3 class="text-xl font-semibold mb-2 text-primary">{{ m.title }}</h3>
                         <p class="text-gray-600 mb-4">{{ m.desc }}</p>
                         <a href="{{ url_for(m.url) }}" class="mt-auto inline-block bg-primary text-white font-medium py-2 px-4 rounded-full hover:bg-[#162f45] transition duration-200">
-    Start Course
-</a>
+                            Start Course
+                        </a>
                     </div>
                     {% endfor %}
 
