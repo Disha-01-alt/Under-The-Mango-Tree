@@ -11,8 +11,6 @@ from flask_login import LoginManager
 from werkzeug.middleware.proxy_fix import ProxyFix
 from dotenv import load_dotenv
 load_dotenv()  # Automatically loads the .env file
-from ateam import team_members, support_pillars
-# Make sure these paths are correct relative to your app.py
 from routes.auth_routes import auth_bp
 from routes.candidate_routes import candidate_bp
 from routes.admin_routes import admin_bp
@@ -78,6 +76,8 @@ DL_DATA = load_course_data('deep_learning_data.json')
 ALGORITHMS_DATA = load_course_data('algorithms_data.json')
 INTERVIEW_PREP_DATA = load_course_data('interview_prep_data.json')
 PROJECTS_DATA = load_course_data('projects_data.json')
+TEAM_DATA = load_course_data('team_data.json')
+
 
 def find_video_by_id(video_id, data_source):
     """Helper function to find a specific video and its topic from any course data."""
@@ -369,11 +369,10 @@ def english_learning():
 
 @app.route('/team')
 def team():
+    # Use the .get() method for safety, in case the JSON is malformed
     return render_template('team.html', 
-                         team_members=team_members, 
-                         support_pillars=support_pillars)
-# for rule in app.url_map.iter_rules():
-#     print(rule.endpoint, rule.rule)
+                         team_members=TEAM_DATA.get('team_members', []), 
+                         support_pillars=TEAM_DATA.get('support_pillars', []))
 
 # Error handling
 @app.errorhandler(404)
