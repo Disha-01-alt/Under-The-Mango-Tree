@@ -89,65 +89,6 @@
             background-size: cover;
         }
         
-        /* Mobile menu */
-        .mobile-menu {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-        }
-        
-        .mobile-menu.active {
-            max-height: 500px;
-        }
-        
-        /* Back to top button */
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 3rem;
-            height: 3rem;
-            border-radius: 50%;
-            background: #1E3D59;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-        }
-        
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .back-to-top:hover {
-            background: #FF6B35;
-            transform: translateY(-2px);
-        }
-        
-        /* Smooth transitions for mobile menu */
-        #mobile-menu {
-            transition: all 0.3s ease-in-out;
-        }
-
-        #submenu-icon {
-            transition: transform 0.3s ease;
-        }
-
-        /* Ensure proper spacing for mobile submenu */
-        #mobile-submenu {
-            transition: all 0.3s ease-in-out;
-        }
-
-        /* Animation for menu icon */
-        #menu-icon {
-            transition: all 0.3s ease;
-        }
         /* profile image  */
         .profile-container {
             width: 128px;
@@ -164,8 +105,7 @@
             object-fit: cover;
             object-position: center;
         }
-    </style>
-    <style>
+
         .clamp-3 {
             display: -webkit-box;
             -webkit-line-clamp: 3;
@@ -181,7 +121,7 @@
     </style>
         
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col bg-gray-100">
     
     <!-- Header -->
     {% include 'header.html' %}
@@ -218,14 +158,8 @@
                     <div class="card-inner">
                         <!-- Front of card -->
                         <div class="card-front bg-white p-6 rounded-xl shadow-lg flex flex-col items-center text-center transition-transform duration-300 hover:scale-105">
-                            <!-- Profile Image -->
-                            <!-- <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-gray-200 shadow-md mb-6">
-                                <img src="{{ member.profileUrl }}"
-                                     alt="{{ member.name }}"
-                                     class="w-full h-full object-cover object-center">
-                            </div>                                   -->
-
-                            <div class="profile-container">
+                           
+                            <div class="profile-container mb-6">
                                 <img src="{{ member.profileUrl }}" alt="{{ member.name }}">
                             </div>
 
@@ -244,7 +178,6 @@
                                 </button>
                             </div>
                             
-
                             <!-- Social and Profile -->
                             <div class="flex items-center justify-center space-x-4 mt-auto">
                                 <!-- LinkedIn Icon -->
@@ -254,7 +187,7 @@
                                 </a>
 
                                 <!-- Profile Link -->
-                                <a href="{{ member.profileUrl }}" class="text-[#007BFF] font-medium hover:text-[#0056b3] flex items-center text-sm">
+                                <a href="{{ member.profileUrl }}" target="_blank" class="text-[#007BFF] font-medium hover:text-[#0056b3] flex items-center text-sm">
                                     View Profile <i class="fas fa-arrow-right ml-1"></i>
                                 </a>
                             </div>
@@ -275,7 +208,7 @@
                             </div>
                             <div class="mb-4">
                                 <h4 class="font-semibold mb-2">Contact:</h4>
-                                <p class="text-white/90 text-sm">{{ member.name.lower().replace(' ', '.') }}@utmt.edu</p>
+                                <p class="text-white/90 text-sm">{{ member.name.lower().replace(' ', '.').replace('dr.','').replace('prof.','') }}@utmt.edu</p>
                             </div>
                             <div class="flex space-x-4 mt-auto">
                                 <a href="{{ member.linkedIn }}" class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white hover:bg-white hover:text-[#1E3D59] transition duration-300">
@@ -316,372 +249,9 @@
         </div>
     </section>
 
-    <!-- Join Our Mission Section -->
-    <section class="py-16 bg-white relative overflow-hidden">
-        <div class="absolute inset-0 bg-cover bg-center opacity-10" 
-             style="background-image: url('https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');"></div>
-        <div class="container mx-auto px-6 relative">
-            <div class="max-w-3xl mx-auto text-center">
-                <h2 class="text-3xl font-bold text-[#1E3D59] mb-6">Join Our Mission</h2>
-                <p class="text-gray-700 mb-10 text-lg">
-                    Our team is dedicated to bridging the gap between education and employment for students from government schools. We believe in creating equal opportunities for all through quality education.
-                </p>
-                <div class="bg-[#1E3D59] text-white p-8 rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300">
-                    <p class="italic text-lg mb-6">
-                        "Education is the most powerful weapon which you can use to change the world."
-                    </p>
-                    <p class="font-medium">- Nelson Mandela</p>
-                </div>
-                <button class="mt-10 bg-[#FF6B35] hover:bg-[#e05a2a] text-white px-8 py-3 rounded-lg font-medium shadow-md transition duration-300 flex items-center mx-auto">
-                    <i class="fas fa-hands-helping mr-2"></i> Join Our Team
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Back to Top Button -->
-    <div id="back-to-top" class="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </div>
-
-    <!-- Footer -->
-    <footer class="bg-[#0d2b45] text-white pt-16 pb-8">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
-                <!-- Brand -->
-                <div>
-                    <div class="flex items-center mb-6">
-                        <i class="fas fa-tree text-2xl mr-2"></i>
-                        <h3 class="text-xl font-bold">Under The Mango Tree</h3>
-                    </div>
-                    <p class="text-gray-300 mb-6">
-                        Empowering students through quality education and career opportunities in a supportive, university-style environment.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-[#1E3D59] flex items-center justify-center hover:bg-[#FF6B35] transition duration-300">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-[#1E3D59] flex items-center justify-center hover:bg-[#FF6B35] transition duration-300">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-[#1E3D59] flex items-center justify-center hover:bg-[#FF6B35] transition duration-300">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-[#1E3D59] flex items-center justify-center hover:bg-[#FF6B35] transition duration-300">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Quick Links -->
-                <div>
-                    <h3 class="text-lg font-bold mb-6 border-b border-gray-700 pb-2">Quick Links</h3>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-300 hover:text-[#FF6B35] transition duration-300">Home</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-[#FF6B35] transition duration-300">Learning Hub</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-[#FF6B35] transition duration-300">Job Portal</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-[#FF6B35] transition duration-300">Our Team</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Learning Resources -->
-                <div>
-                    <h3 class="text-lg font-bold mb-6 border-b border-gray-700 pb-2">Learning Resources</h3>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-300 hover:text-[#FF6B35] transition duration-300">English Learning</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-[#FF6B35] transition duration-300">Python Programming</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-[#FF6B35] transition duration-300">Machine Learning</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-[#FF6B35] transition duration-300">Deep Learning & AI</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-[#FF6B35] transition duration-300">Python Blog</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Contact Us -->
-                <div>
-                    <h3 class="text-lg font-bold mb-6 border-b border-gray-700 pb-2">Contact Us</h3>
-                    <ul class="space-y-4">
-                        <li class="flex items-start">
-                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-[#FF6B35]"></i>
-                            <span>123 Education Avenue, Knowledge City</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-envelope mt-1 mr-3 text-[#FF6B35]"></i>
-                            <span>info@utmt.edu</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-phone-alt mt-1 mr-3 text-[#FF6B35]"></i>
-                            <span>(123) 456-7890</span>
-                        </li>
-                    </ul>
-                    <div class="mt-6">
-                        <div class="flex items-center">
-                            <input type="email" placeholder="Subscribe to newsletter" 
-                                   class="bg-[#0a1f33] text-white py-2 px-4 rounded-l-lg focus:outline-none border-none text-sm">
-                            <button class="bg-[#FF6B35] hover:bg-[#e05a2a] text-white py-2 px-4 rounded-r-lg transition duration-300">
-                                <i class="fas fa-paper-plane"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400 text-sm">
-                <p>© 2025 Under The Mango Tree. All rights reserved.</p>
-                <div class="mt-4 flex justify-center space-x-6">
-                    <a href="#" class="hover:text-[#FF6B35] transition duration-300">Privacy Policy</a>
-                    <a href="#" class="hover:text-[#FF6B35] transition duration-300">Terms of Service</a>
-                    <a href="#" class="hover:text-[#FF6B35] transition duration-300">Cookie Policy</a>
-                </div>
-                <div class="mt-6 flex justify-center space-x-4">
-                    <i class="fab fa-cc-visa text-2xl"></i>
-                    <i class="fab fa-cc-mastercard text-2xl"></i>
-                    <i class="fab fa-cc-paypal text-2xl"></i>
-                    <i class="fab fa-cc-apple-pay text-2xl"></i>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Mobile menu toggle
-        // const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        // const mobileMenu = document.getElementById('mobile-menu');
-        // const mobileSubmenuBtn = document.getElementById('mobile-submenu-btn');
-        // const mobileSubmenu = document.getElementById('mobile-submenu');
-
-        // let isMenuOpen = false;
-        // let isSubmenuOpen = false;
-
-        // mobileMenuBtn.addEventListener('click', () => {
-        //     isMenuOpen = !isMenuOpen;
-        //     mobileMenu.classList.toggle('active');
-        //     const icon = mobileMenuBtn.querySelector('i');
-        //     icon.className = isMenuOpen ? 'fas fa-times text-xl' : 'fas fa-bars text-xl';
-        // });
-
-        // mobileSubmenuBtn.addEventListener('click', () => {
-        //     isSubmenuOpen = !isSubmenuOpen;
-        //     mobileSubmenu.classList.toggle('hidden');
-        //     const icon = mobileSubmenuBtn.querySelector('i');
-        //     icon.className = isSubmenuOpen ? 'fas fa-chevron-up text-xs ml-1' : 'fas fa-chevron-down text-xs ml-1';
-        // });
-
-        // // Parallax effect for header
-        // window.addEventListener('scroll', () => {
-        //     const header = document.getElementById('team-header');
-        //     const scrollPosition = window.pageYOffset;
-        //     header.style.backgroundPositionY = `${scrollPosition * 0.4}px`;
-            
-        //     // Back to top button visibility
-        //     const backToTop = document.getElementById('back-to-top');
-        //     if (scrollPosition > 300) {
-        //         backToTop.classList.add('visible');
-        //     } else {
-        //         backToTop.classList.remove('visible');
-        //     }
-        // });
-
-        // // Back to top functionality
-        // document.getElementById('back-to-top').addEventListener('click', () => {
-        //     window.scrollTo({
-        //         top: 0,
-        //         behavior: 'smooth'
-        //     });
-        // });
-
-        // // Newsletter subscription
-        // const newsletterForm = document.querySelector('footer input[type="email"]').parentElement;
-        // const newsletterInput = newsletterForm.querySelector('input[type="email"]');
-        // const newsletterBtn = newsletterForm.querySelector('button');
-
-        // newsletterBtn.addEventListener('click', (e) => {
-        //     e.preventDefault();
-        //     const email = newsletterInput.value.trim();
-            
-        //     if (email && isValidEmail(email)) {
-        //         // Here you would typically send the email to your backend
-        //         alert('Thank you for subscribing to our newsletter!');
-        //         newsletterInput.value = '';
-        //     } else {
-        //         alert('Please enter a valid email address.');
-        //     }
-        // });
-
-        // // Email validation helper function
-        // function isValidEmail(email) {
-        //     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        //     return emailRegex.test(email);
-        // }
-
-        // // Smooth scroll for anchor links
-        // document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        //     anchor.addEventListener('click', function (e) {
-        //         e.preventDefault();
-        //         const target = document.querySelector(this.getAttribute('href'));
-        //         if (target) {
-        //             target.scrollIntoView({
-        //                 behavior: 'smooth',
-        //                 block: 'start'
-        //             });
-        //         }
-        //     });
-        // });
-
-        // // Animation on scroll for team cards
-        // const observerOptions = {
-        //     threshold: 0.1,
-        //     rootMargin: '0px 0px -50px 0px'
-        // };
-
-        // const observer = new IntersectionObserver((entries) => {
-        //     entries.forEach(entry => {
-        //         if (entry.isIntersecting) {
-        //             entry.target.style.animationDelay = `${entry.target.dataset.delay || 0}ms`;
-        //             entry.target.classList.add('animate-slideUp');
-        //             observer.unobserve(entry.target);
-        //         }
-        //     });
-        // }, observerOptions);
-
-        // // Observe team cards for animation
-        // document.querySelectorAll('.team-card').forEach((card, index) => {
-        //     card.dataset.delay = index * 100;
-        //     observer.observe(card);
-        // });
-
-        // // Observe support pillar cards for animation
-        // document.querySelectorAll('.bg-white.rounded-xl.shadow-md').forEach((card, index) => {
-        //     if (card.querySelector('.fas.fa-')) { // Only support pillar cards
-        //         card.dataset.delay = index * 150;
-        //         observer.observe(card);
-        //     }
-        // });
-
-        // // Add loading animation for images
-        // document.querySelectorAll('img').forEach(img => {
-        //     img.addEventListener('load', function() {
-        //         this.style.opacity = '1';
-        //         this.style.transform = 'scale(1)';
-        //     });
-            
-        //     // Set initial state for loading animation
-        //     img.style.opacity = '0';
-        //     img.style.transform = 'scale(0.9)';
-        //     img.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-        // });
-
-        // // Handle form submissions (if you have contact forms)
-        // document.querySelectorAll('form').forEach(form => {
-        //     form.addEventListener('submit', function(e) {
-        //         e.preventDefault();
-        //         // Add your form submission logic here
-        //         console.log('Form submitted:', new FormData(this));
-        //     });
-        // });
-
-        // // Add hover effects for interactive elements
-        // document.querySelectorAll('.team-card').forEach(card => {
-        //     card.addEventListener('mouseenter', function() {
-        //         this.style.transform = 'translateY(-5px)';
-        //     });
-            
-        //     card.addEventListener('mouseleave', function() {
-        //         this.style.transform = 'translateY(0)';
-        //     });
-        // });
-
-        // // Keyboard navigation support
-        // document.addEventListener('keydown', (e) => {
-        //     // ESC key closes mobile menu
-        //     if (e.key === 'Escape' && isMenuOpen) {
-        //         mobileMenuBtn.click();
-        //     }
-            
-        //     // Enter key activates focused buttons
-        //     if (e.key === 'Enter' && document.activeElement.tagName === 'BUTTON') {
-        //         document.activeElement.click();
-        //     }
-        // });
-
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', () => {
-            // Add any initialization code here
-            console.log('Team page loaded successfully');
-            
-            // Preload critical images
-            const criticalImages = [
-                'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1471&q=80'
-            ];
-            
-            criticalImages.forEach(src => {
-                const img = new Image();
-                img.src = src;
-            });
-        });
-
-        // Mobile menu toggle functionality
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuIcon = document.getElementById('menu-icon');
-        const mobileSubmenuBtn = document.getElementById('mobile-submenu-btn');
-        const mobileSubmenu = document.getElementById('mobile-submenu');
-        const submenuIcon = document.getElementById('submenu-icon');
-
-        // Toggle main mobile menu
-        mobileMenuBtn.addEventListener('click', function() {
-            mobileMenu.classList.toggle('hidden');
-            
-            // Change hamburger to X icon
-            if (mobileMenu.classList.contains('hidden')) {
-                menuIcon.classList.remove('fa-times');
-                menuIcon.classList.add('fa-bars');
-            } else {
-                menuIcon.classList.remove('fa-bars');
-                menuIcon.classList.add('fa-times');
-            }
-        });
-
-        // Toggle mobile submenu (Learning dropdown)
-        mobileSubmenuBtn.addEventListener('click', function() {
-            mobileSubmenu.classList.toggle('hidden');
-            
-            // Rotate arrow icon
-            if (mobileSubmenu.classList.contains('hidden')) {
-                submenuIcon.style.transform = 'rotate(0deg)';
-            } else {
-                submenuIcon.style.transform = 'rotate(180deg)';
-            }
-        });
-
-        // Close mobile menu when clicking on links
-        const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
-        mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                mobileMenu.classList.add('hidden');
-                menuIcon.classList.remove('fa-times');
-                menuIcon.classList.add('fa-bars');
-            });
-        });
-    </script>
-    <!-- script for desktop nev bar -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const toggleBtn = document.getElementById('learningToggle');
-            const menu = document.getElementById('learningMenu');
+    <!-- Your existing Footer and other sections... -->
     
-            toggleBtn.addEventListener('click', function (e) {
-                e.stopPropagation();
-                menu.classList.toggle('hidden');
-            });
-    
-            // Close dropdown when clicking outside
-            document.addEventListener('click', function (e) {
-                if (!menu.contains(e.target) && !toggleBtn.contains(e.target)) {
-                    menu.classList.add('hidden');
-                }
-            });
-        });
-    </script>
+    <!-- Scripts -->
     <script>
         function toggleBio(index) {
             const bio = document.getElementById('bio-' + index);
