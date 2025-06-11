@@ -373,6 +373,7 @@ def team():
     team_members = TEAM_DATA.get('team_members', [])
     support_pillars = TEAM_DATA.get('support_pillars', [])
     
+    # Pass the complete data to the template. No changes are needed here.
     return render_template('team.html', 
                            team_members=team_members, 
                            support_pillars=support_pillars)
