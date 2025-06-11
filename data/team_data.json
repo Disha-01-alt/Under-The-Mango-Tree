@@ -5,148 +5,90 @@
             "name": "Kushal Shah",
             "role": "Tech & Strategy Lead",
             "bio": "Kushal is a multidisciplinary technologist driving UTMT’s digital direction. With a background spanning education, data science, and design, he creates tools that translate complexity into clarity, aiming to bridge the digital divide through empathy-driven innovation.",
-            "imageUrl": "Kushal Shah.jpeg",
-            "links": [
-                {
-                    "type": "linkedin",
-                    "url": "https://www.linkedin.com/in/kushal-shah-95b9a3b/"
-                },
-                {
-                    "type": "website",
-                    "url": "https://pythonpal.org/",
-                    "iconClass": "fas fa-laptop-code text-primary",
-                    "text": "PythonPal Coding Portal"
-                }
-            ]
+            "linkedIn": "https://www.linkedin.com/in/kushal-shah-95b9a3b/",
+            "profileUrl": "images/team/Kushal Shah.jpeg"
         },
         {
             "id": 2,
             "name": "Preeti Shukla",
             "role": "Faculty, Language and Communication",
             "bio": "Preeti brings a rich background in language education. At UTMT, she plays a crucial role in nurturing learners’ expression and clarity. With experience in curriculum design, she empowers students to connect ideas meaningfully.",
-            "imageUrl": "team/Preeti Shukla.jpeg",
-            "links": [
-                {
-                    "type": "linkedin",
-                    "url": "https://www.linkedin.com/in/preeti-shukla-3756268/"
-                }
-            ]
+            "linkedIn": "https://www.linkedin.com/in/preeti-shukla-3756268/",
+            "profileUrl": "images/team/Preeti Shukla.jpeg"
         },
         {
             "id": 3,
             "name": "Prof. Kalpesh Kapoor",
             "role": "Visiting Faculty (IISER Pune & IIT Guwahati)",
             "bio": "Specializing in advanced mathematical modeling and data science, Prof. Kapoor enriches our curriculum with insights into modern data analysis techniques from his roles at IISER Pune and IIT Guwahati.",
-            "imageUrl": "team/Kalpesh Kapoor.jpeg",
-            "links": [
-                {
-                    "type": "google-scholar",
-                    "url": "https://scholar.google.com/citations?user=gmBA2MgAAAAJ&hl=en"
-                },
-                {
-                    "type": "linkedin",
-                    "url": "https://www.linkedin.com/in/kalpeshkapoor/?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAESB2DMBJB0QgWys0Rrh6vIVjGysrh75KCQ"
-                },
-                {
-                    "type": "email",
-                    "url": "mailto:k.kapoor@acm.org",
-                    "iconClass": "fas fa-envelope text-primary",
-                    "text": "k.kapoor@acm.org"
-                }
-            ]
+            "linkedIn": "https://www.linkedin.com/in/kalpeshkapoor/?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAESB2DMBJB0QgWys0Rrh6vIVjGysrh75KCQ",
+            "profileUrl": "images/team/Kalpesh Kapoor.jpeg"
         },
         {
             "id": 4,
             "name": "Dr. Anish Roychowdhury",
             "role": "Associate Director of Data Science, Plaksha University",
             "bio": "Dr. Anish is a seasoned Data Science professional with 20+ years in industry and academia. He excels in leading digital transformations and has deep expertise in Machine Learning, Deep Learning, and Generative AI, dedicated to advancing Data Science education.",
-            "imageUrl": "team/Anish Roychowdhury.jpg",
-            "links": [
-                {
-                    "type": "linkedin",
-                    "url": "https://www.linkedin.com/in/dr-anish-roychowdhury-a2463714/"
-                }
-            ]
+            "linkedIn": "https://www.linkedin.com/in/dr-anish-roychowdhury-a2463714/",
+            "profileUrl": "images/team/Anish Roychowdhury.jpg"
         },
         {
             "id": 5,
             "name": "Dr. S. Balaji",
             "role": "Professor, Mechanical Engineering, IIT Madras",
             "bio": "Dr. Balaji brings extensive expertise in Mechanical Engineering from IIT Madras. His research and teaching focus on thermodynamics, fluid mechanics, and manufacturing processes, contributing valuable insights to our programs.",
-            "imageUrl": "team/Balaji Srinivasan.jpeg",
-            "links": [
-                {
-                    "type": "website",
-                    "url": "https://mech.iitm.ac.in/profile.php?fname=sbalaji",
-                    "iconClass": "fas fa-university text-primary",
-                    "text": "IITM Profile"
-                }
-            ]
+            "linkedIn": "#",
+            "profileUrl": "images/team/Balaji Srinivasan.jpeg"
         },
         {
             "id": 6,
             "name": "Nagapranay Tumuluri",
             "role": "Data Science & ML Professional / Mentor",
             "bio": "Nagapranay is a skilled professional with a strong background in data analysis and machine learning applications. He contributes to UTMT by mentoring students, developing course content, and leading projects.",
-            "imageUrl": "team/Naga Pranay Tumuluri .jpeg",
-            "links": [
-                {
-                    "type": "linkedin",
-                    "url": "https://www.linkedin.com/in/nagapranaytumuluri?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-                }
-            ]
+            "linkedIn": "https://www.linkedin.com/in/nagapranaytumuluri",
+            "profileUrl": "images/team/Naga Pranay Tumuluri .jpeg"
         },
         {
             "id": 7,
             "name": "Vibhanshu G",
             "role": "Founder, TakeOff Talent | AI & Data Science Lead | Mentor",
             "bio": "Vibhanshu is a Data Science and AI leader with 9+ years of experience, specializing in building impactful AI products and talent solutions. As Founder of TakeOff Talent, he helps companies hire top tech talent swiftly and mentors professionals in their data science careers.",
-            "imageUrl": "team/Vibhanshu G.jpeg",
-            "links": [
-                {
-                    "type": "linkedin",
-                    "url": "https://www.linkedin.com/in/vibvibgyor"
-                }
-            ]
+            "linkedIn": "https://www.linkedin.com/in/vibvibgyor",
+            "profileUrl": "images/team/Vibhanshu G.jpeg"
         },
         {
             "id": 8,
             "name": "Arvind Sivdas",
             "role": "Tech & Product Leader | Advisor",
             "bio": "Arvind is an experienced leader in technology and product development, known for scaling tech platforms and driving product innovation. He supports UTMT by advising on tech strategy and mentoring product teams.",
-            "imageUrl": "team/Arvind Sivdas.jpeg",
-            "links": [
-                {
-                    "type": "linkedin",
-                    "url": "https://www.linkedin.com/in/arvindsivdas/"
-                }
-            ]
+            "linkedIn": "https://www.linkedin.com/in/arvindsivdas/",
+            "profileUrl": "images/team/Arvind Sivdas.jpeg"
         }
     ],
     "support_pillars": [
         {
             "id": 1,
-            "icon": "fas fa-chalkboard-teacher",
             "title": "Teaching Assistance",
-            "description": "Providing additional support, answering questions, and offering guidance throughout the learning process."
+            "icon": "chalkboard-teacher",
+            "description": "Dedicated mentors providing personalized guidance and support throughout your learning journey."
         },
         {
             "id": 2,
-            "icon": "fas fa-laptop-code",
             "title": "Technical Support",
-            "description": "Ensuring our platform runs smoothly and resolving technical issues quickly for an uninterrupted learning experience."
+            "icon": "laptop-code",
+            "description": "24/7 technical assistance to ensure uninterrupted access to our digital learning resources."
         },
         {
             "id": 3,
-            "icon": "fas fa-hands-helping",
             "title": "Student Services",
-            "description": "Dedicated to addressing student needs, from enrollment assistance to general inquiries about our programs."
+            "icon": "users",
+            "description": "Comprehensive support for all student needs, from enrollment to certification and placement."
         },
         {
             "id": 4,
-            "icon": "fas fa-chart-line",
             "title": "Curriculum Development",
-            "description": "Constantly updating and refining course materials to ensure they remain relevant, engaging, and effective."
+            "icon": "book",
+            "description": "Continuously updated course materials aligned with industry requirements and educational standards."
         }
     ]
 }

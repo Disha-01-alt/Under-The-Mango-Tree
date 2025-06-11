@@ -369,10 +369,13 @@ def english_learning():
 
 @app.route('/team')
 def team():
-    # Use the .get() method for safety, in case the JSON is malformed
+    # Use .get() with a default empty list [] for safety
+    team_members = TEAM_DATA.get('team_members', [])
+    support_pillars = TEAM_DATA.get('support_pillars', [])
+    
     return render_template('team.html', 
-                         team_members=TEAM_DATA.get('team_members', []), 
-                         support_pillars=TEAM_DATA.get('support_pillars', []))
+                           team_members=team_members, 
+                           support_pillars=support_pillars)
 
 # Error handling
 @app.errorhandler(404)
