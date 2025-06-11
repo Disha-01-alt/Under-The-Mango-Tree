@@ -2,67 +2,99 @@
     "team_members": [
         {
             "id": 1,
-            "name": "Kushal Shah",
-            "role": "Tech & Strategy Lead",
+            "name": "Dr. Kushal Shah",
+            "role": "Co-Founder & CEO",
             "bio": "Kushal is a multidisciplinary technologist driving UTMT’s digital direction. With a background spanning education, data science, and design, he creates tools that translate complexity into clarity, aiming to bridge the digital divide through empathy-driven innovation.",
             "linkedIn": "https://www.linkedin.com/in/kushal-shah-95b9a3b/",
-            "profileUrl": "images/team/Kushal Shah.jpeg"
+            "profileImage": "images/team/Kushal Shah.jpeg",
+            "gender": "male",
+            "expertise": ["Educational Leadership", "Data Science", "Product Design", "Technology Integration"],
+            "education": ["Ph.D. in Education", "Masters in Educational Technology"],
+            "contactEmail": "kushal.shah@utmt.edu"
         },
         {
             "id": 2,
             "name": "Preeti Shukla",
             "role": "Faculty, Language and Communication",
             "bio": "Preeti brings a rich background in language education. At UTMT, she plays a crucial role in nurturing learners’ expression and clarity. With experience in curriculum design, she empowers students to connect ideas meaningfully.",
-            "linkedIn": "https://www.linkedin.com/in/preeti-shukla-3756268/",
-            "profileUrl": "images/team/Preeti Shukla.jpeg"
+            "linkedIn": "#",
+            "profileImage": "images/team/Preeti Shukla.jpeg",
+            "gender": "female",
+            "expertise": ["Language Education", "Curriculum Design", "Communication Skills"],
+            "education": ["M.A. in English Literature", "B.Ed."],
+            "contactEmail": "preeti.shukla@utmt.edu"
         },
         {
             "id": 3,
             "name": "Prof. Kalpesh Kapoor",
             "role": "Visiting Faculty (IISER Pune & IIT Guwahati)",
             "bio": "Specializing in advanced mathematical modeling and data science, Prof. Kapoor enriches our curriculum with insights into modern data analysis techniques from his roles at IISER Pune and IIT Guwahati.",
-            "linkedIn": "https://www.linkedin.com/in/kalpeshkapoor/?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAESB2DMBJB0QgWys0Rrh6vIVjGysrh75KCQ",
-            "profileUrl": "images/team/Kalpesh Kapoor.jpeg"
+            "linkedIn": "#",
+            "profileImage": "images/team/Kalpesh Kapoor.jpeg",
+            "gender": "male",
+            "expertise": ["Mathematical Modeling", "Data Science", "Algorithms"],
+            "education": ["Ph.D. in Mathematics", "Professor at IISER/IIT"],
+            "contactEmail": "kalpesh.kapoor@utmt.edu"
         },
         {
             "id": 4,
             "name": "Dr. Anish Roychowdhury",
             "role": "Associate Director of Data Science, Plaksha University",
             "bio": "Dr. Anish is a seasoned Data Science professional with 20+ years in industry and academia. He excels in leading digital transformations and has deep expertise in Machine Learning, Deep Learning, and Generative AI, dedicated to advancing Data Science education.",
-            "linkedIn": "https://www.linkedin.com/in/dr-anish-roychowdhury-a2463714/",
-            "profileUrl": "images/team/Anish Roychowdhury.jpg"
+            "linkedIn": "#",
+            "profileImage": "images/team/Anish Roychowdhury.jpeg",
+            "gender": "male",
+            "expertise": ["Machine Learning", "Generative AI", "Digital Transformation"],
+            "education": ["Ph.D. in Computer Science", "20+ years experience"],
+            "contactEmail": "anish.roychowdhury@utmt.edu"
         },
         {
             "id": 5,
             "name": "Dr. S. Balaji",
             "role": "Professor, Mechanical Engineering, IIT Madras",
-            "bio": "Dr. Balaji brings extensive expertise in Mechanical Engineering from IIT Madras. His research and teaching focus on thermodynamics, fluid mechanics, and manufacturing processes, contributing valuable insights to our programs.",
+            "bio": "Dr. Balaji brings extensive expertise in Mechanical Engineering from IIT Madras. His research and teaching focus on thermodynamics and fluid mechanics, contributing valuable insights to our programs.",
             "linkedIn": "#",
-            "profileUrl": "images/team/Balaji Srinivasan.jpeg"
+            "profileImage": "images/team/S. Balaji.jpeg",
+            "gender": "male",
+            "expertise": ["Mechanical Engineering", "Thermodynamics", "Fluid Mechanics"],
+            "education": ["Ph.D. in Mechanical Engineering", "Professor at IIT Madras"],
+            "contactEmail": "s.balaji@utmt.edu"
         },
         {
             "id": 6,
             "name": "Nagapranay Tumuluri",
             "role": "Data Science & ML Professional / Mentor",
-            "bio": "Nagapranay is a skilled professional with a strong background in data analysis and machine learning applications. He contributes to UTMT by mentoring students, developing course content, and leading projects.",
-            "linkedIn": "https://www.linkedin.com/in/nagapranaytumuluri",
-            "profileUrl": "images/team/Naga Pranay Tumuluri .jpeg"
+            "bio": "Nagapranay is a skilled professional with a strong background in data analysis and machine learning applications. He contributes to UTMT by mentoring students and developing course content.",
+            "linkedIn": "#",
+            "profileImage": "images/team/Nagapranay Tumuluri.jpeg",
+            "gender": "male",
+            "expertise": ["Data Analysis", "ML Applications", "Student Mentorship"],
+            "education": ["M.S. in Data Science"],
+            "contactEmail": "nagapranay.tumuluri@utmt.edu"
         },
         {
             "id": 7,
             "name": "Vibhanshu G",
             "role": "Founder, TakeOff Talent | AI & Data Science Lead | Mentor",
             "bio": "Vibhanshu is a Data Science and AI leader with 9+ years of experience, specializing in building impactful AI products and talent solutions. As Founder of TakeOff Talent, he helps companies hire top tech talent swiftly and mentors professionals in their data science careers.",
-            "linkedIn": "https://www.linkedin.com/in/vibvibgyor",
-            "profileUrl": "images/team/Vibhanshu G.jpeg"
+            "linkedIn": "#",
+            "profileImage": "images/team/Vibhanshu G.jpeg",
+            "gender": "male",
+            "expertise": ["AI Product Development", "Talent Solutions", "Career Mentoring"],
+            "education": ["B.Tech in Computer Science", "9+ years experience"],
+            "contactEmail": "vibhanshu.g@utmt.edu"
         },
         {
             "id": 8,
             "name": "Arvind Sivdas",
             "role": "Tech & Product Leader | Advisor",
-            "bio": "Arvind is an experienced leader in technology and product development, known for scaling tech platforms and driving product innovation. He supports UTMT by advising on tech strategy and mentoring product teams.",
-            "linkedIn": "https://www.linkedin.com/in/arvindsivdas/",
-            "profileUrl": "images/team/Arvind Sivdas.jpeg"
+            "bio": "Arvind is an experienced leader in technology and product development, known for scaling tech platforms and driving product innovation. He supports UTMT by advising on tech strategy.",
+            "linkedIn": "#",
+            "profileImage": "images/team/Arvind Sivdas.jpeg",
+            "gender": "male",
+            "expertise": ["Technology Strategy", "Product Development", "Platform Scaling"],
+            "education": ["MBA", "B.Eng in Software Engineering"],
+            "contactEmail": "arvind.sivdas@utmt.edu"
         }
     ],
     "support_pillars": [
