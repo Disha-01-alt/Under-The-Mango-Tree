@@ -1,84 +1,1099 @@
 {
   "course_title": "Data Science & Machine Learning",
+  "prerequisites": "Before starting to learn ML, make sure you have a good hold of Python Programming and Data Handling using Python.",
   "topics": [
     {
-      "name": "Data Science & ML Overview",
+      "name": "Data Science & Machine Learning Overview",
       "videos": [
-        { "id": 0, "title": "Overview Part 1", "youtube_url": "https://youtu.be/DwqbxP5BDFo", "what_you_will_learn": ["The scope of Data Science.", "The difference between AI, ML, and DL.", "Real-world applications of Machine Learning."], "content_covered": "This video provides a high-level overview of the entire field, setting the stage for the course. It explains what Data Science is and how Machine Learning fits into the broader ecosystem.", "resources": [ { "name": "Fake News Detection Project", "url": "https://data-flair.training/blogs/advanced-python-project-detecting-fake-news/", "icon": "fas fa-code" }, { "name": "Curated ML Datasets", "url": "https://bekushal.medium.com/curated-machine-learning-datasets-for-college-students-ba8cfbc98b6b", "icon": "fas fa-database" }, { "name": "NLTK Code for Fictometer", "url": "#", "icon": "fas fa-code" } ] },
-        { "id": 1, "title": "Overview Part 2", "youtube_url": "https://youtu.be/UnjyNYco7uQ", "what_you_will_learn": ["A simple end-to-end ML project.", "The key steps in an ML workflow.", "The role of data in training models."], "content_covered": "A follow-up to the overview, this video gives a practical look at what a machine learning project entails, from data collection to model evaluation.", "resources": [] }
+        {
+          "id": 0,
+          "title": "Overview Part 1",
+          "youtube_url": "https://youtu.be/DwqbxP5BDFo",
+          "what_you_will_learn": ["Data Science basics"],
+          "content_covered": "Introduces the field of Data Science.",
+          "resources": [
+            {
+              "name": "NLTK Code [Jupyter Notebook]",
+              "url": null
+            },
+            {
+              "name": "Fictometer Paper @ ACL 2019",
+              "url": null
+            },
+            {
+              "name": "Machine Learning Projects",
+              "url": "https://data-flair.training/blogs/advanced-python-project-detecting-fake-news/"
+            },
+            {
+              "name": "ML Datasets: Bekushal Medium",
+              "url": "https://bekushal.medium.com/curated-machine-learning-datasets-for-college-students-ba8cfbc98b6b"
+            },
+             {
+              "name": "ML Datasets: UCI",
+              "url": "http://archive.ics.uci.edu/ml/index.php"
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "title": "Overview Part 2",
+          "youtube_url": "https://youtu.be/UnjyNYco7uQ",
+          "what_you_will_learn": ["More overview concepts"],
+          "content_covered": "Continues the introduction to Data Science and ML.",
+          "resources": []
+        }
+      ]
+    },
+     {
+      "name": "Random Variables and Probability Distributions",
+      "videos": [
+         {
+          "id": 2,
+          "title": "Random Variables and Probability Distributions Part 1",
+          "youtube_url": "https://youtu.be/rGYqfhmdEmo",
+          "what_you_will_learn": ["Random variables and distributions"],
+          "content_covered": "Covers the basics of random variables and probability distributions.",
+          "resources": []
+        }
       ]
     },
     {
-      "name": "Probability & Statistics",
+      "name": "Expectation, Moments and CLT",
       "videos": [
-        { "id": 2, "title": "Random Variables & Probability", "youtube_url": "https://youtu.be/rGYqfhmdEmo", "what_you_will_learn": ["Defining Random Variables.", "Understanding Probability Distributions.", "Key concepts for statistical modeling."], "content_covered": "Machine learning is built on a foundation of probability. This video covers the essential concepts of random variables and probability distributions.", "resources": [] },
-        { "id": 3, "title": "Expectation, Moments & CLT", "youtube_url": "https://youtu.be/3-A2siEN8w8", "what_you_will_learn": ["Calculating expectation.", "Understanding moments like variance.", "The importance of the Central Limit Theorem (CLT)."], "content_covered": "Dive deeper into statistical concepts critical for understanding ML algorithms, including expectation, variance, and the powerful Central Limit Theorem.", "resources": [ { "name": "Reference Video on CLT", "url": "https://www.youtube.com/watch?v=JNm3M9cqWyc", "icon": "fab fa-youtube" }, { "name": "UChicago Paper on CLT", "url": "http://www.math.uchicago.edu/~may/VIGRE/VIGRE2011/REUPapers/Krokhmal.pdf", "icon": "fas fa-file-pdf" } ] }
+         {
+          "id": 3,
+          "title": "Expectation, Moments and CLT Part 1",
+          "youtube_url": "https://youtu.be/3-A2siEN8w8",
+          "what_you_will_learn": ["Expectation, moments, CLT"],
+          "content_covered": "Discusses expectation, moments, and the Central Limit Theorem.",
+          "resources": [
+            {
+              "name": "Reference video",
+              "url": "https://www.youtube.com/watch?v=JNm3M9cqWyc"
+            },
+            {
+              "name": "UChicago Paper",
+              "url": "http://www.math.uchicago.edu/~may/VIGRE/VIGRE2011/REUPapers/Krokhmal.pdf"
+            },
+            {
+              "name": "Conditional probability",
+              "url": "https://www.mathsisfun.com/data/probability-events-conditional.html"
+            },
+            {
+              "name": "Practice problems",
+              "url": "https://www.statisticshowto.com/bayes-theorem-problems/"
+            }
+          ]
+        }
       ]
     },
     {
-      "name": "Bayesian Concepts",
+      "name": "Bayes' Theorem",
       "videos": [
-        { "id": 4, "title": "Bayes' Theorem", "youtube_url": "https://youtu.be/q0p6VWj8N4I", "what_you_will_learn": ["The formula for Bayes' Theorem.", "The intuition behind conditional probability.", "Updating knowledge with new evidence."], "content_covered": "Bayes' Theorem is a cornerstone of ML, enabling us to update our beliefs in the face of new data. This video provides a clear explanation.", "resources": [ { "name": "Conditional Probability Explained", "url": "https://www.mathsisfun.com/data/probability-events-conditional.html", "icon": "fas fa-link" }, { "name": "Practice Problems", "url": "https://www.statisticshowto.com/bayes-theorem-problems/", "icon": "fas fa-question-circle" } ] },
-        { "id": 5, "title": "Naïve Bayes Classifier", "youtube_url": "https://youtu.be/DV3F7AZOAE0", "what_you_will_learn": ["The 'naïve' assumption.", "Applying Bayes' theorem for classification.", "Gaussian and other types of Naive Bayes."], "content_covered": "The Naive Bayes classifier is a simple yet powerful algorithm for tasks like spam filtering. This video explains its mechanics and assumptions.", "resources": [ { "name": "Spam Filter Code Example", "url": "https://www.kdnuggets.com/2020/07/spam-filter-python-naive-bayes-scratch.html", "icon": "fas fa-code" }, { "name": "Gaussian Naive Bayes Video", "url": "https://www.youtube.com/watch?v=H3EjCKtlVog", "icon": "fab fa-youtube" } ] }
+        {
+          "id": 4,
+          "title": "Bayes' Theorem Part 1",
+          "youtube_url": "https://youtu.be/q0p6VWj8N41",
+          "what_you_will_learn": ["Bayes' Theorem basics"],
+          "content_covered": "Introduces Bayes' Theorem.",
+          "resources": [
+            {
+              "name": "Naive Bayes Youtube (Duplicate)",
+              "url": "https://www.youtube.com/watch?v=O2L2Uv9pdDA"
+            },
+             {
+              "name": "Spam filter using Naive Bayes",
+              "url": "https://www.kdnuggets.com/2020/07/spam-filter-python-naive-bayes-scratch.html"
+            },
+            {
+              "name": "Gaussian Naive Bayes Youtube (Duplicate)",
+              "url": "https://www.youtube.com/watch?v=H3EjCKtlVog"
+            },
+             {
+              "name": "ML Mastery Gaussian Naive Bayes",
+              "url": "https://machinelearningmastery.com/naive-bayes-classifier-scratch-python/"
+            },
+             {
+              "name": "Bayesian Networks",
+              "url": "https://towardsdatascience.com/introduction-to-bayesian-networks-81031eeed94e"
+            },
+             {
+              "name": "Sentiment analysis of tweet (Multinomial NB)",
+              "url": "https://towardsdatascience.com/sentiment-analysis-of-tweets-using-multinomial-naive-bayes-1009ed24276b"
+            }
+          ]
+        }
       ]
     },
     {
-      "name": "Supervised Learning Fundamentals",
+      "name": "Naïve Bayes, Gaussian Naive Bayes, Bayes' Optimal Classifier",
       "videos": [
-        { "id": 6, "title": "Regression vs Classification", "youtube_url": "https://youtu.be/NYJZDRRUO84", "what_you_will_learn": ["The difference between predicting a number (regression) and a category (classification).", "Identifying your problem type.", "The Curse of Dimensionality."], "content_covered": "This is a foundational concept in supervised learning, clearly distinguishing between the two main problem types.", "resources": [ { "name": "Blog: Regression vs Classification", "url": "https://in.springboard.com/blog/regression-vs-classification-in-machine-learning/", "icon": "fas fa-book-open" }, { "name": "KNN from Scratch (Code)", "url": "https://machinelearningmastery.com/tutorial-to-implement-k-nearest-neighbors-in-python-from-scratch/", "icon": "fas fa-code" } ] }
+        {
+          "id": 5,
+          "title": "Naïve Bayes, Gaussian Naive Bayes, Bayes' Optimal Classifier Part 1",
+          "youtube_url": "https://youtu.be/DV3F7AZOAE0",
+          "what_you_will_learn": ["Naive Bayes classifiers"],
+          "content_covered": "Covers different types of Naive Bayes classifiers.",
+          "resources": []
+        }
       ]
     },
     {
-      "name": "Parameter Estimation",
+      "name": "Supervised Learning: Regression vs Classification, Curse of Dimensionality",
       "videos": [
-        { "id": 7, "title": "Bayesian Parameter Estimation", "youtube_url": "https://youtu.be/8P7tdwFF0is", "what_you_will_learn": ["The Bayesian approach to estimating parameters.", "Differences from the frequentist approach.", "Understanding posterior distributions."], "content_covered": "This video introduces the Bayesian perspective, where parameters are treated as random variables with their own distributions.", "resources": [] },
-        { "id": 8, "title": "Maximum Likelihood Estimation (MLE)", "youtube_url": "https://youtu.be/WIPUh9yWM4c", "what_you_will_learn": ["The principle of MLE.", "Finding parameters that maximize data likelihood.", "Its relationship with cost functions."], "content_covered": "MLE is a fundamental method for finding model parameters that make the observed data most probable.", "resources": [ { "name": "Deriving Cost Functions Pt 1", "url": "https://allenkunle.me/deriving-ml-cost-functions-part1", "icon": "fas fa-book-open" }, { "name": "Deriving Cost Functions Pt 2", "url": "https://allenkunle.me/deriving-ml-cost-functions-part2", "icon": "fas fa-book-open" } ] },
-        { "id": 9, "title": "Maximum A Posteriori (MAP)", "youtube_url": "https://youtu.be/XKkfIU8ugjM", "what_you_will_learn": ["How MAP combines MLE with a prior distribution.", "The relationship between MAP, MLE, and Bayesian estimation.", "When to use MAP over MLE."], "content_covered": "MAP estimation is a Bayesian approach that incorporates prior knowledge, often leading to more regularized models.", "resources": [ { "name": "Blog: MLE vs MAP", "url": "https://towardsdatascience.com/mle-vs-map-a989f423ae5c", "icon": "fas fa-book-open" } ] }
+        {
+          "id": 6,
+          "title": "Regression vs Classification Part 1",
+          "youtube_url": "https://youtu.be/NYJZDRRUO84",
+          "what_you_learn": ["Regression vs Classification", "Curse of Dimensionality"],
+          "content_covered": "Explains the difference between regression and classification and introduces the curse of dimensionality.",
+          "resources": [
+            {
+              "name": "Regression vs Classification blog",
+              "url": "https://in.springboard.com/blog/regression-vs-classification-in-machine-learning/"
+            },
+            {
+              "name": "K-Nearest Neighbour (KNN) Algorithm (Scikit-learn)",
+              "url": "https://scikit-learn.org/stable/modules/neighbors.html"
+            },
+            {
+              "name": "KNN from scratch",
+              "url": "https://machinelearningmastery.com/tutorial-to-implement-k-nearest-neighbors-in-python-from-scratch/"
+            }
+          ]
+        }
       ]
     },
     {
-      "name": "Linear & Logistic Regression",
+      "name": "Bayesian Parameter Estimation",
       "videos": [
-        { "id": 10, "title": "Gradient Descent & Regularisation", "youtube_url": "https://youtu.be/lUmFzIU-Cp4", "what_you_will_learn": ["The core idea of Gradient Descent.", "Importance of learning rate and feature scaling.", "What regularization is and why it's used."], "content_covered": "Learn how most models are trained. This video explains the Gradient Descent algorithm and regularization for robust models.", "resources": [ { "name": "Handling Class Imbalance", "url": "https://medium.com/data-science-in-your-pocket/handling-class-imbalance-in-classification-algorithms-explained-2b0b7377aa34", "icon": "fas fa-link" } ] },
-        { "id": 11, "title": "Linear Regression & Normal Equation", "youtube_url": "https://youtu.be/BGiAcoU4yWk", "what_you_will_learn": ["The formula for the Normal Equation.", "Solving for parameters analytically.", "When this is preferred over Gradient Descent."], "content_covered": "This video covers the Normal Equation, a direct, non-iterative method for finding the optimal parameters for linear regression.", "resources": [ { "name": "Linear Regression Guide", "url": "https://machinelearningmastery.com/linear-regression-for-machine-learning/", "icon": "fas fa-book-open" }, { "name": "The Normal Equation & Matrix Calc", "url": "https://eli.thegreenplace.net/2015/the-normal-equation-and-matrix-calculus/", "icon": "fas fa-book-open" } ] },
-        { "id": 12, "title": "Logistic Regression Concepts", "youtube_url": "https://youtu.be/sxaYUg6zc7I", "what_you_will_learn": ["How Logistic Regression is used for classification.", "The role of the Sigmoid function.", "Loss, convexity, and gradient descent for this model."], "content_covered": "Logistic Regression is a go-to algorithm for binary classification. This video covers its core mathematical underpinnings.", "resources": [ { "name": "Real-world Examples", "url": "https://activewizards.com/blog/5-real-world-examples-of-logistic-regression-application", "icon": "fas fa-link" }, { "name": "Logistic Regression Code", "url": "https://heartbeat.fritz.ai/logistic-regression-in-python-using-scikit-learn-d34e882eebb1", "icon": "fas fa-code" } ] },
-        { "id": 13, "title": "Logistic Regression: Multiclass", "youtube_url": "https://youtu.be/E6MNiNsESI4", "what_you_will_learn": ["Techniques like One-vs-Rest (OvR) to extend logistic regression.", "How to handle problems with more than two classes.", "The use of the Softmax function."], "content_covered": "Learn how to adapt the binary Logistic Regression classifier to handle multiclass classification problems, where an instance can belong to one of three or more categories.", "resources": [ { "name": "Stanford NLP Notes", "url": "https://web.stanford.edu/~jurafsky/slp3/5.pdf", "icon": "fas fa-book" }, { "name": "Multiclass from Scratch (Code)", "url": "https://towardsdatascience.com/multiclass-classification-algorithm-from-scratch-with-a-project-in-python-step-by-step-guide-485a83c79992", "icon": "fas fa-code" } ] }
+        {
+          "id": 7,
+          "title": "Bayesian Parameter Estimation Part 1",
+          "youtube_url": "https://youtu.be/8P7tdwFF0is",
+          "what_you_will_learn": ["Bayesian parameter estimation"],
+          "content_covered": "Introduction to Bayesian parameter estimation.",
+          "resources": []
+        }
       ]
     },
     {
-      "name": "Support Vector Machines (SVM)",
+      "name": "Maximum Likelihood Estimation",
       "videos": [
-        { "id": 14, "title": "SVM with Linear Kernel", "youtube_url": "https://youtu.be/Kvldyz0KdCU", "what_you_will_learn": ["The core idea of finding the maximum-margin hyperplane.", "The role of support vectors in defining the decision boundary.", "How SVMs work for linearly separable data."], "content_covered": "SVMs are a powerful class of supervised algorithms used for classification. This video introduces the fundamental concepts of SVMs for linear problems.", "resources": [ { "name": "SVM Applications", "url": "https://medium.com/@rinu.gour123/8-unique-real-life-applications-of-svm-8a96ca43313", "icon": "fas fa-link" }, { "name": "Scikit-Learn SVM Code", "url": "https://scikit-learn.org/stable/modules/svm.html", "icon": "fas fa-code" } ] },
-        { "id": 15, "title": "SVM: Slack & Nonlinear Kernels", "youtube_url": "https://youtu.be/kPuHAK4RCfM", "what_you_will_learn": ["How slack variables handle non-linearly separable data.", "The concept of the 'kernel trick' for complex decision boundaries.", "Understanding popular kernels like RBF and Polynomial."], "content_covered": "Unlock the true power of SVMs by learning how they handle complex, real-world data using slack variables and the kernel trick, which maps data to higher dimensions.", "resources": [ { "name": "Stanford SVM Exercises", "url": "http://openclassroom.stanford.edu/MainFolder/DocumentPage.php?course=MachineLearning&doc=exercises/ex8/ex8.html", "icon": "fas fa-book" } ] }
+        {
+          "id": 8,
+          "title": "Maximum Likelihood Estimation Part 1",
+          "youtube_url": "https://youtu.be/WIPUh9yWM4c",
+          "what_you_will_learn": ["Maximum Likelihood Estimation"],
+          "content_covered": "Covers the concept of Maximum Likelihood Estimation.",
+          "resources": [
+            {
+              "name": "Deriving ML Cost Functions Part 1",
+              "url": "https://allenkunle.me/deriving-ml-cost-functions-part1"
+            },
+            {
+              "name": "Deriving ML Cost Functions Part 2",
+              "url": "https://allenkunle.me/deriving-ml-cost-functions-part2"
+            },
+             {
+              "name": "MLE vs MAP",
+              "url": "https://towardsdatascience.com/mle-vs-map-a989f423ae5c"
+            }
+          ]
+        }
       ]
     },
     {
-      "name": "Tree-Based & Ensemble Models",
+      "name": "Maximum A Posteriori Estimation",
       "videos": [
-        { "id": 16, "title": "Introduction to Decision Trees", "youtube_url": "https://youtu.be/OlreMWwTJ_8", "what_you_will_learn": ["How a decision tree makes predictions.", "Concepts like root nodes, branches, and leaf nodes.", "The idea of splitting data based on features."], "content_covered": "Decision Trees are intuitive and interpretable models that mimic human decision-making. This video introduces the basic structure and logic of a decision tree classifier.", "resources": [ { "name": "Decision Tree Implementation (Code)", "url": "https://www.geeksforgeeks.org/decision-tree-implementation-python/", "icon": "fas fa-code" }, { "name": "Reference Video", "url": "https://www.youtube.com/watch?v=7VeUPuFGJHk", "icon": "fab fa-youtube" } ] },
-        { "id": 17, "title": "Random Forest & Model Comparison", "youtube_url": "https://youtu.be/pEFBH_371sU", "what_you_will_learn": ["What an ensemble model is.", "How Random Forest improves on a single Decision Tree.", "The concepts of bagging and feature randomness."], "content_covered": "Learn about ensemble learning through Random Forests, a powerful model that combines multiple decision trees to produce more accurate and robust predictions.", "resources": [ { "name": "Random Forest from Scratch (Code)", "url": "https://towardsdatascience.com/an-implementation-and-explanation-of-the-random-forest-in-python-77bf308a9b76", "icon": "fas fa-code" }, { "name": "Bagging vs Boosting Video", "url": "https://www.youtube.com/watch?v=4EOCQJgqAOY", "icon": "fab fa-youtube" } ] }
+        {
+          "id": 9,
+          "title": "Maximum A Posteriori Estimation Part 1",
+          "youtube_url": "https://youtu.be/XKkfIU8ugjM",
+          "what_you_will_learn": ["Maximum A Posteriori Estimation"],
+          "content_covered": "Covers the concept of Maximum A Posteriori Estimation.",
+          "resources": []
+        }
       ]
     },
     {
-      "name": "Unsupervised Learning",
+      "name": "Supervised Learning: Gradient Descent & Regularisation",
       "videos": [
-        { "id": 18, "title": "K-Means Clustering", "youtube_url": "https://youtu.be/92-h3_1Yfz8", "what_you_will_learn": ["The goal of clustering: to find groups in unlabeled data.", "The iterative algorithm behind K-Means.", "How to choose the number of clusters (K)."], "content_covered": "This video introduces unsupervised learning with K-Means, one of the most popular clustering algorithms used to partition data into distinct, non-overlapping subgroups.", "resources": [ { "name": "K-Means vs KNN (Blog)", "url": "https://becominghuman.ai/comprehending-k-means-and-knn-algorithms-c791be90883d", "icon": "fas fa-book-open" }, { "name": "Scikit-Learn K-Means (Code)", "url": "https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html", "icon": "fas fa-code" } ] },
-        { "id": 19, "title": "Gaussian Mixture Models (GMM)", "youtube_url": "https://youtu.be/he4ll0w1G-g", "what_you_will_learn": ["How GMMs provide a probabilistic approach to clustering.", "The difference between hard and soft clustering.", "When to use GMMs over K-Means."], "content_covered": "Go beyond K-Means with Gaussian Mixture Models, a more flexible clustering algorithm that assumes data points are generated from a mixture of several Gaussian distributions.", "resources": [ { "name": "GMM Explained (Article)", "url": "https://brilliant.org/wiki/gaussian-mixture-model/", "icon": "fas fa-book" }, { "name": "GMM Clustering (Code)", "url": "https://www.analyticsvidhya.com/blog/2019/10/gaussian-mixture-models-clustering/", "icon": "fas fa-code" } ] }
+        {
+          "id": 10,
+          "title": "Gradient Descent & Regularisation Part 1",
+          "youtube_url": "https://youtu.be/lUmFzIU-Cp4",
+          "what_you_will_learn": ["Gradient Descent", "Regularisation"],
+          "content_covered": "Explains Gradient Descent and Regularisation techniques.",
+          "resources": [
+            {
+              "name": "Gradient Descent blog",
+              "url": "https://towardsdatascience.com/gradient-descent-the-learning-rate-and-the-importance-of-feature-scaling-6c0b416596e1"
+            },
+             {
+              "name": "Handling Class Imbalance",
+              "url": "https://medium.com/data-science-in-your-pocket/handling-class-imbalance-in-classification-algorithms-explained-2b0b7377aa34"
+            },
+            {
+              "name": "Bias vs Variance video",
+              "url": "https://www.youtube.com/watch?v=EuBBz3bl-aA"
+            },
+            {
+              "name": "Convex function Wikipedia",
+              "url": "https://en.wikipedia.org/wiki/Convex_function"
+            },
+             {
+              "name": "Visualization of Gradient Descent and SGD video",
+              "url": "https://www.youtube.com/watch?v=k3AiUhwHQ28"
+            },
+            {
+              "name": "Stochastic Gradient Descent blog",
+              "url": "https://blog.paperspace.com/intro-to-optimization-in-deep-learning-gradient-descent/"
+            },
+             {
+              "name": "Stochastic vs Batch Gradient Descent medium",
+              "url": "https://medium.com/@divakar_239/stochastic-vs-batch-gradient-descent-8820568eada1"
+            }
+          ]
+        }
       ]
     },
     {
-      "name": "Dimensionality Reduction",
+      "name": "Linear Regression: Normal Equation & Regularisation",
       "videos": [
-        { "id": 20, "title": "Principal Component Analysis (PCA) Part 1", "youtube_url": "https://youtu.be/cERNIfg9TLM", "what_you_will_learn": ["The motivation for dimensionality reduction.", "The goal of PCA: to find the directions of maximum variance.", "The concept of principal components."], "content_covered": "This video introduces Principal Component Analysis (PCA), a fundamental technique for dimensionality reduction that helps in data visualization and improving algorithm performance.", "resources": [ { "name": "PCA Step-by-Step Explanation", "url": "https://builtin.com/data-science/step-step-explanation-principal-component-analysis", "icon": "fas fa-book-open" } ] },
-        { "id": 21, "title": "Principal Component Analysis (PCA) Part 2", "youtube_url": "https://youtu.be/ml1d1zC0jsg", "what_you_will_learn": ["How to implement PCA in practice.", "Interpreting the results of PCA.", "The difference between PCA and Linear Regression."], "content_covered": "This second part of the PCA series delves into the practical implementation and interpretation, solidifying your understanding of this key unsupervised learning technique.", "resources": [ { "name": "PCA vs Linear Regression (Blog)", "url": "https://shankarmsy.github.io/posts/pca-vs-lr.html", "icon": "fas fa-book-open" }, { "name": "PCA with Scikit-Learn (Code)", "url": "https://shankarmsy.github.io/posts/pca-sklearn.html", "icon": "fas fa-code" } ] }
+        {
+          "id": 11,
+          "title": "Linear Regression: Normal Equation & Regularisation Part 1",
+          "youtube_url": "https://youtu.be/BGiAcoU4yWk",
+          "what_you_will_learn": ["Normal Equation", "Linear Regression Regularisation"],
+          "content_covered": "Covers the Normal Equation method and regularisation in Linear Regression.",
+          "resources": [
+            {
+              "name": "ML Mastery Linear Regression",
+              "url": "https://machinelearningmastery.com/linear-regression-for-machine-learning/"
+            },
+             {
+              "name": "Normal Equation and Matrix Calculation",
+              "url": "https://eli.thegreenplace.net/2015/the-normal-equation-and-matrix-calculus/"
+            },
+             {
+              "name": "TowardsDataScience Python Linear Regression",
+              "url": "https://towardsdatascience.com/linear-regression-using-python-b136c91bf0a2"
+            },
+             {
+              "name": "Stackabuse Multiple Linear Regression",
+              "url": "https://stackabuse.com/multiple-linear-regression-with-python/"
+            },
+             {
+              "name": "Overfitting vs Underfitting TowardsDataScience",
+              "url": "https://towardsdatascience.com/overfitting-vs-underfitting-a-complete-example-d05dd7e19765"
+            },
+            {
+              "name": "Sklearn Overfitting/Underfitting plot",
+              "url": "https://scikit-learn.org/stable/auto_examples/model_selection/plot_underfitting_overfitting.html"
+            },
+             {
+              "name": "Sklearn Linear Model Regularization",
+              "url": "https://scikit-learn.org/stable/modules/linear_model.html"
+            },
+            {
+              "name": "Analytics Vidhya Ridge/Lasso Guide",
+              "url": "https://www.analyticsvidhya.com/blog/2017/06/a-comprehensive-guide-for-linear-ridge-and-lasso-regression/"
+            },
+             {
+              "name": "Soft Thresholding TowardsDataScience",
+              "url": "https://towardsdatascience.com/coordinating-descent-for-linear-models-f843d226a101"
+            },
+             {
+              "name": "Soft Thresholding StackExchange",
+              "url": "https://stats.stackexchange.com/questions/123672/coordinate-descent-soft-thresholding-update-operator-for-lasso"
+            },
+            {
+              "name": "CMU Coordinate Descent",
+              "url": "https://www.cs.cmu.edu/~ggordon/10725-F12/slides/25-coord-desc.pdf"
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "title": "Linear Regression: Normal Equation & Regularisation Part 2",
+          "youtube_url": "https://www.youtube.com/watch?v=VqKq78PVO9g",
+          "what_you_will_learn": ["More on Normal Equation and Regularisation"],
+          "content_covered": "Continues the discussion on Normal Equation and regularisation.",
+          "resources": []
+        }
       ]
     },
     {
-      "name": "Advanced Topics",
+      "name": "Logistic Regression: Loss Function, Convexity, Gradient Descent",
       "videos": [
-        { "id": 22, "title": "Reinforcement Learning Intro", "youtube_url": "https://youtu.be/KEQhaBIZ9yk", "what_you_will_learn": ["The core concepts: agent, environment, state, action, reward.", "How Reinforcement Learning differs from other learning types.", "Potential applications like game playing and robotics."], "content_covered": "This video provides an introduction to Reinforcement Learning, where an agent learns to make decisions by performing actions in an environment to maximize a cumulative reward.", "resources": [ { "name": "Tic-Tac-Toe RL Project (Code)", "url": "https://amunategui.github.io/reinforcement-learning/index.html", "icon": "fas fa-code" }, { "name": "Rock-Paper-Scissors Dataset", "url": "https://www.kaggle.com/code/nelver/rock-paper-scissors-q-learning", "icon": "fas fa-database" } ] },
-        { "id": 23, "title": "Big Data Technologies", "youtube_url": "https://youtu.be/5dSmXcKsEBo", "what_you_will_learn": ["The challenges of working with Big Data.", "Overview of key technologies like Hadoop and Spark.", "The role of these technologies in the ML pipeline."], "content_covered": "Machine Learning often involves massive datasets. This video introduces the field of Big Data and the technologies designed to store, manage, and process data at scale.", "resources": [ { "name": "Top Big Data Technologies (Blog)", "url": "https://www.edureka.co/blog/top-big-data-technologies/", "icon": "fas fa-book-open" } ] }
+        {
+          "id": 13,
+          "title": "Logistic Regression Concepts Part 1",
+          "youtube_url": "https://youtu.be/sxaYUg6zc7I",
+          "what_you_will_learn": ["Logistic Regression basics"],
+          "content_covered": "Introduces Logistic Regression, loss function, convexity, and gradient descent.",
+          "resources": [
+            {
+              "name": "Real-world Examples",
+              "url": "https://activewizards.com/blog/5-real-world-examples-of-logistic-regression-application"
+            },
+             {
+              "name": "Non-Convexity of LSE for LR",
+              "url": "https://towardsdatascience.com/why-not-mse-as-a-loss-function-for-logistic-regression-589816b5e03c"
+            },
+            {
+              "name": "Decision boundaries video",
+              "url": "https://www.youtube.com/watch?v=F_VG4LNjZZw"
+            },
+             {
+              "name": "Logistic Regression Detailed Overview",
+              "url": "https://towardsdatascience.com/logistic-regression-detailed-overview-46c4da4303bc"
+            },
+            {
+              "name": "CMU Stat notes",
+              "url": "https://www.stat.cmu.edu/~cshalizi/uADA/12/lectures/ch12.pdf"
+            },
+             {
+              "name": "Logistic Regression (Handwritten Digit Recognition)",
+              "url": "https://towardsdatascience.com/logistic-regression-using-python-sklearn-numpy-mnist-handwriting-recognition-matplotlib-a6b31e2b166a"
+            }
+          ]
+        }
+      ]
+    },
+     {
+      "name": "Logistic Regression: Multiclass Classification",
+      "videos": [
+         {
+          "id": 14,
+          "title": "Logistic Regression: Multiclass Classification Part 1",
+          "youtube_url": "https://youtu.be/E6MNiNsESI4",
+          "what_you_will_learn": ["Multiclass Logistic Regression"],
+          "content_covered": "Covers extending Logistic Regression to multiple classes.",
+          "resources": [
+            {
+              "name": "Stanford NLP Notes",
+              "url": "https://web.stanford.edu/~jurafsky/slp3/5.pdf"
+            },
+            {
+              "name": "Classification Metrics (Precision, Recall, F1)",
+              "url": "https://www.youtube.com/watch?v=2osIZ-dSPGE"
+            },
+            {
+              "name": "AUC-ROC",
+              "url": "https://www.youtube.com/watch?v=4jRBRDbJemM"
+            },
+             {
+              "name": "Realpython LR Handwirting Rec",
+              "url": "https://realpython.com/logistic-regression-python/#logistic-regression-in-python-handwriting-recognition"
+            },
+            {
+              "name": "TDSC LR University Admission",
+              "url": "https://towardsdatascience.com/building-a-logistic-regression-in-python-301d27367c24"
+            },
+             {
+              "name": "GeeksforGeeks LR Consumer Purchase",
+              "url": "https://www.geeksforgeeks.org/ml-logistic-regression-using-python/"
+            },
+            {
+              "name": "Analytics Vidhya One-Hot Encoding",
+              "url": "https://www.analyticsvidhya.com/blog/2020/03/one-hot-encoding-vs-label-encoding-using-scikit-learn/"
+            },
+             {
+              "name": "CMU Naive Bayes vs LR",
+              "url": "http://www.cs.cmu.edu/~tom/mlbook/NBayesLogReg.pdf"
+            },
+            {
+              "name": "TDSC Multiclass From Scratch",
+              "url": "https://towardsdatascience.com/multiclass-classification-algorithm-from-scratch-with-a-project-in-python-step-by-step-guide-485a83c79992"
+            },
+            {
+              "name": "ML Mastery One-vs-Rest/One-vs-One Part 1",
+              "url": "https://machinelearningmastery.com/one-vs-rest-and-one-vs-one-for-multi-class-classification/"
+            },
+             {
+              "name": "ML Mastery One-vs-Rest/One-vs-One Part 2 (Duplicate)",
+              "url": "https://machinelearningmastery.com/one-vs-rest-and-one-vs-one-for-multi-class-classification/"
+            },
+             {
+              "name": "Sklearn SVM (Duplicate)",
+              "url": "https://scikit-learn.org/stable/modules/svm.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Support Vector Machines with Linear Kernel",
+      "videos": [
+        {
+          "id": 15,
+          "title": "SVM with Linear Kernel Part 1",
+          "youtube_url": "https://youtu.be/Kvldyz0KdCU",
+          "what_you_will_learn": ["Linear SVM basics"],
+          "content_covered": "Introduces Support Vector Machines with a linear kernel.",
+          "resources": [
+            {
+              "name": "SVM Applications",
+              "url": "https://medium.com/@rinu.gour123/8-unique-real-life-applications-of-svm-8a96ca43313"
+            },
+             {
+              "name": "Medium SVM vs LR",
+              "url": "https://medium.com/axum-labs/logistic-regression-vs-support-vector-machines-svm-c335610a3d16"
+            },
+            {
+              "name": "Stats StackExchange SVM vs LDA",
+              "url": "https://stats.stackexchange.com/questions/243932/what-is-the-difference-between-svm-and-lda"
+            },
+             {
+              "name": "PwhiWxHK80 video",
+              "url": "https://www.youtube.com/watch?v=PwhiWxHK80"
+            },
+             {
+              "name": "TDSC SVM Part 1 (Lagrange)",
+              "url": "https://towardsdatascience.com/understanding-support-vector-machine-part-1-lagrange-multipliers-5c24a52ffc5e"
+            },
+             {
+              "name": "GeeksforGeeks SVM Python",
+              "url": "https://www.geeksforgeeks.org/classifying-data-using-support-vector-machinessvms-in-python/"
+            },
+             {
+              "name": "ML Mastery Implement Backprop (Duplicate)",
+              "url": "https://machinelearningmastery.com/implement-backpropagation-algorithm-scratch-python/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Support Vector Machines: Slack Variables and Nonlinear Kernels",
+      "videos": [
+        {
+          "id": 16,
+          "title": "SVM: Slack Variables and Nonlinear Kernels Part 1",
+          "youtube_url": "https://youtu.be/kPuHAK4RCfM",
+          "what_you_will_learn": ["Slack variables", "Kernel trick"],
+          "content_covered": "Covers slack variables and the kernel trick for non-linear SVMs.",
+          "resources": [
+            {
+              "name": "Hinge Loss Formulation of SVM video",
+              "url": "https://www.youtube.com/watch?v=9dPjKuTYkx4"
+            },
+            {
+              "name": "Lagrange Multiplier Intuition medium",
+              "url": "https://medium.com/@andrew.chamberlain/a-simple-explanation-of-why-lagrange-multipliers-works-253e2cdcbf74"
+            },
+            {
+              "name": "Lagrange Multiplier practice problems",
+              "url": "https://tutorial.math.lamar.edu/problems/calciii/lagrangemultipliers.aspx"
+            },
+             {
+              "name": "Intuitive understanding of RBF Kernel for SVM",
+              "url": "http://openclassroom.stanford.edu/MainFolder/DocumentPage.php?course=MachineLearning&doc=exercises/ex8/ex8.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Decision Trees",
+      "videos": [
+        {
+          "id": 17,
+          "title": "Decision Trees Part 1",
+          "youtube_url": "https://youtu.be/OlreMWwTJ_8",
+          "what_you_will_learn": ["Decision Tree basics"],
+          "content_covered": "Introduces the concept of Decision Trees.",
+          "resources": [
+            {
+              "name": "GeeksforGeeks Decision Tree Python",
+              "url": "https://www.geeksforgeeks.org/decision-tree-implementation-python/"
+            },
+            {
+              "name": "Sklearn Tree Module",
+              "url": "https://scikit-learn.org/stable/modules/tree.html"
+            },
+            {
+              "name": "Datacamp DT Python",
+              "url": "https://www.datacamp.com/community/tutorials/decision-tree-classification-python"
+            },
+             {
+              "name": "CMU Pruning",
+              "url": "https://www.cs.cmu.edu/~bhiksha/courses/10-601/decisiontrees/"
+            },
+            {
+              "name": "Youtube DT Regression",
+              "url": "https://www.youtube.com/watch?v=g9c66TUyIZ4"
+            },
+             {
+              "name": "TDSC Understanding DT",
+              "url": "https://towardsdatascience.com/understanding-decision-trees-for-classification-python-9663d683c952"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Random Forest + Comparison of Trees, SVM & LogisticRegression",
+      "videos": [
+        {
+          "id": 18,
+          "title": "Random Forest + Comparison Part 1",
+          "youtube_url": "https://youtu.be/pEFBH_371sU",
+          "what_you_will_learn": ["Random Forest", "Model Comparison"],
+          "content_covered": "Covers Random Forest and compares models.",
+          "resources": [
+            {
+              "name": "Youtube Bagging/Boosting Part 1",
+              "url": "https://www.youtube.com/watch?v=4EOCQJgqAOY"
+            },
+            {
+              "name": "Youtube Bagging/Boosting Part 2",
+              "url": "https://www.youtube.com/watch?v=J4Wdy0Wc_xQ"
+            },
+             {
+              "name": "TDSC Comparison ML Algorithms",
+              "url": "https://towardsdatascience.com/comparative-study-on-classic-machine-learning-algorithms-24f9ff6ab222"
+            },
+             {
+              "name": "TDSC RF Implem & Explanation",
+              "url": "https://towardsdatascience.com/an-implementation-and-explanation-of-the-random-forest-in-python-77bf308a9b76"
+            },
+            {
+              "name": "ML Mastery RF Scratch",
+              "url": "https://machinelearningmastery.com/implement-random-forest-scratch-python/"
+            }
+          ]
+        }
+      ]
+    },
+     {
+      "name": "Artificial Neural Networks : Introduction",
+      "videos": [
+        {
+          "id": 19,
+          "title": "Artificial Neural Networks : Introduction Part 1",
+          "youtube_url": "https://youtu.be/6nkylSKqaAc",
+          "what_you_will_learn": ["ANN introduction"],
+          "content_covered": "Introduction to Artificial Neural Networks.",
+          "resources": [
+            {
+              "name": "Universal Approximation Theorem",
+              "url": "http://neuralnetworksanddeeplearning.com/chap4.html"
+            },
+             {
+              "name": "TDSC How many layers",
+              "url": "https://towardsdatascience.com/beginners-ask-how-many-hidden-layers-neurons-to-use-in-artificial-neural-networks-51466afa0d3e"
+            },
+            {
+              "name": "TDSC Brain vs ANN 1",
+              "url": "https://towardsdatascience.com/the-differences-between-artificial-and-biological-neural-networks-a8b46db828b7"
+            },
+             {
+              "name": "Medium Brain vs ANN 2",
+              "url": "https://medium.com/digital-catapult/are-artificial-neural-networks-like-the-human-brain-and-does-it-matter-3add0f029273"
+            },
+            {
+              "name": "TDSC Perceptron Algo",
+              "url": "https://towardsdatascience.com/perceptron-learning-algorithm-d5db0deab975"
+            },
+             {
+              "name": "GeeksforGeeks Weight Init",
+              "url": "https://www.geeksforgeeks.org/weight-initialization-techniques-for-deep-neural-networks/"
+            },
+            {
+              "name": "DataScience Enthusiast Weight Init",
+              "url": "https://datascience-enthusiast.com/DL/Improving-DeepNeural-Networks-Initialization.html"
+            },
+             {
+              "name": "TDSC Reg for ANN",
+              "url": "https://towardsdatascience.com/how-to-improve-a-neural-network-with-regularization-8a18ecda9fe3"
+            },
+            {
+              "name": "TDSC Dropout 1",
+              "url": "https://towardsdatascience.com/dropout-in-neural-networks-47a162d621d9"
+            },
+            {
+              "name": "Youtube Dropout 2",
+              "url": "https://www.youtube.com/watch?v=qfsacble9Al"
+            },
+             {
+              "name": "Medium Embedding vs Dense",
+              "url": "https://medium.com/logivan/neural-network-embedding-and-dense-layers-whats-the-difference-fa177c6d0304"
+            },
+            {
+              "name": "PyTorch",
+              "url": "https://www.youtube.com/watch?v=Uv0AIRr3ptg"
+            },
+            {
+              "name": "House Price Prediction using ANN",
+              "url": "https://medium.com/@robertjohn_15390/simple-housing-price-prediction-using-neural-networks-with-tensorflow-8b486d3db3ca"
+            },
+             {
+              "name": "Image recognition using ANN (nextjournal)",
+              "url": "https://nextjournal.com/gkoehler/digit-recognition-with-keras"
+            },
+             {
+              "name": "Multi-Class classification (keras)",
+              "url": "https://machinelearningmastery.com/multi-class-classification-tutorial-keras-deep-learning-library/"
+            },
+             {
+              "name": "Dropout (ML Mastery)",
+              "url": "https://machinelearningmastery.com/how-to-reduce-overfitting-with-dropout-regularization-in-keras/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Artificial Neural Networks : Backpropagation",
+      "videos": [
+        {
+          "id": 20,
+          "title": "Artificial Neural Networks : Backpropagation Part 1",
+          "youtube_url": "https://youtu.be/ntnwjWEpnkk",
+          "what_you_will_learn": ["Backpropagation"],
+          "content_covered": "Explains the backpropagation algorithm for ANNs.",
+          "resources": [
+            {
+              "name": "Neuralnetworksanddeeplearning chap 2",
+              "url": "http://neuralnetworksanddeeplearning.com/chap2.html"
+            },
+            {
+              "name": "3Blue1Brown video",
+              "url": "https://www.youtube.com/watch?v=IHZwWFHWa-w&ab_channel=3Blue1Brown"
+            },
+             {
+              "name": "Paperspace SGD blog",
+              "url": "https://blog.paperspace.com/intro-to-optimization-in-deep-learning-gradient-descent/"
+            },
+             {
+              "name": "Youtube k3AiUhwHQ28 (Duplicate)",
+              "url": "https://www.youtube.com/watch?v=k3AiUhwHQ28"
+            },
+            {
+              "name": "Medium Stochastic vs Batch",
+              "url": "https://medium.com/@divakar_239/stochastic-vs-batch-gradient-descent-8820568eada1"
+            },
+             {
+              "name": "Deeplearning.ai Weight Init",
+              "url": "https://www.deeplearning.ai/ai-notes/initialization/"
+            },
+             {
+              "name": "ML Mastery Backpropagation from scratch",
+              "url": "https://machinelearningmastery.com/implement-backpropagation-algorithm-scratch-python/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Artificial Neural Networks: Activation Functions, Loss functions & Optimization Algorithms",
+      "videos": [
+        {
+          "id": 21,
+          "title": "ANN: Activation, Loss & Optimization Part 1",
+          "youtube_url": "https://youtu.be/qctUEQn9Hj8",
+          "what_you_will_learn": ["Activation functions", "Loss functions", "Optimization algorithms"],
+          "content_covered": "Covers activation functions, loss functions, and optimization algorithms for ANNs.",
+          "resources": [
+            {
+              "name": "TDSC Activation Functions (Duplicate)",
+              "url": "https://towardsdatascience.com/comparison-of-activation-functions-for-deep-neural-networks-706ac4284c8a"
+            },
+            {
+              "name": "Arxiv Opt Algorithms (Duplicate)",
+              "url": "https://arxiv.org/pdf/1609.04747"
+            },
+            {
+              "name": "TDSC Loss Functions (Duplicate)",
+              "url": "https://towardsdatascience.com/understanding-different-loss-functions-for-neural-networks-dd1ed0274718"
+            },
+             {
+              "name": "TDSC Vanishing Gradient (Duplicate)",
+              "url": "https://towardsdatascience.com/the-vanishing-gradient-problem-69bf08b15484"
+            },
+            {
+              "name": "Indiji SVM vs NN",
+              "url": "https://web.archive.org/web/20120304030602/http://indiji.com/svm-vs-nn.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Solving ODEs using ANN",
+      "videos": [
+         {
+          "id": 22,
+          "title": "Solving ODEs using ANN Part 1",
+          "youtube_url": "https://youtu.be/-pMLqoMarEk",
+          "what_you_will_learn": ["Solving ODEs with ANNs"],
+          "content_covered": "Explains how to solve Ordinary Differential Equations using ANNs.",
+          "resources": [
+            {
+              "name": "ScienceDirect Article",
+              "url": "https://www.sciencedirect.com/science/article/pii/S0021999118307125"
+            },
+            {
+              "name": "TDSC ODEs with ANN",
+              "url": "https://towardsdatascience.com/how-to-solve-an-ode-with-a-neural-network-917d11918932"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Deep Learning",
+      "videos": [
+         {
+          "id": 23,
+          "title": "Deep Learning Intro Part 1",
+          "youtube_url": "https://youtu.be/MTbBOu4M7_M",
+          "what_you_will_learn": ["Deep Learning Introduction"],
+          "content_covered": "Introduction to Deep Learning.",
+          "resources": [
+            {
+              "name": "Yann Lecun MNIST (No URL)",
+              "url": null
+            },
+            {
+              "name": "ML Mastery GAN (Duplicate)",
+              "url": "https://machinelearningmastery.com/how-to-develop-a-generative-adversarial-network-for-an-mnist-handwritten-digits-from-scratch-in-keras/"
+            }
+          ]
+        }
+      ]
+    },
+     {
+      "name": "Generative Vs. Discriminative Models",
+      "videos": [
+        {
+          "id": 24,
+          "title": "Generative Vs. Discriminative Models Part 1",
+          "youtube_url": "https://youtu.be/WSxUOIGuGi8",
+          "what_you_will_learn": ["Generative vs Discriminative"],
+          "content_covered": "Compares generative and discriminative models.",
+          "resources": []
+        }
+      ]
+    },
+    {
+      "name": "Probabilistic Graphical Models : Bayesian Network and Markov Network",
+      "videos": [
+        {
+          "id": 25,
+          "title": "Probabilistic Graphical Models Part 1",
+          "youtube_url": "https://youtu.be/xJtyVQMV1A8",
+          "what_you_will_learn": ["Probabilistic Graphical Models"],
+          "content_covered": "Introduces Probabilistic Graphical Models.",
+          "resources": [
+            {
+              "name": "UBC Murphy BN Intro",
+              "url": "https://www.cs.ubc.ca/~murphyk/Bayes/bnintro.html"
+            },
+            {
+              "name": "Youtube SkC8S3wulfg",
+              "url": "https://www.youtube.com/watch?v=SkC8S3wulfg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Expectation Maximization",
+      "videos": [
+        {
+          "id": 26,
+          "title": "Expectation Maximization Part 1",
+          "youtube_url": "https://youtu.be/PNrghbfK5r0",
+          "what_you_will_learn": ["Expectation Maximization"],
+          "content_covered": "Covers the Expectation Maximization algorithm.",
+          "resources": [
+            {
+              "name": "Nature EM article",
+              "url": "https://www.nature.com/articles/nbt1406"
+            },
+            {
+              "name": "Duke EM Algorithm",
+              "url": "https://people.duke.edu/~ccc14/sta-663/EMAlgorithm.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "K-Means clustering",
+      "videos": [
+        {
+          "id": 27,
+          "title": "K-Means clustering Part 1",
+          "youtube_url": "https://youtu.be/92-h3_1Yfz8",
+          "what_you_will_learn": ["K-Means clustering"],
+          "content_covered": "Introduces K-Means clustering.",
+          "resources": [
+            {
+              "name": "Becoming Human K-Means vs KNN (Duplicate)",
+              "url": "https://becominghuman.ai/comprehending-k-means-and-knn-algorithms-c791be90883d"
+            },
+            {
+              "name": "Sklearn K-Means (Duplicate)",
+              "url": "https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html"
+            },
+            {
+              "name": "Analytics Vidhya Comprehensive K-Means",
+              "url": "https://www.analyticsvidhya.com/blog/2019/08/comprehensive-guide-k-means-clustering/"
+            },
+             {
+              "name": "Naftali Harris Visualising K-Means",
+              "url": "https://www.naftaliharris.com/blog/visualizing-k-means-clustering/"
+            },
+            {
+              "name": "TDSC How to choose K",
+              "url": "https://towardsdatascience.com/are-you-solving-ml-clustering-problems-using-k-means-68fb4efa5469"
+            },
+             {
+              "name": "TDSC Image compression (Duplicate)",
+              "url": "https://towardsdatascience.com/image-compression-using-k-means-clustering-aa0c91bb0eeb"
+            },
+             {
+              "name": "Medium MNIST K-Means (Duplicate)",
+              "url": "https://medium.com/@joel_34096/k-means-clustering-for-image-classification-a648f28bdc47"
+            },
+            {
+              "name": "TDSC K-Means vs KNN",
+              "url": "https://towardsdatascience.com/machine-learning-algorithms-part-9-k-means-example-in-python-f2ad05ed5203"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Gaussian Mixture Models",
+      "videos": [
+        {
+          "id": 28,
+          "title": "Gaussian Mixture Models Part 1",
+          "youtube_url": "https://youtu.be/he4ll0w1G-g",
+          "what_you_will_learn": ["Gaussian Mixture Models"],
+          "content_covered": "Covers Gaussian Mixture Models.",
+          "resources": [
+            {
+              "name": "Brilliant GMM Explained",
+              "url": "https://brilliant.org/wiki/gaussian-mixture-model/"
+            },
+            {
+              "name": "Sklearn GMM",
+              "url": "https://scikit-learn.org/stable/modules/mixture.html"
+            },
+            {
+              "name": "Analytics Vidhya GMM Clustering",
+              "url": "https://www.analyticsvidhya.com/blog/2019/10/gaussian-mixture-models-clustering/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Principal Component Analysis (PCA) - I",
+      "videos": [
+        {
+          "id": 29,
+          "title": "PCA Part 1",
+          "youtube_url": "https://youtu.be/cERNIfg9TLM",
+          "what_you_will_learn": ["PCA basics"],
+          "content_covered": "Introduces Principal Component Analysis.",
+          "resources": [
+            {
+              "name": "Builtin PCA",
+              "url": "https://builtin.com/data-science/step-step-explanation-principal-component-analysis"
+            },
+            {
+              "name": "TDSC One Stop Shop PCA",
+              "url": "https://towardsdatascience.com/a-one-stop-shop-for-principal-component-analysis-5582fb7e0a9c"
+            },
+            {
+              "name": "Analytics Vidhya PCA Practical Guide",
+              "url": "https://www.analyticsvidhya.com/blog/2016/03/pca-practical-guide-principal-component-analysis-python/"
+            },
+             {
+              "name": "Shankarmsy PCA vs LR (Duplicate)",
+              "url": "https://shankarmsy.github.io/posts/pca-vs-lr.html"
+            },
+             {
+              "name": "Shankarmsy PCA Sklearn (Duplicate)",
+              "url": "https://shankarmsy.github.io/posts/pca-sklearn.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Principal Component Analysis (PCA) - II",
+      "videos": [
+        {
+          "id": 30,
+          "title": "PCA Part 2",
+          "youtube_url": "https://youtu.be/ml1d1zC0jsg",
+          "what_you_will_learn": ["More PCA concepts"],
+          "content_covered": "Continues the discussion on PCA.",
+          "resources": [
+            {
+              "name": "HMC Kernel PCA",
+              "url": "http://fourier.eng.hmc.edu/e161/lectures/kernelPCA/node4.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Reinforcement Learning",
+      "videos": [
+        {
+          "id": 31,
+          "title": "Reinforcement Learning Part 1",
+          "youtube_url": "https://youtu.be/KEQhaBIZ9yk",
+          "what_you_learn": ["Reinforcement Learning Intro"],
+          "content_covered": "Introduction to Reinforcement Learning.",
+          "resources": [
+            {
+              "name": "Amunategui RL (Duplicate)",
+              "url": "https://amunategui.github.io/reinforcement-learning/index.html"
+            },
+             {
+              "name": "Youtube zdIQkjtFX_ playlist",
+              "url": "https://www.youtube.com/watch?v=zdIQkjtFX_I&list=PLKnIA16_RmvbMK0_fdp0DZHZKm4Q1sIAB"
+            },
+            {
+              "name": "TDSC RL Implem TicTacToe (Duplicate)",
+              "url": "https://towardsdatascience.com/reinforcement-learning-implement-tictactoe-189582bea542"
+            },
+             {
+              "name": "Youtube WO3kmx4CVgg playlist",
+              "url": "https://www.youtube.com/watch?v=WO3kmx4CVgg&list=PLycckD1ec_yNMjDI-Lq4-1ZqHcXqgm7"
+            },
+             {
+              "name": "Youtube yMk_XtIEzH8 video",
+              "url": "https://www.youtube.com/watch?v=yMk_XtIEzH8&list=PLQVvvaa0QuDezJFIOU5wDdfy4e9vdnx-7"
+            },
+            {
+              "name": "Youtube L8ypSXwyBds video",
+              "url": "https://www.youtube.com/watch?v=L8ypSXwyBds"
+            },
+            {
+              "name": "Github patrickloeber snake-ai-pytorch",
+              "url": "https://github.com/patrickloeber/snake-ai-pytorch"
+            },
+            {
+              "name": "Github maksimKorzh tictactoe-mtcs",
+              "url": "https://github.com/maksimKorzh/tictactoe-mtcs/blob/master/src/tutorials/board_class_definition/tictactoe.py"
+            },
+             {
+              "name": "Kaggle rock-paper-scissors-q-learning",
+              "url": "https://www.kaggle.com/code/nelver/rock-paper-scissors-q-learning"
+            },
+             {
+              "name": "Youtube ovlykchkW5I video",
+              "url": "https://www.youtube.com/watch?v=ovlykchkW5I&t=1s"
+            },
+            {
+              "name": "Youtube 2eeYqJ0uBKE video",
+              "url": "https://www.youtube.com/watch?v=2eeYqJ0uBKE"
+            },
+            {
+              "name": "Medium RL step-by-step",
+              "url": "https://medium.com/vernacular-ai/reinforcement-learning-step-by-step-17cde7dbc56c"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Big data technologies & Information management in Big Data",
+      "videos": [
+        {
+          "id": 32,
+          "title": "Big data technologies Part 1",
+          "youtube_url": "https://youtu.be/5dSmXcKsEBo",
+          "what_you_learn": ["Big Data technologies"],
+          "content_covered": "Overview of technologies for Big Data.",
+          "resources": [
+            {
+              "name": "Edureka Blog",
+              "url": "https://www.edureka.co/blog/top-big-data-technologies/"
+            },
+            {
+              "name": "Amherst MapReduce",
+              "url": "https://www.cs.amherst.edu/~ccmcgeoch/cs34/papers/p107-dean.pdf"
+            },
+            {
+              "name": "NPTEL IIT KGP",
+              "url": "https://nptel.ac.in/courses/106/105/106105186/"
+            },
+            {
+              "name": "Educba Hadoop vs Spark 1",
+              "url": "https://www.educba.com/hadoop-vs-spark/"
+            },
+            {
+              "name": "Phoenixnap Hadoop vs Spark 2",
+              "url": "https://phoenixnap.com/kb/hadoop-vs-spark"
+            },
+            {
+              "name": "Educba Kafka vs Spark",
+              "url": "https://www.educba.com/kafka-vs-spark/"
+            },
+            {
+              "name": "Educba Apache Kafka vs Flume",
+              "url": "https://www.educba.com/apache-kafka-vs-flume/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Emerging Issues in Data Science",
+      "videos": [
+        {
+          "id": 33,
+          "title": "Emerging Issues Part 1",
+          "youtube_url": null,
+          "what_you_learn": ["Emerging topics"],
+          "content_covered": "Discusses current and emerging topics in Data Science.",
+          "resources": [
+             {
+              "name": "TDSC Emerging Problems",
+              "url": "https://towardsdatascience.com/emerging-problems-in-data-science-and-machine-learning-36d37f6531a8"
+            },
+            {
+              "name": "Wikipedia Explainable AI",
+              "url": "https://en.wikipedia.org/wiki/Explainable_artificial_intelligence"
+            },
+            {
+              "name": "Wikipedia AGI",
+              "url": "https://en.wikipedia.org/wiki/Artificial_general_intelligence"
+            },
+            {
+              "name": "Medium Few Shot Learning",
+              "url": "https://medium.com/quick-code/understanding-few-shot-learning-in-machine-learning-bede251a0f67"
+            },
+             {
+              "name": "Wikipedia Micro Services",
+              "url": "https://en.wikipedia.org/wiki/Microservices"
+            },
+            {
+              "name": "Wikipedia Functional Programming",
+              "url": "https://en.wikipedia.org/wiki/Functional_programming"
+            }
+          ]
+        }
       ]
     }
-  ]
+  ],
+  "supplementary_materials": {
+    "references": [
+      {"name": "References for Deep Learning", "url": null},
+      {"name": "References for NLP", "url": null}
+    ]
+  }
 }
