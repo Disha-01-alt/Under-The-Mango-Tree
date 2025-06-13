@@ -7,6 +7,7 @@ from flask import Flask, render_template, send_from_directory, url_for, redirect
 import importlib.util
 import logging
 import json
+import re
 from flask_login import LoginManager
 from werkzeug.middleware.proxy_fix import ProxyFix
 from dotenv import load_dotenv
@@ -77,15 +78,40 @@ ALGORITHMS_DATA = load_course_data('algorithms_data.json')
 INTERVIEW_PREP_DATA = load_course_data('interview_prep_data.json')
 PROJECTS_DATA = load_course_data('projects_data.json')
 TEAM_DATA = load_course_data('team_data.json')
+def extract_youtube_video_id(url):
+    """
+    Extracts the YouTube video ID from various YouTube URL formats.
+    Handles watch?v=, youtu.be/, and embed/ URLs.
+    """
+    if not url:
+        return None
 
+    # This regex is robust for most common YouTube URL formats
+    patterns = [
+        # Standard watch URLs (www.youtube.com/watch?v=VIDEO_ID)
+        r"(?:https?://)?(?:www\.)?(?:m\.)?(?:youtube\.com)/(?:watch\?v=|embed/|v/|)([a-zA-Z0-9_-]{11})(?:\S+)?",
+        # Shortened youtu.be URLs (youtu.be/VIDEO_ID)
+        r"(?:https?://)?(?:www\.)?youtu\.be/([a-zA-Z0-9_-]{11})(?:\S+)?"
+    ]
 
+    for pattern in patterns:
+        match = re.search(pattern, url)
+        if match:
+            return match.group(1) # Group 1 is the 11-character video ID
+    return None # No video ID found
 def find_video_by_id(video_id, data_source):
-    """Helper function to find a specific video and its topic from any course data."""
+    """
+    Helper function to find a specific video and its topic from any course data.
+    Adds a 'youtube_id' field to the video dictionary for easy template use.
+    """
     if not video_id:
         return None, None
     for topic in data_source.get('topics', []):
         for video in topic.get('videos', []):
             if str(video.get('id')) == str(video_id):
+                # *** IMPORTANT CHANGE HERE ***
+                # Add the extracted YouTube ID to the video dictionary
+                video['youtube_id'] = extract_youtube_video_id(video.get('youtube_url'))
                 return video, topic.get('name')  # Return the video object and its topic name
     return None, None  # Return None if not found
 
