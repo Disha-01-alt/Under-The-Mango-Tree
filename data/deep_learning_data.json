@@ -736,15 +736,5 @@
         }
       ]
     }
-  ],
-   "supplementary_materials": {
-    "textbooks": [
-      {"name": "Understanding Deep Learning by Simon Prince"},
-      {"name": "Deep Learning by Ian Goodfellow, Yoshua Bengio & Aaron Courville"},
-      {"name": "Deep Learning by Christopher Bishop and Hugh Bishop"}
-    ],
-    "references_nlp": [
-      {"name": "References for NLP", "url": null}
-    ]
-  }
+  ]
 }
