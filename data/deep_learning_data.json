@@ -101,7 +101,7 @@
         {
           "id": 6,
           "title": "Advanced ANN Part 3",
-          "youtube_url": "https://www.youtube.com/watch?v=NE88eqLnaka",
+          "youtube_url": "https://www.youtube.com/watch?v=NE88eqLngkg",
           "what_you_will_learn": ["Advanced ANN concept 3"],
           "content_covered": "Covers another advanced concept for ANNs.",
           "resources": [
@@ -213,7 +213,7 @@
         {
           "id": 15,
           "title": "Basic CNN Model Part 1",
-          "youtube_url": "https://www.youtube.com/watch?v=NmLK_WQBXB4",
+          "youtube_url": "https://www.youtube.com/watch?v=NmLK_WQBxB4",
           "what_you_will_learn": ["Basic CNN structure"],
           "content_covered": "Introduction to Convolutional Neural Networks.",
           "resources": [
@@ -238,7 +238,7 @@
         {
           "id": 16,
           "title": "Basic CNN Model Part 2",
-          "youtube_url": "https://www.youtube.com/watch?v=QzY57FaENXq",
+          "youtube_url": "https://www.youtube.com/watch?v=QzY57FaENXg",
           "what_you_will_learn": ["More basic CNN structure"],
           "content_covered": "Continues discussion on basic CNNs.",
           "resources": []
@@ -246,7 +246,7 @@
          {
           "id": 17,
           "title": "Basic CNN Model Part 3",
-          "youtube_url": "https://www.youtube.com/watch?v=HGwBXDKFk9l",
+          "youtube_url": "https://www.youtube.com/watch?v=HGwBXDKFk9I",
           "what_you_will_learn": ["Basic CNN details"],
           "content_covered": "Detailed look at basic CNN models.",
           "resources": []
@@ -254,7 +254,7 @@
         {
           "id": 18,
           "title": "Basic CNN Model Part 4",
-          "youtube_url": "https://www.youtube.com/watch?v=2-OI7ZB0MmU",
+          "youtube_url": "https://www.youtube.com/watch?v=2-Ol7ZB0MmU",
           "what_you_will_learn": ["Basic CNN applications"],
           "content_covered": "Applications of basic CNNs.",
           "resources": []
@@ -262,7 +262,7 @@
         {
           "id": 19,
           "title": "Backprop in CNN",
-          "youtube_url": "https://www.youtube.com/watch?v=pUCCd2-17vl",
+          "youtube_url": "https://www.youtube.com/watch?v=pUCCd2-17vI",
           "what_you_will_learn": ["Backpropagation in CNNs"],
           "content_covered": "Explains how backpropagation works in CNNs.",
           "resources": [
@@ -310,7 +310,7 @@
         {
           "id": 21,
           "title": "Autoencoders Part 1",
-          "youtube_url": "https://www.youtube.com/watch?v=5W0ltGTWV54",
+          "youtube_url": "https://www.youtube.com/watch?v=5WoItGTWV54",
           "what_you_will_learn": ["Autoencoder basics"],
           "content_covered": "Introduction to Autoencoders.",
           "resources": []
@@ -400,7 +400,7 @@
          {
           "id": 25,
           "title": "RNN & LSTM Practical Part 1",
-          "youtube_url": "https://karpathy.github.io/2015/05/21/rnn-effectiveness/",
+          "youtube_url": "https://www.youtube.com/watch?v=y7qrilE-Zlc",
           "what_you_will_learn": ["Practical RNN and LSTM usage"],
           "content_covered": "Focuses on the practical application of RNNs and LSTMs.",
           "resources": [
@@ -557,7 +557,7 @@
          {
           "id": 28,
           "title": "LLM Pre-Training Part 2",
-          "youtube_url": "https://www.youtube.com/watch?v=TQQIZhbC5ps",
+          "youtube_url": "https://www.youtube.com/watch?v=TQQlZhbC5ps",
           "what_you_will_learn": ["More LLM pre-training"],
           "content_covered": "Continues discussion on LLM pre-training.",
           "resources": []
@@ -573,7 +573,7 @@
          {
           "id": 30,
           "title": "LLM Pre-Training Part 4",
-          "youtube_url": "https://www.youtube.com/watch?v=eMIx5fFNoYc",
+          "youtube_url": "https://www.youtube.com/watch?v=eMlx5fFNoYc",
           "what_you_will_learn": ["More LLM pre-training"],
           "content_covered": "Further topics in LLM pre-training.",
           "resources": []
