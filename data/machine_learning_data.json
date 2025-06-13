@@ -1089,11 +1089,5 @@
         }
       ]
     }
-  ],
-  "supplementary_materials": {
-    "references": [
-      {"name": "References for Deep Learning", "url": null},
-      {"name": "References for NLP", "url": null}
-    ]
-  }
+  ]
 }
