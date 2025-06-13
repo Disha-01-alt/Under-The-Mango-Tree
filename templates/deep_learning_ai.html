@@ -129,15 +129,19 @@
                 {% if current_video %}
                     <div class="space-y-6">
                         <!-- Video Player -->
-                        <div>
-                            <h1 class="text-2xl font-bold text-gray-900 mb-4">{{ current_video.title }}</h1>
-                            <div class="bg-black rounded-lg shadow-lg">
-                                <div class="video-iframe-container">
-                                    {% set video_id = current_video.youtube_url.split('v=')[-1].split('&')[0] %}
-                                    <iframe src="https://www.youtube.com/embed/{{ video_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- Video Player -->
+<div>
+    <h1 class="text-2xl font-bold text-gray-900 mb-4">{{ current_video.title }}</h1>
+    <div class="bg-black rounded-lg shadow-lg">
+        <div class="video-iframe-container">
+            {% if current_video.youtube_id %} {# Check if a valid ID was extracted #}
+            <iframe src="https://www.youtube.com/embed/{{ current_video.youtube_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            {% else %}
+            <p class="text-white p-4">Video not available or invalid URL. Please check the video source.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
                         
                         <!-- What You Will Learn -->
                         <div class="bg-white rounded-lg shadow content-card">
