@@ -93,7 +93,7 @@
         {
           "id": 4,
           "title": "Bayes' Theorem Part 1",
-          "youtube_url": "https://youtu.be/q0p6VWj8N41",
+          "youtube_url": "https://youtu.be/q0p6VWj8N4I",
           "what_you_will_learn": ["Bayes' Theorem basics"],
           "content_covered": "Introduces Bayes' Theorem.",
           "resources": [
@@ -222,7 +222,7 @@
         {
           "id": 10,
           "title": "Gradient Descent & Regularisation Part 1",
-          "youtube_url": "https://youtu.be/lUmFzIU-Cp4",
+          "youtube_url": "https://youtu.be/IUmFzIU-Cp4",
           "what_you_will_learn": ["Gradient Descent", "Regularisation"],
           "content_covered": "Explains Gradient Descent and Regularisation techniques.",
           "resources": [
@@ -368,7 +368,7 @@
          {
           "id": 14,
           "title": "Logistic Regression: Multiclass Classification Part 1",
-          "youtube_url": "https://youtu.be/E6MNiNsESI4",
+          "youtube_url": "https://youtu.be/E6MNiNsESl4",
           "what_you_will_learn": ["Multiclass Logistic Regression"],
           "content_covered": "Covers extending Logistic Regression to multiple classes.",
           "resources": [
@@ -430,7 +430,7 @@
         {
           "id": 15,
           "title": "SVM with Linear Kernel Part 1",
-          "youtube_url": "https://youtu.be/Kvldyz0KdCU",
+          "youtube_url": "https://youtu.be/KvIdyz0KdCU",
           "what_you_will_learn": ["Linear SVM basics"],
           "content_covered": "Introduces Support Vector Machines with a linear kernel.",
           "resources": [
@@ -875,7 +875,7 @@
         {
           "id": 28,
           "title": "Gaussian Mixture Models Part 1",
-          "youtube_url": "https://youtu.be/he4ll0w1G-g",
+          "youtube_url": "https://youtu.be/he4lI0w1G-g",
           "what_you_will_learn": ["Gaussian Mixture Models"],
           "content_covered": "Covers Gaussian Mixture Models.",
           "resources": [
