@@ -1,5 +1,7 @@
 {
   "course_title": "Deep Learning & AI",
+  "instructor": "Dr. Kushal Shah",
+  "prerequisites": "Before starting to learn Deep Learning, make sure to first learn basics of Machine Learning",
   "topics": [
     {
       "name": "Artificial Neural Networks",
@@ -8,8 +10,8 @@
           "id": 0,
           "title": "ANN basics Part 1",
           "youtube_url": "https://youtu.be/6nkylSKqaAc",
-          "what_you_will_learn": ["Introduction to ANN structure", "Neurons and layers", "Forward pass intuition"],
-          "content_covered": "Covers the fundamental building blocks of Artificial Neural Networks.",
+          "what_you_will_learn": ["Basic ANN concepts"],
+          "content_covered": "Introduction to basic Artificial Neural Networks.",
           "resources": [
             {
               "name": "Universal Approximation Theorem",
@@ -19,18 +21,18 @@
         },
         {
           "id": 1,
-          "title": "ANN basics Part 2 (Backpropagation Intuition)",
+          "title": "ANN basics Part 2",
           "youtube_url": "https://youtu.be/ntnwjWEpnkk",
-          "what_you_will_learn": ["Understanding backpropagation", "How networks learn from errors", "Gradient descent concept"],
-          "content_covered": "Explains the core algorithm used to train ANNs by adjusting weights based on the error.",
+          "what_you_will_learn": ["Further basic ANN concepts"],
+          "content_covered": "Continues discussion on basic Artificial Neural Networks.",
           "resources": []
         },
         {
           "id": 2,
-          "title": "ANN basics Part 3 (Activation & Loss Functions)",
+          "title": "ANN basics Part 3",
           "youtube_url": "https://youtu.be/qctUEQn9Hj8",
-          "what_you_will_learn": ["Role of activation functions (ReLU, Sigmoid, etc.)", "Different types of loss functions", "Introduction to optimization"],
-          "content_covered": "Discusses crucial components like activation functions for non-linearity and loss functions for measuring performance.",
+          "what_you_will_learn": ["More basic ANN concepts"],
+          "content_covered": "Additional fundamental concepts of Artificial Neural Networks.",
           "resources": [
             {
               "name": "Activation functions",
@@ -44,10 +46,10 @@
         },
         {
           "id": 3,
-          "title": "ANN basics Part 4 (Loss Functions & Optimization)",
+          "title": "ANN basics Part 4",
           "youtube_url": "https://www.youtube.com/watch?v=llg3gGewQ5U",
-          "what_you_will_learn": ["Detailed look at common loss functions (MSE, Cross-Entropy)", "Gradient Descent variations (SGD)", "Training process overview"],
-          "content_covered": "Further exploration of loss functions and basic optimization techniques used in training.",
+          "what_you_will_learn": ["Final basic ANN concepts"],
+          "content_covered": "Concluding concepts for basic Artificial Neural Networks.",
           "resources": [
             {
               "name": "Loss Functions",
@@ -57,10 +59,10 @@
         },
         {
           "id": 4,
-          "title": "Advanced ANN Part 1 (Optimizers)",
+          "title": "Advanced ANN Part 1",
           "youtube_url": "https://www.youtube.com/watch?v=nUUqwaxLnWs",
-          "what_you_will_learn": ["More advanced optimization algorithms (Adam, RMSprop)", "Learning rate schedules", "Challenges like local minima"],
-          "content_covered": "Introduces popular and effective optimization algorithms used to improve training speed and performance.",
+          "what_you_will_learn": ["Advanced ANN concept 1"],
+          "content_covered": "Explores an advanced topic in Artificial Neural Networks.",
           "resources": [
              {
               "name": "Vanishing Gradient Problem",
@@ -70,10 +72,10 @@
         },
         {
           "id": 5,
-          "title": "Advanced ANN Part 2 (Regularization)",
+          "title": "Advanced ANN Part 2",
           "youtube_url": "https://www.youtube.com/watch?v=dXB-KQYkzNU",
-          "what_you_will_learn": ["Preventing overfitting", "L1 and L2 regularization", "Early stopping"],
-          "content_covered": "Techniques to help your neural network generalize better to unseen data.",
+          "what_you_will_learn": ["Advanced ANN concept 2"],
+          "content_covered": "Continues with advanced topics in Artificial Neural Networks.",
           "resources": [
             {
               "name": "Regularization for ANN",
@@ -85,12 +87,16 @@
           "id": 6,
           "title": "Advanced ANN Part 3 (Dropout)",
           "youtube_url": "https://www.youtube.com/watch?v=NE88eqLnaka",
-          "what_you_will_learn": ["How Dropout works", "Implementing Dropout layers", "Dropout as an ensemble method"],
-          "content_covered": "A deep dive into Dropout, a powerful regularization technique.",
+          "what_you_will_learn": ["Advanced ANN concept 3"],
+          "content_covered": "Covers another advanced concept for ANNs.",
           "resources": [
              {
               "name": "Dropout",
               "url": "https://towardsdatascience.com/dropout-in-neural-networks-47a162d621d9"
+            },
+            {
+              "name": "Dropout Video",
+              "url": "https://www.youtube.com/watch?v=qfsacble9Al"
             }
           ]
         },
@@ -98,45 +104,40 @@
           "id": 7,
           "title": "Advanced ANN Part 4 (Weight Initialization)",
           "youtube_url": "https://www.youtube.com/watch?v=k8fTYJPd3_I",
-          "what_you_will_learn": ["Importance of initial weights", "Common initialization methods (Xavier, He)", "Avoiding vanishing/exploding gradients at initialization"],
-          "content_covered": "Explores strategies for setting the initial values of network weights to aid training.",
+          "what_you_will_learn": ["Advanced ANN concept 4"],
+          "content_covered": "Further discussion on advanced ANN topics.",
           "resources": []
         },
         {
           "id": 8,
           "title": "Advanced ANN Playlist",
           "youtube_url": "https://www.youtube.com/watch?v=1waHlpKiNyY&list=PLkDaE6sCZn6Hn0vK8co82zjQtt3T2Nkqc",
-          "what_you_will_learn": ["Various advanced ANN topics", "Detailed explanations", "Practical examples"],
-          "content_covered": "A collection of videos covering more advanced concepts in Artificial Neural Networks.",
+          "what_you_will_learn": ["Various advanced ANN topics"],
+          "content_covered": "A full playlist covering advanced topics in ANN.",
           "resources": []
         },
         {
           "id": 9,
-          "title": "Advanced ANN Part 5 (Dropout - second video)",
+          "title": "Advanced ANN Part 5",
           "youtube_url": "https://www.youtube.com/watch?v=Gey9CG6R6w8",
-          "what_you_will_learn": ["Further explanation of Dropout", "Implementation details", "Practical usage"],
-          "content_covered": "Additional video providing more details on the Dropout regularization technique.",
-          "resources": [
-             {
-              "name": "Dropout Video (second link)",
-              "url": "https://www.youtube.com/watch?v=qfsacble9Al"
-            }
-          ]
+          "what_you_will_learn": ["Advanced ANN concept 5"],
+          "content_covered": "Additional advanced ANN content.",
+          "resources": []
         },
         {
           "id": 10,
           "title": "Advanced ANN Part 6",
           "youtube_url": "https://www.youtube.com/watch?v=Q1JCrG1bJ-A",
-          "what_you_will_learn": ["Possibly related advanced ANN topic", "Building on previous concepts", "Tuning and improving ANNs"],
-          "content_covered": "Continues the discussion on advanced topics related to training and optimizing ANNs.",
+          "what_you_will_learn": ["Advanced ANN concept 6"],
+          "content_covered": "Final video on advanced ANN concepts.",
           "resources": []
         },
          {
           "id": 11,
           "title": "Deep Learning Intro",
           "youtube_url": "https://youtu.be/MTbBOu4M7_M",
-          "what_you_will_learn": ["What is Deep Learning?", "DL vs ML vs AI", "Key drivers of DL success", "Applications of DL"],
-          "content_covered": "A high-level introduction to the field of Deep Learning, its history, and significance.",
+          "what_you_will_learn": ["Introduction to Deep Learning"],
+          "content_covered": "Overview of the field of Deep Learning.",
           "resources": [
             {
               "name": "Embedding layer vs Dense layer",
@@ -147,11 +148,11 @@
               "url": "https://towardsdatascience.com/the-differences-between-artificial-and-biological-neural-networks-a8b46db828b7"
             },
              {
-              "name": "Difference between Brain and ANN (Medium link)",
+              "name": "Difference between Brain and ANN (Medium)",
               "url": "https://medium.com/digital-catapult/are-artificial-neural-networks-like-the-human-brain-and-does-it-matter-3add0f029273"
             },
             {
-              "name": "PyTorch Introduction",
+              "name": "PyTorch",
               "url": "https://www.youtube.com/watch?v=Uv0AIRr3ptg"
             }
           ]
@@ -163,13 +164,17 @@
       "videos": [
         {
           "id": 12,
-          "title": "Boosting Algorithms Part 1 (Intro)",
+          "title": "Boosting Algorithms Part 1",
           "youtube_url": "https://www.youtube.com/watch?v=kho6oANGu_A",
-          "what_you_will_learn": ["Concept of ensemble methods", "Sequential model building", "Weak vs Strong learners"],
-          "content_covered": "Introduces the idea of boosting algorithms and how they combine simple models.",
+          "what_you_will_learn": ["Boosting basics"],
+          "content_covered": "Introduction to Boosting Algorithms.",
           "resources": [
              {
-              "name": "Gradient Boosting Neural Networks",
+              "name": "Gradient Boosting Networks",
+              "url": "https://www.geeksforgeeks.org/grownet-gradient-boosting-neural-networks/"
+            },
+            {
+              "name": "Boltzmann Machines",
               "url": "https://www.geeksforgeeks.org/grownet-gradient-boosting-neural-networks/"
             }
           ]
@@ -178,24 +183,24 @@
           "id": 13,
           "title": "Boosting Algorithms Part 2",
           "youtube_url": "https://www.youtube.com/watch?v=LsK-xG1cLYA",
-          "what_you_will_learn": ["Specific boosting algorithms (e.g., AdaBoost)", "Weighting misclassified examples"],
-          "content_covered": "Explores the details of AdaBoost or similar boosting techniques.",
+          "what_you_will_learn": ["Boosting algorithms concept"],
+          "content_covered": "Continues discussion on Boosting Algorithms.",
           "resources": []
         },
         {
           "id": 14,
-          "title": "Boosting Algorithms Part 3 (Gradient Boosting)",
+          "title": "Boosting Algorithms Part 3",
           "youtube_url": "https://www.youtube.com/watch?v=OtD8wVaFm6E",
-          "what_you_will_learn": ["Introduction to Gradient Boosting", "Using gradients to minimize loss", "Building trees sequentially"],
-          "content_covered": "Focuses on the powerful Gradient Boosting framework.",
+          "what_you_will_learn": ["More Boosting algorithms"],
+          "content_covered": "Additional Boosting Algorithms concepts.",
           "resources": []
         },
         {
           "id": 15,
           "title": "Boosting Algorithms Part 4",
           "youtube_url": "https://www.youtube.com/watch?v=UHBmv7qCey4",
-          "what_you_will_learn": ["Popular GB algorithms (XGBoost, LightGBM)", "Regularization in Gradient Boosting", "Practical considerations"],
-          "content_covered": "Discusses common implementations and practical aspects of gradient boosting.",
+          "what_you_will_learn": ["Boosting algorithms details"],
+          "content_covered": "Detailed look at Boosting Algorithms.",
           "resources": []
         }
       ]
@@ -205,10 +210,10 @@
       "videos": [
         {
           "id": 16,
-          "title": "CNN Basic Part 1 (Convolutional Layer)",
+          "title": "CNN Basic Part 1",
           "youtube_url": "https://www.youtube.com/watch?v=NmLK_WQBXB4",
-          "what_you_will_learn": ["Why CNNs for images", "Concept of convolution", "Filters and feature maps"],
-          "content_covered": "Introduces the fundamental convolutional operation that gives CNNs their power.",
+          "what_you_will_learn": ["Basic CNN structure"],
+          "content_covered": "Introduction to Convolutional Neural Networks.",
           "resources": [
             {
               "name": "NPTEL course on DL for CV by IITM",
@@ -217,73 +222,90 @@
             {
               "name": "A Comprehensive Guide to Convolutional Neural Networks",
               "url": "https://towardsdatascience.com/a-comprehensive-guide-to-convolutional-neural-networks-the-eli5-way-3bd2b1164a53"
+            },
+             {
+              "name": "House Price Prediction (Medium)",
+              "url": "https://medium.com/@robertjohn_15390/simple-housing-price-prediction-using-neural-networks-with-tensorflow-8b486d3db3ca"
+            },
+             {
+              "name": "Image recognition using ANN (nextjournal)",
+              "url": "https://nextjournal.com/gkoehler/digit-recognition-with-keras"
+            },
+             {
+              "name": "Backpropagation from scratch (Machine Learning Mastery)",
+              "url": "https://machinelearningmastery.com/implement-backpropagation-algorithm-scratch-python/"
             }
           ]
         },
         {
           "id": 17,
-          "title": "CNN Basic Part 2 (Pooling Layer)",
+          "title": "CNN Basic Part 2",
           "youtube_url": "https://www.youtube.com/watch?v=QzY57FaENXq",
-          "what_you_will_learn": ["Concept of pooling (Max Pooling, Average Pooling)", "Reducing spatial dimensions", "Introducing translational invariance"],
-          "content_covered": "Explains how pooling layers help in dimensionality reduction and feature robustness.",
+          "what_you_will_learn": ["More basic CNN structure"],
+          "content_covered": "Continues discussion on basic CNNs.",
           "resources": []
         },
          {
           "id": 18,
-          "title": "CNN Basic Part 3 (Architecture)",
+          "title": "CNN Basic Part 3",
           "youtube_url": "https://www.youtube.com/watch?v=HGwBXDKFk9l",
-          "what_you_will_learn": ["Putting together Conv and Pool layers", "CNN architecture examples", "Connecting to fully connected layers"],
-          "content_covered": "Shows how convolutional, pooling, and dense layers are combined to build a basic CNN.",
+          "what_you_will_learn": ["Basic CNN details"],
+          "content_covered": "Detailed look at basic CNN models.",
           "resources": []
         },
         {
           "id": 19,
-          "title": "CNN Basic Part 4 (Training & Application)",
+          "title": "CNN Basic Part 4",
           "youtube_url": "https://www.youtube.com/watch?v=2-OI7ZB0MmU",
-          "what_you_will_learn": ["Training CNNs", "Backpropagation in CNNs (high-level)", "Image classification example"],
-          "content_covered": "Overview of the training process for CNNs and a basic application.",
+          "what_you_will_learn": ["Basic CNN applications"],
+          "content_covered": "Applications of basic CNNs.",
+          "resources": []
+        },
+        {
+          "id": 20,
+          "title": "Backprop in CNN",
+          "youtube_url": "https://www.youtube.com/watch?v=pUCCd2-17vl",
+          "what_you_will_learn": ["Backpropagation in CNNs"],
+          "content_covered": "Explains how backpropagation works in CNNs.",
           "resources": [
              {
               "name": "Backprop in CNN Video (duplicate)",
               "url": "https://www.youtube.com/watch?v=KuXjwB4LzSA"
             }
           ]
-        },
-        {
-          "id": 20,
-          "title": "Backprop in CNN (Details)",
-          "youtube_url": "https://www.youtube.com/watch?v=pUCCd2-17vl",
-          "what_you_will_learn": ["Detailed backpropagation through Conv layers", "Calculating gradients for filters", "Gradient flow"],
-          "content_covered": "A more in-depth explanation of how the backpropagation algorithm works specifically for CNN layers.",
-          "resources": []
-        },
+        }
+      ]
+    },
+     {
+      "name": "Computer Vision - Advanced Tasks",
+      "videos": [
          {
           "id": 21,
           "title": "Image Segmentation",
           "youtube_url": "https://www.youtube.com/watch?v=FNHZ64k83e8",
-          "what_you_will_learn": ["What is image segmentation", "Types of segmentation (semantic, instance)", "CNN architectures for segmentation (e.g., U-Net)"],
-          "content_covered": "Introduces the task of image segmentation and relevant deep learning approaches.",
+          "what_you_will_learn": ["Image Segmentation concepts"],
+          "content_covered": "Introduction to Image Segmentation.",
           "resources": []
         },
         {
           "id": 22,
           "title": "Object Detection using YOLO",
           "youtube_url": "https://www.youtube.com/watch?v=MhftoBaoZpq",
-          "what_you_will_learn": ["What is object detection", "Bounding boxes and class prediction", "Introduction to YOLO (You Only Look Once)"],
-          "content_covered": "Covers the task of identifying and localizing multiple objects within an image using the YOLO model.",
+          "what_you_will_learn": ["Object Detection using YOLO"],
+          "content_covered": "Covers Object Detection with YOLO.",
           "resources": []
         }
       ]
     },
-     {
+    {
       "name": "Computer Vision - CNN Architectures",
       "videos": [
         {
           "id": 23,
-          "title": "CNN Architectures Overview",
+          "title": "CNN Architectures",
           "youtube_url": "https://www.youtube.com/watch?v=DAOcjicFr1Y",
-          "what_you_will_learn": ["History of CNN architectures", "LeNet, AlexNet, VGG, GoogLeNet, ResNet", "Key innovations (e.g., Inception, Residual connections)"],
-          "content_covered": "A survey of influential Convolutional Neural Network architectures and their contributions to the field.",
+          "what_you_will_learn": ["Different CNN Architectures"],
+          "content_covered": "Overview of various CNN architectures.",
           "resources": [
             {
               "name": "CNNS Architectures (LeNet, AlexNet, VGG...)",
@@ -312,16 +334,16 @@
           "id": 24,
           "title": "Autoencoders",
           "youtube_url": "https://www.youtube.com/watch?v=5W0ltGTWV54",
-          "what_you_will_learn": ["Encoder-Decoder structure", "Learning latent representations", "Applications (dimensionality reduction, denoising)"],
-          "content_covered": "Explains Autoencoders, a type of network used for learning efficient data encodings in an unsupervised manner.",
+          "what_you_will_learn": ["Autoencoder basics"],
+          "content_covered": "Introduction to Autoencoders.",
           "resources": []
         },
          {
           "id": 25,
           "title": "Generative Adversarial Networks (GANs)",
           "youtube_url": "https://www.youtube.com/watch?v=9zKuYvjFFS8",
-          "what_you_will_learn": ["Concept of generative models", "Adversarial training process", "Generator vs Discriminator"],
-          "content_covered": "Introduces GANs, a powerful framework for generating new data samples that resemble the training data.",
+          "what_you_will_learn": ["GANs basics"],
+          "content_covered": "Introduction to Generative Adversarial Networks.",
           "resources": [
             {
               "name": "GANs for MNIST digits (Code)",
@@ -342,8 +364,8 @@
           "id": 26,
           "title": "Practical Considerations in CV",
           "youtube_url": "https://towardsdatascience.com/convolutional-neural-networks-cnns-a-practical-perspective-c7b3b2091aa8",
-          "what_you_will_learn": ["Data augmentation", "Transfer learning", "Choosing hyperparameters", "Evaluating models"],
-          "content_covered": "Discusses practical aspects and techniques important for applying CNNs effectively.",
+          "what_you_will_learn": ["Practical CV tips"],
+          "content_covered": "Discusses practical aspects of Computer Vision.",
           "resources": []
         }
       ]
@@ -355,8 +377,8 @@
           "id": 27,
           "title": "RNN & LSTM Theory",
           "youtube_url": "https://www.youtube.com/watch?v=6niqTuYFZLQ",
-          "what_you_will_learn": ["Recurrent Neural Networks (RNNs) for sequences", "Handling temporal dependencies", "Vanishing gradient in RNNs", "LSTM architecture and gates"],
-          "content_covered": "Introduces models designed for sequential data, focusing on the challenges and solutions provided by LSTMs.",
+          "what_you_will_learn": ["RNN and LSTM theory"],
+          "content_covered": "Covers the theoretical concepts of RNNs and LSTMs.",
           "resources": [
             {
               "name": "Understanding LSTMs (Colah's Blog)",
@@ -392,8 +414,8 @@
           "id": 28,
           "title": "RNN & LSTM Practical",
           "youtube_url": "https://www.youtube.com/watch?v=mw7ay38--ak",
-          "what_you_will_learn": ["Implementing RNNs and LSTMs", "Working with sequential data (text, time series)", "Practical examples and libraries"],
-          "content_covered": "Focuses on the practical implementation and application of RNNs and LSTMs.",
+          "what_you_will_learn": ["Practical RNN and LSTM usage"],
+          "content_covered": "Focuses on the practical application of RNNs and LSTMs.",
           "resources": [
              {
               "name": "Word Embeddings Medium",
@@ -420,14 +442,14 @@
       ]
     },
     {
-      "name": "NLP - Transformer Architecture and LLMs",
+      "name": "NLP - Transformer Architecture",
       "videos": [
         {
           "id": 29,
           "title": "The Transformer Architecture",
           "youtube_url": "https://www.youtube.com/watch?v=SZorAJ4I-sA",
-          "what_you_will_learn": ["Limitations of RNNs for NLP", "Introduction to Self-Attention", "Encoder-Decoder structure of Transformer", "Parallel processing of sequences"],
-          "content_covered": "Explains the revolutionary Transformer architecture, which moved NLP beyond traditional RNNs.",
+          "what_you_will_learn": ["Transformer model basics"],
+          "content_covered": "Introduces the Transformer architecture.",
           "resources": [
             {
               "name": "The Illustrated Transformer",
@@ -436,71 +458,7 @@
              {
               "name": "Is Attention explanation?",
               "url": "https://colab.research.google.com/drive/1Pz8b_h-W9zlBk1p2e6v-YFYThG1NkYeS?usp=sharing"
-            }
-          ]
-        },
-        {
-          "id": 30,
-          "title": "LLM Pre-Training Concepts Part 1",
-          "youtube_url": "https://www.youtube.com/watch?v=knTc-NQSjKA",
-          "what_you_will_learn": ["What is LLM pre-training", "Large-scale unsupervised learning", "Training objectives (e.g., language modeling)"],
-          "content_covered": "Covers the foundational concepts and process of training large language models on massive text datasets.",
-          "resources": [
-            {
-              "name": "Code for LLM Inference",
-              "url": "https://colab.research.google.com/drive/1Pz8b_h-W9zlBk1p2e6v-YFYThG1NkYeS?usp=sharing"
             },
-            {
-              "name": "Tokenization using BPE, Unigram and WordPiece",
-              "url": "https://blog.floydhub.com/tokenization-nlp/"
-            },
-            {
-              "name": "WordPiece Tokenization by HuggingFace (TutorialsPoint link)",
-              "url": "https://www.tutorialspoint.com/tensorflow/index.htm"
-            }
-          ]
-        },
-         {
-          "id": 31,
-          "title": "LLM Pre-Training Concepts Part 2 (BERT)",
-          "youtube_url": "https://www.youtube.com/watch?v=TQQIZhbC5ps",
-          "what_you_will_learn": ["Introduction to BERT", "Masked Language Modeling (MLM)", "Next Sentence Prediction (NSP)"],
-          "content_covered": "Explores the BERT model and its specific pre-training objectives.",
-          "resources": [
-             {
-              "name": "BERT Medium",
-              "url": "https://medium.com/@mromerocalvo/dissecting-bert-part1-6dcf5360b07f"
-            },
-             {
-              "name": "Chris McCormick AI videos",
-              "url": "https://www.youtube.com/c/ChrisMcCormickAl/videos"
-            },
-             {
-              "name": "Illustrated BERT",
-              "url": "http://jalammar.github.io/illustrated-bert/"
-            }
-          ]
-        },
-        {
-          "id": 32,
-          "title": "LLM Pre-Training Concepts Part 3 (GPT)",
-          "youtube_url": "https://www.youtube.com/watch?v=wjZofJX0v4M",
-          "what_you_will_learn": ["Introduction to GPT models", "Causal Language Modeling", "Generative capabilities"],
-          "content_covered": "Covers the GPT series of models and their generative pre-training approach.",
-          "resources": [
-             {
-              "name": "GPT-3 Overview",
-              "url": "https://towardsdatascience.com/qpt-3-a-complete-overview-190232eb25j"
-            }
-          ]
-        },
-         {
-          "id": 33,
-          "title": "LLM Pre-Training Concepts Part 4 (Attention)",
-          "youtube_url": "https://www.youtube.com/watch?v=eMIx5fFNoYc",
-          "what_you_will_learn": ["Detailed look at Attention mechanism", "Self-Attention vs Cross-Attention", "Multi-head attention"],
-          "content_covered": "A deeper dive into the core Attention mechanism within the Transformer.",
-          "resources": [
              {
               "name": "Annotated Transformer",
               "url": "http://nlp.seas.harvard.edu/2018/04/03/attention.html"
@@ -508,16 +466,7 @@
              {
               "name": "Annotated Transformer Video List",
               "url": "https://www.youtube.com/watch?v=Osj0Z6rwJB4&list=PLEJK-H61XlwxpfpVzt30DLQ8vr1XiEhev&index=2"
-            }
-          ]
-        },
-         {
-          "id": 34,
-          "title": "LLM Pre-Training Concepts Part 5 (Positional Encoding)",
-          "youtube_url": "https://www.youtube.com/watch?v=OyFJWRnt_AY",
-          "what_you_will_learn": ["Why positional information is needed", "Types of positional encoding", "Incorporating sequence order in Transformers"],
-          "content_covered": "Explains how the Transformer handles the sequential nature of data without recurrence.",
-          "resources": [
+            },
              {
               "name": "Positional Encoding Blog (Kazemnejad)",
               "url": "https://kazemnejad.com/blog/transformer_architecture_positional_encoding/"
@@ -529,17 +478,38 @@
             {
               "name": "Positional Encoding Blog (TowardsDataScience Part II)",
               "url": "https://towardsdatascience.com/understanding-positional-embeddings-in-transformers-from-absolute-to-rotary-31c082e16b26"
+            },
+             {
+              "name": "Chris McCormick AI videos",
+              "url": "https://www.youtube.com/c/ChrisMcCormickAl/videos"
+            },
+             {
+              "name": "Illustrated BERT",
+              "url": "http://jalammar.github.io/illustrated-bert/"
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "name": "NLP - Large Language Models (LLMs)",
+      "videos": [
          {
-          "id": 35,
-          "title": "LLM Pre-Training Concepts Part 6 (Building from Scratch/Hyperparameters)",
-          "youtube_url": "https://www.youtube.com/watch?v=UPtG_380g80",
-          "what_you_will_learn": ["Practical LLM implementation", "Hyperparameter tuning for LLMs", "Scaling LLM training"],
-          "content_covered": "Discusses practical aspects of building and training LLMs, including hyperparameters.",
+          "id": 30,
+          "title": "LLM Pre-Training Concepts",
+          "youtube_url": "https://www.youtube.com/watch?v=knTc-NQSjKA",
+          "what_you_will_learn": ["LLM pre-training overview"],
+          "content_covered": "Introduction to concepts behind LLM pre-training.",
           "resources": [
             {
+              "name": "Code for LLM Inference",
+              "url": "https://colab.research.google.com/drive/1Pz8b_h-W9zlBk1p2e6v-YFYThG1NkYeS?usp=sharing"
+            },
+            {
+              "name": "Tokenization using BPE, Unigram and WordPiece",
+              "url": "https://blog.floydhub.com/tokenization-nlp/"
+            },
+             {
               "name": "LLM Notebooks by Anish",
               "url": "https://github.com/anishiisc/Build_LLM_from_Scratch/tree/main"
             },
@@ -566,11 +536,50 @@
           ]
         },
          {
-          "id": 36,
+          "id": 31,
+          "title": "BERT",
+          "youtube_url": "https://www.youtube.com/watch?v=TQQIZhbC5ps",
+          "what_you_will_learn": ["Introduction to BERT"],
+          "content_covered": "Focuses on the BERT model.",
+          "resources": [
+             {
+              "name": "BERT Medium",
+              "url": "https://medium.com/@mromerocalvo/dissecting-bert-part1-6dcf5360b07f"
+            }
+          ]
+        },
+        {
+          "id": 32,
+          "title": "GPT",
+          "youtube_url": "https://www.youtube.com/watch?v=wjZofJX0v4M",
+          "what_you_will_learn": ["Introduction to GPT models"],
+          "content_covered": "Covers the GPT series of models.",
+          "resources": [
+             {
+              "name": "GPT-3 Overview",
+              "url": "https://towardsdatascience.com/qpt-3-a-complete-overview-190232eb25j"
+            }
+          ]
+        },
+         {
+          "id": 33,
+          "title": "LLM Building/Hyperparameters",
+          "youtube_url": "https://www.youtube.com/watch?v=UPtG_380g80",
+          "what_you_will_learn": ["LLM implementation details"],
+          "content_covered": "Practical aspects of building and training LLMs.",
+          "resources": [
+              {
+              "name": "WordPiece Tokenization by HuggingFace",
+              "url": "https://www.tutorialspoint.com/tensorflow/index.htm"
+            }
+          ]
+        },
+         {
+          "id": 34,
           "title": "LLM Fine Tuning Part 1",
           "youtube_url": "https://www.youtube.com/watch?v=mw7ay38--ak",
-          "what_you_will_learn": ["What is fine-tuning", "Adapting pre-trained models", "Transfer learning in NLP"],
-          "content_covered": "Explains how to specialize a pre-trained LLM for specific downstream tasks.",
+          "what_you_will_learn": ["LLM fine-tuning process"],
+          "content_covered": "Explains how to fine-tune LLMs.",
           "resources": [
             {
               "name": "Fine-tuning BERT & LLaMA (WeightWatcher)",
@@ -579,11 +588,11 @@
           ]
         },
          {
-          "id": 37,
+          "id": 35,
           "title": "LLM Fine Tuning Part 2",
           "youtube_url": "https://www.youtube.com/watch?v=kCc8FmEb1nY",
-          "what_you_will_learn": ["Different fine-tuning strategies", "Parameter Efficient Fine-Tuning (PEFT)", "Evaluating fine-tuned models"],
-          "content_covered": "Continues the discussion on practical methods for fine-tuning LLMs.",
+          "what_you_will_learn": ["More on LLM fine-tuning"],
+          "content_covered": "Continues discussion on LLM fine-tuning.",
           "resources": []
         }
       ]
@@ -592,11 +601,11 @@
       "name": "NLP - Retrieval Augmented Generation",
       "videos": [
         {
-          "id": 38,
-          "title": "RAG Part 1 (Introduction)",
+          "id": 36,
+          "title": "RAG Part 1",
           "youtube_url": "https://www.youtube.com/watch?v=wd7TZ4w1mSw",
-          "what_you_will_learn": ["Addressing LLM limitations (hallucination, knowledge cut-off)", "Concept of retrieving external info", "Overview of the RAG pipeline"],
-          "content_covered": "Introduces Retrieval Augmented Generation as a technique to improve LLM accuracy and relevance.",
+          "what_you_will_learn": ["Introduction to RAG"],
+          "content_covered": "Covers the basics of Retrieval Augmented Generation.",
           "resources": [
              {
               "name": "Sentence Similarity using BERT and SBERT (from playlist)",
@@ -609,7 +618,29 @@
             {
               "name": "RAG using LangChain (from playlist)",
               "url": "https://www.youtube.com/watch?v=wd7TZ4w1mSw&list=PLfalDFEXuae2LXbO1PKyVJiQ23ZztA0x"
-            },
+            }
+          ]
+        },
+        {
+          "id": 37,
+          "title": "RAG Part 2",
+          "youtube_url": "https://www.youtube.com/watch?v=ahnGLM-RC1Y",
+          "what_you_will_learn": ["More on RAG"],
+          "content_covered": "Continues the discussion on RAG.",
+          "resources": []
+        }
+      ]
+    },
+    {
+      "name": "Advanced NLP Applications",
+      "videos": [
+        {
+          "id": 38,
+          "title": "Text Classification",
+          "youtube_url": null,
+          "what_you_will_learn": ["Text Classification techniques"],
+          "content_covered": "Overview of deep learning methods for Text Classification.",
+          "resources": [
              {
               "name": "Text Classification with Transformers",
               "url": "https://www.thepythoncode.com/article/finetuning-bert-using-huggingface-transformers-python"
@@ -621,7 +652,16 @@
              {
               "name": "Text Classification with Transformer Models (TowardsDataScience)",
               "url": "https://towardsdatascience.com/https-medium-com-chaturangarajapakshe-text-classification-with-transformer-models-d370944b50ca"
-            },
+            }
+          ]
+        },
+         {
+          "id": 39,
+          "title": "Named Entity Recognition (NER)",
+          "youtube_url": null,
+          "what_you_will_learn": ["NER techniques"],
+          "content_covered": "Overview of deep learning methods for Named Entity Recognition.",
+          "resources": [
              {
               "name": "NER: Definition",
               "url": "https://www.depends-on-the-definition.com/named-entity-recognition-with-bert/"
@@ -631,14 +671,6 @@
               "url": "https://towardsdatascience.com/named-entity-recognition-with-bert-in-pytorch-a454405e0b6a"
             }
           ]
-        },
-        {
-          "id": 39,
-          "title": "RAG Part 2 (Implementation Details)",
-          "youtube_url": "https://www.youtube.com/watch?v=ahnGLM-RC1Y",
-          "what_you_will_learn": ["Vector databases and embedding models", "Retrieval methods", "Integrating retrieval with generation"],
-          "content_covered": "Delves into the practical aspects and components needed to build a RAG system.",
-          "resources": []
         }
       ]
     },
@@ -649,8 +681,8 @@
           "id": 40,
           "title": "Image Captioning",
           "youtube_url": "https://www.youtube.com/watch?v=JmATtG0yA5E",
-          "what_you_will_learn": ["Combining vision and language", "Encoder-Decoder models for captioning", "Attention in image captioning"],
-          "content_covered": "Covers the task of generating textual descriptions for images using deep learning.",
+          "what_you_will_learn": ["Image Captioning concepts"],
+          "content_covered": "Introduction to Image Captioning.",
           "resources": [
             {
               "name": "Image Captioning video (duplicate)",
@@ -660,10 +692,10 @@
         },
         {
           "id": 41,
-          "title": "Text to Image Generation (Diffusion Models)",
+          "title": "Text to Image Generation",
           "youtube_url": "https://www.youtube.com/watch?v=pea3sH6orMc",
-          "what_you_will_learn": ["Introduction to generative diffusion models", "How diffusion models create images from text", "Concepts behind DALL-E and Stable Diffusion"],
-          "content_covered": "Explains the fascinating world of generating images from text prompts using diffusion models.",
+          "what_you_will_learn": ["Text to Image generation basics"],
+          "content_covered": "Covers the basics of Text to Image generation.",
           "resources": [
              {
               "name": "Text-to-Image video (duplicate 1)",
@@ -671,7 +703,7 @@
             },
              {
               "name": "Text-to-Image video (duplicate 2)",
-              "url": "ttps://www.youtube.com/watch?v=aaP7JJZuvGs"
+              "url": "https://www.youtube.com/watch?v=aaP7JJZuvGs"
             },
              {
               "name": "Illustrated Stable Diffusion",
@@ -696,8 +728,8 @@
           "id": 42,
           "title": "Deployment Considerations",
           "youtube_url": null,
-          "what_you_will_learn": ["Taking models to production", "Serving models (APIs)", "Monitoring and maintenance", "MLOps basics"],
-          "content_covered": "Discusses the challenges and processes involved in deploying trained deep learning models into real-world applications.",
+          "what_you_will_learn": ["Model deployment basics"],
+          "content_covered": "Discusses considerations for deploying deep learning models.",
           "resources": [
              {
               "name": "Full Stack Deep Learning course",
@@ -721,8 +753,8 @@
        {"name": "House Price Prediction (Medium)", "url": "https://medium.com/@robertjohn_15390/simple-housing-price-prediction-using-neural-networks-with-tensorflow-8b486d3db3ca"},
        {"name": "Image recognition using ANN (nextjournal)", "url": "https://nextjournal.com/gkoehler/digit-recognition-with-keras"},
        {"name": "Backpropagation from scratch (Machine Learning Mastery)", "url": "https://machinelearningmastery.com/implement-backpropagation-algorithm-scratch-python/"},
-       {"name": "Boltzmann Machines (GeeksforGeeks)", "url": "https://www.geeksforgeeks.org/grownet-gradient-boosting-neural-networks/"},
-       {"name": "NPTEL course on DL for CV by IITM", "url": "https://dl4cv-nptel.github.io/DL4CVBK/intro.html"}
+       {"name": "Boltzmann Machines (GeeksforGeeks - duplicate)", "url": "https://www.geeksforgeeks.org/grownet-gradient-boosting-neural-networks/"},
+       {"name": "NPTEL course on DL for CV by IITM (duplicate in video resources)", "url": "https://dl4cv-nptel.github.io/DL4CVBK/intro.html"}
     ]
   }
 }
