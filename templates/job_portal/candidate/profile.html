@@ -151,22 +151,18 @@
                     <div class="card-header"><h5 class="mb-0"><i class="fas fa-file-alt me-2"></i>Documents- PDF Only</h5></div>
                     <div class="card-body">
                         <!-- CV -->
-                          <div class="mb-3">
-                            <label for="cv" class="form-label">CV/Resume <span class="text-danger">*</span></label>
-                            {% if profile and profile.cv_filename %}
-                                <div class="mb-1 small d-flex justify-content-between align-items-center">
-                                    <span>
-                                        <i class="fas fa-file-pdf text-danger me-1"></i>
-                                        <a href="{{ profile.cv_filename }}" target="_blank" title="View current CV - {{ profile.cv_filename.split('/')[-1]|replace('%20', ' ')|truncate(30, True) }}">
-                                            View Current CV
-                                        </a>
-                                    </span>
-                                    <a href="{{ profile.cv_filename }}" target="_blank" download="{{ profile.cv_filename.split('/')[-1]|replace('%20', ' ') }}" class="btn btn-outline-primary btn-sm py-0 px-1" title="Download CV"><i class="fas fa-download"></i></a>
-                                </div>
-                            {% endif %}
-                            <input type="file" class="form-control form-control-sm mt-1" id="cv" name="cv" accept=".pdf" {{ 'required' if not (profile and profile.cv_filename) else '' }}>
-                        </div>
-                        
+                         <!-- CV -->
+<div class="mb-3">
+    <label for="cv" class="form-label">CV/Resume <span class="text-danger">*</span></label>
+    {% if profile and profile.cv_filename %}
+        <div class="d-grid">
+            <a href="{{ profile.cv_filename }}" target="_blank" class="btn btn-outline-info btn-sm">
+                <i class="fas fa-eye me-1"></i> View Current CV
+            </a>
+        </div>
+    {% endif %}
+    <input type="file" class="form-control form-control-sm mt-1" id="cv" name="cv" accept=".pdf" {{ 'required' if not (profile and profile.cv_filename) else '' }}>
+</div>
                         <!-- ID Card -->
                        <div class="mb-3">
                             <label for="id_card" class="form-label">ID Card <span class="text-danger">*</span></label>
