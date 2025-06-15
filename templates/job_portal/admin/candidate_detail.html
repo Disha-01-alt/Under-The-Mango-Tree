@@ -223,20 +223,14 @@
                     {% for doc_item in doc_types %}
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <div><i class="fas {{ doc_item.icon }} me-2"></i><span class="fw-bold">{{ doc_item.name }}</span></div>
-                            {% if candidate.get(doc_item.filename_attr) %}
-                                <div class="btn-group btn-group-sm">
-                                    {% set cloud_url = candidate.get(doc_item.filename_attr) %}
-                                    <a href="{{ cloud_url }}" target="_blank" class="btn btn-outline-info" title="View {{ doc_item.name }}">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                    {% set download_filename = cloud_url.split('/')[-1].split('?')[0]|replace('%20', '_') %}
-                                    <a href="{{ cloud_url }}" target="_blank" download="{{ download_filename or doc_item.type ~ '.pdf' }}" class="btn btn-outline-primary" title="Download {{ doc_item.name }}">
-                                        <i class="fas fa-download"></i>
-                                    </a>
-                                </div>
-                            {% else %}
-                                <span class="badge bg-secondary">Not uploaded</span>
-                            {% endif %}
+                           {% if candidate.get(doc_item.filename_attr) %}
+    <!-- The new, single "View" button -->
+    <a href="{{ candidate.get(doc_item.filename_attr) }}" target="_blank" class="btn btn-outline-primary btn-sm">
+        <i class="fas fa-eye me-1"></i> View
+    </a>
+{% else %}
+    <span class="badge bg-secondary">Not uploaded</span>
+{% endif %}
                         </div>
                     {% endfor %}
                 </div>
