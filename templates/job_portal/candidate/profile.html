@@ -15,46 +15,38 @@
         <div class="row">
             <!-- Left Column: Main Profile Info -->
             <div class="col-lg-8">
-                <!-- Personal Information (Mostly Read-only, from User model) -->
+                <!-- Personal Information -->
                  <div class="card mb-4">
                     <div class="card-header"><h5 class="mb-0"><i class="fas fa-user-circle me-2"></i>Personal Information</h5></div>
                     <div class="card-body">
                          <div class="row">
                              <div class="col-md-6 mb-3">
                                  <label class="form-label">Full Name</label>
-                                 {# This field is readonly and does not have a 'name' attribute, so it won't be submitted. #}
-                                 {# Full name should be managed via registration or a dedicated account settings page if editable post-reg. #}
                                  <input type="text" class="form-control" value="{{ current_user.full_name or '' }}" readonly>
                              </div>
                              <div class="col-md-6 mb-3">
                                  <label class="form-label">Email</label>
-                                 {# Email is a primary identifier and typically not changed freely. #}
                                  <input type="email" class="form-control" value="{{ current_user.email }}" readonly>
                              </div>
                          </div>
                          <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="whatsapp_number" class="form-label">WhatsApp Number * <small>(e.g., 91XXXXXXXXXX or 0XXXXXXXXXX)</small></label>
+                                <label for="whatsapp_number" class="form-label">WhatsApp Number *</label>
                                 <input type="tel" class="form-control" id="whatsapp_number" name="whatsapp_number" 
-                                       value="{{ (form_data_attempt.whatsapp_number if form_data_attempt else (current_user.phone if current_user else '')) or '' }}" 
-                                       pattern="^(?:\+91|91|0)?[6789]\d{9}$" 
-                                       title="Please enter a valid 10-digit Indian mobile number. You can optionally start with +91, 91, or 0." 
+                                       value="{{ (form_data_attempt.whatsapp_number if form_data_attempt else current_user.phone) or '' }}" 
                                        required>
-                                <div class="invalid-feedback">
-                                    Please provide a valid Indian WhatsApp number (e.g., 91XXXXXXXXXX or XXXXXXXXXX starting with 6,7,8,9).
-                                </div>
                             </div>
                              <div class="col-md-6 mb-3">
-                                 <label for="linkedin" class="form-label">LinkedIn Profile URL</label> {# Changed from readonly #}
+                                 <label for="linkedin" class="form-label">LinkedIn Profile URL</label>
                                  <input type="url" class="form-control" id="linkedin" name="linkedin" 
-                                        value="{{ (form_data_attempt.linkedin if form_data_attempt else (current_user.linkedin if current_user else '')) or '' }}" 
+                                        value="{{ (form_data_attempt.linkedin if form_data_attempt else current_user.linkedin) or '' }}" 
                                         placeholder="https://linkedin.com/in/yourprofile">
                              </div>
                          </div>
                         <div class="mb-3">
                              <label for="github" class="form-label">GitHub Profile URL</label>
                              <input type="url" class="form-control" id="github" name="github" 
-                                    value="{{ (form_data_attempt.github if form_data_attempt else (current_user.github if current_user else '')) or '' }}" 
+                                    value="{{ (form_data_attempt.github if form_data_attempt else current_user.github) or '' }}" 
                                     placeholder="https://github.com/yourusername">
                          </div>
                     </div>
@@ -62,30 +54,29 @@
 
                 <!-- Education Section -->
                 <div class="card mb-4">
-                    <div class="card-header"><h5 class="mb-0"><i class="fas fa-graduation-cap me-2"></i>Bachelor Education</h5></div>
+                    <div class="card-header"><h5 class="mb-0"><i class="fas fa-graduation-cap me-2"></i>Education</h5></div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12 mb-3">
                                 <label for="college_name" class="form-label">Name of College/University *</label>
                                 <input type="text" class="form-control" id="college_name" name="college_name" 
-                                       value="{{ profile.college_name if profile else '' }}" required>
+                                       value="{{ (form_data_attempt.college_name if form_data_attempt else profile.college_name) or '' }}" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 mb-3">
                                 <label for="degree" class="form-label">Degree *</label>
                                 <input type="text" class="form-control" id="degree" name="degree" 
-                                       placeholder="e.g., Bachelor of Technology, Master of Science"
-                                       value="{{ profile.degree if profile else '' }}" required>
+                                       placeholder="e.g., Bachelor of Technology"
+                                       value="{{ (form_data_attempt.degree if form_data_attempt else profile.degree) or '' }}" required>
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="graduation_year" class="form-label">Graduation Year *</label>
                                 <input type="number" class="form-control" id="graduation_year" name="graduation_year" 
-                                       placeholder="e.g., 2023" min="1950" max="{{ (current_user.created_at.year + 10) if current_user and current_user.created_at else 2040 }}"
-                                       value="{{ profile.graduation_year if profile else '' }}" required>
+                                       placeholder="e.g., 2024" min="1950" max="2040"
+                                       value="{{ (form_data_attempt.graduation_year if form_data_attempt else profile.graduation_year) or '' }}" required>
                             </div>
                         </div>
-          
                     </div>
                 </div>
                 
@@ -96,12 +87,11 @@
                         <div class="mb-3">
                             <label for="summary" class="form-label">Summary of Skills and Strengths *</label>
                             <textarea class="form-control" id="summary" name="summary" rows="4" required
-                                placeholder="Highlight your key skills, strengths, and career aspirations. Make it compelling!">{{ profile.summary if profile else '' }}</textarea>
+                                placeholder="Highlight your key skills, strengths, and career aspirations.">{{ (form_data_attempt.summary if form_data_attempt else profile.summary) or '' }}</textarea>
                         </div>
-                        
                         <div class="mb-3">
                             <label class="form-label">Core Interest Domains *</label>
-                            <div>
+                            <div class="form-control" style="height: auto; padding-top: 10px; padding-bottom: 2px;">
                                 {% for interest_option in available_core_interests %}
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="checkbox" name="core_interest_domains" 
@@ -122,22 +112,21 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="twelfth_school_type" class="form-label">Please specify the school/college from which you completed 12th grade *</label>
+                                <label for="twelfth_school_type" class="form-label">12th School Type *</label>
                                 <select class="form-select" id="twelfth_school_type" name="twelfth_school_type" required>
                                     <option value="">Select type</option>
-                                    <option value="government" {{ 'selected' if profile and profile.twelfth_school_type == 'government' else '' }}>Government School</option>
-                                    <option value="private" {{ 'selected' if profile and profile.twelfth_school_type == 'private' else '' }}>Private School</option>
-                                    <option value="other" {{ 'selected' if profile and profile.twelfth_school_type == 'other' else '' }}>Other</option>
+                                    <option value="government" {{ 'selected' if (profile and profile.twelfth_school_type == 'government') else '' }}>Government School</option>
+                                    <option value="private" {{ 'selected' if (profile and profile.twelfth_school_type == 'private') else '' }}>Private School</option>
+                                    <option value="other" {{ 'selected' if (profile and profile.twelfth_school_type == 'other') else '' }}>Other</option>
                                 </select>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="parental_annual_income" class="form-label">Family Parental Annual Income *</label>
                                 <select class="form-select" id="parental_annual_income" name="parental_annual_income" required>
                                     <option value="">Select income range</option>
-                                    <option value="Below 3 Lakh" {{ 'selected' if profile and profile.parental_annual_income == 'Below 3 Lakh' else '' }}>Below 3 Lakh</option>
-                                    <option value="3 to 8 Lakhs" {{ 'selected' if profile and profile.parental_annual_income == '3 to 8 Lakhs' else '' }}>3 to 8 Lakhs</option>
-            
-                                    <option value="Above 8 Lakhs" {{ 'selected' if profile and profile.parental_annual_income == 'Above 8 Lakhs' else '' }}>Above 8 Lakhs</option>
+                                    <option value="Below 3 Lakh" {{ 'selected' if (profile and profile.parental_annual_income == 'Below 3 Lakh') else '' }}>Below 3 Lakh</option>
+                                    <option value="3 to 8 Lakhs" {{ 'selected' if (profile and profile.parental_annual_income == '3 to 8 Lakhs') else '' }}>3 to 8 Lakhs</option>
+                                    <option value="Above 8 Lakhs" {{ 'selected' if (profile and profile.parental_annual_income == 'Above 8 Lakhs') else '' }}>Above 8 Lakhs</option>
                                 </select>
                             </div>
                         </div>
@@ -148,79 +137,78 @@
             <!-- Right Column: Documents & Admin Review -->
             <div class="col-lg-4">
                 <div class="card mb-4">
-                    <div class="card-header"><h5 class="mb-0"><i class="fas fa-file-alt me-2"></i>Documents- PDF Only</h5></div>
+                    <div class="card-header"><h5 class="mb-0"><i class="fas fa-file-alt me-2"></i>Documents (PDF Only)</h5></div>
                     <div class="card-body">
-                        <!-- CV -->
-                         <!-- CV -->
-<div class="mb-3">
-    <label for="cv" class="form-label">CV/Resume <span class="text-danger">*</span></label>
-    {% if profile and profile.cv_filename %}
-        <div class="d-grid">
-            <a href="{{ profile.cv_filename }}" target="_blank" class="btn btn-outline-info btn-sm">
-                <i class="fas fa-eye me-1"></i> View Current CV
-            </a>
-        </div>
-    {% endif %}
-    <input type="file" class="form-control form-control-sm mt-1" id="cv" name="cv" accept=".pdf" {{ 'required' if not (profile and profile.cv_filename) else '' }}>
-</div>
-                        <!-- ID Card -->
-                       <div class="mb-3">
-                            <label for="id_card" class="form-label">ID Card <span class="text-danger">*</span></label>
-                            {% if profile and profile.id_card_filename %}
-                                <div class="mb-1 small d-flex justify-content-between align-items-center">
-                                    <span>
-                                        <i class="fas fa-id-card text-info me-1"></i>
-                                        <a href="{{ profile.id_card_filename }}" target="_blank" title="View current ID Card - {{ profile.id_card_filename.split('/')[-1]|replace('%20', ' ')|truncate(30, True) }}">
-                                            View Current ID
-                                        </a>
-                                    </span>
-                                    <a href="{{ profile.id_card_filename }}" target="_blank" download="{{ profile.id_card_filename.split('/')[-1]|replace('%20', ' ') }}" class="btn btn-outline-primary btn-sm py-0 px-1" title="Download ID Card"><i class="fas fa-download"></i></a>
+                        
+                        <!-- CV Uploader -->
+                        <div class="mb-3">
+                            <label for="cv" class="form-label">CV/Resume <span class="text-danger">*</span></label>
+                            <div id="cv-viewer" class="mb-2" {% if not profile or not profile.cv_filename %}style="display: none;"{% endif %}>
+                                <div class="d-grid">
+                                    <a href="{{ profile.cv_filename if profile else '#' }}" target="_blank" class="btn btn-outline-info btn-sm">
+                                        <i class="fas fa-eye me-1"></i> View Current CV
+                                    </a>
                                 </div>
-                            {% endif %}
-                            <input type="file" class="form-control form-control-sm mt-1" id="id_card" name="id_card" accept=".pdf" {{ 'required' if not (profile and profile.id_card_filename) else '' }}>
+                                <button type="button" class="btn btn-link btn-sm p-0 mt-1" onclick="toggleUpload('cv')">Replace CV</button>
+                            </div>
+                            <div id="cv-uploader" {% if profile and profile.cv_filename %}style="display: none;"{% endif %}>
+                                <input type="file" class="form-control form-control-sm" id="cv" name="cv" accept=".pdf" {% if not profile or not profile.cv_filename %}required{% endif %}>
+                            </div>
                         </div>
                         
-                        
-                        <!-- Marksheet -->
+                        <!-- ID Card Uploader -->
+                        <div class="mb-3">
+                            <label for="id_card" class="form-label">ID Card <span class="text-danger">*</span></label>
+                            <div id="id_card-viewer" class="mb-2" {% if not profile or not profile.id_card_filename %}style="display: none;"{% endif %}>
+                                <div class="d-grid">
+                                    <a href="{{ profile.id_card_filename if profile else '#' }}" target="_blank" class="btn btn-outline-info btn-sm">
+                                        <i class="fas fa-eye me-1"></i> View Current ID Card
+                                    </a>
+                                </div>
+                                <button type="button" class="btn btn-link btn-sm p-0 mt-1" onclick="toggleUpload('id_card')">Replace ID Card</button>
+                            </div>
+                            <div id="id_card-uploader" {% if profile and profile.id_card_filename %}style="display: none;"{% endif %}>
+                                <input type="file" class="form-control form-control-sm" id="id_card" name="id_card" accept=".pdf" {% if not profile or not profile.id_card_filename %}required{% endif %}>
+                            </div>
+                        </div>
+
+                        <!-- Marksheet Uploader -->
                         <div class="mb-3">
                             <label for="marksheet" class="form-label">12th Marksheet <span class="text-danger">*</span></label>
-                            {% if profile and profile.marksheet_filename %}
-                               <div class="mb-1 small d-flex justify-content-between align-items-center">
-                                    <span>
-                                        <i class="fas fa-certificate text-success me-1"></i>
-                                        <a href="{{ profile.marksheet_filename }}" target="_blank" title="View current Marksheet - {{ profile.marksheet_filename.split('/')[-1]|replace('%20', ' ')|truncate(30, True) }}">
-                                            View Current Marksheet
-                                        </a>
-                                    </span>
-                                    <a href="{{ profile.marksheet_filename }}" target="_blank" download="{{ profile.marksheet_filename.split('/')[-1]|replace('%20', ' ') }}" class="btn btn-outline-primary btn-sm py-0 px-1" title="Download Marksheet"><i class="fas fa-download"></i></a>
+                            <div id="marksheet-viewer" class="mb-2" {% if not profile or not profile.marksheet_filename %}style="display: none;"{% endif %}>
+                                <div class="d-grid">
+                                    <a href="{{ profile.marksheet_filename if profile else '#' }}" target="_blank" class="btn btn-outline-info btn-sm">
+                                        <i class="fas fa-eye me-1"></i> View Current Marksheet
+                                    </a>
                                 </div>
-                            {% endif %}
-                            <input type="file" class="form-control form-control-sm mt-1" id="marksheet" name="marksheet" accept=".pdf" {{ 'required' if not (profile and profile.marksheet_filename) else '' }}>
+                                <button type="button" class="btn btn-link btn-sm p-0 mt-1" onclick="toggleUpload('marksheet')">Replace Marksheet</button>
+                            </div>
+                            <div id="marksheet-uploader" {% if profile and profile.marksheet_filename %}style="display: none;"{% endif %}>
+                                <input type="file" class="form-control form-control-sm" id="marksheet" name="marksheet" accept=".pdf" {% if not profile or not profile.marksheet_filename %}required{% endif %}>
+                            </div>
                         </div>
 
-
-                        <!-- EWS Certificate -->
-                       <div class="mb-3">
+                        <!-- EWS Certificate Uploader -->
+                        <div class="mb-3">
                             <label for="ews_certificate" class="form-label">EWS Certificate (Optional)</label>
-                            {% if profile and profile.ews_certificate_filename %}
-                                <div class="mb-1 small d-flex justify-content-between align-items-center">
-                                    <span>
-                                        <i class="fas fa-file-invoice text-warning me-1"></i>
-                                        <a href="{{ profile.ews_certificate_filename }}" target="_blank" title="View current EWS Certificate - {{ profile.ews_certificate_filename.split('/')[-1]|replace('%20', ' ')|truncate(30, True) }}">
-                                            View Current EWS Cert.
-                                        </a>
-                                    </span>
-                                    <a href="{{ profile.ews_certificate_filename }}" target="_blank" download="{{ profile.ews_certificate_filename.split('/')[-1]|replace('%20', ' ') }}" class="btn btn-outline-primary btn-sm py-0 px-1" title="Download EWS Certificate"><i class="fas fa-download"></i></a>
+                            <div id="ews_certificate-viewer" class="mb-2" {% if not profile or not profile.ews_certificate_filename %}style="display: none;"{% endif %}>
+                                <div class="d-grid">
+                                    <a href="{{ profile.ews_certificate_filename if profile else '#' }}" target="_blank" class="btn btn-outline-info btn-sm">
+                                        <i class="fas fa-eye me-1"></i> View Current EWS Cert.
+                                    </a>
                                 </div>
-                            {% endif %}
-                            <input type="file" class="form-control form-control-sm mt-1" id="ews_certificate" name="ews_certificate" accept=".pdf">
+                                <button type="button" class="btn btn-link btn-sm p-0 mt-1" onclick="toggleUpload('ews_certificate')">Replace EWS Cert.</button>
+                            </div>
+                            <div id="ews_certificate-uploader" {% if profile and profile.ews_certificate_filename %}style="display: none;"{% endif %}>
+                                <input type="file" class="form-control form-control-sm" id="ews_certificate" name="ews_certificate" accept=".pdf">
+                            </div>
                         </div>
+
                         <small class="text-muted d-block">All documents must be PDF. Fields with <span class="text-danger">*</span> are mandatory.</small>
                     </div>
                 </div>
                 
-                <!-- Admin Review (Display Only) -->
-                <!-- Admin Review (Display Only if applicable) -->
+                <!-- Admin Review Display -->
                 {% if profile and (profile.rating or profile.admin_feedback or profile.admin_tags or profile.is_certified) %}
                 <div class="card mb-4">
                     <div class="card-header"><h5 class="mb-0"><i class="fas fa-user-shield me-2"></i>Admin Review</h5></div>
@@ -248,4 +236,30 @@
         </div>
     </form>
 </div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script>
+function toggleUpload(docType) {
+    const viewer = document.getElementById(docType + '-viewer');
+    const uploader = document.getElementById(docType + '-uploader');
+    const input = document.getElementById(docType);
+
+    if (viewer.style.display === 'none') {
+        // This case should not happen with this logic, but as a fallback
+        viewer.style.display = 'block';
+        uploader.style.display = 'none';
+        input.removeAttribute('required');
+    } else {
+        // Hide the 'View' button and show the file input
+        viewer.style.display = 'none';
+        uploader.style.display = 'block';
+        // Make the input required only if it was originally required and now visible
+        if (docType !== 'ews_certificate') {
+             input.setAttribute('required', 'required');
+        }
+    }
+}
+</script>
 {% endblock %}
