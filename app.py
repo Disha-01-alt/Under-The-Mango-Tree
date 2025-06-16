@@ -238,8 +238,8 @@ def algorithms(video_id=None):
 
     return render_template('algorithms_course_page.html', course_data=ALGORITHMS_DATA, current_video=current_video, current_topic_name=topic_name, prev_video=prev_video, next_video=next_video)
 
-@app.route('/soft-skills/')
-@app.route('/soft-skills/<video_id>')
+@app.route('/soft_skills/')
+@app.route('/soft_skills/<video_id>')
 def soft_skills(video_id=None):
     if not video_id:
         first_video_id = SOFT_SKILLS_DATA.get('topics', [{}])[0].get('videos', [{}])[0].get('id')
