@@ -377,18 +377,6 @@
             <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
                 Explore Career Opportunities
             </h1>
-            
-            <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
-                Discover opportunities that match your skills and aspirations. We connect talented individuals with innovative companies.
-            </p>
-
-            <!-- Job Portal Button -->
-            <div class="mt-8">
-               <a href="{{ url_for('job_portal_index') }}" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-700 transition duration-300 transform hover:scale-105">
-            Go to Job Portal
-        </a>
-            </div>
-            
             <!-- Hashtag-style Callouts -->
             <div class="mt-10 flex flex-wrap justify-center items-center gap-x-4 gap-y-2 text-gray-500 font-medium">
                 <span>#NewlyGraduated</span>
@@ -399,19 +387,13 @@
                 <span class="text-gray-300">•</span>
                 <span>#CareerChangers</span>
             </div>
-
         </div>
     </section>
-
-    <!-- ================================== -->
-    <!-- HORIZONTAL SCROLLING JOBS SECTION  -->
-    <!-- ================================== -->
     <section class="py-16">
         <div class="container mx-auto px-6">
             <!-- Section Header -->
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Most Recent Jobs</h2>
-                <p class="text-lg text-gray-600 mt-2">Get a glimpse of the latest roles on our platform.</p>
                 <div class="mt-4 w-24 h-1 bg-primary mx-auto"></div>
             </div>
 
@@ -444,6 +426,12 @@
                     </div>
                 {% endif %}
             </div> <!-- End of Horizontal Scrolling Container -->
+             <!-- Job Portal Button -->
+            <div class="mt-8">
+               <a href="{{ url_for('job_portal_index') }}" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-700 transition duration-300 transform hover:scale-105">
+            Go to Job Portal
+        </a>
+            </div>
 
         </div>
     </section>
