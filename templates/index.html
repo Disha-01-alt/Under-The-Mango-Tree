@@ -264,7 +264,6 @@
         </div>
     </div>
 </section>
-<!-- In templates/index.html -->
 
 <main class="flex-grow">
     
@@ -345,83 +344,67 @@
     </section>
 
 </main>
-    <!-- Testimonials Section -->
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center text-[#1E3D59] mb-16">What Our Students Say</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Testimonial 1 -->
-                <div class="bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover-scale">
+   <!-- ================================== -->
+<!-- DYNAMIC TESTIMONIALS SECTION       -->
+<!-- ================================== -->
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold text-center text-[#1E3D59] mb-16">What Our Students Say</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            {% if testimonials %}
+                {% for t in testimonials %}
+                <!-- Dynamic Testimonial Card -->
+                <div class="bg-gradient-to-br {{ t.gradient_from }} {{ t.gradient_to }} rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
                     <div class="flex items-center mb-6">
                         <div class="w-14 h-14 bg-gradient-to-r from-[#1E3D59] to-[#FF6B35] rounded-full flex items-center justify-center text-white font-bold text-xl">
-                            RS
+                            {{ t.initials }}
                         </div>
                         <div class="ml-4">
-                            <h4 class="font-bold text-[#1E3D59]">Rahul Singh</h4>
-                            <p class="text-gray-600 text-sm">Software Developer</p>
+                            <h4 class="font-bold text-[#1E3D59]">{{ t.name }}</h4>
+                            <p class="text-gray-600 text-sm">{{ t.role }}</p>
                         </div>
                     </div>
-                    <p class="text-gray-700 italic leading-relaxed mb-4">
-                        "The English and programming courses helped me secure a job at a top tech company. The mentors were always available to clear my doubts."
+                    <p class="text-gray-700 italic leading-relaxed mb-4 flex-grow">
+                        "{{ t.quote }}"
                     </p>
-                    <div class="text-[#FF6B35]">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                    <div class="flex justify-between items-center mt-4">
+                        <div class="text-[#FF6B35]">
+                            {% set full_stars = t.rating | int %}
+                            {% set half_star = true if (t.rating - full_stars) >= 0.5 else false %}
+                            {% for i in range(full_stars) %}<i class="fas fa-star"></i>{% endfor %}
+                            {% if half_star %}<i class="fas fa-star-half-alt"></i>{% endif %}
+                            {% for i in range(5 - full_stars - (1 if half_star else 0)) %}<i class="far fa-star"></i>{% endfor %}
+                        </div>
+                        {% if t.youtube_embed_id %}
+                        <button onclick="openTestimonialVideo('{{ t.youtube_embed_id }}', '{{ t.name }}')" class="bg-white text-[#1E3D59] border border-gray-300 px-3 py-1 rounded-full text-sm font-semibold hover:bg-gray-100 transition">
+                            <i class="fab fa-youtube mr-2 text-red-500"></i> Watch Video
+                        </button>
+                        {% endif %}
                     </div>
                 </div>
-                
-                <!-- Testimonial 2 -->
-                <div class="bg-gradient-to-br from-gray-50 to-green-50 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover-scale">
-                    <div class="flex items-center mb-6">
-                        <div class="w-14 h-14 bg-gradient-to-r from-[#1E3D59] to-green-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
-                            PK
-                        </div>
-                        <div class="ml-4">
-                            <h4 class="font-bold text-[#1E3D59]">Priya Kumari</h4>
-                            <p class="text-gray-600 text-sm">Customer Support Specialist</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-700 italic leading-relaxed mb-4">
-                        "As someone from a Hindi medium school, I was nervous about my English skills. The interactive lessons made learning fun and effective."
-                    </p>
-                    <div class="text-[#FF6B35]">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 3 -->
-                <div class="bg-gradient-to-br from-gray-50 to-purple-50 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover-scale">
-                    <div class="flex items-center mb-6">
-                        <div class="w-14 h-14 bg-gradient-to-r from-[#1E3D59] to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
-                            AK
-                        </div>
-                        <div class="ml-4">
-                            <h4 class="font-bold text-[#1E3D59]">Amit Kumar</h4>
-                            <p class="text-gray-600 text-sm">Web Developer</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-700 italic leading-relaxed mb-4">
-                        "The job portal connected me directly with employers looking for freshers. I got three interview calls within a week of completing my course!"
-                    </p>
-                    <div class="text-[#FF6B35]">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                {% endfor %}
+            {% endif %}
 
+        </div>
+    </div>
+</section>
+
+<!-- ================================== -->
+<!-- TESTIMONIAL VIDEO MODAL (Shared)   -->
+<!-- ================================== -->
+<div id="videoModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+    <div class="bg-black rounded-lg shadow-2xl w-full max-w-4xl m-4 relative" onclick="event.stopPropagation()">
+        <!-- Close Button -->
+        <button onclick="closeTestimonialVideo()" class="absolute -top-4 -right-4 h-10 w-10 bg-white rounded-full text-gray-800 flex items-center justify-center text-2xl z-10">×</button>
+        
+        <!-- Responsive Video Container -->
+        <div class="relative" style="padding-bottom: 56.25%;">
+            <iframe id="videoIframe" class="absolute top-0 left-0 w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <h3 id="videoModalTitle" class="text-white text-lg font-bold p-4 text-center"></h3>
+    </div>
+</div>
     <!-- Partners Section -->
     <section class="py-20 bg-gradient-to-r from-gray-50 to-blue-50">
         <div class="container mx-auto px-6">
@@ -513,6 +496,28 @@
                 }
             });
         });
+         const videoModal = document.getElementById('videoModal');
+    const videoIframe = document.getElementById('videoIframe');
+    const videoModalTitle = document.getElementById('videoModalTitle');
+
+    function openTestimonialVideo(youtubeId, studentName) {
+        if (!youtubeId) return;
+        // Set the video source and title
+        videoIframe.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1`;
+        videoModalTitle.textContent = `Video Testimonial from ${studentName}`;
+        // Show the modal
+        videoModal.classList.remove('hidden');
+    }
+
+    function closeTestimonialVideo() {
+        // Hide the modal
+        videoModal.classList.add('hidden');
+        // Stop the video from playing in the background
+        videoIframe.src = '';
+    }
+
+    // Close modal when clicking on the background overlay
+    videoModal.addEventListener('click', closeTestimonialVideo);
     </script> 
 
 </body>
