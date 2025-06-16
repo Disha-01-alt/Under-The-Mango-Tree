@@ -142,23 +142,27 @@ ALGORITHMS_DATA = load_course_data('algorithms_data.json')
 SOFT_SKILLS_DATA = load_course_data('soft_skills.json')
 PROJECTS_DATA = load_course_data('projects_data.json')
 TEAM_DATA = load_course_data('team_data.json')
+TESTIMONIALS_DATA = load_course_data('testimonials.json')
 logging.info("All course and site data loaded.")
 
 # --- Route Definitions ---
 
-# In app.py
-
 @app.route('/')
 def home():
-    # Fetch all jobs and slice the list to get the 6 most recent ones
     try:
-        recent_jobs = get_all_jobs()[:6]
+        recent_jobs = get_all_jobs()[:4]
     except Exception as e:
         logging.error(f"Could not fetch jobs for homepage: {e}")
-        recent_jobs = [] # Pass an empty list on error
+        recent_jobs = []
+    
+    # Get the testimonials list from the loaded data
+    testimonials = TESTIMONIALS_DATA.get('testimonials', [])
         
-    return render_template('index.html', recent_jobs=recent_jobs)
-
+    return render_template(
+        'index.html', 
+        recent_jobs=recent_jobs,
+        testimonials=testimonials  # <-- Pass testimonials to the template
+    )
 @app.route('/learning-hub')
 def learning_hub():
     return render_template('learning_hub.html')
