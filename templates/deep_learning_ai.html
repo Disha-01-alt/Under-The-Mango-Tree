@@ -28,6 +28,15 @@
         .content-card ul i { margin-top: 0.25rem; }
         .content-card ul a i { margin-top: 0.1rem; }
         #course-sidebar, #main-content { transition: all 0.3s ease-in-out; }
+        /* NEW: Styles for the Floating Sidebar Toggle Button */
+#floating-sidebar-toggle {
+    position: fixed; /* Sticks to the viewport */
+    left: 1rem;      /* 1rem from the left edge */
+    top: 50%;        /* Centered vertically */
+    transform: translateY(-50%);
+    z-index: 1040;   /* Make sure it's above other content but below modals */
+    transition: all 0.3s ease-in-out;
+}
     </style>
 </head>
 <body class="bg-gray-100">
@@ -35,6 +44,9 @@
     {% include 'header.html' %}
 
     <main class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+         <button id="floating-sidebar-toggle" title="Toggle Sidebar" class="h-12 w-12 flex items-center justify-center rounded-full bg-white shadow-lg text-gray-700 hover:bg-gray-200">
+        <i id="sidebar-toggle-icon" class="fas fa-angles-left"></i>
+    </button>
         <div class="lg:grid lg:grid-cols-12 lg:gap-8">
             
             <!-- Sidebar -->
@@ -81,9 +93,6 @@
                             <div class="flex justify-between items-center mb-4">
                                 <h1 class="text-2xl font-bold text-gray-900">{{ current_video.title }}</h1>
                                 <!-- Sidebar Toggle Button -->
-                                <button id="sidebar-toggle" title="Toggle Sidebar" class="p-2 rounded-md hover:bg-gray-200 text-gray-600">
-                                    <i id="sidebar-toggle-icon" class="fas fa-angles-left"></i>
-                                </button>
                             </div>
                             <div class="bg-black rounded-lg shadow-lg">
                                 <div class="video-iframe-container">
