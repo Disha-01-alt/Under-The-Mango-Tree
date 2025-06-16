@@ -366,53 +366,64 @@
         </div>
     </section>
 
-   <!-- CTA Section -->
-<section 
-    class="py-24 relative overflow-hidden bg-cover bg-center bg-no-repeat" 
-    style="background-image: url('https://thumbs.dreamstime.com/b/man-adding-skills-to-his-cv-increasing-employment-opportunities-reskilling-upskilling-concept-211081658.jpg');
-">
-    
-    <!-- Dark Overlay for Readability -->
-    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
-
-    <!-- Content -->
-    <div class="container mx-auto px-6 text-center relative z-10">
-        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white leading-tight">
-            Your Next Career Opportunity Awaits
-        </h2>
-        <p class="text-xl mb-10 max-w-3xl mx-auto leading-relaxed text-gray-200">
-            Whether you are just starting out, seeking a change, or looking for specialized roles, our platform connects you with the right employers.
-        </p>
-
-        <!-- Specific Audience Callouts -->
-        <div class="flex flex-wrap justify-center gap-x-4 gap-y-3 mb-12 text-white">
-            <span class="bg-white/10 border border-white/20 rounded-full px-4 py-2 text-sm font-medium backdrop-blur-sm">
-                <i class="fas fa-user-graduate fa-fw mr-2 opacity-80"></i>Newly Graduated
-            </span>
-            <span class="bg-white/10 border border-white/20 rounded-full px-4 py-2 text-sm font-medium backdrop-blur-sm">
-                <i class="fas fa-briefcase fa-fw mr-2 opacity-80"></i>Experienced Professionals
-            </span>
-            <span class="bg-white/10 border border-white/20 rounded-full px-4 py-2 text-sm font-medium backdrop-blur-sm">
-                <i class="fas fa-star fa-fw mr-2 opacity-80"></i>EWS Category
-            </span>
-            <span class="bg-white/10 border border-white/20 rounded-full px-4 py-2 text-sm font-medium backdrop-blur-sm">
-                <i class="fas fa-lightbulb fa-fw mr-2 opacity-80"></i>Career Changers
-            </span>
+  <!-- ================================== -->
+<!-- LATEST JOB OPENINGS SECTION      -->
+<!-- ================================== -->
+<section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-6">
+        
+        <!-- Section Header -->
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Latest Job Openings</h2>
+            <p class="text-lg text-gray-600 mt-2">Explore the most recent opportunities added to our platform.</p>
+            <div class="mt-4 w-24 h-1 bg-primary mx-auto"></div>
         </div>
 
-        <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-            <!-- Find a Job Button (Login/Register) -->
-            <a href="{{ url_for('google_auth.login') }}" class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-lg font-bold shadow-lg transition duration-300 text-lg transform hover:scale-105">
-                <i class="fas fa-search mr-2"></i> Find a Job Now
-            </a>
-            <!-- Browse Jobs Button (No Login Required) -->
-            <a href="{{ url_for('candidate_routes.jobs') }}" class="bg-white/90 text-gray-800 border-2 border-transparent hover:bg-white px-10 py-4 rounded-lg font-bold transition duration-300 text-lg transform hover:scale-105">
-                <i class="fas fa-briefcase mr-2"></i> Browse Opportunities
+        <!-- Job Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            {% if recent_jobs %}
+                {% for job in recent_jobs %}
+                <div class="bg-white rounded-lg shadow-md p-6 flex flex-col hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="flex-grow">
+                        <h3 class="text-xl font-semibold text-primary mb-2">{{ job.title }}</h3>
+                        <p class="text-gray-700 font-medium mb-1"><i class="fas fa-building fa-fw mr-2 text-gray-400"></i>{{ job.company }}</p>
+                        {% if job.location %}
+                        <p class="text-gray-600 mb-3"><i class="fas fa-map-marker-alt fa-fw mr-2 text-gray-400"></i>{{ job.location }}</p>
+                        {% endif %}
+                        <p class="text-gray-600 text-sm mb-4">
+                            {{ job.description|striptags|truncate(100) }}
+                        </p>
+                    </div>
+                    <div class="mt-auto pt-4 border-t border-gray-200">
+                        {% if job.linkedin_url %}
+                            <a href="{{ job.linkedin_url }}" target="_blank" class="w-full text-center inline-block bg-blue-600 text-white font-medium py-2 px-4 rounded-md hover:bg-blue-700 transition duration-200">
+                                View & Apply
+                            </a>
+                        {% else %}
+                             <a href="{{ url_for('candidate_routes.jobs') }}" class="w-full text-center inline-block bg-gray-600 text-white font-medium py-2 px-4 rounded-md hover:bg-gray-700 transition duration-200">
+                                View Details
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="col-span-full text-center py-8">
+                    <p class="text-gray-500">No job openings available at the moment. Please check back later.</p>
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- View All Button -->
+        <div class="text-center mt-12">
+            <a href="{{ url_for('candidate_routes.jobs') }}" class="bg-primary text-white font-bold py-3 px-8 rounded-full hover:bg-opacity-90 transition duration-300">
+                Browse All Jobs
             </a>
         </div>
+        
     </div>
 </section>
-
     {% include 'footer.html' %}
     
     <script>
