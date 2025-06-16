@@ -9,12 +9,12 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         body { font-family: 'Inter', sans-serif; }
-        .bg-hero { background-image: linear-gradient(rgba(30, 61, 89, 0.9) 0%, rgba(30, 61, 89, 0.7) 100%), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop'); background-size: cover; background-position: center; background-attachment: fixed; }
+        .bg-hero { background-image: linear-gradient(rgba(30, 61, 89, 0.85), rgba(30, 61, 89, 0.7)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop'); background-size: cover; background-position: center; background-attachment: fixed; }
         .hover-scale { transition: transform 0.3s ease; }
         .hover-scale:hover { transform: translateY(-5px) scale(1.02); }
         .gradient-text { background: linear-gradient(135deg, #007BFF, #FF6B35); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
-        /* NEW: Styles for the Flipping Testimonial Cards */
+        /* Styles for the Flipping Testimonial Cards */
         .flip-card { perspective: 1000px; }
         .flip-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s; transform-style: preserve-3d; }
         .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
@@ -37,34 +37,7 @@
                     <p class="text-lg md:text-xl text-white/90 mb-10 leading-relaxed">Making quality education and job opportunities accessible to students from government schools.</p>
                     <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center md:justify-start">
                         <a href="{{ url_for('learning_hub') }}" class="bg-[#007BFF] hover:bg-[#0069d9] text-white px-8 py-4 rounded-lg transition duration-300 shadow-lg flex items-center justify-center hover-scale"><i class="fas fa-book-open mr-2"></i> START LEARNING</a>
-                        <a href="{{ url_for('job_portal_index') }}" class="bg-[#FF6B35] hover:bg-[#eYou have some fantastic ideas for making the homepage more dynamic and interactive. I will provide the complete, restructured `index.html` file that implements all of your requests.
-
-This new version will have:
-1.  A properly structured layout, combining all sections into a single, cohesive page.
-2.  A redesigned "Our Partners" section with more engaging cards.
-3.  A new "flip card" effect for testimonials: on hover, the card will "flip" to reveal the embedded YouTube video.
-4.  The star ratings will be removed from the testimonial cards.
-5.  A single, clean `<script>` block at the end to handle all interactivity.
-
----
-
-### **Step 1: Update the Data in `app.py`**
-
-This step doesn't change. We still need to pass the `recent_jobs` and `testimonials` data to the homepage.
-
-**File:** `app.py`
-```python
-# In the home() route function
-@app.route('/')
-def home():
-    recent_jobs = get_all_jobs()[:4]
-    testimonials = TESTIMONIALS_DATA.get('testimonials', [])
-    return render_template(
-        'index.html', 
-        recent_jobs=recent_jobs,
-        testimonials=testimonials
-    )
-05a2a] text-white px-8 py-4 rounded-lg transition duration-300 shadow-lg flex items-center justify-center hover-scale"><i class="fas fa-briefcase mr-2"></i> FIND JOBS</a>
+                        <a href="{{ url_for('job_portal_index') }}" class="bg-[#FF6B35] hover:bg-[#e05a2a] text-white px-8 py-4 rounded-lg transition duration-300 shadow-lg flex items-center justify-center hover-scale"><i class="fas fa-briefcase mr-2"></i> FIND JOBS</a>
                     </div>
                 </div>
             </div>
@@ -77,28 +50,7 @@ def home():
                 <div class="grid md:grid-cols-3 gap-10">
                     <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden hover-scale group p-8 flex flex-col items-center text-center"><div class="bg-gradient-to-r from-blue-100 to-blue-200 p-6 rounded-full mb-6 group-hover:scale-110 transition duration-300"><i class="fas fa-language text-[#007BFF] text-4xl"></i></div><h3 class="text-xl font-bold text-[#1E3D59] mb-4">Free English Learning</h3><p class="text-gray-600 mb-6 leading-relaxed">Learn English through interactive lessons, games, and activities designed especially for Hindi medium students</p><a href="{{ url_for('english_learning')}}" class="text-[#007BFF] font-medium hover:text-[#0069d9] flex items-center group-hover:translate-x-2 transition duration-300">Explore courses <i class="fas fa-arrow-right ml-2"></i></a></div>
                     <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden hover-scale group p-8 flex flex-col items-center text-center"><div class="bg-gradient-to-r from-green-100 to-green-200 p-6 rounded-full mb-6 group-hover:scale-110 transition duration-300"><i class="fas fa-laptop-code text-green-600 text-4xl"></i></div><h3 class="text-xl font-bold text-[#1E3D59] mb-4">Computer Skills</h3><p class="text-gray-600 mb-6 leading-relaxed">Build essential computer and programming skills needed for today's job market</p><a href="{{ url_for('python_learning')}}" class="text-green-600 font-medium hover:text-green-700 flex items-center group-hover:translate-x-2 transition duration-300">View programs <i class="fas fa-arrow-right ml-2"></i></a></div>
-                    <div class="```
-
----
-
-### **Step 2: The New, Complete `index.html`**
-
-This is the main update. Please **replace the entire content of your `templates/index.html` file** with this new, fully structured version.
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Under The Mango Tree - Education Platform</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        .bg-hero {
-           background-image: linear-gradient(rgba(30, 61, 89, 0.85), rgba(30, 61, 89, 0.7)), url('https://images.unsplash.com/photo-1522202176bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden hover-scale group p-8 flex flex-col items-center text-center"><div class="bg-gradient-to-r from-purple-100 to-purple-200 p-6 rounded-full mb-6 group-hover:scale-110 transition duration-300"><i class="fas fa-handshake text-purple-600 text-4xl"></i></div><h3 class="text-xl font-bold text-[#1E3D59] mb-4">Job Connections</h3><p class="text-gray-600 mb-6 leading-relaxed">Connect with companies offering entry-level positions and internships for freshers</p><a href="{{ url_for('job_portal_index') }}" class="text-purple-600 font-medium hover:text-purple-700 flex items-center group-hover:translate-x-2 transition duration-300">Find opportunities <i class="fas fa-arrow-right ml-2"></i></a></div>
+                    <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden hover-scale group p-8 flex flex-col items-center text-center"><div class="bg-gradient-to-r from-purple-100 to-purple-200 p-6 rounded-full mb-6 group-hover:scale-110 transition duration-300"><i class="fas fa-handshake text-purple-600 text-4xl"></i></div><h3 class="text-xl font-bold text-[#1E3D59] mb-4">Job Connections</h3><p class="text-gray-600 mb-6 leading-relaxed">Connect with companies offering entry-level positions and internships for freshers</p><a href="{{ url_for('job_portal_index') }}" class="text-purple-600 font-medium hover:text-purple-700 flex items-center group-hover:translate-x-2 transition duration-300">Find opportunities <i class="fas fa-arrow-right ml-2"></i></a></div>
                 </div>
             </div>
         </section>
@@ -111,7 +63,7 @@ This is the main update. Please **replace the entire content of your `templates/
                     {% if testimonials %}
                         {% for t in testimonials %}
                         <!-- Flipping Card Container -->
-                        <div class="flip-card h-80"> <!-- Set a fixed height for the card -->
+                        <div class="flip-card h-80"> <!-- Set a fixed height for all cards -->
                             <div class="flip-card-inner">
                                 <!-- Front of the Card (The Testimonial) -->
                                 <div class="flip-card-front bg-gradient-to-br {{ t.gradient_from }} {{ t.gradient_to }} rounded-xl p-8 shadow-lg flex flex-col">
@@ -128,7 +80,9 @@ This is the main update. Please **replace the entire content of your `templates/
                                 <!-- Back of the Card (The Video) -->
                                 <div class="flip-card-back">
                                     <div class="video-iframe-container">
-                                        <iframe src="https://www.youtube.com/embed/{{ t.youtube_embed_id }}" title="{{ t.name }}'s Testimonial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                        {% if t.youtube_embed_id %}
+                                            <iframe loading="lazy" src="https://www.youtube.com/embed/{{ t.youtube_embed_id }}" title="{{ t.name }}'s Testimonial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
@@ -155,7 +109,7 @@ This is the main update. Please **replace the entire content of your `templates/
 
     {% include 'footer.html' %}
     
-    <!-- Single Script block for all page logic -->
+    <!-- All JavaScript for the page in one block -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Mobile menu toggle functionality
@@ -186,6 +140,6 @@ This is the main update. Please **replace the entire content of your `templates/
                 });
             }
         });
-    </script>
+    </script> 
 </body>
 </html>
