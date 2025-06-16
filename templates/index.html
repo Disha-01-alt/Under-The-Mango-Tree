@@ -366,26 +366,6 @@
         </div>
     </section>
 
-  <!-- ================================== -->
-<!-- ================================== -->
-<!-- JOB PORTAL ENTRY SECTION         -->
-<!-- ================================== -->
-<section class="py-16 bg-gray-100">
-    <div class="container mx-auto px-6 text-center">
-        <i class="fas fa-briefcase text-5xl text-blue-600 mb-4"></i>
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Explore Career Opportunities</h2>
-        <p class="text-lg text-gray-600 mt-2 mb-6">
-            Find jobs, build your profile, and connect with top recruiters.
-        </p>
-        <a href="{{ url_for('job_portal_index') }}" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-700 transition duration-300 transform hover:scale-105">
-            Go to Job Portal
-        </a>
-    </div>
-</section>
-
-
-<!-- In templates/index.html -->
-
 <main class="flex-grow">
     
     <!-- ================================== -->
@@ -395,7 +375,7 @@
         <div class="container mx-auto px-6">
             
             <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
-                Your Career Journey Starts Here
+                Explore Career Opportunities
             </h1>
             
             <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
@@ -404,9 +384,9 @@
 
             <!-- Job Portal Button -->
             <div class="mt-8">
-                <a href="{{ url_for('job_portal_index') }}" class="inline-block bg-primary text-white font-bold text-lg py-3 px-8 rounded-full shadow-lg hover:bg-opacity-90 transition duration-300 transform hover:scale-105">
-                    <i class="fas fa-briefcase mr-2"></i> Explore the Job Portal
-                </a>
+               <a href="{{ url_for('job_portal_index') }}" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-700 transition duration-300 transform hover:scale-105">
+            Go to Job Portal
+        </a>
             </div>
             
             <!-- Hashtag-style Callouts -->
