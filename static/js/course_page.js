@@ -2,11 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- Sidebar Toggle Logic ---
     const sidebar = document.getElementById('course-sidebar');
     const mainContent = document.getElementById('main-content');
-    // In static/js/course_page.js
-
-// Change this line
-const toggleButton = document.getElementById('floating-sidebar-toggle'); 
-// The rest of the script remains exactly the same.
+   toggleButton = document.getElementById('sidebar-toggle');
     const toggleIcon = document.getElementById('sidebar-toggle-icon');
 
     if (sidebar && mainContent && toggleButton && toggleIcon) {
