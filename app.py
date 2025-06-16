@@ -140,7 +140,7 @@ PYTHON_DATA = load_course_data('python_learning_data.json')
 ML_DATA = load_course_data('machine_learning_data.json')
 DL_DATA = load_course_data('deep_learning_data.json')
 ALGORITHMS_DATA = load_course_data('algorithms_data.json')
-INTERVIEW_PREP_DATA = load_course_data('interview_prep_data.json')
+SOFT_SKILLS_DATA = load_course_data('soft_skills.json')
 PROJECTS_DATA = load_course_data('projects_data.json')
 TEAM_DATA = load_course_data('team_data.json')
 logging.info("All course and site data loaded.")
@@ -238,18 +238,18 @@ def algorithms(video_id=None):
 
     return render_template('algorithms_course_page.html', course_data=ALGORITHMS_DATA, current_video=current_video, current_topic_name=topic_name, prev_video=prev_video, next_video=next_video)
 
-@app.route('/interview-preparation/')
-@app.route('/interview-preparation/<video_id>')
-def interview_preparation(video_id=None):
+@app.route('/soft-skills/')
+@app.route('/soft-skills/<video_id>')
+def soft_skills(video_id=None):
     if not video_id:
-        first_video_id = INTERVIEW_PREP_DATA.get('topics', [{}])[0].get('videos', [{}])[0].get('id')
-        return redirect(url_for('interview_preparation', video_id=first_video_id)) if first_video_id is not None else render_template('interview_prep_course_page.html', course_data=INTERVIEW_PREP_DATA)
+        first_video_id = SOFT_SKILLS_DATA.get('topics', [{}])[0].get('videos', [{}])[0].get('id')
+        return redirect(url_for('soft_skills', video_id=first_video_id)) if first_video_id is not None else render_template('soft_skills.html', course_data=INTERVIEW_PREP_DATA)
         
-    current_video, topic_name, prev_video, next_video = find_video_details(video_id, INTERVIEW_PREP_DATA)
+    current_video, topic_name, prev_video, next_video = find_video_details(video_id,SOFT_SKILLS_DATA)
     if not current_video:
-        return redirect(url_for('interview_preparation'))
+        return redirect(url_for('soft_skills'))
         
-    return render_template('interview_prep_course_page.html', course_data=INTERVIEW_PREP_DATA, current_video=current_video, current_topic_name=topic_name, prev_video=prev_video, next_video=next_video)
+    return render_template('soft_skills.html', course_data=SOFT_SKILLS_DATA, current_video=current_video, current_topic_name=topic_name, prev_video=prev_video, next_video=next_video)
 
 @app.route('/projects')
 def projects():
