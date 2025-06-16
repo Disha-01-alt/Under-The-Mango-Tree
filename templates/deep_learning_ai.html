@@ -11,84 +11,26 @@
 
     <!-- Custom Styles -->
     <style>
-        /* General Styles */
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; }
-
-        /* Sidebar Accordion Styling */
-        .sidebar-accordion .accordion-button {
-            background-color: #f9fafb;
-            border-bottom: 1px solid #e5e7eb;
-            font-weight: 600;
-            padding: 0.75rem 1rem;
-            text-align: left;
-            width: 100%;
-            cursor: pointer;
-            position: relative;
-        }
+        .sidebar-accordion .accordion-button { background-color: #f9fafb; border-bottom: 1px solid #e5e7eb; font-weight: 600; padding: 0.75rem 1rem; text-align: left; width: 100%; cursor: pointer; position: relative; }
         .sidebar-accordion .accordion-button:hover { background-color: #f3f4f6; }
-        .sidebar-accordion .accordion-button::after {
-            content: '\f078'; /* Font Awesome chevron-down */
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            right: 1rem;
-            transition: transform 0.2s ease-in-out;
-        }
-        .sidebar-accordion .accordion-button.collapsed::after {
-            transform: rotate(-90deg);
-        }
-        .sidebar-accordion .accordion-content {
-            display: none;
-            background-color: white;
-        }
-        .sidebar-accordion .accordion-content.show {
-            display: block;
-        }
-        .sidebar-accordion .video-link {
-            display: block;
-            padding: 0.6rem 1rem 0.6rem 2rem;
-            color: #374151;
-            text-decoration: none;
-            border-bottom: 1px solid #f3f4f6;
-            transition: background-color 0.2s;
-        }
+        .sidebar-accordion .accordion-button::after { content: '\f078'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; right: 1rem; transition: transform 0.2s ease-in-out; }
+        .sidebar-accordion .accordion-button.collapsed::after { transform: rotate(-90deg); }
+        .sidebar-accordion .accordion-content { display: none; background-color: white; }
+        .sidebar-accordion .accordion-content.show { display: block; }
+        .sidebar-accordion .video-link { display: block; padding: 0.6rem 1rem 0.6rem 2rem; color: #374151; text-decoration: none; border-bottom: 1px solid #f3f4f6; transition: background-color 0.2s; }
         .sidebar-accordion .video-link:last-child { border-bottom: none; }
         .sidebar-accordion .video-link:hover { background-color: #eff6ff; }
-        .sidebar-accordion .video-link.active {
-            background-color: #3b82f6;
-            color: white;
-            font-weight: 500;
-        }
-
-        /* Video Iframe Container */
-        .video-iframe-container {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-            height: 0;
-            overflow: hidden;
-            border-radius: 0.5rem;
-        }
-        .video-iframe-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        /* Content Card Styling */
-        .content-card ul li {
-            display: flex;
-            align-items: flex-start;
-        }
-        .content-card ul i {
-            margin-top: 0.25rem;
-        }
-        .content-card ul a i {
-             /* Ensure icon in links also aligns */
-            margin-top: 0.1rem; /* Adjust slightly if needed */
-        }
-
+        .sidebar-accordion .video-link.active { background-color: #3b82f6; color: white; font-weight: 500; }
+        .video-iframe-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 0.5rem; }
+        .video-iframe-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .content-card ul li { display: flex; align-items: flex-start; }
+        .content-card ul i { margin-top: 0.25rem; }
+        .content-card ul a i { margin-top: 0.1rem; }
+        
+        /* Styles for Sidebar Hiding/Showing Transitions */
+        #course-sidebar { transition: all 0.3s ease-in-out; }
+        #main-content { transition: all 0.3s ease-in-out; }
     </style>
 </head>
 <body class="bg-gray-100">
@@ -97,9 +39,9 @@
 
     <main class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
         <div class="lg:grid lg:grid-cols-12 lg:gap-8">
-
+            
             <!-- Sidebar -->
-            <aside class="lg:col-span-4 xl:col-span-3">
+            <aside id="course-sidebar" class="lg:col-span-4 xl:col-span-3">
                 <div class="sticky top-4 space-y-4">
                     <section aria-labelledby="course-sidebar-title">
                         <div class="bg-white rounded-lg shadow">
@@ -119,8 +61,8 @@
                                     </button>
                                     <div class="accordion-content {% if topic.name == current_topic_name %}show{% endif %}">
                                         {% for video in topic.videos %}
-                                        {# Assuming video.id is available for linking #}
-                                        <a href="{{ url_for('deep_learning_ai', video_id=video.id) }}" class="video-link {% if current_video and video.id == current_video.id %}active{% endif %}">
+                                        {# IMPORTANT: This url_for must match the endpoint of the current course page #}
+                                        <a href="{{ url_for(course_data.endpoint, video_id=video.id) }}" class="video-link {% if current_video and video.id == current_video.id %}active{% endif %}">
                                             {{ video.title }}
                                         </a>
                                         {% endfor %}
@@ -134,32 +76,51 @@
             </aside>
 
             <!-- Main Content -->
-            <div class="lg:col-span-8 xl:col-span-9">
+            <div id="main-content" class="lg:col-span-8 xl:col-span-9">
                 {% if current_video %}
                     <div class="space-y-6">
-                        <!-- Video Player -->
+                        <!-- Video Player and Controls -->
                         <div>
-                            <h1 class="text-2xl font-bold text-gray-900 mb-4">{{ current_video.title }}</h1>
+                            <div class="flex justify-between items-center mb-4">
+                                <h1 class="text-2xl font-bold text-gray-900">{{ current_video.title }}</h1>
+                                <!-- Sidebar Toggle Button -->
+                                <button id="sidebar-toggle" title="Toggle Sidebar" class="p-2 rounded-md hover:bg-gray-200 text-gray-600">
+                                    <i id="sidebar-toggle-icon" class="fas fa-angles-left"></i>
+                                </button>
+                            </div>
                             <div class="bg-black rounded-lg shadow-lg">
                                 <div class="video-iframe-container">
-                                    {% if current_video.youtube_url %}
-                                    {% set video_id = current_video.youtube_url.split('v=')[-1].split('&')[0].split('/')[-1] %} {# Extract ID #}
-                                    <iframe src="https://www.youtube.com/embed/{{ video_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                    {% else %}
-                                    <p class="text-white p-4">Video URL not available.</p>
-                                    {% endif %}
+                                    <iframe src="https://www.youtube.com/embed/{{ current_video.youtube_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </div>
                             </div>
+                             <!-- Previous/Next Video Buttons -->
+                            <div class="flex justify-between mt-4">
+                                {% if prev_video %}
+                                    <a href="{{ url_for(course_data.endpoint, video_id=prev_video.id) }}" class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                                        <i class="fas fa-arrow-left mr-2"></i> Previous
+                                    </a>
+                                {% else %}
+                                    <!-- Empty div for spacing -->
+                                    <div></div>
+                                {% endif %}
+                                
+                                {% if next_video %}
+                                    <a href="{{ url_for(course_data.endpoint, video_id=next_video.id) }}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
+                                        Next Lesson <i class="fas fa-arrow-right ml-2"></i>
+                                    </a>
+                                {% else %}
+                                     <span class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-gray-500 bg-gray-200 cursor-not-allowed">
+                                        End of Course
+                                    </span>
+                                {% endif %}
+                            </div>
                         </div>
-
-                        {% if current_video.what_you_will_learn %}
+                        
                         <!-- What You Will Learn -->
+                        {% if current_video.what_you_will_learn %}
                         <div class="bg-white rounded-lg shadow content-card">
                             <div class="p-6">
-                                <h3 class="font-medium text-gray-900 flex items-center">
-                                    <i class="fas fa-graduation-cap text-blue-500 mr-3"></i>
-                                    <span>What You Will Learn</span>
-                                </h3>
+                                <h3 class="font-medium text-gray-900 flex items-center"><i class="fas fa-graduation-cap text-blue-500 mr-3"></i><span>What You Will Learn</span></h3>
                                 <ul class="mt-4 space-y-2 text-gray-600">
                                     {% for point in current_video.what_you_will_learn %}
                                     <li><i class="fas fa-check-circle text-green-500 w-5 mr-2"></i><span>{{ point }}</span></li>
@@ -169,46 +130,29 @@
                         </div>
                         {% endif %}
 
-                        {% if current_video.content_covered %}
                         <!-- Content Covered -->
+                        {% if current_video.content_covered %}
                         <div class="bg-white rounded-lg shadow content-card">
                             <div class="p-6">
-                                <h3 class="font-medium text-gray-900 flex items-center">
-                                    <i class="fas fa-file-alt text-indigo-500 mr-3"></i>
-                                    <span>Content Covered</span>
-                                </h3>
+                                <h3 class="font-medium text-gray-900 flex items-center"><i class="fas fa-file-alt text-indigo-500 mr-3"></i><span>Content Covered</span></h3>
                                 <p class="mt-4 text-gray-600">{{ current_video.content_covered }}</p>
                             </div>
                         </div>
                         {% endif %}
 
-                        <!-- Video Resources -->
+                        <!-- Resources -->
                         <div class="bg-white rounded-lg shadow content-card">
                             <div class="p-6">
-                                <h3 class="font-medium text-gray-900 flex items-center">
-                                    <i class="fas fa-tools text-gray-500 mr-3"></i>
-                                    <span>Resources for this Lesson</span>
-                                </h3>
+                                <h3 class="font-medium text-gray-900 flex items-center"><i class="fas fa-tools text-gray-500 mr-3"></i><span>Resources</span></h3>
                                 <ul class="mt-4 space-y-3">
                                     {% if current_video.resources %}
                                         {% for resource in current_video.resources %}
                                         <li>
-                                            {% if resource.url and resource.url != '#' %}
-                                            <a href="{{ resource.url }}" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline flex items-center">
-                                                {# Use icon if provided, fallback to link icon #}
-                                                <i class="{{ resource.icon | default('fas fa-link') }} w-5 mr-3 text-gray-400"></i>
-                                                <span>{{ resource.name }}</span>
-                                            </a>
-                                            {% else %}
-                                            <span class="text-gray-600 flex items-center">
-                                                 <i class="{{ resource.icon | default('fas fa-file') }} w-5 mr-3 text-gray-400"></i>
-                                                {{ resource.name }} (URL not available)
-                                            </span>
-                                            {% endif %}
+                                            <a href="{{ resource.url }}" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline flex items-center"><i class="{{ resource.icon | default('fas fa-link') }} w-5 mr-3 text-gray-400"></i><span>{{ resource.name }}</span></a>
                                         </li>
                                         {% endfor %}
                                     {% else %}
-                                        <li class="text-gray-500 italic">No additional resources listed for this lesson.</li>
+                                        <li class="text-gray-500 italic">No additional resources for this lesson.</li>
                                     {% endif %}
                                 </ul>
                             </div>
@@ -224,35 +168,53 @@
                         <p class="mt-4 text-gray-600">Please select a lesson from the sidebar to begin your learning journey.</p>
                     </div>
                 {% endif %}
-
-
-            </div> {# End of lg:col-span-8 xl:col-span-9 #}
-        </div> {# End of grid #}
+            </div> 
+        </div> 
     </main>
 
     {% include 'footer.html' %}
 
-    <!-- Simple JavaScript for the Accordion -->
+    <!-- JavaScript for Accordion and Sidebar Toggle -->
     <script>
         function toggleAccordion(button) {
             const content = button.nextElementSibling;
             const isCollapsed = button.classList.contains('collapsed');
-
-            // Collapse all other open accordions
             document.querySelectorAll('.sidebar-accordion .accordion-content.show').forEach(item => {
                 if (item !== content) {
                     item.classList.remove('show');
                     item.previousElementSibling.classList.add('collapsed');
                 }
             });
-
-            // Toggle the clicked accordion
             button.classList.toggle('collapsed', !isCollapsed);
-            content.classList.toggle('show', isCollapsed);
+            if(content) {
+                content.classList.toggle('show', isCollapsed);
+            }
         }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.getElementById('course-sidebar');
+            const mainContent = document.getElementById('main-content');
+            const toggleButton = document.getElementById('sidebar-toggle');
+            const toggleIcon = document.getElementById('sidebar-toggle-icon');
 
-        // Optional: Auto-expand the current topic on page load
-        document.addEventListener('DOMContentLoaded', () => {
+            if (sidebar && mainContent && toggleButton && toggleIcon) {
+                toggleButton.addEventListener('click', function() {
+                    const isHidden = sidebar.classList.toggle('hidden');
+                    
+                    if (isHidden) {
+                        mainContent.classList.remove('lg:col-span-8', 'xl:col-span-9');
+                        mainContent.classList.add('lg:col-span-12');
+                        toggleIcon.classList.remove('fa-angles-left');
+                        toggleIcon.classList.add('fa-angles-right');
+                    } else {
+                        mainContent.classList.remove('lg:col-span-12');
+                        mainContent.classList.add('lg:col-span-8', 'xl:col-span-9');
+                        toggleIcon.classList.remove('fa-angles-right');
+                        toggleIcon.classList.add('fa-angles-left');
+                    }
+                });
+            }
+
             const activeLink = document.querySelector('.sidebar-accordion .video-link.active');
             if (activeLink) {
                 const accordionContent = activeLink.closest('.accordion-content');
@@ -260,15 +222,8 @@
                     accordionContent.classList.add('show');
                     accordionContent.previousElementSibling.classList.remove('collapsed');
                 }
-            } else {
-                 // If no active video, maybe expand the first topic?
-                 const firstButton = document.querySelector('.sidebar-accordion .accordion-button');
-                 if (firstButton) {
-                     firstButton.click(); // Simulate click to expand the first topic
-                 }
             }
         });
-
     </script>
 </body>
 </html>
