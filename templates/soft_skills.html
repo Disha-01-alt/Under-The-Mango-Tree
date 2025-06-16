@@ -59,7 +59,7 @@
                                     <div class="accordion-content {% if topic.name == current_topic_name %}show{% endif %}">
                                         {% for video in topic.videos %}
                                         {# IMPORTANT: Change 'deep_learning_ai' to the correct endpoint for each template #}
-                                        <a href="{{ url_for('soft-skills', video_id=video.id) }}" class="video-link {% if current_video and video.id == current_video.id %}active{% endif %}">
+                                        <a href="{{ url_for('soft_skills', video_id=video.id) }}" class="video-link {% if current_video and video.id == current_video.id %}active{% endif %}">
                                             {{ video.title }}
                                         </a>
                                         {% endfor %}
@@ -93,7 +93,7 @@
                              <!-- Previous/Next Video Buttons -->
                             <div class="flex justify-between mt-4">
                                 {% if prev_video %}
-                                    <a href="{{ url_for('soft-skills', video_id=prev_video.id) }}" class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                                    <a href="{{ url_for('soft_skills', video_id=prev_video.id) }}" class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
                                         <i class="fas fa-arrow-left mr-2"></i> Previous
                                     </a>
                                 {% else %}
@@ -102,7 +102,7 @@
                                 {% endif %}
                                 
                                 {% if next_video %}
-                                    <a href="{{ url_for('soft-skills', video_id=next_video.id) }}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
+                                    <a href="{{ url_for('soft_skills', video_id=next_video.id) }}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
                                         Next Lesson <i class="fas fa-arrow-right ml-2"></i>
                                     </a>
                                 {% else %}
