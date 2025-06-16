@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ current_video.title if current_video else course_data.course_title }} - Under The Mango Tree</title>
+    
+    <!-- Libraries -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- Custom Styles -->
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; }
         .sidebar-accordion .accordion-button { background-color: #f9fafb; border-bottom: 1px solid #e5e7eb; font-weight: 600; padding: 0.75rem 1rem; text-align: left; width: 100%; cursor: pointer; position: relative; }
@@ -20,60 +24,169 @@
         .sidebar-accordion .video-link.active { background-color: #3b82f6; color: white; font-weight: 500; }
         .video-iframe-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 0.5rem; }
         .video-iframe-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .content-card ul li { display: flex; align-items: flex-start; }
+        .content-card ul i { margin-top: 0.25rem; }
+        .content-card ul a i { margin-top: 0.1rem; }
         #course-sidebar, #main-content { transition: all 0.3s ease-in-out; }
     </style>
 </head>
 <body class="bg-gray-100">
+
     {% include 'header.html' %}
+
     <main class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
         <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+            
+            <!-- Sidebar -->
             <aside id="course-sidebar" class="lg:col-span-4 xl:col-span-3">
                 <div class="sticky top-4 space-y-4">
-                    <div class="bg-white rounded-lg shadow">
-                        <div class="p-6"><h2 class="text-lg font-medium text-gray-900">{{ course_data.course_title }}</h2></div>
-                        <div class="sidebar-accordion border-t border-gray-200">
-                            {% for topic in course_data.topics %}
-                            <div class="accordion-item border-b border-gray-200">
-                                <button class="accordion-button {% if topic.name != current_topic_name %}collapsed{% endif %}" onclick="toggleAccordion(this)"><span>{{ topic.name }}</span></button>
-                                <div class="accordion-content {% if topic.name == current_topic_name %}show{% endif %}">
-                                    {% for video in topic.videos %}
-                                    <a href="{{ url_for('interview_preparation', video_id=video.id) }}" class="video-link {% if current_video and video.id == current_video.id %}active{% endif %}">{{ video.title }}</a>
-                                    {% endfor %}
-                                </div>
+                    <section aria-labelledby="course-sidebar-title">
+                        <div class="bg-white rounded-lg shadow">
+                            <div class="p-6">
+                                <h2 id="course-sidebar-title" class="text-lg font-medium text-gray-900">
+                                    {{ course_data.course_title }}
+                                </h2>
+                                {% if course_data.prerequisites %}
+                                    <p class="mt-3 text-sm text-gray-700">{{ course_data.prerequisites }}</p>
+                                {% endif %}
                             </div>
-                            {% endfor %}
+                            <div class="sidebar-accordion border-t border-gray-200">
+                                {% for topic in course_data.topics %}
+                                <div class="accordion-item border-b border-gray-200">
+                                    <button class="accordion-button {% if topic.name != current_topic_name %}collapsed{% endif %}" onclick="toggleAccordion(this)">
+                                        <span>{{ topic.name }}</span>
+                                    </button>
+                                    <div class="accordion-content {% if topic.name == current_topic_name %}show{% endif %}">
+                                        {% for video in topic.videos %}
+                                        {# IMPORTANT: Change 'deep_learning_ai' to the correct endpoint for each template #}
+                                        <a href="{{ url_for('interview-preparation', video_id=video.id) }}" class="video-link {% if current_video and video.id == current_video.id %}active{% endif %}">
+                                            {{ video.title }}
+                                        </a>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
                         </div>
-                    </div>
+                    </section>
                 </div>
             </aside>
+
+            <!-- Main Content -->
             <div id="main-content" class="lg:col-span-8 xl:col-span-9">
                 {% if current_video %}
-                <div class="space-y-6">
-                    <div>
-                        <div class="flex justify-between items-center mb-4">
-                            <h1 class="text-2xl font-bold text-gray-900">{{ current_video.title }}</h1>
-                            <button id="sidebar-toggle" title="Toggle Sidebar" class="p-2 rounded-md hover:bg-gray-200 text-gray-600"><i id="sidebar-toggle-icon" class="fas fa-angles-left"></i></button>
+                    <div class="space-y-6">
+                        <!-- Video Player and Controls -->
+                        <div>
+                            <div class="flex justify-between items-center mb-4">
+                                <h1 class="text-2xl font-bold text-gray-900">{{ current_video.title }}</h1>
+                                <!-- Sidebar Toggle Button -->
+                                <button id="sidebar-toggle" title="Toggle Sidebar" class="p-2 rounded-md hover:bg-gray-200 text-gray-600">
+                                    <i id="sidebar-toggle-icon" class="fas fa-angles-left"></i>
+                                </button>
+                            </div>
+                            <div class="bg-black rounded-lg shadow-lg">
+                                <div class="video-iframe-container">
+                                    <iframe src="https://www.youtube.com/embed/{{ current_video.youtube_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                             <!-- Previous/Next Video Buttons -->
+                            <div class="flex justify-between mt-4">
+                                {% if prev_video %}
+                                    <a href="{{ url_for('interview-preparation', video_id=prev_video.id) }}" class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                                        <i class="fas fa-arrow-left mr-2"></i> Previous
+                                    </a>
+                                {% else %}
+                                    <!-- Empty div for spacing -->
+                                    <div></div>
+                                {% endif %}
+                                
+                                {% if next_video %}
+                                    <a href="{{ url_for('interview-preparation', video_id=next_video.id) }}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
+                                        Next Lesson <i class="fas fa-arrow-right ml-2"></i>
+                                    </a>
+                                {% else %}
+                                     <span class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-gray-500 bg-gray-200 cursor-not-allowed">
+                                        End of Course
+                                    </span>
+                                {% endif %}
+                            </div>
                         </div>
-                        <div class="bg-black rounded-lg shadow-lg">
-                            <div class="video-iframe-container"><iframe src="https://www.youtube.com/embed/{{ current_video.youtube_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                        
+                        <!-- What You Will Learn -->
+                        {% if current_video.what_you_will_learn %}
+                        <div class="bg-white rounded-lg shadow content-card">
+                            <div class="p-6">
+                                <h3 class="font-medium text-gray-900 flex items-center"><i class="fas fa-graduation-cap text-blue-500 mr-3"></i><span>What You Will Learn</span></h3>
+                                <ul class="mt-4 space-y-2 text-gray-600">
+                                    {% for point in current_video.what_you_will_learn %}
+                                    <li><i class="fas fa-check-circle text-green-500 w-5 mr-2"></i><span>{{ point }}</span></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
                         </div>
-                        <div class="flex justify-between mt-4">
-                            {% if prev_video %}<a href="{{ url_for('interview_preparation', video_id=prev_video.id) }}" class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"><i class="fas fa-arrow-left mr-2"></i> Previous</a>{% else %}<div></div>{% endif %}
-                            {% if next_video %}<a href="{{ url_for('interview_preparation', video_id=next_video.id) }}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">Next Lesson <i class="fas fa-arrow-right ml-2"></i></a>{% endif %}
+                        {% endif %}
+
+                        <!-- Content Covered -->
+                        {% if current_video.content_covered %}
+                        <div class="bg-white rounded-lg shadow content-card">
+                            <div class="p-6">
+                                <h3 class="font-medium text-gray-900 flex items-center"><i class="fas fa-file-alt text-indigo-500 mr-3"></i><span>Content Covered</span></h3>
+                                <p class="mt-4 text-gray-600">{{ current_video.content_covered }}</p>
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        <!-- Resources -->
+                        <div class="bg-white rounded-lg shadow content-card">
+                            <div class="p-6">
+                                <h3 class="font-medium text-gray-900 flex items-center"><i class="fas fa-tools text-gray-500 mr-3"></i><span>Resources</span></h3>
+                                <ul class="mt-4 space-y-3">
+                                    {% if current_video.resources %}
+                                        {% for resource in current_video.resources %}
+                                        <li><a href="{{ resource.url }}" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline flex items-center"><i class="{{ resource.icon | default('fas fa-link') }} w-5 mr-3 text-gray-400"></i><span>{{ resource.name }}</span></a></li>
+                                        {% endfor %}
+                                    {% else %}
+                                        <li class="text-gray-500 italic">No additional resources for this lesson.</li>
+                                    {% endif %}
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                    <!-- Other content cards here -->
-                </div>
                 {% else %}
-                <div class="bg-white rounded-lg shadow p-8 text-center"><h2 class="text-xl font-medium">Welcome!</h2><p class="mt-2">Select a lesson to begin.</p></div>
+                    <!-- Fallback message if no video is loaded -->
+                    <div class="bg-white rounded-lg shadow p-8 text-center">
+                        <h2 class="text-xl font-medium text-gray-900">Welcome to {{ course_data.course_title }}!</h2>
+                         {% if course_data.prerequisites %}
+                            <p class="mt-2 text-gray-700">{{ course_data.prerequisites }}</p>
+                         {% endif %}
+                        <p class="mt-4 text-gray-600">Please select a lesson from the sidebar to begin your learning journey.</p>
+                    </div>
                 {% endif %}
             </div>
         </div>
     </main>
+
     {% include 'footer.html' %}
+
+    <!-- JavaScript for Accordion and Sidebar Toggle -->
     <script src="{{ url_for('static', filename='js/course_page.js') }}"></script>
     <script>
-        function toggleAccordion(button) { /* Accordion JS */ }
+        // This script can be left in, or you can move it to course_page.js
+        function toggleAccordion(button) {
+            const content = button.nextElementSibling;
+            const isCollapsed = button.classList.contains('collapsed');
+            document.querySelectorAll('.sidebar-accordion .accordion-content.show').forEach(item => {
+                if (item !== content) {
+                    item.classList.remove('show');
+                    item.previousElementSibling.classList.add('collapsed');
+                }
+            });
+            button.classList.toggle('collapsed', !isCollapsed);
+            if(content) {
+                content.classList.toggle('show', isCollapsed);
+            }
+        }
     </script>
 </body>
 </html>
