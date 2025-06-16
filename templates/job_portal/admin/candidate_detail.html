@@ -276,18 +276,55 @@
 .rating-input .rating-star:hover ~ .rating-star { color: #ffc107; }
 .rating-input input[type="radio"]:checked + .rating-star ~ .rating-star { color: #6c757d; }
 </style>
+{% block scripts %}
+{{ super() }}
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const ratingContainer = document.querySelector('.rating-input');
     if (ratingContainer) {
-        const stars = ratingContainer.querySelectorAll('.rating-star');
-        stars.forEach(star => {
-            star.addEventListener('click', () => {
-                const radio = document.getElementById(star.getAttribute('for'));
-                if (radio) { radio.checked = true; }
+        const stars = Array.from(ratingContainer.querySelectorAll('.rating-star'));
+        const ratingRadios = ratingContainer.querySelectorAll('input[type="radio"]');
+
+        // Function to update the star colors based on a value
+        function updateStars(value) {
+            stars.forEach((star, index) => {
+                if (index < value) {
+                    star.classList.add('selected');
+                } else {
+                    star.classList.remove('selected');
+                }
+            });
+        }
+
+        // Handle mouse hovering over stars
+        stars.forEach((star, index) => {
+            star.addEventListener('mouseenter', () => {
+                updateStars(index + 1);
             });
         });
+
+        // When the mouse leaves the container, reset to the actual clicked value
+        ratingContainer.addEventListener('mouseleave', () => {
+            const checkedRadio = ratingContainer.querySelector('input[type="radio"]:checked');
+            const currentValue = checkedRadio ? parseInt(checkedRadio.value) : 0;
+            updateStars(currentValue);
+        });
+
+        // When a star is clicked, set the radio button's value
+        stars.forEach((star, index) => {
+            star.addEventListener('click', () => {
+                const radioToSelect = ratingRadios[index];
+                radioToSelect.checked = true;
+            });
+        });
+
+        // Set the initial state from the database on page load
+        const initialCheckedRadio = ratingContainer.querySelector('input[type="radio"]:checked');
+        if (initialCheckedRadio) {
+            updateStars(parseInt(initialCheckedRadio.value));
+        }
     }
 });
 </script>
+{% endblock %}
 {% endblock %}
