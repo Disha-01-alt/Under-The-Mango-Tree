@@ -23,8 +23,7 @@ from routes.company_routes import company_bp
 from google_auth import google_auth
 from database import init_db
 from auth import setup_auth
-from ateam import team_members, support_pillars # Assuming ateam.py exists
-
+from database import get_all_jobs
 # Configure logging
 logging.basicConfig(level=logging.INFO) # Use INFO for production, DEBUG for development
 
@@ -147,9 +146,18 @@ logging.info("All course and site data loaded.")
 
 # --- Route Definitions ---
 
+# In app.py
+
 @app.route('/')
 def home():
-    return render_template('index.html')
+    # Fetch all jobs and slice the list to get the 6 most recent ones
+    try:
+        recent_jobs = get_all_jobs()[:6]
+    except Exception as e:
+        logging.error(f"Could not fetch jobs for homepage: {e}")
+        recent_jobs = [] # Pass an empty list on error
+        
+    return render_template('index.html', recent_jobs=recent_jobs)
 
 @app.route('/learning-hub')
 def learning_hub():
