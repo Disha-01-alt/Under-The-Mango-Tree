@@ -384,57 +384,91 @@
 </section>
 
 
-<!-- ================================== -->
-<!-- HORIZONTAL SCROLLING JOBS SECTION  -->
-<!-- ================================== -->
-<section class="py-16">
-    <div class="container mx-auto px-6">
-        <!-- Section Header -->
-        <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Most Recent Jobs</h2>
-            <p class="text-lg text-gray-600 mt-2">Get a glimpse of the latest roles added to our platform.</p>
-            <div class="mt-4 w-24 h-1 bg-primary mx-auto"></div>
-        </div>
+<!-- In templates/index.html -->
 
-        <!-- Horizontal Scrolling Container -->
-        <div class="flex overflow-x-auto space-x-8 pb-6">
+<main class="flex-grow">
+    
+    <!-- ================================== -->
+    <!-- HERO & JOB PORTAL BUTTON SECTION   -->
+    <!-- ================================== -->
+    <section class="py-20 text-center bg-gray-50">
+        <div class="container mx-auto px-6">
             
-            {% if recent_jobs %}
-                {% for job in recent_jobs %}
-                <!-- Job Card -->
-                <div class="flex-shrink-0 w-80 bg-white rounded-lg shadow-md p-6 flex flex-col hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                    <div class="flex-grow">
-                        <h3 class="text-lg font-semibold text-primary mb-2 truncate" title="{{ job.title }}">{{ job.title }}</h3>
-                        <p class="text-gray-700 font-medium mb-1 truncate" title="{{ job.company }}"><i class="fas fa-building fa-fw mr-2 text-gray-400"></i>{{ job.company }}</p>
-                        {% if job.location %}
-                        <p class="text-gray-600 mb-3 truncate" title="{{ job.location }}"><i class="fas fa-map-marker-alt fa-fw mr-2 text-gray-400"></i>{{ job.location }}</p>
-                        {% endif %}
-                        <p class="text-gray-600 text-sm mb-4 h-20 overflow-hidden">
-                            {{ job.description|striptags|truncate(120) }}
-                        </p>
-                    </div>
-                    <div class="mt-auto pt-4 border-t border-gray-200">
-                        {% if job.linkedin_url %}
-                            <a href="{{ job.linkedin_url }}" target="_blank" class="w-full text-center inline-block bg-blue-600 text-white font-medium py-2 px-4 rounded-md hover:bg-blue-700 transition duration-200">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+                Your Career Journey Starts Here
+            </h1>
+            
+            <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+                Discover opportunities that match your skills and aspirations. We connect talented individuals with innovative companies.
+            </p>
+
+            <!-- Job Portal Button -->
+            <div class="mt-8">
+                <a href="{{ url_for('job_portal_index') }}" class="inline-block bg-primary text-white font-bold text-lg py-3 px-8 rounded-full shadow-lg hover:bg-opacity-90 transition duration-300 transform hover:scale-105">
+                    <i class="fas fa-briefcase mr-2"></i> Explore the Job Portal
+                </a>
+            </div>
+            
+            <!-- Hashtag-style Callouts -->
+            <div class="mt-10 flex flex-wrap justify-center items-center gap-x-4 gap-y-2 text-gray-500 font-medium">
+                <span>#NewlyGraduated</span>
+                <span class="text-gray-300">•</span>
+                <span>#ExperiencedProfessionals</span>
+                <span class="text-gray-300">•</span>
+                <span>#EWSCategory</span>
+                <span class="text-gray-300">•</span>
+                <span>#CareerChangers</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================================== -->
+    <!-- HORIZONTAL SCROLLING JOBS SECTION  -->
+    <!-- ================================== -->
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <!-- Section Header -->
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Most Recent Jobs</h2>
+                <p class="text-lg text-gray-600 mt-2">Get a glimpse of the latest roles on our platform.</p>
+                <div class="mt-4 w-24 h-1 bg-primary mx-auto"></div>
+            </div>
+
+            <!-- Horizontal Scrolling Container -->
+            <div class="flex overflow-x-auto space-x-8 pb-6">
+                {% if recent_jobs %}
+                    {% for job in recent_jobs %}
+                    <!-- Job Card -->
+                    <div class="flex-shrink-0 w-80 bg-white rounded-lg shadow-md p-6 flex flex-col hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                        <div class="flex-grow">
+                            <h3 class="text-lg font-semibold text-primary mb-2 truncate" title="{{ job.title }}">{{ job.title }}</h3>
+                            <p class="text-gray-700 font-medium mb-1 truncate" title="{{ job.company }}"><i class="fas fa-building fa-fw mr-2 text-gray-400"></i>{{ job.company }}</p>
+                            {% if job.location %}
+                            <p class="text-gray-600 mb-3 truncate" title="{{ job.location }}"><i class="fas fa-map-marker-alt fa-fw mr-2 text-gray-400"></i>{{ job.location }}</p>
+                            {% endif %}
+                            <p class="text-gray-600 text-sm mb-4 h-20 overflow-hidden">
+                                {{ job.description|striptags|truncate(120) }}
+                            </p>
+                        </div>
+                        <div class="mt-auto pt-4 border-t border-gray-200">
+                            <a href="{{ job.linkedin_url or url_for('candidate_routes.jobs') }}" target="_blank" class="w-full text-center inline-block bg-blue-600 text-white font-medium py-2 px-4 rounded-md hover:bg-blue-700 transition duration-200">
                                 View & Apply
                             </a>
-                        {% else %}
-                             <a href="{{ url_for('candidate_routes.jobs') }}" class="w-full text-center inline-block bg-gray-600 text-white font-medium py-2 px-4 rounded-md hover:bg-gray-700 transition duration-200">
-                                View Details
-                            </a>
-                        {% endif %}
+                        </div>
                     </div>
-                </div>
-                {% endfor %}
-            {% else %}
-                <div class="w-full text-center py-8">
-                    <p class="text-gray-500">No job openings available at the moment. Please check back later.</p>
-                </div>
-            {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <div class="w-full text-center py-8">
+                        <p class="text-gray-500">No job openings available right now. Please check back soon!</p>
+                    </div>
+                {% endif %}
+            </div> <!-- End of Horizontal Scrolling Container -->
 
-        </div> <!-- End of Horizontal Scrolling Container -->
-    </div>
-</section>
+        </div>
+    </section>
+
+</main>
     {% include 'footer.html' %}
     
     <script>
