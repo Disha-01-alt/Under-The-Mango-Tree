@@ -1,129 +1,59 @@
 {% extends "job_portal/base.html" %}
 
-{% block title %}Welcome - Job Portal{% endblock %}
+{% block title %}Find Your Dream Job - Job Portal{% endblock %}
 
 {% block content %}
 <!-- Hero Section -->
-{# ... (Hero section as before) ... #}
-<div class="hero-section text-white py-5">
-  <div class="container">
-    <div class="row align-items-center">
-            <div class="col-lg-6">
-                <h1 class="display-4 fw-bold mb-4">Find Your Dream Job</h1>
-                <p class="lead mb-4">Connect with top employers and discover opportunities that match your skills and aspirations.</p>
-                {% if not current_user.is_authenticated %}
-                    <div class="d-flex gap-3">
-                        <a href="{{ url_for('google_auth.login') }}" class="btn btn-light btn-lg">
-                            <i class="fab fa-google me-2"></i>Sign in with Google
-                        </a>
-                        <a href="{{ url_for('candidate_routes.jobs') }}" class="btn btn-outline-light btn-lg">
-                            <i class="fas fa-briefcase me-2"></i>Browse Jobs
-                        </a>
-                    </div>
-                {% else %}
-                     <a href="{{ url_for('candidate_routes.jobs') }}" class="btn btn-light btn-lg">
-                        <i class="fas fa-search me-2"></i>Explore Open Roles
-                    </a>
-                {% endif %}
-            </div>
-                        <div class="col-lg-6 text-center">
-                {# REMOVED the large decorative briefcase icon: <i class="fas fa-briefcase" style="font-size: 12rem; opacity: 0.3;"></i> #}
-                <!-- You can place url('/static/images/Pasted image (2).png')if desired, or leave it empty -->
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Stats Section -->
-{# ... (Stats section as before, using bg-secondary or bg-light as you prefer) ... #}
-<div class="py-5 mt-5">
+<section class="jp-hero text-center">
     <div class="container">
-        <div class="row text-center">
-            <div class="col-md-4 mb-4">
-                <div class="display-4 fw-bold text-primary mb-2"><i class="fas fa-users"></i></div>
-                <h5>Talented Candidates</h5><p class="text-muted small">Connect with skilled professionals ready to contribute.</p>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="display-4 fw-bold text-info mb-2"><i class="fas fa-briefcase"></i></div>
-                <h5>Quality Job Opportunities</h5><p class="text-muted small">Accurate and detailed job postings via AI extraction.</p>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="display-4 fw-bold text-success mb-2"><i class="fas fa-handshake"></i></div>
-                <h5>Perfect Matches</h5><p class="text-muted small">Advanced filtering for optimal candidate matching.</p>
-            </div>
+        <div class="tagline mb-4">
+            <i class="fas fa-sparkles me-2"></i> Connecting Dreams with Opportunities
         </div>
-    </div>
-</div>
-
-
-<!-- Features Section -->
-<div class="container py-5">
-    <div class="row">
-        <div class="col-12 text-center mb-5">
-            <h2 class="display-5 fw-bold">How It Works</h2>
-            <p class="lead text-muted">Simple steps to connect talent with opportunity</p>
-        </div>
-    </div>
-    
-    <div class="row g-4 justify-content-center">
-        <!-- Browse Jobs (Public) -->
-        <div class="col-lg-4">
-            {# ... (Browse Jobs card as before) ... #}
-            <div class="card h-100 text-center">
-                <div class="card-body d-flex flex-column"> 
-                    <div class="mb-4"><i class="fas fa-search text-success" style="font-size: 3rem;"></i></div>
-                    <h4 class="card-title">Browse Jobs</h4>
-                    <ul class="list-unstyled text-start small"> 
-                        <li class="mb-1"><i class="fas fa-check text-success me-2"></i>View all available opportunities</li>
-                        <li class="mb-1"><i class="fas fa-check text-success me-2"></i>Filter by location, type, etc.</li>
-                        <li class="mb-1"><i class="fas fa-check text-success me-2"></i>No registration required to browse</li>
-                        <li class="mb-1"><i class="fas fa-check text-success me-2"></i>Get job details instantly</li>
-                    </ul>
-                    <a href="{{ url_for('candidate_routes.jobs') }}" class="btn btn-success mt-auto">Browse Jobs Now</a> 
-                </div>
-            </div>
-        </div>
-        
- <!-- For Candidates -->
-<div class="col-lg-4">
-    <div class="card h-100 text-center">
-        <div class="card-body d-flex flex-column">
-            <div class="mb-4">
-                <i class="fas fa-user-graduate text-primary" style="font-size: 3rem;"></i>
-            </div>
-            <h4 class="card-title">For Candidates</h4>
-            <ul class="list-unstyled text-start small">
-                <li class="mb-1"><i class="fas fa-check text-success me-2"></i>Create your professional profile</li>
-                <li class="mb-1"><i class="fas fa-check text-success me-2"></i>Upload CV & necessary documents</li>
-                <li class="mb-1"><i class="fas fa-check text-success me-2"></i>Get discovered by recruiters</li>
-                <li class="mb-1"><i class="fas fa-check text-success me-2"></i>Apply directly via LinkedIn links</li>
-            </ul>
-            <!-- THIS LINK IS NOW CHANGED -->
-            <a href="{{ url_for('google_auth.login') }}" class="btn btn-primary mt-auto">
-                Join as Candidate
+        <h1 class="jp-section-title display-3">Find Your <span class="highlight">Dream Job</span></h1>
+        <p class="jp-section-subtitle mt-4">
+            Connect with top employers and discover opportunities that match your skills and aspirations.
+        </p>
+        <div class="mt-8 d-flex justify-content-center gap-3">
+            <a href="{{ url_for('google_auth.login') }}" class="btn btn-primary d-inline-flex align-items-center">
+                <i class="fas fa-rocket me-2"></i> Get Started
+            </a>
+            <a href="{{ url_for('candidate_routes.jobs') }}" class="btn btn-secondary d-inline-flex align-items-center">
+                Browse Jobs <i class="fas fa-arrow-right ms-2"></i>
             </a>
         </div>
-    </div>
-</div>
-       <!-- For Companies / Recruiters -->
-<div class="col-lg-4">
-    <div class="card h-100 text-center">
-        <div class="card-body d-flex flex-column">
-            <div class="mb-4">
-                <i class="fas fa-building text-info" style="font-size: 3rem;"></i>
-            </div>
-            <h4 class="card-title">For Recruiters</h4>
-            <ul class="list-unstyled text-start small">
-                <li class="mb-1"><i class="fas fa-check text-success me-2"></i>Access a pre-vetted talent pool</li>
-                <li class="mb-1"><i class="fas fa-check text-success me-2"></i>Search candidates by skills & ratings</li>
-                <li class="mb-1"><i class="fas fa-check text-success me-2"></i>View detailed profiles & documents</li>
-                <li class="mb-1"><i class="fas fa-check text-success me-2"></i>Contact candidates directly</li>
-            </ul>
-            <!-- The button now directs to the main login page -->
-            <a href="{{ url_for('google_auth.login') }}" class="btn btn-info mt-auto">
-                Recruiter Sign-In
-            </a>
+        <div class="mt-5">
+            <a href="#why-us" class="scroll-down text-muted"><i class="fas fa-mouse fa-2x"></i></a>
         </div>
     </div>
-</div>
+</section>
 
+<!-- Why Choose Us Section -->
+<section id="why-us" class="jp-section bg-white">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="jp-section-title">Why Choose Our Platform</h2>
+            <p class="jp-section-subtitle mt-3">Discover what makes us the perfect bridge between talent and opportunity.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4"><div class="feature-card text-center"><div class="icon-bg mx-auto"><i class="fas fa-users"></i></div><h3 class="h5 mt-4 fw-bold">Talented Candidates</h3><p class="text-muted mt-2">Connect with skilled professionals ready to contribute.</p></div></div>
+            <div class="col-lg-4"><div class="feature-card text-center"><div class="icon-bg mx-auto"><i class="fas fa-briefcase"></i></div><h3 class="h5 mt-4 fw-bold">Quality Job Opportunities</h3><p class="text-muted mt-2">Accurate and detailed job postings via AI attraction.</p></div></div>
+            <div class="col-lg-4"><div class="feature-card text-center"><div class="icon-bg mx-auto"><i class="fas fa-bullseye"></i></div><h3 class="h5 mt-4 fw-bold">Perfect Matches</h3><p class="text-muted mt-2">Advanced filtering for optimal candidate matching.</p></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="jp-section">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="jp-section-title">How It Works</h2>
+            <p class="jp-section-subtitle mt-3">Simple steps to connect talent with opportunity.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4"><div class="feature-card position-relative"><div class="step-number">1</div><div class="icon-bg mb-3"><i class="fas fa-search"></i></div><h3 class="h5 fw-bold">Browse Jobs</h3><ul class="list-unstyled text-muted mt-2"><li>• View all available opportunities</li><li>• Filter by location, type, etc.</li><li>• No registration required to browse</li><li>• Get job details instantly</li></ul><a href="{{ url_for('candidate_routes.jobs') }}" class="btn btn-primary mt-3">Browse Jobs Now <i class="fas fa-arrow-right ms-1"></i></a></div></div>
+            <div class="col-lg-4"><div class="feature-card position-relative"><div class="step-number">2</div><div class="icon-bg mb-3"><i class="fas fa-user-plus"></i></div><h3 class="h5 fw-bold">For Candidates</h3><ul class="list-unstyled text-muted mt-2"><li>• Create your professional profile</li><li>• Upload CV & necessary documents</li><li>• Get discovered by recruiters</li><li>• Apply directly via LinkedIn links</li></ul><a href="{{ url_for('google_auth.login') }}" class="btn btn-primary mt-3">Join as Candidate <i class="fas fa-arrow-right ms-1"></i></a></div></div>
+            <div class="col-lg-4"><div class="feature-card position-relative"><div class="step-number">3</div><div class="icon-bg mb-3"><i class="fas fa-building"></i></div><h3 class="h5 fw-bold">For Recruiters</h3><ul class="list-unstyled text-muted mt-2"><li>• Access a pre-vetted talent pool</li><li>• Search candidates by skills & ratings</li><li>• View detailed profiles & documents</li><li>• Contact candidates directly</li></ul><a href="{{ url_for('google_auth.login') }}" class="btn btn-primary mt-3">Recruiter Sign-In <i class="fas fa-arrow-right ms-1"></i></a></div></div>
+        </div>
+    </div>
+</section>
 {% endblock %}
