@@ -294,40 +294,52 @@
     </div>
 </section>
 
-<!-- DYNAMIC TESTIMONIALS SECTION       -->
 <!-- ================================== -->
 <!-- DYNAMIC TESTIMONIALS SLIDER SECTION -->
-<section class="py-20 bg-white">
+<!-- ================================== -->
+<section class="py-20 bg-gray-100">
     <div class="container mx-auto px-6">
         <h2 class="text-4xl font-bold text-center text-[#1E3D59] mb-16">What Our Students Say</h2>
         
         <!-- Swiper Container -->
         <div class="swiper testimonial-slider">
             <div class="swiper-wrapper">
+                
                 {% if testimonials %}
                     {% for t in testimonials %}
-                    <!-- Swiper Slide (each testimonial is a slide) -->
-                    <div class="swiper-slide">
-                        <div class="bg-gradient-to-br {{ t.gradient_from }} {{ t.gradient_to }} rounded-xl p-8 shadow-lg flex flex-col h-full">
-                            <div class="flex items-center mb-6">
-                                <div class="w-14 h-14 bg-gradient-to-r from-[#1E3D59] to-[#FF6B35] rounded-full flex items-center justify-center text-white font-bold text-xl flex-shrink-0">{{ t.initials }}</div>
-                                <div class="ml-4">
-                                    <h4 class="font-bold text-[#1E3D59]">{{ t.name }}</h4>
-                                    <p class="text-gray-600 text-sm">{{ t.role }}</p>
+                    <!-- Swiper Slide (Dynamically renders Text or Video) -->
+                    <div class="swiper-slide h-auto pb-10">
+                        
+                        {% if t.type == 'video' %}
+                            <!-- VIDEO TESTIMONIAL CARD -->
+                            <div class="bg-black rounded-xl shadow-lg flex flex-col h-full overflow-hidden">
+                                <div class="relative" style="padding-bottom: 56.25%;">
+                                    <iframe class="absolute top-0 left-0 w-full h-full" loading="lazy" src="https://www.youtube.com/embed/{{ t.youtube_embed_id }}" title="{{ t.name }}'s Testimonial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                                <div class="p-4 text-center bg-gray-900">
+                                    <h4 class="font-bold text-white">{{ t.name }}</h4>
+                                    <p class="text-gray-400 text-sm">{{ t.role }}</p>
                                 </div>
                             </div>
-                            <p class="text-gray-700 italic leading-relaxed mb-4 flex-grow">"{{ t.quote }}"</p>
-                            {% if t.youtube_embed_id %}
-                            <div class="mt-auto">
-                                <button onclick="openTestimonialVideo('{{ t.youtube_embed_id }}', '{{ t.name }}')" class="bg-white text-[#1E3D59] border border-gray-300 px-4 py-2 rounded-full text-sm font-semibold hover:bg-gray-100 transition">
-                                    <i class="fab fa-youtube mr-2 text-red-500"></i> Watch Their Story
-                                </button>
+
+                        {% else %}
+                            <!-- TEXT TESTIMONIAL CARD -->
+                            <div class="bg-gradient-to-br {{ t.gradient_from }} {{ t.gradient_to }} rounded-xl p-8 shadow-lg flex flex-col h-full">
+                                <div class="flex items-center mb-6">
+                                    <div class="w-14 h-14 bg-gradient-to-r from-[#1E3D59] to-[#FF6B35] rounded-full flex items-center justify-center text-white font-bold text-xl flex-shrink-0">{{ t.initials }}</div>
+                                    <div class="ml-4">
+                                        <h4 class="font-bold text-[#1E3D59]">{{ t.name }}</h4>
+                                        <p class="text-gray-600 text-sm">{{ t.role }}</p>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 italic leading-relaxed flex-grow">"{{ t.quote }}"</p>
                             </div>
-                            {% endif %}
-                        </div>
+                        {% endif %}
+
                     </div>
                     {% endfor %}
                 {% endif %}
+
             </div>
             <!-- Add Pagination -->
             <div class="swiper-pagination mt-8 relative"></div>
