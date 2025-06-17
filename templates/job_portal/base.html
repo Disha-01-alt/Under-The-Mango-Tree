@@ -108,13 +108,17 @@
                 </div>
             </div>
             <div class="text-center pt-4 mt-5 border-top border-secondary border-opacity-25">
-                <small>© {% now 'utc', '%Y' %} Job Portal. All Rights Reserved.</small>
+                <small>© <span id="current-year"></span> Job Portal. All Rights Reserved.</small>
             </div>
         </div>
     </footer>
 
     <!-- Bootstrap JS (Required for Dropdown) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
     {% block scripts %}{% endblock %}
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
