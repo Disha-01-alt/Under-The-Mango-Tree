@@ -3,62 +3,57 @@
 {% block title %}Find Your Dream Job - Job Portal{% endblock %}
 
 {% block content %}
-<main>
-    <section class="jp-hero">
-        <div class="container">
-            <!-- Section Header -->
-            <div class="text-center mb-5">
-                <h2 class="jp-section-title">Find Your <span class="highlight">Dream Job</span></h2>
-                <p class="jp-section-subtitle">
-                    Connect with top employers and discover opportunities that match your newly acquired skills. Start your career journey today.
-                </p>
-            </div>
-
-            <!-- Job Cards List -->
-            <div class="job-card-list">
-                <div class="vstack gap-3">
-                    {% if recent_jobs %}
-                        {% for job in recent_jobs %}
-                        <!-- Horizontal Job Card -->
-                        <div class="job-card">
-                            <div class="row g-4 align-items-center">
-                                <div class="col-md-6">
-                                    <div class="d-flex align-items-center mb-2">
-                                        <h3 class="job-title mb-0 me-3">{{ job.title }}</h3>
-                                        {% if job.job_type %}
-                                        <span class="job-type">{{ job.job_type }}</span>
-                                        {% endif %}
-                                    </div>
-                                    <p class="job-company-info mb-3">
-                                        <span>{{ job.company }}</span>
-                                        {% if job.location %}<span class="mx-2">•</span><span>{{ job.location }}</span>{% endif %}
-                                    </p>
-                                    {% if job.job_tags %}
-                                    <div class="d-flex flex-wrap gap-2">
-                                        {% for tag in job.job_tags.split(',')[:3] %}
-                                        <span class="job-tag">{{ tag.strip() }}</span>
-                                        {% endfor %}
-                                    </div>
-                                    {% endif %}
-                                </div>
-                                <div class="col-md-6 d-flex align-items-center justify-content-md-end gap-4">
-                                    {% if job.salary_range %}
-                                    <p class="job-salary mb-0">{{ job.salary_range }}</p>
-                                    {% endif %}
-                                    <a href="{{ job.linkedin_url or url_for('candidate_routes.jobs') }}" target="_blank" class="btn btn-apply d-flex align-items-center">
-                                        <span class="btn-text">Apply Now</span>
-                                        <span class="btn-icon"><i class="fas fa-arrow-right"></i></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        {% endfor %}
-                    {% else %}
-                        <div class="text-center py-5"><p class="text-muted">No jobs available right now.</p></div>
-                    {% endif %}
-                </div><!-- End vstack -->
-            </div><!-- End Job Cards List -->
+<!-- Hero Section -->
+<section class="jp-hero text-center">
+    <div class="container">
+        <div class="tagline mb-4">
+            <i class="fas fa-sparkles me-2"></i> Connecting Dreams with Opportunities
         </div>
-    </section>
-</main>
+        <h1 class="jp-section-title display-3">Find Your <span class="highlight">Dream Job</span></h1>
+        <p class="jp-section-subtitle mt-4">
+            Connect with top employers and discover opportunities that match your skills and aspirations.
+        </p>
+        <div class="mt-8 d-flex justify-content-center gap-3">
+            <a href="{{ url_for('google_auth.login') }}" class="btn btn-primary d-inline-flex align-items-center">
+                <i class="fas fa-rocket me-2"></i> Get Started
+            </a>
+            <a href="{{ url_for('candidate_routes.jobs') }}" class="btn btn-secondary d-inline-flex align-items-center">
+                Browse Jobs <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+        </div>
+        <div class="mt-5">
+            <a href="#why-us" class="scroll-down text-muted"><i class="fas fa-mouse fa-2x"></i></a>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us Section -->
+<section id="why-us" class="jp-section bg-white">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="jp-section-title">Why Choose Our Platform</h2>
+            <p class="jp-section-subtitle mt-3">Discover what makes us the perfect bridge between talent and opportunity.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4"><div class="feature-card text-center"><div class="icon-bg mx-auto"><i class="fas fa-users"></i></div><h3 class="h5 mt-4 fw-bold">Talented Candidates</h3><p class="text-muted mt-2">Connect with skilled professionals ready to contribute.</p></div></div>
+            <div class="col-lg-4"><div class="feature-card text-center"><div class="icon-bg mx-auto"><i class="fas fa-briefcase"></i></div><h3 class="h5 mt-4 fw-bold">Quality Job Opportunities</h3><p class="text-muted mt-2">Accurate and detailed job postings via AI attraction.</p></div></div>
+            <div class="col-lg-4"><div class="feature-card text-center"><div class="icon-bg mx-auto"><i class="fas fa-bullseye"></i></div><h3 class="h5 mt-4 fw-bold">Perfect Matches</h3><p class="text-muted mt-2">Advanced filtering for optimal candidate matching.</p></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="jp-section">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="jp-section-title">How It Works</h2>
+            <p class="jp-section-subtitle mt-3">Simple steps to connect talent with opportunity.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4"><div class="feature-card position-relative"><div class="step-number">1</div><div class="icon-bg mb-3"><i class="fas fa-search"></i></div><h3 class="h5 fw-bold">Browse Jobs</h3><ul class="list-unstyled text-muted mt-2"><li>• View all available opportunities</li><li>• Filter by location, type, etc.</li><li>• No registration required to browse</li><li>• Get job details instantly</li></ul><a href="{{ url_for('candidate_routes.jobs') }}" class="btn btn-primary mt-3">Browse Jobs Now <i class="fas fa-arrow-right ms-1"></i></a></div></div>
+            <div class="col-lg-4"><div class="feature-card position-relative"><div class="step-number">2</div><div class="icon-bg mb-3"><i class="fas fa-user-plus"></i></div><h3 class="h5 fw-bold">For Candidates</h3><ul class="list-unstyled text-muted mt-2"><li>• Create your professional profile</li><li>• Upload CV & necessary documents</li><li>• Get discovered by recruiters</li><li>• Apply directly via LinkedIn links</li></ul><a href="{{ url_for('google_auth.login') }}" class="btn btn-primary mt-3">Join as Candidate <i class="fas fa-arrow-right ms-1"></i></a></div></div>
+            <div class="col-lg-4"><div class="feature-card position-relative"><div class="step-number">3</div><div class="icon-bg mb-3"><i class="fas fa-building"></i></div><h3 class="h5 fw-bold">For Recruiters</h3><ul class="list-unstyled text-muted mt-2"><li>• Access a pre-vetted talent pool</li><li>• Search candidates by skills & ratings</li><li>• View detailed profiles & documents</li><li>• Contact candidates directly</li></ul><a href="{{ url_for('google_auth.login') }}" class="btn btn-primary mt-3">Recruiter Sign-In <i class="fas fa-arrow-right ms-1"></i></a></div></div>
+        </div>
+    </div>
+</section>
 {% endblock %}
