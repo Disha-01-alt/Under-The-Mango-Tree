@@ -108,7 +108,12 @@ body.job-portal-body {
     padding: 2rem;
     box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
     border: 1px solid var(--jp-border-color);
-    transition: all 0.3s ease;
+    transition: all 0.3s ease-in-out; 
+}
+/* ADD THIS ENTIRE NEW RULE for the hover effect */
+.feature-card:hover {
+    transform: translateY(-8px) scale(1.02); /* Moves the card up and makes it slightly bigger */
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.08); /* A larger shadow to enhance the "lifted" effect */
 }
 .feature-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
 .feature-card .icon-bg {
