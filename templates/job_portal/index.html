@@ -1,113 +1,61 @@
-
 {% extends "job_portal/base.html" %}
 
-{% block title %}JobPortal - Find Your Dream Job{% endblock %}
+{% block title %}Find Your Dream Job - Job Portal{% endblock %}
 
 {% block content %}
 <!-- Hero Section -->
-<section class="hero-section py-5" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); min-height: 80vh; display: flex; align-items: center;">
-    <div class="container text-center">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <!-- Connecting Dreams Badge -->
-                <div class="mb-4">
-                    <span class="badge bg-light text-muted px-3 py-2 rounded-pill">
-                        <i class="fas fa-star me-2 text-warning"></i>Connecting Dreams with Opportunities
-                    </span>
-                </div>
-                
-                <!-- Main Heading -->
-                <h1 class="display-3 fw-bold mb-4">
-                    Find Your <span class="text-success">Dream</span> <span class="text-primary">Job</span>
-                </h1>
-                
-                <!-- Subtitle -->
-                <p class="lead text-muted mb-5 fs-4">
-                    Connect with top employers and discover opportunities that match<br>
-                    your skills and aspirations.
-                </p>
-                
-                <!-- CTA Buttons -->
-                <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-                    {% if not current_user.is_authenticated %}
-                    <a href="{{ url_for('google_auth.login') }}" class="btn btn-success btn-lg px-5 py-3">
-                        <i class="fab fa-google me-2"></i>Sign in with Google
-                    </a>
-                    {% endif %}
-                    <a href="{{ url_for('candidate_routes.jobs') }}" class="btn btn-outline-primary btn-lg px-5 py-3">
-                        Browse Jobs <i class="fas fa-arrow-right ms-2"></i>
-                    </a>
-                </div>
-            </div>
+<section class="jp-hero">
+    <div class="container">
+        <div class="tagline mb-4">
+            <i class="fas fa-sparkles me-2"></i> Connecting Dreams with Opportunities
+        </div>
+        <h1 class="jp-section-title">
+            Find Your <span class="highlight-green">Dream</span> <span class="highlight-blue">Job</span>
+        </h1>
+        <p class="jp-section-subtitle">
+            Connect with top employers and discover opportunities that match your skills and aspirations.
+        </p>
+        <div class="mt-4 d-flex justify-content-center gap-3">
+            <a href="{{ url_for('google_auth.login') }}" class="btn btn-primary">
+                Sign in with Google <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+            <a href="{{ url_for('candidate_routes.jobs') }}" class="btn btn-secondary">
+                Browse Jobs
+            </a>
+        </div>
+        <div class="mt-5 pt-4">
+            <a href="#why-us" class="scroll-down text-muted"><i class="fas fa-mouse fa-2x"></i></a>
         </div>
     </div>
 </section>
 
-<!-- Why Choose Our Platform Section -->
-<section class="py-5 bg-white">
+<!-- Why Choose Us Section -->
+<section id="why-us" class="jp-section bg-white">
     <div class="container">
-        <div class="row">
-            <div class="col-12 text-center mb-5">
-                <h2 class="display-5 fw-bold mb-3">Why Choose Our Platform</h2>
-                <p class="lead text-muted">
-                    Discover what makes us the perfect bridge between talent and<br>
-                    opportunity
-                </p>
-            </div>
+        <div class="text-center mb-5 pb-4">
+            <h2 class="jp-section-title">Why Choose Our Platform</h2>
+            <p class="jp-section-subtitle">Discover what makes us the perfect bridge between talent and opportunity.</p>
         </div>
-        
         <div class="row g-4">
-            <!-- Talented Candidates -->
-            <div class="col-lg-4">
-                <div class="card border-0 shadow-sm h-100 text-center p-4">
-                    <div class="card-body">
-                        <div class="feature-icon mb-4">
-                            <div class="bg-primary rounded-3 d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
-                                <i class="fas fa-users text-white fs-1"></i>
-                            </div>
-                        </div>
-                        <h4 class="fw-bold mb-3">Talented Candidates</h4>
-                        <p class="text-muted">
-                            Connect with skilled professionals ready<br>
-                            to contribute.
-                        </p>
-                    </div>
+            <div class="col-lg-4 d-flex align-items-stretch">
+                <div class="feature-card text-center w-100">
+                    <div class="icon-bg mx-auto mb-4"><i class="fas fa-users"></i></div>
+                    <h3 class="h5 fw-bold">Talented Candidates</h3>
+                    <p class="text-muted mt-2">Connect with skilled professionals ready to contribute.</p>
                 </div>
             </div>
-            
-            <!-- Quality Job Opportunities -->
-            <div class="col-lg-4">
-                <div class="card border-0 shadow-sm h-100 text-center p-4">
-                    <div class="card-body">
-                        <div class="feature-icon mb-4">
-                            <div class="bg-primary rounded-3 d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
-                                <i class="fas fa-briefcase text-white fs-1"></i>
-                            </div>
-                        </div>
-                        <h4 class="fw-bold mb-3">Quality Job Opportunities</h4>
-                        <p class="text-muted">
-                            Accurate and detailed job postings via AI<br>
-                            attraction.
-                        </p>
-                    </div>
+            <div class="col-lg-4 d-flex align-items-stretch">
+                <div class="feature-card text-center w-100">
+                    <div class="icon-bg mx-auto mb-4"><i class="fas fa-briefcase"></i></div>
+                    <h3 class="h5 fw-bold">Quality Job Opportunities</h3>
+                    <p class="text-muted mt-2">Accurate and detailed job postings via AI attraction.</p>
                 </div>
             </div>
-            
-            <!-- Perfect Matches -->
-            <div class="col-lg-4">
-                <div class="card border-0 shadow-sm h-100 text-center p-4">
-                    <div class="card-body">
-                        <div class="feature-icon mb-4">
-                            <div class="bg-primary rounded-3 d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
-                                <i class="fas fa-bullseye text-white fs-1"></i>
-                            </div>
-                        </div>
-                        <h4 class="fw-bold mb-3">Perfect Matches</h4>
-                        <p class="text-muted">
-                            Advanced filtering for optimal candidate<br>
-                            matching.
-                        </p>
-                    </div>
+            <div class="col-lg-4 d-flex align-items-stretch">
+                <div class="feature-card text-center w-100">
+                    <div class="icon-bg mx-auto mb-4"><i class="fas fa-bullseye"></i></div>
+                    <h3 class="h5 fw-bold">Perfect Matches</h3>
+                    <p class="text-muted mt-2">Advanced filtering for optimal candidate matching.</p>
                 </div>
             </div>
         </div>
@@ -115,146 +63,50 @@
 </section>
 
 <!-- How It Works Section -->
-<section class="py-5" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+<section class="jp-section">
     <div class="container">
-        <div class="row">
-            <div class="col-12 text-center mb-5">
-                <h2 class="display-5 fw-bold mb-3">How It Works</h2>
-                <p class="lead text-muted">
-                    Simple steps to connect talent with opportunity
-                </p>
-            </div>
+        <div class="text-center mb-5 pb-4">
+            <h2 class="jp-section-title">How It Works</h2>
+            <p class="jp-section-subtitle">Simple steps to connect talent with opportunity.</p>
         </div>
-        
         <div class="row g-4">
-            <!-- Browse Jobs -->
-            <div class="col-lg-4">
-                <div class="card border-0 shadow-sm h-100 p-4">
-                    <div class="card-body d-flex flex-column">
-                        <div class="d-flex align-items-start mb-4">
-                            <div class="step-number me-4">
-                                <div class="bg-success rounded-circle d-flex align-items-center justify-content-center text-white fw-bold" style="width: 60px; height: 60px;">
-                                    <i class="fas fa-search fs-3"></i>
-                                </div>
-                                <span class="badge bg-light text-success position-absolute" style="top: -10px; right: -10px;">1</span>
-                            </div>
-                            <div>
-                                <h4 class="fw-bold mb-3">Browse Jobs</h4>
-                                <p class="text-muted mb-3">View all available opportunities</p>
-                                <ul class="list-unstyled text-muted small">
-                                    <li class="mb-2"><i class="fas fa-dot-circle me-2 text-success"></i>Filter by location, type, etc.</li>
-                                    <li class="mb-2"><i class="fas fa-dot-circle me-2 text-success"></i>No registration required to browse</li>
-                                    <li class="mb-2"><i class="fas fa-dot-circle me-2 text-success"></i>Get job details instantly</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="mt-auto text-center">
-                            <a href="{{ url_for('candidate_routes.jobs') }}" class="btn btn-success btn-lg w-100">
-                                <i class="fas fa-search me-2"></i>Browse Jobs Now
-                            </a>
-                        </div>
-                    </div>
+            <div class="col-lg-4 d-flex align-items-stretch">
+                <div class="feature-card position-relative d-flex flex-column">
+                    <div class="step-number">1</div>
+                    <div class="icon-bg mb-4"><i class="fas fa-search"></i></div>
+                    <h3 class="h5 fw-bold">Browse Jobs</h3>
+                    <ul class="text-muted mt-3 flex-grow-1">
+                        <li>View all available opportunities</li>
+                        <li>Filter by location, type, etc.</li>
+                        <li>No registration required to browse</li>
+                    </ul>
+                    <a href="{{ url_for('candidate_routes.jobs') }}" class="btn btn-outline-success mt-4">Browse Jobs Now <i class="fas fa-arrow-right ms-1"></i></a>
                 </div>
             </div>
-            
-            <!-- For Candidates -->
-            <div class="col-lg-4">
-                <div class="card border-0 shadow-sm h-100 p-4">
-                    <div class="card-body d-flex flex-column">
-                        <div class="d-flex align-items-start mb-4">
-                            <div class="step-number me-4">
-                                <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center text-white fw-bold" style="width: 60px; height: 60px;">
-                                    <i class="fas fa-user-graduate fs-3"></i>
-                                </div>
-                                <span class="badge bg-light text-primary position-absolute" style="top: -10px; right: -10px;">2</span>
-                            </div>
-                            <div>
-                                <h4 class="fw-bold mb-3">For Candidates</h4>
-                                <p class="text-muted mb-3">Create your professional profile</p>
-                                <ul class="list-unstyled text-muted small">
-                                    <li class="mb-2"><i class="fas fa-dot-circle me-2 text-primary"></i>Upload CV & necessary documents</li>
-                                    <li class="mb-2"><i class="fas fa-dot-circle me-2 text-primary"></i>Get discovered by recruiters</li>
-                                    <li class="mb-2"><i class="fas fa-dot-circle me-2 text-primary"></i>Apply directly via LinkedIn links</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="mt-auto text-center">
-                            {% if not current_user.is_authenticated %}
-                                <a href="{{ url_for('google_auth.login') }}" class="btn btn-primary btn-lg w-100">
-                                    <i class="fas fa-user-plus me-2"></i>Join as Candidate
-                                </a>
-                            {% else %}
-                                <a href="{{ url_for('candidate_routes.profile') }}" class="btn btn-primary btn-lg w-100">
-                                    <i class="fas fa-user me-2"></i>View Profile
-                                </a>
-                            {% endif %}
-                        </div>
-                    </div>
+            <div class="col-lg-4 d-flex align-items-stretch">
+                <div class="feature-card position-relative d-flex flex-column">
+                    <div class="step-number">2</div>
+                    <div class="icon-bg mb-4"><i class="fas fa-user-plus"></i></div>
+                    <h3 class="h5 fw-bold">For Candidates</h3>
+                    <ul class="text-muted mt-3 flex-grow-1">
+                        <li>Create your professional profile</li>
+                        <li>Upload CV & necessary documents</li>
+                        <li>Get discovered by recruiters</li>
+                    </ul>
+                    <a href="{{ url_for('google_auth.login') }}" class="btn btn-success mt-4">Join as Candidate <i class="fas fa-arrow-right ms-1"></i></a>
                 </div>
             </div>
-            
-            <!-- For Companies -->
-            <div class="col-lg-4">
-                <div class="card border-0 shadow-sm h-100 p-4">
-                    <div class="card-body d-flex flex-column">
-                        <div class="d-flex align-items-start mb-4">
-                            <div class="step-number me-4">
-                                <div class="bg-info rounded-circle d-flex align-items-center justify-content-center text-white fw-bold" style="width: 60px; height: 60px;">
-                                    <i class="fas fa-building fs-3"></i>
-                                </div>
-                                <span class="badge bg-light text-info position-absolute" style="top: -10px; right: -10px;">3</span>
-                            </div>
-                            <div>
-                                <h4 class="fw-bold mb-3">For Companies</h4>
-                                <p class="text-muted mb-3">Access a pre-vetted talent pool</p>
-                                <ul class="list-unstyled text-muted small">
-                                    <li class="mb-2"><i class="fas fa-dot-circle me-2 text-info"></i>Search candidates by skills & ratings</li>
-                                    <li class="mb-2"><i class="fas fa-dot-circle me-2 text-info"></i>View detailed profiles & documents</li>
-                                    <li class="mb-2"><i class="fas fa-dot-circle me-2 text-info"></i>Contact candidates directly</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="mt-auto text-center">
-                            {% if not current_user.is_authenticated %}
-                                <a href="{{ url_for('google_auth.login') }}" class="btn btn-info btn-lg w-100">
-                                    <i class="fas fa-building me-2"></i>Join as Company
-                                </a>
-                            {% elif current_user.user_type == 'company' %}
-                                <a href="{{ url_for('company_routes.dashboard') }}" class="btn btn-info btn-lg w-100">
-                                    <i class="fas fa-tachometer-alt me-2"></i>Dashboard
-                                </a>
-                            {% else %}
-                                <a href="{{ url_for('google_auth.login') }}" class="btn btn-outline-info btn-lg w-100">
-                                    <i class="fas fa-building me-2"></i>Switch to Company
-                                </a>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- CTA Section -->
-<section class="py-5 bg-primary text-white">
-    <div class="container text-center">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <h2 class="display-5 fw-bold mb-3">Ready to Get Started?</h2>
-                <p class="lead mb-4">
-                    Join thousands of professionals who have found their perfect match on our platform.
-                </p>
-                <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-                    {% if not current_user.is_authenticated %}
-                    <a href="{{ url_for('google_auth.login') }}" class="btn btn-light btn-lg px-5 py-3">
-                        <i class="fab fa-google me-2"></i>Get Started Today
-                    </a>
-                    {% endif %}
-                    <a href="{{ url_for('candidate_routes.jobs') }}" class="btn btn-outline-light btn-lg px-5 py-3">
-                        Explore Opportunities
-                    </a>
+            <div class="col-lg-4 d-flex align-items-stretch">
+                <div class="feature-card position-relative d-flex flex-column">
+                    <div class="step-number">3</div>
+                    <div class="icon-bg mb-4"><i class="fas fa-building"></i></div>
+                    <h3 class="h5 fw-bold">For Recruiters</h3>
+                    <ul class="text-muted mt-3 flex-grow-1">
+                        <li>Access a pre-vetted talent pool</li>
+                        <li>Search candidates by skills & ratings</li>
+                        <li>Contact candidates directly</li>
+                    </ul>
+                    <a href="{{ url_for('google_auth.login') }}" class="btn btn-success mt-4">Recruiter Sign-In <i class="fas fa-arrow-right ms-1"></i></a>
                 </div>
             </div>
         </div>
