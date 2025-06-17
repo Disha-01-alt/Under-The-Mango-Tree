@@ -2,26 +2,36 @@
   "testimonials": [
     {
       "id": 1,
+      "type": "text",
       "name": "Rahul Singh",
       "initials": "RS",
       "role": "Software Developer",
       "quote": "The English and programming courses helped me secure a job at a top tech company. The mentors were always available to clear my doubts.",
-      "youtube_embed_id": "6nkylSKqaAc"
+      "gradient_from": "from-gray-50",
+      "gradient_to": "to-blue-50"
     },
     {
       "id": 2,
+      "type": "video",
       "name": "Priya Kumari",
-      "initials": "PK",
-      "role": "Customer Support Specialist",
-      "quote": "As someone from a Hindi medium school, I was nervous about my English skills. The interactive lessons made learning fun and effective.",
+      "role": "Video Testimonial",
       "youtube_embed_id": "ntnwjWEpnkk"
     },
     {
       "id": 3,
+      "type": "text",
       "name": "Amit Kumar",
       "initials": "AK",
       "role": "Web Developer",
       "quote": "The job portal connected me directly with employers looking for freshers. I got three interview calls within a week of completing my course!",
+      "gradient_from": "from-gray-50",
+      "gradient_to": "to-purple-50"
+    },
+    {
+      "id": 4,
+      "type": "video",
+      "name": "Suresh Gupta",
+      "role": "Video Testimonial",
       "youtube_embed_id": "qctUEQn9Hj8"
     }
   ]
