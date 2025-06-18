@@ -42,21 +42,46 @@ body.job-portal-body {
     color: white !important;
     border-bottom-color: white;
 }
-.jp-header .btn-signin {
-    background-color: white;
-    color: var(--jp-text-dark);
+/* In static/job_portal_style.css, at the end of the Header section */
+
+.jp-header .btn-signin,
+.jp-header .user-dropdown .dropdown-toggle {
+    background-color: white !important;
+    color: var(--jp-text-dark) !important;
+    border: 1px solid transparent;
     border-radius: 0.5rem;
     font-weight: 600;
     padding: 0.5rem 1rem;
     box-shadow: 0 1px 2px rgba(0,0,0,0.05);
     transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
-.jp-header .btn-signin:hover {
+
+.jp-header .btn-signin:hover,
+.jp-header .user-dropdown .dropdown-toggle:hover {
     background-color: #f3f4f6;
     transform:scale(1.05);
     z-index: 2;
 }
 
+
+
+.jp-header .user-dropdown .dropdown-toggle::after {
+    display: inline-block; /* Make sure the Bootstrap arrow is visible */
+}
+
+.jp-header .user-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px; /* Slightly smaller icon */
+    height: 28px;
+    border-radius: 50%;
+    background-color: #e5e7eb;
+    color: var(--jp-text-light);
+}
 /* --- Hero Section --- */
 .jp-hero {
     padding: 6rem 0;
