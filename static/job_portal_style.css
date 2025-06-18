@@ -117,7 +117,7 @@ body.job-portal-body {
 
 /* --- Feature Sections --- */
 .jp-section { padding: 6rem 0; }
-.jp-section .jp-section-title { font-size: 3.25rem; font-weight: 600;}
+.jp-section .jp-section-title { font-size: 3.25rem; font-weight: 800;}
 .jp-section .jp-section-subtitle{font-size: 1.25rem; color:#657070;} 
 .feature-card {
     background-color: white;
