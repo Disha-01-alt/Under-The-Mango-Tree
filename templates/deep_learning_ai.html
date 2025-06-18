@@ -75,7 +75,8 @@
             <!-- Main Content -->
             <div id="main-content" class="lg:col-span-8 xl:col-span-9">
                 {% if current_video %}
-                    <div class="space-y-6">
+                    <div id="video-section" class="space-y-6">
+
                         <!-- Video Player and Controls -->
                         <div>
                             <div class="flex justify-between items-center mb-4">
@@ -171,22 +172,37 @@
 
     <!-- JavaScript for Accordion and Sidebar Toggle -->
     <script src="{{ url_for('static', filename='js/course_page.js') }}"></script>
-    <script>
-        // This script can be left in, or you can move it to course_page.js
-        function toggleAccordion(button) {
-            const content = button.nextElementSibling;
-            const isCollapsed = button.classList.contains('collapsed');
-            document.querySelectorAll('.sidebar-accordion .accordion-content.show').forEach(item => {
-                if (item !== content) {
-                    item.classList.remove('show');
-                    item.previousElementSibling.classList.add('collapsed');
-                }
-            });
-            button.classList.toggle('collapsed', !isCollapsed);
-            if(content) {
-                content.classList.toggle('show', isCollapsed);
+   <script>
+    function toggleAccordion(button) {
+        const content = button.nextElementSibling;
+        const isCollapsed = button.classList.contains('collapsed');
+
+        // Collapse others
+        document.querySelectorAll('.sidebar-accordion .accordion-content.show').forEach(item => {
+            if (item !== content) {
+                item.classList.remove('show');
+                item.previousElementSibling.classList.add('collapsed');
             }
+        });
+
+        button.classList.toggle('collapsed', !isCollapsed);
+        if (content) {
+            content.classList.toggle('show', isCollapsed);
         }
-    </script>
+    }
+
+    // Scroll to video section on sidebar video link click
+    document.querySelectorAll('.video-link').forEach(link => {
+        link.addEventListener('click', () => {
+            setTimeout(() => {
+                const videoSection = document.getElementById('video-section');
+                if (videoSection && window.innerWidth < 768) {
+                    videoSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 100); // Delay to wait for content to load
+        });
+    });
+</script>
+
 </body>
 </html>
