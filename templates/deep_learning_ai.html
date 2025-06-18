@@ -168,41 +168,12 @@
         </div>
     </main>
 
-    {% include 'footer.html' %}
+    <!-- At the end of your course templates -->
 
-    <!-- JavaScript for Accordion and Sidebar Toggle -->
-    <script src="{{ url_for('static', filename='js/course_page.js') }}"></script>
-   <script>
-    function toggleAccordion(button) {
-        const content = button.nextElementSibling;
-        const isCollapsed = button.classList.contains('collapsed');
+{% include 'footer.html' %}
 
-        // Collapse others
-        document.querySelectorAll('.sidebar-accordion .accordion-content.show').forEach(item => {
-            if (item !== content) {
-                item.classList.remove('show');
-                item.previousElementSibling.classList.add('collapsed');
-            }
-        });
-
-        button.classList.toggle('collapsed', !isCollapsed);
-        if (content) {
-            content.classList.toggle('show', isCollapsed);
-        }
-    }
-
-    // Scroll to video section on sidebar video link click
-    document.querySelectorAll('.video-link').forEach(link => {
-        link.addEventListener('click', () => {
-            setTimeout(() => {
-                const videoSection = document.getElementById('video-section');
-                if (videoSection && window.innerWidth < 768) {
-                    videoSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            }, 100); // Delay to wait for content to load
-        });
-    });
-</script>
+<!-- JavaScript for Accordion and Sidebar Toggle -->
+<script src="{{ url_for('static', filename='js/course_page.js') }}"></script>
 
 </body>
 </html>
