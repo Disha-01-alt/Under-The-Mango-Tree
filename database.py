@@ -225,20 +225,59 @@ def update_candidate_profile(user_id, **kwargs):
         conn.commit()
 
 # In database.py
-def get_all_jobs(**filters):
+# In database.py
+
+def get_all_jobs(location_filter=None, work_model_filter=None, date_posted_filter=None, company_filter=None, job_function_filter=None):
+    """Get all jobs with optional filters."""
     with get_db() as conn:
         cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+        
+        # Base query
         query = "SELECT j.*, u.full_name as posted_by_name FROM jobs j LEFT JOIN users u ON j.posted_by = u.id WHERE 1=1"
         params = []
-        # (filter logic here)
+
+        # Dynamically add filters to the query
+        if location_filter:
+            # Use LOWER() for case-insensitive search
+            query += " AND LOWER(j.location) LIKE LOWER(%s)"
+            params.append(f"%{location_filter}%")
+
+        if work_model_filter:
+            # Assumes work model is stored in the 'job_type' field or similar
+            query += " AND LOWER(j.job_type) LIKE LOWER(%s)"
+            params.append(f"%{work_model_filter}%")
+        
+        if date_posted_filter:
+            if date_posted_filter == 'past_24_hours':
+                query += " AND j.created_at >= NOW() - INTERVAL '24 hours'"
+            elif date_posted_filter == 'past_week':
+                query += " AND j.created_at >= NOW() - INTERVAL '7 days'"
+            elif date_posted_filter == 'past_month':
+                query += " AND j.created_at >= NOW() - INTERVAL '1 month'"
+        
+        if company_filter:
+            query += " AND LOWER(j.company) LIKE LOWER(%s)"
+            params.append(f"%{company_filter}%")
+
+        if job_function_filter:
+            # Searches within the job title, description, and tags for the keyword
+            query += " AND (LOWER(j.title) LIKE LOWER(%s) OR LOWER(j.job_tags) LIKE LOWER(%s) OR LOWER(j.description) LIKE LOWER(%s))"
+            params.extend([f"%{job_function_filter}%", f"%{job_function_filter}%", f"%{job_function_filter}%"])
+
         query += " ORDER BY j.created_at DESC"
+        
+        logging.debug(f"Executing job search query: {query}")
+        logging.debug(f"With params: {params}")
+        
         cur.execute(query, tuple(params))
         
+        jobs = []
         from models import Job
-        # THE FIX IS HERE: The loop is now simpler.
-        jobs = [Job(**row) for row in cur.fetchall()]
+        for row in cur.fetchall():
+            job_obj = Job(**row)
+            job_obj.posted_by_name = row.get('posted_by_name')
+            jobs.append(job_obj)
         return jobs
-
 def create_job(title, company, location, description, requirements, posted_by, salary_range=None, job_type=None, linkedin_url=None, job_tags=None):
     with get_db() as conn:
         cur = conn.cursor()
