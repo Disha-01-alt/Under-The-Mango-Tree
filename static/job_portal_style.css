@@ -329,3 +329,36 @@ body.job-portal-body {
 .jp-job-card .btn-apply:hover {
     background-color: var(--jp-primary-dark);
 }
+/* In static/job_portal_style.css */
+
+/* --- Collapsible Filter Bar --- */
+.jp-filter-bar {
+    background-color: white;
+    border: 1px solid var(--jp-border-color);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+/* Override Bootstrap defaults for form inputs inside this bar */
+.jp-filter-bar .form-control,
+.jp-filter-bar .form-select {
+    font-size: 0.875rem;
+    padding: 0.6rem 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--jp-bg-light);
+    border: 1px solid var(--jp-border-color);
+}
+.jp-filter-bar .form-control:focus,
+.jp-filter-bar .form-select:focus {
+    background-color: white;
+    border-color: var(--jp-primary);
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
+}
+
+/* Style for the green border highlight on the filter bar container */
+.filters-active {
+    border: 2px solid var(--jp-primary) !important;
+    box-shadow: 0 0 15px rgba(22, 163, 74, 0.15) !important;
+}
