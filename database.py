@@ -323,19 +323,59 @@ def update_candidate_rating_feedback(user_id, **kwargs):
         cur.execute(query, tuple(values))
         conn.commit()
 
-def search_candidates(**filters):
+# In database.py
+
+def search_candidates(min_rating=None, core_interest_domains_filter=None, admin_tags_filter=None, **kwargs):
+    """
+    Search for certified candidates with optional filters for rating, domains, and tags.
+    """
     with get_db() as conn:
         cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+        
+        # Base query now includes the crucial check for certified candidates
         query = """
-            SELECT u.*, cp.* FROM users u
+            SELECT u.id, u.email, u.full_name, u.phone, u.linkedin, u.github, u.created_at,
+                   cp.summary, 
+                   cp.cv_filename, cp.id_card_filename, cp.marksheet_filename,
+                   cp.rating, cp.admin_feedback,
+                   cp.college_name, cp.degree, cp.graduation_year,
+                   cp.core_interest_domains, cp.admin_tags, cp.is_certified
+            FROM users u
             LEFT JOIN candidate_profiles cp ON u.id = cp.user_id
-            WHERE u.role = 'candidate' AND u.is_approved = TRUE
+            WHERE u.role = 'candidate' 
+              AND u.is_approved = TRUE 
+              AND cp.is_certified = TRUE
         """
         params = []
-        # (Your filtering logic can be added here)
+        
+        # --- ADDING THE FILTERING LOGIC ---
+
+        if min_rating:
+            query += " AND cp.rating >= %s"
+            params.append(min_rating)
+        
+        # Filter by a list of core interest domains
+        if core_interest_domains_filter:
+            # Assuming the filter is a list of strings
+            domain_conditions = ["LOWER(cp.core_interest_domains) LIKE LOWER(%s)" for domain in core_interest_domains_filter]
+            if domain_conditions:
+                query += " AND (" + " OR ".join(domain_conditions) + ")"
+                params.extend([f"%{domain}%" for domain in core_interest_domains_filter])
+        
+        # Filter by a list of admin-applied tags
+        if admin_tags_filter:
+            # Assuming the filter is a list of strings
+            tag_conditions = ["LOWER(cp.admin_tags) LIKE LOWER(%s)" for tag in admin_tags_filter]
+            if tag_conditions:
+                query += " AND (" + " OR ".join(tag_conditions) + ")"
+                params.extend([f"%{tag}%" for tag in admin_tags_filter])
+
         query += " ORDER BY cp.rating DESC NULLS LAST, u.created_at DESC"
+        
         cur.execute(query, tuple(params))
         return [dict(row) for row in cur.fetchall()]
+
+
 
 def get_all_companies():
     with get_db() as conn:
