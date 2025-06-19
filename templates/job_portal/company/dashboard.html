@@ -3,6 +3,118 @@
 {% block title %}Company Dashboard - Job Portal{% endblock %}
 
 {% block content %}
+<style>
+    body {
+        background: linear-gradient(to right, #e8f5e9, #f1f8f4);
+        font-family: 'Segoe UI', sans-serif;
+        color: #1e4620;
+    }
+
+    h1, h3, h4, h5, h6 {
+        color: #1b5e20;
+        font-weight: 600;
+    }
+
+    /* --- Card Styling --- */
+    .card {
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(56, 142, 60, 0.15);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        background-color: #ffffff;
+    }
+
+    .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px rgba(56, 142, 60, 0.25);
+    }
+
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    /* --- Button Styling --- */
+    .btn-primary,
+    .btn-outline-primary:hover {
+        background: linear-gradient(to right, #388e3c, #2e7d32);
+        border-color: #2e7d32;
+        color: white;
+        box-shadow: 0 4px 10px rgba(46, 125, 50, 0.3);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-primary:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 16px rgba(46, 125, 50, 0.4);
+    }
+
+    .btn-outline-primary {
+        border: 2px solid #66bb6a;
+        color: #2e7d32;
+        background-color: transparent;
+        transition: all 0.2s ease;
+    }
+
+    .btn-outline-primary:hover {
+        background-color: #66bb6a;
+        color: white;
+    }
+
+    /* --- Badge Styling --- */
+    .badge.bg-secondary {
+        background-color: #c8e6c9 !important;
+        color: #1e4620;
+        border-radius: 8px;
+        padding: 0.35rem 0.6rem;
+        font-weight: 500;
+    }
+
+    .text-muted {
+        color: #6c8f6f !important;
+    }
+
+    a {
+        color: #2e7d32;
+        transition: color 0.2s ease;
+    }
+
+    a:hover {
+        color: #1b5e20;
+        text-decoration: underline;
+    }
+
+    /* --- Icon Styling --- */
+    .fa-star {
+        transition: transform 0.2s ease;
+    }
+
+    .fa-star:hover {
+        transform: scale(1.2);
+    }
+
+    /* --- Section Headings --- */
+    .section-title {
+        font-size: 1.6rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: #2e7d32;
+    }
+
+    /* --- Statistics Styling --- */
+    .h4.text-primary,
+    .h4.text-success {
+        font-size: 1.75rem;
+        font-weight: bold;
+    }
+
+    /* --- Responsive Card Padding --- */
+    @media (max-width: 768px) {
+        .card-body {
+            padding: 1rem;
+        }
+    }
+</style>
+
 <div class="container py-4">
     <div class="row">
         <div class="col-12">
