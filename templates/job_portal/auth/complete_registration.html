@@ -3,13 +3,52 @@
 {% block title %}Complete Your Registration - Job Portal{% endblock %}
 
 {% block content %}
+<style>
+    .registration-card {
+        border-radius: 1rem;
+        box-shadow: 0 0.75rem 1.25rem rgba(0, 128, 0, 0.05);
+    }
+
+    .registration-card .card-header {
+        background-color: #e9f7ef;
+        border-bottom: 1px solid #c3e6cb;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+    }
+
+    .form-control:focus {
+        border-color: #28a745;
+        box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+    }
+
+    .alert-info {
+        background-color: #e9f7ef;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        border-color: #28a745;
+    }
+
+    .btn-success:hover {
+        background-color: #218838;
+        border-color: #1e7e34;
+    }
+
+    .text-success {
+        color: #28a745 !important;
+    }
+</style>
+
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <div class="card">
+            <div class="card registration-card">
                 <div class="card-header text-center">
-                    <h4 class="mb-0">
-                        <i class="fab fa-google me-2 text-primary"></i>Complete Your Registration
+                    <h4 class="mb-0 text-success">
+                        <i class="fas fa-user-check me-2 text-success"></i>Complete Your Registration
                     </h4>
                 </div>
                 <div class="card-body">
@@ -20,12 +59,11 @@
                     </div>
                     
                     <form method="POST">
-                       <!-- The role is automatically set to 'candidate' since companies cannot self-register -->
-<div class="alert alert-info text-center">
-    Account Type: <strong>Job Seeker / Student</strong>
-</div>
-<input type="hidden" name="role" value="candidate">
-                        
+                        <div class="alert alert-info text-center">
+                            Account Type: <strong>Job Seeker / Student</strong>
+                        </div>
+                        <input type="hidden" name="role" value="candidate">
+
                         <div class="mb-3">
                             <label for="full_name" class="form-label">Full Name</label>
                             <input type="text" class="form-control" id="full_name" name="full_name" 
@@ -34,8 +72,8 @@
                         
                         <div class="mb-3">
                             <label for="phone" class="form-label">WhatsApp Number</label>
-                           <input type="text" class="form-control" inputmode="numeric" pattern="\+91\d{10}"  id="phone" name="phone"
-       placeholder="+91XXXXXXXXXX" maxlength="13" required>
+                            <input type="text" class="form-control" inputmode="numeric" pattern="\+91\d{10}" 
+                                   id="phone" name="phone" placeholder="+91XXXXXXXXXX" maxlength="13" required>
                         </div>
                         
                         <div class="mb-3">
@@ -50,13 +88,13 @@
                                    placeholder="https://github.com/yourusername">
                         </div>
                         
-                        <div class="alert alert-info small">
-                            <i class="fas fa-info-circle me-1"></i>
-                            <strong>Company accounts</strong> require admin approval before access is granted.
+                        <div class="alert alert-info small d-flex align-items-center">
+                            <i class="fas fa-info-circle me-2 text-success"></i>
+                            <span><strong>Note:</strong> Company accounts require admin approval before access is granted.</span>
                         </div>
                         
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-success">
                                 <i class="fas fa-check-circle me-2"></i>Complete Registration
                             </button>
                         </div>
