@@ -416,17 +416,18 @@ def projects():
 
 
 # --- Error Handlers ---
+# --- Error Handlers ---
 @app.errorhandler(404)
 def page_not_found(e):
-    # It's better to have a dedicated 404.html template
-    return render_template('404.html'), 404 # Use a dedicated 404 template if available
+    logging.error(f"404 Not Found: {request.url}", exc_info=True) # Log the URL that wasn't found
+    # Use an existing template instead of 404.html
+    return render_template('index.html'), 404 # Or 'base.html' or another common one
 
 @app.errorhandler(500)
 def server_error(e):
     logging.error(f"Server Error: {e}", exc_info=True)
-    # It's better to have a dedicated 500.html template
-    return render_template('500.html'), 500 # Use a dedicated 500 template if available
-
+    # Use an existing template instead of 500.html
+    return render_template('index.html'), 500 # Or 'base.html' or another common one
 # --- App Runner ---
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
