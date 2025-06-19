@@ -59,26 +59,26 @@
                     {% endif %}
                 </ul>
 
-                <!-- User Account / Sign In Button -->
-                <div class="d-flex align-items-center">
-                    {% if current_user.is_authenticated %}
-                        <div class="dropdown user-dropdown">
-                            <a href="#" class="btn-signin dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <span class="user-icon"><i class="fas fa-user"></i></span>
-                                <span class="d-none d-md-inline">{{ current_user.full_name.split()[0] if current_user.full_name else 'Account' }}</span>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li><h6 class="dropdown-header">{{ current_user.email }}</h6></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item text-danger" href="{{ url_for('google_auth.logout') }}">Logout</a></li>
-                            </ul>
-                        </div>
-                    {% else %}
-                        <a href="{{ url_for('google_auth.login') }}" class="btn-signin">
-                            <i class="fab fa-google me-1"></i> Sign In / Register
-                        </a>
-                    {% endif %}
-                </div>
+               <div class="d-flex align-items-center justify-content-end flex-wrap mt-2 mt-lg-0">
+    {% if current_user.is_authenticated %}
+        <div class="dropdown user-dropdown ms-lg-3">
+            <a href="#" class="btn-signin dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="user-icon"><i class="fas fa-user"></i></span>
+                <span class="d-none d-md-inline">{{ current_user.full_name.split()[0] if current_user.full_name else 'Account' }}</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li><h6 class="dropdown-header">{{ current_user.email }}</h6></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item text-danger" href="{{ url_for('google_auth.logout') }}">Logout</a></li>
+            </ul>
+        </div>
+    {% else %}
+        <a href="{{ url_for('google_auth.login') }}" class="btn-signin ms-lg-3 mt-2 mt-lg-0">
+            <i class="fab fa-google me-1"></i> Sign In / Register
+        </a>
+    {% endif %}
+</div>
+
             </div>
         </nav>
     </header>
