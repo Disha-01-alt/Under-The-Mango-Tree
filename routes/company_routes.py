@@ -110,21 +110,35 @@ def download_cv(candidate_id):
     if not current_user.is_approved:
         flash('Your account is pending approval. Please contact the administrator.', 'warning')
         return redirect(url_for('company_routes.dashboard'))
-    
+
     try:
         profile = get_candidate_profile(candidate_id)
-        if not profile or not profile.cv_filename:
-            flash('CV not found.', 'error')
-            return redirect(url_for('company_routes.candidate_detail', candidate_id=candidate_id))
-        
-        file_path = os.path.join(current_app.config['UPLOAD_FOLDER'], 'cvs', profile.cv_filename)
-        if os.path.exists(file_path):
-            return send_file(file_path, as_attachment=True)
+        if not profile:
+            flash('Candidate profile not found.', 'error')
+            return redirect(request.referrer or url_for('company_routes.search_candidates_route'))
+
+        filename = profile.cv_filename
+        folder = 'cvs'
+        viewable_extensions = {'.pdf', '.jpg', '.jpeg', '.png', '.gif', '.txt'}
+
+        # Handle Cloudinary or remote URLs
+        if filename and filename.startswith('http'):
+            return redirect(filename)
+
+        if filename and folder:
+            file_path = os.path.join(current_app.config['UPLOAD_FOLDER'], folder, filename)
+            if os.path.exists(file_path) and os.path.isfile(file_path):
+                file_ext = os.path.splitext(filename)[1].lower()
+                return send_file(file_path, as_attachment=True)
+            else:
+                logging.warning(f"Company: CV file not found: {file_path} for cand {candidate_id}")
+                flash('CV file not found on server.', 'error')
         else:
-            flash('CV file not found on server.', 'error')
-            return redirect(url_for('company_routes.candidate_detail', candidate_id=candidate_id))
-    
+            flash('CV not uploaded or link broken.', 'error')
+
+        return redirect(url_for('company_routes.candidate_detail', candidate_id=candidate_id))
+
     except Exception as e:
-        logging.error(f"Error downloading CV: {e}")
+        logging.exception(f"Company: Error serving CV for cand {candidate_id}:")
         flash('Error downloading CV. Please try again.', 'error')
         return redirect(url_for('company_routes.candidate_detail', candidate_id=candidate_id))
