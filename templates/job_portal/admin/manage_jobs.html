@@ -3,30 +3,193 @@
 {% block title %}Manage Jobs - Job Portal{% endblock %}
 
 {% block content %}
+<style>
+    /* --- Custom Styles for Manage Jobs Page (Consistent with Dashboard/Profile) --- */
+
+    /* Set a light background color for the page content */
+    body {
+        background-color: #f8f9fa; /* A light grey color, typical for dashboards */
+    }
+
+    /* Add stronger shadow to cards and transition for hover effect */
+    .card {
+        box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.15); /* Increased values for more depth */
+        border: 1px solid var(--custom-green);/* Remove default border if Bootstrap adds one */
+        border-radius: 0.5rem; /* Slightly more rounded corners */
+        transition: all 0.3s ease-in-out; /* Smooth transition for transform and shadow */
+    }
+
+    /* Card Hover Effect (Optional on table/list heavy cards) */
+    /* Disable hover transform/shadow for the main table card */
+     .card:has(.table-responsive):hover {
+         transform: none; /* Disable card lift */
+         box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1); /* Revert to a less intense shadow for the container card */
+     }
+
+     /* Add hover effect to table rows */
+     .table-hover tbody tr:hover {
+        background-color: #f2f2f2; /* Subtle grey background on row hover */
+        cursor: pointer; /* Indicate interactivity */
+     }
+
+
+    /* Ensure interactive elements within the card are clickable */
+     .card a.btn, .card button.btn {
+         position: relative; /* Ensure button is above the card potentially */
+         z-index: 2; /* Give it a higher z-index */
+     }
+
+
+    /* Custom green color for elements (adjust shade as needed) */
+    :root {
+        --custom-green: #28a745; /* A standard Bootstrap success green */
+        --custom-green-dark: #218838;
+    }
+
+    /* Page Title Icon color */
+    h1 i.fas {
+        color: var(--custom-green);
+    }
+
+    /* Card Header Icon color */
+    .card-header h5 i.fas {
+        color: var(--custom-green); /* Default header icons to green */
+    }
+
+
+    /* Custom Green Button Style (Primary action) */
+    .btn-custom-green {
+        background-color: var(--custom-green);
+        color: white;
+        border-color: var(--custom-green);
+        /* Add transition for smooth color/shadow change on hover */
+        transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+
+    .btn-custom-green:hover {
+        background-color: var(--custom-green-dark);
+        border-color: var(--custom-green-dark);
+        color: white;
+    }
+
+    .btn-custom-green:focus {
+        box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25);
+    }
+
+    .btn-custom-green:disabled {
+        background-color: var(--custom-green);
+        border-color: var(--custom-green);
+        opacity: 0.65;
+    }
+
+     /* Secondary Button Style */
+    .btn-secondary, .btn-outline-secondary {
+        /* Using default Bootstrap secondary styles, but add transition */
+         transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+    }
+
+     /* Danger Button Style */
+     .btn-danger, .btn-outline-danger {
+         /* Using default Bootstrap danger styles, add transition */
+         transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+     }
+
+
+    /* Badge Colors (using standard Bootstrap bg- classes, consistent) */
+    .badge.bg-primary { background-color: #0d6efd !important; color: #fff !important;} /* Keep primary for tags in modal */
+    .badge.bg-info { background-color: #17a2b8 !important; color: #fff !important;} /* Info/Cyan for tags in table */
+    .badge.bg-success { background-color: var(--custom-green) !important; color: #fff !important;} /* Green */
+    .badge.bg-warning { background-color: #ffc107 !important; color: #212529 !important;} /* Yellow */
+    .badge.bg-danger { background-color: #dc3545 !important; color: #fff !important;} /* Red */
+    .badge.bg-secondary { background-color: #6c757d !important; color: #fff !important;} /* Grey */
+
+
+    /* Icon Colors in Card Bodies */
+    .card-body i.fas, .card-body i.fab {
+        /* Default icons in card body to text-muted or default color if needed */
+        /* Specific icon colors handled below */
+    }
+
+    /* Specific Icon Colors in Table */
+    .table i.fas.fa-map-marker-alt { color: #6c757d !important; } /* Location icon (muted) */
+    .table i.fas.fa-eye { color: #6c757d !important; } /* View icon (muted) */
+    .table i.fas.fa-edit { color: #6c757d !important; } /* Edit icon (muted) */
+    .table i.fab.fa-linkedin { color: #0a66c2 !important; } /* LinkedIn icon (brand color) */
+    .table i.fas.fa-trash { color: #dc3545 !important; } /* Trash icon (danger) */
+
+
+     /* Adjust text color for consistency */
+     .lead.text-muted, .card-text, .text-muted, .small, table .text-muted {
+         color: #6c757d !important; /* Consistent muted text color */
+     }
+
+     /* Bold text for primary job details in table */
+     .table td .fw-bold {
+         color: #212529; /* Darker text for emphasis */
+     }
+     /* Salary text color in table */
+     .table td .text-success {
+          color: var(--custom-green-dark) !important; /* Darker green for salary */
+     }
+
+     /* Table Header Style */
+     .table-dark {
+         background-color: #343a40; /* Dark background */
+         color: white; /* White text */
+     }
+     .table-dark th {
+         border-bottom: none; /* Remove border under dark header */
+     }
+     .table th {
+         color: #495057; /* Slightly darker grey for standard headers if not dark */
+     }
+
+     /* Modal Body Styling */
+     .modal-body strong {
+         color: #212529; /* Make labels bold and dark */
+     }
+    .modal-body .text-muted {
+        color: #6c757d !important; /* Ensure muted text stays grey */
+    }
+
+     /* Styled scrollable content boxes in modal */
+     .modal-body .form-control.border.rounded {
+        background-color: #f8f9fa; /* Light background */
+        border-color: #e9ecef !important; /* Light border */
+        color: #495057; /* Readable text color */
+        /* max-height and overflow handled inline */
+     }
+
+
+</style>
+
 <div class="container py-4">
     <div class="row">
         <div class="col-12">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <div>
                     <h1 class="mb-0">
+                        {# Icon color controlled by CSS #}
                         <i class="fas fa-cog me-2"></i>Manage Jobs
                     </h1>
                     <p class="text-muted mb-0">Edit, delete, and organize job postings</p>
                 </div>
-                <a href="{{ url_for('admin_routes.add_job') }}" class="btn btn-primary">
+                {# Changed button to custom green #}
+                <a href="{{ url_for('admin_routes.add_job') }}" class="btn btn-custom-green">
                     <i class="fas fa-plus me-2"></i>Add New Job
                 </a>
             </div>
+             <hr class="mb-4"> {# Add a horizontal rule for consistency #}
         </div>
     </div>
-    
+
     {% if jobs %}
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header bg-light"> {# Optional: Add light background #}
                         <h5 class="mb-0">
-                            <i class="fas fa-briefcase me-2"></i>All Job Postings ({{ jobs|length }})
+                            <i class="fas fa-briefcase me-2"></i>All Job Postings ({{ jobs|length }}) {# Icon color controlled by CSS #}
                         </h5>
                     </div>
                     <div class="card-body p-0">
@@ -48,14 +211,16 @@
                                         <tr>
                                             <td>
                                                 <div class="fw-bold">{{ job.title|default('N/A') }}</div>
+                                                {# Salary range check for display color #}
                                                 {% if job.salary_range and job.salary_range|string|lower not in ['not specified', 'not found', 'n/a', '', 'null'] %}
-                                                    <small class="text-success d-block">{{ job.salary_range }}</small>
+                                                    <small class="text-success d-block">{{ job.salary_range }}</small> {# text-success is styled to custom green-dark #}
                                                 {% elif job.salary_range and (job.salary_range|string).strip() != '' and (job.salary_range|string).strip()|lower != 'null' %}
-                                                     <small class="text-muted d-block">{{ job.salary_range }}</small>
+                                                     <small class="text-muted d-block">{{ job.salary_range }}</small> {# text-muted is styled grey #}
                                                 {% endif %}
                                             </td>
                                             <td>{{ job.company|default('N/A') }}</td>
                                             <td>
+                                                {# Location icon color controlled by CSS #}
                                                 {% if job.location and job.location|string|lower not in ['not specified', 'not found', 'n/a', '', 'null'] %}
                                                     <i class="fas fa-map-marker-alt me-1 text-muted"></i>
                                                     {{ job.location }}
@@ -64,6 +229,7 @@
                                                 {% endif %}
                                             </td>
                                             <td>
+                                                {# Badge color bg-secondary is styled grey #}
                                                 {% if job.job_type and job.job_type|string|lower not in ['not specified', 'not found', 'n/a', '', 'null'] %}
                                                     <span class="badge bg-secondary">{{ job.job_type }}</span>
                                                 {% else %}
@@ -73,10 +239,11 @@
                                             <td>
                                                 {% if job.job_tags %}
                                                     {% set tags_list = job.job_tags.split(',') %}
-                                                    {% for tag in tags_list[:2] %} {# Show first 2 tags #}
-                                                        <span class="badge bg-info text-dark me-1 mb-1 fw-normal">{{ tag.strip() }}</span>
+                                                    {% for tag in tags_list[:2] %} {# Show first 2 tags, badge bg-info is styled cyan #}
+                                                        <span class="badge bg-info me-1 mb-1 fw-normal">{{ tag.strip() }}</span>
                                                     {% endfor %}
                                                     {% if tags_list|length > 2 %}
+                                                         {# Badge bg-light text-dark is styled appropriately #}
                                                         <span class="badge bg-light text-dark fw-normal">+{{ tags_list|length - 2 }}</span>
                                                     {% endif %}
                                                 {% else %}
@@ -95,23 +262,27 @@
                                             </td>
                                             <td>
                                                 <div class="btn-group" role="group">
-                                                    <button type="button" class="btn btn-outline-info btn-sm" 
+                                                    {# Changed button to outline-secondary, icon color controlled by CSS #}
+                                                    <button type="button" class="btn btn-outline-secondary btn-sm"
                                                             title="View Details"
-                                                            data-bs-toggle="modal" 
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#jobModal{{ job.id }}">
                                                         <i class="fas fa-eye"></i>
                                                     </button>
-                                                    <a href="{{ url_for('admin_routes.edit_job', job_id=job.id) }}" 
-                                                       class="btn btn-outline-primary btn-sm" title="Edit Job">
+                                                    {# Changed button to outline-secondary, icon color controlled by CSS #}
+                                                    <a href="{{ url_for('admin_routes.edit_job', job_id=job.id) }}"
+                                                       class="btn btn-outline-secondary btn-sm" title="Edit Job">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
                                                     {% if job.linkedin_url %}
-                                                        <a href="{{ job.linkedin_url }}" target="_blank" 
+                                                        {# Button is already outline-secondary, icon color controlled by CSS #}
+                                                        <a href="{{ job.linkedin_url }}" target="_blank"
                                                            class="btn btn-outline-secondary btn-sm" title="View on LinkedIn">
                                                             <i class="fab fa-linkedin"></i>
                                                         </a>
                                                     {% endif %}
-                                                    <button type="button" class="btn btn-outline-danger btn-sm js-delete-job-btn" 
+                                                    {# Button is already outline-danger, icon color controlled by CSS #}
+                                                    <button type="button" class="btn btn-outline-danger btn-sm js-delete-job-btn"
                                                             title="Delete Job"
                                                             data-job-id="{{ job.id }}"
                                                             data-job-title="{{ (job.title or 'this job')|tojson|safe }}">
@@ -128,7 +299,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Job Detail Modals -->
         {% for job in jobs %}
             <div class="modal fade" id="jobModal{{ job.id }}" tabindex="-1" aria-labelledby="jobModalLabel{{ job.id }}" aria-hidden="true">
@@ -142,17 +313,17 @@
                             <div class="row mb-3">
                                 <div class="col-md-6"><strong>Company:</strong> {{ job.company|default('N/A') }}</div>
                                 <div class="col-md-6">
-                                    <strong>Location:</strong> 
+                                    <strong>Location:</strong>
                                     {% if job.location and job.location|string|lower not in ['not specified', 'not found', 'n/a', '', 'null'] %}{{ job.location }}{% else %}N/A{% endif %}
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="col-md-6">
-                                    <strong>Type/Model:</strong> 
+                                    <strong>Type/Model:</strong>
                                     {% if job.job_type and job.job_type|string|lower not in ['not specified', 'not found', 'n/a', '', 'null'] %}{{ job.job_type }}{% else %}N/A{% endif %}
                                 </div>
                                 <div class="col-md-6">
-                                    <strong>Salary:</strong> 
+                                    <strong>Salary:</strong>
                                     {% if job.salary_range and job.salary_range|string|lower not in ['not specified', 'not found', 'n/a', '', 'null'] %}{{ job.salary_range }}{% elif job.salary_range and (job.salary_range|string).strip() != '' and (job.salary_range|string).strip()|lower != 'null' %}{{ job.salary_range }}{% else %}N/A{% endif %}
                                 </div>
                             </div>
@@ -162,25 +333,28 @@
                                 <strong>Job Tags/Functions:</strong>
                                 <div class="mt-1">
                                     {% for tag in job.job_tags.split(',') %}
+                                        {# Badge bg-primary is styled blue #}
                                         <span class="badge bg-primary me-1 mb-1 fw-normal">{{ tag.strip() }}</span>
                                     {% endfor %}
                                 </div>
                             </div>
                             {% endif %}
-                            
+
                             <div class="mb-3">
                                 <strong>Description:</strong>
+                                {# Styled scrollable box #}
                                 <div class="mt-1 p-3 form-control border rounded" style="max-height: 200px; overflow-y: auto;">
                                     {% if job.description and (job.description|string).strip() != '' %}{{ job.description|replace('\n', '<br>')|safe }}{% else %}<p class="text-muted">No description.</p>{% endif %}
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <strong>Requirements:</strong>
+                                {# Styled scrollable box #}
                                 <div class="mt-1 p-3 form-control border rounded" style="max-height: 200px; overflow-y: auto;">
                                     {% if job.requirements and (job.requirements|string).strip() != '' %}{{ job.requirements|replace('\n', '<br>')|safe }}{% else %}<p class="text-muted">No requirements.</p>{% endif %}
                                 </div>
                             </div>
-                            
+
                             <div class="text-muted small">
                                 {% if job.created_at %}Posted on {{ job.created_at.strftime('%B %d, %Y at %I:%M %p') }}{% endif %}
                                 {% if job.posted_by_name %} by {{ job.posted_by_name }}{% endif %}
@@ -188,23 +362,27 @@
                         </div>
                         <div class="modal-footer">
                             {% if job.linkedin_url %}
-                                <a href="{{ job.linkedin_url }}" target="_blank" class="btn btn-outline-primary"><i class="fab fa-linkedin me-1"></i>LinkedIn</a>
+                                {# Changed button to outline-secondary, icon color controlled by CSS #}
+                                <a href="{{ job.linkedin_url }}" target="_blank" class="btn btn-outline-secondary"><i class="fab fa-linkedin me-1"></i>LinkedIn</a>
                             {% endif %}
-                            <a href="{{ url_for('admin_routes.edit_job', job_id=job.id) }}" class="btn btn-primary"><i class="fas fa-edit me-1"></i>Edit</a>
+                            {# Changed button to custom green #}
+                            <a href="{{ url_for('admin_routes.edit_job', job_id=job.id) }}" class="btn btn-custom-green"><i class="fas fa-edit me-1"></i>Edit</a>
+                             {# Button is already secondary #}
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
             </div>
         {% endfor %}
-        
+
     {% else %}
         <div class="row">
             <div class="col-12 text-center py-5">
                 <div class="display-1 text-muted mb-4"><i class="fas fa-briefcase"></i></div>
                 <h3 class="mt-4 mb-3">No Jobs Posted Yet</h3>
                 <p class="text-muted mb-4">Start by adding your first job posting.</p>
-                <a href="{{ url_for('admin_routes.add_job') }}" class="btn btn-primary btn-lg">
+                 {# Changed button to custom green #}
+                <a href="{{ url_for('admin_routes.add_job') }}" class="btn btn-custom-green btn-lg">
                     <i class="fas fa-plus me-2"></i>Add First Job
                 </a>
             </div>
@@ -225,7 +403,9 @@
                 <p class="text-danger small">This action cannot be undone.</p>
             </div>
             <div class="modal-footer">
+                 {# Button is already secondary #}
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                 {# Button is already danger #}
                 <a href="#" id="confirmDeleteLink" class="btn btn-danger"><i class="fas fa-trash me-1"></i>Delete Job</a>
             </div>
         </div>
@@ -257,9 +437,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
 
-            document.getElementById('jobTitleToDelete').textContent = displayTitle; 
+            document.getElementById('jobTitleToDelete').textContent = displayTitle;
+            // Assuming the delete route is something like /admin/job/delete/<job_id>
+            // We slice the URL to remove the trailing 0 and append the actual job ID
+            // Ensure your Flask route for delete_job_route is defined with <int:job_id>
             document.getElementById('confirmDeleteLink').href = "{{ url_for('admin_routes.delete_job_route', job_id=0) }}".slice(0, -1) + jobId;
-            
+
             var deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
             deleteModal.show();
         });
