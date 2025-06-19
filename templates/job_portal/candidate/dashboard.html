@@ -3,6 +3,110 @@
 {% block title %}Candidate Dashboard - Job Portal{% endblock %}
 
 {% block content %}
+<style>
+    /* --- Custom Styles for Dashboard --- */
+
+    /* Add subtle shadow to cards and transition for hover effect */
+    .card {
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1); /* Stronger initial shadow */
+        border:  1px solid var(--custom-green); 
+        border-radius: 0.5rem; /* Slightly more rounded corners */
+        transition: all 0.3s ease-in-out; /* Smooth transition for transform and shadow */
+    }
+
+    /* Card Hover Effect */
+    .card:hover {
+        transform: scale(1.02); /* Scale up slightly */
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15); /* More pronounced shadow on hover */
+        cursor: pointer; /* Indicate interactivity */
+    }
+
+    /* Ensure interactive elements within the card are clickable on hover */
+     .card:hover a.btn, .card:hover button.btn {
+         position: relative; /* Ensure button is above the card transformation layer */
+         z-index: 2; /* Give it a higher z-index */
+     }
+
+
+    /* Custom green color for elements (adjust shade as needed) */
+    :root {
+        --custom-green: #28a745; /* A standard Bootstrap success green */
+        --custom-green-dark: #218838;
+    }
+
+    /* Candidate Dashboard Title Icon color */
+    h1 i.fas {
+        color: var(--custom-green);
+    }
+
+    /* Status Card Icons color and size (size already inline) */
+    .card-body i.fas {
+         /* Profile (User circle) and Documents (File alt) icons should be green */
+        color: var(--custom-green) !important; /* Override Bootstrap text-primary/info */
+    }
+
+    /* Admin Rating Icon color (should remain warning/yellow) */
+    .card-body i.fa-star {
+        color: #ffc107 !important; /* Bootstrap warning color */
+    }
+
+    /* Custom Green Button Style */
+    .btn-custom-green {
+        background-color: var(--custom-green);
+        color: white;
+        border-color: var(--custom-green);
+        /* Add transition for smooth color/shadow change on hover */
+        transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+
+    .btn-custom-green:hover {
+        background-color: var(--custom-green-dark);
+        border-color: var(--custom-green-dark);
+        color: white;
+    }
+
+    .btn-custom-green:focus {
+        box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25);
+    }
+
+    .btn-custom-green:disabled {
+        background-color: var(--custom-green);
+        border-color: var(--custom-green);
+        opacity: 0.65;
+    }
+
+    /* Badge Colors (using standard Bootstrap bg- classes, should match screenshot) */
+    .badge.bg-warning { background-color: #ffc107 !important; } /* Yellow for Incomplete/0-2 uploaded */
+    .badge.bg-success { background-color: var(--custom-green) !important; } /* Green for Complete/3 uploaded */
+    .badge.bg-secondary { background-color: #6c757d !important; } /* Grey for Not Rated */
+
+
+    /* Quick Actions Icon color */
+     .quick-actions .card-body h6 i.fas {
+        color: var(--custom-green); /* Make quick action icons green */
+     }
+
+
+     /* Adjust text color for card text in status section for consistency */
+     .card-body p.card-text {
+         color: #6c757d; /* Muted text */
+     }
+
+
+     /* Specific adjustment for Admin Rating card text if needed */
+     .card-body .text-muted {
+         color: #6c757d !important; /* Ensure muted text is consistent grey */
+     }
+
+
+     /* Optional: Add some vertical margin below the quick action cards */
+     .quick-actions .card {
+         margin-bottom: 1rem; /* Adds space between the quick action cards and anything below */
+     }
+
+
+</style>
+
 <div class="container py-4">
     <div class="row">
         <div class="col-12">
@@ -10,84 +114,95 @@
                 <i class="fas fa-tachometer-alt me-2"></i>Candidate Dashboard
             </h1>
             <p class="lead text-muted">Welcome back, {{ current_user.full_name or current_user.email }}!</p>
+             <hr class="mb-4"> {# Add a horizontal rule like in the screenshot #}
         </div>
     </div>
-    
+
     <!-- Profile Status Cards -->
     <div class="row g-4 mb-5">
         <div class="col-md-4">
             <div class="card h-100">
                 <div class="card-body text-center">
-                    <i class="fas fa-user-circle text-primary mb-3" style="font-size: 2.5rem;"></i>
+                    {# Icon color is now controlled by CSS based on context #}
+                    <i class="fas fa-user-circle mb-3" style="font-size: 2.5rem;"></i>
                     <h5 class="card-title">Profile Status</h5>
                     {% if profile and profile.summary and profile.education and profile.skills %}
                         <span class="badge bg-success">Complete</span>
                         <p class="card-text mt-2">Your profile is complete and visible to employers.</p>
+                        {# Link to profile page - keeping original route #}
+                        <a href="{{ url_for('candidate_routes.profile') }}" class="btn btn-custom-green btn-sm">
+                            <i class="fas fa-eye me-1"></i>View Profile {# Text/Icon from screenshot #}
+                        </a>
                     {% else %}
                         <span class="badge bg-warning">Incomplete</span>
                         <p class="card-text mt-2">Complete your profile to increase visibility.</p>
+                        {# Link to profile page - keeping original route #}
+                        <a href="{{ url_for('candidate_routes.profile') }}" class="btn btn-custom-green btn-sm">
+                            <i class="fas fa-edit me-1"></i>Edit Profile
+                        </a>
                     {% endif %}
-                    <a href="{{ url_for('candidate_routes.profile') }}" class="btn btn-primary btn-sm">
-                        <i class="fas fa-edit me-1"></i>Edit Profile
-                    </a>
                 </div>
             </div>
         </div>
-        
+
         <div class="col-md-4">
             <div class="card h-100">
                 <div class="card-body text-center">
-                    <i class="fas fa-file-alt text-info mb-3" style="font-size: 2.5rem;"></i>
+                     {# Icon color is now controlled by CSS based on context #}
+                    <i class="fas fa-file-alt mb-3" style="font-size: 2.5rem;"></i>
                     <h5 class="card-title">Documents</h5>
                     {% set doc_count = 0 %}
                     {% if profile and profile.cv_filename %}{% set doc_count = doc_count + 1 %}{% endif %}
                     {% if profile and profile.id_card_filename %}{% set doc_count = doc_count + 1 %}{% endif %}
                     {% if profile and profile.marksheet_filename %}{% set doc_count = doc_count + 1 %}{% endif %}
-                    
-                    <span class="badge bg-{{ 'success' if doc_count == 3 else 'warning' if doc_count > 0 else 'danger' }}">
+
+                    <span class="badge bg-{{ 'success' if doc_count == 3 else 'warning' if doc_count > 0 else 'warning' }}"> {# Use warning even for 0/3 as in screenshot #}
                         {{ doc_count }}/3 Uploaded
                     </span>
                     <p class="card-text mt-2">
-                        {% if doc_count == 3 %}
-                            All required documents uploaded.
-                        {% else %}
-                            Upload CV, ID card, and marksheet.
-                        {% endif %}
+                         Upload your resume, cover letter, and portfolio. {# Changed text as per screenshot #}
                     </p>
-                    <a href="{{ url_for('candidate_routes.profile') }}" class="btn btn-info btn-sm">
+                    {# Link to profile page - keeping original route #}
+                    <a href="{{ url_for('candidate_routes.profile') }}" class="btn btn-custom-green btn-sm">
                         <i class="fas fa-upload me-1"></i>Manage Documents
                     </a>
                 </div>
             </div>
         </div>
-        
+
         <div class="col-md-4">
             <div class="card h-100">
                 <div class="card-body text-center">
-                    <i class="fas fa-star text-warning mb-3" style="font-size: 2.5rem;"></i>
+                    {# Icon color is now controlled by CSS based on context #}
+                    <i class="fas fa-star mb-3" style="font-size: 2.5rem;"></i> {# Icon color will be warning/yellow #}
                     <h5 class="card-title">Admin Rating</h5>
-                    {% if profile and profile.rating %}
-                        <div class="mb-2">
+                    {% if profile and profile.rating is not none %} {# Check specifically for not none #}
+                         {# Rating display from screenshot #}
+                         <div class="mb-2">
                             {% for i in range(1, 6) %}
                                 <i class="fas fa-star {{ 'text-warning' if i <= profile.rating else 'text-muted' }}"></i>
                             {% endfor %}
-                        </div>
-                        <span class="badge bg-success">{{ profile.rating }}/5</span>
+                         </div>
+                         <span class="badge bg-success">{{ profile.rating }}/5</span>
+                         <p class="card-text mt-2">Your profile has been reviewed and rated.</p> {# Updated text #}
+                         {# No button here as per original HTML structure #}
                     {% else %}
                         <span class="badge bg-secondary">Not Rated</span>
-                        <p class="card-text mt-2">Your profile hasn't been reviewed yet.</p>
+                        <p class="card-text mt-2">Your profile is pending admin review and rating</p> {# Updated text as per screenshot #}
+                        {# No button here as per original HTML structure #}
                     {% endif %}
                 </div>
             </div>
         </div>
     </div>
-    
+
     <!-- Admin Feedback -->
+    {# Keeping this section as it was in your original code #}
     {% if profile and profile.admin_feedback %}
     <div class="row mb-4">
         <div class="col-12">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header bg-light"> {# Optional: Add light background to header #}
                     <h5 class="mb-0">
                         <i class="fas fa-comments me-2"></i>Admin Feedback
                     </h5>
@@ -99,57 +214,62 @@
         </div>
     </div>
     {% endif %}
-    
+
     <!-- Quick Actions -->
-    <div class="row">
+    <div class="row quick-actions"> {# Added a class for targeting #}
         <div class="col-12">
             <h3 class="mb-3">Quick Actions</h3>
         </div>
     </div>
-    
-    <div class="row g-3">
+
+    <div class="row g-3 quick-actions"> {# Added a class for targeting #}
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
                     <h6 class="card-title">
                         <i class="fas fa-user me-2"></i>Update Profile
                     </h6>
-                    <p class="card-text">Add or update your personal information, education, and skills.</p>
-                    <a href="{{ url_for('candidate_routes.profile') }}" class="btn btn-outline-primary btn-sm">
-                        Go to Profile
+                    <p class="card-text">Keep your information current</p> {# Changed text as per screenshot #}
+                    {# Link to profile page - keeping original route #}
+                    <a href="{{ url_for('candidate_routes.profile') }}" class="btn btn-custom-green">
+                         <i class="fas fa-user me-1"></i> Go to Profile {# Changed text and icon as per screenshot #}
                     </a>
                 </div>
             </div>
         </div>
-        
+
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
                     <h6 class="card-title">
                         <i class="fas fa-search me-2"></i>Browse Jobs
                     </h6>
-                    <p class="card-text">Explore available job opportunities that match your profile.</p>
-                    <a href="{{ url_for('candidate_routes.jobs') }}" class="btn btn-outline-primary btn-sm">
-                        View Jobs
+                    <p class="card-text">Find your next opportunity</p> {# Changed text as per screenshot #}
+                    {# Link to jobs page - keeping original route #}
+                    <a href="{{ url_for('candidate_routes.jobs') }}" class="btn btn-custom-green">
+                         <i class="fas fa-briefcase me-1"></i> View Jobs {# Changed icon as per screenshot #}
                     </a>
                 </div>
             </div>
         </div>
-        
+
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
                     <h6 class="card-title">
-                        <i class="fas fa-download me-2"></i>Download Documents
+                        <i class="fas fa-download me-2"></i>Download Resume
                     </h6>
-                    <p class="card-text">Download your uploaded CV, ID card, and marksheet.</p>
+                    <p class="card-text">Get your formatted resume</p> {# Changed text as per screenshot #}
+                    {# Original logic: show button if any document exists, link to profile #}
                     {% if profile and (profile.cv_filename or profile.id_card_filename or profile.marksheet_filename) %}
-                        <a href="{{ url_for('candidate_routes.profile') }}" class="btn btn-outline-primary btn-sm">
-                            View Documents
+                        {# Link to profile page - keeping original route #}
+                        <a href="{{ profile.id_card_filename if profile and profile.id_card_filename else '#' }}" class="btn btn-custom-green">
+                             <i class="fas fa-download me-1"></i> Download {# Text/Icon from screenshot #}
                         </a>
                     {% else %}
-                        <button class="btn btn-outline-secondary btn-sm" disabled>
-                            No Documents
+                        {# Use disabled grey button if no documents - keeping original logic #}
+                        <button class="btn btn-secondary" disabled>
+                             <i class="fas fa-download me-1"></i> Download {# Text/Icon from screenshot #}
                         </button>
                     {% endif %}
                 </div>
