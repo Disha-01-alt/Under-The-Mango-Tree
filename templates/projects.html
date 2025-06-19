@@ -81,10 +81,12 @@
              border-radius: 0.5rem; /* rounded-lg */
              box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
              padding: 1.5rem; /* p-6 */
-             display: flex;
+             display: flex; /* Use flex for layout inside the card */
              flex-direction: column;
              justify-content: space-between;
              border: 1px solid #E5E7EB; /* border border-gray-200 */
+             /* Added transition for smoother hide/show if not using display: none */
+             /* transition: opacity 0.3s ease-in-out; */
          }
 
          /* Tag pills styling */
@@ -145,6 +147,7 @@
         {# Text showing current project count - match screenshot style #}
         <div class="showing-count"> {# Use the custom class #}
              {# This still shows total count as frontend filtering is not implemented #}
+             {# If you implement JS filtering, update this text in JS as well #}
             Showing {{ projects|length }} of {{ projects|length }} projects
         </div>
 
@@ -153,10 +156,11 @@
         <div class="max-w-7xl mx-auto mt-8 px-4 sm:px-6 lg:px-8">
             {% if projects %}
                 {# Responsive grid with gap #}
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6" id="projects-grid"> {# Added ID for easier JS selection #}
                     {% for project in projects %}
                         {# Apply the project-card class #}
-                        <div class="project-card" data-category="{{ project.category | default('General') }}"> {# Add category data attribute #}
+                        {# Add data-category attribute matching JSON config key #}
+                        <div class="project-card" data-category="{{ project.category | default('General') }}">
                             {# Top section: Featured Tag and Likes #}
                             <div class="flex justify-between items-center mb-4">
                                 {% if project.featured %}
@@ -211,11 +215,11 @@
                             {# Actions: View Details and External Link #}
                             <div class="mt-6 flex items-center justify-between">
                                 {# "View Details" link with correct style #}
-                                <a href="{{ project.link }}" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
+                                <a href="{{ project.link }}" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center"> {# Added target="_blank" assuming it goes to external site #}
                                      View Details
                                 </a>
                                 {# External link icon with correct size and color #}
-                                <a href="{{ project.link }}" target="_blank" class="text-gray-500 hover:text-gray-700 transition duration-300 ease-in-out">
+                                <a href="{{ project.link }}" target="_blank" class="text-gray-500 hover:text-gray-700 transition duration-300 ease-in-out"> {# Added target="_blank" #}
                                     <i class="fas fa-external-link-alt text-lg"></i>
                                 </a>
                             </div>
@@ -234,45 +238,43 @@
 
     {% include 'footer.html' %}
 
-    {# JavaScript for toggling filter button active state (Visual Only) #}
+    {# JavaScript for toggling filter button active state AND FILTERING CARDS #}
     <script>
         const filterButtons = document.querySelectorAll('.filter-button');
-        // const projectCards = document.querySelectorAll('.project-card'); // Needed for actual filtering
+        const projectCards = document.querySelectorAll('.project-card'); // <-- UNCOMMENTED: Get all project cards
 
         filterButtons.forEach(button => {
             button.addEventListener('click', () => {
                 // Get the category key from the data attribute
                 const selectedCategory = button.dataset.category;
 
-                // Remove active class from all buttons
+                // Remove active class from all buttons and reset their styles
                 filterButtons.forEach(btn => {
-                     btn.classList.remove('active');
-                     // Reset default styles for all buttons
+                     btn.classList.remove('active', 'bg-emerald-500', 'hover:bg-emerald-600', 'text-white', 'border-emerald-600');
+                     // Reapply default styles
                      btn.classList.add('bg-white', 'hover:bg-gray-200', 'text-gray-700', 'border-gray-300');
-                     btn.classList.remove('bg-emerald-500', 'hover:bg-emerald-600', 'text-white', 'border-emerald-600'); // Remove active styles
                 });
 
                 // Add active class and style to the clicked button
-                button.classList.add('active');
-                button.classList.add('bg-emerald-500', 'hover:bg-emerald-600', 'text-white', 'border-emerald-600');
+                button.classList.add('active', 'bg-emerald-500', 'hover:bg-emerald-600', 'text-white', 'border-emerald-600');
                 button.classList.remove('bg-white', 'hover:bg-gray-200', 'text-gray-700', 'border-gray-300');
 
-                // --- Basic Filtering Logic (Optional: Uncomment/Enhance if needed) ---
-                // This is simple front-end show/hide. For actual filtering,
-                // you might need to fetch data again or use a more complex JS framework.
-                /*
+
+                // --- Filtering Logic (UNCOMMENTED) ---
                 projectCards.forEach(card => {
-                    const cardCategory = card.dataset.category;
+                    const cardCategory = card.dataset.category; // Get category from card's data attribute
+
                     if (selectedCategory === 'All' || cardCategory === selectedCategory) {
-                        card.style.display = 'flex'; // Or 'block', 'grid' depending on original display
+                        // Show the card
+                        card.style.display = 'flex'; // Use 'flex' because the .project-card style has display: flex
                     } else {
+                        // Hide the card
                         card.style.display = 'none';
                     }
                 });
                 // Note: Updating the "Showing X of Y projects" text dynamically
-                // would also require JavaScript.
-                */
-                // --- End Basic Filtering Logic ---
+                // would require additional JavaScript logic here to count visible cards.
+                // --- End Filtering Logic ---
             });
         });
 
@@ -283,6 +285,19 @@
                   allButton.classList.add('bg-emerald-500', 'hover:bg-emerald-600', 'text-white', 'border-emerald-600');
                   allButton.classList.remove('bg-white', 'hover:bg-gray-200', 'text-gray-700', 'border-gray-300');
              }
+
+             // Optional: Hide cards initially based on the default active button ('All')
+             // This isn't strictly necessary since 'All' shows everything,
+             // but would be needed if a different filter was active by default.
+             // const initialCategory = document.querySelector('.filter-button.active').dataset.category;
+             // projectCards.forEach(card => {
+             //      const cardCategory = card.dataset.category;
+             //      if (initialCategory === 'All' || cardCategory === initialCategory) {
+             //           card.style.display = 'flex';
+             //      } else {
+             //           card.style.display = 'none';
+             //      }
+             // });
         });
     </script>
 
