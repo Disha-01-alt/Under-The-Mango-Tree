@@ -354,7 +354,7 @@ body.job-portal-body {
 .jp-job-card .btn-apply:hover {
     background-color: var(--jp-primary-dark);
 }
-/* In static/job_portal_style.css */
+
 
 /* --- Collapsible Filter Bar --- */
 .jp-filter-bar {
@@ -363,10 +363,11 @@ body.job-portal-body {
     border-radius: 0.75rem;
     padding: 1.5rem;
     margin-top: 1.5rem;
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: border 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-/* Override Bootstrap defaults for form inputs inside this bar */
+/* Inputs inside the filter bar */
 .jp-filter-bar .form-control,
 .jp-filter-bar .form-select {
     font-size: 0.875rem;
@@ -375,6 +376,7 @@ body.job-portal-body {
     background-color: var(--jp-bg-light);
     border: 1px solid var(--jp-border-color);
 }
+
 .jp-filter-bar .form-control:focus,
 .jp-filter-bar .form-select:focus {
     background-color: white;
@@ -382,21 +384,83 @@ body.job-portal-body {
     box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
 }
 
-/* Style for the green border highlight on the filter bar container */
-.filters-active {
+/* Green border and slight scale when filters are active */
+#filtersCollapse.show .jp-filter-bar {
     border: 2px solid var(--jp-primary) !important;
     box-shadow: 0 0 15px rgba(22, 163, 74, 0.15) !important;
-}
-.btn-success {
-    background-color: #25D366;
-    color: white;
-    border: none;
-    transition: background-color 0.3s ease;
+    transform: scale(1.01);
 }
 
-.btn-success:hover {
-    background-color: #1ebe5d;
-    color: white;
-    text-decoration: none;
+/* Animate "Apply Filters" button on hover */
+button.btn-success {
+    transition: all 0.3s ease !important;
+    background-color: var(--jp-primary, #25D366);
+    border: 1px solid var(--jp-primary, #25D366);
+    font-weight: 600;
 }
 
+button.btn-success:hover {
+    background-color: #1ebe5d !important;
+    border: 2px solid #1ebe5d !important;
+    color: white !important;
+}
+/* Filters toggle button base style */
+.btn-filters {
+    background-color: #f8f9fa; /* Light gray background */
+    color: #212529;
+    border: 1px solid var(--jp-border-color, #ced4da);
+    font-weight: 600;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect: scale + green border */
+.btn-filters:hover {
+    transform: scale(1.05);
+    border-color: var(--jp-primary, #25D366);
+    color: var(--jp-primary, #25D366);
+    background-color: rgba(37, 211, 102, 0.05); /* subtle green highlight */
+}
+
+/* Optional: active state after clicking */
+.btn-filters:focus,
+.btn-filters[aria-expanded="true"] {
+    border: 2px solid var(--jp-primary, #25D366);
+    background-color: rgba(37, 211, 102, 0.1);
+    color: var(--jp-primary, #25D366);
+    outline: none;
+}
+
+.whatsapp-channel-btn {
+    display: inline-block;
+    background-color: #25D366 !important;
+    color: #fff !important;
+    padding: 0.6rem 1.5rem !important;
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    border-radius: 50px !important;
+    text-decoration: none !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease !important;
+    position: relative !important;
+    z-index: 1 !important;
+    border: none !important;
+}
+.whatsapp-channel-btn:hover {
+    background-color: #1ebe5d !important;
+    transform: scale(1.05) !important;
+    box-shadow: 0 12px 24px rgba(59, 130, 246, 0.2) !important;
+    text-decoration: none !important;
+    z-index: 2 !important;
+}
+#browse {
+    font-size: 2.8rem;
+    font-weight: 900;
+    }
+.card {
+        box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.15); /* Stronger initial shadow */
+        border: 1px solid var(--custom-green); /* Added a subtle green border */
+        border-radius: 0.5rem; /* Slightly more rounded corners */
+        transition: all 0.3s ease-in-out; /* Smooth transition for transform, shadow, and potentially border color */
+    }
