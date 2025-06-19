@@ -387,3 +387,16 @@ body.job-portal-body {
     border: 2px solid var(--jp-primary) !important;
     box-shadow: 0 0 15px rgba(22, 163, 74, 0.15) !important;
 }
+.btn-success {
+    background-color: #25D366;
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-success:hover {
+    background-color: #1ebe5d;
+    color: white;
+    text-decoration: none;
+}
+
