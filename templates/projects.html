@@ -85,7 +85,7 @@
              flex-direction: column;
              justify-content: space-between;
              border: 1px solid #E5E7EB; /* border border-gray-200 */
-             /* Added transition for smoother hide/show if not using display: none */
+             /* Add transition for smoother hide/show if not using display: none */
              /* transition: opacity 0.3s ease-in-out; */
          }
 
@@ -144,10 +144,9 @@
             {# --- End Dynamic Filter Buttons --- #}
         </div>
 
-        {# Text showing current project count - match screenshot style #}
-        <div class="showing-count"> {# Use the custom class #}
-             {# This still shows total count as frontend filtering is not implemented #}
-             {# If you implement JS filtering, update this text in JS as well #}
+        {# Text showing current project count - give it an ID #}
+        <div class="showing-count" id="showing-project-count"> {# Added ID here #}
+             {# Initial count rendered by Flask #}
             Showing {{ projects|length }} of {{ projects|length }} projects
         </div>
 
@@ -238,47 +237,55 @@
 
     {% include 'footer.html' %}
 
-    {# JavaScript for toggling filter button active state AND FILTERING CARDS #}
+    {# JavaScript for toggling filter button active state AND FILTERING CARDS AND UPDATING COUNT #}
     <script>
         const filterButtons = document.querySelectorAll('.filter-button');
-        const projectCards = document.querySelectorAll('.project-card'); // <-- UNCOMMENTED: Get all project cards
+        const projectCards = document.querySelectorAll('.project-card');
+        const showingCountElement = document.getElementById('showing-project-count'); // <-- GET THE COUNT ELEMENT
+
+        // Function to update the showing count
+        function updateShowingCount() {
+            let visibleCount = 0;
+            projectCards.forEach(card => {
+                // Check if the card is NOT hidden
+                if (card.style.display !== 'none') {
+                    visibleCount++;
+                }
+            });
+            // Update the text content
+            showingCountElement.textContent = `Showing ${visibleCount} of ${projectCards.length} projects`;
+        }
+
 
         filterButtons.forEach(button => {
             button.addEventListener('click', () => {
-                // Get the category key from the data attribute
                 const selectedCategory = button.dataset.category;
 
-                // Remove active class from all buttons and reset their styles
+                // --- Update Button Active State ---
                 filterButtons.forEach(btn => {
                      btn.classList.remove('active', 'bg-emerald-500', 'hover:bg-emerald-600', 'text-white', 'border-emerald-600');
-                     // Reapply default styles
                      btn.classList.add('bg-white', 'hover:bg-gray-200', 'text-gray-700', 'border-gray-300');
                 });
-
-                // Add active class and style to the clicked button
                 button.classList.add('active', 'bg-emerald-500', 'hover:bg-emerald-600', 'text-white', 'border-emerald-600');
                 button.classList.remove('bg-white', 'hover:bg-gray-200', 'text-gray-700', 'border-gray-300');
 
-
-                // --- Filtering Logic (UNCOMMENTED) ---
+                // --- Filtering Logic ---
                 projectCards.forEach(card => {
-                    const cardCategory = card.dataset.category; // Get category from card's data attribute
+                    const cardCategory = card.dataset.category;
 
                     if (selectedCategory === 'All' || cardCategory === selectedCategory) {
-                        // Show the card
-                        card.style.display = 'flex'; // Use 'flex' because the .project-card style has display: flex
+                        card.style.display = 'flex'; // Or 'block', 'grid' depending on original display
                     } else {
-                        // Hide the card
                         card.style.display = 'none';
                     }
                 });
-                // Note: Updating the "Showing X of Y projects" text dynamically
-                // would require additional JavaScript logic here to count visible cards.
-                // --- End Filtering Logic ---
+
+                // --- Update the Showing Count After Filtering ---
+                updateShowingCount(); // <-- Call the update function
             });
         });
 
-        // Ensure 'All' button has active styles on initial load
+        // Initial setup on page load
         document.addEventListener('DOMContentLoaded', () => {
              const allButton = document.querySelector('.filter-button.active');
              if (allButton) {
@@ -286,18 +293,8 @@
                   allButton.classList.remove('bg-white', 'hover:bg-gray-200', 'text-gray-700', 'border-gray-300');
              }
 
-             // Optional: Hide cards initially based on the default active button ('All')
-             // This isn't strictly necessary since 'All' shows everything,
-             // but would be needed if a different filter was active by default.
-             // const initialCategory = document.querySelector('.filter-button.active').dataset.category;
-             // projectCards.forEach(card => {
-             //      const cardCategory = card.dataset.category;
-             //      if (initialCategory === 'All' || cardCategory === initialCategory) {
-             //           card.style.display = 'flex';
-             //      } else {
-             //           card.style.display = 'none';
-             //      }
-             // });
+             // Call update count on initial load as well
+             updateShowingCount(); // <-- Call update on load
         });
     </script>
 
