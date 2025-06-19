@@ -3,6 +3,134 @@
 {% block title %}Admin Dashboard - Job Portal{% endblock %}
 
 {% block content %}
+<style>
+    /* --- Custom Styles for Admin Dashboard (Consistent with Candidate Pages) --- */
+
+    /* Set a light background color for the page content */
+    body {
+        background-color: #f8f9fa; /* A light grey color, typical for dashboards */
+    }
+
+    /* Add stronger shadow to cards and transition for hover effect */
+    .card {
+        box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.15); /* Increased values for more depth */
+        border: 1px solid var(--custom-green);
+        border-radius: 0.5rem; /* Slightly more rounded corners */
+        transition: all 0.3s ease-in-out; /* Smooth transition for transform and shadow */
+    }
+
+
+    /* Card Hover Effect (Applied to main status cards, optional on others) */
+    .card:hover {
+        transform: translateY(-5px); /* Lift the card slightly */
+        box-shadow: 0 1.25rem 2.5rem rgba(0, 0, 0, 0.2); /* Even stronger shadow on hover */
+        /* cursor: pointer; Keep default cursor unless the whole card is clickable */
+    }
+
+     /* Remove hover transform/shadow for specific cards if needed, e.g., activity lists */
+     /* Applying a more subtle shadow for interactive list items *within* cards */
+     .card:has(.d-flex.justify-content-between.align-items-center.mb-3.p-3.border.rounded), /* Pending companies list items */
+     .card:has(.d-flex.justify-content-between.align-items-center.mb-3) /* Recent jobs/candidates list items */
+     {
+         transform: none; /* Disable card lift */
+         box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1); /* Revert to a less intense shadow for the container card */
+     }
+      /* Add hover effect specifically to the list items themselves if desired */
+     .card:has(.d-flex.justify-content-between.align-items-center.mb-3.p-3.border.rounded) .border.rounded:hover,
+     .card:has(.d-flex.justify-content-between.align-items-center.mb-3) .d-flex.justify-content-between.align-items-center.mb-3:hover {
+         background-color: #e9ecef; /* Highlight on hover */
+         cursor: pointer;
+     }
+
+
+    /* Ensure interactive elements within the card are clickable */
+     .card a.btn, .card button.btn {
+         position: relative; /* Ensure button is above the card potentially */
+         z-index: 2; /* Give it a higher z-index */
+     }
+
+
+    /* Custom green color for elements (adjust shade as needed) */
+    :root {
+        --custom-green: #28a745; /* A standard Bootstrap success green */
+        --custom-green-dark: #218838;
+    }
+
+    /* Page Title Icon color */
+    h1 i.fas {
+        color: var(--custom-green);
+    }
+
+    /* Card Header Icon color */
+    .card-header h5 i.fas {
+        color: var(--custom-green); /* Default header icons to green */
+    }
+
+    /* Exception: Warning color for pending approvals header icon */
+     .card-header h5 i.fas.text-warning {
+         color: #ffc107 !important; /* Keep warning color */
+     }
+
+
+    /* Custom Green Button Style (Primary action) */
+    .btn-custom-green {
+        background-color: var(--custom-green);
+        color: white;
+        border-color: var(--custom-green);
+        /* Add transition for smooth color/shadow change on hover */
+        transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+
+    .btn-custom-green:hover {
+        background-color: var(--custom-green-dark);
+        border-color: var(--custom-green-dark);
+        color: white;
+    }
+
+    .btn-custom-green:focus {
+        box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25);
+    }
+
+    .btn-custom-green:disabled {
+        background-color: var(--custom-green);
+        border-color: var(--custom-green);
+        opacity: 0.65;
+    }
+
+     /* Secondary Button Style */
+    .btn-secondary, .btn-outline-secondary {
+        /* Using default Bootstrap secondary styles, but add transition */
+         transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+    }
+
+
+    /* Badge Colors (using standard Bootstrap bg- classes, consistent) */
+    .badge.bg-warning { background-color: #ffc107 !important; color: #212529 !important; } /* Yellow for Pending Companies */
+    .badge.bg-success { background-color: var(--custom-green) !important; color: #fff !important;} /* Green */
+    .badge.bg-info { background-color: #17a2b8 !important; color: #fff !important;} /* Info/Cyan */
+    .badge.bg-danger { background-color: #dc3545 !important; color: #fff !important;} /* Red for Pending Reviews */
+    .badge.bg-secondary { background-color: #6c757d !important; color: #fff !important;} /* Grey */
+
+
+    /* Icon Colors in Cards (Defaulting most to green for consistency) */
+    .card-body i.fas {
+        color: var(--custom-green) !important; /* Default icons to green */
+    }
+
+    /* Exceptions to default green icon color */
+    .card-body i.fa-star { color: #ffc107 !important; } /* Admin rating star (warning) */
+    .card-body i.fa-clock { color: #dc3545 !important; } /* Pending Reviews clock (danger) */
+    .card-body i.fa-chart-bar { color: #ffc107 !important; } /* Analytics chart (warning) */
+
+
+     /* Adjust text color for consistency */
+     .card-text, .text-muted, .small {
+         color: #6c757d !important; /* Consistent muted text color */
+     }
+
+
+</style>
+
 <div class="container py-4">
     <div class="row">
         <div class="col-12">
@@ -10,61 +138,66 @@
                 <i class="fas fa-tachometer-alt me-2"></i>Admin Dashboard
             </h1>
             <p class="lead text-muted">Manage jobs, candidates, and platform operations</p>
+             <hr class="mb-4"> {# Add a horizontal rule for consistency #}
         </div>
     </div>
-    
+
     <!-- Statistics Cards -->
     <div class="row g-4 mb-5">
         <div class="col-md-3">
-            <div class="card text-center">
+            <div class="card h-100 text-center"> {# Added h-100 for consistent height #}
                 <div class="card-body">
-                    <i class="fas fa-briefcase text-primary mb-3" style="font-size: 2.5rem;"></i>
+                    {# Icon color controlled by CSS now #}
+                    <i class="fas fa-briefcase mb-3" style="font-size: 2.5rem;"></i>
                     <h3 class="card-title">{{ stats.total_jobs }}</h3>
                     <p class="card-text">Total Jobs</p>
                 </div>
             </div>
         </div>
-        
+
         <div class="col-md-3">
-            <div class="card text-center">
+            <div class="card h-100 text-center"> {# Added h-100 #}
                 <div class="card-body">
-                    <i class="fas fa-users text-info mb-3" style="font-size: 2.5rem;"></i>
+                     {# Icon color controlled by CSS now #}
+                    <i class="fas fa-users mb-3" style="font-size: 2.5rem;"></i>
                     <h3 class="card-title">{{ stats.total_candidates }}</h3>
                     <p class="card-text">Total Candidates</p>
                 </div>
             </div>
         </div>
-        
+
         <div class="col-md-3">
-            <div class="card text-center">
+            <div class="card h-100 text-center"> {# Added h-100 #}
                 <div class="card-body">
-                    <i class="fas fa-star text-warning mb-3" style="font-size: 2.5rem;"></i>
+                     {# Icon color controlled by CSS now (will be warning via exception rule) #}
+                    <i class="fas fa-star mb-3" style="font-size: 2.5rem;"></i>
                     <h3 class="card-title">{{ stats.rated_candidates }}</h3>
                     <p class="card-text">Rated Candidates</p>
                 </div>
             </div>
         </div>
-        
+
         <div class="col-md-3">
-            <div class="card text-center">
+            <div class="card h-100 text-center"> {# Added h-100 #}
                 <div class="card-body">
-                    <i class="fas fa-clock text-danger mb-3" style="font-size: 2.5rem;"></i>
+                     {# Icon color controlled by CSS now (will be danger via exception rule) #}
+                    <i class="fas fa-clock mb-3" style="font-size: 2.5rem;"></i>
                     <h3 class="card-title">{{ stats.pending_reviews }}</h3>
                     <p class="card-text">Pending Reviews</p>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <!-- Pending Company Approvals -->
     {% if pending_companies %}
     <div class="row mb-5">
         <div class="col-12">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header bg-light"> {# Optional: Add light background #}
                     <h5 class="mb-0">
-                        <i class="fas fa-building me-2 text-warning"></i>Pending Company Approvals
-                        <span class="badge bg-warning text-dark ms-2">{{ stats.pending_companies }}</span>
+                        <i class="fas fa-building me-2 text-warning"></i>Pending Company Approvals {# Keep text-warning here #}
+                        <span class="badge bg-warning text-dark ms-2">{{ stats.pending_companies }}</span> {# Keep bg-warning text-dark #}
                     </h5>
                 </div>
                 <div class="card-body">
@@ -77,8 +210,9 @@
                         </div>
                         <div class="text-end">
                             <small class="text-muted d-block">{{ company.created_at.strftime('%m/%d/%Y') }}</small>
-                            <a href="{{ url_for('admin_routes.approve_company_route', company_id=company.id) }}" 
-                               class="btn btn-success btn-sm mt-2">
+                            {# Changed button to custom green #}
+                            <a href="{{ url_for('admin_routes.approve_company_route', company_id=company.id) }}"
+                               class="btn btn-custom-green btn-sm mt-2">
                                 <i class="fas fa-check me-1"></i>Approve
                             </a>
                         </div>
@@ -90,60 +224,68 @@
         </div>
     </div>
     {% endif %}
-    
+
     <!-- Quick Actions -->
     <div class="row mb-5">
         <div class="col-12">
             <h3 class="mb-3">Quick Actions</h3>
         </div>
     </div>
-    
+
     <div class="row g-3 mb-5">
         <div class="col-md-3">
-            <div class="card">
+            <div class="card h-100"> {# Added h-100 #}
                 <div class="card-body text-center">
-                    <i class="fas fa-plus text-success mb-3" style="font-size: 2rem;"></i>
+                    {# Icon color controlled by CSS now #}
+                    <i class="fas fa-plus mb-3" style="font-size: 2rem;"></i>
                     <h6 class="card-title">Add New Job</h6>
                     <p class="card-text small">Extract job from LinkedIn URL using AI</p>
-                    <a href="{{ url_for('admin_routes.add_job') }}" class="btn btn-success btn-sm">
+                     {# Changed button to custom green #}
+                    <a href="{{ url_for('admin_routes.add_job') }}" class="btn btn-custom-green btn-sm">
                         <i class="fas fa-plus me-1"></i>Add Job
                     </a>
                 </div>
             </div>
         </div>
-        
+
         <div class="col-md-3">
-            <div class="card">
+            <div class="card h-100"> {# Added h-100 #}
                 <div class="card-body text-center">
-                    <i class="fas fa-cog text-primary mb-3" style="font-size: 2rem;"></i>
+                     {# Icon color controlled by CSS now #}
+                    <i class="fas fa-cog mb-3" style="font-size: 2rem;"></i>
                     <h6 class="card-title">Manage Jobs</h6>
                     <p class="card-text small">Edit, delete, and organize job postings</p>
-                    <a href="{{ url_for('admin_routes.manage_jobs') }}" class="btn btn-primary btn-sm">
+                     {# Changed button to custom green #}
+                    <a href="{{ url_for('admin_routes.manage_jobs') }}" class="btn btn-custom-green btn-sm">
                         <i class="fas fa-cog me-1"></i>Manage
                     </a>
                 </div>
             </div>
         </div>
-        
+
         <div class="col-md-3">
-            <div class="card">
+            <div class="card h-100"> {# Added h-100 #}
                 <div class="card-body text-center">
-                    <i class="fas fa-users text-info mb-3" style="font-size: 2rem;"></i>
+                     {# Icon color controlled by CSS now #}
+                    <i class="fas fa-users mb-3" style="font-size: 2rem;"></i>
                     <h6 class="card-title">Review Candidates</h6>
                     <p class="card-text small">Rate and provide feedback to candidates</p>
-                    <a href="{{ url_for('admin_routes.review_candidates') }}" class="btn btn-info btn-sm">
+                     {# Changed button to custom green #}
+                    <a href="{{ url_for('admin_routes.review_candidates') }}" class="btn btn-custom-green btn-sm">
                         <i class="fas fa-users me-1"></i>Review
                     </a>
                 </div>
             </div>
         </div>
-        
+
         <div class="col-md-3">
-            <div class="card">
+            <div class="card h-100"> {# Added h-100 #}
                 <div class="card-body text-center">
-                    <i class="fas fa-chart-bar text-warning mb-3" style="font-size: 2rem;"></i>
+                     {# Icon color controlled by CSS now (will be warning via exception rule) #}
+                    <i class="fas fa-chart-bar mb-3" style="font-size: 2rem;"></i>
                     <h6 class="card-title">Analytics</h6>
                     <p class="card-text small">View platform statistics and reports</p>
+                    {# Keeping original disabled button with warning class #}
                     <button class="btn btn-warning btn-sm" disabled>
                         <i class="fas fa-chart-bar me-1"></i>Coming Soon
                     </button>
@@ -151,14 +293,14 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Recent Activity -->
     <div class="row">
         <div class="col-lg-6">
-            <div class="card">
-                <div class="card-header">
+            <div class="card h-100"> {# Added h-100 #}
+                <div class="card-header bg-light"> {# Optional: Add light background #}
                     <h5 class="mb-0">
-                        <i class="fas fa-briefcase me-2"></i>Recent Jobs
+                        <i class="fas fa-briefcase me-2"></i>Recent Jobs {# Icon color controlled by CSS now #}
                     </h5>
                 </div>
                 <div class="card-body">
@@ -174,7 +316,8 @@
                             {% if not loop.last %}<hr>{% endif %}
                         {% endfor %}
                         <div class="text-center mt-3">
-                            <a href="{{ url_for('admin_routes.manage_jobs') }}" class="btn btn-outline-primary btn-sm">
+                             {# Changed button to secondary outline #}
+                            <a href="{{ url_for('admin_routes.manage_jobs') }}" class="btn btn-outline-secondary btn-sm">
                                 View All Jobs
                             </a>
                         </div>
@@ -184,12 +327,12 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="col-lg-6">
-            <div class="card">
-                <div class="card-header">
+            <div class="card h-100"> {# Added h-100 #}
+                <div class="card-header bg-light"> {# Optional: Add light background #}
                     <h5 class="mb-0">
-                        <i class="fas fa-users me-2"></i>Recent Candidates
+                        <i class="fas fa-users me-2"></i>Recent Candidates {# Icon color controlled by CSS now #}
                     </h5>
                 </div>
                 <div class="card-body">
@@ -199,8 +342,9 @@
                                 <div>
                                     <h6 class="mb-1">{{ candidate.full_name or candidate.email }}</h6>
                                     <small class="text-muted">
-                                        {% if candidate.rating %}
+                                        {% if candidate.rating is not none %} {# Check specifically for not none #}
                                             {% for i in range(1, 6) %}
+                                                {# Icon color controlled by CSS now (warning/muted) #}
                                                 <i class="fas fa-star {{ 'text-warning' if i <= candidate.rating else 'text-muted' }}" style="font-size: 0.8rem;"></i>
                                             {% endfor %}
                                         {% else %}
@@ -213,7 +357,8 @@
                             {% if not loop.last %}<hr>{% endif %}
                         {% endfor %}
                         <div class="text-center mt-3">
-                            <a href="{{ url_for('admin_routes.review_candidates') }}" class="btn btn-outline-info btn-sm">
+                            {# Changed button to secondary outline #}
+                            <a href="{{ url_for('admin_routes.review_candidates') }}" class="btn btn-outline-secondary btn-sm">
                                 View All Candidates
                             </a>
                         </div>
