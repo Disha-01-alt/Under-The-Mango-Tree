@@ -1,31 +1,95 @@
 {
-  "page_title": "Our Projects",
+  "page_title": "Projects Gallery",
+  "subtitle": "Discover innovative solutions and creative implementations across various technologies and domains.",
   "hero_image_url": "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+  "categories_config": {
+    "All": { "name": "All", "icon": "fas fa-globe-americas" },
+    "Web": { "name": "Web", "icon": "fas fa-code" },
+    "App": { "name": "App", "icon": "fas fa-mobile-alt" },
+    "ML": { "name": "ML", "icon": "fas fa-brain" },
+    "Portfolio": { "name": "Portfolio", "icon": "fas fa-user-tie" },
+    "API": { "name": "API", "icon": "fas fa-share-alt" }
+  },
   "projects": [
     {
+      "name": "ML Image Classifier",
+      "description": "AI-powered image recognition system",
+      "link": "https://github.com/dummy/ml-image-classifier",
+      "category": "ML",
+      "tags": ["Python", "TensorFlow", "Docker", "Keras", "Computer Vision", "CNN"],
+      "likes": 203,
+      "featured": true,
+      "date": "January 10, 2024"
+    },
+    {
+      "name": "ChatBot Platform",
+      "description": "AI-powered conversational interface",
+      "link": "https://github.com/dummy/chatbot-platform",
+      "category": "ML",
+      "tags": ["Python", "NLP", "TensorFlow", "API", "Flask", "Dialogue System"],
+      "likes": 178,
+      "featured": true,
+      "date": "December 18, 2023"
+    },
+    {
       "name": "Fake News Detection Model",
-      "description": "A machine learning model built with Python and Scikit-learn to classify news articles as either real or fake based on their content. Utilizes TF-IDF vectorization and a Passive-Aggressive Classifier.",
-      "link": "https://github.com/example/fake-news-detector"
+      "description": "Classifies news articles as either real or fake",
+      "link": "https://github.com/dummy/fake-news-detector",
+      "category": "ML",
+      "tags": ["Python", "Scikit-learn", "NLP", "TF-IDF"],
+      "likes": 150,
+      "featured": false,
+      "date": "March 1, 2023"
     },
     {
       "name": "E-commerce Web Application",
-      "description": "A full-stack e-commerce platform built with Flask and PostgreSQL. Features user authentication, product catalogs, a shopping cart, and Stripe integration for payments.",
-      "link": "https://github.com/example/flask-ecommerce-app"
+      "description": "Full-stack platform with user auth, catalog, cart, and payments",
+      "link": "https://github.com/dummy/flask-ecommerce-app",
+      "category": "Web",
+      "tags": ["Flask", "PostgreSQL", "Stripe", "HTML", "CSS", "JavaScript"],
+      "likes": 250,
+      "featured": false,
+      "date": "June 15, 2023"
     },
     {
       "name": "Sentiment Analysis of Tweets",
-      "description": "A Natural Language Processing (NLP) project that analyzes the sentiment of real-time tweets about a specific topic. Uses the Twitter API, NLTK for text processing, and a pre-trained model for classification.",
-      "link": "https://github.com/example/tweet-sentiment-analysis"
+      "description": "Analyzes sentiment of real-time tweets using NLP",
+      "link": "https://github.com/dummy/tweet-sentiment-analysis",
+      "category": "ML",
+      "tags": ["NLP", "Twitter API", "NLTK", "Machine Learning"],
+      "likes": 180,
+      "featured": false,
+      "date": "April 20, 2023"
     },
     {
       "name": "Interactive Data Dashboard",
-      "description": "A data visualization dashboard built with Plotly Dash to display and interact with sales data. Allows users to filter by date, region, and product category to gain insights.",
-      "link": "https://github.com/example/sales-dashboard"
+      "description": "Visualization dashboard for sales data with filtering",
+      "link": "https://github.com/dummy/sales-dashboard",
+      "category": "Web",
+      "tags": ["Plotly Dash", "Python", "Data Visualization"],
+      "likes": 90,
+      "featured": false,
+      "date": "July 10, 2023"
+    },
+     {
+      "name": "Personal Portfolio Site",
+      "description": "Showcase of projects, skills, and experience",
+      "link": "https://github.com/dummy/personal-portfolio",
+      "category": "Portfolio",
+      "tags": ["HTML", "CSS", "JavaScript", "Responsive Design", "jQuery"],
+      "likes": 55,
+      "featured": false,
+      "date": "May 5, 2023"
     },
     {
-      "name": "Deep Learning Image Classifier",
-      "description": "A Convolutional Neural Network (CNN) built with TensorFlow/Keras to classify images into 10 different categories (e.g., CIFAR-10 dataset). Includes data augmentation and model evaluation.",
-      "link": "https://github.com/example/cnn-image-classifier"
+      "name": "Simple User Authentication API",
+      "description": "RESTful API for user registration, login, and session management",
+      "link": "https://github.com/dummy/user-auth-api",
+      "category": "API",
+      "tags": ["Flask", "REST API", "Python", "JWT", "SQLAlchemy"],
+      "likes": 75,
+      "featured": false,
+      "date": "August 22, 2023"
     }
   ]
 }
