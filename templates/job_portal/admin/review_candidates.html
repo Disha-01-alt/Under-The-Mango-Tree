@@ -3,62 +3,219 @@
 {% block title %}Review Candidates - Job Portal{% endblock %}
 
 {% block content %}
+<style>
+    /* --- Custom Styles for Review Candidates Page (Consistent with Dashboard/Profile) --- */
+
+    /* Set a light background color for the page content */
+    body {
+        background-color: #f8f9fa; /* A light grey color, typical for dashboards */
+    }
+
+    /* Add stronger shadow and a green border to cards, plus transition for hover effect */
+    .card {
+        box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.15); /* Stronger initial shadow */
+        border: 1px solid var(--custom-green); /* Added a subtle green border */
+        border-radius: 0.5rem; /* Slightly more rounded corners */
+        transition: all 0.3s ease-in-out; /* Smooth transition for transform, shadow, and potentially border color */
+    }
+
+    /* Card Hover Effect (Applied to main status cards, optional on others) */
+    /* Disable hover transform/shadow for list items/filter cards as they are interactive inside */
+     .card:hover:not(:has(.card-body > .row.g-3)), /* Exclude filter card */
+     .card:hover:not(:has(.gap-2)) /* Exclude cards with action buttons at bottom */
+     {
+         transform: translateY(-5px); /* Lift the card slightly */
+         box-shadow: 1rem 2rem rgba(0, 0, 0, 0.2); /* Even stronger shadow on hover */
+         /* cursor: pointer; */ /* Don't set pointer cursor on the whole card */
+     }
+
+     /* Add hover effect specifically to candidate cards if desired */
+     .candidate-card .card:hover {
+         transform: translateY(-2px); /* Even more subtle lift */
+         box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.18); /* Subtle shadow change */
+         /* border-color: var(--custom-green-dark); */ /* Optional: Darken border on hover */
+         /* cursor: pointer; Removed, interaction is via button */
+     }
+
+
+    /* Ensure interactive elements within the card are clickable */
+     .card a.btn, .card button.btn {
+         position: relative; /* Ensure button is above the card potentially */
+         z-index: 2; /* Give it a higher z-index */
+     }
+
+
+    /* Custom green color for elements (adjust shade as needed) */
+    :root {
+        --custom-green: #28a745; /* A standard Bootstrap success green */
+        --custom-green-dark: #218838;
+    }
+
+    /* Page Title Icon color */
+    h1 i.fas {
+        color: var(--custom-green);
+    }
+
+    /* Card Header Icon color */
+    .card-header h5 i.fas {
+        color: var(--custom-green); /* Default header icons to green */
+    }
+
+
+    /* Custom Green Button Style (Primary action) */
+    .btn-custom-green {
+        background-color: var(--custom-green);
+        color: white;
+        border-color: var(--custom-green);
+        /* Add transition for smooth color/shadow change on hover */
+        transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+
+    .btn-custom-green:hover {
+        background-color: var(--custom-green-dark);
+        border-color: var(--custom-green-dark);
+        color: white;
+    }
+
+    .btn-custom-green:focus {
+        box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25);
+    }
+
+    .btn-custom-green:disabled {
+        background-color: var(--custom-green);
+        border-color: var(--custom-green);
+        opacity: 0.65;
+    }
+
+     /* Secondary Button Style */
+    .btn-secondary, .btn-outline-secondary {
+        /* Using default Bootstrap secondary styles, but add transition */
+         transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+    }
+
+     /* Danger Button Style */
+     .btn-danger, .btn-outline-danger {
+         /* Using default Bootstrap danger styles, add transition */
+         transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+     }
+
+
+    /* Badge Colors (using standard Bootstrap bg- classes, consistent) */
+    .badge.bg-warning { background-color: #ffc107 !important; color: #212529 !important; } /* Yellow */
+    .badge.bg-success { background-color: var(--custom-green) !important; color: #fff !important;} /* Green */
+    .badge.bg-info { background-color: #17a2b8 !important; color: #fff !important;} /* Info/Cyan */
+    .badge.bg-danger { background-color: #dc3545 !important; color: #fff !important;} /* Red */
+    .badge.bg-secondary { background-color: #6c757d !important; color: #fff !important;} /* Grey */
+     .badge.bg-light { background-color: #f8f9fa !important; color: #212529 !important;} /* Light badge */
+
+
+    /* Icon Colors */
+    /* Icons in card bodies, default to text-muted or handled by specific rules */
+    .card-body i.fas, .card-body i.fab {
+        /* Keep default color or Bootstrap utility color if set, or handle specific ones */
+    }
+
+    /* Specific Icon Colors */
+    .card-body i.fa-star.text-warning { color: #ffc107 !important; } /* Rating stars (warning) */
+    .card-body i.fa-star.text-muted { color: #6c757d !important; } /* Rating stars (muted) */
+    .card-body i.fa-phone { color: #6c757d !important; } /* Phone icon (muted) */
+    .card-body i.fa-linkedin { color: #0a66c2 !important; } /* LinkedIn icon (brand color) */
+    .card-body i.fa-github { color: #6c757d !important; } /* GitHub icon (muted) */
+    .card-body i.fa-file-pdf { color: var(--custom-green) !important; } /* CV icon (green if available) */
+    .card-body i.fa-id-card { color: var(--custom-green) !important; } /* ID card icon (green if available) */
+    .card-body i.fa-certificate { color: var(--custom-green) !important; } /* Marksheet icon (green if available) */
+
+
+     /* Adjust text color for consistency */
+     .lead.text-muted, .card-text, .text-muted, .small {
+         color: #6c757d !important; /* Consistent muted text color */
+     }
+
+     /* Stats Card Numbers Color */
+     .card-body h4.text-primary { color: #0d6efd !important; } /* Total Candidates (Primary blue) */
+     .card-body h4.text-success { color: var(--custom-green-dark) !important; } /* Rated Candidates (Darker green) */
+     .card-body h4.text-warning { color: #ffc107 !important; } /* Pending Review (Warning yellow) */
+     .card-body h4.text-info { color: #17a2b8 !important; } /* With CV (Info cyan) */
+
+    /* Style for form control focus color */
+    .form-control:focus, .form-select:focus, textarea.form-control:focus {
+        border-color: rgba(40, 167, 69, 0.5); /* Green border on focus */
+        box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25); /* Green shadow on focus */
+     }
+
+    /* Style for the "No Candidates Yet" icon */
+     .display-1.text-muted i.fas {
+        color: #ced4da !important; /* Very light grey */
+     }
+
+
+</style>
+
 <div class="container py-4">
     <div class="row">
         <div class="col-12">
-            <h1 class="mb-4">
-                <i class="fas fa-users me-2"></i>Review Candidates
-            </h1>
-            <p class="lead text-muted">Rate and provide feedback to candidates</p>
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h1 class="mb-0">
+                        <i class="fas fa-users me-2"></i>Review Candidates {# Icon color controlled by CSS #}
+                    </h1>
+                    <p class="lead text-muted">Rate and provide feedback to candidates</p>
+                </div>
+                {# No "Add New Candidate" button needed here based on template structure #}
+            </div>
+             <hr class="mb-4"> {# Add a horizontal rule for consistency #}
         </div>
     </div>
-    
+
     {% if candidates %}
         <!-- Summary Stats -->
         <div class="row g-3 mb-4">
             <div class="col-md-3">
-                <div class="card text-center">
+                <div class="card h-100 text-center"> {# Added h-100 #}
                     <div class="card-body">
-                        <h4 class="text-primary">{{ candidates|length }}</h4>
-                        <small>Total Candidates</small>
+                        <h4 class="text-primary">{{ candidates|length }}</h4> {# text-primary styled #}
+                        <small class="text-muted">Total Candidates</small> {# text-muted styled #}
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card text-center">
+                <div class="card h-100 text-center"> {# Added h-100 #}
                     <div class="card-body">
-                        <h4 class="text-success">{{ candidates|selectattr('rating')|list|length }}</h4>
-                        <small>Rated</small>
+                        {# CORRECTED FILTER #}
+                        <h4 class="text-success">{{ candidates|rejectattr('rating', 'none')|list|length }}</h4> {# Counts candidates where rating is NOT None #}
+                        <small class="text-muted">Rated</small> {# text-muted styled #}
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card text-center">
+                <div class="card h-100 text-center"> {# Added h-100 #}
                     <div class="card-body">
-                        <h4 class="text-warning">{{ candidates|rejectattr('rating')|list|length }}</h4>
-                        <small>Pending Review</small>
+                        {# CORRECTED FILTER #}
+                        <h4 class="text-warning">{{ candidates|selectattr('rating', 'none')|list|length }}</h4> {# Counts candidates where rating IS None #}
+                        <small class="text-muted">Pending Review</small> {# text-muted styled #}
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card text-center">
+                <div class="card h-100 text-center"> {# Added h-100 #}
                     <div class="card-body">
-                        <h4 class="text-info">{{ candidates|selectattr('cv_filename')|list|length }}</h4>
-                        <small>With CV</small>
+                        {# CORRECTED FILTER #}
+                        <h4 class="text-info">{{ candidates|selectattr('cv_filename')|list|length }}</h4> {# Counts candidates where cv_filename is truthy (exists) #}
+                        <small class="text-muted">With CV</small> {# text-muted styled #}
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <!-- Filter Controls -->
         <div class="row mb-4">
             <div class="col-12">
-                <div class="card">
+                <div class="card"> {# Card style applied #}
                     <div class="card-body">
                         <div class="row g-3">
                             <div class="col-md-3">
-                                <label class="form-label">Filter by Status</label>
-                                <select class="form-select" id="statusFilter">
+                                <label class="form-label text-muted">Filter by Status</label> {# text-muted styled #}
+                                <select class="form-select" id="statusFilter"> {# form-select focus styled #}
                                     <option value="">All Candidates</option>
                                     <option value="rated">Rated</option>
                                     <option value="unrated">Pending Review</option>
@@ -66,8 +223,8 @@
                                 </select>
                             </div>
                             <div class="col-md-3">
-                                <label class="form-label">Minimum Rating</label>
-                                <select class="form-select" id="ratingFilter">
+                                <label class="form-label text-muted">Minimum Rating</label> {# text-muted styled #}
+                                <select class="form-select" id="ratingFilter"> {# form-select focus styled #}
                                     <option value="">Any Rating</option>
                                     <option value="5">5 Stars</option>
                                     <option value="4">4+ Stars</option>
@@ -77,12 +234,13 @@
                                 </select>
                             </div>
                             <div class="col-md-4">
-                                <label class="form-label">Search</label>
-                                <input type="text" class="form-control" id="searchFilter" 
+                                <label class="form-label text-muted">Search</label> {# text-muted styled #}
+                                <input type="text" class="form-control" id="searchFilter" {# form-control focus styled #}
                                        placeholder="Search by name, email, or skills...">
                             </div>
                             <div class="col-md-2">
-                                <label class="form-label">&nbsp;</label>
+                                <label class="form-label text-muted"> </label> {# text-muted styled #}
+                                {# Changed button to outline-secondary #}
                                 <button class="btn btn-outline-secondary w-100" onclick="clearFilters()">
                                     <i class="fas fa-times me-1"></i>Clear
                                 </button>
@@ -92,100 +250,112 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Candidates List -->
         <div class="row" id="candidatesList">
             {% for candidate in candidates %}
-                <div class="col-lg-6 mb-4 candidate-card" 
+                <div class="col-lg-6 mb-4 candidate-card"
                      data-rating="{{ candidate.rating or 0 }}"
-                     data-status="{{ 'rated' if candidate.rating else 'unrated' }}"
+                     data-status="{{ 'rated' if candidate.rating is not none else 'unrated' }}" {# Check for not none #}
                      data-has-cv="{{ 'true' if candidate.cv_filename else 'false' }}"
                      data-search="{{ (candidate.full_name or candidate.email)|lower }} {{ (candidate.skills or '')|lower }}">
-                    <div class="card h-100">
+                    <div class="card h-100"> {# Card style applied, h-100 added #}
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-start mb-3">
                                 <div>
                                     <h5 class="card-title mb-1">
                                         {{ candidate.full_name or candidate.email }}
                                     </h5>
-                                    <small class="text-muted">{{ candidate.email }}</small>
+                                    <small class="text-muted">{{ candidate.email }}</small> {# text-muted styled #}
                                 </div>
-                                
-                                {% if candidate.rating %}
+
+                                {% if candidate.rating is not none %} {# Check for not none #}
                                     <div class="text-end">
                                         <div class="mb-1">
                                             {% for i in range(1, 6) %}
-                                                <i class="fas fa-star {{ 'text-warning' if i <= candidate.rating else 'text-muted' }}" 
+                                                 {# Icon colors controlled by CSS #}
+                                                <i class="fas fa-star {{ 'text-warning' if i <= candidate.rating else 'text-muted' }}"
                                                    style="font-size: 0.9rem;"></i>
                                             {% endfor %}
                                         </div>
+                                        {# Badge bg-success styled #}
                                         <span class="badge bg-success">{{ candidate.rating }}/5</span>
                                     </div>
                                 {% else %}
+                                    {# Badge bg-warning styled #}
                                     <span class="badge bg-warning">Pending Review</span>
                                 {% endif %}
                             </div>
-                            
+
                             <!-- Contact Information -->
                             <div class="mb-3">
                                 {% if candidate.phone %}
-                                    <div class="small text-muted mb-1">
+                                    <div class="small text-muted mb-1"> {# text-muted styled #}
+                                         {# Icon color controlled by CSS #}
                                         <i class="fas fa-phone me-1"></i>{{ candidate.phone }}
                                     </div>
                                 {% endif %}
                                 {% if candidate.linkedin %}
-                                    <div class="small mb-1">
-                                        <a href="{{ candidate.linkedin }}" target="_blank" class="text-decoration-none">
+                                    <div class="small mb-1"> {# small styled #}
+                                        {# CORRECTED HREF #}
+                                        <a href="{{ candidate.linkedin }}" target="_blank" class="text-decoration-none text-muted"> {# text-muted styled #}
+                                             {# Icon color controlled by CSS #}
                                             <i class="fab fa-linkedin me-1"></i>LinkedIn Profile
                                         </a>
                                     </div>
                                 {% endif %}
                                 {% if candidate.github %}
-                                    <div class="small mb-1">
-                                        <a href="{{ candidate.github }}" target="_blank" class="text-decoration-none">
+                                    <div class="small mb-1"> {# small styled #}
+                                        {# CORRECTED HREF #}
+                                        <a href="{{ candidate.github }}" target="_blank" class="text-decoration-none text-muted"> {# text-muted styled #}
+                                             {# Icon color controlled by CSS #}
                                             <i class="fab fa-github me-1"></i>GitHub Profile
                                         </a>
                                     </div>
                                 {% endif %}
                             </div>
-                            
+
                             <!-- Skills Preview -->
                             {% if candidate.skills %}
                                 <div class="mb-3">
-                                    <small class="text-muted d-block">Skills:</small>
-                                    <div class="small">
+                                    <small class="text-muted d-block">Skills:</small> {# text-muted styled #}
+                                    <div class="small"> {# small styled #}
                                         {% set skills_list = candidate.skills.split(',')[:3] %}
                                         {% for skill in skills_list %}
+                                            {# Badge bg-secondary styled #}
                                             <span class="badge bg-secondary me-1">{{ skill.strip() }}</span>
                                         {% endfor %}
                                         {% if candidate.skills.split(',')|length > 3 %}
-                                            <span class="text-muted">+{{ candidate.skills.split(',')|length - 3 }} more</span>
+                                            <span class="text-muted">+{{ candidate.skills.split(',')|length - 3 }} more</span> {# text-muted styled #}
                                         {% endif %}
                                     </div>
                                 </div>
                             {% endif %}
-                            
+
                             <!-- Documents Status -->
                             <div class="mb-3">
-                                <small class="text-muted d-block">Documents:</small>
+                                <small class="text-muted d-block">Documents:</small> {# text-muted styled #}
                                 <div class="d-flex gap-2">
+                                     {# Badges bg-success/secondary styled, icon colors controlled by CSS #}
                                     <span class="badge bg-{{ 'success' if candidate.cv_filename else 'secondary' }}">
                                         <i class="fas fa-file-pdf me-1"></i>CV
                                     </span>
+                                     {# Badges bg-success/secondary styled, icon colors controlled by CSS #}
                                     <span class="badge bg-{{ 'success' if candidate.id_card_filename else 'secondary' }}">
                                         <i class="fas fa-id-card me-1"></i>ID
                                     </span>
+                                     {# Badges bg-success/secondary styled, icon colors controlled by CSS #}
                                     <span class="badge bg-{{ 'success' if candidate.marksheet_filename else 'secondary' }}">
                                         <i class="fas fa-certificate me-1"></i>Marksheet
                                     </span>
                                 </div>
                             </div>
-                            
+
                             <!-- Admin Feedback Preview -->
                             {% if candidate.admin_feedback %}
                                 <div class="mb-3">
-                                    <small class="text-muted d-block">Previous Feedback:</small>
-                                    <div class="small text-muted">
+                                    <small class="text-muted d-block">Previous Feedback:</small> {# text-muted styled #}
+                                    <div class="small text-muted"> {# small and text-muted styled #}
                                         {% if candidate.admin_feedback|length > 100 %}
                                             {{ candidate.admin_feedback[:100] }}...
                                         {% else %}
@@ -194,21 +364,26 @@
                                     </div>
                                 </div>
                             {% endif %}
-                            
-                                                      <!-- Action Buttons -->
+
+                            <!-- Action Buttons -->
                             <div class="d-flex gap-2 mt-auto">
-                                <a href="{{ url_for('admin_routes.candidate_detail', candidate_id=candidate.id) }}" 
-                                   class="btn btn-primary btn-sm flex-fill">
+                                {# Changed button to custom green #}
+                                <a href="{{ url_for('admin_routes.candidate_detail', candidate_id=candidate.id) }}"
+                                   class="btn btn-custom-green btn-sm flex-fill">
                                     <i class="fas fa-eye me-1"></i>Review
                                 </a>
                                 {% if candidate.cv_filename %}
-                                    <a href="{{ url_for('admin_routes.serve_admin_document', candidate_id=candidate.id, file_type='cv', action='download') }}"  {# <--- CORRECTED LINE #}
-                                       class="btn btn-outline-info btn-sm" title="Download CV">
+                                     {# Changed button to outline-secondary, icon controlled by CSS #}
+                                     {# CORRECTED HREF AND ADDED download #}
+                                    <a href="{{ candidate.cv_filename }}"
+                                       class="btn btn-outline-secondary btn-sm" title="Download CV" download>
                                         <i class="fas fa-download"></i> CV
                                     </a>
                                     {# Optionally, add a view link if it's a PDF #}
                                     {% if candidate.cv_filename.lower().endswith('.pdf') %}
-                                    <a href="{{ url_for('admin_routes.serve_admin_document', candidate_id=candidate.id, file_type='cv', action='view') }}" 
+                                     {# Changed button to outline-secondary, icon controlled by CSS #}
+                                     {# CORRECTED HREF #}
+                                    <a href="{{ candidate.cv_filename }}"
                                        target="_blank" class="btn btn-outline-secondary btn-sm" title="View CV">
                                         <i class="fas fa-eye"></i>
                                     </a>
@@ -216,10 +391,10 @@
                                 {% endif %}
                             </div>
                         </div>
-                        
-                        <div class="card-footer bg-transparent">
-                            <small class="text-muted">
-                                <i class="fas fa-calendar me-1"></i>
+
+                        <div class="card-footer bg-transparent"> {# Card style applied #}
+                            <small class="text-muted"> {# text-muted styled #}
+                                <i class="fas fa-calendar me-1"></i> {# Icon color default/muted #}
                                 Registered {{ candidate.created_at.strftime('%B %d, %Y') }}
                             </small>
                         </div>
@@ -227,15 +402,20 @@
                 </div>
             {% endfor %}
         </div>
-        
+
+         {# The modals were not in the original Review Candidates template,
+            so they are correctly omitted here to match the original structure. #}
+
+
     {% else %}
         <!-- No Candidates State -->
         <div class="row">
             <div class="col-12 text-center py-5">
+                 {# Icon color controlled by CSS #}
                 <i class="fas fa-users text-muted" style="font-size: 5rem;"></i>
                 <h3 class="mt-4 mb-3">No Candidates Yet</h3>
-                <p class="text-muted mb-4">
-                    No candidates have registered on the platform yet. 
+                <p class="text-muted mb-4"> {# text-muted styled #}
+                    No candidates have registered on the platform yet.
                     Once candidates start signing up, you'll be able to review and rate them here.
                 </p>
             </div>
@@ -243,51 +423,73 @@
     {% endif %}
 </div>
 
+{# No Delete Confirmation Modal needed in Review Candidates #}
+{# Removed the Delete Confirmation Modal HTML from this template #}
+
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
 <script>
 // Filter functionality
 document.addEventListener('DOMContentLoaded', function() {
     const statusFilter = document.getElementById('statusFilter');
     const ratingFilter = document.getElementById('ratingFilter');
     const searchFilter = document.getElementById('searchFilter');
-    
+
     function applyFilters() {
-        const statusValue = statusFilter.value;
-        const ratingValue = parseInt(ratingFilter.value) || 0;
-        const searchValue = searchFilter.value.toLowerCase();
-        
+        const statusValue = statusFilter ? statusFilter.value : '';
+        const ratingValue = ratingFilter ? parseInt(ratingFilter.value) || 0 : 0;
+        const searchValue = searchFilter ? searchFilter.value.toLowerCase() : '';
+
         const cards = document.querySelectorAll('.candidate-card');
-        
+
         cards.forEach(card => {
             let show = true;
-            
+
             // Status filter
             if (statusValue === 'rated' && card.dataset.status !== 'rated') show = false;
             if (statusValue === 'unrated' && card.dataset.status !== 'unrated') show = false;
             if (statusValue === 'with-cv' && card.dataset.hasCv !== 'true') show = false;
-            
+
             // Rating filter
             if (ratingValue > 0 && parseInt(card.dataset.rating) < ratingValue) show = false;
-            
+
             // Search filter
             if (searchValue && !card.dataset.search.includes(searchValue)) show = false;
-            
+
+            // Use Bootstrap display utility for columns
             card.style.display = show ? 'block' : 'none';
+             // Re-apply Bootstrap's grid classes might be better, but requires more complex JS
+             // For simplicity, 'block' vs 'none' works with default column styles.
+             // If you have custom CSS overriding Bootstrap's grid display, this might need adjustment.
         });
     }
-    
-    statusFilter.addEventListener('change', applyFilters);
-    ratingFilter.addEventListener('change', applyFilters);
-    searchFilter.addEventListener('input', applyFilters);
+
+    // Add event listeners only if the elements exist
+    if (statusFilter) statusFilter.addEventListener('change', applyFilters);
+    if (ratingFilter) ratingFilter.addEventListener('change', applyFilters);
+    if (searchFilter) searchFilter.addEventListener('input', applyFilters);
+
+     // Initial filter application in case filters have default values or page reloads
+     // Also handles the case where there are no candidates and thus no filters exist
+     if (statusFilter || ratingFilter || searchFilter) {
+         applyFilters(); // Apply filters on page load if filter elements exist
+     }
 });
 
 function clearFilters() {
-    document.getElementById('statusFilter').value = '';
-    document.getElementById('ratingFilter').value = '';
-    document.getElementById('searchFilter').value = '';
-    
-    document.querySelectorAll('.candidate-card').forEach(card => {
-        card.style.display = 'block';
-    });
+     const statusFilter = document.getElementById('statusFilter');
+     const ratingFilter = document.getElementById('ratingFilter');
+     const searchFilter = document.getElementById('searchFilter');
+
+     if (statusFilter) statusFilter.value = '';
+     if (ratingFilter) ratingFilter.value = '';
+     if (searchFilter) searchFilter.value = '';
+
+    // Call applyFilters to reset the display
+    applyFilters();
 }
 </script>
 {% endblock %}
