@@ -3,6 +3,162 @@
 {% block title %}Search Candidates - Job Portal{% endblock %}
 
 {% block content %}
+<style>
+    body {
+        background: linear-gradient(to right, #e8f5e9, #f1f8f4);
+        font-family: 'Segoe UI', sans-serif;
+        color: #1e4620;
+    }
+
+    h1, h3, h4, h5 {
+        color: #1b5e20;
+        font-weight: 600;
+    }
+
+    /* --- Card --- */
+    .card {
+        border: none;
+        border-radius: 12px;
+        background-color: #ffffff;
+        box-shadow: 0 6px 16px rgba(56, 142, 60, 0.1);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 24px rgba(56, 142, 60, 0.15);
+    }
+
+    .card-footer {
+        border-top: 1px solid #e0f2f1;
+    }
+
+    /* --- Button --- */
+    .btn-primary,
+    .btn-outline-info:hover {
+        background: linear-gradient(to right, #388e3c, #2e7d32);
+        border-color: #2e7d32;
+        color: #fff;
+        box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+    }
+
+    .btn-primary:hover {
+        transform: scale(1.03);
+        box-shadow: 0 6px 16px rgba(46, 125, 50, 0.4);
+    }
+
+    .btn-outline-secondary {
+        border: 2px solid #81c784;
+        color: #2e7d32;
+        background-color: transparent;
+        transition: all 0.2s ease;
+    }
+
+    .btn-outline-secondary:hover {
+        background-color: #81c784;
+        color: #fff;
+    }
+
+    .btn-outline-info {
+        border: 1px solid #80cbc4;
+        color: #00796b;
+        transition: background-color 0.2s ease;
+    }
+
+    /* --- Badge Styling --- */
+    .badge.bg-success {
+        background-color: #81c784 !important;
+        color: #1b5e20;
+    }
+
+    .badge.bg-secondary {
+        background-color: #c8e6c9 !important;
+        color: #1e4620;
+    }
+
+    .badge.bg-primary {
+        background-color: #66bb6a !important;
+        color: white;
+        font-weight: 500;
+    }
+
+    .badge.bg-info {
+        background-color: #80deea !important;
+        color: #004d40;
+    }
+
+    .badge.bg-warning {
+        background-color: #ffecb3 !important;
+        color: #f57f17;
+    }
+
+    .form-label {
+        font-weight: 500;
+        color: #2e7d32;
+    }
+
+    .form-control,
+    .form-select {
+        border-radius: 8px;
+        border-color: #c8e6c9;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+        box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.25);
+        border-color: #388e3c;
+    }
+
+    /* --- Sort Dropdown --- */
+    .dropdown-menu {
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(56, 142, 60, 0.2);
+    }
+
+    .dropdown-item:hover {
+        background-color: #c8e6c9;
+        color: #1b5e20;
+    }
+
+    /* --- Text --- */
+    .text-muted {
+        color: #6e7c71 !important;
+    }
+
+    a {
+        color: #2e7d32;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    /* --- Icons --- */
+    .fa-star {
+        transition: transform 0.2s ease;
+    }
+
+    .fa-star:hover {
+        transform: scale(1.15);
+    }
+
+    /* --- Responsive Fix --- */
+    @media (max-width: 768px) {
+        .card-body {
+            padding: 1rem;
+        }
+
+        .btn {
+            font-size: 0.9rem;
+        }
+
+        .badge {
+            font-size: 0.75rem;
+        }
+    }
+</style>
+
 <div class="container py-4">
     <div class="row">
         <div class="col-12">
