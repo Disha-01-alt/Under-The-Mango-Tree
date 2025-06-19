@@ -4,96 +4,287 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page_title }} - Under The Mango Tree</title>
-    
+
     <!-- Libraries -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Custom Styles -->
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; }
 
-        .hero-section {
-            background-size: cover;
-            background-position: center;
-            position: relative;
+        /* Custom Gradient Text for Title (Matching Screenshot Colors) */
+        .gradient-text {
+            background: linear-gradient(to right, #06B6D4, #10B981); /* Tailwind cyan-500 to emerald-500 */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
         }
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(20, 30, 40, 0.7); /* Dark overlay */
-            z-index: 1;
+
+        /* Default filter button state styles */
+        .filter-button {
+            background-color: #ffffff; /* white */
+            color: #4B5563; /* gray-600 */
+            border-color: #D1D5DB; /* gray-300 */
+            /* Add transition for smooth color change */
+            transition: all 0.2s ease-in-out;
+            /* Ensure consistent padding/appearance */
+            padding: 0.5rem 1rem; /* py-2 px-4 */
+            border-radius: 9999px; /* rounded-full */
+            font-weight: 600; /* font-semibold */
+            display: inline-flex; /* For icon alignment */
+            align-items: center;
+            cursor: pointer;
+            outline: none; /* Remove default focus outline */
+            font-size: 0.875rem; /* text-sm - Often buttons are text-sm */
         }
-        .hero-content {
-            position: relative;
-            z-index: 2;
+
+         /* Hover state for non-active buttons */
+         .filter-button:hover:not(.active) {
+             background-color: #E5E7EB; /* gray-200 */
+             color: #374151; /* gray-700 */
+             border-color: #9CA3AF; /* gray-400 */
+         }
+
+
+        /* Style for the active filter button (Matching Screenshot Color) */
+        .filter-button.active {
+            background-color: #10B981; /* Tailwind emerald-500 */
+            color: white;
+            border-color: #059669; /* Tailwind emerald-600 */
         }
+
+         /* Ensure icon spacing within buttons */
+        .filter-button i {
+            margin-right: 0.25rem; /* mr-1 */
+        }
+
+         /* Style for the Featured tag */
+         .featured-tag {
+             display: inline-flex;
+             align-items: center;
+             padding: 0.125rem 0.75rem; /* py-0.5 px-3 */
+             border-radius: 9999px; /* rounded-full */
+             font-size: 0.875rem; /* text-sm */
+             font-weight: 500; /* font-medium */
+             background-color: #FEF3C7; /* yellow-100 */
+             color: #92400E; /* yellow-800 */
+         }
+         .featured-tag i {
+              margin-right: 0.25rem; /* mr-1 */
+         }
+
+         /* Project card styling adjustments */
+         .project-card {
+             background-color: #ffffff; /* white */
+             border-radius: 0.5rem; /* rounded-lg */
+             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
+             padding: 1.5rem; /* p-6 */
+             display: flex;
+             flex-direction: column;
+             justify-content: space-between;
+             border: 1px solid #E5E7EB; /* border border-gray-200 */
+         }
+
+         /* Tag pills styling */
+         .tag-pill {
+             display: inline-flex;
+             align-items: center;
+             padding: 0.125rem 0.5rem; /* py-0.5 px-2 */
+             border-radius: 9999px; /* rounded-full */
+             font-size: 0.75rem; /* text-xs */
+             font-weight: 500; /* font-medium */
+         }
+         .tag-pill.indigo {
+             background-color: #E0E7FF; /* indigo-100 */
+             color: #4338CA; /* indigo-800 */
+         }
+          .tag-pill.gray {
+             background-color: #E5E7EB; /* gray-200 */
+             color: #374151; /* gray-700 */
+         }
+
+         /* Style for the Showing X of Y text */
+         .showing-count {
+             text-align: center;
+             margin-top: 1.5rem; /* mt-6 */
+             color: #4B5563; /* text-gray-600 */
+             font-size: 0.875rem; /* text-sm */
+         }
+
     </style>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-50">
 
     {% include 'header.html' %}
 
-    <main class="mx-auto">
-        <!-- Hero Section -->
-        <div class="hero-section" style="background-image: url('{{ hero_image }}');">
-            <div class="hero-content max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8 text-center">
-                <h1 class="text-4xl font-extrabold text-white sm:text-5xl lg:text-6xl">{{ page_title }}</h1>
-                <p class="mt-4 text-xl text-gray-300">A showcase of our practical and innovative work.</p>
-            </div>
+    <main class="mx-auto pb-12">
+
+        <!-- Gallery Header -->
+        <div class="max-w-4xl mx-auto pt-12 px-4 text-center">
+            {# Apply the gradient-text class here #}
+            <h1 class="text-4xl font-extrabold sm:text-5xl lg:text-6xl gradient-text">{{ page_title }}</h1> {# Added lg:text-6xl for larger screens #}
+            {# Subtitle text size and color. Adjusted size. #}
+            <p class="mt-3 text-xl sm:text-2xl text-gray-600">{{ subtitle }}</p> {# Adjusted subtitle size #}
         </div>
 
-        <!-- Projects Table -->
-        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-                <div class="overflow-x-auto">
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-800">
-                            <tr>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                                    Name
-                                </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                                    Description
-                                </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                                    Link
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-white divide-y divide-gray-200">
-                            {% for project in projects %}
-                            <tr>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm font-medium text-gray-900">{{ project.name }}</div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-normal">
-                                    <div class="text-sm text-gray-500">{{ project.description }}</div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm">
-                                    <a href="{{ project.link }}" target="_blank" class="text-indigo-600 hover:text-indigo-900 font-medium inline-flex items-center">
-                                        View Project
-                                        <i class="fas fa-external-link-alt ml-2 fa-xs"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            {% else %}
-                            <tr>
-                                <td colspan="3" class="text-center py-12 px-6">
-                                    <h3 class="text-lg font-medium text-gray-900">More Projects Coming Soon</h3>
-                                    <p class="mt-2 text-gray-600">We are currently curating our project showcase. Please check back later!</p>
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
+        <!-- Filters Section (Visual Only - No Search Input) -->
+        {# Centered, wrapped, with consistent gap #}
+        <div class="max-w-7xl mx-auto mt-8 px-4 sm:px-6 lg:px-8 flex justify-center flex-wrap gap-3">
+            {# --- Dynamic Filter Buttons from JSON Config --- #}
+            {% for category in display_categories %}
+                 {# Apply the base filter-button class and add active dynamically #}
+                 <button class="filter-button {% if category.key == 'All' %} active {% endif %}" data-category="{{ category.key }}"> {# Added data-category for potential JS filtering #}
+                     <i class="{{ category.icon }}"></i> {{ category.name }} ({{ category.count }})
+                 </button>
+            {% endfor %}
+            {# --- End Dynamic Filter Buttons --- #}
+        </div>
+
+        {# Text showing current project count - match screenshot style #}
+        <div class="showing-count"> {# Use the custom class #}
+             {# This still shows total count as frontend filtering is not implemented #}
+            Showing {{ projects|length }} of {{ projects|length }} projects
+        </div>
+
+
+        <!-- Projects Grid -->
+        <div class="max-w-7xl mx-auto mt-8 px-4 sm:px-6 lg:px-8">
+            {% if projects %}
+                {# Responsive grid with gap #}
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+                    {% for project in projects %}
+                        {# Apply the project-card class #}
+                        <div class="project-card" data-category="{{ project.category | default('General') }}"> {# Add category data attribute #}
+                            {# Top section: Featured Tag and Likes #}
+                            <div class="flex justify-between items-center mb-4">
+                                {% if project.featured %}
+                                    <span class="featured-tag">
+                                        <i class="fas fa-star"></i> Featured
+                                    </span>
+                                {% else %}
+                                    <span></span> {# Empty span to maintain layout space #}
+                                {% endif %}
+                                {% if project.likes is not none %}
+                                    {# Likes count with correct icon and color #}
+                                    <span class="text-sm text-gray-500">
+                                        <i class="fas fa-heart mr-1"></i> {{ project.likes }}
+                                    </span>
+                                {% endif %}
+                            </div>
+
+                            {# Project Details #}
+                            <div>
+                                {# Project title with correct size and color #}
+                                <h3 class="text-xl font-semibold text-gray-800">{{ project.name }}</h3>
+                                {# Project description with correct size and color #}
+                                <p class="mt-2 text-gray-600 text-sm">{{ project.description }}</p>
+                                {% if project.date %}
+                                    {# Project date with correct size and color #}
+                                    <p class="mt-2 text-gray-500 text-xs">
+                                         <i class="fas fa-calendar-alt mr-1"></i> {{ project.date }}
+                                    </p>
+                                {% endif %}
+                            </div>
+
+                            {# Tags #}
+                            {% if project.tags %}
+                                {# Tag container with gap #}
+                                <div class="mt-4 flex flex-wrap gap-2">
+                                    {% set max_visible_tags = 3 %}
+                                    {% for tag in project.tags[:max_visible_tags] %}
+                                        {# Individual tag pill with indigo style #}
+                                        <span class="tag-pill indigo">
+                                            {{ tag }}
+                                        </span>
+                                    {% endfor %}
+                                     {% if project.tags | length > max_visible_tags %}
+                                         {# "+X" pill with gray style #}
+                                         <span class="tag-pill gray">
+                                             +{{ project.tags | length - max_visible_tags }}
+                                         </span>
+                                     {% endif %}
+                                </div>
+                            {% endif %}
+
+                            {# Actions: View Details and External Link #}
+                            <div class="mt-6 flex items-center justify-between">
+                                {# "View Details" link with correct style #}
+                                <a href="{{ project.link }}" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
+                                     View Details
+                                </a>
+                                {# External link icon with correct size and color #}
+                                <a href="{{ project.link }}" target="_blank" class="text-gray-500 hover:text-gray-700 transition duration-300 ease-in-out">
+                                    <i class="fas fa-external-link-alt text-lg"></i>
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
                 </div>
-            </div>
+            {% else %}
+                 {# Message when no projects are loaded/filtered #}
+                 <div class="text-center py-12 px-6 bg-white shadow-lg rounded-lg border border-gray-200">
+                    <h3 class="text-lg font-medium text-gray-900">More Projects Coming Soon</h3>
+                    <p class="mt-2 text-gray-600">We are currently curating our project showcase. Please check back later!</p>
+                </div>
+            {% endif %}
         </div>
     </main>
 
     {% include 'footer.html' %}
+
+    {# JavaScript for toggling filter button active state (Visual Only) #}
+    <script>
+        const filterButtons = document.querySelectorAll('.filter-button');
+        // const projectCards = document.querySelectorAll('.project-card'); // Needed for actual filtering
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Get the category key from the data attribute
+                const selectedCategory = button.dataset.category;
+
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => {
+                     btn.classList.remove('active');
+                     // Reset default styles for all buttons
+                     btn.classList.add('bg-white', 'hover:bg-gray-200', 'text-gray-700', 'border-gray-300');
+                     btn.classList.remove('bg-emerald-500', 'hover:bg-emerald-600', 'text-white', 'border-emerald-600'); // Remove active styles
+                });
+
+                // Add active class and style to the clicked button
+                button.classList.add('active');
+                button.classList.add('bg-emerald-500', 'hover:bg-emerald-600', 'text-white', 'border-emerald-600');
+                button.classList.remove('bg-white', 'hover:bg-gray-200', 'text-gray-700', 'border-gray-300');
+
+                // --- Basic Filtering Logic (Optional: Uncomment/Enhance if needed) ---
+                // This is simple front-end show/hide. For actual filtering,
+                // you might need to fetch data again or use a more complex JS framework.
+                /*
+                projectCards.forEach(card => {
+                    const cardCategory = card.dataset.category;
+                    if (selectedCategory === 'All' || cardCategory === selectedCategory) {
+                        card.style.display = 'flex'; // Or 'block', 'grid' depending on original display
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                // Note: Updating the "Showing X of Y projects" text dynamically
+                // would also require JavaScript.
+                */
+                // --- End Basic Filtering Logic ---
+            });
+        });
+
+        // Ensure 'All' button has active styles on initial load
+        document.addEventListener('DOMContentLoaded', () => {
+             const allButton = document.querySelector('.filter-button.active');
+             if (allButton) {
+                  allButton.classList.add('bg-emerald-500', 'hover:bg-emerald-600', 'text-white', 'border-emerald-600');
+                  allButton.classList.remove('bg-white', 'hover:bg-gray-200', 'text-gray-700', 'border-gray-300');
+             }
+        });
+    </script>
 
 </body>
 </html>
