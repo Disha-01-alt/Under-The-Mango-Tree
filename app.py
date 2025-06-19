@@ -24,6 +24,7 @@ from google_auth import google_auth
 from database import init_db
 from auth import setup_auth
 from database import get_all_jobs
+
 # Configure logging
 logging.basicConfig(level=logging.INFO) # Use INFO for production, DEBUG for development
 
@@ -104,10 +105,10 @@ def find_video_details(video_id_str, data_source):
 
     # Create a single, flat list of all videos in the correct order to find next/prev
     all_videos_in_order = [
-        video for topic in data_source.get('topics', []) 
+        video for topic in data_source.get('topics', [])
         for video in topic.get('videos', [])
     ]
-    
+
     # Find the numerical index of the current video in the flat list
     try:
         current_index = next(i for i, v in enumerate(all_videos_in_order) if str(v.get('id')) == video_id_str)
@@ -118,20 +119,20 @@ def find_video_details(video_id_str, data_source):
     # Get the current video object and add the clean embeddable ID
     current_video = all_videos_in_order[current_index]
     current_video['youtube_id'] = extract_youtube_id(current_video.get('youtube_url'))
-    
+
     # Find the topic name for the current video
     current_topic_name = None
     for topic in data_source.get('topics', []):
         if any(str(v.get('id')) == video_id_str for v in topic.get('videos', [])):
             current_topic_name = topic.get('name')
             break
-            
+
     # Find the previous video if we're not at the beginning of the list
     prev_video = all_videos_in_order[current_index - 1] if current_index > 0 else None
-    
+
     # Find the next video if we're not at the end of the list
     next_video = all_videos_in_order[current_index + 1] if current_index + 1 < len(all_videos_in_order) else None
-    
+
     return current_video, current_topic_name, prev_video, next_video
 
 # Load all course data at startup
@@ -143,6 +144,9 @@ SOFT_SKILLS_DATA = load_course_data('soft_skills.json')
 PROJECTS_DATA = load_course_data('projects_data.json')
 TEAM_DATA = load_course_data('team_data.json')
 TESTIMONIALS_DATA = load_course_data('testimonials.json')
+# Note: INTERVIEW_PREP_DATA is referenced but not loaded. Check if needed or typo.
+# Assuming SOFT_SKILLS_DATA might have been intended for the soft skills route render_template
+
 logging.info("All course and site data loaded.")
 
 # --- Route Definitions ---
@@ -154,23 +158,24 @@ def home():
     except Exception as e:
         logging.error(f"Could not fetch jobs for homepage: {e}")
         recent_jobs = []
-    
+
     # Get the testimonials list from the loaded data
     testimonials = TESTIMONIALS_DATA.get('testimonials', [])
-        
+
     return render_template(
-        'index.html', 
+        'index.html',
         recent_jobs=recent_jobs,
         testimonials=testimonials  # <-- Pass testimonials to the template
     )
+
 @app.route('/learning-hub')
 def learning_hub():
     return render_template('learning_hub.html')
 
 @app.route('/team')
 def team():
-    return render_template('team.html', 
-                         team_members=TEAM_DATA.get('team_members', []), 
+    return render_template('team.html',
+                         team_members=TEAM_DATA.get('team_members', []),
                          support_pillars=TEAM_DATA.get('support_pillars', []))
 
 # --- Job Portal Routes ---
@@ -193,7 +198,8 @@ if os.path.exists(english_path):
 else:
     print(f"English learning module not found at {english_path}")
 
-# Serve English learning files directly
+# --- English Learning Static File Routes (HTML) ---
+# These routes serve specific HTML files directly from the static/english directory.
 @app.route('/HinToEng.html')
 def hin_to_eng():
     return send_from_directory('static/english', 'HinToEng.html')
@@ -226,7 +232,8 @@ def synonyms():
 def odd_one_out():
     return send_from_directory('static/english', 'odd_one_out.html')
 
-# Serve JSON files for English learning
+# --- English Learning Static File Routes (JSON) ---
+# These routes serve specific JSON data files directly from the static/english directory.
 @app.route('/HinToEng.json')
 def hin_to_eng_json():
     return send_from_directory('static/english', 'HinToEng.json')
@@ -258,15 +265,12 @@ def synonym_json():
 @app.route('/odd_one_out.json')
 def odd_one_out_json():
     return send_from_directory('static/english', 'odd_one_out.json')
+
+# Route to render the main English Learning landing page template
 @app.route('/english-learning')
 def english_learning():
     return render_template('english_learning.html')
 
-
-# (Your static english file routes are preserved here)
-@app.route('/HinToEng.html')
-def hin_to_eng(): return send_from_directory('static/english', 'HinToEng.html')
-# ... all other static english routes ...
 
 # --- Dynamic Course Routes (Updated to use the new helper) ---
 
@@ -274,37 +278,52 @@ def hin_to_eng(): return send_from_directory('static/english', 'HinToEng.html')
 @app.route('/python-learning/<video_id>')
 def python_learning(video_id=None):
     if not video_id:
-        first_video_id = PYTHON_DATA.get('topics', [{}])[0].get('videos', [{}])[0].get('id')
-        return redirect(url_for('python_learning', video_id=first_video_id)) if first_video_id is not None else render_template('python_learning.html', course_data=PYTHON_DATA)
-    
+        # Redirect to the first video if no ID is provided
+        first_video_id = PYTHON_DATA.get('topics', [{}])[0].get('videos', [{}])[0].get('id') if PYTHON_DATA.get('topics') else None
+        if first_video_id is not None:
+             return redirect(url_for('python_learning', video_id=first_video_id))
+        else:
+             # Handle case where there's no data loaded
+             return render_template('python_learning.html', course_data={"topics": [], "course_title": "Python Learning - No Data Available"})
+
     current_video, topic_name, prev_video, next_video = find_video_details(video_id, PYTHON_DATA)
     if not current_video:
+        # Redirect to the base page if video_id is not found
+        flash(f"Video with ID {video_id} not found.", 'error') # Optional: add a flash message
         return redirect(url_for('python_learning'))
-        
+
     return render_template('python_learning.html', course_data=PYTHON_DATA, current_video=current_video, current_topic_name=topic_name, prev_video=prev_video, next_video=next_video)
 
 @app.route('/machine-learning/')
 @app.route('/machine-learning/<video_id>')
 def machine_learning(video_id=None):
     if not video_id:
-        first_video_id = ML_DATA.get('topics', [{}])[0].get('videos', [{}])[0].get('id')
-        return redirect(url_for('machine_learning', video_id=first_video_id)) if first_video_id is not None else render_template('machine_learning.html', course_data=ML_DATA)
+        first_video_id = ML_DATA.get('topics', [{}])[0].get('videos', [{}])[0].get('id') if ML_DATA.get('topics') else None
+        if first_video_id is not None:
+             return redirect(url_for('machine_learning', video_id=first_video_id))
+        else:
+             return render_template('machine_learning.html', course_data={"topics": [], "course_title": "Machine Learning - No Data Available"})
 
     current_video, topic_name, prev_video, next_video = find_video_details(video_id, ML_DATA)
     if not current_video:
+        flash(f"Video with ID {video_id} not found.", 'error')
         return redirect(url_for('machine_learning'))
-        
+
     return render_template('machine_learning.html', course_data=ML_DATA, current_video=current_video, current_topic_name=topic_name, prev_video=prev_video, next_video=next_video)
 
 @app.route('/deep-learning-ai/')
 @app.route('/deep-learning-ai/<video_id>')
 def deep_learning_ai(video_id=None):
     if not video_id:
-        first_video_id = DL_DATA.get('topics', [{}])[0].get('videos', [{}])[0].get('id')
-        return redirect(url_for('deep_learning_ai', video_id=first_video_id)) if first_video_id is not None else render_template('deep_learning_ai.html', course_data=DL_DATA)
+        first_video_id = DL_DATA.get('topics', [{}])[0].get('videos', [{}])[0].get('id') if DL_DATA.get('topics') else None
+        if first_video_id is not None:
+             return redirect(url_for('deep_learning_ai', video_id=first_video_id))
+        else:
+             return render_template('deep_learning_ai.html', course_data={"topics": [], "course_title": "Deep Learning AI - No Data Available"})
 
     current_video, topic_name, prev_video, next_video = find_video_details(video_id, DL_DATA)
     if not current_video:
+        flash(f"Video with ID {video_id} not found.", 'error')
         return redirect(url_for('deep_learning_ai'))
 
     return render_template('deep_learning_ai.html', course_data=DL_DATA, current_video=current_video, current_topic_name=topic_name, prev_video=prev_video, next_video=next_video)
@@ -313,11 +332,15 @@ def deep_learning_ai(video_id=None):
 @app.route('/algorithms/<video_id>')
 def algorithms(video_id=None):
     if not video_id:
-        first_video_id = ALGORITHMS_DATA.get('topics', [{}])[0].get('videos', [{}])[0].get('id')
-        return redirect(url_for('algorithms', video_id=first_video_id)) if first_video_id is not None else render_template('algorithms_course_page.html', course_data=ALGORITHMS_DATA)
+        first_video_id = ALGORITHMS_DATA.get('topics', [{}])[0].get('videos', [{}])[0].get('id') if ALGORITHMS_DATA.get('topics') else None
+        if first_video_id is not None:
+             return redirect(url_for('algorithms', video_id=first_video_id))
+        else:
+             return render_template('algorithms_course_page.html', course_data={"topics": [], "course_title": "Algorithms - No Data Available"})
 
     current_video, topic_name, prev_video, next_video = find_video_details(video_id, ALGORITHMS_DATA)
     if not current_video:
+        flash(f"Video with ID {video_id} not found.", 'error')
         return redirect(url_for('algorithms'))
 
     return render_template('algorithms_course_page.html', course_data=ALGORITHMS_DATA, current_video=current_video, current_topic_name=topic_name, prev_video=prev_video, next_video=next_video)
@@ -326,18 +349,24 @@ def algorithms(video_id=None):
 @app.route('/soft-skills/<video_id>')
 def soft_skills(video_id=None):
     if not video_id:
-        first_video_id = SOFT_SKILLS_DATA.get('topics', [{}])[0].get('videos', [{}])[0].get('id')
-        return redirect(url_for('soft_skills', video_id=first_video_id)) if first_video_id is not None else render_template('soft_skills.html', course_data=INTERVIEW_PREP_DATA)
-        
+        # Assuming SOFT_SKILLS_DATA is correct, previously referenced INTERVIEW_PREP_DATA here
+        first_video_id = SOFT_SKILLS_DATA.get('topics', [{}])[0].get('videos', [{}])[0].get('id') if SOFT_SKILLS_DATA.get('topics') else None
+        if first_video_id is not None:
+             return redirect(url_for('soft_skills', video_id=first_video_id))
+        else:
+             return render_template('soft_skills.html', course_data={"topics": [], "course_title": "Soft Skills - No Data Available"}) # Use SOFT_SKILLS_DATA here
+
     current_video, topic_name, prev_video, next_video = find_video_details(video_id,SOFT_SKILLS_DATA)
     if not current_video:
+        flash(f"Video with ID {video_id} not found.", 'error')
         return redirect(url_for('soft_skills'))
-        
+
     return render_template('soft_skills.html', course_data=SOFT_SKILLS_DATA, current_video=current_video, current_topic_name=topic_name, prev_video=prev_video, next_video=next_video)
+
 
 @app.route('/projects')
 def projects():
-    return render_template('projects.html', 
+    return render_template('projects.html',
                          projects=PROJECTS_DATA.get('projects', []),
                          page_title=PROJECTS_DATA.get('page_title', 'Projects'),
                          hero_image=PROJECTS_DATA.get('hero_image_url', ''))
@@ -346,15 +375,19 @@ def projects():
 @app.errorhandler(404)
 def page_not_found(e):
     # It's better to have a dedicated 404.html template
-    return render_template('index.html'), 404
+    return render_template('404.html'), 404 # Use a dedicated 404 template if available
 
 @app.errorhandler(500)
 def server_error(e):
     logging.error(f"Server Error: {e}", exc_info=True)
     # It's better to have a dedicated 500.html template
-    return render_template('index.html'), 500
+    return render_template('500.html'), 500 # Use a dedicated 500 template if available
 
 # --- App Runner ---
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
+    # For production deployment (like Render), gunicorn will handle running the app.
+    # The code below is typically for local development.
+    # If deploying with gunicorn, you'll use 'gunicorn app:app' command,
+    # so this block only runs when you execute `python app.py` directly.
     app.run(host='0.0.0.0', port=port, debug=True)
