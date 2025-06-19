@@ -23,7 +23,7 @@
     <header class="jp-header sticky-top">
         <nav class="container navbar navbar-expand-lg">
             <a class="navbar-brand" href="{{ url_for('job_portal_index') }}"><i class="fas fa-briefcase me-2"></i>JobPortal</a>
-             <a class="navbar-brand" href="{{ url_for('home') }}">Under The Mango Tree</a>
+            <a class="nav-link href="{{ url_for('home') }}">Under The Mango Tree</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#portalNav" aria-controls="portalNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -32,21 +32,34 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     {% if current_user.is_authenticated %}
                         {% if current_user.role == 'admin' %}
+                            <li class="nav-item"><a class="nav-link href="{{ url_for('home') }}">Under The Mango Tree</a></li>
+
                             <li class="nav-item"><a class="nav-link {% if 'dashboard' in request.endpoint %}active{% endif %}" href="{{ url_for('admin_routes.dashboard') }}">Dashboard</a></li>
                             <li class="nav-item"><a class="nav-link {% if 'add_job' in request.endpoint %}active{% endif %}" href="{{ url_for('admin_routes.add_job') }}">Add Job</a></li>
                             <li class="nav-item"><a class="nav-link {% if 'manage_jobs' in request.endpoint %}active{% endif %}" href="{{ url_for('admin_routes.manage_jobs') }}">Manage Jobs</a></li>
+                            <li class="nav-item"><a class="nav-link {% if 'jobs' in request.endpoint %}active{% endif %}" href="{{ url_for('candidate_routes.jobs') }}">Browse Jobs</a></li>
+
                             <li class="nav-item"><a class="nav-link {% if 'review_candidates' in request.endpoint %}active{% endif %}" href="{{ url_for('admin_routes.review_candidates') }}">Review Candidates</a></li>
+
                         {% elif current_user.role == 'candidate' %}
+                            <li class="nav-item"><a class="nav-link href="{{ url_for('home') }}">Under The Mango Tree</a></li>
+
                             <li class="nav-item"><a class="nav-link {% if 'dashboard' in request.endpoint %}active{% endif %}" href="{{ url_for('candidate_routes.dashboard') }}">Dashboard</a></li>
                             <li class="nav-item"><a class="nav-link {% if 'jobs' in request.endpoint %}active{% endif %}" href="{{ url_for('candidate_routes.jobs') }}">Browse Jobs</a></li>
                             <li class="nav-item"><a class="nav-link {% if 'profile' in request.endpoint %}active{% endif %}" href="{{ url_for('candidate_routes.profile') }}">My Profile</a></li>
                         {% elif current_user.role == 'company' %}
+                            <li class="nav-item"><a class="nav-link href="{{ url_for('home') }}">Under The Mango Tree</a></li>
+
                             <li class="nav-item"><a class="nav-link {% if 'dashboard' in request.endpoint %}active{% endif %}" href="{{ url_for('company_routes.dashboard') }}">Dashboard</a></li>
                             <li class="nav-item"><a class="nav-link {% if 'search_candidates' in request.endpoint %}active{% endif %}" href="{{ url_for('company_routes.search_candidates_route') }}">Search Candidates</a></li>
                         {% else %}
+                            <li class="nav-item"><a class="nav-link href="{{ url_for('home') }}">Under The Mango Tree</a></li>
+
                              <li class="nav-item"><a class="nav-link" href="{{ url_for('candidate_routes.jobs') }}">Browse Jobs</a></li>
                         {% endif %}
                     {% else %}
+                        <li class="nav-item"><a class="nav-link href="{{ url_for('home') }}">Under The Mango Tree</a></li>
+
                          <li class="nav-item"><a class="nav-link" href="{{ url_for('candidate_routes.jobs') }}">Browse Jobs</a></li>
                     {% endif %}
                 </ul>
