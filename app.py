@@ -366,10 +366,54 @@ def soft_skills(video_id=None):
 
 @app.route('/projects')
 def projects():
+    all_projects = PROJECTS_DATA.get('projects', [])
+    categories_config = PROJECTS_DATA.get('categories_config', {}) # Load the config
+
+    # Calculate category counts dynamically based on existing projects
+    category_counts = {'All': len(all_projects)}
+    # Initialize counts for categories defined in the config (excluding 'All')
+    for category_key in categories_config:
+        if category_key != 'All':
+             category_counts[category_key] = 0
+
+    # Count projects per category
+    for project in all_projects:
+        category = project.get('category') # Get category key from project
+        # Only increment if the category exists in our config (excluding 'All')
+        if category in category_counts and category != 'All':
+             category_counts[category] += 1
+
+    # Prepare categories data for the template, including config and counts
+    # We'll create a list of category objects to loop through in the template
+    # Order is important, put 'All' first
+    display_categories = []
+    if 'All' in categories_config:
+         all_config = categories_config['All']
+         display_categories.append({
+              'key': 'All',
+              'name': all_config.get('name', 'All'),
+              'icon': all_config.get('icon', 'fas fa-globe-americas'), # Default icon for All
+              'count': category_counts.get('All', 0)
+         })
+
+    for category_key, config in categories_config.items():
+        if category_key != 'All':
+             display_categories.append({
+                 'key': category_key, # Keep the key for potential JS filtering
+                 'name': config.get('name', category_key),
+                 'icon': config.get('icon', 'fas fa-folder'), # Default icon for others
+                 'count': category_counts.get(category_key, 0)
+             })
+
+
     return render_template('projects.html',
-                         projects=PROJECTS_DATA.get('projects', []),
+                         projects=all_projects,
                          page_title=PROJECTS_DATA.get('page_title', 'Projects'),
-                         hero_image=PROJECTS_DATA.get('hero_image_url', ''))
+                         subtitle=PROJECTS_DATA.get('subtitle', 'A showcase of our practical and innovative work.'), # Pass subtitle
+                         hero_image=PROJECTS_DATA.get('hero_image_url', ''),
+                         display_categories=display_categories # Pass the list of categories with counts and config
+                         )
+
 
 # --- Error Handlers ---
 @app.errorhandler(404)
