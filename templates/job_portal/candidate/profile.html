@@ -3,14 +3,120 @@
 {% block title %}My Profile - Job Portal{% endblock %}
 
 {% block content %}
+<style>
+    /* --- Custom Styles for Profile Page (Consistent with Dashboard) --- */
+
+  .card {
+        box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.15); /* Stronger initial shadow */
+        border: 1px solid var(--custom-green); /* Added a subtle green border */
+        border-radius: 0.5rem; /* Slightly more rounded corners */
+        transition: all 0.3s ease-in-out; /* Smooth transition for transform, shadow, and potentially border color */
+    }
+
+
+    /* Card Hover Effect (Keeping subtle or commented out for form page) */
+    /* .card:hover {
+         transform: scale(1.01);
+         box-shadow: 0 0.8rem 1.5rem rgba(0, 0, 0, 0.12);
+         cursor: pointer;
+    } */
+
+
+    /* Ensure interactive elements within the card are clickable */
+     .card a.btn, .card button.btn {
+         position: relative; /* Ensure button is above the card potentially */
+         z-index: 2; /* Give it a higher z-index */
+     }
+
+
+    /* Custom green color for elements (adjust shade as needed) */
+    :root {
+        --custom-green: #28a745; /* A standard Bootstrap success green */
+        --custom-green-dark: #218838;
+    }
+
+    /* Page Title Icon color */
+    h1 i.fas {
+        color: var(--custom-green);
+    }
+
+    /* Card Header Icon color */
+    .card-header h5 i.fas {
+        color: var(--custom-green);
+    }
+
+    /* Custom Green Button Style */
+    .btn-custom-green {
+        background-color: var(--custom-green);
+        color: white;
+        border-color: var(--custom-green);
+        /* Add transition for smooth color/shadow change on hover */
+        transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+
+    .btn-custom-green:hover {
+        background-color: var(--custom-green-dark);
+        border-color: var(--custom-green-dark);
+        color: white;
+    }
+
+    .btn-custom-green:focus {
+        box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25);
+    }
+
+    .btn-custom-green:disabled {
+        background-color: var(--custom-green);
+        border-color: var(--custom-green);
+        opacity: 0.65;
+    }
+
+     /* Secondary Button Style (used for Cancel and Replace) */
+    .btn-secondary {
+        /* Using default Bootstrap secondary styles, but can customize if needed */
+         transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+
+
+    /* Badge Colors (re-using dashboard styles) */
+    .badge.bg-info { background-color: #17a2b8 !important; color: #fff !important;} /* Keep info badge for tags? Or change? Keeping for now */
+    .badge.bg-success { background-color: var(--custom-green) !important; color: #fff !important;} /* Green for Certified */
+    .badge.bg-warning { background-color: #ffc107 !important; } /* Yellow for Rating stars */
+    .badge.bg-secondary { background-color: #6c757d !important; } /* Grey for Rating stars */
+
+
+    /* Admin Review Feedback Box Style */
+    .dark-display-box {
+        background-color: #f8f9fa; /* Light grey background */
+        border: 1px solid #e9ecef; /* Light border */
+        padding: 1rem;
+        border-radius: 0.25rem;
+        color: #495057 !important; /* Ensure readable text color */
+    }
+
+
+     /* Adjust text color for consistency */
+     .card-body p.text-muted, .text-muted {
+         color: #6c757d !important; /* Consistent muted text color */
+     }
+
+     /* Adjust form control focus color (optional, aligns with theme) */
+     .form-control:focus, .form-select:focus, textarea.form-control:focus {
+        border-color: rgba(40, 167, 69, 0.5); /* Green border on focus */
+        box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25); /* Green shadow on focus */
+     }
+
+
+</style>
+
 <div class="container py-4">
     <div class="row">
         <div class="col-12">
             <h1 class="mb-4"><i class="fas fa-user-edit me-2"></i>My Profile</h1>
             <p class="text-muted">Keep your profile up-to-date to attract the best opportunities.</p>
+             <hr class="mb-4"> {# Add a horizontal rule for consistency #}
         </div>
     </div>
-    
+
     <form method="POST" enctype="multipart/form-data">
         <div class="row">
             <!-- Left Column: Main Profile Info -->
@@ -31,22 +137,22 @@
                          </div>
                          <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="whatsapp_number" class="form-label">WhatsApp Number *</label>
-                                <input type="tel" class="form-control" id="whatsapp_number" name="whatsapp_number" 
-                                       value="{{ (form_data_attempt.whatsapp_number if form_data_attempt else current_user.phone) or '' }}" 
+                                <label for="whatsapp_number" class="form-label">WhatsApp Number <span class="text-danger">*</span></label> {# Added * span #}
+                                <input type="tel" class="form-control" id="whatsapp_number" name="whatsapp_number"
+                                       value="{{ (form_data_attempt.whatsapp_number if form_data_attempt else current_user.phone) or '' }}"
                                        required>
                             </div>
                              <div class="col-md-6 mb-3">
                                  <label for="linkedin" class="form-label">LinkedIn Profile URL</label>
-                                 <input type="url" class="form-control" id="linkedin" name="linkedin" 
-                                        value="{{ (form_data_attempt.linkedin if form_data_attempt else current_user.linkedin) or '' }}" 
+                                 <input type="url" class="form-control" id="linkedin" name="linkedin"
+                                        value="{{ (form_data_attempt.linkedin if form_data_attempt else current_user.linkedin) or '' }}"
                                         placeholder="https://linkedin.com/in/yourprofile">
                              </div>
                          </div>
                         <div class="mb-3">
                              <label for="github" class="form-label">GitHub Profile URL</label>
-                             <input type="url" class="form-control" id="github" name="github" 
-                                    value="{{ (form_data_attempt.github if form_data_attempt else current_user.github) or '' }}" 
+                             <input type="url" class="form-control" id="github" name="github"
+                                    value="{{ (form_data_attempt.github if form_data_attempt else current_user.github) or '' }}"
                                     placeholder="https://github.com/yourusername">
                          </div>
                     </div>
@@ -58,43 +164,43 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12 mb-3">
-                                <label for="college_name" class="form-label">Name of College/University *</label>
-                                <input type="text" class="form-control" id="college_name" name="college_name" 
+                                <label for="college_name" class="form-label">Name of College/University <span class="text-danger">*</span></label> {# Added * span #}
+                                <input type="text" class="form-control" id="college_name" name="college_name"
                                        value="{{ (form_data_attempt.college_name if form_data_attempt else profile.college_name) or '' }}" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 mb-3">
-                                <label for="degree" class="form-label">Degree *</label>
-                                <input type="text" class="form-control" id="degree" name="degree" 
+                                <label for="degree" class="form-label">Degree <span class="text-danger">*</span></label> {# Added * span #}
+                                <input type="text" class="form-control" id="degree" name="degree"
                                        placeholder="e.g., Bachelor of Technology"
                                        value="{{ (form_data_attempt.degree if form_data_attempt else profile.degree) or '' }}" required>
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label for="graduation_year" class="form-label">Graduation Year *</label>
-                                <input type="number" class="form-control" id="graduation_year" name="graduation_year" 
+                                <label for="graduation_year" class="form-label">Graduation Year <span class="text-danger">*</span></label> {# Added * span #}
+                                <input type="number" class="form-control" id="graduation_year" name="graduation_year"
                                        placeholder="e.g., 2024" min="1950" max="2040"
                                        value="{{ (form_data_attempt.graduation_year if form_data_attempt else profile.graduation_year) or '' }}" required>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Professional Profile -->
                 <div class="card mb-4">
                     <div class="card-header"><h5 class="mb-0"><i class="fas fa-bullseye me-2"></i>Professional Profile</h5></div>
                     <div class="card-body">
                         <div class="mb-3">
-                            <label for="summary" class="form-label">Summary of Skills and Strengths *</label>
+                            <label for="summary" class="form-label">Summary of Skills and Strengths <span class="text-danger">*</span></label> {# Added * span #}
                             <textarea class="form-control" id="summary" name="summary" rows="4" required
                                 placeholder="Highlight your key skills, strengths, and career aspirations.">{{ (form_data_attempt.summary if form_data_attempt else profile.summary) or '' }}</textarea>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Core Interest Domains *</label>
+                            <label class="form-label">Core Interest Domains <span class="text-danger">*</span></label> {# Added * span #}
                             <div class="form-control" style="height: auto; padding-top: 10px; padding-bottom: 2px;">
                                 {% for interest_option in available_core_interests %}
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="core_interest_domains" 
+                                    <input class="form-check-input" type="checkbox" name="core_interest_domains"
                                            id="interest_{{ loop.index }}" value="{{ interest_option }}"
                                            {{ 'checked' if interest_option in selected_core_interests else '' }}>
                                     <label class="form-check-label" for="interest_{{ loop.index }}">{{ interest_option }}</label>
@@ -112,124 +218,141 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="twelfth_school_type" class="form-label">12th School Type *</label>
+                                <label for="twelfth_school_type" class="form-label">12th School Type <span class="text-danger">*</span></label> {# Added * span #}
                                 <select class="form-select" id="twelfth_school_type" name="twelfth_school_type" required>
                                     <option value="">Select type</option>
-                                    <option value="government" {{ 'selected' if (profile and profile.twelfth_school_type == 'government') else '' }}>Government School</option>
-                                    <option value="private" {{ 'selected' if (profile and profile.twelfth_school_type == 'private') else '' }}>Private School</option>
-                                    <option value="other" {{ 'selected' if (profile and profile.twelfth_school_type == 'other') else '' }}>Other</option>
+                                    <option value="government" {{ 'selected' if (profile and profile.twelfth_school_type == 'government') or (form_data_attempt and form_data_attempt.twelfth_school_type == 'government') else '' }}>Government School</option> {# Added form_data_attempt check #}
+                                    <option value="private" {{ 'selected' if (profile and profile.twelfth_school_type == 'private') or (form_data_attempt and form_data_attempt.twelfth_school_type == 'private') else '' }}>Private School</option> {# Added form_data_attempt check #}
+                                    <option value="other" {{ 'selected' if (profile and profile.twelfth_school_type == 'other') or (form_data_attempt and form_data_attempt.twelfth_school_type == 'other') else '' }}>Other</option> {# Added form_data_attempt check #}
                                 </select>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="parental_annual_income" class="form-label">Family Parental Annual Income *</label>
+                                <label for="parental_annual_income" class="form-label">Family Parental Annual Income <span class="text-danger">*</span></label> {# Added * span #}
                                 <select class="form-select" id="parental_annual_income" name="parental_annual_income" required>
                                     <option value="">Select income range</option>
-                                    <option value="Below 3 Lakh" {{ 'selected' if (profile and profile.parental_annual_income == 'Below 3 Lakh') else '' }}>Below 3 Lakh</option>
-                                    <option value="3 to 8 Lakhs" {{ 'selected' if (profile and profile.parental_annual_income == '3 to 8 Lakhs') else '' }}>3 to 8 Lakhs</option>
-                                    <option value="Above 8 Lakhs" {{ 'selected' if (profile and profile.parental_annual_income == 'Above 8 Lakhs') else '' }}>Above 8 Lakhs</option>
+                                    <option value="Below 3 Lakh" {{ 'selected' if (profile and profile.parental_annual_income == 'Below 3 Lakh') or (form_data_attempt and form_data_attempt.parental_annual_income == 'Below 3 Lakh') else '' }}>Below 3 Lakh</option> {# Added form_data_attempt check #}
+                                    <option value="3 to 8 Lakhs" {{ 'selected' if (profile and profile.parental_annual_income == '3 to 8 Lakhs') or (form_data_attempt and form_data_attempt.parental_annual_income == '3 to 8 Lakhs') else '' }}>3 to 8 Lakhs</option> {# Added form_data_attempt check #}
+                                    <option value="Above 8 Lakhs" {{ 'selected' if (profile and profile.parental_annual_income == 'Above 8 Lakhs') or (form_data_attempt and form_data_attempt.parental_annual_income == 'Above 8 Lakhs') else '' }}>Above 8 Lakhs</option> {# Added form_data_attempt check #}
                                 </select>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Right Column: Documents & Admin Review -->
             <div class="col-lg-4">
                 <div class="card mb-4">
                     <div class="card-header"><h5 class="mb-0"><i class="fas fa-file-alt me-2"></i>Documents (PDF Only)</h5></div>
                     <div class="card-body">
-                        
+
                         <!-- CV Uploader -->
                         <div class="mb-3">
                             <label for="cv" class="form-label">CV/Resume <span class="text-danger">*</span></label>
-                            <div id="cv-viewer" class="mb-2" {% if not profile or not profile.cv_filename %}style="display: none;"{% endif %}>
-                                <div class="d-grid">
-                                    <a href="{{ profile.cv_filename if profile else '#' }}" target="_blank" class="btn btn-outline-info btn-sm">
+                            <div id="cv-viewer" class="mb-2" {% if profile and profile.cv_filename %}style="display: block;"{% else %}style="display: none;"{% endif %}> {# Ensure correct display state #}
+                                <div class="d-grid mb-2"> {# Added mb-2 for space below button #}
+                                    <a href="{{ profile.cv_filename if profile and profile.cv_filename else '#' }}" target="_blank" class="btn btn-custom-green btn-sm"> {# Changed to custom green button #}
                                         <i class="fas fa-eye me-1"></i> View Current CV
                                     </a>
                                 </div>
-                                <button type="button" class="btn btn-link btn-sm p-0 mt-1" onclick="toggleUpload('cv')">Replace CV</button>
+                                {# Changed to btn-secondary and added icon #}
+                                <button type="button" class="btn btn-secondary btn-sm" onclick="toggleUpload('cv')">
+                                     <i class="fas fa-exchange-alt me-1"></i> Replace CV
+                                </button>
                             </div>
-                            <div id="cv-uploader" {% if profile and profile.cv_filename %}style="display: none;"{% endif %}>
-                                <input type="file" class="form-control form-control-sm" id="cv" name="cv" accept=".pdf" {% if not profile or not profile.cv_filename %}required{% endif %}>
+                            <div id="cv-uploader" {% if profile and profile.cv_filename %}style="display: none;"{% else %}style="display: block;"{% endif %}> {# Ensure correct display state #}
+                                <input type="file" class="form-control form-control-sm" id="cv" name="cv" accept=".pdf" {% if not profile or not profile.cv_filename or (form_data_attempt and not form_data_attempt.cv_filename) %}required{% endif %}> {# Check if file is required based on existing + attempt #}
                             </div>
                         </div>
-                        
+
                         <!-- ID Card Uploader -->
                         <div class="mb-3">
                             <label for="id_card" class="form-label">ID Card <span class="text-danger">*</span></label>
-                            <div id="id_card-viewer" class="mb-2" {% if not profile or not profile.id_card_filename %}style="display: none;"{% endif %}>
-                                <div class="d-grid">
-                                    <a href="{{ profile.id_card_filename if profile else '#' }}" target="_blank" class="btn btn-outline-info btn-sm">
+                            <div id="id_card-viewer" class="mb-2" {% if profile and profile.id_card_filename %}style="display: block;"{% else %}style="display: none;"{% endif %}> {# Ensure correct display state #}
+                                <div class="d-grid mb-2"> {# Added mb-2 for space below button #}
+                                    <a href="{{ profile.id_card_filename if profile and profile.id_card_filename else '#' }}" target="_blank" class="btn btn-custom-green btn-sm"> {# Changed to custom green button #}
                                         <i class="fas fa-eye me-1"></i> View Current ID Card
                                     </a>
                                 </div>
-                                <button type="button" class="btn btn-link btn-sm p-0 mt-1" onclick="toggleUpload('id_card')">Replace ID Card</button>
+                                {# Changed to btn-secondary and added icon #}
+                                <button type="button" class="btn btn-secondary btn-sm" onclick="toggleUpload('id_card')">
+                                     <i class="fas fa-exchange-alt me-1"></i> Replace ID Card
+                                </button>
                             </div>
-                            <div id="id_card-uploader" {% if profile and profile.id_card_filename %}style="display: none;"{% endif %}>
-                                <input type="file" class="form-control form-control-sm" id="id_card" name="id_card" accept=".pdf" {% if not profile or not profile.id_card_filename %}required{% endif %}>
+                            <div id="id_card-uploader" {% if profile and profile.id_card_filename %}style="display: none;"{% else %}style="display: block;"{% endif %}> {# Ensure correct display state #}
+                                <input type="file" class="form-control form-control-sm" id="id_card" name="id_card" accept=".pdf" {% if not profile or not profile.id_card_filename or (form_data_attempt and not form_data_attempt.id_card_filename) %}required{% endif %}> {# Check if file is required based on existing + attempt #}
                             </div>
                         </div>
 
                         <!-- Marksheet Uploader -->
                         <div class="mb-3">
                             <label for="marksheet" class="form-label">12th Marksheet <span class="text-danger">*</span></label>
-                            <div id="marksheet-viewer" class="mb-2" {% if not profile or not profile.marksheet_filename %}style="display: none;"{% endif %}>
-                                <div class="d-grid">
-                                    <a href="{{ profile.marksheet_filename if profile else '#' }}" target="_blank" class="btn btn-outline-info btn-sm">
+                            <div id="marksheet-viewer" class="mb-2" {% if profile and profile.marksheet_filename %}style="display: block;"{% else %}style="display: none;"{% endif %}> {# Ensure correct display state #}
+                                <div class="d-grid mb-2"> {# Added mb-2 for space below button #}
+                                    <a href="{{ profile.marksheet_filename if profile and profile.marksheet_filename else '#' }}" target="_blank" class="btn btn-custom-green btn-sm"> {# Changed to custom green button #}
                                         <i class="fas fa-eye me-1"></i> View Current Marksheet
                                     </a>
                                 </div>
-                                <button type="button" class="btn btn-link btn-sm p-0 mt-1" onclick="toggleUpload('marksheet')">Replace Marksheet</button>
+                                {# Changed to btn-secondary and added icon #}
+                                <button type="button" class="btn btn-secondary btn-sm" onclick="toggleUpload('marksheet')">
+                                     <i class="fas fa-exchange-alt me-1"></i> Replace Marksheet
+                                </button>
                             </div>
-                            <div id="marksheet-uploader" {% if profile and profile.marksheet_filename %}style="display: none;"{% endif %}>
-                                <input type="file" class="form-control form-control-sm" id="marksheet" name="marksheet" accept=".pdf" {% if not profile or not profile.marksheet_filename %}required{% endif %}>
+                            <div id="marksheet-uploader" {% if profile and profile.marksheet_filename %}style="display: none;"{% else %}style="display: block;"{% endif %}> {# Ensure correct display state #}
+                                <input type="file" class="form-control form-control-sm" id="marksheet" name="marksheet" accept=".pdf" {% if not profile or not profile.marksheet_filename or (form_data_attempt and not form_data_attempt.marksheet_filename) %}required{% endif %}> {# Check if file is required based on existing + attempt #}
                             </div>
                         </div>
 
                         <!-- EWS Certificate Uploader -->
                         <div class="mb-3">
                             <label for="ews_certificate" class="form-label">EWS Certificate (Optional)</label>
-                            <div id="ews_certificate-viewer" class="mb-2" {% if not profile or not profile.ews_certificate_filename %}style="display: none;"{% endif %}>
-                                <div class="d-grid">
-                                    <a href="{{ profile.ews_certificate_filename if profile else '#' }}" target="_blank" class="btn btn-outline-info btn-sm">
+                            <div id="ews_certificate-viewer" class="mb-2" {% if profile and profile.ews_certificate_filename %}style="display: block;"{% else %}style="display: none;"{% endif %}> {# Ensure correct display state #}
+                                <div class="d-grid mb-2"> {# Added mb-2 for space below button #}
+                                    <a href="{{ profile.ews_certificate_filename if profile and profile.ews_certificate_filename else '#' }}" target="_blank" class="btn btn-custom-green btn-sm"> {# Changed to custom green button #}
                                         <i class="fas fa-eye me-1"></i> View Current EWS Cert.
                                     </a>
                                 </div>
-                                <button type="button" class="btn btn-link btn-sm p-0 mt-1" onclick="toggleUpload('ews_certificate')">Replace EWS Cert.</button>
+                                {# Changed to btn-secondary and added icon #}
+                                <button type="button" class="btn btn-secondary btn-sm" onclick="toggleUpload('ews_certificate')">
+                                     <i class="fas fa-exchange-alt me-1"></i> Replace EWS Cert.
+                                </button>
                             </div>
-                            <div id="ews_certificate-uploader" {% if profile and profile.ews_certificate_filename %}style="display: none;"{% endif %}>
-                                <input type="file" class="form-control form-control-sm" id="ews_certificate" name="ews_certificate" accept=".pdf">
+                             <div id="ews_certificate-uploader" {% if profile and profile.ews_certificate_filename %}style="display: none;"{% else %}style="display: block;"{% endif %}> {# Ensure correct display state #}
+                                <input type="file" class="form-control form-control-sm" id="ews_certificate" name="ews_certificate" accept=".pdf"> {# EWS is Optional, no 'required' check needed here #}
                             </div>
                         </div>
 
                         <small class="text-muted d-block">All documents must be PDF. Fields with <span class="text-danger">*</span> are mandatory.</small>
                     </div>
                 </div>
-                
+
                 <!-- Admin Review Display -->
-                {% if profile and (profile.rating or profile.admin_feedback or profile.admin_tags or profile.is_certified) %}
+                {# Check if admin review info exists #}
+                {% if profile and (profile.rating is not none or profile.admin_feedback or profile.admin_tags or profile.is_certified) %}
                 <div class="card mb-4">
                     <div class="card-header"><h5 class="mb-0"><i class="fas fa-user-shield me-2"></i>Admin Review</h5></div>
                     <div class="card-body">
-                        {% if profile.rating %}<div class="mb-2"><strong class="small">Rating:</strong> {% for i in range(1, 6) %}<i class="fas fa-star {{ 'text-warning' if i <= profile.rating else 'text-muted' }}"></i>{% endfor %} ({{ profile.rating }}/5)</div>{% endif %}
+                        {# Display rating if available #}
+                        {% if profile.rating is not none %}<div class="mb-2"><strong class="small">Rating:</strong> {% for i in range(1, 6) %}<i class="fas fa-star {{ 'text-warning' if i <= profile.rating else 'text-muted' }}"></i>{% endfor %} ({{ profile.rating }}/5)</div>{% endif %}
+                        {# Display admin tags if available #}
                         {% if profile.admin_tags %}<div class="mb-2"><strong class="small">Admin Tags:</strong> {% for tag in profile.admin_tags.split(',') %}{% if tag.strip() %}<span class="badge bg-info text-dark me-1 mb-1 fw-normal">{{ tag.strip() }}</span>{% endif %}{% endfor %}</div>{% endif %}
+                        {# Display certification status if available #}
                         {% if profile.is_certified %}<div class="mb-2"><strong class="small">Certification:</strong> <span class="badge bg-success"><i class="fas fa-check-circle me-1"></i>Admin Certified</span></div>{% endif %}
+                        {# Display admin feedback if available #}
                         {% if profile.admin_feedback %}<div><strong class="small">Feedback:</strong><p class="text-muted small mb-0 p-2 dark-display-box rounded">{{ profile.admin_feedback }}</p></div>{% endif %}
                     </div>
                 </div>
                 {% endif %}
             </div>
         </div>
-        
+
         <!-- Submit Button -->
         <div class="row mt-3">
             <div class="col-12">
-                <button type="submit" class="btn btn-primary btn-lg">
+                <button type="submit" class="btn btn-custom-green btn-lg"> {# Changed to custom green button #}
                     <i class="fas fa-save me-2"></i>Save Profile Changes
                 </button>
-                <a href="{{ url_for('candidate_routes.dashboard') }}" class="btn btn-secondary btn-lg ms-2">
+                <a href="{{ url_for('candidate_routes.dashboard') }}" class="btn btn-secondary btn-lg ms-2"> {# Kept secondary button for Cancel #}
                     <i class="fas fa-times me-2"></i>Cancel
                 </a>
             </div>
@@ -246,20 +369,70 @@ function toggleUpload(docType) {
     const uploader = document.getElementById(docType + '-uploader');
     const input = document.getElementById(docType);
 
-    if (viewer.style.display === 'none') {
-        // This case should not happen with this logic, but as a fallback
-        viewer.style.display = 'block';
-        uploader.style.display = 'none';
-        input.removeAttribute('required');
-    } else {
-        // Hide the 'View' button and show the file input
+    // Add robustness check for elements
+    if (!viewer || !uploader || !input) {
+         console.error('Missing elements for document type:', docType);
+         return;
+    }
+
+    // If the viewer is currently visible, hide it and show the uploader
+    if (viewer.style.display !== 'none') {
         viewer.style.display = 'none';
         uploader.style.display = 'block';
-        // Make the input required only if it was originally required and now visible
-        if (docType !== 'ews_certificate') {
+        // Make input required if it's not the optional EWS cert
+        // Check if input element exists before setting attribute
+        if (input && docType !== 'ews_certificate') {
              input.setAttribute('required', 'required');
         }
+        // Clear the file input value when showing the uploader
+        input.value = '';
+    } else {
+         // If uploader is visible (shouldn't happen via the Replace button logic)
+         viewer.style.display = 'block';
+         uploader.style.display = 'none';
+         // Check if input element exists before removing attribute
+         if (input) {
+             input.removeAttribute('required'); // Remove required when hidden
+         }
     }
 }
+
+// Ensure initial state is correct based on whether a file exists
+document.addEventListener('DOMContentLoaded', function() {
+    const documentTypes = ['cv', 'id_card', 'marksheet', 'ews_certificate'];
+    documentTypes.forEach(docType => {
+        const viewer = document.getElementById(docType + '-viewer');
+        const uploader = document.getElementById(docType + '-uploader');
+        const input = document.getElementById(docType);
+
+        // Add robustness check for elements
+        if (!viewer || !uploader || !input) {
+             console.error('Missing elements for document type:', docType);
+             return; // Skip if elements are not found
+        }
+
+        // Check if a file URL exists in the 'href' of the 'View' link
+        const viewLink = viewer.querySelector('a');
+        // Basic check for href existence and not just '#' or root '/'
+        const fileExists = viewLink && viewLink.href && viewLink.href !== '#' && !viewLink.href.endsWith('/');
+
+        if (fileExists) {
+            viewer.style.display = 'block';
+            uploader.style.display = 'none';
+            input.removeAttribute('required'); // File exists, so input is not required initially
+        } else {
+            viewer.style.display = 'none';
+            uploader.style.display = 'block';
+            // Make input required if it's not EWS and no file exists
+            if (docType !== 'ews_certificate') {
+                 input.setAttribute('required', 'required');
+            } else {
+                 input.removeAttribute('required'); // EWS is optional
+            }
+        }
+    });
+});
+
+
 </script>
 {% endblock %}
