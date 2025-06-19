@@ -1,8 +1,138 @@
+
 {% extends "job_portal/base.html" %}
 
 {% block title %}{{ candidate.full_name or candidate.email }} - Candidate Profile{% endblock %}
 
 {% block content %}
+<style>
+    /* 🌿 General Theme */
+    body {
+        background-color: #f5fff8;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #1e3d2f;
+    }
+
+    .card {
+        box-shadow: 0 0 10px rgba(34, 139, 84, 0.1);
+        border-radius: 10px;
+        border: 1px solid var(--custom-green); /* Added a subtle green border */
+    }
+
+    .card-header {
+        background-color: #d1f1dc;
+        color: #215732;
+        font-weight: 600;
+        border-bottom: 1px solid #b8e6ca;
+    }
+
+    /* 🌿 Buttons */
+    .btn-primary {
+        background-color: #2e8b57;
+        border-color: #2e8b57;
+    }
+
+    .btn-primary:hover {
+        background-color: #256e46;
+        border-color: #256e46;
+    }
+
+    .btn-outline-primary {
+        border-color: #2e8b57;
+        color: #2e8b57;
+    }
+
+    .btn-outline-primary:hover {
+        background-color: #2e8b57;
+        color: white;
+    }
+
+    .btn-outline-info {
+        border-color: #3aa17e;
+        color: #3aa17e;
+    }
+
+    .btn-outline-info:hover {
+        background-color: #3aa17e;
+        color: white;
+    }
+
+    .btn-secondary {
+        background-color: #5c8374;
+        border-color: #5c8374;
+    }
+
+    .btn-secondary:hover {
+        background-color: #486d60;
+        border-color: #486d60;
+    }
+
+    /* 🌿 Profile Sections */
+    .bg-secondary {
+        background-color: #eafaf1 !important;
+        border: 1px solid #c7e6d5;
+        color: #1e3d2f;
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    .bg-secondary br {
+        display: block;
+        margin: 0.3rem 0;
+    }
+
+    /* 🌿 Badges */
+    .badge.bg-primary {
+        background-color: #4caf50 !important;
+    }
+
+    .badge.bg-secondary {
+        background-color: #d0dcdc !important;
+    }
+
+    .badge.bg-success {
+        background-color: #3cb371 !important;
+    }
+
+    /* 🌿 Progress Bar */
+    .progress {
+        height: 1rem;
+        border-radius: 10px;
+        background-color: #e2f0e9;
+    }
+
+    .progress-bar.bg-success {
+        background-color: #4caf50;
+    }
+
+    .progress-bar.bg-warning {
+        background-color: #ffb74d;
+    }
+
+    .progress-bar.bg-danger {
+        background-color: #ef5350;
+    }
+
+    /* 🌿 Star Rating */
+    .text-warning {
+        color: #f1c40f !important;
+    }
+
+    /* 🌿 Small Tweaks */
+    h5, h6 {
+        font-weight: 600;
+    }
+
+    a {
+        color: #256e46;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
+
 <div class="container py-4">
     <div class="row">
         <div class="col-12">
@@ -241,10 +371,10 @@
                             <span class="fw-bold">CV/Resume</span>
                         </div>
                         {% if candidate.cv_filename %}
-                            <a href="{{ url_for('company_routes.download_cv', candidate_id=candidate.id) }}" 
-                               class="btn btn-outline-primary btn-sm">
-                                <i class="fas fa-download"></i>
-                            </a>
+                            <a href="{{ url_for('company_routes.download_cv', candidate_id=candidate.id) }}" class="btn btn-outline-primary btn-sm">
+    <i class="fas fa-download"></i> Download CV
+</a>
+
                         {% else %}
                             <span class="badge bg-secondary">Not available</span>
                         {% endif %}
