@@ -186,10 +186,82 @@ def job_portal_main_page():
         elif current_user.role == 'company': return redirect(url_for('company_routes.dashboard'))
     return render_template('job_portal/index.html')
 
-# --- English Learning (Static) Routes ---
+# Setup English learning module
+english_path = os.path.join('static', 'english')
+if os.path.exists(english_path):
+    print(f"English learning module found at {english_path}")
+else:
+    print(f"English learning module not found at {english_path}")
+
+# Serve English learning files directly
+@app.route('/HinToEng.html')
+def hin_to_eng():
+    return send_from_directory('static/english', 'HinToEng.html')
+
+@app.route('/PicToEng.html')
+def pic_to_eng():
+    return send_from_directory('static/english', 'PicToEng.html')
+
+@app.route('/SentCorrect.html')
+def sent_correct():
+    return send_from_directory('static/english', 'SentCorrect.html')
+
+@app.route('/QnA.html')
+def qna():
+    return send_from_directory('static/english', 'QnA.html')
+
+@app.route('/guessWord.html')
+def guess_word():
+    return send_from_directory('static/english', 'guessWord.html')
+
+@app.route('/PrepositionGame.html')
+def preposition_game():
+    return send_from_directory('static/english', 'PrepositionGame.html')
+
+@app.route('/Synonyms.html')
+def synonyms():
+    return send_from_directory('static/english', 'Synonyms.html')
+
+@app.route('/odd_one_out.html')
+def odd_one_out():
+    return send_from_directory('static/english', 'odd_one_out.html')
+
+# Serve JSON files for English learning
+@app.route('/HinToEng.json')
+def hin_to_eng_json():
+    return send_from_directory('static/english', 'HinToEng.json')
+
+@app.route('/PicToEng.json')
+def pic_to_eng_json():
+    return send_from_directory('static/english', 'PicToEng.json')
+
+@app.route('/SentCorrect.json')
+def sent_correct_json():
+    return send_from_directory('static/english', 'SentCorrect.json')
+
+@app.route('/QnA.json')
+def qna_json():
+    return send_from_directory('static/english', 'QnA.json')
+
+@app.route('/guessWord.json')
+def guess_word_json():
+    return send_from_directory('static/english', 'guessWord.json')
+
+@app.route('/Prepositions.json')
+def prepositions_json():
+    return send_from_directory('static/english', 'Prepositions.json')
+
+@app.route('/Synonym.json')
+def synonym_json():
+    return send_from_directory('static/english', 'Synonym.json')
+
+@app.route('/odd_one_out.json')
+def odd_one_out_json():
+    return send_from_directory('static/english', 'odd_one_out.json')
 @app.route('/english-learning')
 def english_learning():
     return render_template('english_learning.html')
+
 
 # (Your static english file routes are preserved here)
 @app.route('/HinToEng.html')
