@@ -3,16 +3,154 @@
 {% block title %}{{ 'Edit Job' if edit_mode else 'Add Job' }} - Job Portal{% endblock %}
 
 {% block content %}
+<style>
+    /* --- Custom Styles for Add/Edit Job Page (Consistent with Dashboard/Profile) --- */
+
+    /* Set a light background color for the page content */
+    body {
+        background-color: #f8f9fa; /* A light grey color, typical for dashboards */
+    }
+
+    /* Add stronger shadow to cards and transition for hover effect */
+    .card {
+        box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.15); /* Increased values for more depth */
+        border: 1px solid var(--custom-green); /* Remove default border if Bootstrap adds one */
+        border-radius: 0.5rem; /* Slightly more rounded corners */
+        transition: all 0.3s ease-in-out; /* Smooth transition for transform and shadow */
+    }
+
+    /* Card Hover Effect (Optional on a form-heavy page, often omitted or subtle) */
+    /* Since these cards contain forms and detailed info, a strong hover effect might be distracting.
+       Keeping it commented out or subtle. */
+     .card:hover {
+         /* transform: translateY(-3px); */ /* Lift slightly */
+         /* box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.18); */ /* Stronger shadow */
+     }
+
+
+    /* Ensure interactive elements within the card are clickable */
+     .card a.btn, .card button.btn {
+         position: relative; /* Ensure button is above the card potentially */
+         z-index: 2; /* Give it a higher z-index */
+     }
+
+
+    /* Custom green color for elements (adjust shade as needed) */
+    :root {
+        --custom-green: #28a745; /* A standard Bootstrap success green */
+        --custom-green-dark: #218838;
+    }
+
+    /* Page Title Icon color */
+    h1 i.fas, h1 i.fab { /* Include fab for LinkedIn icon */
+        color: var(--custom-green);
+    }
+
+    /* Card Header Icon color */
+    .card-header h5 i.fas, .card-header h6 i.fas {
+        color: var(--custom-green); /* Default header icons to green */
+    }
+
+
+    /* Custom Green Button Style (Primary action) */
+    .btn-custom-green {
+        background-color: var(--custom-green);
+        color: white;
+        border-color: var(--custom-green);
+        /* Add transition for smooth color/shadow change on hover */
+        transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+
+    .btn-custom-green:hover {
+        background-color: var(--custom-green-dark);
+        border-color: var(--custom-green-dark);
+        color: white;
+    }
+
+    .btn-custom-green:focus {
+        box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25);
+    }
+
+    .btn-custom-green:disabled {
+        background-color: var(--custom-green);
+        border-color: var(--custom-green);
+        opacity: 0.65;
+    }
+
+     /* Secondary Button Style */
+    .btn-secondary, .btn-outline-secondary {
+        /* Using default Bootstrap secondary styles, but add transition */
+         transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+    }
+
+     /* Warning Button Style */
+     .btn-warning {
+         /* Using default Bootstrap warning styles, add transition */
+         transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+     }
+
+
+    /* Badge Colors (using standard Bootstrap bg- classes, consistent) */
+    .badge.bg-warning { background-color: #ffc107 !important; color: #212529 !important; } /* Yellow */
+    .badge.bg-success { background-color: var(--custom-green) !important; color: #fff !important;} /* Green */
+    .badge.bg-info { background-color: #17a2b8 !important; color: #fff !important;} /* Info/Cyan */
+    .badge.bg-danger { background-color: #dc3545 !important; color: #fff !important;} /* Red */
+    .badge.bg-secondary { background-color: #6c757d !important; color: #fff !important;} /* Grey */
+
+
+    /* Icon Colors in Card Bodies (Defaulting most to green for consistency) */
+    .card-body i.fas, .card-body i.fab {
+        color: var(--custom-green) !important; /* Default icons to green */
+    }
+
+    /* Exceptions to default green icon color */
+    .card-body i.fa-info-circle { color: #17a2b8 !important; } /* Info icon (cyan/info) */
+    .card-body i.fa-lightbulb { color: #ffc107 !important; } /* Lightbulb icon (warning) */
+    .card-body i.fa-exclamation-triangle { color: #dc3545 !important; } /* Warning icon (danger) */
+
+
+     /* Adjust text color for consistency */
+     .lead.text-muted, .card-text, .text-muted, .small {
+         color: #6c757d !important; /* Consistent muted text color */
+     }
+
+
+     /* Adjust form control focus color (optional, aligns with theme) */
+     .form-control:focus, .form-select:focus, textarea.form-control:focus {
+        border-color: rgba(40, 167, 69, 0.5); /* Green border on focus */
+        box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25); /* Green shadow on focus */
+     }
+
+     /* Style for required asterisks */
+    label .text-danger {
+        font-weight: bold; /* Make the asterisk slightly bolder */
+    }
+
+     /* Style for active tab button */
+     .nav-tabs .nav-link.active {
+        color: var(--custom-green);
+        border-color: var(--custom-green) var(--custom-green) #fff; /* Green border on top/sides, white bottom */
+        background-color: #fff;
+     }
+    .nav-tabs .nav-link {
+         color: #6c757d; /* Muted color for inactive tabs */
+    }
+
+
+</style>
+
 <div class="container py-4">
     <div class="row">
         <div class="col-12">
             <h1 class="mb-4">
+                {# Icon color controlled by CSS #}
                 <i class="fas fa-{{ 'edit' if edit_mode else 'plus' }} me-2"></i>
                 {{ 'Edit Job' if edit_mode else 'Add New Job' }}
             </h1>
             {% if not edit_mode %}
                 <p class="lead text-muted">Extract job information from a LinkedIn URL or add job details manually.</p>
             {% endif %}
+             <hr class="mb-4"> {# Add a horizontal rule for consistency #}
         </div>
     </div>
 
@@ -21,11 +159,13 @@
     <ul class="nav nav-tabs mb-3" id="addJobTab" role="tablist">
         <li class="nav-item" role="presentation">
             <button class="nav-link active" id="ai-extract-tab" data-bs-toggle="tab" data-bs-target="#ai-extract-pane" type="button" role="tab" aria-controls="ai-extract-pane" aria-selected="true">
+                {# Icon color controlled by CSS #}
                 <i class="fab fa-linkedin me-2"></i>AI LinkedIn Extraction
             </button>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="manual-add-tab" data-bs-toggle="tab" data-bs-target="#manual-add-pane" type="button" role="tab" aria-controls="manual-add-pane" aria-selected="false">
+                 {# Icon color controlled by CSS #}
                 <i class="fas fa-pencil-alt me-2"></i>Manually Add Job
             </button>
         </li>
@@ -36,13 +176,15 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="card">
-                        <div class="card-header"><h5 class="mb-0">LinkedIn Job Extraction</h5></div>
+                        <div class="card-header bg-light"> {# Optional: Add light background #}
+                             <h5 class="mb-0">LinkedIn Job Extraction</h5> {# Icon color controlled by CSS #}
+                        </div>
                         <div class="card-body">
                             <form method="POST">
                                 <input type="hidden" name="form_source" value="ai_extraction"> {# Identify form source #}
                                 <div class="mb-3">
-                                    <label for="linkedin_url" class="form-label">LinkedIn Job URL</label>
-                                    <input type="url" class="form-control" id="linkedin_url" name="linkedin_url" 
+                                    <label for="linkedin_url" class="form-label">LinkedIn Job URL <span class="text-danger">*</span></label> {# Added * span #}
+                                    <input type="url" class="form-control" id="linkedin_url" name="linkedin_url"
                                            value="{{ linkedin_url_for_ai or '' }}"
                                            placeholder="https://www.linkedin.com/jobs/view/..." required>
                                 </div>
@@ -56,22 +198,24 @@
                                         {# ... other partially extracted fields if you want to show them ... #}
                                     </div>
                                 {% endif %}
-                                <button type="submit" class="btn btn-primary"><i class="fas fa-magic me-2"></i>Extract Job Information</button>
+                                {# Changed button to custom green #}
+                                <button type="submit" class="btn btn-custom-green"><i class="fas fa-magic me-2"></i>Extract Job Information</button>
                             </form>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="card">
-                        <div class="card-header"><h6 class="mb-0"><i class="fas fa-info-circle me-2"></i>How AI Extraction Works</h6></div>
+                    <div class="card h-100"> {# Added h-100 #}
+                        <div class="card-header bg-light"><h6 class="mb-0"><i class="fas fa-info-circle me-2"></i>How AI Extraction Works</h6></div> {# Icon color controlled by CSS #}
                         <div class="card-body small">
+                            <p>Use this method for a fast start if the job is on LinkedIn.</p>
                             <ol>
                                 <li>Paste the full LinkedIn job posting URL.</li>
                                 <li>Click "Extract Job Information".</li>
                                 <li>Our AI will attempt to parse the job title, company, description, etc.</li>
                                 <li>You'll be redirected to an edit page to review, complete, and add tags before saving.</li>
                             </ol>
-                             <div class="alert alert-info small mt-2">
+                             <div class="alert alert-info small mt-3"> {# Increased top margin #}
                                 <i class="fas fa-lightbulb me-1"></i> If extraction is incomplete, you can copy details to the manual form or edit the extracted data.
                             </div>
                         </div>
@@ -88,17 +232,17 @@
             <div class="row mt-2"> {# Added mt-2 for spacing when tab is active #}
                 <div class="col-lg-8">
                     <div class="card">
-                        <div class="card-header"><h5 class="mb-0"><i class="fas fa-pencil-alt me-2"></i>Manually Add Job Details</h5></div>
+                         <div class="card-header bg-light"><h5 class="mb-0"><i class="fas fa-pencil-alt me-2"></i>Manually Add Job Details</h5></div> {# Icon color controlled by CSS #}
                         <div class="card-body">
                              <form method="POST"> {# This form submits to the same /add_job endpoint #}
                                 <input type="hidden" name="form_source" value="manual_entry">
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <label for="manual_title" class="form-label">Job Title *</label>
+                                        <label for="manual_title" class="form-label">Job Title <span class="text-danger">*</span></label> {# Added * span #}
                                         <input type="text" class="form-control" id="manual_title" name="manual_title" value="{{ job.title if job and not edit_mode else '' }}" required>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label for="manual_company" class="form-label">Company *</label>
+                                        <label for="manual_company" class="form-label">Company <span class="text-danger">*</span></label> {# Added * span #}
                                         <input type="text" class="form-control" id="manual_company" name="manual_company" value="{{ job.company if job and not edit_mode else '' }}" required>
                                     </div>
                                 </div>
@@ -130,24 +274,24 @@
                                  </div>
                                 <div class="mb-3">
                                     <label for="manual_salary_range" class="form-label">Salary Range</label>
-                                    <input type="text" class="form-control" id="manual_salary_range" name="manual_salary_range" 
+                                    <input type="text" class="form-control" id="manual_salary_range" name="manual_salary_range"
                                            value="{{ job.salary_range if job and not edit_mode and job.salary_range else '' }}" placeholder="e.g., $50,000 - $70,000 or Not Disclosed">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="manual_description" class="form-label">Job Description *</label>
+                                    <label for="manual_description" class="form-label">Job Description <span class="text-danger">*</span></label> {# Added * span #}
                                     <textarea class="form-control" id="manual_description" name="manual_description" rows="5" required>{{ job.description if job and not edit_mode else '' }}</textarea>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="manual_requirements" class="form-label">Requirements *</label>
+                                    <label for="manual_requirements" class="form-label">Requirements <span class="text-danger">*</span></label> {# Added * span #}
                                     <textarea class="form-control" id="manual_requirements" name="manual_requirements" rows="4" required>{{ job.requirements if job and not edit_mode else '' }}</textarea>
                                 </div>
                                 <div class="mb-4">
-                                    <label class="form-label">Job Tags/Functions *</label>
+                                    <label class="form-label">Job Tags/Functions <span class="text-danger">*</span></label> {# Added * span #}
                                     <div>
                                         {% for tag_option in available_job_tags %}
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" name="job_tags" id="manual_tag_{{ loop.index }}" 
-                                                   value="{{ tag_option }}" 
+                                            <input class="form-check-input" type="checkbox" name="job_tags" id="manual_tag_{{ loop.index }}"
+                                                   value="{{ tag_option }}"
                                                    {% if job and not edit_mode and job.job_tags_list and tag_option in job.job_tags_list %}checked{% endif %}>
                                             <label class="form-check-label" for="manual_tag_{{ loop.index }}">{{ tag_option }}</label>
                                         </div>
@@ -156,15 +300,16 @@
                                     <small class="text-muted">Select tags that best describe the job's function. At least one tag is recommended.</small>
                                 </div>
                                 <div class="d-flex gap-2">
-                                    <button type="submit" class="btn btn-success"><i class="fas fa-plus me-2"></i>Add Job Manually</button>
+                                    {# Changed button to custom green #}
+                                    <button type="submit" class="btn btn-custom-green"><i class="fas fa-plus me-2"></i>Add Job Manually</button>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
                  <div class="col-lg-4">
-                    <div class="card">
-                        <div class="card-header"><h6 class="mb-0"><i class="fas fa-info-circle me-2"></i>Manual Entry Tips</h6></div>
+                    <div class="card h-100"> {# Added h-100 #}
+                        <div class="card-header bg-light"><h6 class="mb-0"><i class="fas fa-info-circle me-2"></i>Manual Entry Tips</h6></div> {# Icon color controlled by CSS #}
                         <div class="card-body small">
                             <p>Use this form if AI extraction fails or if you prefer to enter all details by hand.</p>
                             <ul>
@@ -172,6 +317,9 @@
                                 <li>Provide a clear <strong>Job Description</strong> and <strong>Requirements</strong>.</li>
                                 <li>Select relevant <strong>Job Tags/Functions</strong> to help candidates find this job.</li>
                             </ul>
+                             <div class="alert alert-warning small mt-3"> {# Added mt-3 and danger icon #}
+                                <i class="fas fa-exclamation-triangle me-1"></i> Mandatory fields are marked with <span class="text-danger fw-bold">*</span>.
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -179,33 +327,33 @@
         </div>
     </div>
 
-    {% elif edit_mode %} 
+    {% elif edit_mode %}
     {# This is the form for "Edit Job" page - no tabs here #}
     <div class="row">
         <div class="col-lg-8">
             <div class="card">
-                <div class="card-header">
-                    <h5 class="mb-0"><i class="fas fa-edit me-2"></i>Edit Job Details</h5>
+                <div class="card-header bg-light"> {# Optional: Add light background #}
+                    <h5 class="mb-0"><i class="fas fa-edit me-2"></i>Edit Job Details</h5> {# Icon color controlled by CSS #}
                 </div>
                 <div class="card-body">
                     <form method="POST"> {# Action URL is current page /edit_job/<job_id> #}
                         {# No form_source hidden input needed for edit, as the route itself defines the action #}
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="title" class="form-label">Job Title *</label>
-                                <input type="text" class="form-control" id="title" name="title" 
+                                <label for="title" class="form-label">Job Title <span class="text-danger">*</span></label> {# Added * span #}
+                                <input type="text" class="form-control" id="title" name="title"
                                        value="{{ job.title if job else '' }}" required>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="company" class="form-label">Company *</label>
-                                <input type="text" class="form-control" id="company" name="company" 
+                                <label for="company" class="form-label">Company <span class="text-danger">*</span></label> {# Added * span #}
+                                <input type="text" class="form-control" id="company" name="company"
                                        value="{{ job.company if job else '' }}" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="location" class="form-label">Location</label>
-                                <input type="text" class="form-control" id="location" name="location" 
+                                <input type="text" class="form-control" id="location" name="location"
                                        value="{{ job.location if job else '' }}">
                             </div>
                             <div class="col-md-6 mb-3">
@@ -231,24 +379,24 @@
                          </div>
                         <div class="mb-3">
                             <label for="salary_range" class="form-label">Salary Range</label>
-                            <input type="text" class="form-control" id="salary_range" name="salary_range" 
+                            <input type="text" class="form-control" id="salary_range" name="salary_range"
                                    value="{{ job.salary_range if job and job.salary_range else '' }}" placeholder="e.g., $50,000 - $70,000 or Not Disclosed">
                         </div>
                         <div class="mb-3">
-                            <label for="description" class="form-label">Job Description *</label>
+                            <label for="description" class="form-label">Job Description <span class="text-danger">*</span></label> {# Added * span #}
                             <textarea class="form-control" id="description" name="description" rows="5" required>{{ job.description if job else '' }}</textarea>
                         </div>
                         <div class="mb-3">
-                            <label for="requirements" class="form-label">Requirements *</label>
+                            <label for="requirements" class="form-label">Requirements <span class="text-danger">*</span></label> {# Added * span #}
                             <textarea class="form-control" id="requirements" name="requirements" rows="4" required>{{ job.requirements if job else '' }}</textarea>
                         </div>
                         <div class="mb-4">
-                            <label class="form-label">Job Tags/Functions *</label>
+                            <label class="form-label">Job Tags/Functions <span class="text-danger">*</span></label> {# Added * span #}
                             <div>
                                 {% for tag_option in available_job_tags %}
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="job_tags" id="edit_tag_{{ loop.index }}" 
-                                           value="{{ tag_option }}" 
+                                    <input class="form-check-input" type="checkbox" name="job_tags" id="edit_tag_{{ loop.index }}"
+                                           value="{{ tag_option }}"
                                            {% if job and job.job_tags_list and tag_option in job.job_tags_list %}checked{% endif %}>
                                     <label class="form-check-label" for="edit_tag_{{ loop.index }}">{{ tag_option }}</label>
                                 </div>
@@ -257,7 +405,9 @@
                             <small class="text-muted">Select tags that best describe the job's function. At least one tag is recommended.</small>
                         </div>
                         <div class="d-flex gap-2">
-                            <button type="submit" class="btn btn-primary"><i class="fas fa-save me-2"></i>Update Job</button>
+                            {# Changed button to custom green #}
+                            <button type="submit" class="btn btn-custom-green"><i class="fas fa-save me-2"></i>Update Job</button>
+                            {# Kept secondary button #}
                             <a href="{{ url_for('admin_routes.manage_jobs') }}" class="btn btn-secondary"><i class="fas fa-times me-2"></i>Cancel</a>
                         </div>
                     </form>
@@ -265,8 +415,8 @@
             </div>
         </div>
         <div class="col-lg-4"> <!-- Job Info card for edit mode -->
-            <div class="card">
-                <div class="card-header"><h6 class="mb-0"><i class="fas fa-info-circle me-2"></i>Job Information</h6></div>
+            <div class="card h-100"> {# Added h-100 #}
+                <div class="card-header bg-light"><h6 class="mb-0"><i class="fas fa-info-circle me-2"></i>Job Information</h6></div> {# Icon color controlled by CSS #}
                 <div class="card-body">
                     {% if job %}
                         <p><strong>Job ID:</strong> {{ job.id }}</p>
@@ -277,12 +427,12 @@
                              <p><strong>Posted By ID:</strong> {{ job.posted_by }}</p>
                         {% endif %}
                         {% if job.linkedin_url %}
-                            <p><strong>Original Source:</strong> 
-                                <a href="{{ job.linkedin_url }}" target="_blank" class="text-decoration-none"><i class="fab fa-linkedin me-1"></i>LinkedIn</a>
+                            <p><strong>Original Source:</strong>
+                                <a href="{{ job.linkedin_url }}" target="_blank" class="text-decoration-none text-muted"><i class="fab fa-linkedin me-1"></i>LinkedIn</a> {# Kept text-muted on link #}
                             </p>
                         {% endif %}
                     {% endif %}
-                    <div class="alert alert-warning small mt-2">
+                    <div class="alert alert-warning small mt-3"> {# Added mt-3 #}
                         <i class="fas fa-exclamation-triangle me-1"></i>Ensure all details are accurate and tags are relevant.
                     </div>
                 </div>
@@ -291,4 +441,10 @@
     </div>
     {% endif %} {# End of edit_mode conditional block #}
 </div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{# Add any specific scripts for this page here if needed #}
+{# For example, you might need JS to handle tab switching and form data transfer #}
 {% endblock %}
