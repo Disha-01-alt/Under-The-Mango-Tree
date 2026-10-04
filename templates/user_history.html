@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTMT | Your Wisdom Journey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@300;400;500;600&family=Noto+Serif+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --gold: #D4AF37; --obsidian: #050505; }
+        body { background-color: var(--obsidian); color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .font-cinzel { font-family: 'Cinzel', serif; }
+        .font-devanagari { font-family: 'Noto Serif Devanagari', serif; }
+        .glass-panel { background: rgba(15, 15, 15, 0.7); backdrop-filter: blur(30px); border: 1px solid rgba(212, 175, 55, 0.15); }
+        .gold-text { color: var(--gold); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        
+        #detail-modal {
+            transition: opacity 0.4s ease, visibility 0.4s;
+            background: rgba(5, 5, 5, 0.98);
+        }
+        
+        .history-table tr { border-bottom: 1px solid rgba(255, 255, 255, 0.05); transition: background 0.3s; }
+        .history-table tr:hover { background: rgba(212, 175, 55, 0.03); }
+
+        .view-btn {
+            padding: 8px 20px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 99px;
+            color: var(--gold);
+            font-size: 9px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            transition: all 0.3s ease;
+        }
+        .view-btn:hover { background: var(--gold); color: black; box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); }
+
+        .link-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 0.75rem;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            color: var(--gold);
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+        }
+        .link-button:hover { background: var(--gold); color: black; }
+    </style>
+</head>
+<body class="p-6 md:p-12">
+
+    <!-- Header -->
+    <div class="max-w-7xl mx-auto mb-16 flex justify-between items-center">
+        <div>
+            <h1 class="font-cinzel text-4xl gold-text tracking-widest uppercase">Wisdom Journey</h1>
+            <p class="text-gray-500 text-[10px] uppercase tracking-[0.5em] mt-2">Historical Synthesis Records</p>
+        </div>
+        <a href="/" class="px-8 py-3 border border-[#D4AF37]/30 rounded-full text-[10px] gold-text uppercase tracking-widest hover:bg-[#D4AF37] hover:text-black transition-all">Return to Oracle</a>
+    </div>
+
+    <!-- History Table -->
+    <div class="max-w-7xl mx-auto glass-panel rounded-[2.5rem] overflow-hidden">
+        <table class="w-full text-left border-collapse history-table">
+            <thead>
+                <tr class="bg-white/[0.03]">
+                    <th class="p-6 text-[10px] uppercase tracking-widest text-gray-500 font-black">Category</th>
+                    <th class="p-6 text-[10px] uppercase tracking-widest text-gray-500 font-black">Inquiry</th>
+                    <th class="p-6 text-[10px] uppercase tracking-widest text-gray-500 font-black">Timestamp</th>
+                    <th class="p-6 text-[10px] uppercase tracking-widest text-gray-500 font-black text-right">Action</th>
+                </tr>
+            </thead>
+            <tbody id="history-table-body"></tbody>
+        </table>
+    </div>
+
+    <!-- THE MODAL -->
+    <div id="detail-modal" class="fixed inset-0 z-[1000] invisible opacity-0 overflow-y-auto p-4 md:p-12">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-center mb-12 border-b border-white/10 pb-6">
+                <div class="font-cinzel gold-text text-xl tracking-widest uppercase">Historical Record</div>
+                <button onclick="closeModal()" class="text-gray-500 hover:text-white flex items-center gap-2 uppercase text-[10px] tracking-widest transition-all">
+                    Close Synthesis <span class="text-3xl">&times;</span>
+                </button>
+            </div>
+            <div id="modal-content-root"></div>
+        </div>
+    </div>
+
+    <!-- PDF MODAL -->
+    <div id="pdf-viewer-modal" class="fixed inset-0 z-[3000] hidden bg-black/95 backdrop-blur-md flex flex-col p-4 md:p-10">
+        <div class="max-w-7xl mx-auto w-full flex justify-between items-center mb-4">
+            <h3 class="font-cinzel text-[#D4AF37] text-lg tracking-widest">Scripture Archive</h3>
+            <button onclick="closePdfViewer()" class="px-6 py-2 border border-[#D4AF37]/30 rounded-full text-[#D4AF37] text-[10px] uppercase tracking-widest hover:bg-[#D4AF37] hover:text-black transition-all">
+                Close &times;
+            </button>
+        </div>
+        <div class="flex-1 w-full max-w-7xl mx-auto rounded-2xl overflow-hidden border border-[#D4AF37]/20 bg-white shadow-2xl">
+            <iframe id="pdf-viewer-frame" class="w-full h-full" src=""></iframe>
+        </div>
+    </div>
+
+    <script>
+        const BACKEND_URL = window.location.origin;
+        let globalHistory = [];
+
+        async function fetchHistory() {
+    const token = localStorage.getItem('userToken');
+
+   
+    if (!token || token === "null" || token === "undefined" || token.length < 20) { 
+        console.error("Valid User Token not found. Redirecting to login...");
+        window.location.href = '/'; 
+        return; 
+    }
+
+    try {
+        const response = await fetch(BACKEND_URL + '/v1/user/history', {
+            headers: { 
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/json'
+            }
+        });
+
+        
+        if (response.status === 401) {
+            console.warn("Session expired. Clearing token.");
+            localStorage.removeItem('userToken');
+            window.location.href = '/';
+            return;
+        }
+
+        if (!response.ok) {
+            throw new Error(`Server responded with ${response.status}`);
+        }
+
+        const data = await response.json();
+        globalHistory = data.history;
+        renderTable(data.history);
+
+    } catch (err) { 
+        console.error("History Fetch Error:", err);
+        // Optional: Show error on UI
+        document.getElementById('history-table-body').innerHTML = `
+            <tr><td colspan="4" class="p-10 text-center text-red-400 uppercase text-[10px] tracking-widest">
+                Failed to load history. Please try logging in again.
+            </td></tr>
+        `;
+    }
+}
+
+        function renderTable(history) {
+            const body = document.getElementById('history-table-body');
+            body.innerHTML = history.map((row, index) => `
+                <tr class="align-middle">
+                    <td class="p-6"><span class="text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded bg-white/5 border border-white/10">${row.category}</span></td>
+                    <td class="p-6"><p class="text-sm font-medium text-white line-clamp-1 max-w-md">${row.question}</p></td>
+                    <td class="p-6"><span class="text-[10px] text-gray-500 italic">${row.date}</span></td>
+                    <td class="p-6 text-right"><button onclick="openDetail(${index})" class="view-btn">View Synthesis</button></td>
+                </tr>
+            `).join('');
+        }
+
+        function openDetail(index) {
+            const row = globalHistory[index];
+            const root = document.getElementById('modal-content-root');
+
+            // 1. Prediction Detection
+            let statusColor = "bg-[#D4AF37]";
+            let textColor = "text-[#D4AF37]/50";
+            let headingText = "Neural Synthesis";
+            const fullText = (row.summary + " " + row.answer).toUpperCase();
+            
+            if (fullText.includes("TRUE")) { 
+                statusColor = "bg-green-500"; textColor = "text-green-500"; headingText = "Fact Check: TRUE";
+            } else if (fullText.includes("FALSE")) { 
+                statusColor = "bg-red-500"; textColor = "text-red-500"; headingText = "Fact Check: FALSE";
+            }
+
+            // 2. Action Links
+            const cleanPdfPath = row.download_link ? row.download_link.replace('https://www.utmt.org', '') : '';
+            let linksHTML = '';
+            if (row.youtube_link || row.download_link) {
+                linksHTML = `
+                    <div class="mt-8 pt-6 border-t border-white/5 flex flex-wrap gap-4">
+                        ${row.youtube_link ? `<a href="${row.youtube_link}" target="_blank" class="link-button"><span>📽️</span> Watch Explanation</a>` : ''}
+                        ${row.download_link ? `
+                            <button onclick="openPdfViewer('${cleanPdfPath}')" class="link-button"><span>👁️</span> View</button>
+                            <a href="${cleanPdfPath}" download class="link-button bg-white/5 border-white/10 opacity-60 hover:opacity-100"><span>📥</span> Download</a>
+                        ` : ''}
+                    </div>
+                `;
+            }
+
+            // 3. Evidence Mapping
+            const referencesHTML = (row.references || []).map((ref, i) => `
+                <div class="glass-panel rounded-[2rem] p-8 border border-[#D4AF37]/30 bg-gradient-to-br from-[#D4AF37]/5 to-transparent shadow-xl flex flex-col items-center text-center relative overflow-hidden mb-6">
+                    <div class="absolute top-4 left-6 text-[8px] font-black text-[#D4AF37]/20">0${i + 1}</div>
+                    <span class="text-[#D4AF37]/60 font-black uppercase tracking-[0.4em] text-[8px] mb-6 block">Evidence Artifact</span>
+                    <h4 class="font-devanagari text-lg text-[#D4AF37] leading-relaxed mb-4">${ref.sanskrit || ref.text || "Source referenced"}</h4>
+                    ${ref.translation ? `<p class="text-gray-300 text-[13px] font-serif italic leading-relaxed mb-6 px-4 border-l border-[#D4AF37]/10">"${ref.translation}"</p>` : ''}
+                    <p class="text-gray-500 text-[9px] font-bold tracking-widest uppercase border-t border-white/5 pt-4 w-full">
+                        ${ref.meta?.book || 'Scripture'} <br/>
+                        <span class="text-[#D4AF37]/80">Chapter ${ref.chapter || ref.meta?.chapter || '?'}, Verse ${ref.verse || ref.meta?.verse_num || '?'}</span>
+                    </p>
+                </div>
+            `).join('');
+
+            // 4. Final Injection
+            root.innerHTML = `
+                <div class="flex flex-col lg:flex-row gap-10 items-start pb-20">
+                    <div class="flex-[1.5] lg:sticky lg:top-12 glass-panel rounded-[2rem] p-10 md:p-14 border border-[#D4AF37]/20 shadow-2xl flex flex-col">
+                        <div class="flex items-center gap-3 mb-8">
+                            <div class="w-1.5 h-1.5 rounded-full ${statusColor}"></div>
+                            <span class="${textColor} font-black uppercase tracking-[0.6em] text-[9px]">${headingText}</span>
+                        </div>
+                        <h2 class="text-white text-xl font-cinzel mb-6 opacity-40 italic">Inquiry: "${row.question}"</h2>
+                        <p class="text-gray-100 text-base md:text-lg leading-relaxed tracking-wide font-light whitespace-pre-wrap text-left">${row.answer}</p>
+                        ${linksHTML}
+                    </div>
+                    <div class="flex-[1] w-full max-h-[85vh] overflow-y-auto pr-2 no-scrollbar">
+                        ${referencesHTML || '<div class="text-center opacity-20 py-20 uppercase text-[10px] tracking-widest">No evidence artifacts attached</div>'}
+                    </div>
+                </div>
+            `;
+            document.getElementById('detail-modal').classList.remove('invisible', 'opacity-0');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('detail-modal').classList.add('invisible', 'opacity-0');
+            document.body.style.overflow = 'auto';
+        }
+
+        function openPdfViewer(pdfPath) {
+            document.getElementById('pdf-viewer-frame').src = pdfPath;
+            document.getElementById('pdf-viewer-modal').classList.remove('hidden');
+        }
+
+        function closePdfViewer() {
+            document.getElementById('pdf-viewer-modal').classList.add('hidden');
+            document.getElementById('pdf-viewer-frame').src = '';
+        }
+
+        window.onload = fetchHistory;
+    </script>
+</body>
+</html>

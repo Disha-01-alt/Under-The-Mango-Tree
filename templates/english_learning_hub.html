@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Under the Mango Tree</title>
+</head>
+
+<style>
+    :root {
+        --primary-color: #8b8cff;
+        --secondary-color: #a5b4fc;
+        --accent-color: #6366f1;
+        --background-color: #0b0b0f;
+        --card-background: #111827;
+        --text-color: #e5e7eb;
+        --gradient-start: #6366f1;
+        --gradient-end: #8b8cff;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        line-height: 1.6;
+        background:
+            radial-gradient(circle at 10% 20%, rgba(99,102,241,0.15) 0%, transparent 20%),
+            radial-gradient(circle at 90% 50%, rgba(139,140,255,0.12) 0%, transparent 25%),
+            radial-gradient(circle at 30% 80%, rgba(99,102,241,0.15) 0%, transparent 20%),
+            var(--background-color);
+        color: var(--text-color);
+    }
+
+    header {
+        background: linear-gradient(135deg, #020617, #0f172a);
+        color: white;
+        padding: 1.25rem 2rem;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    }
+
+    nav {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-brand {
+        font-size: 1.5rem;
+        font-weight: 700;
+        background: linear-gradient(to right, #ffffff, #a5b4fc);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .nav-links a {
+        color: #e5e7eb;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .nav-links a::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(255,255,255,0.08);
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    .nav-links a:hover::before {
+        transform: translateX(0);
+    }
+
+    .hero {
+        position: relative;
+        padding: 3rem 1rem;
+        background:
+            linear-gradient(120deg, rgba(99,102,241,0.18), rgba(139,140,255,0.12)),
+            linear-gradient(-120deg, rgba(139,140,255,0.08), rgba(99,102,241,0.1));
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+    }
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        top: -50%;
+        left: -50%;
+        background: radial-gradient(circle at center, rgba(99,102,241,0.15) 0%, transparent 50%);
+        animation: rotate 30s linear infinite;
+    }
+
+    @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+
+    .hero-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 2rem;
+        align-items: center;
+        width: 100%;
+        padding: 0 1rem;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .hero-image img {
+        width: 100%;
+        border-radius: 1rem;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
+
+    .hero h2 {
+        font-size: 3.5rem;
+        font-weight: 800;
+        background: linear-gradient(to right, #e5e7eb, #8b8cff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 4px 12px rgba(0,0,0,0.8);
+    }
+
+    .activities-section {
+        padding: 6rem 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .section-title {
+        text-align: center;
+        margin-bottom: 4rem;
+        font-size: 2.5rem;
+        font-weight: 700;
+        background: linear-gradient(to right, #e5e7eb, #a5b4fc);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .activities-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    .activity-card {
+        height: 400px;
+        cursor: pointer;
+        transition: all 0.4s ease;
+    }
+
+    .activity-card:hover {
+        transform: translateY(-10px) scale(1.02);
+    }
+
+    .card-inner {
+        width: 100%;
+        height: 100%;
+        background: rgba(17,24,39,0.95);
+        border-radius: 1.5rem;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
+
+    .card-icon {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 2rem;
+        background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+        border-radius: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 2rem;
+    }
+
+    .card-content h3 {
+        color: #e5e7eb;
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+
+    .floating-shapes .shape {
+        background: linear-gradient(135deg, rgba(99,102,241,0.25), rgba(139,140,255,0.2));
+    }
+
+    @media (max-width: 768px) {
+        .activities-container {
+            grid-template-columns: 1fr;
+        }
+        .nav-links {
+            display: none;
+        }
+    }
+</style>
+
+<body>
+    <header>
+        <nav>
+            <div class="nav-brand">Under the Mango Tree</div>
+            <div class="nav-links">
+                <a href="{{ url_for('home') }}">Main</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h2>Learn English through Simple Games</h2>
+                </div>
+                <div class="hero-image">
+                    <img src="{{ url_for('static', path='english/images/coverPic.webp') }}" alt="Interactive Learning Cover">
+                </div>
+            </div>
+        </section>
+
+        <section class="activities-section">
+            <div class="floating-shapes">
+                <div class="shape"></div>
+                <div class="shape"></div>
+                <div class="shape"></div>
+            </div>
+            <h2 class="section-title">
+                Choose your Game <br>
+                Click on any card below to play the games
+            </h2>
+            <div id="activities" class="activities-container"></div>
+        </section>
+    </main>
+
+    <script>
+        const sections = ['HinToEng', 'PicToEng', 'SentCorrect', 'QnA','guessWord','PrepositionGame','Synonyms','odd_one_out'];
+
+        async function loadCardData() {
+            const activities = document.getElementById('activities');
+
+            const sectionData = {
+                HinToEng: { title: "Hindi to English Translation", icon: "🔤" },
+                PicToEng: { title: "Picture Vocabulary", icon: "🖼️" },
+                SentCorrect: { title: "Sentence Correctness", icon: "✅" },
+                QnA: { title: "Random Q/A Practice", icon: "❓" },
+                guessWord: { title: "Guess the Word", icon: "🤔" },
+                PrepositionGame: { title: "Fill in the blanks", icon: "✍️" },
+                Synonyms: { title: "Choose the correct Synonym", icon: "🤝" },
+                odd_one_out: { title: "Choose the odd one out", icon: "🔄" }
+            };
+
+            sections.forEach(section => {
+                const card = document.createElement('div');
+                card.className = `activity-card ${section}`;
+                card.onclick = () => window.location.href = `/static/english/${section}.html`;
+                card.innerHTML = `
+                    <div class="card-inner">
+                        <div class="card-icon">${sectionData[section].icon}</div>
+                        <div class="card-content">
+                            <h3>${sectionData[section].title}</h3>
+                        </div>
+                    </div>
+                `;
+                activities.appendChild(card);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', loadCardData);
+    </script>
+</body>
+</html>

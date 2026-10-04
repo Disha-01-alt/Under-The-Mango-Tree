@@ -1,0 +1,674 @@
+[
+  {
+    "Category": "Code & Software Development",
+    "Tool Name": "Python Pal",
+    "Specific Tool Function": "AI Code Assistant",
+    "Description": "AI companion for feedback on bugs. Suitable for new learners.",
+    "YouTube Tutorial": "https://www.youtube.com/watch?v=noZeONEdhPQ",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Code & Software Development",
+    "Tool Name": "GitHub Copilot",
+    "Specific Tool Function": "AI Code Assistant",
+    "Description": "AI pair programmer for code suggestions and completions",
+    "YouTube Tutorial": "https://youtu.be/n0NlxUyA7FI?si=N7OwTWjYRuul2mtd",
+    "Pricing": "Paid"
+  },
+  {
+    "Category": "Code & Software Development",
+    "Tool Name": "Replit Ghostwriter",
+    "Specific Tool Function": "AI Coding Assistant",
+    "Description": "In-browser AI code completion and explanation",
+    "YouTube Tutorial": "https://youtu.be/JLq8_KqLfbI?si=gc1u27cWQA305sBH",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Code & Software Development",
+    "Tool Name": "Tabnine",
+    "Specific Tool Function": "AI Code Completion",
+    "Description": "AI-powered code completion for multiple languages",
+    "YouTube Tutorial": "https://youtube.com/playlist?list=PLO8wFKg6som1jDgTj_Kmdz49CFbPHn5D7&si=lYnC1dKKRJj17hEq",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Presentation Making",
+    "Tool Name": "Gamma",
+    "Specific Tool Function": "AI Presentation Maker",
+    "Description": "Creates presentations docs and webpages with AI",
+    "YouTube Tutorial": "https://www.youtube.com/watch?v=r9VOYJM6nZc",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Presentation Making",
+    "Tool Name": "Beautiful.ai",
+    "Specific Tool Function": "AI Presentation Maker",
+    "Description": "Automatically designs professional presentations",
+    "YouTube Tutorial": "https://www.youtube.com/watch?v=AzPQ0ifgl20",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Presentation Making",
+    "Tool Name": "Tome",
+    "Specific Tool Function": "AI Presentation Maker",
+    "Description": "Generates narrative presentations from prompts and images",
+    "YouTube Tutorial": "https://youtu.be/gagDblJWwi8?si=P0SUwKH8NmfsAbDY",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Website Building",
+    "Tool Name": "Wix AI",
+    "Specific Tool Function": "AI Website Builder",
+    "Description": "AI-powered website builder for any business or portfolio",
+    "YouTube Tutorial": "https://youtu.be/H3zmx4OIjLY?si=Q0vEYt7Jn4sLWitO",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Website Building",
+    "Tool Name": "Durable",
+    "Specific Tool Function": "AI Website Builder",
+    "Description": "Creates a complete website in 30 seconds using AI",
+    "YouTube Tutorial": "https://youtu.be/V-fqEvLZCto?si=iAfErCpTzR38l79X",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Website Building",
+    "Tool Name": "Lovable ",
+    "Specific Tool Function": "AI Website Builder",
+    "Description": "Creates a complete website in 30 seconds using AI and provide us with the code also. ",
+    "YouTube Tutorial": "https://youtu.be/UoY3tB0rMI4?si=M_UDe6WfUDxNG6_W",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "App Building",
+    "Tool Name": "Appy Pie",
+    "Specific Tool Function": "AI App Builder",
+    "Description": "No-code platform for building mobile/web apps with AI",
+    "YouTube Tutorial": "https://youtu.be/MA7lCcEJUhw?si=kiCyl2ghbvZhTuhU",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "App Building",
+    "Tool Name": "AppSheet",
+    "Specific Tool Function": "AI App Builder",
+    "Description": "Google’s no-code app builder with AI automation",
+    "YouTube Tutorial": "https://youtu.be/2IVgKpI4xuU?si=9HwnGQnW-3GQhMsB",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "App Building",
+    "Tool Name": "Glide",
+    "Specific Tool Function": "AI App Builder",
+    "Description": "Create mobile apps from Google Sheets using AI",
+    "YouTube Tutorial": "https://youtu.be/JM6ykgcG0TM?si=i9Bk13OJz0vjnbwJ",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Design & Image Generation",
+    "Tool Name": "Canva AI",
+    "Specific Tool Function": "AI Design Tool",
+    "Description": "Create mobile apps from Google Sheets using AI",
+    "YouTube Tutorial": "https://youtu.be/J0jE0OsF1zo?si=hbijgXRM27jBt2Zh",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Design & Image Generation",
+    "Tool Name": "Midjourney",
+    "Specific Tool Function": "AI Image Generator",
+    "Description": "Create mobile apps from Google Sheets using AI",
+    "YouTube Tutorial": "https://youtu.be/rSOd2-SBsXQ?si=NqZ2iG33-mjiMzR6",
+    "Pricing": "Paid"
+  },
+  {
+    "Category": "Design & Image Generation",
+    "Tool Name": "Adobe Firefly",
+    "Specific Tool Function": "AI Image Generator",
+    "Description": "Create mobile apps from Google Sheets using AI",
+    "YouTube Tutorial": "https://youtu.be/lt4k9lVnS1Y?si=T8cWLYJrszLMbjiR",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Video Generation & Editing",
+    "Tool Name": "Synthesia",
+    "Specific Tool Function": "AI Video Generator",
+    "Description": "Create mobile apps from Google Sheets using AI",
+    "YouTube Tutorial": "https://youtu.be/ZEEIEs2ey_4?si=3_snrI1ZNbMi1zlL",
+    "Pricing": "Paid"
+  },
+  {
+    "Category": "Video Generation & Editing",
+    "Tool Name": "Pictory",
+    "Specific Tool Function": "AI Video Editor",
+    "Description": "Create mobile apps from Google Sheets using AI",
+    "YouTube Tutorial": "https://youtu.be/pVp0Z1IivZc?si=RjYUIvPyuzvfhi6k",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Video Generation & Editing",
+    "Tool Name": "InVideo",
+    "Specific Tool Function": "AI Video Editor",
+    "Description": "Create mobile apps from Google Sheets using AI",
+    "YouTube Tutorial": "https://youtu.be/iln0fOakWpM?si=x6xgUl95Yzsmlsmp",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Audio & Music Generation",
+    "Tool Name": "ElevenLabs",
+    "Specific Tool Function": "AI Voice Generator",
+    "Description": "Realistic AI voice synthesis for narration and dubbing",
+    "YouTube Tutorial": "https://youtu.be/s7p6OLwV_50?si=_Vl5YJ2aWcTVZulp",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Audio & Music Generation",
+    "Tool Name": "AIVA",
+    "Specific Tool Function": "AI Music Composer",
+    "Description": "Realistic AI voice synthesis for narration and dubbing",
+    "YouTube Tutorial": "https://youtu.be/cBKpBgmrqeA?si=cA4NlmzF-AEvjAkQ",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Audio & Music Generation",
+    "Tool Name": "Descript",
+    "Specific Tool Function": "AI Audio Editor",
+    "Description": "Realistic AI voice synthesis for narration and dubbing",
+    "YouTube Tutorial": "https://youtu.be/Dk1TxDKzb68?si=ZdrrieAtSEvF0Z2y",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Text & Writing",
+    "Tool Name": "Jasper",
+    "Specific Tool Function": "AI Writing Assistant",
+    "Description": "Realistic AI voice synthesis for narration and dubbing",
+    "YouTube Tutorial": "https://youtu.be/SqI3CvKV4j8?si=PCx4fRjzzAUJFEXK",
+    "Pricing": "Paid"
+  },
+  {
+    "Category": "Text & Writing",
+    "Tool Name": "Grammarly",
+    "Specific Tool Function": "AI Writing Assistant",
+    "Description": "Realistic AI voice synthesis for narration and dubbing",
+    "YouTube Tutorial": "https://youtu.be/FJ_ZWAUO78s?si=f6xNMpyf6ofdnQWV",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Text & Writing",
+    "Tool Name": "Copy.ai",
+    "Specific Tool Function": "AI Copy Generator",
+    "Description": "Realistic AI voice synthesis for narration and dubbing",
+    "YouTube Tutorial": "https://youtu.be/QqAd7wo7uVU?si=K2BIxiqCGDaytlCT",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Research & Academic",
+    "Tool Name": "Consensus",
+    "Specific Tool Function": "AI Research Search",
+    "Description": "Realistic AI voice synthesis for narration and dubbing",
+    "YouTube Tutorial": "https://youtu.be/d3Bp_6gEkbg?si=eaS8MsF-PhikWZZ3",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Research & Academic",
+    "Tool Name": "Elicit",
+    "Specific Tool Function": "AI Research Assistant",
+    "Description": "Realistic AI voice synthesis for narration and dubbing",
+    "YouTube Tutorial": "https://youtu.be/rJJPS-EvNfk?si=t0AUQoz2LyoNjyO5",
+    "Pricing": "Free"
+  },
+  {
+    "Category": "Research & Academic",
+    "Tool Name": "Gatsbi",
+    "Specific Tool Function": "AI Research Agent",
+    "Description": "AI-powered research,paper writing and citation generation",
+    "YouTube Tutorial": "https://youtu.be/Qms4k6y7OgI?si=CldeHYPhIxd2SkCJ",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Data Analysis & Visualization",
+    "Tool Name": "Tableau AI",
+    "Specific Tool Function": "AI Data Visualization",
+    "Description": "AI-powered data visualization and analytics",
+    "YouTube Tutorial": "https://youtu.be/tNLp_JVipoQ?si=LDIv3LxILRnwDF6S",
+    "Pricing": "Paid"
+  },
+  {
+    "Category": "Data Analysis & Visualization",
+    "Tool Name": "MonkeyLearn",
+    "Specific Tool Function": "AI Text Analysis",
+    "Description": "No-code AI for text analysis and visualization",
+    "YouTube Tutorial": "https://youtu.be/n9k4oYrWr7Q?si=lqyE_zf9aMNJz4oV",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Data Analysis & Visualization",
+    "Tool Name": "Power BI Copilot",
+    "Specific Tool Function": "AI Data Analysis",
+    "Description": "Microsoft Power BI’s AI assistant for data insights",
+    "YouTube Tutorial": "https://youtu.be/0kE3TE34oLM?si=Ky8igQN5hl4mhahZ",
+    "Pricing": "Paid"
+  },
+  {
+    "Category": "AI Note-taking & Research Organization",
+    "Tool Name": "NotebookLM",
+    "Specific Tool Function": "AI Note-taking & Research Assistant",
+    "Description": "AI-powered note-taking and research assistant that organizes,summarizes and helps synthesize information; integrates with Google Workspace; supports real-time collaboration",
+    "YouTube Tutorial": "https://youtu.be/ny2yB7dnWzE?si=VhI_GsYq4rjlHXSn",
+    "Pricing": "Free"
+  },
+  {
+    "Category": "AI Note-taking & Research Organization",
+    "Tool Name": "Avidnote",
+    "Specific Tool Function": "AI Research Hub & Note-taking",
+    "Description": "Integrated and private AI-powered platform for reading,analyzing interconnected note-taking and AI-assisted writing support—ideal for academics and researchers",
+    "YouTube Tutorial": "https://youtu.be/ONb65iPpcMc?si=d5GBshQKfUyzIbj0",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "AI Note-taking & Research Organization",
+    "Tool Name": "Mem AI",
+    "Specific Tool Function": "AI Knowledge Management & Note-taking",
+    "Description": "AI-powered note-taking and knowledge management app that links organizes and retrieves notes dynamically with context-aware suggestions and ‘second brain’ features",
+    "YouTube Tutorial": "https://youtu.be/Lmv40Nvasts?si=D-bgCVW3CmjQ3mEl",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Productivity & Automation",
+    "Tool Name": "Notion AI",
+    "Specific Tool Function": "AI Productivity",
+    "Description": "AI-powered note-taking summaries and task management",
+    "YouTube Tutorial": "https://youtu.be/GzMFRoMr4EA?si=2_JOkxkuONnNJgB9",
+    "Pricing": "Paid (AI features)"
+  },
+  {
+    "Category": "Productivity & Automation",
+    "Tool Name": "Otter.ai",
+    "Specific Tool Function": "AI Meeting Notes",
+    "Description": "AI-generated meeting notes and transcriptions",
+    "YouTube Tutorial": "https://youtu.be/yUxlIDKIHhA?si=uokmd_txlaUjpxHz",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Productivity & Automation",
+    "Tool Name": "Zapier AI",
+    "Specific Tool Function": "AI Workflow Automation",
+    "Description": "Automates tasks between apps using AI",
+    "YouTube Tutorial": "https://youtu.be/JtdUgJGI_Oo?si=nVtKKDVUIaaXOrjS",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Customer Support & Chatbots",
+    "Tool Name": "Intercom Fin AI",
+    "Specific Tool Function": "AI Chatbot",
+    "Description": "AI-powered customer support and chatbots",
+    "YouTube Tutorial": "https://youtu.be/sijVUgavMAc?si=QH0Bq3bTLl8G6MK4",
+    "Pricing": "Paid"
+  },
+  {
+    "Category": "Customer Support & Chatbots",
+    "Tool Name": "Drift",
+    "Specific Tool Function": "AI Chatbot",
+    "Description": "Conversational AI for sales and customer support",
+    "YouTube Tutorial": "https://youtu.be/_z8lZVJP1oU?si=H_W4uSzIvks3VpCh",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Customer Support & Chatbots",
+    "Tool Name": "Ada",
+    "Specific Tool Function": "AI Customer Support",
+    "Description": "Automates customer support with AI-powered chatbots",
+    "YouTube Tutorial": "https://youtu.be/kwx7IZhrF8k?si=Ehfmr3_smZ6c93nR",
+    "Pricing": "Paid"
+  },
+  {
+    "Category": "Social Media Management",
+    "Tool Name": "Lately AI",
+    "Specific Tool Function": "AI Social Media",
+    "Description": "AI-driven content repurposing and social media scheduling",
+    "YouTube Tutorial": "https://youtu.be/MInbINwOuSY?si=YpI8itr1svyn1_q4",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Social Media Management",
+    "Tool Name": "Buffer AI",
+    "Specific Tool Function": "AI Social Scheduler",
+    "Description": "AI content suggestions and scheduling for social media",
+    "YouTube Tutorial": "https://youtu.be/XJ8XiDI2jck?si=F4pqJga5b5G4V-3m",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Social Media Management",
+    "Tool Name": "SocialBee AI",
+    "Specific Tool Function": "AI Social Media",
+    "Description": "AI-powered social media content creation and management",
+    "YouTube Tutorial": "https://youtube.com/playlist?list=PLs_oO1hoF8nLfEjcB1I-RIr6Ruza30jf6&si=mHvCtON7_B3LjVvg",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "HR & Recruitment",
+    "Tool Name": "HireVue",
+    "Specific Tool Function": "AI Recruitment",
+    "Description": "AI-powered video interviewing and candidate assessment",
+    "YouTube Tutorial": "https://youtu.be/fggG4Qik-kI?si=ctBp_68ZthBIZAN-",
+    "Pricing": "Paid"
+  },
+  {
+    "Category": "HR & Recruitment",
+    "Tool Name": "Pymetrics",
+    "Specific Tool Function": "AI Talent Matching",
+    "Description": "AI-driven talent assessment using neuroscience games",
+    "YouTube Tutorial": "https://youtu.be/GpLYe662PfY?si=V5awTGoyeasfFne4",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "HR & Recruitment",
+    "Tool Name": "Recruitee AI",
+    "Specific Tool Function": "AI Recruitment",
+    "Description": "AI-powered recruitment and applicant tracking system",
+    "YouTube Tutorial": "https://youtu.be/IP3jG0zBP10?si=9vLNepcd7eiA6u4e",
+    "Pricing": "Paid"
+  },
+  {
+    "Category": "Data Classification & Organization",
+    "Tool Name": "MonkeyLearn",
+    "Specific Tool Function": "AI Data Classifier",
+    "Description": "No-code AI for classifying,tagging and organizing text data",
+    "YouTube Tutorial": "https://youtu.be/sI1JhTYD9ow?si=hhxsvNRmkA7MjiSI",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Data Classification & Organization",
+    "Tool Name": "Levity",
+    "Specific Tool Function": "AI Workflow Automation",
+    "Description": "Automates document email and image classification",
+    "YouTube Tutorial": "https://youtu.be/n7rk9QOBEEE?si=dTDG9gIKz4XPSMWv",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Data Classification & Organization",
+    "Tool Name": "Amazon Comprehend",
+    "Specific Tool Function": "NLP Service",
+    "Description": "Extracts insights and organizes unstructured text data",
+    "YouTube Tutorial": "https://youtu.be/EOz5tuw006A?si=-AhtSGQQWg-KFXg9",
+    "Pricing": "Paid (with free AWS tier)"
+  },
+  {
+    "Category": "Customer Segmentation & Personalization",
+    "Tool Name": "Segment",
+    "Specific Tool Function": "Customer Data Platform",
+    "Description": "Unifies and segments customer data for personalization",
+    "YouTube Tutorial": "https://youtu.be/STzJLgdOEag?si=4bZQa6irRlSJ7FBR",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Customer Segmentation & Personalization",
+    "Tool Name": "Blueshift",
+    "Specific Tool Function": "AI Personalization",
+    "Description": "AI-powered segmentation and campaign personalization",
+    "YouTube Tutorial": "https://youtube.com/playlist?list=PLD7IrLyN7uvKttgKqWOMBvRikEk3xezoU&si=CoACZzlN4ufd863k",
+    "Pricing": "Paid"
+  },
+  {
+    "Category": "Fraud Detection & Security",
+    "Tool Name": "Sift",
+    "Specific Tool Function": "AI Fraud Detection",
+    "Description": "Real-time fraud detection and prevention for transactions",
+    "YouTube Tutorial": "https://youtube.com/playlist?list=PLwvDm4VfkdpiLvzZFJI6rVIBtdolrJBVB&si=FTBi0bUp7Cj-vf8A",
+    "Pricing": "Paid"
+  },
+  {
+    "Category": "Fraud Detection & Security",
+    "Tool Name": "Darktrace",
+    "Specific Tool Function": "AI Cybersecurity",
+    "Description": "AI-driven threat detection for networks and cloud",
+    "YouTube Tutorial": "https://youtu.be/frL0Av2Rg10?si=-BjLVdFD5dVp23Li",
+    "Pricing": "Paid"
+  },
+  {
+    "Category": "Fraud Detection & Security",
+    "Tool Name": "DataVisor",
+    "Specific Tool Function": "AI Anti-Fraud",
+    "Description": "Machine learning for anti-fraud and risk management",
+    "YouTube Tutorial": "https://youtu.be/saPZTEnbPw4?si=29LxNi1aewW_DUw7",
+    "Pricing": "Paid"
+  },
+  {
+    "Category": "Product Recommendation Systems",
+    "Tool Name": "Algolia Recommend",
+    "Specific Tool Function": "AI Recommendations",
+    "Description": "Personalized product and content recommendations",
+    "YouTube Tutorial": "https://youtu.be/dTXzxSlhTDM?si=3v0B56rfC_RRi95P",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Product Recommendation Systems",
+    "Tool Name": "Coveo",
+    "Specific Tool Function": "AI Search & Recs",
+    "Description": "AI-powered search and recommendations for e-commerce",
+    "YouTube Tutorial": "https://youtube.com/playlist?list=PLp5chFE3m-o2cU7JAtaVtnDjV5YE4YGM5&si=zdUBKTKqgHhcSXit",
+    "Pricing": "Paid"
+  },
+  {
+    "Category": "Product Recommendation Systems",
+    "Tool Name": "Recombee",
+    "Specific Tool Function": "Recommendation Engine",
+    "Description": "Real-time scalable recommendation engine for apps/sites",
+    "YouTube Tutorial": "https://youtu.be/FdbhPEgKBcc?si=733snpUKVXYWAPZs",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Text-to-Text Generation",
+    "Tool Name": "ChatGPT",
+    "Specific Tool Function": "Conversational AI",
+    "Description": "Generates human-like text answers summaries and more",
+    "YouTube Tutorial": "https://youtu.be/Nz1MI8nsFTs?si=36FKLWNtdwv8W0hi",
+    "Pricing": "Freemium (GPT-3.5 free, GPT-4 paid)"
+  },
+  {
+    "Category": "Text-to-Text Generation",
+    "Tool Name": "Jasper",
+    "Specific Tool Function": "AI Writing Assistant",
+    "Description": "Writes blogs emails ads and more from prompts",
+    "YouTube Tutorial": "https://youtube.com/playlist?list=PLErD1cRL87W9P2GIviyQWJd_U2kVxleLy&si=XRLlyL2kynxjx8eF",
+    "Pricing": "Paid"
+  },
+  {
+    "Category": "Text-to-Text Generation",
+    "Tool Name": "Copy.ai",
+    "Specific Tool Function": "AI Copy Generator",
+    "Description": "Generates content and copy for marketing and business",
+    "YouTube Tutorial": "https://youtu.be/QqAd7wo7uVU?si=DZ9BxwBZqIrE7Zkr",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Speech-to-Text & Text-to-Speech",
+    "Tool Name": "Descript",
+    "Specific Tool Function": "AI Audio Editor",
+    "Description": "Transcribes audio/video to text and generates voiceovers",
+    "YouTube Tutorial": "https://youtu.be/YEzJ_r7geuc?si=TdPsljOw2_P7Mj5Q",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Speech-to-Text & Text-to-Speech",
+    "Tool Name": "Otter.ai",
+    "Specific Tool Function": "AI Transcription",
+    "Description": "Real-time transcription and meeting notes",
+    "YouTube Tutorial": "https://youtu.be/yUxlIDKIHhA?si=XSbxMn6c0BHkWrYD",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Speech-to-Text & Text-to-Speech",
+    "Tool Name": "ElevenLabs",
+    "Specific Tool Function": "AI Voice Generator",
+    "Description": "Realistic text-to-speech voice synthesis",
+    "YouTube Tutorial": "https://youtu.be/s7p6OLwV_50?si=XvbT0VDj8ttsFIXg\n",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Document Automation & Management",
+    "Tool Name": "DocuSign",
+    "Specific Tool Function": "AI Document Automation",
+    "Description": "Automates document creation singing and management ",
+    "YouTube Tutorial": "https://youtu.be/Lh5fV5A6ljM?si=yiGv5YsDA4zmUtUS",
+    "Pricing": "Paid (trial available)"
+  },
+  {
+    "Category": "Document Automation & Management",
+    "Tool Name": "PandaDoc",
+    "Specific Tool Function": "Document Workflow",
+    "Description": "AI-powered document generation and workflow automation",
+    "YouTube Tutorial": "https://youtube.com/playlist?list=PLPdn0ayaaVHOKs1GET2YAzzXPV_rEvJt4&si=vKawnK9gryGQqQ4o",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Document Automation & Management",
+    "Tool Name": "Ironclad",
+    "Specific Tool Function": "Legal Document Automation",
+    "Description": "Automates contract creation,review and management ",
+    "YouTube Tutorial": "https://youtu.be/SxHOvu2ZsLY?si=a0WLw7Sqb0fiWtHK",
+    "Pricing": "Paid"
+  },
+  {
+    "Category": "Meeting & Note Automation",
+    "Tool Name": "Fireflies.ai",
+    "Specific Tool Function": "AI Meeting Assistant",
+    "Description": "Records,transcibes and summarize meetings automatically ",
+    "YouTube Tutorial": "https://youtu.be/6JIsRXmMmLw?si=j1b_4mY8fDtGDfSe\\",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Meeting & Note Automation",
+    "Tool Name": "Otter.ai",
+    "Specific Tool Function": "AI Transcription",
+    "Description": "Real-time transcription and meeting notes",
+    "YouTube Tutorial": "https://youtu.be/SyqipCxv0EY?si=KI9VRT30gHBAeQyX",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Meeting & Note Automation",
+    "Tool Name": "Notion AI",
+    "Specific Tool Function": "AI Productivity",
+    "Description": "AI-powered note-taking summaries and action items",
+    "YouTube Tutorial": "https://youtu.be/GzMFRoMr4EA?si=jL-I5LmlYnaji1WK",
+    "Pricing": "Paid (AI features)"
+  },
+  {
+    "Category": "Project & Workflow Automation",
+    "Tool Name": "Zapier AI",
+    "Specific Tool Function": "AI Workflow Automation",
+    "Description": "Automates repetitive business processes across apps",
+    "YouTube Tutorial": "https://youtu.be/JtdUgJGI_Oo?si=7uceoMLCa8T09b1b",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Project & Workflow Automation",
+    "Tool Name": "Make.com",
+    "Specific Tool Function": "No-Code Automation",
+    "Description": "Visual workflow builder for automating tasks",
+    "YouTube Tutorial": "https://youtu.be/JSA2oezQWOU?si=gqtPFXzopiM8VmGL",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Project & Workflow Automation",
+    "Tool Name": "Levity",
+    "Specific Tool Function": "AI Workflow Automation",
+    "Description": "AI for automating document email and image workflows",
+    "YouTube Tutorial": "https://youtu.be/n7rk9QOBEEE?si=KXOF1PFvAk-UT6VC",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Healthcare Data Analysis",
+    "Tool Name": "IBM Watson Health",
+    "Specific Tool Function": "AI Healthcare Analytics",
+    "Description": "Analyzes patient data and medical records for insights",
+    "YouTube Tutorial": "https://youtube.com/playlist?list=PL3GCZkoyKK4ewLKHuxb8gJNH1h30IHiic&si=FRGHndKd2oNY1OI1",
+    "Pricing": "Paid"
+  },
+  {
+    "Category": "Healthcare Data Analysis",
+    "Tool Name": "PathAI",
+    "Specific Tool Function": "AI Diagnostics",
+    "Description": "AI-powered pathology and diagnostics for healthcare",
+    "YouTube Tutorial": "https://youtu.be/RdNvlc9DcXk?si=hMqBOK-VKfIdBXfR",
+    "Pricing": "Paid"
+  },
+  {
+    "Category": "Healthcare Data Analysis",
+    "Tool Name": "Tempus",
+    "Specific Tool Function": "AI Clinical Data",
+    "Description": "AI-driven clinical and molecular data analysis",
+    "YouTube Tutorial": "https://youtu.be/bhNeRhYMRAo?si=rHNXO_tixasAGl3Y",
+    "Pricing": "Paid"
+  },
+  {
+    "Category": "Recruitment & Candidate Screening",
+    "Tool Name": "HireVue",
+    "Specific Tool Function": "AI Recruitment",
+    "Description": "AI-powered video interviewing and candidate assessment",
+    "YouTube Tutorial": "https://youtu.be/fggG4Qik-kI?si=Mq8awbWH1WZjE1Qo",
+    "Pricing": "Paid"
+  },
+  {
+    "Category": "Recruitment & Candidate Screening",
+    "Tool Name": "Pymetrics",
+    "Specific Tool Function": "AI Talent Matching",
+    "Description": "AI-driven talent assessment using neuroscience games",
+    "YouTube Tutorial": "https://youtu.be/BVdilU_xxl0?si=3sWoCXfAB2pK5mEi",
+    "Pricing": "Freemium"
+  },
+  {
+    "Category": "Recruitment & Candidate Screening",
+    "Tool Name": "Recruitee AI",
+    "Specific Tool Function": "AI Recruitment",
+    "Description": "AI-powered recruitment and applicant tracking system",
+    "YouTube Tutorial": "https://youtu.be/IP3jG0zBP10?si=aP7VjGOaxcp0YerL",
+    "Pricing": "Paid"
+  },
+  {
+    "Category": "Legal Document Analysis",
+    "Tool Name": "Luminance",
+    "Specific Tool Function": "AI Legal Analysis",
+    "Description": "AI-powered contract review and legal document analysis",
+    "YouTube Tutorial": "https://youtu.be/03FTMJ-k12M?si=rGWOJKPJrUyUkm4_",
+    "Pricing": "Paid"
+  },
+  {
+    "Category": "Legal Document Analysis",
+    "Tool Name": "Kira Systems",
+    "Specific Tool Function": "AI Contract Analysis",
+    "Description": "Extracts and analyzes legal clauses from documents",
+    "YouTube Tutorial": "https://youtu.be/2qqVeqPzTuw?si=6kOmQLqypY7L7-8N",
+    "Pricing": "Paid"
+  },
+  {
+    "Category": "Legal Document Analysis",
+    "Tool Name": "LawGeex",
+    "Specific Tool Function": "AI Contract Review",
+    "Description": "Automates contract review for legal teams",
+    "YouTube Tutorial": "https://youtu.be/idlldEs9ECo?si=5DTUapMtgeunzFxc",
+    "Pricing": "Paid"
+  },
+  {
+    "Category": "IP & Patent Classification",
+    "Tool Name": "PatSnap",
+    "Specific Tool Function": "AI Patent Analytics",
+    "Description": "AI for patent search,analysis and classification",
+    "YouTube Tutorial": "https://youtu.be/HH75rp5U9QU?si=OXQf5eeES-PDlXXb",
+    "Pricing": "Paid"
+  },
+  {
+    "Category": "IP & Patent Classification",
+    "Tool Name": "IPRally",
+    "Specific Tool Function": "AI Patent Search",
+    "Description": "AI-powered patent search and classification",
+    "YouTube Tutorial": "https://youtu.be/X2uya8xzCCY?si=Y3PsUGiuxXoaApqZ",
+    "Pricing": "Paid"
+  },
+  {
+    "Category": "IP & Patent Classification",
+    "Tool Name": "Ambercite",
+    "Specific Tool Function": "AI Patent Analytics",
+    "Description": "Finds and analyzes patent relationships with AI",
+    "YouTube Tutorial": "https://youtu.be/H_YB3iVZdho?si=R3_URAltguUoJKeQ",
+    "Pricing": "Paid"
+  }
+]

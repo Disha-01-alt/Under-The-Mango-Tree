@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "title": "Physics Play Zone",
+    "image": "/static/english/images/21.png",
+    "description": "A hands-on environment where students explore motion, gravity, energy, and mechanics through interactive experiments and real-world simulations."
+  },
+  {
+    "id": 2,
+    "title": "Agro Innovation Lab",
+    "image": "/static/english/images/22.png",
+    "description": "Blending ancestral farming practices with modern scientific techniques to promote sustainable, high-yield agriculture."
+  },
+  {
+    "id": 3,
+    "title": "Mechanical Discovery Yard",
+    "image": "/static/english/images/23.png",
+    "description": "An open-air learning space showcasing levers, pulleys, gears, and machines that demonstrate the fundamentals of mechanical engineering."
+  },
+  {
+    "id": 4,
+    "title": "Renewable Energy Pavilion",
+    "image": "/static/english/images/24.png",
+    "description": "Interactive models of solar, wind, and hydro systems designed to teach clean energy concepts through practical demonstrations."
+  },
+  {
+    "id": 5,
+    "title": "Soil & Sustainability Lab",
+    "image": "/static/english/images/25.png",
+    "description": "A research-focused zone where visitors learn about soil health, composting, and eco-friendly farming techniques."
+  },
+  {
+    "id": 6,
+    "title": "Astronomy Observation Deck",
+    "image": "/static/english/images/astronomy-observation-deck.jpg",
+    "description": "A guided stargazing and telescope experience introducing celestial bodies, space science, and night-sky navigation."
+  },
+  {
+    "id": 7,
+    "title": "Innovation Workshop Studio",
+    "image": "/static/english/images/innovation-workshop-studio.jpg",
+    "description": "A maker-style studio encouraging students to build prototypes, conduct experiments, and transform curiosity into tangible creations."
+  }
+]

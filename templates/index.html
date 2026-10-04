@@ -1,445 +1,1137 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Under The Mango Tree - Education Platform</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTMT | Learn to Build AI Products</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;700;900&family=Inter:wght@200;300;400;500;600&family=Noto+Serif+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     
-    <!-- NEW: Add Swiper.js CSS for the testimonial slider -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+   <style>
+        :root {
+            --gold: #D4AF37;
+            --gold-light: #FFD700;
+            --gold-muted: #8B7355;
+            --obsidian: #050505;
+            --glass-border: rgba(212, 175, 55, 0.15);
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--obsidian);
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        .font-cinzel { font-family: 'Cinzel', serif; }
+        .font-cinzel-dec { font-family: 'Cinzel Decorative', cursive; }
+        .font-devanagari { font-family: 'Noto Serif Devanagari', serif; }
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        .bg-hero { background-image: linear-gradient(rgba(30, 61, 89, 0.85), rgba(30, 61, 89, 0.7)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop'); background-size: cover; background-position: center; background-attachment: fixed; }
-        .hover-scale { transition: transform 0.3s ease; }
-        .hover-scale:hover { transform: translateY(-5px); }
-        .gradient-text { background: linear-gradient(135deg, #007BFF, #FF6B35); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        /* Divine Intro Splash */
+        #intro-splash {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background-color: var(--obsidian);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 2.5s cubic-bezier(0.4, 0, 0.2, 1), visibility 2.5s;
+        }
+
+        #intro-canvas {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
+        .om-container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            pointer-events: none;
+        }
+
+        .om-symbol {
+            font-size: 14rem;
+            color: var(--gold);
+            background: linear-gradient(to bottom, #FFF, var(--gold), var(--gold-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.4));
+            animation: om-divine-pulse 4s infinite ease-in-out;
+            user-select: none;
+        }
+
+        @keyframes om-divine-pulse {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.4)) brightness(1); }
+            50% { transform: scale(1.05); filter: drop-shadow(0 0 70px rgba(255, 215, 0, 0.8)) brightness(1.2); }
+        }
+        /*Change*/
+        #global-loader {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            background: #050505;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 1s ease, visibility 1s ease;
+        }
+        #global-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .loader-ring {
+            width: 64px;
+            height: 64px;
+            border: 3px solid rgba(212,175,55,0.2);
+            border-top-color: var(--gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        /*Change*/
+        .splash-fade-out { opacity: 0; visibility: hidden; pointer-events: none; }
+
+        .glass-panel {
+            background: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+        }
+
+        .gold-glow { filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.4)); }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(212, 175, 55, 0.2); border-radius: 10px; }
+
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .snap-container {
+            scroll-snap-type: y mandatory;
+            overflow-y: auto;
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            z-index: 10;
+        }
+        .snap-section {
+            scroll-snap-align: start;
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .fade-in { animation: fadeIn 0.8s ease-out forwards; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+            @keyframes breathe {
+    0%, 100% {
+        opacity: 0.75;
+        box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+    }
+    50% {
+        opacity: 1;
+        box-shadow: 0 0 28px rgba(212, 175, 55, 1);
+    }
+}
+
+.breathing-border {
+    animation: breathe 2.2s ease-in-out infinite;
+}
+
+        /* Interaction Styles */
+        .project-card-container {
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            width: 320px;
+            height: 380px;
+            perspective: 2000px;
+        }
+
+        .project-card-container.expanded {
+            width: 75vw;
+            max-width: 900px;
+            height: 440px;
+        }
+
+        .standard-ui { transition: opacity 0.4s ease, visibility 0.4s; }
+        .expanded-ui { 
+            opacity: 0; 
+            visibility: hidden; 
+            transition: opacity 0.6s ease 0.2s, visibility 0.6s;
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .expanded .standard-ui { opacity: 0; visibility: hidden; pointer-events: none; }
+        .expanded .expanded-ui { opacity: 1; visibility: visible; }
+
+        .project-card-inner {
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            will-change: transform;
+        }
         
-        /* NEW: Styles for the Swiper slider */
-        .swiper-pagination-bullet {
-            background-color: #A0AEC0; /* gray-400 */
-            opacity: 1;
+        .expanded .project-card-inner {
+            transform: none !important;
+            transition: none !important;
         }
-        .swiper-pagination-bullet-active {
-            background-color: #007BFF !important; /* primary color */
+
+        /* View Management */
+        .view-content {
+            transition: opacity 0.5s ease-in-out;
         }
+        .hidden-view {
+            display: none !important;
+            opacity: 0;
+        }
+        /* Profile Dropdown Styles */
+#profile-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 1rem;
+    min-width: 240px;
+    z-index: 100;
+}
+#profile-dropdown.show { display: block; }
+
+.link-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.75rem;
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+}
+.link-button:hover {
+    background: var(--gold);
+    color: black;
+    transform: translateY(-2px);
+}
+
+/* Curiosity Specific Expansion Styles */
+.project-card-container.curiosity-active {
+    width: 75vw;
+    max-width: 900px;
+    height: 460px;
+}
+.curiosity-active .project-card-inner {
+    transform: none !important;
+    border-color: rgba(212, 175, 55, 0.6);
+}
+.curiosity-active .standard-ui .line-clamp-2 {
+    -webkit-line-clamp: unset !important;
+    display: block !important;
+    overflow-y: auto;
+    max-height: 220px;
+    padding-right: 10px;
+}
+.curiosity-active .standard-ui .h-40 {
+    height: 180px;
+    transition: height 0.6s ease;
+}
     </style>
-</head>
-<body class="font-sans smooth-scroll">
-    <!-- Header -->
-    {% include 'header.html' %}
+    </head>
+<body>
+    <div id="global-loader">
+        <div class="loader-ring"></div>
+    </div>
 
-<!-- Hero Section -->
-<section id="home" class="relative bg-hero  flex items-center">
-    <div class="container mx-auto px-6 py-20 md:py-32 text-center md:text-left">
-        <div class="max-w-2xl">
-            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight animate-float">
-                Welcome to <span class="gradient-text">Under The Mango Tree</span>
-            </h1>
-            <p class="text-lg md:text-xl text-white/90 mb-10 leading-relaxed">
-                Making quality education and job opportunities accessible to students from government schools
-            </p>
-            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center md:justify-start">
-                <a href="{{ url_for('learning_hub') }}" class="bg-[#007BFF] hover:bg-[#0069d9] text-white px-8 py-4 rounded-lg transition duration-300 shadow-lg flex items-center justify-center hover-scale">
-                    <button>
-                        <i class="fas fa-book-open mr-2"></i> START LEARNING
-                    </button>
-                </a>
-                <a href="{{ url_for('job_portal_index') }}">
+    <div id="intro-splash">
+        <canvas id="intro-canvas"></canvas>
+        <div class="om-container">
+            <div class="om-symbol font-devanagari">ॐ</div>
+            <div class="mt-4 text-[10px] font-cinzel tracking-[0.8em] text-[#D4AF37] opacity-60 uppercase">UTMT</div>
+        </div>
+    </div>
 
-  <button class="bg-[#FF6B35] hover:bg-[#e05a2a] text-white px-8 py-4 rounded-lg transition duration-300 shadow-lg flex items-center justify-center hover-scale btn-glow">
-    <i class="fas fa-briefcase mr-2"></i> FIND JOBS
-  </button>
+    <canvas id="bg-canvas"></canvas>
+
+   <nav class="fixed top-0 left-0 w-full z-50 px-8 py-6 flex justify-between items-center bg-gradient-to-b from-black/95 to-transparent backdrop-blur-sm">
+    <div class="flex items-center gap-5 group cursor-pointer" onclick="navigateTo('home')">
+        <div class="relative w-14 h-14 rounded-full border-2 border-[#D4AF37]/40 breathing-border flex items-center justify-center">
+            <img src="/static/english/images/logo.jpeg" class="w-9 h-9 object-contain" />
+        </div>
+        <div class="flex flex-col">
+            <span class="font-cinzel text-2xl font-black tracking-[0.25em] text-[#D4AF37] gold-glow uppercase">UTMT</span>
+            <span class="text-[9px] uppercase tracking-[0.5em] text-gray-600 font-bold">Learn to Build AI Products</span>
+        </div>
+    </div>
+    
+    <div class="hidden md:flex gap-14 text-[10px] font-black tracking-[0.35em] uppercase text-gray-400">
+        <a href="javascript:void(0)" onclick="navigateTo('home', 'projects-section')" class="hover:text-[#D4AF37] transition-all">Projects</a>
+        <a href="javascript:void(0)" onclick="navigateTo('home', 'learning-section')" class="hover:text-[#D4AF37] transition-all">Learning</a>
+        <a href="javascript:void(0)" onclick="navigateTo('curiosity')" class="hover:text-[#D4AF37] transition-all text-[#D4AF37]/80">Curiosity Park</a>
+    </div>
+
+    <!-- Auth Container -->
+    <div id="auth-container" class="relative">
+    <div id="google-login-btn"></div>
+    
+    <div id="user-profile" class="hidden relative group">
+        <!-- Profile Trigger -->
+        <button onclick="toggleDropdown()" class="flex items-center gap-3 focus:outline-none">
+            <div class="w-10 h-10 rounded-full border-2 border-[#D4AF37]/40 overflow-hidden hover:border-[#D4AF37] transition-all">
+                <img id="user-pic" src="" alt="Profile" class="w-full h-full object-cover">
+            </div>
+        </button>
+
+        <!-- Dropdown Menu -->
+        <div id="profile-dropdown" class="glass-panel rounded-2xl p-6 border-[#D4AF37]/30 shadow-2xl">
+            <div class="mb-4 pb-4 border-b border-white/5">
+                <p id="user-name-display" class="text-xs font-black text-[#D4AF37] uppercase tracking-widest mb-1"></p>
+                <p id="user-email-display" class="text-[9px] text-gray-500 font-bold"></p>
+            </div>
+            
+            <div class="flex flex-col gap-2">
+                <a href="javascript:void(0)" 
+   onclick="window.location.href = BACKEND_URL + '/user-history'" 
+   class="w-full py-3 px-4 rounded-xl hover:bg-[#D4AF37]/10 text-[9px] font-black uppercase tracking-widest text-white transition-all flex items-center gap-3">
+   <span>📜</span> Previous Questions
 </a>
-
-</div>
-            <div class="mt-12 grid grid-cols-3 gap-6 text-white">
-                <div class="text-center hover-scale">
-                    <div class="text-3xl font-bold text-[#FF6B35] mb-2">10,000+</div>
-                    <div class="text-sm opacity-80">Students Trained</div>
-                </div>
-                <div class="text-center hover-scale">
-                    <div class="text-3xl font-bold text-[#FF6B35] mb-2">500+</div>
-                    <div class="text-sm opacity-80">Job Placements</div>
-                </div>
-                <div class="text-center hover-scale">
-                    <div class="text-3xl font-bold text-[#FF6B35] mb-2">50+</div>
-                    <div class="text-sm opacity-80">Partner Companies</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- How We Help Section -->
-<section class="py-20 bg-gradient-to-b from-white to-gray-50">
-    <div class="container mx-auto px-6">
-        <h2 class="text-4xl font-bold text-center text-[#1E3D59] mb-16">How We Help You Succeed</h2>
-        <div class="grid md:grid-cols-3 gap-10">
-            <!-- English Learning -->
-            <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden hover-scale group">
-                <div class="p-8 flex flex-col items-center text-center">
-                    <div class="bg-gradient-to-r from-blue-100 to-blue-200 p-6 rounded-full mb-6 group-hover:scale-110 transition duration-300">
-                        <i class="fas fa-language text-[#007BFF] text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-[#1E3D59] mb-4">Free English Learning</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        Learn English through interactive lessons, games, and activities designed especially for Hindi medium students
-                    </p>
-                    <a href="{{ url_for('english_learning')}}" class="text-[#007BFF] font-medium hover:text-[#0069d9] flex items-center group-hover:translate-x-2 transition duration-300">
-                        Explore courses <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Computer Skills -->
-            <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden hover-scale group">
-                <div class="p-8 flex flex-col items-center text-center">
-                    <div class="bg-gradient-to-r from-green-100 to-green-200 p-6 rounded-full mb-6 group-hover:scale-110 transition duration-300">
-                        <i class="fas fa-laptop-code text-green-600 text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-[#1E3D59] mb-4">Computer Skills</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        Build essential computer and programming skills needed for today's job market
-                    </p>
-                    <a href="{{ url_for('python_learning')}}" class="text-green-600 font-medium hover:text-green-700 flex items-center group-hover:translate-x-2 transition duration-300">
-                        View programs <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Job Connections -->
-            <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden hover-scale group">
-                <div class="p-8 flex flex-col items-center text-center">
-                    <div class="bg-gradient-to-r from-purple-100 to-purple-200 p-6 rounded-full mb-6 group-hover:scale-110 transition duration-300">
-                        <i class="fas fa-handshake text-purple-600 text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-[#1E3D59] mb-4">Job Connections</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        Connect with companies offering entry-level positions and internships for freshers
-                    </p>
-                    <a href="{{ url_for('job_portal_index') }}" class="text-purple-600 font-medium hover:text-purple-700 flex items-center group-hover:translate-x-2 transition duration-300">
-                        Find opportunities <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-   <!-- Special Support Section -->
-
-<section class="py-20 bg-gradient-to-r from-gray-50 to-blue-50">
-    <div class="container mx-auto px-6">
-
-<!--
-    ===============================================
-    THE FIX: Wrap the two columns in a flex container
-    and use 'items-stretch' to make them equal height.
-    ===============================================
-    -->
-    <div class="flex flex-col lg:flex-row lg:items-stretch lg:gap-x-10">
-
-        <!-- Left Column: Special Support for Students -->
-        <div class="lg:w-1/2 mb-10 lg:mb-0">
-            <h2 class="text-4xl font-bold text-[#1E3D59] mb-10">Special Support for Students</h2>
-            <div class="space-y-6">
-                <!-- Feature 1 -->
-                <div class="flex items-start bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105">
-                    <div class="bg-green-100 p-3 rounded-full mr-4 flex-shrink-0">
-                        <i class="fas fa-check-circle text-green-600 text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-semibold text-[#1E3D59] text-lg">Free access to all learning materials</h3>
-                        <p class="text-gray-600 mt-2">No hidden costs or premium content restrictions</p>
-                    </div>
-                </div>
-                <!-- Feature 2 -->
-                <div class="flex items-start bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105">
-                    <div class="bg-green-100 p-3 rounded-full mr-4 flex-shrink-0">
-                        <i class="fas fa-check-circle text-green-600 text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-semibold text-[#1E3D59] text-lg">Special job opportunities</h3>
-                        <p class="text-gray-600 mt-2">Exclusive positions reserved for our students</p>
-                    </div>
-                </div>
-                <!-- Feature 3 -->
-                <div class="flex items-start bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105">
-                    <div class="bg-green-100 p-3 rounded-full mr-4 flex-shrink-0">
-                        <i class="fas fa-check-circle text-green-600 text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-semibold text-[#1E3D59] text-lg">Career guidance and mentorship</h3>
-                        <p class="text-gray-600 mt-2">One-on-one support from industry professionals</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Right Column: Start Your Journey Today -->
-        <div class="lg:w-1/2">
-            <!-- Added 'h-full' to make this div fill the stretched height -->
-            <div class="bg-white rounded-xl shadow-xl p-10 flex flex-col justify-center h-full">
-                <h2 class="text-3xl font-bold text-[#1E3D59] mb-6 text-center">Start Your Journey Today</h2>
-                <p class="text-gray-600 mb-8 text-center leading-relaxed">
-                    Join thousands of students who have already transformed their careers through our platform
-                </p>
-                <div class="mb-8">
-                    <div class="flex flex-col space-y-4">
-                        <div class="flex items-center">
-                            <i class="fas fa-graduation-cap text-[#FF6B35] mr-3 text-xl"></i>
-                            <span class="text-gray-700">Access to 100+ courses and workshops</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-users text-[#FF6B35] mr-3 text-xl"></i>
-                            <span class="text-gray-700">Join a community of 10,000+ learners</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-certificate text-[#FF6B35] mr-3 text-xl"></i>
-                            <span class="text-gray-700">Earn recognized certificates</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- The button is now inside the parent 'a' tag -->
-                <a href="{{ url_for('learning_hub') }}" class="bg-[#007BFF] hover:bg-[#0069d9] text-white py-4 px-8 rounded-lg font-medium shadow-lg mx-auto transform hover:scale-105 transition duration-300">
-                    GET STARTED
-                </a>
+                <button onclick="handleLogout()" class="w-full py-3 px-4 rounded-xl hover:bg-red-500/10 text-[9px] font-black uppercase tracking-widest text-red-500 transition-all flex items-center gap-3">
+                    <span class="text-lg">🚪</span> Logout
+                </button>
             </div>
         </div>
     </div>
 </div>
+</nav>
 
-</section>
-
-<main class="flex-grow">
-
-  <!-- =========================== -->
-  <!-- Find Your Dream Job Section -->
-  <!-- =========================== -->
-  <section class="py-16 bg-gradient-to-b from-[#eef4ff] via-white to-[#e5f0ff]">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-
-      <!-- Section Header -->
-      <div class="text-center mb-14">
-        <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 drop-shadow-lg tracking-tight">
-          Find Your Dream Job
-        </h2>
-        <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
-          Connect with top employers and discover opportunities that match your newly acquired skills. Start your career journey today.
-        </p>
-      </div>
-
-      <!-- Job Cards List -->
-      <div class="space-y-10 max-w-5xl mx-auto">
-        {% if recent_jobs %}
-          {% for job in recent_jobs %}
-          <!-- 3D Glowing Card -->
-          <div class="relative bg-white rounded-3xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 shadow-[0_10px_30px_rgba(0,0,0,0.1)] border border-gray-200 hover:shadow-[0_15px_45px_rgba(0,0,0,0.15)] transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 group overflow-hidden">
-
-            <!-- Inner Glow Border -->
-            <div class="absolute inset-0 rounded-3xl border border-white opacity-60 pointer-events-none"></div>
-
-            <!-- Job Info -->
-            <div class="flex-grow w-full md:w-auto text-center md:text-left z-10">
-              <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 mb-3">
-                <h3 class="text-2xl font-bold text-gray-800 drop-shadow-sm">{{ job.title }}</h3>
-                {% if job.job_type %}
-                <span class="text-xs font-semibold text-blue-800 bg-blue-100 px-3 py-1 rounded-full shadow-sm">
-                  {{ job.job_type }}
-                </span>
-                {% endif %}
-              </div>
-
-              <p class="text-sm text-gray-600 mb-3">
-                {{ job.company }}
-                {% if job.location %}
-                <span class="mx-2 text-gray-400">•</span>
-                <span>{{ job.location }}</span>
-                {% endif %}
-              </p>
-
-              {% if job.job_tags %}
-              <div class="flex flex-wrap justify-center md:justify-start gap-2">
-                {% for tag in job.job_tags.split(',')[:3] %}
-                <span class="text-xs font-medium text-gray-700 bg-gray-100 px-3 py-1 rounded-full border border-gray-200 shadow-inner">
-                  {{ tag.strip() }}
-                </span>
-                {% endfor %}
-              </div>
-              {% endif %}
-            </div>
-
-            <!-- Salary & Button -->
-            <div class="flex-shrink-0 flex flex-col items-center gap-3 md:flex-row md:items-center mt-4 md:mt-0 z-10">
-              {% if job.salary_range %}
-              <p class="text-lg font-semibold text-gray-900 tracking-tight">
-                {{ job.salary_range }}
-              </p>
-              {% endif %}
-              <a href="{{ job.linkedin_url or url_for('candidate_routes.jobs') }}"
-                 target="_blank"
-                 class="bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold py-2.5 px-6 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 hover:brightness-110 transition-all duration-300 ring-2 ring-white ring-offset-2">
-                Apply Now
-              </a>
-            </div>
-
-          </div>
-          {% endfor %}
-        {% else %}
-          <div class="text-center py-12 bg-white rounded-xl shadow-inner border border-gray-200">
-            <p class="text-gray-500 text-lg">No job openings available right now. Please check back soon!</p>
-          </div>
-        {% endif %}
-      </div>
-
-      <!-- View All Button -->
-      <div class="text-center mt-16">
-        <a href="{{ url_for('candidate_routes.jobs') }}"
-           class="inline-block text-blue-700 text-lg font-semibold hover:underline hover:text-blue-900 transition-all">
-          Browse All Opportunities <i class="fas fa-arrow-right ml-1"></i>
-        </a>
-      </div>
-
-    </div>
-  </section>
-
-</main>
-
-
-
-<!-- ================================== -->
-<!-- DYNAMIC TESTIMONIALS SLIDER SECTION -->
-<!-- ================================== -->
-<section class="py-20 bg-gray-100">
-    <div class="container mx-auto px-6">
-        <h2 class="text-4xl font-bold text-center text-[#1E3D59] mb-16">What Our Students Say</h2>
+    <div class="snap-container no-scrollbar" id="main-scroller">
         
-        <!-- Swiper Container -->
-        <div class="swiper testimonial-slider">
-            <div class="swiper-wrapper">
-                
-                {% if testimonials %}
-                    {% for t in testimonials %}
-                    <!-- Swiper Slide (Dynamically renders Text or Video) -->
-                    <div class="swiper-slide h-auto pb-10">
-                        
-                        {% if t.type == 'video' %}
-                            <!-- VIDEO TESTIMONIAL CARD -->
-                            <div class="bg-black rounded-xl shadow-lg flex flex-col h-full overflow-hidden">
-                                <div class="relative" style="padding-bottom: 56.25%;">
-                                    <iframe class="absolute top-0 left-0 w-full h-full" loading="lazy" src="https://www.youtube.com/embed/{{ t.youtube_embed_id }}" title="{{ t.name }}'s Testimonial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <!-- HOME VIEW CONTENT -->
+        <div id="home-view" class="view-content">
+            <section id="chat-section" class="snap-section px-8 pt-32">
+                <div class="w-full h-[85vh] flex flex-col gap-6 max-w-[1400px] mx-auto overflow-hidden">
+                    <div class="flex-1 flex flex-col glass-panel rounded-[2.5rem] overflow-hidden shadow-2xl bg-black/40">
+                        <div class="px-8 py-8 md:px-12 flex flex-col gap-8 border-b border-[#D4AF37]/10 bg-black/40">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h1 class="font-cinzel text-2xl md:text-3xl font-black text-[#D4AF37] gold-glow tracking-widest mb-1">ASK YOUR ORACLE</h1>
+                                    <p class="text-[9px] text-gray-500 font-bold tracking-[0.4em] uppercase">Sacred Intelligence Oracle</p>
                                 </div>
-                                <div class="p-4 text-center bg-gray-900">
-                                    <h4 class="font-bold text-white">{{ t.name }}</h4>
-                                    <p class="text-gray-400 text-sm">{{ t.role }}</p>
+                                 
+                            </div>
+                            <div class="relative w-full">
+                                <input id="chat-input" type="text" placeholder="Search for AI product insights and sacred wisdom..." class="w-full bg-white/[0.02] border border-[#D4AF37]/20 rounded-2xl py-5 px-8 pr-32 outline-none focus:border-[#D4AF37]/60 text-sm tracking-wide text-white transition-all">
+                                <button onclick="handleSendMessage()" class="absolute right-3 top-1/2 -translate-y-1/2 bg-[#D4AF37] text-black border border-[#D4AF37] px-8 py-2.5 rounded-xl text-[9px] font-black tracking-[0.4em] uppercase hover:scale-105 transition-transform">Search</button>
+                            </div>
+                        </div>
+                        <div id="chat-messages" class="flex-1 overflow-y-auto px-8 py-10 md:px-12 no-scrollbar bg-black/10 flex flex-col items-center">
+                            <div id="initial-message" class="text-center py-24 opacity-30">
+                                <div class="font-devanagari text-6xl text-[#D4AF37] mb-6">जिज्ञासा</div>
+                                <p class="text-[10px] font-black tracking-[0.5em] uppercase text-[#D4AF37]">Enter a query to begin the synthesis</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects-section" class="snap-section py-40 bg-black/20 overflow-hidden flex flex-col justify-center">
+                <div id="projects-root">
+                    <div class="max-w-7xl mx-auto px-6 mb-20 relative">
+                        <h2 class="text-2xl sm:text-4xl font-cinzel font-black tracking-[0.2em] text-white uppercase">PRO<span class="text-white/20">JECTS</span></h2>
+                        <p class="text-gray-500 text-xs tracking-[0.3em] uppercase mt-4 max-w-2xl">Discover innovative projects developed by students in the AI/ML domain.</p>
+                    </div>
+                    <div id="project-scroller" class="w-full overflow-x-auto pb-24 px-12 no-scrollbar flex items-center gap-8 snap-x snap-mandatory">
+                        <div class="min-w-[5vw] h-1 shrink-0"></div>
+                        <div class="min-w-[5vw] h-1 shrink-0"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="learning-section" class="snap-section py-40 bg-black/40 overflow-hidden flex flex-col justify-center">
+                <div id="learning-root">
+                    <div class="max-w-7xl mx-auto px-6 mb-20 relative">
+                        <h2 class="text-2xl sm:text-4xl font-cinzel font-black tracking-[0.2em] text-white uppercase">LEARN<span class="text-white/20">ING</span></h2>
+                        <p class="text-gray-500 text-xs tracking-[0.3em] uppercase mt-4 max-w-2xl">Master the arts of the neural age through direct wisdom portals.</p>
+                    </div>
+                    <div id="learning-scroller" class="w-full overflow-x-auto pb-24 px-12 no-scrollbar flex items-center gap-8 snap-x snap-mandatory">
+                        <div class="min-w-[5vw] h-1 shrink-0"></div>
+                        <div class="min-w-[5vw] h-1 shrink-0"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+<!-- CURIOSITY PARK VIEW -->
+        <div id="curiosity-view" class="view-content hidden-view">
+            <section class="snap-section py-32 px-8">
+                <div class="max-w-7xl mx-auto w-full">
+                    <div class="flex flex-col lg:flex-row gap-16 items-center mb-32">
+                        <div class="flex-1 space-y-10">
+                            <div>
+                                <span class="text-[#D4AF37] font-black uppercase tracking-[0.6em] text-[10px] block mb-4">The Physical Gateway</span>
+                                <h1 class="font-cinzel text-3xl md:text-5xl font-black text-white leading-none tracking-tighter">CURIOSITY<br><span class="text-[#D4AF37]">PARK</span></h1>
+                            </div>
+                            <p class="text-gray-400 text-lg md:text-xl leading-relaxed font-light">
+                                Nestled in a quiet village on the outskirts of Bhopal, Curiosity Park is where ancestral farming wisdom meets the frontiers of scientific discovery. A sanctuary for young minds to touch, build, and understand the laws of the universe.
+                            </p>
+                            <div class="flex flex-wrap gap-6 pt-4">
+                                <div class="glass-panel p-6 rounded-3xl border-[#D4AF37]/10 flex-1 min-w-[200px]">
+                                    <span class="text-[#D4AF37] text-2xl font-bold block mb-2 font-cinzel">Science Park</span>
+                                    <p class="text-gray-500 text-[11px] uppercase tracking-wider">Hands-on interactive physics & mechanics exhibits.</p>
+                                </div>
+                                <div class="glass-panel p-6 rounded-3xl border-[#D4AF37]/10 flex-1 min-w-[200px]">
+                                    <span class="text-[#D4AF37] text-2xl font-bold block mb-2 font-cinzel">Farmland Lab</span>
+                                    <p class="text-gray-500 text-[11px] uppercase tracking-wider">Applying high-tech science to sustainable rural agriculture.</p>
                                 </div>
                             </div>
+                        </div>
+                        <div class="flex-[0.85] relative">
+    <div class="w-full aspect-[3/4] max-h-[520px] rounded-[2.5rem] overflow-hidden border border-[#D4AF37]/20 shadow-2xl relative mx-auto">
 
-                        {% else %}
-                            <!-- TEXT TESTIMONIAL CARD -->
-                            <div class="bg-gradient-to-br {{ t.gradient_from }} {{ t.gradient_to }} rounded-xl p-8 shadow-lg flex flex-col h-full">
-                                <div class="flex items-center mb-6">
-                                    <div class="w-14 h-14 bg-gradient-to-r from-[#1E3D59] to-[#FF6B35] rounded-full flex items-center justify-center text-white font-bold text-xl flex-shrink-0">{{ t.initials }}</div>
-                                    <div class="ml-4">
-                                        <h4 class="font-bold text-[#1E3D59]">{{ t.name }}</h4>
-                                        <p class="text-gray-600 text-sm">{{ t.role }}</p>
+        <!-- IMAGE (FIXED: always in full color) -->
+        <img 
+            src="/static/english/images//img1.png" 
+            alt="Curiosity Park Entry" 
+            class="w-full h-full object-cover transition-all duration-1000"
+        >
+
+        <!-- DARK GRADIENT OVERLAY -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+
+        <!-- TEXT CONTENT -->
+        <div class="absolute bottom-10 left-10 right-10">
+            <span class="text-[9px] font-black uppercase tracking-[0.5em] text-[#D4AF37] mb-2 block">
+                Location
+            </span>
+            <h3 class="text-white font-cinzel text-2xl font-bold">
+                Village Lab, Bhopal
+            </h3>
+        </div>
+
+    </div>
+</div>
+                    </div> 
+                    
+
+                    
+                <div><span class="text-[#D4AF37] text-2xl font-bold block mb-2 font-cinzel">Farmland Lab</span></div>
+                <!-- CURIOSITY DYNAMIC CARDS SECTION -->
+                <div class="mt-20">
+                    <div id="curiosity-scroller" class="w-full overflow-x-auto pb-24 px-12 no-scrollbar flex items-center gap-8 snap-x snap-mandatory">
+                        <div class="min-w-[5vw] h-1 shrink-0"></div>
+                        <div class="min-w-[5vw] h-1 shrink-0"></div>
+                    </div>
+                </div>
+                <!-- END CURIOSITY DYNAMIC CARDS SECTION -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 py-20 border-t border-white/5">
+                        <div class="space-y-4">
+                            <h4 class="font-cinzel text-[#D4AF37] text-xl">Observe</h4>
+                            <p class="text-gray-500 text-sm leading-relaxed">Students witness natural phenomena in an environment unencumbered by city noise, allowing for deep concentration and reflection.</p>
+                        </div>
+                        <div class="space-y-4">
+                            <h4 class="font-cinzel text-[#D4AF37] text-xl">Experiment</h4>
+                            <p class="text-gray-500 text-sm leading-relaxed">From simple pulleys to complex solar grids, the park provides real-world kits that bring textbook theories to life through physical interaction.</p>
+                        </div>
+                        <div class="space-y-4">
+                            <h4 class="font-cinzel text-[#D4AF37] text-xl">Synthesize</h4>
+                            <p class="text-gray-500 text-sm leading-relaxed">We bridge the gap between traditional rural practices and modern scientific methodology, creating a new generation of holistic builders.</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </section>
+        </div>
+
+        <section id="footer-section" class="snap-section">
+            <footer class="relative w-full bg-[#050505] pt-32 overflow-hidden h-full flex flex-col">
+                <div class="max-w-7xl mx-auto px-8 flex flex-col items-center text-center space-y-12 mb-auto">
+                    <p class="font-serif italic text-2xl md:text-4xl text-[#D4AF37]/80 leading-relaxed max-w-4xl mx-auto mb-6">"Empowering builders to architect the neural future."</p>
+                </div>
+                
+                <div class="w-full border-t border-white/5 bg-black/40 backdrop-blur-xl">
+                    <div class="max-w-7xl mx-auto px-10 py-16">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-left mb-16">
+                            <div class="md:col-span-1">
+                                <div class="flex items-center gap-5 group cursor-pointer" onclick="navigateTo('home')">
+        <div class="relative w-14 h-14 rounded-full border-2 border-[#D4AF37]/40 flex items-center justify-center">
+    <img src="/static/english/images//logo.jpeg" class="w-9 h-9 object-contain" />
+</div>
+
+        <div class="flex flex-col">
+            <span class="font-cinzel text-2xl font-black tracking-[0.25em] text-[#D4AF37] gold-glow uppercase">UTMT</span>
+            <!-- <span class="text-[9px] uppercase tracking-[0.5em] text-gray-600 font-bold">Learn to Build AI Products</span> -->
+        </div>
+    </div>
+                                <p class="text-gray-500 text-[11px] leading-relaxed uppercase tracking-wider mb-8 max-w-sm">
+                                    An institution dedicated to the fusion of ancient wisdom and modern artificial intelligence, empowering the next generation of builders.
+                                </p>
+                                <div class="flex gap-4">
+                                    <a href="#" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-[#D4AF37] hover:border-[#D4AF37]/40 transition-all">
+                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                                    </a>
+                                    <a href="#" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-[#D4AF37] hover:border-[#D4AF37]/40 transition-all">
+                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.042-1.416-4.042-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                                    </a>
+                                    <a href="#" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-[#D4AF37] hover:border-[#D4AF37]/40 transition-all">
+                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="md:text-right">
+                                <h4 class="text-[10px] font-black text-[#D4AF37] uppercase tracking-[0.4em] mb-8">Legal</h4>
+                                <ul class="space-y-4 text-[11px] font-bold text-gray-500 uppercase tracking-widest">
+                                    <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                                    <li><a href="#" class="hover:text-white transition-colors">Terms of Use</a></li>
+                                    <li><a href="#" class="hover:text-white transition-colors">Cookie Policy</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col md:flex-row justify-between items-center pt-12 border-t border-white/5">
+                            <div class="text-[9px] font-black text-gray-700 tracking-[0.3em] uppercase mb-4 md:mb-0">
+                                © 2024 UTMT SYSTEMS. ALL RIGHTS RESERVED.
+                            </div>
+                            <div class="flex gap-8 text-[9px] font-black text-gray-700 tracking-[0.3em] uppercase">
+                                <span>Built for the Neural Age</span>
+                                <span>Version 4.0.2</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </section>
+    </div>
+
+    <script>
+        
+    const GOOGLE_CLIENT_ID = "{{ google_client_id }}";
+        // Determine if we are on localhost or production
+const isLocalhost = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+
+const BACKEND_URL = isLocalhost 
+    ? "http://localhost:8000" 
+    : "https://your-backend-api-url.com"; // Replace with your actual deployed API URL
+        let userToken = null;
+        let bgRenderer, bgScene, bgCamera, bgParticles;
+        let PROJECTS = [];
+        let LEARNING_MODULES = [];
+        let CURIOSITY_DATA = [];
+        
+        async function loadProjectsFromJSON() {
+        try {
+            // Updated relative URL to ensure it parses correctly in blob environments
+            const res = await fetch("data/projects.json");
+            if (!res.ok) throw new Error("Failed to load projects.json");
+            PROJECTS = await res.json();
+        } catch (err) {
+            console.error("Project loading error:", err);
+            PROJECTS = [];
+        }
+    }
+     async function loadLearningModules() {
+        try {
+            // Updated relative URL to ensure it parses correctly in blob environments
+            const res = await fetch("data/learning.json");
+            if (!res.ok) throw new Error("Failed to load learning.json");
+            LEARNING_MODULES = await res.json();
+        } catch (err) {
+            console.error("Learning loading error:", err);
+            LEARNING_MODULES = [];
+        }
+    }
+    
+    // FETCH CURIOSITY DATA
+    async function loadCuriosityData() {
+        try {
+            // Updated relative URL to ensure it parses correctly in blob environments
+            const res = await fetch("data/curiosity.json");
+            if (!res.ok) throw new Error("Failed to load curiosity.json");
+            CURIOSITY_DATA = await res.json();
+        } catch (err) {
+            console.error("Curiosity loading error:", err);
+            CURIOSITY_DATA = [];
+        }
+    }
+
+     function hideGlobalLoader() {
+        const loader = document.getElementById("global-loader");
+        if (loader) loader.classList.add("hidden");
+    }
+    function toggleDropdown() {
+    document.getElementById('profile-dropdown').classList.toggle('show');
+}
+       window.onclick = function(event) {
+    if (!event.target.closest('#user-profile')) {
+        const dropdown = document.getElementById('profile-dropdown');
+        if (dropdown && dropdown.classList.contains('show')) dropdown.classList.remove('show');
+    }
+}
+        function navigateTo(viewId, sectionId = null) {
+            const homeView = document.getElementById('home-view');
+            const curiosityView = document.getElementById('curiosity-view');
+            const scroller = document.getElementById('main-scroller');
+
+            homeView.classList.add('hidden-view');
+            curiosityView.classList.add('hidden-view');
+
+            if (viewId === 'home') {
+                homeView.classList.remove('hidden-view');
+                if (sectionId) {
+                    setTimeout(() => {
+                        const target = document.getElementById(sectionId);
+                        if (target) target.scrollIntoView({ behavior: 'smooth' });
+                    }, 50);
+                } else {
+                    scroller.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            } else if (viewId === 'curiosity') {
+                curiosityView.classList.remove('hidden-view');
+                scroller.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function initIntroScene() {
+            const canvas = document.getElementById('intro-canvas');
+            if (!canvas) return;
+            const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 10;
+            const particleCount = 2500;
+            const geometry = new THREE.BufferGeometry();
+            const positions = new Float32Array(particleCount * 3);
+            const velocities = new Float32Array(particleCount);
+            for (let i = 0; i < particleCount; i++) {
+                const angle = Math.random() * Math.PI * 2;
+                const radius = 2.5 + Math.random() * 5.5;
+                positions[i * 3] = Math.cos(angle) * radius;
+                positions[i * 3 + 1] = Math.sin(angle) * radius;
+                positions[i * 3 + 2] = (Math.random() - 0.5) * 8;
+                velocities[i] = 0.003 + Math.random() * 0.015;
+            }
+            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            const material = new THREE.PointsMaterial({ color: 0xFFD700, size: 0.045, transparent: true, opacity: 0.7, blending: THREE.AdditiveBlending });
+            const points = new THREE.Points(geometry, material);
+            scene.add(points);
+            function animateIntro() {
+                const splash = document.getElementById('intro-splash');
+                if (!splash) { renderer.dispose(); geometry.dispose(); material.dispose(); return; }
+                requestAnimationFrame(animateIntro);
+                const pos = geometry.attributes.position.array;
+                for (let i = 0; i < particleCount; i++) {
+                    const idx = i * 3;
+                    const x = pos[idx]; const y = pos[idx + 1];
+                    const angle = velocities[i];
+                    pos[idx] = x * Math.cos(angle) - y * Math.sin(angle);
+                    pos[idx + 1] = x * Math.sin(angle) + y * Math.cos(angle);
+                    pos[idx + 2] += Math.sin(Date.now() * 0.002 + i) * 0.015; 
+                }
+                geometry.attributes.position.needsUpdate = true;
+                points.rotation.z += 0.0004;
+                renderer.render(scene, camera);
+            }
+            animateIntro();
+        }
+
+        function initBackground() {
+            const canvas = document.getElementById('bg-canvas');
+            bgScene = new THREE.Scene();
+            bgCamera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            bgCamera.position.z = 10;
+            bgRenderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+            bgRenderer.setSize(window.innerWidth, window.innerHeight);
+            const geometry = new THREE.BufferGeometry();
+            const vertices = [];
+            for (let i = 0; i < 8000; i++) vertices.push(THREE.MathUtils.randFloatSpread(100), THREE.MathUtils.randFloatSpread(100), THREE.MathUtils.randFloatSpread(100));
+            geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+            bgParticles = new THREE.Points(geometry, new THREE.PointsMaterial({ color: 0xD4AF37, size: 0.1, transparent: true, opacity: 0.3 }));
+            bgScene.add(bgParticles);
+            function animate() { requestAnimationFrame(animate); bgParticles.rotation.y += 0.0003; bgRenderer.render(bgScene, bgCamera); }
+            animate();
+        }
+
+        function setupTilt(card) {
+            const container = card.closest('.project-card-container');
+            card.addEventListener('mousemove', (e) => {
+                if (container.classList.contains('expanded')) return;
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (centerY - y) / 8;
+                const rotateY = (x - centerX) / 8;
+                card.style.transition = 'transform 0.1s ease-out';
+                card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.04, 1.04, 1.04)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                if (container.classList.contains('expanded')) return;
+                card.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
+                card.style.transform = `rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+            });
+        }
+
+        function renderModules(type) {
+            const list = type === 'projects' ? PROJECTS : (type === 'learning' ? LEARNING_MODULES : CURIOSITY_DATA);
+            const scrollerId = type === 'projects' ? 'project-scroller' : (type === 'learning' ? 'learning-scroller' : 'curiosity-scroller');
+            const scroller = document.getElementById(scrollerId);
+            const spacer = scroller.lastElementChild;
+            
+            list.forEach(item => {
+                const container = document.createElement('div');
+                container.className = 'project-card-container snap-center shrink-0';
+                container.id = `card-${type}-${item.id || crypto.randomUUID()}`;
+
+                const clickHandler = type === 'learning' 
+                    ? `window.open('${BACKEND_URL}' + '${item.link}', '_blank')`
+                    : (type === 'curiosity' ? '' : `expandModule('${type}', '${item.id}')`);
+
+                container.innerHTML = `
+                    <div class="project-card-inner w-full h-full glass-panel rounded-[2.5rem] overflow-hidden border border-[#D4AF37]/20 relative transition-all duration-700 bg-black/80 shadow-2xl">
+                        <div class="standard-ui w-full h-full flex flex-col cursor-pointer" onclick="${clickHandler}">
+                            <div class="h-40 overflow-hidden relative">
+                                <img src="${item.image}" class="w-full h-full object-cover opacity-60">
+                                <div class="absolute bottom-6 left-8">
+                                    <span class="text-[9px] font-black uppercase tracking-widest text-[#D4AF37] bg-black/80 px-4 py-2 rounded-lg border border-[#D4AF37]/20">${type === 'curiosity' ? 'Curiosity' : item.category}</span>
+                                </div>
+                            </div>
+                            <div class="p-6 flex flex-col flex-1">
+                                <h3 class="font-cinzel text-lg font-bold text-white mb-2 leading-tight">${item.title}</h3>
+                                <p class="text-gray-400 text-[11px] leading-relaxed line-clamp-2">${item.description}</p>
+                                <div class="mt-auto text-[9px] font-black uppercase tracking-[0.5em] text-[#D4AF37]/40">
+                                    ${type === 'learning' ? 'Start Learning →' : (type === 'curiosity' ? 'Explore Exhibit →' : 'Explore Artifact →')}
+                                </div>
+                            </div>
+                        </div>
+                        ${type === 'projects' ? `
+                        <div class="expanded-ui flex flex-row h-full">
+                            <div class="hidden lg:block w-1/3 h-full overflow-hidden">
+                                <img src="${item.image}" class="w-full h-full object-cover opacity-40">
+                            </div>
+                            <div class="flex-1 p-10 md:p-12 flex flex-col">
+                                <div class="flex justify-between items-start mb-6">
+                                    <div class="max-w-[80%]">
+                                        <h2 class="font-cinzel text-3xl font-black text-white tracking-widest mb-1 uppercase">${item.title}</h2>
+                                        <span class="text-[10px] font-black tracking-[0.6em] text-[#D4AF37] uppercase">${item.category}</span>
+                                    </div>
+                                    <button onclick="expandModule('${type}', '${item.id}', false)" class="text-white/40 hover:text-[#D4AF37] transition-all">
+                                        <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                                    </button>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 flex-1 overflow-y-auto no-scrollbar pb-6">
+                                    <div class="space-y-6">
+                                        <div>
+                                            <h4 class="text-[9px] font-black uppercase tracking-[0.4em] text-[#D4AF37]/60 mb-2">Problem Statement</h4>
+                                            <p class="text-gray-300 text-[13px] leading-relaxed italic border-l-2 border-[#D4AF37]/20 pl-4">${item.problem}</p>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-[9px] font-black uppercase tracking-[0.4em] text-[#D4AF37]/60 mb-2">Solution</h4>
+                                            <p class="text-gray-300 text-[13px] leading-relaxed">${item.solution}</p>
+                                        </div>
+                                    </div>
+                                    <div class="space-y-6">
+                                        <div>
+                                            <h4 class="text-[9px] font-black uppercase tracking-[0.4em] text-[#D4AF37]/60 mb-3">Tech Stack</h4>
+                                            <div class="flex flex-wrap gap-2">
+                                                ${item.stack.map(s => `<span class="px-2 py-1 bg-white/5 border border-white/10 rounded-lg text-[9px] text-gray-400 font-bold">${s}</span>`).join('')}
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-col gap-3 pt-2">
+                                            ${item.github ? `<a href="${item.github}" target="_blank" class="w-full py-2.5 bg-white/5 border border-white/10 text-white text-[9px] font-black uppercase tracking-[0.4em] rounded-full text-center hover:bg-[#D4AF37] hover:text-black transition-all">GitHub Repository</a>` : ''}
+                                            ${item.live ? `<a href="${item.live}" target="_blank" class="w-full py-2.5 bg-[#D4AF37] text-black text-[9px] font-black uppercase tracking-[0.4em] rounded-full text-center hover:scale-105 transition-all">Access Artifact</a>` : ''}
+                                        </div>
                                     </div>
                                 </div>
-                                <p class="text-gray-700 italic leading-relaxed flex-grow">"{{ t.quote }}"</p>
                             </div>
-                        {% endif %}
-
+                        </div>` : ''}
                     </div>
-                    {% endfor %}
-                {% endif %}
+                `;
+                const inner = container.querySelector('.project-card-inner');
+                setupTilt(inner);
+                scroller.insertBefore(container, spacer);
+            });
+        }
 
-            </div>
-            <!-- Add Pagination -->
-            <div class="swiper-pagination mt-8 relative"></div>
-        </div>
-    </div>
-</section>
+        function expandModule(type, id, isExpanding = true) {
+            if (type === 'learning' || type === 'curiosity') return;
+            const expanded = document.querySelector('.project-card-container.expanded');
+            if (expanded && expanded.id !== `card-${type}-${id}`) { expanded.classList.remove('expanded'); }
+            const target = document.getElementById(`card-${type}-${id}`);
+            if (isExpanding) {
+                target.classList.add('expanded');
+                setTimeout(() => target.scrollIntoView({ behavior: 'smooth', inline: 'center' }), 400);
+            } else { target.classList.remove('expanded'); }
+        }
+        function renderGoogleButton() {
+    google.accounts.id.renderButton(
+        document.getElementById("google-login-btn"),
+        { theme: "dark", size: "large", shape: "pill", text: "signin_with" }
+    );
+}
+function handleCredentialResponse(response) {
+    userToken = response.credential;
+    localStorage.setItem('userToken', userToken); 
+    updateUIWithToken(userToken);
+}
 
-<!-- TESTIMONIAL VIDEO MODAL (Remains Unchanged) -->
-<div id="videoModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
-    <div class="bg-black rounded-lg shadow-2xl w-full max-w-4xl m-4 relative" onclick="event.stopPropagation()">
-        <button onclick="closeTestimonialVideo()" class="absolute -top-4 -right-4 h-10 w-10 bg-white rounded-full text-gray-800 flex items-center justify-center text-2xl z-10">×</button>
-        <div class="relative" style="padding-bottom: 56.25%;">
-            <iframe id="videoIframe" class="absolute top-0 left-0 w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-        <h3 id="videoModalTitle" class="text-white text-lg font-bold p-4 text-center"></h3>
-    </div>
-</div>
-    <!-- Partners Section -->
-    <section class="py-20 bg-gradient-to-r from-gray-50 to-blue-50">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center text-[#1E3D59] mb-16">Our Partners</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-scale">
-                    <i class="fab fa-google text-5xl text-blue-500 mb-4"></i>
-                    <span class="font-medium text-gray-800">Google</span>
-                </div>
-                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-scale">
-                    <i class="fab fa-microsoft text-5xl text-blue-600 mb-4"></i>
-                    <span class="font-medium text-gray-800">Microsoft</span>
-                </div>
-                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-scale">
-                    <i class="fab fa-amazon text-5xl text-orange-500 mb-4"></i>
-                    <span class="font-medium text-gray-800">Amazon</span>
-                </div>
-                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover-scale">
-                    <i class="fab fa-ibm text-5xl text-blue-700 mb-4"></i>
-                    <span class="font-medium text-gray-800">IBM</span>
-                </div>
-            </div>
-        </div>
-    </section>
-<!-- At the bottom of index.html, before </body> -->
+function handleLogout() {
+    userToken = null;
+    localStorage.removeItem('userToken');
+    document.getElementById('google-login-btn').classList.remove('hidden');
+    document.getElementById('user-profile').classList.add('hidden');
+    renderGoogleButton();
+}
+// Function to update the Navbar UI based on a token
+function updateUIWithToken(token) {
+    if (!token) return;
+    try {
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        
+        // 1. Check if elements exist before setting them
+        const userPic = document.getElementById('user-pic');
+        const userName = document.getElementById('user-name-display');
+        const userEmail = document.getElementById('user-email-display');
+        const loginBtn = document.getElementById('google-login-btn');
+        const profileDiv = document.getElementById('user-profile');
 
-{% include 'footer.html' %}
+        if (userPic) userPic.src = payload.picture;
+        if (userName) userName.innerText = payload.name;
+        if (userEmail) userEmail.innerText = payload.email;
+        
+        // 2. Hide login button, show profile
+        if (loginBtn) loginBtn.classList.add('hidden');
+        if (profileDiv) profileDiv.classList.remove('hidden');
+
+    } catch (e) {
+        console.error("Token restore failed", e);
+        localStorage.removeItem('userToken');
+    }
+}
+function openPdfViewer(pdfPath) {
+    const modal = document.getElementById('pdf-viewer-modal');
+    const iframe = document.getElementById('pdf-viewer-frame');
     
-<!-- Add Swiper.js Library -->
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    iframe.src = pdfPath;
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden'; // Stop background scroll
+}
 
+function closePdfViewer() {
+    const modal = document.getElementById('pdf-viewer-modal');
+    const iframe = document.getElementById('pdf-viewer-frame');
+    
+    modal.classList.add('hidden');
+    iframe.src = ''; // Clear iframe memory
+    document.body.style.overflow = 'auto'; // Restore scroll
+}
 
-<!-- All Page JavaScript in one place -->
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    // --- 1. Mobile Menu & Desktop Dropdown Logic ---
-    // (This part is for your header and should remain as it was)
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    if (mobileMenuBtn) { /* ... mobile menu logic ... */ }
-    const toggleBtn = document.getElementById('learningToggle');
-    if (toggleBtn) { /* ... desktop dropdown logic ... */ }
+async function handleSendMessage() {
+    const input = document.getElementById('chat-input');
+    const queryText = input.value.trim();
+    if (!queryText) return;
 
-    // --- 2. Testimonial Slider Initialization ---
-    const testimonialSlider = new Swiper('.testimonial-slider', {
-        loop: true,
-        autoplay: {
-            delay: 5000,
-            disableOnInteraction: false,
-            // IMPORTANT: Stop autoplay when a video is played
-            pauseOnMouseEnter: true,
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        // Show 1 slide on small screens, up to 3 on large screens
-        slidesPerView: 1,
-        spaceBetween: 30,
-        breakpoints: {
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 }
+    if (!userToken) {
+        alert("Please login with Google to access Sanatana AI.");
+        if (google.accounts.id) google.accounts.id.prompt(); 
+        return;
+    }
+
+    const container = document.getElementById('chat-messages');
+    const initialMsg = document.getElementById('initial-message');
+    if (initialMsg) initialMsg.style.display = 'none';
+
+    // Show Loading State
+    container.innerHTML = `
+        <div class="w-full flex flex-col items-center justify-center py-24 gap-4 fade-in">
+            <div class="w-12 h-12 border-2 border-[#D4AF37] border-t-transparent rounded-full animate-spin"></div>
+            <div class="px-6 py-3 rounded-full border border-[#D4AF37]/20 bg-[#D4AF37]/5 text-[9px] text-[#D4AF37] font-black uppercase tracking-[0.5em] animate-pulse">
+                Consulting Sacred Knowledge...
+            </div>
+        </div>
+    `;
+
+    input.value = '';
+
+    try {
+        const isVerify = queryText.toLowerCase().startsWith("verify:");
+        const endpoint = isVerify ? "/v1/iyd/verify" : "/v1/chat/nyd";
+        const body = isVerify ? { statement: queryText.replace(/verify:/i, "").trim() } : { query: queryText };
+
+        const response = await fetch(`${BACKEND_URL}${endpoint}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${userToken}`
+            },
+            body: JSON.stringify(body)
+        });
+
+        if (!response.ok) throw new Error("Backend connection failed.");
+        const data = await response.json();
+
+        // --- 1. UI STATE LOGIC (NYD vs IYD) ---
+        let statusColor = "bg-[#D4AF37]";
+        let textColor = "text-[#D4AF37]/50";
+        let headingText = "Neural Synthesis"; // Default heading for normal chat
+
+        // Only look for Fact-Check status if the user actually used "verify:"
+        if (isVerify) {
+            let predictionValue = data.prediction || "";
+            
+            // Fallback: If loading from cache, search summary_answer for the status
+            if (!predictionValue && data.summary_answer) {
+                const summaryUpper = data.summary_answer.toUpperCase();
+                if (summaryUpper.includes("TRUE")) predictionValue = "TRUE";
+                else if (summaryUpper.includes("FALSE")) predictionValue = "FALSE";
+            }
+
+            if (predictionValue === 'TRUE') { 
+                statusColor = "bg-green-500"; 
+                textColor = "text-green-500"; 
+                headingText = "Fact Check: TRUE";
+            } else if (predictionValue === 'FALSE') { 
+                statusColor = "bg-red-500"; 
+                textColor = "text-red-500"; 
+                headingText = "Fact Check: FALSE";
+            }
+        }
+
+        // --- 2. PREPARE MAIN CONTENT ---
+        const mainAnswer = data.explanation || data.detailed_answer || data.summary_answer || "The oracle is silent.";
+        
+        // --- 3. ACTION LINKS (Watch/View/Download) ---
+        let actionLinksHTML = '';
+        if (data.youtube_link || data.download_link) {
+            // Fix: ensure PDF path is relative for the viewer
+            const cleanPdfPath = data.download_link ? data.download_link.replace('https://www.utmt.org', '') : '';
+
+            actionLinksHTML = `
+                <div class="mt-8 pt-6 border-t border-white/5 flex flex-wrap gap-4">
+                    ${data.youtube_link ? `
+                        <a href="${data.youtube_link}" target="_blank" class="link-button">
+                            <span>📽️</span> Watch Explanation
+                        </a>
+                    ` : ''}
+                    
+                    ${data.download_link ? `
+                        <button onclick="openPdfViewer('${cleanPdfPath}')" class="link-button">
+                            <span>👁️</span> View
+                        </button>
+                        <a href="${cleanPdfPath}" download class="link-button bg-white/5 border-white/10 opacity-60 hover:opacity-100">
+                            <span>📥</span> Download
+                        </a>
+                    ` : ''}
+                </div>
+            `;
+        }
+
+        // --- 4. REFERENCES & SOURCE MAPPING ---
+        const rawRefs = data.verses || data.references || [];
+        const getBookName = (item) => {
+            if (item.meta && item.meta.book) return item.meta.book; 
+            const source = item.metadata ? item.metadata.source : '';
+            if (source === 'yoga_collection') return 'Patanjali Yoga Sutras';
+            if (source === 'gita_collection') return 'Bhagavad Gita';
+            if (source === 'ramayana_collection') return 'Valmiki Ramayana'; // Added Support
+            return 'Sacred Scripture';
+        };
+
+        const referencesHTML = rawRefs.map((ref, index) => `
+            <div class="glass-panel rounded-[2rem] p-8 border border-[#D4AF37]/30 bg-gradient-to-br from-[#D4AF37]/5 to-transparent shadow-xl flex flex-col items-center text-center relative overflow-hidden mb-6">
+                <div class="absolute top-4 left-6 text-[8px] font-black text-[#D4AF37]/20">0${index + 1}</div>
+                <span class="text-[#D4AF37]/60 font-black uppercase tracking-[0.4em] text-[8px] mb-6 block">Evidence Artifact</span>
+                <h4 class="font-devanagari text-lg text-[#D4AF37] leading-relaxed mb-4">${ref.sanskrit || 'Verified Reference'}</h4>
+                <p class="text-gray-300 text-[13px] font-serif italic leading-relaxed mb-6 px-4 border-l border-[#D4AF37]/10">
+                    "${ref.translation || ref.text || 'Context identified in ancient text.'}"
+                </p>
+                <p class="text-gray-500 text-[9px] font-bold tracking-widest uppercase border-t border-white/5 pt-4 w-full">
+                    ${getBookName(ref)} <br/>
+                    <span class="text-[#D4AF37]/80">
+                        Chapter ${ref.chapter || (ref.meta ? ref.meta.chapter : '?')}, 
+                        Verse ${ref.verse || (ref.meta ? ref.meta.verse_num : '?')}
+                    </span>
+                </p>
+            </div>
+        `).join('');
+
+        // --- 5. RENDER FINAL UI ---
+        container.innerHTML = `
+            <div class="w-full max-w-[1300px] flex flex-col lg:flex-row gap-8 items-start py-6 fade-in">
+                <!-- Answer Section -->
+                <div class="flex-[1.5] lg:sticky lg:top-32 glass-panel rounded-[2rem] p-10 md:p-12 border border-[#D4AF37]/20 bg-white/[0.03] shadow-2xl flex flex-col">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="w-1.5 h-1.5 rounded-full ${statusColor}"></div>
+                        <span class="${textColor} font-black uppercase tracking-[0.6em] text-[9px]">${headingText}</span>
+                    </div>
+                    <p class="text-gray-100 text-base md:text-lg leading-relaxed tracking-wide font-light whitespace-pre-wrap text-left">${mainAnswer}</p>
+                    ${actionLinksHTML}
+                    ${data.confidence ? `<div class="mt-6 text-[8px] text-gray-500 tracking-[0.3em] uppercase border-t border-white/5 pt-4">Analysis Confidence: ${data.confidence}/10</div>` : ''}
+                </div>
+                
+                <!-- References Section -->
+                <div class="flex-[1] w-full max-h-[80vh] overflow-y-auto pr-2 no-scrollbar">
+                    ${referencesHTML || '<div class="text-center py-10 opacity-20 text-[10px] uppercase tracking-widest">No specific verses cited</div>'}
+                </div>
+            </div>
+        `;
+    } catch (err) {
+        container.innerHTML = `<div class="text-[#D4AF37] uppercase text-[10px] tracking-widest mt-10">Connection Error: ${err.message}</div>`;
+    }
+    container.scrollTop = 0;
+}
+window.onload = async () => {
+    const savedToken = localStorage.getItem('userToken');
+    if (savedToken) {
+        userToken = savedToken; // Restore the global variable
+        updateUIWithToken(savedToken); // Update the UI
+    }
+    initBackground();
+    initIntroScene();
+
+    await Promise.all([
+        loadProjectsFromJSON(),
+        loadLearningModules(),
+        loadCuriosityData() // FETCH CURIOSITY DATA
+    ]);
+
+    renderModules('projects');
+    renderModules('learning');
+    renderModules('curiosity'); // RENDER CURIOSITY CARDS
+    
+    hideGlobalLoader();
+
+    google.accounts.id.initialize({
+        client_id: GOOGLE_CLIENT_ID,
+        callback: handleCredentialResponse,
+        auto_select: false
+    });
+    if (!savedToken) {
+        renderGoogleButton();
+    }
+
+    // Detect if user landed on a specific section (e.g., #projects-section or #curiosity-view)
+    const hash = window.location.hash;
+
+    setTimeout(() => {
+        const splash = document.getElementById('intro-splash');
+        if (splash) {
+            splash.classList.add('splash-fade-out');
+            setTimeout(() => {
+                splash.remove();
+
+                // --- ENHANCED NAVIGATION LOGIC ---
+                if (hash) {
+                    if (hash === '#curiosity-view') {
+                        // Switch to Curiosity view (shows div, hides home)
+                        navigateTo('curiosity');
+                    } else {
+                        // Ensure Home view is active, then scroll to section
+                        navigateTo('home'); 
+                        const targetElement = document.querySelector(hash);
+                        if (targetElement) {
+                            targetElement.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }
+                }
+            }, 2500);
+        }
+    }, 4000);
+
+    document.getElementById('chat-input').addEventListener('keypress', (e) => e.key === 'Enter' && handleSendMessage());
+
+    // --- NEW: CURIOSITY PARK EXPANSION LOGIC ---
+    document.addEventListener('click', (e) => {
+        const curiosityScroller = document.getElementById('curiosity-scroller');
+        if (!curiosityScroller) return;
+
+        const card = e.target.closest('#curiosity-scroller .project-card-container');
+        
+        // 1. If clicking outside a Curiosity card or scroller, collapse all
+        if (!card) {
+            document.querySelectorAll('#curiosity-scroller .project-card-container.curiosity-active')
+                .forEach(c => c.classList.remove('curiosity-active'));
+            return;
+        }
+
+        // 2. Prevent interference if clicking within another section
+        if (card.closest('#project-scroller')) return;
+
+        const isAlreadyActive = card.classList.contains('curiosity-active');
+        
+        // 3. Collapse all other curiosity cards first (Only one expanded at a time)
+        document.querySelectorAll('#curiosity-scroller .project-card-container.curiosity-active')
+            .forEach(c => { if(c !== card) c.classList.remove('curiosity-active') });
+
+        // 4. Toggle the current card
+        if (isAlreadyActive) {
+            card.classList.remove('curiosity-active');
+        } else {
+            card.classList.add('curiosity-active');
+            // Smooth scroll into view
+            setTimeout(() => card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' }), 400);
         }
     });
+};
+      // This handles navigation when the user is already on index.html
+window.addEventListener('hashchange', () => {
+    const hash = window.location.hash;
+    if (hash === '#curiosity-view') {
+        navigateTo('curiosity');
+    } else if (hash) {
+        navigateTo('home');
+        const target = document.querySelector(hash);
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+    }
 });
-</script> 
+        window.addEventListener('resize', () => {
+            if (bgCamera) {
+                bgCamera.aspect = window.innerWidth / window.innerHeight;
+                bgCamera.updateProjectionMatrix();
+                bgRenderer.setSize(window.innerWidth, window.innerHeight);
+            }
+        });
+    </script>
+    <!-- PDF Viewer Modal -->
+<div id="pdf-viewer-modal" class="fixed inset-0 z-[3000] hidden bg-black/90 backdrop-blur-md flex flex-col p-4 md:p-8">
+    <div class="max-w-7xl mx-auto w-full flex justify-between items-center mb-4">
+        <h3 class="font-cinzel text-[#D4AF37] text-lg tracking-widest">Commentary View</h3>
+        <button onclick="closePdfViewer()" class="px-6 py-2 border border-[#D4AF37]/30 rounded-full text-[#D4AF37] text-[10px] uppercase tracking-widest hover:bg-[#D4AF37] hover:text-black transition-all">
+            Close &times;
+        </button>
+    </div>
+    <div class="flex-1 w-full max-w-7xl mx-auto rounded-2xl overflow-hidden border border-[#D4AF37]/20 bg-white">
+        <iframe id="pdf-viewer-frame" class="w-full h-full" src=""></iframe>
+    </div>
+</div>
 </body>
 </html>

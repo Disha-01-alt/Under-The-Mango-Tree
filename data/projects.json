@@ -1,0 +1,74 @@
+[
+  {
+    "id": "fact-checker",
+    "title": "Fact Checker for Valmiki Ramayana",
+    "category": "AI/ML",
+    "description": "AI-powered fact checker developed for the IYD Hackathon 2025.",
+    "image": "/static/english/images/11.jpg",
+    "problem": "Manual verification of events in ancient epics is prone to human error and time-consuming.",
+    "solution": "Utilizes deep learning textual analysis to cross-reference verses and identify factual consistencies.",
+    "stack": ["Python", "PyTorch", "NLP"],
+    "github": "https://github.com/atmabodha/OpenNLP",
+    "live": null
+  },
+  {
+    "id": "rag-chatbot",
+    "title": "RAG Chatbot for Bhagavad Gita",
+    "category": "AI/ML",
+    "description": "Insightful responses using verses from the Bhagavad Gita and Yoga Sutras.",
+    "image": "/static/english/images/12.jpg",
+    "problem": "Traditional search engines provide literal results rather than contextual wisdom.",
+    "solution": "Implements Retrieval-Augmented Generation (RAG) to provide grounded, philosophically accurate insights.",
+    "stack": ["Python", "LangChain", "Vector DB"],
+    "github": "https://github.com/atmabodha/OpenNLP",
+    "live": null
+  },
+  {
+    "id": "gita-portal",
+    "title": "Bhagavad Gita Portal",
+    "category": "AI/ML",
+    "description": "An elegant web portal presenting the verses of the Bhagavad Gita for the modern age.",
+    "image": "/static/english/images/13.jpg",
+    "problem": "Complex Sanskrit verses are often digitally inaccessible due to poor presentation.",
+    "solution": "High-performance web architecture designed for readability, featuring fast search and multi-language support.",
+    "stack": ["FastAPI", "Jinja2", "Tailwind"],
+    "github": null,
+    "live": "/gita-portal"
+  },
+  {
+    "id": "flux-finetune",
+    "title": "Fine-Tuning Flux",
+    "category": "AI/ML",
+    "description": "Advanced fine-tuning of Flux 1.0 using custom image datasets.",
+    "image": "/static/english/images/14.jpg",
+    "problem": "Base generative models lack specificity for complex multi-subject interactions and unique cultural attire.",
+    "solution": "Employs LoRA fine-tuning on custom curated image datasets to precisely control posture and costume.",
+    "stack": ["Python", "Flux.1", "HuggingFace"],
+    "github": "https://github.com/atmabodha/OpenNLP",
+    "live": "https://huggingface.co/models"
+  },
+  {
+    "id": "fictometer",
+    "title": "Fictometer",
+    "category": "Web",
+    "description": "An algorithm to detect manipulative content using NLP and Logistic Regression.",
+    "image": "/static/english/images/15.jpg",
+    "problem": "Manipulative and fabricated digital content spreads rapidly without automated tools for detection.",
+    "solution": "Uses Logistic Regression and NLP features to calculate a definitive 'Fictivity' score for any input text.",
+    "stack": ["Python", "Scikit-Learn", "NLP"],
+    "github": null,
+    "live": "https://www.bekushal.com/fictometer"
+  },
+  {
+    "id": "soorma-bhopali",
+    "title": "Soorma Bhopali AI",
+    "category": "AI/ML",
+    "description": "A character-driven chatbot that provides information about Bhopal in an iconic cinematic tone.",
+    "image": "/static/english/images/16.jpg",
+    "problem": "General-purpose chatbots lack personality and local cultural context.",
+    "solution": "An AI entity modeled after the Sholay character, blending local knowledge with specialized dialect modeling.",
+    "stack": ["LLMs", "Prompt Engineering", "NLP"],
+    "github": null,
+    "live": "https://www.bekushal.com/soormabhopali"
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "python-prog",
+    "title": "Python Programming",
+    "category": "Language",
+    "description": "Master Python from the basics to advanced concepts with our structured series.",
+    "image": "/static/english/images/11.jpg",
+    "link": "/python-learning/pythonpalintro"
+  },
+  {
+    "id": "ml-hands-on",
+    "title": "Machine Learning",
+    "category": "AI/ML",
+    "description": "Dive into ML with hands-on projects covering regression and classification.",
+    "image": "/static/english/images/12.jpg",
+    "link": "/machine-learning/0"
+  },
+  {
+    "id": "deep-learning",
+    "title": "Deep Learning & AI",
+    "category": "Neural Tech",
+    "description": "Explore neural networks and NLP to build cutting-edge AI-powered applications.",
+    "image": "/static/english/images/13.jpg",
+    "link": "/deep-learning-ai/0"
+  },
+  {
+    "id": "algorithms",
+    "title": "Algorithms",
+    "category": "Computer Science",
+    "description": "Build a strong foundation for technical interviews and complex problem-solving.",
+    "image": "/static/english/images/14.jpg",
+    "link": "/algorithms/binarysearch"
+  },
+  {
+    "id": "soft-skills",
+    "title": "Soft Skills",
+    "category": "Professional",
+    "description": "Get ready with curated questions, mock interviews, and resume-building tips.",
+    "image": "/static/english/images/16.jpg",
+    "link": "/soft-skills/0"
+  },
+  {
+    "id": "english-learning",
+    "title": "English Learning",
+    "category": "Communication",
+    "description": "Improve grammar, vocabulary, and conversational skills through interactive games.",
+    "image": "/static/english/images/15.jpg",
+    "link": "/english-learning"
+  },
+  {
+    "id": "ai-tools",
+    "title": "AI Tools",
+    "category": "Productivity",
+    "description": "Explore a comprehensive collection of AI tools for writing, design, and development.",
+    "image": "/static/english/images/17.jpg",
+    "link": "/ai-tools/python-pal"
+  }
+]

@@ -1,0 +1,299 @@
+{
+  "course_title": "Data Structures & Algorithms",
+  "prerequisites": "Before starting to learn Algorithms, make sure you have a good hold of basic Python Programming.",
+  "topics": [
+      {
+          "name" : "Binary Search",
+          "videos" : [
+                {
+                    "id": "binarysearch",
+                    "title": "What is binary search?",
+                    "youtube_url": "https://www.youtube.com/watch?v=j5uXyPJ0Pew",
+                    "resources": []
+                  }
+              ]
+              
+      },
+      {
+          "name" : "Simple Sorting Algos",
+          "videos" : [
+                {
+                    "id": "sortingalgos",
+                    "title": "Intro to Sorting Algos",
+                    "youtube_url": "https://www.youtube.com/watch?v=pkkFqlG0Hds",
+                    "resources": []
+                  },
+                {
+                    "id": "bubblesort",
+                    "title": "Bubble Sort",
+                    "youtube_url": "https://www.youtube.com/watch?v=xli_FI7CuzA",
+                    "resources": []
+                  },
+                {
+                    "id": "insertionsort",
+                    "title": "Insertion Sort",
+                    "youtube_url": "https://www.youtube.com/watch?v=JU767SDMDvA",
+                    "resources": []
+                  },
+                {
+                    "id": "selectionsort",
+                    "title": "Selection Sort",
+                    "youtube_url": "https://www.youtube.com/watch?v=g-PGLbMth_g",
+                    "resources": []
+                  }
+              ]
+      },
+      {
+          "name" : "Recursion",
+          "videos" : [
+                {
+                    "id": "recursionbasics",
+                    "title": "Recursion Basics",
+                    "youtube_url": "https://www.youtube.com/watch?v=WPSeyjX1-4s",
+                    "resources": []
+                }
+          ]
+      },
+      {
+          "name" : "Dynamic Programming Intro",
+          "videos" : [
+                {
+                    "id": "dp",
+                    "title": "Dynamic Programming Playlist",
+                    "youtube_url": "https://www.youtube.com/watch?v=mmjDZGSr7EA&list=PLqM7alHXFySGbXhWx7sBJEwY2DnhDjmxm",
+                    "resources": []
+                }
+          ]
+      },
+      {
+          "name" : "Classes & Objects",
+          "videos" : [
+                {
+                    "id": "class",
+                    "title": "Python OOP",
+                    "youtube_url": "https://www.youtube.com/watch?v=_uYorV9ebLg",
+                    "resources": []
+                }
+          ]
+      },
+      {
+          "name" : "Algorithm Complexity",
+          "videos" : [
+                {
+                    "id": "asympnot",
+                    "title": "Asymptotic Notation",
+                    "youtube_url": "https://www.youtube.com/watch?v=bxgTDN9c6rg",
+                    "resources": []
+                },
+                {
+                    "id": "timecomplexity1",
+                    "title": "Time Complexity Example",
+                    "youtube_url": "https://www.youtube.com/watch?v=aWKEBEg55ps",
+                    "resources": []
+                },
+                {
+                    "id": "timecomplexity2",
+                    "title": "Time Complexity Playlist",
+                    "youtube_url": "https://www.youtube.com/watch?v=V42FBiohc6c&list=PL2_aWCzGMAwI9HK8YPVBjElbLbI3ufctn",
+                    "resources": []
+                },
+                {
+                    "id": "spacecomplexity",
+                    "title": "Space Complexity",
+                    "youtube_url": "https://www.youtube.com/watch?v=oQ5sAfT_3V4",
+                    "resources": []
+                }
+          ]
+      },
+      {
+          "name" : "Stacks & Queues",
+          "videos" : [
+                {
+                    "id": "stackconept",
+                    "title": "Stack Concept and Example",
+                    "youtube_url": "https://www.youtube.com/watch?v=stD5O9YnM04",
+                    "resources": []
+                },
+                {
+                    "id": "queue",
+                    "title": "Queue Basics",
+                    "youtube_url": "https://www.youtube.com/watch?v=PyAH9-SgTCI",
+                    "resources": []
+                },
+                {
+                    "id": "queuepython",
+                    "title": "Queue and its Python Implementation",
+                    "youtube_url": "https://www.youtube.com/watch?v=9FvlBQQ_gfY",
+                    "resources": []
+                }
+          ]
+      },
+      {
+          "name" : "Linked List",
+          "videos" : [
+                {
+                    "id": "linkedlistconcept",
+                    "title": "Linked List Concept",
+                    "youtube_url": "https://www.youtube.com/watch?v=R9PTBwOzceo",
+                    "resources": []
+                },
+                {
+                    "id": "linkedinlistpython",
+                    "title": "Linked List Python Implementation",
+                    "youtube_url": "https://www.youtube.com/watch?v=1iz9SRWdpX8",
+                    "resources": []
+                }
+          ]
+      },
+      {
+          "name" : "Priority Queies & Heaps",
+          "videos" : [
+                {
+                    "id": "heaps1",
+                    "title": "Heaps & Priority Queues in Python",
+                    "youtube_url": "https://www.youtube.com/watch?v=wGSQ486Y4sc",
+                    "resources": []
+                },
+                {
+                    "id": "heaps2",
+                    "title": "Heaps Basics",
+                    "youtube_url": "https://www.youtube.com/watch?v=0wPlzMU-k00",
+                    "resources": []
+                },
+                {
+                    "id": "stacksheaps",
+                    "title": "Stacks & Heaps in Memory",
+                    "youtube_url": "https://www.youtube.com/watch?v=OdQSWuG78Sk",
+                    "resources": []
+                }
+          ]
+      },
+      {
+          "name" : "Divide & Conquer",
+          "videos" : [
+                {
+                    "id": "divideconquer",
+                    "title": "Merge Sort",
+                    "youtube_url": "https://www.youtube.com/watch?v=YOh6hBtX5l0",
+                    "resources": []
+                },
+                {
+                    "id": "karatsuba",
+                    "title": "How can we multiply large integers quickly? (Karatsuba algorithm)",
+                    "youtube_url": "https://www.youtube.com/watch?v=yWI2K4jOjFQ",
+                    "resources": []
+                },
+                {
+                    "id": "strassen",
+                    "title": "Strassen algorithm for matrix multiplication",
+                    "youtube_url": "https://www.youtube.com/watch?v=OSelhO6Qnlc",
+                    "resources": []
+                }
+          ]
+      },
+      {
+          "name" : "Graphs & Trees",
+          "videos" : [
+                {
+                    "id": "tree",
+                    "title": "Intro to Trees",
+                    "youtube_url": "https://www.youtube.com/watch?v=qH6yxkw0u78",
+                    "resources": []
+                },
+                {
+                    "id": "binarytree",
+                    "title": "Binary Tree",
+                    "youtube_url": "https://www.youtube.com/watch?v=H5JubkIy_p8",
+                    "resources": []
+                },
+                {
+                    "id": "binarytreeheight",
+                    "title": "Find Height of a Binary Tree",
+                    "youtube_url": "https://www.youtube.com/watch?v=_pnqMz5nrRs",
+                    "resources": []
+                },
+                {
+                    "id": "graph",
+                    "title": "Intro to Graphs",
+                    "youtube_url": "https://www.youtube.com/watch?v=eQA-m22wjTQ",
+                    "resources": []
+                }
+          ]
+      },
+      {
+          "name" : "Search Trees",
+          "videos" : [
+                {
+                    "id": "binarysearchtree",
+                    "title": "Binary Search Trees",
+                    "youtube_url": "https://www.youtube.com/watch?v=pYT9F8_LFTM",
+                    "resources": []
+                },
+                {
+                    "id": "btree",
+                    "title": "Understanding B-Trees",
+                    "youtube_url": "https://www.youtube.com/watch?v=K1a2Bk8NrYQ",
+                    "resources": []
+                },
+                {
+                    "id": "rbtree",
+                    "title": "Red Black Trees",
+                    "youtube_url": "https://www.youtube.com/watch?v=qvZGUFHWChY",
+                    "resources": []
+                }
+          ]
+      },
+      {
+          "name" : "Maps & Hash Tables",
+          "videos" : [
+                {
+                    "id": "hashtable",
+                    "title": "Implementing Hash Tables using Dictionary",
+                    "youtube_url": "https://www.youtube.com/watch?v=APAbRkrqDVI",
+                    "resources": []
+                },
+                {
+                    "id": "hashmap",
+                    "title": "HashMaps in Python",
+                    "youtube_url": "https://www.youtube.com/watch?v=RcZsTI5h0kg",
+                    "resources": []
+                }
+                
+          ]
+      },
+      {
+          "name" : "BFS & DFS",
+          "videos" : [
+                {   
+                    "id": "bfs",
+                    "title": "Breadth First Search (BFS): Visualized and Explained",
+                    "youtube_url": "https://www.youtube.com/watch?v=xlVX7dXLS64",
+                    "resources": []
+                },
+                {   
+                    "id": "dfs",
+                    "title": "Depth First Search (DFS) Explained",
+                    "youtube_url": "https://www.youtube.com/watch?v=PMMc4VsIacU",
+                    "resources": []
+                },
+                {
+                    "id": "bfsdfs",
+                    "title": "BFS and DFS for Binary Tree",
+                    "youtube_url": "https://www.youtube.com/watch?v=9RHO6jU--GU",
+                    "resources": []
+                }
+          ]
+      },
+      {
+        "name" : "Dijkstra's Algo",
+          "videos" : [
+                {
+                    "id": "dijkstra",
+                    "title": "Dijkstra's Algo",
+                    "youtube_url": "https://www.youtube.com/watch?v=EFg3u_E6eHU",
+                    "resources": []
+                }
+          ]
+      }
+  ]
+}

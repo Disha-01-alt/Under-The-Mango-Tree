@@ -57,6 +57,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
+function navigateTo(viewId, sectionId = null) {
+    if (viewId === 'home') {
+        // Redirect to home with the hash (e.g., /#projects-section)
+        const target = sectionId ? `/#${sectionId}` : '/';
+        window.location.href = target;
+    } else if (viewId === 'curiosity') {
+        // If curiosity is a section on home page
+        window.location.href = '/#curiosity-view'; 
+    }
+}
 
 // --- Accordion Toggle Function (remains global for onclick) ---
 function toggleAccordion(button) {
